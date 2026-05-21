@@ -1,0 +1,50 @@
+---
+title: "Building my Developer Knowledge Hub"
+description: "How I built this Next.js 15 powered developer hub to share tutorials, notes, and AI tools."
+date: "2026-05-21"
+tags: ["nextjs", "react", "tailwind"]
+category: "Tutorials"
+featured: true
+readingTime: "5 min read"
+---
+
+# Building my Developer Knowledge Hub
+
+Welcome to my new developer knowledge hub! I built this site to complement my professional portfolio and serve as a living document for my learning journey.
+
+## Why a Knowledge Hub?
+
+As a developer, I'm constantly learning new things, experimenting with AI tools, and solving complex problems. I wanted a dedicated space to:
+
+1. **Share Tutorials:** Step-by-step guides on things I've built.
+2. **Document Tech Notes:** Quick snippets and cheat sheets for things I often forget.
+3. **Curate Tools:** A directory of the best AI and dev tools I discover.
+
+## The Tech Stack
+
+I chose a modern, high-performance stack for this project:
+
+- **Next.js 15:** The React framework for the web (using App Router).
+- **TypeScript:** For type safety and better developer experience.
+- **Tailwind CSS v4:** For rapid UI development and easy dark mode.
+- **MDX:** To write content in Markdown but with the power of React components.
+
+### Example Code
+
+Here is a quick look at how the frontmatter is structured for these posts:
+
+```typescript
+export interface PostFrontmatter {
+  title: string;
+  description: string;
+  date: string;
+  tags: string[];
+  category: string;
+  featured?: boolean;
+  readingTime?: string;
+}
+```
+
+## What's Next?
+
+I'll be regularly updating this hub with new tutorials on LangChain, FastAPI, and more Next.js tips. Stay tuned!

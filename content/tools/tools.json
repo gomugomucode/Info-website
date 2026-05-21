@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Vercel",
+    "category": "Hosting",
+    "description": "Frontend deployment platform for Next.js apps",
+    "url": "https://vercel.com",
+    "tags": ["nextjs", "hosting"]
+  },
+  {
+    "name": "Cursor",
+    "category": "IDE",
+    "description": "AI-first code editor that helps you build faster",
+    "url": "https://cursor.com",
+    "tags": ["ai", "editor", "productivity"]
+  },
+  {
+    "name": "LangChain",
+    "category": "AI Development",
+    "description": "Framework for developing applications powered by language models",
+    "url": "https://langchain.com",
+    "tags": ["ai", "llm", "framework"]
+  },
+  {
+    "name": "Supabase",
+    "category": "Backend",
+    "description": "Open source Firebase alternative with Postgres",
+    "url": "https://supabase.com",
+    "tags": ["database", "auth", "backend"]
+  }
+]
