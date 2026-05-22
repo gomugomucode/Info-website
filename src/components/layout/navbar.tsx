@@ -45,11 +45,10 @@ function NavLinks() {
             href={item.url}
             onMouseEnter={() => setHoveredIdx(idx)}
             onMouseLeave={() => setHoveredIdx(null)}
-            className={`relative px-3.5 py-1.5 rounded-lg text-sm font-semibold tracking-wide transition-colors duration-200 outline-none select-none ${
-              active
-                ? "text-cyan-600 dark:text-cyan-400 font-bold"
-                : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
-            }`}
+            className={`relative px-3.5 py-1.5 rounded-lg text-sm font-semibold tracking-wide transition-colors duration-200 outline-none select-none ${active
+              ? "text-cyan-600 dark:text-cyan-400 font-bold"
+              : "text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100"
+              }`}
           >
             {/* Sliding background hover highlight */}
             {hoveredIdx === idx && (
@@ -139,11 +138,10 @@ export function Navbar() {
   return (
     <>
       <header
-        className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-          isScrolled
-            ? "border-b border-neutral-200/50 bg-white/70 backdrop-blur-md dark:border-neutral-800/50 dark:bg-neutral-950/70 shadow-sm shadow-neutral-100/10"
-            : "border-b border-transparent bg-transparent"
-        }`}
+        className={`sticky top-0 z-40 w-full transition-all duration-300 ${isScrolled
+          ? "border-b border-neutral-200/50 bg-white/70 backdrop-blur-md dark:border-neutral-800/50 dark:bg-neutral-950/70 shadow-sm shadow-neutral-100/10"
+          : "border-b border-transparent bg-transparent"
+          }`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between gap-4">
@@ -203,7 +201,7 @@ export function Navbar() {
 
               {/* GitHub Link */}
               <a
-                href="https://github.com/anupambaral"
+                href="https://https://github.com/gomugomucode"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden sm:inline-flex h-9 w-9 items-center justify-center rounded-lg border border-neutral-200 bg-white/50 backdrop-blur-md dark:border-neutral-800 dark:bg-neutral-950/50 hover:bg-neutral-50 hover:text-cyan-500 hover:border-cyan-500/30 dark:hover:bg-neutral-900 dark:hover:text-emerald-400 dark:hover:border-emerald-500/30 transition-all text-neutral-800 dark:text-neutral-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500/50 cursor-pointer"
@@ -306,7 +304,7 @@ export function Navbar() {
                 {/* Social buttons */}
                 <div className="flex items-center gap-3 justify-center">
                   <a
-                    href="https://github.com/anupambaral"
+                    href="https://https://github.com/gomugomucode"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center h-10 w-10 rounded-lg border border-neutral-200 bg-neutral-50/50 dark:border-neutral-800 dark:bg-neutral-900/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-700 dark:text-neutral-300"
@@ -324,7 +322,7 @@ export function Navbar() {
                     </svg>
                   </a>
                   <a
-                    href="https://linkedin.com/in/anupambaral"
+                    href="https://linkedin.com/in/gomugomucode"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center h-10 w-10 rounded-lg border border-neutral-200 bg-neutral-50/50 dark:border-neutral-800 dark:bg-neutral-900/50 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors text-neutral-700 dark:text-neutral-300"
