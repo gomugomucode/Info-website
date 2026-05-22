@@ -1,0 +1,176 @@
+---
+title: "The Ultimate Next.js App Router Cheatsheet"
+description: "A comprehensive guide to Next.js 15. Master the App Router, Server vs Client components, Metadata, Routing, and Deployment."
+date: "2026-05-22"
+tags: ["nextjs", "react", "frontend", "cheatsheet", "app-router"]
+category: "Tech Notes"
+featured: true
+readingTime: "10 min read"
+---
+
+# The Ultimate Next.js App Router Cheatsheet
+
+Next.js has completely revolutionized how we build React applications with the introduction of the App Router. This cheatsheet covers the essential concepts, file conventions, and APIs you need to know for modern Next.js development.
+
+## Next.js Folder Structure
+
+The `app` directory uses folder-based routing and special file conventions.
+
+```text
+src/
+└── app/
+    ├── layout.tsx      # Root layout (Required)
+    ├── page.tsx        # Homepage (/)
+    ├── loading.tsx     # Loading UI (Suspense fallback)
+    ├── error.tsx       # Error UI (Error boundary)
+    ├── not-found.tsx   # 404 UI
+    ├── global.css      # Global styles
+    ├── dashboard/      # Route (/dashboard)
+    │   ├── layout.tsx  # Nested layout
+    │   └── page.tsx    # Route UI
+    └── api/            # API Routes
+        └── route.ts    # API Endpoint (/api)
+```
+
+## Next.js Routing
+
+Routing is defined by folders inside the `app` directory.
+
+- **Standard Route:** Create a folder with a `page.tsx`. `app/about/page.tsx` becomes `/about`.
+- **Nested Route:** Nest folders. `app/blog/post/page.tsx` becomes `/blog/post`.
+- **Route Groups:** Use `(folderName)` to organize files without affecting the URL. `app/(marketing)/about/page.tsx` becomes `/about`.
+- **Private Folders:** Prefix a folder with an underscore `_` to opt it out of routing. `app/_components/Button.tsx`.
+
+## App Router Cheat Sheet
+
+Key hooks and functions for navigating and reading route data.
+
+```tsx
+"use client";
+
+import { 
+  useRouter, 
+  usePathname, 
+  useSearchParams, 
+  useParams 
+} from 'next/navigation';
+
+export default function NavigationExample() {
+  const router = useRouter();
+  const pathname = usePathname(); // e.g., "/dashboard"
+  const searchParams = useSearchParams(); // e.g., ?query=nextjs
+  const params = useParams(); // e.g., { slug: 'my-post' }
+
+  return (
+    <button onClick={() => router.push('/dashboard')}>
+      Go to Dashboard
+    </button>
+  );
+}
+```
+
+## Server vs Client Components
+
+Next.js uses Server Components by default to optimize performance.
+
+### Server Components (Default)
+- Rendered on the server.
+- Can access backend resources directly (databases, file systems).
+- Have zero impact on bundle size.
+- **Cannot** use state (`useState`), effects (`useEffect`), or event listeners (`onClick`).
+
+### Client Components
+- Add `"use client";` at the top of the file.
+- Rendered on both the server (pre-rendered) and the client.
+- Can use state, effects, and event listeners.
+- Only use them when you need interactivity.
+
+> [!TIP]
+> Pass Server Components as `children` or props to Client Components to keep the tree heavily server-rendered!
+
+## Metadata API
+
+Define SEO and Open Graph metadata natively.
+
+```tsx
+import type { Metadata } from 'next';
+
+// Static Metadata
+export const metadata: Metadata = {
+  title: 'My Awesome Blog',
+  description: 'Sharing Next.js tips and tricks.',
+  openGraph: {
+    images: ['/og-image.png'],
+  },
+};
+
+// Dynamic Metadata
+export async function generateMetadata({ params }): Promise<Metadata> {
+  // Note: In Next.js 15, params is a Promise and must be awaited!
+  const resolvedParams = await params;
+  const post = await fetchPost(resolvedParams.slug);
+  
+  return {
+    title: post.title,
+    description: post.excerpt,
+  };
+}
+```
+
+## Dynamic Routes
+
+Create routes from dynamic data, like blog slugs or user IDs.
+
+- **Dynamic Segment:** `app/blog/[slug]/page.tsx` matches `/blog/hello-world`.
+- **Catch-all Segment:** `app/docs/[...slug]/page.tsx` matches `/docs/a/b/c`.
+- **Optional Catch-all:** `app/docs/[[...slug]]/page.tsx` matches `/docs` AND `/docs/a/b/c`.
+
+**Generating Static Params (SSG):**
+```tsx
+// app/blog/[slug]/page.tsx
+export async function generateStaticParams() {
+  const posts = await getPosts();
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+```
+
+## API Routes
+
+Create backend endpoints using Route Handlers.
+
+```typescript
+// app/api/hello/route.ts
+import { NextResponse } from 'next/server';
+
+export async function GET(request: Request) {
+  const { searchParams } = new URL(request.url);
+  const name = searchParams.get('name');
+  
+  return NextResponse.json({ message: `Hello ${name}!` });
+}
+
+export async function POST(request: Request) {
+  const body = await request.json();
+  return NextResponse.json({ data: body }, { status: 201 });
+}
+```
+
+## Next.js Deployment
+
+Deploying a Next.js application is easiest on Vercel, but you have full control.
+
+### Vercel (Recommended)
+Simply push your code to GitHub and connect your repository to Vercel. Zero configuration required.
+
+### Docker & Self-Hosting
+You can build a standalone output for easy containerization.
+1. Update `next.config.ts`:
+   ```typescript
+   export default {
+     output: 'standalone',
+   };
+   ```
+2. Build the app: `npm run build`
+3. Run the optimized server: `node .next/standalone/server.js`

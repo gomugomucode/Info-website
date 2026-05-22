@@ -20,9 +20,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
   try {
-    const post = getPostBySlug(params.slug, "blog");
+    const post = getPostBySlug(resolvedParams.slug, "blog");
     return {
       title: post.frontmatter.title,
       description: post.frontmatter.description,
@@ -106,10 +107,11 @@ const mdxOptions = {
   },
 };
 
-export default async function PostPage({ params }: { params: { slug: string } }) {
+export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
   let post;
   try {
-    post = getPostBySlug(params.slug, "blog");
+    post = getPostBySlug(resolvedParams.slug, "blog");
   } catch (e) {
     notFound();
   }

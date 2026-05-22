@@ -1,0 +1,367 @@
+---
+title: "The Ultimate Networking Cheatsheet"
+description: "A comprehensive guide to computer networking. Master IPv4, the OSI Model, TCP vs UDP, subnetting, common ports, DNS, and HTTP status codes."
+date: "2026-05-22"
+tags: ["networking", "ipv4", "osi", "tcp", "udp", "dns", "cheatsheet"]
+---
+
+# The Ultimate Networking Cheatsheet
+
+Whether you're a developer, student, or sysadmin, understanding networking fundamentals is essential. This cheatsheet covers everything from IPv4 addressing to HTTP status codes.
+
+---
+
+## IPv4 Cheat Sheet
+
+An **IPv4 address** is a 32-bit number written as four octets (0–255), separated by dots.
+
+```
+Format:   A.B.C.D
+Example:  192.168.1.100
+```
+
+### IPv4 Address Classes
+
+| Class | Range                     | Default Subnet Mask | Usage             |
+|-------|---------------------------|---------------------|-------------------|
+| A     | 1.0.0.0 – 126.255.255.255 | 255.0.0.0 (/8)      | Large networks    |
+| B     | 128.0.0.0 – 191.255.255.255 | 255.255.0.0 (/16) | Medium networks   |
+| C     | 192.0.0.0 – 223.255.255.255 | 255.255.255.0 (/24) | Small networks  |
+| D     | 224.0.0.0 – 239.255.255.255 | N/A                 | Multicast         |
+| E     | 240.0.0.0 – 255.255.255.255 | N/A                 | Reserved          |
+
+### Private IP Ranges (RFC 1918)
+
+```
+10.0.0.0     – 10.255.255.255   (10.0.0.0/8)
+172.16.0.0   – 172.31.255.255   (172.16.0.0/12)
+192.168.0.0  – 192.168.255.255  (192.168.0.0/16)
+```
+
+### Special Addresses
+
+```
+127.0.0.1        → Loopback (localhost)
+0.0.0.0          → Default route / unspecified address
+255.255.255.255  → Broadcast (all hosts on local network)
+169.254.x.x      → APIPA (link-local, no DHCP found)
+```
+
+---
+
+## OSI Model
+
+The **OSI (Open Systems Interconnection)** model is a 7-layer conceptual framework for how data travels across a network.
+
+| Layer | #  | Name         | Protocol Examples       | Data Unit |
+|-------|----|--------------|-------------------------|-----------|
+| 7     | ↑  | Application  | HTTP, FTP, DNS, SMTP    | Data      |
+| 6     | ↑  | Presentation | SSL/TLS, JPEG, ASCII    | Data      |
+| 5     | ↑  | Session      | NetBIOS, RPC            | Data      |
+| 4     | ↑  | Transport    | TCP, UDP                | Segment   |
+| 3     | ↑  | Network      | IP, ICMP, ARP           | Packet    |
+| 2     | ↑  | Data Link    | Ethernet, Wi-Fi (802.11)| Frame     |
+| 1     | ↑  | Physical     | Cables, Hubs, Signals   | Bits      |
+
+> **Mnemonic (top→down):** "All People Seem To Need Data Processing"
+
+### How Data Flows
+
+```
+Sender                          Receiver
+[App Layer]    →  Encapsulate  →  [App Layer]
+[Transport]    →  Segment      →  [Transport]
+[Network]      →  Packet       →  [Network]
+[Data Link]    →  Frame        →  [Data Link]
+[Physical]     →  Bits (wire)  →  [Physical]
+```
+
+---
+
+## TCP vs UDP
+
+Both are **Layer 4 (Transport)** protocols but serve different purposes.
+
+### Quick Comparison
+
+| Feature           | TCP                          | UDP                        |
+|-------------------|------------------------------|----------------------------|
+| Connection        | Connection-oriented (3-way handshake) | Connectionless      |
+| Reliability       | ✅ Guaranteed delivery         | ❌ No guarantee            |
+| Ordering          | ✅ In-order delivery           | ❌ No ordering             |
+| Error Checking    | ✅ Yes (ACK/retransmit)        | ⚠️ Checksum only          |
+| Speed             | Slower (overhead)            | ✅ Faster                  |
+| Use Cases         | Web, Email, File Transfer    | Streaming, Gaming, DNS     |
+
+### TCP 3-Way Handshake
+
+```
+Client          Server
+  |  -- SYN -->   |    (1) Client requests connection
+  |  <-- SYN-ACK- |    (2) Server acknowledges
+  |  -- ACK -->   |    (3) Client confirms → Connection established
+```
+
+### Use TCP For:
+- HTTP / HTTPS (web browsing)
+- FTP (file transfer)
+- SMTP, IMAP (email)
+- SSH (secure shell)
+
+### Use UDP For:
+- DNS lookups (fast queries)
+- Video/audio streaming
+- Online gaming
+- VoIP (Voice over IP)
+- DHCP
+
+---
+
+## Subnetting Guide
+
+Subnetting divides a large network into smaller, manageable sub-networks.
+
+### CIDR Notation
+
+```
+192.168.1.0/24
+
+/24 → 24 bits for network, 8 bits for hosts
+```
+
+### Common Subnet Masks
+
+| CIDR | Subnet Mask       | # of Hosts | # of Usable Hosts |
+|------|-------------------|------------|-------------------|
+| /8   | 255.0.0.0         | 16,777,216 | 16,777,214        |
+| /16  | 255.255.0.0       | 65,536     | 65,534            |
+| /24  | 255.255.255.0     | 256        | 254               |
+| /25  | 255.255.255.128   | 128        | 126               |
+| /26  | 255.255.255.192   | 64         | 62                |
+| /27  | 255.255.255.224   | 32         | 30                |
+| /28  | 255.255.255.240   | 16         | 14                |
+| /30  | 255.255.255.252   | 4          | 2                 |
+
+> **Usable hosts = 2^(host bits) - 2** (network address + broadcast address)
+
+### Subnetting Example
+
+```
+Network:   192.168.1.0/26
+
+Subnet Mask:     255.255.255.192
+Network Address: 192.168.1.0
+First Host:      192.168.1.1
+Last Host:       192.168.1.62
+Broadcast:       192.168.1.63
+Total Hosts:     64  (62 usable)
+```
+
+---
+
+## Common Ports
+
+Ports are 16-bit numbers (0–65535) that identify specific services on a host.
+
+### Well-Known Ports (0–1023)
+
+```
+Port  Protocol  Service
+──────────────────────────────────────────
+20    TCP       FTP (Data Transfer)
+21    TCP       FTP (Control)
+22    TCP       SSH (Secure Shell)
+23    TCP       Telnet (unencrypted)
+25    TCP       SMTP (Send Email)
+53    TCP/UDP   DNS (Domain Name System)
+67    UDP       DHCP (Server)
+68    UDP       DHCP (Client)
+80    TCP       HTTP (Web)
+110   TCP       POP3 (Receive Email)
+143   TCP       IMAP (Email)
+443   TCP       HTTPS (Secure Web)
+445   TCP       SMB (Windows File Share)
+3306  TCP       MySQL
+5432  TCP       PostgreSQL
+6379  TCP       Redis
+8080  TCP       HTTP Alternate
+27017 TCP       MongoDB
+```
+
+### Quick Reference
+
+```
+80   → HTTP
+443  → HTTPS
+22   → SSH
+21   → FTP
+25   → SMTP
+53   → DNS
+3306 → MySQL
+5432 → PostgreSQL
+6379 → Redis
+```
+
+---
+
+## DNS Explained
+
+**DNS (Domain Name System)** translates human-readable domain names into IP addresses.
+
+### DNS Resolution Process
+
+```
+Browser → Recursive Resolver → Root Server → TLD Server → Authoritative Server
+                                                                      ↓
+Browser ← Recursive Resolver ←────────────────────────── IP Address returned
+```
+
+### DNS Record Types
+
+| Record | Purpose                              | Example                              |
+|--------|--------------------------------------|--------------------------------------|
+| A      | Maps domain → IPv4 address           | `example.com → 93.184.216.34`        |
+| AAAA   | Maps domain → IPv6 address           | `example.com → 2606:2800::1`         |
+| CNAME  | Alias (canonical name)               | `www.example.com → example.com`      |
+| MX     | Mail server for a domain             | `@ → mail.example.com` (priority 10) |
+| TXT    | Text info (SPF, DKIM, verification)  | `"v=spf1 include:..."`               |
+| NS     | Name servers for the domain          | `ns1.example.com`                    |
+| PTR    | Reverse DNS (IP → domain)            | `34.216.184.93.in-addr.arpa`         |
+| SOA    | Start of Authority (zone info)       | Serial, refresh, retry intervals     |
+
+### Common DNS Commands
+
+```bash
+# Look up IP for a domain
+nslookup example.com
+dig example.com
+
+# Look up a specific record type
+dig example.com MX
+dig example.com TXT
+
+# Reverse DNS lookup
+dig -x 93.184.216.34
+
+# Flush DNS cache (Windows)
+ipconfig /flushdns
+
+# Flush DNS cache (Linux/macOS)
+sudo systemd-resolve --flush-caches
+```
+
+### DNS Hierarchy
+
+```
+.                          (Root)
+├── .com                   (TLD - Top Level Domain)
+│   └── example.com        (Second Level Domain)
+│       └── www.example.com (Subdomain)
+├── .org
+└── .net
+```
+
+---
+
+## HTTP Status Codes
+
+HTTP status codes indicate the result of a client's request to the server.
+
+### 1xx — Informational
+
+```
+100 Continue            → Server received headers, client should proceed
+101 Switching Protocols → Server switching to a different protocol
+```
+
+### 2xx — Success ✅
+
+```
+200 OK                  → Request succeeded
+201 Created             → Resource successfully created
+204 No Content          → Success, no body returned (e.g., DELETE)
+206 Partial Content     → Partial resource returned (range requests)
+```
+
+### 3xx — Redirection 🔀
+
+```
+301 Moved Permanently   → URL has permanently changed (update bookmarks)
+302 Found               → Temporary redirect
+304 Not Modified        → Cached version is still valid (ETag/Last-Modified)
+307 Temporary Redirect  → Redirect, preserve HTTP method
+308 Permanent Redirect  → Redirect, preserve HTTP method (permanent)
+```
+
+### 4xx — Client Errors ❌
+
+```
+400 Bad Request         → Malformed syntax / invalid request
+401 Unauthorized        → Authentication required
+403 Forbidden           → Authenticated but not authorized
+404 Not Found           → Resource doesn't exist
+405 Method Not Allowed  → HTTP method not supported for this endpoint
+409 Conflict            → State conflict (e.g., duplicate resource)
+410 Gone                → Resource permanently deleted
+422 Unprocessable Entity→ Validation errors (common in APIs)
+429 Too Many Requests   → Rate limit exceeded
+```
+
+### 5xx — Server Errors 🔥
+
+```
+500 Internal Server Error → Generic server-side error
+501 Not Implemented       → Feature not supported by server
+502 Bad Gateway           → Invalid response from upstream server
+503 Service Unavailable   → Server down or overloaded
+504 Gateway Timeout       → Upstream server timed out
+```
+
+### Quick Cheat Card
+
+```
+2xx → Success      (200 OK, 201 Created, 204 No Content)
+3xx → Redirect     (301 Permanent, 302 Temporary, 304 Cached)
+4xx → Client Error (400 Bad, 401 Unauth, 403 Forbidden, 404 Not Found)
+5xx → Server Error (500 Internal, 502 Bad Gateway, 503 Unavailable)
+```
+
+---
+
+## Bonus: Key Networking Concepts
+
+### NAT (Network Address Translation)
+
+NAT allows multiple devices on a private network to share a single public IP address.
+
+```
+Private: 192.168.1.x  →  [Router/NAT]  →  Public: 203.0.113.5
+```
+
+### DHCP (Dynamic Host Configuration Protocol)
+
+Automatically assigns IP addresses, subnet masks, gateways, and DNS to devices.
+
+```
+DORA Process:
+Discover → Offer → Request → Acknowledge
+```
+
+### ARP (Address Resolution Protocol)
+
+Resolves IP addresses to MAC addresses on a local network.
+
+```
+"Who has 192.168.1.1? Tell 192.168.1.100"  → Broadcast
+"192.168.1.1 is at AA:BB:CC:DD:EE:FF"      → Unicast reply
+```
+
+### ICMP (Internet Control Message Protocol)
+
+Used for diagnostics and error reporting. Powers `ping` and `traceroute`.
+
+```bash
+ping google.com           # Test connectivity
+traceroute google.com     # Trace network path (Linux/macOS)
+tracert google.com        # Trace network path (Windows)
+```

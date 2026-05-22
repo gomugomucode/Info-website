@@ -8,15 +8,16 @@ export const metadata = {
   description: "Read my latest tutorials, notes, and case studies.",
 };
 
-export default function BlogPage({
+export default async function BlogPage({
   searchParams,
 }: {
-  searchParams: { q?: string; category?: string };
+  searchParams: Promise<{ q?: string; category?: string }>;
 }) {
   let posts = getAllPosts();
+  const resolvedSearchParams = await searchParams;
 
-  const query = searchParams.q?.toLowerCase();
-  const category = searchParams.category?.toLowerCase();
+  const query = resolvedSearchParams.q?.toLowerCase();
+  const category = resolvedSearchParams.category?.toLowerCase();
 
   if (query) {
     posts = posts.filter(
