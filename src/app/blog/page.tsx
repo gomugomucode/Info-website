@@ -29,7 +29,7 @@ export default async function BlogPage({
   }
 
   if (category) {
-    posts = posts.filter((post) => post.frontmatter.category.toLowerCase() === category);
+    posts = posts.filter((post) => post.frontmatter.category?.toLowerCase() === category);
   }
 
   return (
