@@ -1,45 +1,44 @@
 "use client";
 
+import * as React from "react";
 import { Search } from "lucide-react";
-import { useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useState } from "react";
 
 export function SearchBar() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("q") || "");
+  const [os, setOs] = React.useState<"mac" | "win">("win");
 
-  const createQueryString = useCallback(
-    (name: string, value: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      if (value) {
-        params.set(name, value);
-      } else {
-        params.delete(name);
-      }
-      return params.toString();
-    },
-    [searchParams]
-  );
+  // Detect OS for keyboard shortcut hint
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      const isMac = navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+      setOs(isMac ? "mac" : "win");
+    }
+  }, []);
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setQuery(value);
-    router.push(`/blog?${createQueryString("q", value)}`);
+  const handleTriggerSearch = () => {
+    window.dispatchEvent(new CustomEvent("open-global-search"));
   };
 
   return (
-    <div className="relative w-full max-w-sm mb-10">
-      <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-        <Search className="h-4 w-4 text-neutral-400" aria-hidden="true" />
-      </div>
-      <input
-        type="text"
-        value={query}
-        onChange={handleSearch}
-        className="block w-full rounded-md border-0 py-2 pl-10 pr-3 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-neutral-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 dark:bg-neutral-900 dark:text-white dark:ring-neutral-700 dark:focus:ring-primary-500 transition-shadow"
-        placeholder="Search articles..."
-      />
+    <div className="w-full max-w-md mb-10">
+      <button
+        onClick={handleTriggerSearch}
+        type="button"
+        className="w-full flex items-center gap-3 h-11 px-4 text-left text-sm rounded-xl border border-neutral-200 bg-white/50 backdrop-blur-md hover:bg-neutral-50 hover:border-neutral-300 dark:border-neutral-800 dark:bg-neutral-900/30 dark:hover:bg-neutral-900/60 dark:hover:border-neutral-700 text-neutral-400 dark:text-neutral-500 shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-cyan-500/50 cursor-pointer group"
+      >
+        <Search className="h-4.5 w-4.5 group-hover:text-cyan-500 dark:group-hover:text-cyan-400 transition-colors shrink-0" />
+        <span className="flex-1 font-semibold text-neutral-400 dark:text-neutral-500 truncate select-none">
+          Search blog, cheatsheets, notes, tools...
+        </span>
+        <kbd className="inline-flex h-6 select-none items-center gap-0.5 rounded border border-neutral-200 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-950 px-2 font-mono text-[10px] font-bold text-neutral-400 dark:text-neutral-500 shrink-0">
+          {os === "mac" ? (
+            <>
+              <span className="text-xs">⌘</span>K
+            </>
+          ) : (
+            "Ctrl K"
+          )}
+        </kbd>
+      </button>
     </div>
   );
 }

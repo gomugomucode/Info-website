@@ -19,8 +19,10 @@ export interface Post {
   slug: string;
   frontmatter: PostFrontmatter;
   content: string;
-  type: "blog" | "notes" | "case-studies" | "journal";
+  type: "blog" | "cheatsheets" | "notes";
 }
+
+const ALL_TYPES: Post["type"][] = ["blog", "cheatsheets", "notes"];
 
 export function getPostSlugs(type: Post["type"]) {
   const directory = path.join(contentDirectory, type);
@@ -28,27 +30,36 @@ export function getPostSlugs(type: Post["type"]) {
   return fs.readdirSync(directory).filter((file) => file.endsWith(".mdx") || file.endsWith(".md"));
 }
 
-export function getPostBySlug(slug: string, type: Post["type"]): Post {
+/**
+ * Get a single post by slug.
+ * If `type` is omitted, searches across all folders (blog → cheatsheets → notes).
+ */
+export function getPostBySlug(slug: string, type?: Post["type"]): Post {
   const realSlug = slug.replace(/\.mdx?$/, "");
-  
-  // Try .mdx first, then .md
-  let fullPath = path.join(contentDirectory, type, `${realSlug}.mdx`);
-  if (!fs.existsSync(fullPath)) {
-    fullPath = path.join(contentDirectory, type, `${realSlug}.md`);
-  }
-  
-  const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
 
-  return {
-    slug: realSlug,
-    frontmatter: data as PostFrontmatter,
-    content,
-    type,
-  };
+  const typesToSearch: Post["type"][] = type ? [type] : ALL_TYPES;
+
+  for (const t of typesToSearch) {
+    let fullPath = path.join(contentDirectory, t, `${realSlug}.mdx`);
+    if (!fs.existsSync(fullPath)) {
+      fullPath = path.join(contentDirectory, t, `${realSlug}.md`);
+    }
+    if (fs.existsSync(fullPath)) {
+      const fileContents = fs.readFileSync(fullPath, "utf8");
+      const { data, content } = matter(fileContents);
+      return {
+        slug: realSlug,
+        frontmatter: data as PostFrontmatter,
+        content,
+        type: t,
+      };
+    }
+  }
+
+  throw new Error(`Post not found: ${slug}`);
 }
 
-export function getAllPosts(types: Post["type"][] = ["blog", "notes", "case-studies", "journal"]): Post[] {
+export function getAllPosts(types: Post["type"][] = ALL_TYPES): Post[] {
   let allPosts: Post[] = [];
 
   types.forEach((type) => {
@@ -76,9 +87,26 @@ export function getLatestPosts(limit: number = 3): Post[] {
   return allPosts.slice(0, limit);
 }
 
+/** Latest blog posts only (type === "blog") */
+export function getLatestBlogPosts(limit: number = 3): Post[] {
+  return getAllPosts(["blog"]).slice(0, limit);
+}
+
+/** Featured cheatsheets or, if none are marked featured, the most recent ones */
+export function getFeaturedCheatsheets(limit: number = 3): Post[] {
+  const sheets = getAllPosts(["cheatsheets"]);
+  const featured = sheets.filter((p) => p.frontmatter.featured);
+  return (featured.length > 0 ? featured : sheets).slice(0, limit);
+}
+
+/** Latest developer notes */
+export function getLatestNotes(limit: number = 3): Post[] {
+  return getAllPosts(["notes"]).slice(0, limit);
+}
+
 export function getRelatedPosts(currentPost: Post, limit: number = 2): Post[] {
   const allPosts = getAllPosts().filter((p) => p.slug !== currentPost.slug);
-  
+
   // Basic related posts logic: matches tags or category
   const related = allPosts.filter((post) => {
     const hasSharedCategory = post.frontmatter.category.toLowerCase() === currentPost.frontmatter.category.toLowerCase();

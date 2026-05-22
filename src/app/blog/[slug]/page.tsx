@@ -23,7 +23,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
   try {
-    const post = getPostBySlug(resolvedParams.slug, "blog");
+    const post = getPostBySlug(resolvedParams.slug);
     return {
       title: post.frontmatter.title,
       description: post.frontmatter.description,
@@ -111,7 +111,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
   const resolvedParams = await params;
   let post;
   try {
-    post = getPostBySlug(resolvedParams.slug, "blog");
+    post = getPostBySlug(resolvedParams.slug);
   } catch (e) {
     notFound();
   }
@@ -125,7 +125,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
       <article className="container mx-auto max-w-5xl px-4 py-16 sm:py-24">
         <Link href="/blog" className="inline-flex items-center mb-8 text-sm font-medium text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-50 transition-colors">
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to tutorials
+          Back to knowledge base
         </Link>
         
         <div className="mb-10 text-center max-w-3xl mx-auto">
