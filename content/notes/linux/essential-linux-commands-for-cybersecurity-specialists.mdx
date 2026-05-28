@@ -95,7 +95,7 @@ and detectpotential compromises.
 For deeper analysis, combining ss with other tools providescomprehensive network visibility: 
 # Display all TCP connections with process information
 ss -tnp
- 
+
 # Show listening ports with detailed socket information
 ss -tlnp 
 # Display established connections with timer information
@@ -191,7 +191,7 @@ iptables -t mangle -A PREROUTING -m mark --mark 1 -j LOG --log-prefix
 "MARKED_TRAFFIC: " 
 # Comprehensive process listing with security-relevant information
 ps auxwwf
- 
+
 # Show process tree with full command lines
 ps -ejH 
 # Display processes with security contexts (SELinux)
@@ -276,7 +276,7 @@ File system analysis is fundamental to security investigations, helping identify
 backdoors, and data breaches: 
 
 # Find world-writable directories
- 
+
 # Find hidden files and directories
 find / -name ".*" -type f -ls 2&gt;/dev/null | grep -v "/proc\|/sys" 
 # Locate files with spaces at the end (evasion technique)
@@ -319,7 +319,7 @@ getcap -r / 2&gt;/dev/null
 getfacl -R /sensitive/directory 2&gt;/dev/null | grep -v "^#" 
 # Monitor authentication attempts
 journalctl -u ssh.service -f
- 
+
 # Analyze failed login attempts
 grep "Failed password" /var/log/auth.log | awk '{print $11}' | sort | uniq
 -c | sort -rn 
@@ -360,7 +360,7 @@ grep "COMMAND=" /var/log/auth.log | wc -l
 tail -f /var/log/syslog /var/log/auth.log | grep --line-buffered -E \ 
 "Failed password|Invalid user|POSSIBLE BREAK-IN|authentication 
 failure|Connection closed|Did not receive identification" 
- 
+
 # Timeline analysis of security events
 grep -h "Failed password\|Accepted password\|Invalid user"
 /var/log/auth.log* | sort -k1,3 
@@ -581,7 +581,6 @@ echo "Triage complete. Results saved to $INCIDENT_DIR"
 Network Isolation Commands 
 During an incident, network isolation may be necessary:
 
- 
 # Block all outbound traffic except DNS and established connections
 iptables -P OUTPUT DROP iptables -A OUTPUT -m state --state
 ESTABLISHED,RELATED -j ACCEPT iptables -A OUTPUT -p udp --dport 53 -
@@ -648,7 +647,7 @@ check_outbound_connections() {
 
 #!/bin/bash
 # harden_system.sh - Automated system hardening
- 
+
 echo "Starting system hardening..." 
 # Kernel parameter hardening
 cat &gt;&gt; /etc/sysctl.d/99-security.conf << EOF
@@ -720,7 +719,7 @@ chmod 600 /etc/gshadow
 's/PASS_MAX_DAYS.*/PASS_MAX_DAYS sed -i
 's/PASS_MIN_DAYS.*/PASS_MIN_DAYS sed -i
 's/PASS_WARN_AGE.*/PASS_WARN_AGE
- 
+
 echo "System hardening complete." 
 # Recover deleted files from filesystem
 extundelete /dev/sda1 --restore-all
@@ -763,7 +762,7 @@ cat &gt; /usr/local/bin/sec_wrapper << 'EOF'
 #!/bin/bash
 COMMAND="$@"
 LOGFILE="/var/log/security_commands.log" 
- 
+
 # Search for strings in unallocated space
 dd if=/dev/sda1 | strings -n 10 | grep -i "password\|confidential" 
 # Create forensic image
@@ -785,7 +784,7 @@ Maintaining comprehensive logs of security commands isessential:
 
 # Limit find command resource usage
 nice -n 19 ionice -c 3 find / -type f -mtime -1
- 
+
 # Use timeout to prevent hanging commands
 timeout 300 tcpdump -i any -w capture.pcap 
 # Implement resource limits
@@ -865,14 +864,14 @@ What are the best practices for using Linux commands without
 disrupting production systems? 
 This identifies top 10 IP addresses with established connections.
 Command Substitution: 
- 
+
 Complex Analysis Scripts: Create reusable scripts that combine multiple commands for
 specific security tasks, such as incident response triage or baseline creation.
 The key is understanding each command's output format and how to parse it for the next
 command in the pipeline. 
- 
+
 Parallel Processing: 
- 
+
 Loops for Comprehensive Analysis: 
 #Check all user crontabs for suspicious entries
 foruser in $(cut -d: -f1 /etc/passwd); do 
@@ -929,9 +928,9 @@ How do Linux security commands differ across distributions, and
 how can I write portable scripts? 
 
 File Locations
- 
+
 Command Options
- 
+
 Portable Scripting Techniques
 : 
 ● Log files may be in different locations
@@ -945,7 +944,7 @@ options before using them
 Cryptocurrency mining diagnostic agent has become a prevalent threat, requiring specific detection
 techniques:
 CPU Usage Analysis: 
- 
+
 } 
 # Distribution detection
 if[-f/etc/debian_version ]; then 
@@ -969,15 +968,14 @@ sar-u 1 60 | grep -v Average | awk '$8 < 20 {print "High CPU: " $0}'
 What are the essential Linux commands for detecting and analyzing
 cryptocurrency mining diagnostic agent? 
 
- 
 Memory Analysis: 
- 
+
 File System Indicators: 
- 
+
 Process Name Analysis: 
- 
+
 Automated Detection Script: 
- 
+
 Network Connection Analysis: 
 #!/bin/bash
 #Detect potential mining activity 
@@ -1030,7 +1028,7 @@ done
 ● Linux Command Line Forensics - SANS
 ● The Linux Documentation Project - Security HOWTO
 ● MITRE ATT&CK Linux Techniques 
- 
+
 Regular monitoring using these commands helps identify mining diagnostic agent before it significantly
 impacts system performance. 
 Related Articles and Resources 
@@ -1064,18 +1062,17 @@ done
 ● Linux Command Line Forensics - SANS
 ● The Linux Documentation Project - Security HOWTO
 ● MITRE ATT&CK Linux Techniques 
- 
+
 Regular monitoring using these commands helps identify mining diagnostic agent before it significantly
 impacts system performance. 
 Related Articles and Resources 
 
-Follow HexSec on social media for more ethical
+Follow  on social media for more ethical
 security auditing and cybersecurity educational content, with
 premium carousel guides and practical tool
 breakdowns.
 @ h e x _ s e c
-h e x s e c _ t o o l s
-h e x s e c t e a m
+
 📘 🔓  Want the PDF version with all the tools in one
 place? Comment “INTERESTED” and I’ll send it to you.
 Special thanks to Instagram @ethicalshadow

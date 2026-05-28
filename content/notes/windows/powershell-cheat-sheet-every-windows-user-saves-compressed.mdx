@@ -6,7 +6,7 @@ tags: ["powershell", "hardening", "auditing", "compliance"]
 category: "notes"
 subcategory: "windows"
 difficulty: "Intermediate"
-readingTime: "16 min read"
+readingTime: "12 min read"
 ---
 
 # PowerShell Cheat Sheet Every Windows User Saves compressed
@@ -37,18 +37,7 @@ Network adapter config
 Get-WmiObject Win32_ComputerSystem —
 Hardware/system details
 Get-PSVersionTable — PowerShell version info
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m
+
 Network Enumeration
 ipconfig — Show IP configuration
 ipconfig /all — Detailed adapter information
@@ -67,12 +56,7 @@ nslookup google.com — DNS query check
 netstat -ano — Connections with process IDs
 Get-NetIPConfiguration — Full network summary
 Get-NetNeighbor — Local neighbor table
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m
+
 P r o c e s s e s  &  S e r v i c e s
 G e t - P r o c e s s  —  R u n n i n g  p r o c e s s e s  l i s t
 G e t - S e r v i c e  —  L i s t  W i n d o w s  s e r v i c e s
@@ -94,12 +78,7 @@ s c  q u e r y  —  S e r v i c e  s t a t u s  o v e r v i e w
 t a s k k i l l  / P I D  1 2 3 4  —  K i l l  p r o c e s s  b y  P I D
 G e t - P r o c e s s  |  E x p o r t - C s v  p r o c e s s e s . c s v  —  S a v e  p r o c e s s
 r e p o r t
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m
+
 E v e n t  L o g s  &  M o n i t o r i n g
 G e t - E v e n t L o g  - L o g N a m e  S e c u r i t y  —  R e a d  s e c u r i t y  l o g s
 G e t - W i n E v e n t  - L o g N a m e  S y s t e m  —  S y s t e m  e v e n t
@@ -122,12 +101,7 @@ G e t - W i n E v e n t  - F i l t e r H a s h t a b l e
 @ { L o g N a m e = " S e c u r i t y " ; I d = 4 6 2 4 }  —  L o g o n  e v e n t s
 G e t - W i n E v e n t  - F i l t e r H a s h t a b l e
 @ { L o g N a m e = " S e c u r i t y " ; I d = 4 6 2 5 }  —  F a i l e d  l o g o n s
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m
+
 File & Directory Operations
 Get-ChildItem — List files/directories
 Set-Location C:\ — Change current directory
@@ -145,12 +119,7 @@ Get-Item file.txt — File metadata
 Get-ChildItem -Recurse — Recursive file listing
 Get-FileHash file.exe — Calculate file hash
 Compare-Object file1 file2 — Compare file content
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m
+
 Security & Defender
 Get-MpComputerStatus — Microsoft Defender status
 Get-MpThreatDetection — Detected threats overview
@@ -168,12 +137,7 @@ Get-NetFirewallRule — Firewall rules list
 Get-BitLockerVolume — BitLocker protection status
 Get-AppLockerPolicy -Local — AppLocker local policy
 Get-AuthenticodeSignature file.exe — Check file signature
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m
+
 Users & Permissions
 net user — List local users
 net localgroup administrators — Admin group members
@@ -193,12 +157,7 @@ net accounts — Password policy overview
 Get-Acl C:\Users — Folder permission review
 icacls C:\Users — NTFS permissions check
 Get-SmbShare — Shared folders overview
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m
+
 PowerShell Scripting Basics
 Get-Command — Available PowerShell commands
 Get-Help Get-Process — Command help page
@@ -216,12 +175,7 @@ Group-Object Status — Group results quickly
 Out-File report.txt — Save output to file
 Import-Csv users.csv — Read CSV data
 Read-Host "Input" — Ask user input
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m
+
 Remote Administration
 Enter-PSSession host — Interactive remote session
 Invoke-Command — Execute remote commands
@@ -241,12 +195,7 @@ info
 Invoke-Command -ScriptBlock {hostname} — Run script
 block
 Test-Connection host — Ping remote host
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m
+
 Useful Admin & Troubleshooting
 Commands
 Restart-Computer — Reboot Windows machine
@@ -267,7 +216,7 @@ chkdsk C: /scan — Scan disk health
 Get-Printer — Installed printers list
 Get-WindowsUpdateLog — Build update log
 powercfg /batteryreport — Battery health report
-Follow HexSec community 
+Follow  community 
 For More Cybersecurity Guides
 Tools • Commands • Security Tips
 📌
@@ -278,13 +227,8 @@ Want the PDF?
  Comment “ ” and I’ll send it to you.
 💾
  Save this post so you don't lose the commands!
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m
-Follow HexSec community 
+
+Follow  community 
 For More Cybersecurity Guides
 Tools • Commands • Security Tips
 📌
@@ -295,9 +239,3 @@ Want the PDF?
  Comment “ ” and I’ll send it to you.
 💾
  Save this post so you don't lose the commands!
-h e x s e c t e a m
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c _ t o o l s
-h e x s e c t e a m
-h e x s e c t e a m

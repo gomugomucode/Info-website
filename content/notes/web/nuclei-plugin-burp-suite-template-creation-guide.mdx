@@ -6,7 +6,7 @@ tags: ["nuclei", "hardening", "auditing", "compliance"]
 category: "notes"
 subcategory: "web"
 difficulty: "Intermediate"
-readingTime: "37 min read"
+readingTime: "36 min read"
 ---
 
 # Nuclei Plugin & Burp Suite Template Creation Guide
@@ -31,22 +31,19 @@ a s s o c i a t e d  w i t h  n u c l e i  t e m p l a t e  c r e a t i o n .  W
 t h e  a p p  l a y o u t  l i k e  t h e  R e p e a t e r ,  I n t r u d e r ,  e t c .  I t  a l s o  f e a t u r e s  i n t e g r a t i o n  w i t h  R e p e a t e r
 a n d  I n t r u d e r  f o r  s i m p l i f i e d  t e m p l a t e  g e n e r a t i o n .
 1 / 1 4
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c t e a m
+
 M E T A S P L O I T A B L E 2
 T o  d e m o n s t r a t e  h o w  t h e  p l u g i n  w o r k s ,  I  s e t  u p  a  v i r t u a l  e n v i r o n m e n t  w i t h
 M e t a s p l o i t a b l e 2  a s  m y  v u l n e r a b l e  t a r g e t .  F o r  t h o s e  n o t  f a m i l i a r  w i t h  M e t a s p l o i t a b l e ,  i t  i s
 a n  i n t e n t i o n a l l y  v u l n e r a b l e  m a c h i n e  f o r  e d u c a t i o n a l  a n d  t e s t i n g  p u r p o s e s .  B e l o w  s h o w s
 t h e  h o m e  p a g e  o f  t h e  V M  w i t h  o p t i o n s  t o  v a r i o u s  l o c a l l y  h o s t e d  v u l n e r a b l e  a p p l i c a t i o n s .
 N U C L E I  D E M O N S T R A T I O N  
- 
+
 I  w i l l  a l s o  b e  u s i n g  t h e  p h p M y A d m i n  p a g e  t o  d e m o n s t r a t e  h o w  m u l t i p l e  r e q u e s t s  c a n  b e
 a d d e d  t o  t h e  r e s u l t i n g  t e m p l a t e .  I  c h o o s e  b o t h  o f  t h e s e  p a g e s  b e c a u s e  t h e y  b o t h
 m e n t i o n  p h p M y A d m i n ,  b u t  o n e  w o u l d  a c t u a l l y  b e  a  f a l s e  p o s i t i v e  i f  i n d i c a t e d .
 2 / 1 4
 
- 
 I  s t a r t e d  o u t  r u n n i n g  t h e  d e f a u l t  N u c l e i  s c a n  i n c l u d i n g  a l l  t h e  t e m p l a t e s  a v a i l a b l e .  I n
 a d d i t i o n ,  I  a d d e d  r a t e  l i m i t i n g  p a r a m e t e r s  w h i c h  l i m i t  t o  t h r e e  r e q u e s t s  p e r  s e c o n d ,
 a l l o w i n g  p a r a l l e l  e x e c u t i o n  o f  t w o  t e m p l a t e s  s i m u l t a n e o u s l y .  B y  d e f a u l t ,  N u c l e i  h a s
@@ -62,9 +59,6 @@ s c o p e  U R L .  T o  d o  t h i s ,  g o  t o  t h e  “ T a r g e t ”  t
 t o  s c o p e .
 n u c l e i  – u  < t a r g e t _ u r l &gt;  - r l  3  - c  2
 3 / 1 4
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c t e a m
 
 T o  a d d  t h e  h o m e  p a g e  r e q u e s t  b y  s i m p l y  r i g h t  c l i c k i n g  o n  t h e  r e q u e s t  a n d  f o l l o w i n g  t h e
 e x t e n s i o n s  t a b s  t o  g e n e r a t e  a  t e m p l a t e .
@@ -72,9 +66,6 @@ O n c e  t h e  t a r g e t  i s  a d d e d  t o  s c o p e ,  a l l  e n t i t 
 c l i c k i n g  o n  t h e  g r e y  f i l t e r  b a r  t o w a r d  t h e  t o p  o f  t h e  a p p l i c a t i o n  a n d  s e l e c t i n g  “ S h o w  o n l y
 i n - s c o p e  i t e m s ” .
 4 / 1 4
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c t e a m
 
 N e x t ,  I  m o v e d  d o w n  t o  t h e  p h p M y A d m i n  r e q u e s t  a n d  d i d  t h e  s a m e  p r o c e s s  w i t h  t h e
 e x c e p t i o n  o f  a d d i n g  t h e  r e q u e s t  t o  “ T a b  1 ”  i n  t h e  N u c l e i  t a b  i n  t h e  p r o x y .
@@ -84,9 +75,6 @@ r e s p o n s e  d a t a ,  I  s e l e c t e d  t h e  a n c h o r  t a g  t e x
 p h p M y A d m i n  p a g e .  A f t e r  t h e  t e x t  i s  s e l e c t e d ,  s i m p l y  r i g h t  c l i c k  a n d  f o l l o w  t h e  t a b s  t o
 a d d  t h e  m a t c h e r  t o  “ T a b  1 ”  j u s t  l i k e  i n  t h e  p r e v i o u s  s t e p .
 5 / 1 4
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c t e a m
 
 F o r  t h e  s e c o n d  p h p M y A d m i n  r e q u e s t ,  i t  c o n t a i n s  a  u n i q u e  s i g n a t u r e  “ S e t - C o o k i e :
 p h p M y A d m i n = ”  v a l u e  i n  t h e  c o o k i e  s e t  i n  t h e  r e s p o n s e  h e a d e r s  o f  t h e  r e q u e s t .  U s i n g
@@ -96,9 +84,6 @@ r e q u e s t .
 T h i s  i s  t h e  t e m p l a t e  t h a t  t h e  p l u g i n  h a s  c r e a t e d  t h u s  f a r .  I t  f e a t u r e s  a u t h o r  i n f o r m a t i o n ,
 v u l n e r a b i l i t y  s e v e r i t y ,  a n d  b o t h  s p e c i f i e d  r e q u e s t s .
 6 / 1 4
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c t e a m
 
 A t  t h e  b o t t o m  o f  t h e  t e m p l a t e  a r e  t h e  w o r d - b a s e d  m a t c h e r s  t h a t  w e r e  s e n t  t o  m a t c h
 p h p M y A d m i n  i n  t h e  a s s o c i a t e d  r e q u e s t s  r e s p o n s e  d a t a .  M a t c h e r s  a l s o  f e a t u r e  B o o l e a n
@@ -112,9 +97,6 @@ r u n n i n g  o n  K a l i  L i n u x ) ,  w e  c a n  r u n  i t  w i t h  t h
 o p t i o n .
 N u c l e i  s i n g l e  t e m p l a t e  s c a n  c o m m a n d :
 7 / 1 4
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c t e a m
 
 n u c l e i  - v  - t  < t e m p l a t e _ n a m e &gt;  - u  < t a r g e t _ u r l &gt;
 T h e  r e s u l t i n g  o u t p u t  s h o w s  t h a t  t h e  g e n e r a t e d  t e m p l a t e  w i t h  d e f a u l t  n a m e  o f
@@ -125,9 +107,6 @@ T o  r e m o v e  t h e  f a l s e  p o s i t i v e ,  I  r e m o v e d  t h e  
 M e t a s p l o i t a b l e ’ s  h o m e p a g e .  I  a l s o  c h a n g e d  t h e  v a l u e  o f  t h e  i d  i n  t e m p l a t e  f i l e  t o
 p h p M y A d m i n - p a n e l  t o  h e l p  v i s u a l i z e  t h e  e x a m p l e  t e m p l a t e .  
 8 / 1 4
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c t e a m
 
 T h i s  e x a m p l e  d o e s  n o t  h a v e  a n  a s s o c i a t e d  C V E  s o  t h e  l o o k u p  p r o c e s s  o f  t h e  b o g u s
 n u m b e r  I  g a v e  i t  f a i l e d ,  b u t  s t i l l  w a s  a b l e  t o  g e n e r a t e  a n  e m p t y  c l a s s i f i c a t i o n  s e c t i o n  i n
@@ -141,14 +120,11 @@ a t t e m p t i n g  t o  l o o k  u p  t h e  C V E  i n f o r m a t i o n  a n
 g e n e r a t e d  t e m p l a t e .  B a c k  i n  B u r p  S u i t e ,  s i m p l y  r i g h t  c l i c k  t h e n  - &gt;  A d d  - &gt;  C l a s s i f i c a t i o n  - &gt;
 C V E  w h i c h  p r o m p t s  f o r  t h e  C V E  n u m b e r  t o  l o o k  u p .
 9 / 1 4
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c t e a m
 
 H o p e f u l l y  t h e  i n f o r m a t i o n  a n d  s t e p s  p r o v i d e d  i n  t h i s  g u i d e  w i l l  h e l p  y o u r  u n d e r s t a n d i n g
 o f  h o w  t h e  N u c l e i  t e m p l a t e  g e n e r a t o r  p l u g i n  w o r k s  a n d  w h y  i t s  i n t e g r a t i o n  w i t h  B u r p
 S u i t e  m a k e s  t h e  p r o c e s s  o f  t e m p l a t e  g e n e r a t i o n  s u b s t a n t i a l l y  m o r e  e f f i c i e n t  d u r i n g  w e b
- 
+
 A n o t h e r  g r e a t  f e a t u r e  o f  t h e  p l u g i n  i s  t h e  d i r e c t  t e m p l a t e  i n t e g r a t i o n  w i t h  B u r p  S u i t e ’ s
 I n t r u d e r .  A f t e r  a  r e q u e s t  i s  s e n t  t o  t h e  I n t r u d e r  a n d  a  p a r a m e t e r  i s  s p e c i f i e d ,  s i m p l y  r i g h t
 c l i c k  a n d  f o l l o w  t h e  e x t e n s i o n s  t a b s  l i k e  i n  p r e v i o u s  s t e p s  t o  g e n e r a t e  a  t e m p l a t e .
@@ -157,9 +133,6 @@ p a y l o a d s .  T h e  p l u g i n  s u p p o r t s  b a t t e r i n g  r a m
 s o  i t  w i l l  d e f a u l t  t o  b a t t e r i n g  r a m  i f  s n i p e r  i s  s e t  w h e n  t h e  t e m p l a t e  i s  g e n e r a t e d .
 N U C L E I  T E M P L A T E  C O N C L U S I O N
 1 0 / 1 4
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c t e a m
 
 a p p  e n g a g e m e n t s .  R e q u e s t  a n d  r e s p o n s e  d a t a  i s  e a s i l y  p a r s e d  f r o m  t h e  a p p l i c a t i o n
 s t r a i g h t  t o  t h e  r e s u l t i n g  t e m p l a t e .  T h e  p l u g i n  a l s o  s u p p o r t s  C V E  t e m p l a t e  d a t a  a n d  i s
@@ -173,8 +146,6 @@ c a r o u s e l  g u i d e s  a n d  p r a c t i c a l  t o o l  b r e a k d o w
 C o m m e n t  “ I N T E R E S T E D ”  a n d  I ’ l l  s e n d  i t  t o  y o u .
 📚 🔐  E d u c a t i o n a l  p u r p o s e s  o n l y  —  e t h i c a l  l e a r n i n g  &
 r e s p o n s i b l e  u s e .
-h e x s e c t e a m
-h e x s e c _ t o o l s
-h e x s e c t e a m
+
 I  n e v e r  s a i d  I  w a s  a  h a c k e r …
 T h e  s y s t e m  j u s t  a g r e e d  w i t h  m e .  😎
