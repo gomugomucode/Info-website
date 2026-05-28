@@ -1,0 +1,47 @@
+---
+title: "SqlMap Database Auditing Reference"
+description: "A defensive auditing reference detailing how to detect SQL injection vulnerabilities inside local sandboxes using SqlMap and apply secure mitigations."
+date: "2026-05-28"
+tags: ["sqlmap", "sqli", "database", "mitigation"]
+category: "notes"
+subcategory: "web"
+difficulty: "Intermediate"
+readingTime: "6 min read"
+---
+
+# SqlMap Database Auditing Reference
+
+SqlMap is an open-source tool that automates detecting and exploiting SQL injection (SQLi) vulnerabilities. This guide explains how to use SqlMap to verify database exposures in local development sandboxes and details secure coding practices to prevent SQLi.
+
+<Callout type="warning" title="Auditing Bounds">
+SqlMap testing generates high volumes of database requests. Only test application endpoints you own and host locally (like `http://localhost:3000`).
+</Callout>
+
+## Testing SQLi in Sandbox Environments
+
+Use this basic command structure to scan a target URL query parameter for SQL injection vulnerabilities:
+
+<TerminalCommand cmd="sqlmap -u \"http://localhost:3000/product.php?id=1\" --batch --level=1" />
+
+*   `-u`: Set the target URL.
+*   `--batch`: Run in non-interactive mode using default configurations.
+*   `--level=1`: Limit checks to standard query parameters.
+
+---
+
+## Remediation: Preventing SQL Injection
+
+The most effective way to prevent SQL injection is to separate SQL query structures from user input data.
+
+### 1. Parameterized Queries (Prepared Statements)
+Enforce parameterized queries in database calls. In PHP PDO, bind variables explicitly:
+
+```php
+// Secure PDO Implementation
+$stmt = $pdo->prepare('SELECT name, role FROM users WHERE id = :id');
+$stmt->execute(['id' => $userId]);
+$user = $stmt->fetch();
+```
+
+### 2. Input Filtering & Validation
+Validate input values against an allowed format (e.g., ensuring numeric IDs contain numbers only).

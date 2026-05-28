@@ -1,0 +1,63 @@
+---
+title: "API Gateway Security Best Practices"
+description: "An architectural guide for securing API Gateways, implementing TLS, validating OAuth/JWT auth, and configuring rate limits."
+date: "2026-05-28"
+tags: ["api", "security-architecture", "hardening", "tls"]
+category: "notes"
+subcategory: "security"
+difficulty: "Advanced"
+readingTime: "7 min read"
+---
+
+# API Gateway Security Best Practices
+
+API gateways are the primary entry point for distributed back-end services. This guide covers essential security controls for securing API gateways, including TLS parameters, token validation (JWT/OAuth), and traffic management rules.
+
+```text
+Incoming Traffic (Public) ──> [ API Gateway ] ──> Back-end Services (Private VPC)
+                                  │
+                          ┌───────┴───────┐
+                          ▼               ▼
+                   [ Auth/JWT ]    [ Rate Limiting ]
+```
+
+---
+
+## 1. Transport Layer Security (TLS) Hardening
+
+Secure the transport layer before configuring authentication.
+
+### TLS Configuration Checklist
+*   **Enforce TLS 1.3**: Deprecate support for TLS 1.0, 1.1, and 1.2 to prevent cipher suites downgrades.
+*   **Restrict Cipher Suites**: Disable weak algorithms (like RC4, 3DES, or CBC-mode ciphers). Enforce strong GCM ciphers.
+*   **Enable HSTS**: Add the `Strict-Transport-Security` header to all API gateway responses to enforce HTTPS connections.
+
+---
+
+## 2. Authentication & JWT Validation
+
+API gateways should authenticate and validate requests before forwarding them to backend services.
+
+### JSON Web Token (JWT) Security Checks
+*   **Signature Verification**: The gateway must verify token signatures using public keys fetched via secure JWKS (JSON Web Key Sets) endpoints.
+*   **Algorithm Whitelisting**: Explicitly reject tokens using the `none` algorithm to prevent signature bypass.
+*   **Expiration Checks**: Enforce checks on the `exp` (expiration) and `nbf` (not before) claims.
+
+---
+
+## 3. Rate Limiting and Traffic Control
+
+Rate limiting protects APIs from Denial of Service (DoS) attacks, brute-force attempts, and resource exhaustion.
+
+### Configuring Rate Limits
+Implement a token-bucket or leaky-bucket rate limiting policy at the gateway layer:
+
+```yaml
+# Example rate limiting policy configuration
+rate_limiting:
+  enabled: true
+  policy: "leaky_bucket"
+  limit: 100 # Allow maximum of 100 requests
+  period: "1s" # Per second
+  key: "client_ip" # Group by IP address
+```

@@ -1,0 +1,73 @@
+---
+title: "Defensive Windows CMD Reference"
+description: "A reference guide for auditing Windows environments using the built-in Command Prompt (CMD) shell to verify user accounts, open sockets, and system processes."
+date: "2026-05-28"
+tags: ["windows", "cmd", "auditing", "blue-team"]
+category: "notes"
+subcategory: "windows"
+difficulty: "Beginner"
+readingTime: "6 min read"
+---
+
+# Defensive Windows CMD Reference
+
+This reference covers auditing Windows systems using the built-in CMD command shell. These commands allow you to verify system properties, accounts, active processes, and network ports without installing external binaries.
+
+<Callout type="warning" title="Auditing Privilege Scope">
+Several diagnostics command strings (such as querying scheduled tasks or active services) must be executed within an **Elevated Command Prompt (Administrator Mode)** to display complete logs.
+</Callout>
+
+## Cheat Sheet Checklist
+
+| Defensive Audit Target | Command Syntax | Functional Goal |
+| :--- | :--- | :--- |
+| **Active Sockets** | `netstat -ano` | List all active ports mapped to PID numbers. |
+| **System Profile** | `systeminfo` | View OS build, installation date, and hotfixes. |
+| **Active Users** | `net user` | Audit all configured local user accounts. |
+| **Local Administrators** | `net localgroup administrators` | Inspect accounts assigned to the local Administrator group. |
+| **Process Inspection** | `tasklist /v` | List active processes with detailed window titles. |
+| **Active Shares** | `net share` | Identify folder structures shared on the network. |
+
+---
+
+## 1. Network Sockets & PID Auditing
+
+Monitoring open network ports and identifying their parent processes is a critical step in verifying endpoint security.
+
+### Listing Mapped Sockets
+Use `netstat` to view listening and established TCP/UDP connections:
+
+<TerminalCommand cmd="netstat -ano" />
+
+*   `-a`: Show all active connections and listening ports.
+*   `-n`: Output numbers for addresses and ports instead of resolving names.
+*   `-o`: Append the parent Process ID (PID) associated with each connection.
+
+### Linking PID to Executable
+Once you identify a suspicious PID in the `netstat` output (e.g., `4012`), verify the executable name using `tasklist`:
+
+<TerminalCommand cmd="tasklist /fi \"PID eq 4012\"" />
+
+---
+
+## 2. User Accounts & Group Membership Audits
+
+Unauthorized accounts or group modifications are primary indicators of persistence.
+
+### Auditing Group Membership
+Verify who has administrative control over the machine:
+
+<TerminalCommand cmd="net localgroup administrators" />
+
+> **Defensive Checklist:** Regularly compare administrators group outputs against the corporate baseline. Investigate any unexpected accounts.
+
+---
+
+## 3. Auditing Running Services & Tasks
+
+Auditing services helps identify running background processes and check for persistence vectors.
+
+### Listing Active Windows Services
+Query the Service Control Manager to list currently running background services:
+
+<TerminalCommand cmd="sc query state= all" />

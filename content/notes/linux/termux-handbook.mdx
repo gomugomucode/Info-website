@@ -1,0 +1,69 @@
+---
+title: "Termux Mobile Diagnostic Handbook"
+description: "A developer reference for deploying mobile diagnostic containers, testing local interfaces, and configuring security properties inside the Termux CLI environment."
+date: "2026-05-28"
+tags: ["termux", "android", "auditing", "diagnostics"]
+category: "notes"
+subcategory: "linux"
+difficulty: "Intermediate"
+readingTime: "6 min read"
+---
+
+# Termux Mobile Diagnostic Handbook
+
+Termux provides a sandboxed Linux environment inside Android systems. This handbook outlines configuring diagnostic utilities, verifying network settings, and managing app-specific sandboxed files.
+
+<Callout type="info" title="Sandbox Scope">
+Termux operates within the Android Application Sandbox context. It does not possess administrative access to root Android parameters unless explicit root configurations are toggled on the mobile endpoint.
+</Callout>
+
+## Quick Setup Reference
+
+Execute these commands to configure the core diagnostic packages on a new Termux installation:
+
+<TerminalCommand cmd="pkg update && pkg install openssh nmap dnsutils tracepath tsu -y" />
+
+---
+
+## 1. Storage & Sandboxing Setup
+
+By default, Termux cannot interact with the shared internal storage of the Android host.
+
+### Granting Android Storage Access
+To link shared directory boundaries (like `/sdcard/`):
+
+<TerminalCommand cmd="termux-setup-storage" />
+
+This creates a `$HOME/storage` link referencing default Android file paths.
+
+---
+
+## 2. Dynamic Network Auditing from Mobile
+
+Use standard terminal commands modified for the Termux package manager to inspect wireless subnet interfaces.
+
+### Local IP Address Check
+To view wireless adapter info without system-level tools:
+
+<TerminalCommand cmd="ip route show" />
+
+### Port Availability Audit
+Use Nmap dynamically within Termux to verify open ports on local network printers, IoT gateways, and routers:
+
+<TerminalCommand cmd="nmap -sT -F 192.168.1.1" />
+
+---
+
+## 3. SSH Service Configuration (Secure Remote Access)
+
+Running an SSH daemon inside Termux allows you to securely manage mobile nodes from a desktop system.
+
+### Starting the SSH Server
+Start the daemon on the default Termux port (`8022`):
+
+<TerminalCommand cmd="sshd" />
+
+### Checking Current Username
+Termux assigns automatic system accounts (e.g., `u0_a123`). Identify yours by running:
+
+<TerminalCommand cmd="whoami" />

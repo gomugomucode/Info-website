@@ -13,6 +13,8 @@ export interface PostFrontmatter {
   category: string;
   featured?: boolean;
   readingTime?: string;
+  subcategory?: string;
+  difficulty?: string;
 }
 
 export interface Post {
@@ -24,36 +26,59 @@ export interface Post {
 
 const ALL_TYPES: Post["type"][] = ["blog", "cheatsheets", "notes"];
 
-export function getPostSlugs(type: Post["type"]) {
-  const directory = path.join(contentDirectory, type);
-  if (!fs.existsSync(directory)) return [];
-  return fs.readdirSync(directory).filter((file) => file.endsWith(".mdx") || file.endsWith(".md"));
+// Helper to recursively walk a directory and find all .mdx and .md files
+function getFilesRecursively(dir: string): string[] {
+  let results: string[] = [];
+  if (!fs.existsSync(dir)) return [];
+  const list = fs.readdirSync(dir);
+  list.forEach((file) => {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+    if (stat && stat.isDirectory()) {
+      results = results.concat(getFilesRecursively(filePath));
+    } else if (file.endsWith(".mdx") || file.endsWith(".md")) {
+      results.push(filePath);
+    }
+  });
+  return results;
 }
 
-/**
- * Get a single post by slug.
- * If `type` is omitted, searches across all folders (blog → cheatsheets → notes).
- */
-export function getPostBySlug(slug: string, type?: Post["type"]): Post {
-  const realSlug = slug.replace(/\.mdx?$/, "");
+export function getPostSlugs(type: Post["type"]): string[] {
+  const directory = path.join(contentDirectory, type);
+  const files = getFilesRecursively(directory);
+  return files.map((file) => path.basename(file));
+}
 
+export function findFilePathBySlug(slug: string, type?: Post["type"]): { filePath: string; type: Post["type"] } | null {
+  const realSlug = slug.replace(/\.mdx?$/, "");
   const typesToSearch: Post["type"][] = type ? [type] : ALL_TYPES;
 
   for (const t of typesToSearch) {
-    let fullPath = path.join(contentDirectory, t, `${realSlug}.mdx`);
-    if (!fs.existsSync(fullPath)) {
-      fullPath = path.join(contentDirectory, t, `${realSlug}.md`);
+    const directory = path.join(contentDirectory, t);
+    const files = getFilesRecursively(directory);
+    const foundFile = files.find((file) => {
+      const base = path.basename(file).replace(/\.mdx?$/, "");
+      return base.toLowerCase() === realSlug.toLowerCase();
+    });
+    if (foundFile) {
+      return { filePath: foundFile, type: t };
     }
-    if (fs.existsSync(fullPath)) {
-      const fileContents = fs.readFileSync(fullPath, "utf8");
-      const { data, content } = matter(fileContents);
-      return {
-        slug: realSlug,
-        frontmatter: data as PostFrontmatter,
-        content,
-        type: t,
-      };
-    }
+  }
+  return null;
+}
+
+export function getPostBySlug(slug: string, type?: Post["type"]): Post {
+  const resolved = findFilePathBySlug(slug, type);
+  if (resolved) {
+    const fileContents = fs.readFileSync(resolved.filePath, "utf8");
+    const { data, content } = matter(fileContents);
+    const realSlug = slug.replace(/\.mdx?$/, "");
+    return {
+      slug: realSlug,
+      frontmatter: data as PostFrontmatter,
+      content,
+      type: resolved.type,
+    };
   }
 
   throw new Error(`Post not found: ${slug}`);
