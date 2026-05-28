@@ -1,0 +1,180 @@
+---
+title: "Nuclei Plugin & Burp Suite Template Creation Guide"
+description: "A defensive hardening, auditing, and threat detection reference guide for Nuclei Plugin & Burp Suite Template Creation Guide."
+date: "2026-05-28"
+tags: ["nuclei", "hardening", "auditing", "compliance"]
+category: "notes"
+subcategory: "web"
+difficulty: "Intermediate"
+readingTime: "37 min read"
+---
+
+# Nuclei Plugin & Burp Suite Template Creation Guide
+
+> [!IMPORTANT]
+> **Defensive & Authorized Auditing Purposes Only**
+> This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
+
+W H A T  I S  N U C L E I ?
+N u c l e i  i s  a  p o w e r f u l  o p e n - s o u r c e  v u l n e r a b i l i t y  s c a n n e r  w r i t t e n  i n  G o l a n g .  A s i d e  f r o m  i t s
+e x c e l l e n t  p e r f o r m a n c e ,  i t  i s  a  h i g h l y  c u s t o m i z a b l e  t o o l  d u e  t o  i t s  i n t e g r a t i o n  w i t h  Y A M L
+t e m p l a t e  f i l e s .  I t s  t e m p l a t i n g  s y s t e m  a l l o w s  f o r  a n y o n e  t o  c r e a t e  v u l n e r a b i l i t y  t e m p l a t e s
+a n d  c o n t r i b u t e  t h e i r  f i n d i n g s  t o  t h e  c o m m u n i t y !
+N U C L E I  &  B U R P  S U I T E
+W e  h a v e  l o t s  o f  b l o g s  r e g a r d i n g  B u r p  S u i t e  y o u  c a n  a l w a y s  c h e c k  o u t  h e r e .
+N U C L E I  P L U G I N  &  B U R P  S U I T E  –  T E M P L A T E
+C R E A T I O N  G U I D E
+F o r  w e b  a p p l i c a t i o n  t e s t i n g ,  t h e r e  i s  a  B u r p  S u i t e  c o m m u n i t y  p l u g i n  i n  t h e  B A p p  s t o r e
+c a l l e d  t h e  N u c l e i  “ T e m p l a t e  G e n e r a t o r  P l u g i n ”  t h a t  i s  e v e n  a v a i l a b l e  f o r  u s e r s  w h o  u s e
+t h e  f r e e  c o m m u n i t y  e d i t i o n .  T h e  p u r p o s e  o f  t h i s  p l u g i n  i s  t o  a s s i s t  w i t h  r e p e t i t i v e  d a t a
+a s s o c i a t e d  w i t h  n u c l e i  t e m p l a t e  c r e a t i o n .  W h e n  t h e  p l u g i n  i s  i n s t a l l e d ,  a  t a b  i s  a d d e d  t o
+t h e  a p p  l a y o u t  l i k e  t h e  R e p e a t e r ,  I n t r u d e r ,  e t c .  I t  a l s o  f e a t u r e s  i n t e g r a t i o n  w i t h  R e p e a t e r
+a n d  I n t r u d e r  f o r  s i m p l i f i e d  t e m p l a t e  g e n e r a t i o n .
+1 / 1 4
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+M E T A S P L O I T A B L E 2
+T o  d e m o n s t r a t e  h o w  t h e  p l u g i n  w o r k s ,  I  s e t  u p  a  v i r t u a l  e n v i r o n m e n t  w i t h
+M e t a s p l o i t a b l e 2  a s  m y  v u l n e r a b l e  t a r g e t .  F o r  t h o s e  n o t  f a m i l i a r  w i t h  M e t a s p l o i t a b l e ,  i t  i s
+a n  i n t e n t i o n a l l y  v u l n e r a b l e  m a c h i n e  f o r  e d u c a t i o n a l  a n d  t e s t i n g  p u r p o s e s .  B e l o w  s h o w s
+t h e  h o m e  p a g e  o f  t h e  V M  w i t h  o p t i o n s  t o  v a r i o u s  l o c a l l y  h o s t e d  v u l n e r a b l e  a p p l i c a t i o n s .
+N U C L E I  D E M O N S T R A T I O N  
+ 
+I  w i l l  a l s o  b e  u s i n g  t h e  p h p M y A d m i n  p a g e  t o  d e m o n s t r a t e  h o w  m u l t i p l e  r e q u e s t s  c a n  b e
+a d d e d  t o  t h e  r e s u l t i n g  t e m p l a t e .  I  c h o o s e  b o t h  o f  t h e s e  p a g e s  b e c a u s e  t h e y  b o t h
+m e n t i o n  p h p M y A d m i n ,  b u t  o n e  w o u l d  a c t u a l l y  b e  a  f a l s e  p o s i t i v e  i f  i n d i c a t e d .
+2 / 1 4
+
+ 
+I  s t a r t e d  o u t  r u n n i n g  t h e  d e f a u l t  N u c l e i  s c a n  i n c l u d i n g  a l l  t h e  t e m p l a t e s  a v a i l a b l e .  I n
+a d d i t i o n ,  I  a d d e d  r a t e  l i m i t i n g  p a r a m e t e r s  w h i c h  l i m i t  t o  t h r e e  r e q u e s t s  p e r  s e c o n d ,
+a l l o w i n g  p a r a l l e l  e x e c u t i o n  o f  t w o  t e m p l a t e s  s i m u l t a n e o u s l y .  B y  d e f a u l t ,  N u c l e i  h a s
+a l m o s t  6 , 3 0 0  t e m p l a t e s  a v a i l a b l e  a n d  a c t i v e l y  c o n t i n u e s  t o  g r o w !
+D e f a u l t  N u c l e i  s c a n  c o m m a n d :
+D u e  t o  h o w  v u l n e r a b l e  M e t a s p l o i t a b l e  i s ,  t h e  t o o l  i n d i c a t e d  m a n y  a l e r t s  o f  i n d i c a t o r s  o f
+v u l n e r a b i l i t i e s .  H o w e v e r ,  f o r  t h e  o b j e c t i v e  o f  e x p l a i n i n g  h o w  t h e  p l u g i n  w o r k s ,  l e t s  f o c u s
+o n  t h e  l a s t  i n d i c a t o r  i n  t h e  s c r e e n s h o t  n a m e d  “ [ p h p m y a d m i n - p a n e l ] ” .
+A f t e r  r u n n i n g  t h e  i n i t i a l  N u c l e i  s c a n ,  I  s w i t c h e d  t o  m y  B u r p  S u i t e  w e b  p r o x y  f o r  t e m p l a t e
+g e n e r a t i o n .  B e f o r e  g e n e r a t i n g  t e m p l a t e s  o n  t h e  t a r g e t  r e q u e s t ,  i t  i s  a l w a y s  a  g o o d
+p r a c t i c e  t o  a d d  t h e  t a r g e t  U R L  t o  t h e  s c o p e ,  w h i c h  a l l o w s  t o  f i l t e r  r e q u e s t s  b y  t h e  i n -
+s c o p e  U R L .  T o  d o  t h i s ,  g o  t o  t h e  “ T a r g e t ”  t a b ,  r i g h t  c l i c k  o n  t h e  t a r g e t ,  a n d  a d d  t h e  t a r g e t
+t o  s c o p e .
+n u c l e i  – u  < t a r g e t _ u r l &gt;  - r l  3  - c  2
+3 / 1 4
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+
+T o  a d d  t h e  h o m e  p a g e  r e q u e s t  b y  s i m p l y  r i g h t  c l i c k i n g  o n  t h e  r e q u e s t  a n d  f o l l o w i n g  t h e
+e x t e n s i o n s  t a b s  t o  g e n e r a t e  a  t e m p l a t e .
+O n c e  t h e  t a r g e t  i s  a d d e d  t o  s c o p e ,  a l l  e n t i t i e s  o u t  o f  s c o p e  c a n  b e  e a s i l y  f i l t e r e d  o u t  b y
+c l i c k i n g  o n  t h e  g r e y  f i l t e r  b a r  t o w a r d  t h e  t o p  o f  t h e  a p p l i c a t i o n  a n d  s e l e c t i n g  “ S h o w  o n l y
+i n - s c o p e  i t e m s ” .
+4 / 1 4
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+
+N e x t ,  I  m o v e d  d o w n  t o  t h e  p h p M y A d m i n  r e q u e s t  a n d  d i d  t h e  s a m e  p r o c e s s  w i t h  t h e
+e x c e p t i o n  o f  a d d i n g  t h e  r e q u e s t  t o  “ T a b  1 ”  i n  t h e  N u c l e i  t a b  i n  t h e  p r o x y .
+N o w  t h a t  m u l t i p l e  r e q u e s t s  h a v e  b e e n  a d d e d  t o  t h e  t e m p l a t e ,  i t ’ s  t i m e  t o  a d d  t e m p l a t e
+m a t c h e r s  t h a t  l o o k  f o r  s p e c i f i c  c o n t e n t  i n  t h e  r e q u e s t ’ s  r e s p o n s e .  I n  t h e  h o m e  p a g e ’ s
+r e s p o n s e  d a t a ,  I  s e l e c t e d  t h e  a n c h o r  t a g  t e x t  a n d  c l o s i n g  b r a c k e t  o f  t h e  l i n k  t o  t h e
+p h p M y A d m i n  p a g e .  A f t e r  t h e  t e x t  i s  s e l e c t e d ,  s i m p l y  r i g h t  c l i c k  a n d  f o l l o w  t h e  t a b s  t o
+a d d  t h e  m a t c h e r  t o  “ T a b  1 ”  j u s t  l i k e  i n  t h e  p r e v i o u s  s t e p .
+5 / 1 4
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+
+F o r  t h e  s e c o n d  p h p M y A d m i n  r e q u e s t ,  i t  c o n t a i n s  a  u n i q u e  s i g n a t u r e  “ S e t - C o o k i e :
+p h p M y A d m i n = ”  v a l u e  i n  t h e  c o o k i e  s e t  i n  t h e  r e s p o n s e  h e a d e r s  o f  t h e  r e q u e s t .  U s i n g
+t h i s  r e s p o n s e  h e a d e r  w i l l  e n s u r e  t h e  s i g n a t u r e  i s  m a t c h e d  e v e n  i f  t h e r e  i s  a  3 0 4 -
+r e s p o n s e  c o d e ,  i n d i c a t i n g  t h e  p a g e  i s  c a c h e d  r e s u l t i n g  i n  a n  e m p t y  b o d y  o f  d a t a  i n  t h e
+r e q u e s t .
+T h i s  i s  t h e  t e m p l a t e  t h a t  t h e  p l u g i n  h a s  c r e a t e d  t h u s  f a r .  I t  f e a t u r e s  a u t h o r  i n f o r m a t i o n ,
+v u l n e r a b i l i t y  s e v e r i t y ,  a n d  b o t h  s p e c i f i e d  r e q u e s t s .
+6 / 1 4
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+
+A t  t h e  b o t t o m  o f  t h e  t e m p l a t e  a r e  t h e  w o r d - b a s e d  m a t c h e r s  t h a t  w e r e  s e n t  t o  m a t c h
+p h p M y A d m i n  i n  t h e  a s s o c i a t e d  r e q u e s t s  r e s p o n s e  d a t a .  M a t c h e r s  a l s o  f e a t u r e  B o o l e a n
+c o n d i t i o n a l s ,  s o  i f  t h e  “ m a t c h e r s - c o n d i t i o n ”  k e y  i s  s e t  t o  “ a n d ” ,  t h e n  b o t h  m a t c h e r s
+w o u l d  h a v e  t o  b e  p r e s e n t  i n  a  r e q u e s t  f o r  i n d i c a t o r  a l e r t  t o  b e  r a i s e d  i n s t e a d  o f  j u s t  o n e
+w i t h  t h e  c u r r e n t  “ o r ”  s e t t i n g .  A c c o r d i n g  t o  t h e  f e a t u r e s  s p e c i f i e d  i n  t h e  p l u g i n ’ s
+r e p o s i t o r y ,  t h e  t e m p l a t e  m a t c h e r s  o f  c a p a b l e  o f  m a t c h i n g  r a w  b i n a r y  d a t a  o r  a s c i i - b a s e d
+t e x t  l i k e  i n  t h e  e x a m p l e  b e l o w .
+N o w  t h a t  a  t e m p l a t e  h a s  b e e n  c r e a t e d  i n  t h e  d e f a u l t  l o c a t i o n  o f  t h e  “ / t m p ”  f o l d e r  ( i f
+r u n n i n g  o n  K a l i  L i n u x ) ,  w e  c a n  r u n  i t  w i t h  t h e  - t  o p t i o n  a n d  i n c r e a s e d  v e r b o s i t y  w i t h  t h e  - v
+o p t i o n .
+N u c l e i  s i n g l e  t e m p l a t e  s c a n  c o m m a n d :
+7 / 1 4
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+
+n u c l e i  - v  - t  < t e m p l a t e _ n a m e &gt;  - u  < t a r g e t _ u r l &gt;
+T h e  r e s u l t i n g  o u t p u t  s h o w s  t h a t  t h e  g e n e r a t e d  t e m p l a t e  w i t h  d e f a u l t  n a m e  o f
+“ [ t e m p l a t e - i d ] ”  m a t c h e d  o n  b o t h  t a r g e t e d  e n d p o i n t s .  B a s e d  o n  t h e  o u t p u t  o f  t h e  d e f a u l t
+n u c l e i  s c a n  t h a t  w a s  i n i t i a l l y  r u n ,  t h e r e  s h o u l d  o n l y  b e  o n e  e n d p o i n t  t h a t  h a d  r a i s e d  a n
+i n d i c a t o r ,  m e a n i n g  t h e  c u r r e n t  t e m p l a t e  i s  g e n e r a t i n g  a  f a l s e  p o s i t i v e .
+T o  r e m o v e  t h e  f a l s e  p o s i t i v e ,  I  r e m o v e d  t h e  f i r s t  m a t c h e r  o f  t h e  l i n k  a n c h o r  t a g  t h a t  i s  o n
+M e t a s p l o i t a b l e ’ s  h o m e p a g e .  I  a l s o  c h a n g e d  t h e  v a l u e  o f  t h e  i d  i n  t e m p l a t e  f i l e  t o
+p h p M y A d m i n - p a n e l  t o  h e l p  v i s u a l i z e  t h e  e x a m p l e  t e m p l a t e .  
+8 / 1 4
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+
+T h i s  e x a m p l e  d o e s  n o t  h a v e  a n  a s s o c i a t e d  C V E  s o  t h e  l o o k u p  p r o c e s s  o f  t h e  b o g u s
+n u m b e r  I  g a v e  i t  f a i l e d ,  b u t  s t i l l  w a s  a b l e  t o  g e n e r a t e  a n  e m p t y  c l a s s i f i c a t i o n  s e c t i o n  i n
+t h e  t e m p l a t e .
+A f t e r  r u n n i n g  t h e  s c a n  a g a i n ,  i t  s h o w s  t h a t  m u l t i p l e  r e q u e s t s  w e r e  s e n t  b u t  t h e  c o r r e c t
+/ p h p M y A d m i n /  e n d p o i n t  w a s  t h e  o n l y  o n e  t h a t  i n d i c a t e d  a n  a l e r t .  W h i l e  t h i s  g e n e r a t e d
+t e m p l a t e  i s  d i f f e r e n t  f r o m  t h e  o n e  t h a t  i s  i n c l u d e d  b y  d e f a u l t ,  i t  w a s  s t i l l  e f f e c t i v e l y  a b l e
+t o  i d e n t i f y  t h e  s a m e  t a r g e t  a l e r t .
+T h e  N u c l e i  t e m p l a t e  g e n e r a t o r  p l u g i n  a l s o  f e a t u r e s  s u p p o r t  f o r  C V E ’ s ,  a c t u a l l y
+a t t e m p t i n g  t o  l o o k  u p  t h e  C V E  i n f o r m a t i o n  a n d  a u t o m a t e s  p o p u l a t i n g  i t  i n t o  t h e
+g e n e r a t e d  t e m p l a t e .  B a c k  i n  B u r p  S u i t e ,  s i m p l y  r i g h t  c l i c k  t h e n  - &gt;  A d d  - &gt;  C l a s s i f i c a t i o n  - &gt;
+C V E  w h i c h  p r o m p t s  f o r  t h e  C V E  n u m b e r  t o  l o o k  u p .
+9 / 1 4
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+
+H o p e f u l l y  t h e  i n f o r m a t i o n  a n d  s t e p s  p r o v i d e d  i n  t h i s  g u i d e  w i l l  h e l p  y o u r  u n d e r s t a n d i n g
+o f  h o w  t h e  N u c l e i  t e m p l a t e  g e n e r a t o r  p l u g i n  w o r k s  a n d  w h y  i t s  i n t e g r a t i o n  w i t h  B u r p
+S u i t e  m a k e s  t h e  p r o c e s s  o f  t e m p l a t e  g e n e r a t i o n  s u b s t a n t i a l l y  m o r e  e f f i c i e n t  d u r i n g  w e b
+ 
+A n o t h e r  g r e a t  f e a t u r e  o f  t h e  p l u g i n  i s  t h e  d i r e c t  t e m p l a t e  i n t e g r a t i o n  w i t h  B u r p  S u i t e ’ s
+I n t r u d e r .  A f t e r  a  r e q u e s t  i s  s e n t  t o  t h e  I n t r u d e r  a n d  a  p a r a m e t e r  i s  s p e c i f i e d ,  s i m p l y  r i g h t
+c l i c k  a n d  f o l l o w  t h e  e x t e n s i o n s  t a b s  l i k e  i n  p r e v i o u s  s t e p s  t o  g e n e r a t e  a  t e m p l a t e .
+T h e  r e s u l t  i s  a  g e n e r a t e d  t e m p l a t e  f e a t u r i n g  a  b a t t e r i n g  r a m  a t t a c k  a n d  a s s o c i a t e d
+p a y l o a d s .  T h e  p l u g i n  s u p p o r t s  b a t t e r i n g  r a m ,  c l u s t e r  b o m b ,  a n d  p i t c h  f o r k  a t t a c k  m o d e s ,
+s o  i t  w i l l  d e f a u l t  t o  b a t t e r i n g  r a m  i f  s n i p e r  i s  s e t  w h e n  t h e  t e m p l a t e  i s  g e n e r a t e d .
+N U C L E I  T E M P L A T E  C O N C L U S I O N
+1 0 / 1 4
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+
+a p p  e n g a g e m e n t s .  R e q u e s t  a n d  r e s p o n s e  d a t a  i s  e a s i l y  p a r s e d  f r o m  t h e  a p p l i c a t i o n
+s t r a i g h t  t o  t h e  r e s u l t i n g  t e m p l a t e .  T h e  p l u g i n  a l s o  s u p p o r t s  C V E  t e m p l a t e  d a t a  a n d  i s
+i n t e g r a t e d  w i t h  t h e  m a j o r  B u r p  f u n c t i o n a l i t y  l i k e  t h e  R e p e a t e r ,  I n t r u d e r ,  e t c .  B y  g e n e r a t i n g
+a d d i t i o n a l  t e m p l a t e s  a n d  i n t e g r a t i n g  t h e m  i n t o  t h e  t o o l s  t e m p l a t e  r e p o s i t o r y ,  i t  e x t e n d s
+t h e  t o o l s  c a p a b i l i t i e s  a n d  a l l o w s  t h e  c o m m u n i t y  t o  c o n t r i b u t e  t o  i t s  p o w e r !
+F o l l o w  H e x S e c  o n  s o c i a l  m e d i a  f o r  m o r e  e t h i c a l  h a c k i n g
+a n d  c y b e r s e c u r i t y  e d u c a t i o n a l  c o n t e n t ,  w i t h  p r e m i u m
+c a r o u s e l  g u i d e s  a n d  p r a c t i c a l  t o o l  b r e a k d o w n s .
+📘 🔓  W a n t  t h e  P D F  v e r s i o n  w i t h  a l l  t h e  t o o l s  i n  o n e  p l a c e ?
+C o m m e n t  “ I N T E R E S T E D ”  a n d  I ’ l l  s e n d  i t  t o  y o u .
+📚 🔐  E d u c a t i o n a l  p u r p o s e s  o n l y  —  e t h i c a l  l e a r n i n g  &
+r e s p o n s i b l e  u s e .
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+I  n e v e r  s a i d  I  w a s  a  h a c k e r …
+T h e  s y s t e m  j u s t  a g r e e d  w i t h  m e .  😎

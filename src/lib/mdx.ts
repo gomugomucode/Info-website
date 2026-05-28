@@ -36,7 +36,7 @@ function getFilesRecursively(dir: string): string[] {
     const stat = fs.statSync(filePath);
     if (stat && stat.isDirectory()) {
       results = results.concat(getFilesRecursively(filePath));
-    } else if (file.endsWith(".mdx") || file.endsWith(".md")) {
+    } else if (file.endsWith(".mdx") || file.endsWith(".md") || file.endsWith(".txt")) {
       results.push(filePath);
     }
   });
@@ -50,14 +50,14 @@ export function getPostSlugs(type: Post["type"]): string[] {
 }
 
 export function findFilePathBySlug(slug: string, type?: Post["type"]): { filePath: string; type: Post["type"] } | null {
-  const realSlug = slug.replace(/\.mdx?$/, "");
+  const realSlug = slug.replace(/\.(mdx?|txt)$/, "");
   const typesToSearch: Post["type"][] = type ? [type] : ALL_TYPES;
 
   for (const t of typesToSearch) {
     const directory = path.join(contentDirectory, t);
     const files = getFilesRecursively(directory);
     const foundFile = files.find((file) => {
-      const base = path.basename(file).replace(/\.mdx?$/, "");
+      const base = path.basename(file).replace(/\.(mdx?|txt)$/, "");
       return base.toLowerCase() === realSlug.toLowerCase();
     });
     if (foundFile) {
@@ -71,11 +71,31 @@ export function getPostBySlug(slug: string, type?: Post["type"]): Post {
   const resolved = findFilePathBySlug(slug, type);
   if (resolved) {
     const fileContents = fs.readFileSync(resolved.filePath, "utf8");
-    const { data, content } = matter(fileContents);
-    const realSlug = slug.replace(/\.mdx?$/, "");
+    const realSlug = slug.replace(/\.(mdx?|txt)$/, "");
+    const isTxt = resolved.filePath.endsWith(".txt");
+    let frontmatter: PostFrontmatter;
+    let content: string;
+
+    if (isTxt && !fileContents.startsWith("---")) {
+      // Generate default frontmatter for .txt files without gray-matter headers
+      const titleFromSlug = realSlug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+      frontmatter = {
+        title: titleFromSlug,
+        description: `Reference notes for ${titleFromSlug}.`,
+        date: new Date().toISOString().split("T")[0],
+        tags: ["notes"],
+        category: "notes",
+      };
+      content = fileContents;
+    } else {
+      const parsed = matter(fileContents);
+      frontmatter = parsed.data as PostFrontmatter;
+      content = parsed.content;
+    }
+
     return {
       slug: realSlug,
-      frontmatter: data as PostFrontmatter,
+      frontmatter,
       content,
       type: resolved.type,
     };

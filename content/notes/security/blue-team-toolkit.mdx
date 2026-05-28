@@ -1,0 +1,1194 @@
+---
+title: "Blue Team Toolkit"
+description: "A defensive hardening, auditing, and threat detection reference guide for Blue Team Toolkit."
+date: "2026-05-28"
+tags: ["blue", "hardening", "auditing", "compliance"]
+category: "notes"
+subcategory: "security"
+difficulty: "Intermediate"
+readingTime: "222 min read"
+---
+
+# Blue Team Toolkit
+
+> [!IMPORTANT]
+> **Defensive & Authorized Auditing Purposes Only**
+> This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
+
+B y  H e x S e c  
+B l u e  T e a m  T o o l k i t  
+N e t w o r k  D i s c o v e r y  a n d  M a p p i n g  6  t o o l s :  
+N m a p  –  N e t w o r k  s c a n n e r  
+N u c l e i  –  V u l n e r a b i l i t y  s c a n n e r  
+M a s s c a n  –  F a s t  n e t w o r k  s c a n n e r  
+A n g r y  I P  S c a n n e r  –  I P / P o r t  s c a n n e r  
+Z M a p  –  L a r g e - s c a l e  n e t w o r k  s c a n n e r  
+S h o d a n  –  I n t e r n e t - f a c i n g  a s s e t  s e a r c h  e n g i n e  
+V u l n e r a b i l i t y  M a n a g e m e n t :  
+🟢 O p e n V A S  –  O p e n - s o u r c e  v u l n e r a b i l i t y  s c a n n e r  
+🟢 N e s s u s  E s s e n t i a l s  –  V u l n e r a b i l i t y  s c a n n e r  
+🟢 N e x p o s e  –  V u l n e r a b i l i t y  m a n a g e m e n t  t o o l  
+🟢 H a c k e r O n e  –  B u g  b o u n t y  m a n a g e m e n t  p l a t f o r m  
+S e c u r i t y  M o n i t o r i n g :  
+S y s m o n  –  S y s t e m  m o n i t o r  f o r  W i n d o w s  
+V e l o c i r a p t o r  –  E n d p o i n t  v i s i b i l i t y  a n d  c o l l e c t i o n  t o o l  
+S y s m o n S e a r c h  –  S y s m o n  e v e n t  l o g  v i s u a l i z a t i o n  
+W a z u h  –  O p e n - s o u r c e  S I E M  a n d  s e c u r i t y  m o n i t o r i n g  
+E L K  S t a c k  ( E l a s t i c s e a r c h ,  L o g s t a s h ,  K i b a n a )  –  L o g  m a n a g e m e n t  &  m o n i t o r i n g  
+S p l u n k  –  S e c u r i t y  i n f o r m a t i o n  a n d  e v e n t  m a n a g e m e n t  
+G r a y l o g  –  L o g  m a n a g e m e n t  a n d  a n a l y s i s  
+O S S I M  –  A l i e n V a u l t ’ s  o p e n - s o u r c e  S I E M  
+S I E M o n s t e r  –  C o m m u n i t y - d r i v e n  S I E M  p l a t f o r m  
+N a g i o s  –  I n f r a s t r u c t u r e  a n d  s e c u r i t y  m o n i t o r i n g  
+Z a b b i x  –  N e t w o r k  a n d  s y s t e m  m o n i t o r i n g  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+T h r e a t  T o o l s  a n d  T e c h n i q u e s :  
+L O L B A S  –  L i v i n g  O f f  T h e  L a n d  W i n d o w s  B i n a r i e s  
+G T F O B i n s  –  L i v i n g  O f f  T h e  L a n d  L i n u x  B i n a r i e s  
+f i l e s e c . i o  –  A t t a c k e r  f i l e  e x t e n s i o n s  
+K Q L  S e a r c h  –  K Q L  q u e r y  a g g r e g a t o r  
+U n p r o t e c t  P r o j e c t  –  M a l w a r e  e v a s i o n  t e c h n i q u e s  k n o w l e d g e  b a s e  
+C h a i n s a w  –  F a s t  W i n d o w s  f o r e n s i c  a r t e f a c t s  s e a r c h e r  
+f r e q  –  D o m a i n  g e n e r a t i o n  a l g o r i t h m  m a l w a r e  d e t e c t i o n  
+y a r G e n  –  Y A R A  r u l e  g e n e r a t o r  
+E m a i l A n a l y z e r  –  S u s p i c i o u s  e m a i l  a n a l y s e r  
+V C G  –  C o d e  s e c u r i t y  s c a n n i n g  t o o l  
+T h r e a t  I n t e l l i g e n c e :  
+M I S P  –  M a l w a r e  I n f o r m a t i o n  S h a r i n g  P l a t f o r m  
+A l i e n V a u l t  O T X  –  O p e n  T h r e a t  E x c h a n g e  p l a t f o r m  
+V i r u s T o t a l  –  F i l e ,  U R L ,  a n d  h a s h  t h r e a t  i n t e l l i g e n c e  
+A b u s e I P D B  –  M a l i c i o u s  I P  a d d r e s s  r e p o r t i n g  a n d  l o o k u p  
+T h r e a t F o x  –  I O C s  ( I n d i c a t o r s  o f  C o m p r o m i s e )  d a t a b a s e  
+Y E T I  –  Y o u r  E v e r y d a y  T h r e a t  I n t e l l i g e n c e  p l a t f o r m  
+M I T R E  A T T & C K  –  A d v e r s a r y  t a c t i c s  a n d  t e c h n i q u e s  k n o w l e d g e  b a s e  
+A n o m a l i  T h r e a t S t r e a m  –  T h r e a t  i n t e l l i g e n c e  m a n a g e m e n t  p l a t f o r m  
+O p e n C T I  –  O p e n  C y b e r  T h r e a t  I n t e l l i g e n c e  p l a t f o r m  
+I n c i d e n t  R e s p o n s e  P l a n n i n g :  
+N I S T  8 0 0 - 6 1  –  C o m p u t e r  S e c u r i t y  I n c i d e n t  H a n d l i n g  G u i d e  
+S A N S  I n c i d e n t  H a n d l e r ’ s  H a n d b o o k  –  P r a c t i c a l  I R  g u i d a n c e  
+T h e H i v e  –  I n c i d e n t  r e s p o n s e  a n d  c a s e  m a n a g e m e n t  p l a t f o r m  
+C o r t e x  –  O b s e r v a b l e  a n a l y s i s  a n d  a u t o m a t e d  r e s p o n s e  
+D F I R  I R  P l a y b o o k s  –  O p e n - s o u r c e  d i g i t a l  f o r e n s i c s  &  I R  p l a y b o o k s  
+R T I R  ( R e q u e s t  T r a c k e r  f o r  I n c i d e n t  R e s p o n s e )  –  I n c i d e n t  t i c k e t i n g  s y s t e m  
+S h u f f l e  S O A R  –  S e c u r i t y  O r c h e s t r a t i o n ,  A u t o m a t i o n ,  a n d  R e s p o n s e  
+V e l o c i r a p t o r  –  E n d p o i n t  v i s i b i l i t y  a n d  f o r e n s i c  c o l l e c t i o n  
+G R R  R a p i d  R e s p o n s e  –  I n c i d e n t  r e s p o n s e  f r a m e w o r k  b y  G o o g l e  
+I R I S  –  I n c i d e n t  R e s p o n s e  I n v e s t i g a t i o n  S y s t e m  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+M a l w a r e  D e t e c t i o n  a n d  A n a l y s i s :  
+C u c k o o  S a n d b o x  –  A u t o m a t e d  m a l w a r e  a n a l y s i s  s a n d b o x  
+R E M n u x  –  L i n u x  d i s t r o  f o r  r e v e r s e  e n g i n e e r i n g  m a l w a r e  
+I n t e z e r  A n a l y z e  –  M a l w a r e  c o d e  r e u s e  &  g e n e t i c  a n a l y s i s  
+P e S t u d i o  –  W i n d o w s  e x e c u t a b l e  a n a l y s i s  t o o l  
+G h i d r a  –  S o f t w a r e  r e v e r s e  e n g i n e e r i n g  s u i t e  
+Y A R A  –  P a t t e r n  m a t c h i n g  f o r  m a l w a r e  d e t e c t i o n  
+C l a m A V  –  O p e n - s o u r c e  a n t i v i r u s  e n g i n e  
+R a d a r e 2  –  R e v e r s e  e n g i n e e r i n g  f r a m e w o r k  
+M a l w a r e B a z a a r  –  R e p o s i t o r y  o f  m a l w a r e  s a m p l e s  
+H y b r i d  A n a l y s i s  –  F r e e  m a l w a r e  a n a l y s i s  p l a t f o r m  
+D a t a  R e c o v e r y :  
+T e s t D i s k  –  P a r t i t i o n  r e c o v e r y  a n d  d i s k  r e p a i r  
+P h o t o R e c  –  F i l e  r e c o v e r y  f r o m  d i s k s ,  m e m o r y  c a r d s ,  a n d  m e d i a  
+R e c u v a  –  W i n d o w s  f i l e  r e c o v e r y  t o o l  
+R - S t u d i o  –  A d v a n c e d  d a t a  r e c o v e r y  s o f t w a r e  f o r  W i n d o w s ,  M a c ,  a n d  L i n u x  
+E a s e U S  D a t a  R e c o v e r y  W i z a r d  –  F i l e  a n d  s y s t e m  r e c o v e r y  s o l u t i o n  
+D i g i t a l  F o r e n s i c s :  
+A u t o p s y  –  O p e n - s o u r c e  d i g i t a l  f o r e n s i c s  p l a t f o r m  
+F T K  ( F o r e n s i c  T o o l k i t )  –  C o m p r e h e n s i v e  f o r e n s i c  i n v e s t i g a t i o n  s u i t e  
+S l e u t h  K i t  –  C o m m a n d - l i n e  f o r e n s i c  a n a l y s i s  t o o l k i t  
+X - W a y s  F o r e n s i c s  –  A d v a n c e d  f o r e n s i c  a n a l y s i s  s o f t w a r e  
+V o l a t i l i t y  –  M e m o r y  f o r e n s i c s  f r a m e w o r k  
+C A P E  S a n d b o x  –  A u t o m a t e d  m a l w a r e  a n a l y s i s  a n d  f o r e n s i c s  
+K A P E  –  F o r e n s i c  c o l l e c t i o n  a n d  t r i a g e  t o o l  
+V e l o c i r a p t o r  –  E n d p o i n t  v i s i b i l i t y  a n d  c o l l e c t i o n  f o r  i n v e s t i g a t i o n s  
+P l a s o  –  L o g  f i l e  t i m e l i n e  a n a l y s i s  
+R e d l i n e  –  H o s t  i n v e s t i g a t i v e  t o o l  f o r  m e m o r y  a n d  f i l e  a n a l y s i s  
+S e c u r i t y  A w a r e n e s s  T r a i n i n g :  
+S A N S  S e c u r i t y  A w a r e n e s s  –  T r a i n i n g  p r o g r a m s  a n d  r e s o u r c e s  
+P h i s h L a b  –  P h i s h i n g  s i m u l a t i o n  a n d  u s e r  e d u c a t i o n  
+T r y H a c k M e  –  C y b e r s e c u r i t y  c h a l l e n g e s  p l a t f o r m  
+H a c k T h e B o x  –  C y b e r s e c u r i t y  c h a l l e n g e s  p l a t f o r m  
+P h i s h M e  –  P h i s h i n g  t r a i n i n g  a n d  s i m u l a t i o n s  
+Warning : (Below Link Which I have attachment Of Official Websites and Incase if you find  
+a n y  s u s p e c t  w e b s i t e  p l e a s e  g o  w i t h  s c a n  w i t h  V I R U S T O T A L  a n d  r e s e a r c h  i t )  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+N e t w o r k  D i s c o v e r y  a n d  M a p p i n g  
+ N m a p
+N m a p  ( s h o r t  f o r  N e t w o r k  M a p p e r )  i s  a  f r e e  a n d  o p e n - s o u r c e  n e t w o r k  
+s c a n n e r  t o o l  u s e d  t o  d i s c o v e r  h o s t s  a n d  s e r v i c e s  o n  a  c o m p u t e r  
+n e t w o r k ,  a n d  t o  p r o b e  f o r  i n f o r m a t i o n  a b o u t  t h e i r  c h a r a c t e r i s t i c s .
+I t  c a n  b e  u s e d  t o  d e t e r m i n e  w h i c h  p o r t s  o n  a  n e t w o r k  a r e  o p e n  a n d  
+w h a t  s e r v i c e s  a r e  r u n n i n g  o n  t h o s e  p o r t s .  I n c l u d i n g  t h e  a b i l i t y  t o  
+i d e n t i f y  s e c u r i t y  v u l n e r a b i l i t i e s  o n  t h e  n e t w o r k .  
+Y o u  c a n  d o w n l o a d  t h e  l a t e s t  r e l e a s e  f r o m  h e r e
+U s a g e :
+n m a p  1 9 2 . 1 6 8 . 1 . 1  –  S c a n  a  s i n g l e  I P  
+n m a p  1 9 2 . 1 6 8 . 1 . 1 - 2 5 4  –  S c a n  a  r a n g e  o f  I P s  
+n m a p  - i L  t a r g e t s . t x t  –  S c a n  t a r g e t s  f r o m  a  f i l e  
+n m a p  1 9 2 . 1 6 8 . 1 . 1  - p  2 1  –  P o r t  s c a n  f o r  a  s p e c i f i c  p o r t  ( e . g . ,  p o r t  2 1 )  
+n m a p  1 9 2 . 1 6 8 . 1 . 1  - A  –  A g g r e s s i v e  s c a n  ( O S  d e t e c t i o n ,  v e r s i o n  d e t e c t i o n ,  s c r i p t  s c a n n i n g ,  
+t r a c e r o u t e )  
+C h e a t S h e e t :  N M A P  F U L L  C O M M A N D S  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+ N u c l e i  
+A s p e c i a l i z e d  t o o l  d e s i g n e d  t o  a u t o m a t e  t h e  p r o c e s s  o f  d e t e c t i n g  v u l n e r a b i l i t i e s  i n  w e b
+a p p l i c a t i o n s ,  n e t w o r k s ,  a n d  i n f r a s t r u c t u r e .  
+N u c l e i  u s e s  p r e - d e f i n e d  t e m p l a t e s  t o  p r o b e  a  t a r g e t  a n d  i d e n t i f y  p o t e n t i a l  v u l n e r a b i l i t i e s .  
+I t  c a n  b e  u s e d  t o  t e s t  a  s i n g l e  h o s t  o r  a  r a n g e  o f  h o s t s ,  a n d  c a n  b e  c o n f i g u r e d  t o  r u n  a  
+v a r i e t y  o f  t e s t s  t o  c h e c k  f o r  d i f f e r e n t  t y p e s  o f  v u l n e r a b i l i t i e s .  
+Install:  
+•  g i t  c l o n e  h t t p s : / / g i t h u b . c o m / p r o j e c t d i s c o v e r y / n u c l e i . g i t ;  \
+c d  n u c l e i / v 2 / c m d / n u c l e i ;  \
+g o  b u i l d ;  \  
+m v  n u c l e i  / u s r / l o c a l / b i n / ;  \
+n u c l e i  - v e r s i o n ;  
+U s a g e :  
+n u c l e i  - u  h t t p s : / / e x a m p l e . c o m  –  A l l  t h e  t e m p l a t e s  g e t  e x e c u t e d  f r o m  d e f a u l t  
+t e m p l a t e  i n s t a l l a t i o n  p a t h  
+n u c l e i  - u  h t t p s : / / e x a m p l e . c o m  - t  c v e s /  - t  e x p o s u r e s /  –  C u s t o m  t e m p l a t e  d i r e c t o r y  
+o r  m u l t i p l e  t e m p l a t e  d i r e c t o r y  
+n u c l e i  - l i s t  h t t p _ u r l s . t x t  –  T e m p l a t e s  c a n  b e  e x e c u t e d  a g a i n s t  l i s t  o f  U R L s  
+n u c l e i  - l i s t  u r l s . t x t  - t  c v e s /  - e x c l u d e - t e m p l a t e s  c v e s / 2 0 2 0 / C V E - 2 0 2 0 - X X X X . y a m l  –  
+E x c l u d i n g  s i n g l e  t e m p l a t e  
+C h e a t S h e e t :  N U C L E I  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+Masscan  🟢
+A p o r t  s c a n n e r  t h a t  i s  s i m i l a r  t o  n m a p ,  b u t  i s  m u c h  f a s t e r  a n d  c a n  s c a n  a  l a r g e  n u m b e r  o f  
+p o r t s  i n  a  s h o r t  a m o u n t  o f  t i m e .  
+M a s s c a n  u s e s  a  n o v e l  t e c h n i q u e  c a l l e d  " S Y N  s c a n "  t o  s c a n  n e t w o r k s ,  w h i c h  a l l o w s  i t  t o  
+s c a n  a  l a r g e  n u m b e r  o f  p o r t s  v e r y  q u i c k l y .  
+I n s t a l l :  ( A p t )  
+•  s u d o  a p t  i n s t a l l  m a s s c a n  
+I n s t a l l :  ( G i t )  
+•  
+•  
+•  
+•  
+s u d o  a p t - g e t  i n s t a l l  c l a n g  g i t  g c c  m a k e  l i b p c a p - d e v  
+g i t  c l o n e  h t t p s : / / g i t h u b . c o m / r o b e r t d a v i d g r a h a m / m a s s c a n  
+c d  m a s s c a n  
+m a k e  
+U s a g e :  
+#  S c a n  f o r  a  s e l e c t i o n  o f  p o r t s  ( - p 2 2 , 8 0 , 4 4 5 )  a c r o s s  a  g i v e n  s u b n e t  ( 1 9 2 . 1 6 8 . 1 . 0 / 2 4 )  
+•  m a s s c a n  - p 2 2 , 8 0 , 4 4 5  1 9 2 . 1 6 8 . 1 . 0 / 2 4  –  S c a n  s p e c i f i c  p o r t s  o n  a  s u b n e t  
+m a s s c a n  1 0 . 1 1 . 0 . 0 / 1 6  - p 2 2 - 2 5  –  S c a n  a  c l a s s  B  s u b n e t  f o r  p o r t s  2 2  t h r o u g h  2 5  
+m a s s c a n  1 0 . 1 1 . 0 . 0 / 1 6  - - t o p - p o r t s  1 0 0  - - r a t e  1 0 0 0 0 0  –  S c a n  a  c l a s s  B  s u b n e t  f o r  t h e  
+t o p  1 0 0  p o r t s  a t  1 0 0 , 0 0 0  p a c k e t s  p e r  s e c o n d  
+m a s s c a n  1 0 . 1 1 . 0 . 0 / 1 6  - - t o p - p o r t s  1 0 0  - - e x c l u d e f i l e  e x c l u d e . t x t  –  S c a n  a  c l a s s  B  
+s u b n e t ,  a v o i d i n g  r a n g e s  i n  e x c l u d e . t x t  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+🕸 A n g r y  I P  S c a n n e r  
+A  f r e e  a n d  o p e n - s o u r c e  t o o l  f o r  s c a n n i n g  I P  a d d r e s s e s  a n d  p o r t s .
+I t ' s  a  c r o s s - p l a t f o r m  t o o l ,  d e s i g n e d  t o  b e  f a s t  a n d  e a s y  t o  u s e ,  a n d  c a n  s c a n  a n  e n t i r e  
+n e t w o r k  o r  a  r a n g e  o f  I P  a d d r e s s e s  t o  f i n d  l i v e  h o s t s .  
+A n g r y  I P  S c a n n e r  c a n  a l s o  d e t e c t  t h e  h o s t n a m e  a n d  M A C  a d d r e s s  o f  a  d e v i c e ,  a n d  c a n  b e  
+u s e d  t o  p e r f o r m  b a s i c  p i n g  s w e e p s  a n d  p o r t  s c a n s .  
+I n s t a l l :  
+Y o u  c a n  d o w n l o a d  t h e  l a t e s t  r e l e a s e  f r o m  h e r e .  
+U s a g e :  
+A n g r y  I P  S c a n n e r  c a n  b e  u s e d  v i a  t h e  G U I .  
+F u l l  u s a g e  i n f o r m a t i o n  a n d  d o c u m e n t a t i o n  c a n  b e  f o u n d  h e r e .  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+😒 Z M a p  
+Z M a p  i s  a  n e t w o r k  s c a n n e r  d e s i g n e d  t o  p e r f o r m  c o m p r e h e n s i v e  s c a n s  o f  t h e  I P v 4  a d d r e s s
+s p a c e  o r  l a r g e  p o r t i o n s  o f  i t .  
+O n  a  t y p i c a l  d e s k t o p  c o m p u t e r  w i t h  a  g i g a b i t  E t h e r n e t  c o n n e c t i o n ,  Z M a p  i s  c a p a b l e  
+s c a n n i n g  t h e  e n t i r e  p u b l i c  I P v 4  a d d r e s s  s p a c e  i n  u n d e r  4 5  m i n u t e s .  
+I n s t a l l :  
+Y o u  c a n  d o w n l o a d  t h e  l a t e s t  r e l e a s e  f r o m  h e r e .  
+U s a g e :  
+z m a p  - p  8 0  1 0 . 0 . 0 . 0 / 8  1 9 2 . 1 6 8 . 0 . 0 / 1 6  
+F u l l  u s a g e  i n f o r m a t i o n  c a n  b e  f o u n d  h e r e .  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🎇 S h o d a n  
+S h o d a n  i s a  s e a r c h  e n g i n e  f o r  i n t e r n e t - c o n n e c t e d  d e v i c e s .
+I t  c r a w l s  t h e  i n t e r n e t  f o r  a s s e t s ,  a l l o w i n g  u s e r s  t o  s e a r c h  f o r  s p e c i f i c  d e v i c e s  a n d  v i e w  
+i n f o r m a t i o n  a b o u t  t h e m .  
+T h i s  i n f o r m a t i o n  c a n  i n c l u d e  t h e  d e v i c e ' s  I P  a d d r e s s ,  t h e  s o f t w a r e  a n d  v e r s i o n  i t  i s  r u n n i n g ,  
+a n d  t h e  t y p e  o f  d e v i c e  i t  i s .  
+I n s t a l l :  
+T h e  s e a r c h  e n g i n e  c a n  b e  a c c e s s e d  a t  h t t p s : / / w w w . s h o d a n . i o / d a s h b o a r d .  
+U s a g e :  
+S h o d a n  q u e r y  f u n d a m e n t a l s  
+S h o d a n  q u e r y  e x a m p l e s  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+V u l n e r a b i l i t y  M a n a g e m e n t  
+B l o g :  h t t p s : / / w w w . k a l i . o r g / b l o g / o p e n v a s - v u l n e r a b i l i t y - s c a n n i n g /  
+O p e n V A S  i s  a n  o p e n - s o u r c e  v u l n e r a b i l i t y  s c a n n e r  t h a t  h e l p s  i d e n t i f y  s e c u r i t y
+v u l n e r a b i l i t i e s  i n  s o f t w a r e  a n d  n e t w o r k s .  
+I t  i s  a  t o o l  t h a t  c a n  b e  u s e d  t o  p e r f o r m  n e t w o r k  s e c u r i t y  a s s e s s m e n t s  a n d  i s  o f t e n  u s e d  t o  
+i d e n t i f y  v u l n e r a b i l i t i e s  i n  s y s t e m s  a n d  a p p l i c a t i o n s  s o  t h a t  t h e y  c a n  b e  p a t c h e d  o r  
+m i t i g a t e d .
+O p e n V A S  i s  d e v e l o p e d  b y  t h e  G r e e n b o n e  N e t w o r k s  c o m p a n y  a n d  i s  a v a i l a b l e  a s  a  f r e e  a n d  
+o p e n - s o u r c e  s o f t w a r e  a p p l i c a t i o n .  
+•  
+•  
+•  
+•  
+a p t - g e t  u p d a t e  
+a p t - g e t  d i s t - u p g r a d e  
+a p t - g e t  i n s t a l l  o p e n v a s  
+o p e n v a s - s e t u p  
+V i s i t  h t t p s : / / 1 2 7 . 0 . 0 . 1 : 9 3 9 2 ,  a c c e p t  t h e  S S L  c e r t i f i c a t e  p o p u p  a n d  l o g i n  w i t h  a d m i n  
+c r e d e n t i a l s :  
+•  
+•  
+u s e r n a m e : a d m i n  
+p a s s w o r d : ( P a s s w o r d  i n  o p e n v a s - s e t u p  c o m m a n d  o u t p u t )  
+🕸 O p e n V A S  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸 N e s s u s  E s s e n t i a l s  
+N e s s u s i s  a  v u l n e r a b i l i t y  s c a n n e r  t h a t  h e l p s  i d e n t i f y  a n d  a s s e s s  t h e  v u l n e r a b i l i t i e s  t h a t
+e x i s t  w i t h i n  a  n e t w o r k  o r  c o m p u t e r  s y s t e m .  
+I t  i s  a  t o o l  t h a t  i s  u s e d  t o  p e r f o r m  s e c u r i t y  a s s e s s m e n t s  a n d  c a n  b e  u s e d  t o  i d e n t i f y  
+v u l n e r a b i l i t i e s  i n  s y s t e m s  a n d  a p p l i c a t i o n s  s o  t h a t  t h e y  c a n  b e  p a t c h e d  o r  m i t i g a t e d .  
+N e s s u s  i s  d e v e l o p e d  b y  T e n a b l e ,  I n c .  a n d  i s  a v a i l a b l e  i n  b o t h  f r e e  a n d  p a i d  v e r s i o n s :  
+•  T h e  f r e e  v e r s i o n ,  c a l l e d  N e s s u s  E s s e n t i a l s ,  i s  a v a i l a b l e  f o r  p e r s o n a l  u s e  o n l y  a n d  i s  
+l i m i t e d  i n  i t s  c a p a b i l i t i e s  c o m p a r e d  t o  t h e  p a i d  v e r s i o n .  
+T h e  p a i d  v e r s i o n ,  c a l l e d  N e s s u s  P r o f e s s i o n a l ,  i s  m o r e  f u l l y  f e a t u r e d  a n d  i s  i n t e n d e d  
+f o r  u s e  i n  a  p r o f e s s i o n a l  s e t t i n g .  
+•  
+I n s t a l l :  
+R e g i s t e r  f o r  a  N e s s u s  E s s e n t i a l s  a c t i v a t i o n  c o d e  h e r e  a n d  d o w n l o a d .  
+U s a g e :  
+E x t e n s i v e  d o c u m e n t a t i o n  c a n  b e  f o u n d  h e r e .  
+N e s s u s  P l u g i n s  S e a r c h  
+T e n a b l e  C o m m u n i t y  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸
+🕸
+N e x p o s e  
+ 
+H a c k e r O n e  
+H a c k e r O n e  i s  a b u g b o u n t y  m a n a g e m e n t  c o m p a n y  t h a t  c a n  b e  u s e d  t o  c r e a t e  a n d  m a n a g e
+b u g  b o u n t y  p r o g r a m s  f o r  y o u r  b u s i n e s s .  
+B u g  b o u n t y  p r o g r a m s  a r e  a  g r e a t  w a y  t o  o u t s o u r c e  e x t e r n a l  v u l n e r a b i l i t y  a s s e s s m e n t s ,  w i t h  
+t h e  p l a t f o r m  o f f e r i n g  b o t h  p r i v a t e  a n d  p u b l i c  p r o g r a m s  w i t h  t h e  a b i l i t y  s e t  p r o g r a m  s c o p e s  
+a n d  r u l e s  o f  e n g a g e m e n t .  
+H a c k e r O n e  a l s o  o f f e r  i n i t i a l  t r i a g e  a n d  m a n a g e m e n t  o f  e x t e r n a l  b u g  r e p o r t s  f r o m  
+r e s e a r c h e r s ,  w i t h  t h e  a b i l i t y  t o  c o m p e n s a t e  r e s e a r c h e r s  d i r e c t l y  t h r o u g h  t h e  p l a t f o r m .  
+N e x p o s e i s  a  v u l n e r a b i l i t y  m a n a g e m e n t  t o o l  d e v e l o p e d  b y  R a p i d 7 .  I t  i s  d e s i g n e d  t o  h e l p
+o r g a n i z a t i o n s  i d e n t i f y  a n d  a s s e s s  v u l n e r a b i l i t i e s  i n  t h e i r  s y s t e m s  a n d  a p p l i c a t i o n s  i n  o r d e r
+t o  m i t i g a t e  r i s k  a n d  i m p r o v e  s e c u r i t y .  
+N e x p o s e  c a n  b e  u s e d  t o  s c a n  n e t w o r k s ,  d e v i c e s ,  a n d  a p p l i c a t i o n s  i n  o r d e r  t o  i d e n t i f y  
+v u l n e r a b i l i t i e s  a n d  p r o v i d e  r e c o m m e n d a t i o n s  f o r  r e m e d i a t i o n .  
+I t  a l s o  o f f e r s  f e a t u r e s  s u c h  a s  a s s e t  d i s c o v e r y ,  r i s k  p r i o r i t i z a t i o n ,  a n d  i n t e g r a t i o n  w i t h  o t h e r  
+t o o l s  i n  t h e  R a p i d 7  v u l n e r a b i l i t y  m a n a g e m e n t  p l a t f o r m .  
+I n s t a l l :  
+F o r  d e t a i l e d  i n s t a l l a t i o n  i n s t r u c t i o n s  s e e  h e r e .  
+U s a g e :  
+F o r  f u l l  l o g i n  i n f o r m a t i o n  s e e  h e r e .  
+F o r  u s a g e a n d s c a n c r e a t i o n  i n s t r u c t i o n s  s e e  h e r e .  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+S y s m o n  
+S e c u r i t y  M o n i t o r i n g  
+🕸
+S y s m o n i s  a W i n d o w s  s y s t e m  m o n i t o r  t h a t  t r a c k s  s y s t e m  a c t i v i t y  a n d  l o g s  i t  t o  t h e
+W i n d o w s  e v e n t  l o g .  
+I t  p r o v i d e s  d e t a i l e d  i n f o r m a t i o n  a b o u t  s y s t e m  a c t i v i t y ,  i n c l u d i n g  p r o c e s s  c r e a t i o n  a n d  
+t e r m i n a t i o n ,  n e t w o r k  c o n n e c t i o n s ,  a n d  c h a n g e s  t o  f i l e  c r e a t i o n  t i m e .  
+S y s m o n  c a n  b e  c o n f i g u r e d  t o  m o n i t o r  s p e c i f i c  e v e n t s  o r  p r o c e s s e s  a n d  c a n  b e  u s e d  t o  
+a l e r t  a d m i n i s t r a t o r s  o f  s u s p i c i o u s  a c t i v i t y  o n  a  s y s t e m .  
+I n s t a l l :  
+D o w n l o a d  t h e  s y s m o n  b i n a r y  f r o m  h e r e .  
+U s a g e :  
+s y s m o n  - a c c e p t e u l a  - I  s y s m o n c o n f i g . x m l  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸 E L K  S t a c k :  
+K i b a n a
+K i b a n a  i s  a n  o p e n - s o u r c e  d a t a  v i s u a l i z a t i o n  a n d  e x p l o r a t i o n  t o o l  t h a t  i s  o f t e n  u s e d  f o r  l o g  
+a n a l y s i s  i n  c o m b i n a t i o n  w i t h  E l a s t i c s e a r c h .  
+K i b a n a  p r o v i d e s  a  u s e r - f r i e n d l y  i n t e r f a c e  f o r  s e a r c h i n g ,  v i s u a l i z i n g ,  a n d  a n a l y z i n g  l o g  d a t a ,  
+w h i c h  c a n  b e  h e l p f u l  f o r  i d e n t i f y i n g  p a t t e r n s  a n d  t r e n d s  t h a t  m a y  i n d i c a t e  a  s e c u r i t y  t h r e a t .  
+K i b a n a  c a n  b e  u s e d  t o  a n a l y z e  a  w i d e  r a n g e  o f  d a t a  s o u r c e s ,  i n c l u d i n g  s y s t e m  l o g s ,  
+n e t w o r k  l o g s ,  a n d  a p p l i c a t i o n  l o g s .  I t  c a n  a l s o  b e  u s e d  t o  c r e a t e  c u s t o m  d a s h b o a r d s  a n d  
+a l e r t s  t o  h e l p  s e c u r i t y  t e a m s  s t a y  i n f o r m e d  a b o u t  p o t e n t i a l  t h r e a t s  a n d  r e s p o n d  q u i c k l y  t o  
+i n c i d e n t s .  
+I n s t a l l :  
+Y o u  c a n  d o w n l o a d  K i b a n a  f r o m  h e r e .  
+I n s t a l l a t i o n  i n s t r u c t i o n s  c a n  b e  f o u n d  h e r e .  
+U s a g e :  ( V i s u a l i z e  a n d  e x p l o r e  l o g  d a t a )  
+K i b a n a  p r o v i d e s  a  r a n g e  o f  v i s u a l i z a t i o n  t o o l s  t h a t  c a n  h e l p  y o u  i d e n t i f y  p a t t e r n s  a n d  
+t r e n d s  i n  y o u r  l o g  d a t a .  Y o u  c a n  u s e  t h e s e  t o o l s  t o  c r e a t e  c u s t o m  d a s h b o a r d s  t h a t  d i s p l a y  
+r e l e v a n t  m e t r i c s  a n d  a l e r t s .
+U s a g e :  ( T h r e a t  A l e r t i n g )  
+K i b a n a  c a n  b e  c o n f i g u r e d  t o  s e n d  a l e r t s  w h e n  i t  d e t e c t s  c e r t a i n  p a t t e r n s  o r  a n o m a l i e s  i n  
+y o u r  l o g  d a t a .  Y o u  c a n  s e t  u p  a l e r t s  t o  n o t i f y  y o u  o f  p o t e n t i a l  s e c u r i t y  t h r e a t s ,  s u c h  a s  f a i l e d  
+l o g i n  a t t e m p t s  o r  n e t w o r k  c o n n e c t i o n s  t o  k n o w n  m a l i c i o u s  I P  a d d r e s s e s .
+N i c e  b l o g  a b o u t  q u e r y i n g  a n d  v i s u a l i z i n g  d a t a  i n  K i b a n a .  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+L o g s t a s h
+L o g s t a s h  i s  a  o p e n - s o u r c e  d a t a  c o l l e c t i o n  e n g i n e  w i t h  r e a l - t i m e  p i p e l i n i n g  c a p a b i l i t i e s .  I t  i s  
+a  s e r v e r - s i d e  d a t a  p r o c e s s i n g  p i p e l i n e  t h a t  i n g e s t s  d a t a  f r o m  a  m u l t i t u d e  o f  s o u r c e s  
+s i m u l t a n e o u s l y ,  t r a n s f o r m s  i t ,  a n d  t h e n  s e n d s  i t  t o  a  " s t a s h "  l i k e  E l a s t i c s e a r c h .
+L o g s t a s h  h a s  a  r i c h  s e t  o f  p l u g i n s ,  w h i c h  a l l o w s  i t  t o  c o n n e c t  t o  a  v a r i e t y  o f  s o u r c e s  a n d  
+p r o c e s s  t h e  d a t a  i n  m u l t i p l e  w a y s .  I t  c a n  p a r s e  a n d  t r a n s f o r m  l o g s ,  t r a n s l a t e  d a t a  i n t o  a  
+s t r u c t u r e d  f o r m a t ,  o r  s e n d  i t  t o  a n o t h e r  t o o l  f o r  f u r t h e r  p r o c e s s i n g .
+W i t h  i t s  a b i l i t y  t o  p r o c e s s  l a r g e  v o l u m e s  o f  d a t a  q u i c k l y ,  L o g s t a s h  i s  a n  i n t e g r a l  p a r t  o f  t h e  
+E L K  s t a c k  ( E l a s t i c s e a r c h ,  L o g s t a s h ,  a n d  K i b a n a )  a n d  i s  o f t e n  u s e d  t o  c e n t r a l i z e ,  t r a n s f o r m ,  
+a n d  m o n i t o r  l o g  d a t a .
+I n s t a l l :
+D o w n l o a d  l o g s t a s h  f r o m  h e r e .
+U s a g e :
+F u l l  l o g s t a s h  d o c u m e n t a t i o n  h e r e .
+C o n f i g u r a t i o n  e x a m p l e s  h e r e .  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸 P a r s e d m a r c  
+A P y t h o n m o d u l e  a n d  C L I  u t i l i t y  f o r  p a r s i n g  D M A R C  r e p o r t s .
+W h e n  u s e d  w i t h  E l a s t i c s e a r c h  a n d  K i b a n a  ( o r  S p l u n k ) ,  i t  w o r k s  a s  a  s e l f - h o s t e d  o p e n  
+s o u r c e  a l t e r n a t i v e  t o  c o m m e r c i a l  D M A R C  r e p o r t  p r o c e s s i n g  s e r v i c e s  s u c h  a s  A g a r i  B r a n d  
+P r o t e c t i o n ,  D m a r c i a n ,  O n D M A R C ,  P r o o f P o i n t  E m a i l  F r a u d  D e f e n s e ,  a n d  V a l i m a i l .
+F e a t u r e s :  
+•
+•
+•
+•
+•
+•
+•
+•  
+P a r s e s  d r a f t  a n d  1 . 0  s t a n d a r d  a g g r e g a t e / r u a  r e p o r t s
+P a r s e s  f o r e n s i c / f a i l u r e / r u f  r e p o r t s
+C a n  p a r s e  r e p o r t s  f r o m  a n  i n b o x  o v e r  I M A P ,  M i c r o s o f t  G r a p h ,  o r  G m a i l  A P I
+T r a n s p a r e n t l y  h a n d l e s  g z i p  o r  z i p  c o m p r e s s e d  r e p o r t s
+C o n s i s t e n t  d a t a  s t r u c t u r e s
+S i m p l e  J S O N  a n d / o r  C S V  o u t p u t
+O p t i o n a l l y  e m a i l  t h e  r e s u l t s
+O p t i o n a l l y  s e n d  t h e  r e s u l t s  t o  E l a s t i c s e a r c h  a n d / o r  S p l u n k ,  f o r  u s e  w i t h  p r e m a d e  
+d a s h b o a r d s  
+O p t i o n a l l y  s e n d  r e p o r t s  t o  A p a c h e  K a f k a  
+•  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸 P h i s h i n g  C a t c h e r  
+A s a b u s i n e s s ,  p h i s h i n g  c a n  c a u s e  r e p u t a t i o n a l  a n d  f i n a n c i a l  d a m a g e  t o  y o u  a n d  y o u r
+c u s t o m e r s .  B e i n g  a b l e  t o  p r o a c t i v e l y  i d e n t i f y  p h i s h i n g  i n f r a s t r u c t u r e  t a r g e t i n g  y o u r
+b u s i n e s s  h e l p s  t o  r e d u c e  t h e  r i s k  o f  t h e s e  d a m a g e s .  
+P h i s h  c a t c h e r  a l l o w s  y o u  t o  c a t c h  p o s s i b l e  p h i s h i n g  d o m a i n s  i n  n e a r  r e a l  t i m e  b y  l o o k i n g  
+f o r  s u s p i c i o u s  T L S  c e r t i f i c a t e  i s s u a n c e s  r e p o r t e d  t o  t h e  C e r t i f i c a t e  T r a n s p a r e n c y  L o g  ( C T L )  
+v i a  t h e  C e r t S t r e a m  A P I .
+" S u s p i c i o u s "  i s s u a n c e s  a r e  t h o s e  w h o s e  d o m a i n  n a m e  s c o r e s  b e y o n d  a  c e r t a i n  t h r e s h o l d  
+b a s e d  o n  a  c o n f i g u r a t i o n  f i l e .  
+m a l t r a i l  
+M a l t r a i l  i s  a  m a l i c i o u s  t r a f f i c  d e t e c t i o n  s y s t e m ,  u t i l i z i n g  p u b l i c l y  a v a i l a b l e  l i s t s  c o n t a i n i n g  
+m a l i c i o u s  a n d / o r  g e n e r a l l y  s u s p i c i o u s  t r a i l s ,  a l o n g  w i t h  s t a t i c  t r a i l s  c o m p i l e d  f r o m  v a r i o u s  
+A V  r e p o r t s  a n d  c u s t o m  u s e r  d e f i n e d  l i s t s .  A  t r a i l  c a n  b e  a n y t h i n g  f r o m  d o m a i n  n a m e ,  U R L ,  
+I P  a d d r e s s  o r  H T T P  U s e r - A g e n t  h e a d e r  v a l u e .  
+A  d e m o  p a g e  f o r  t h i s  t o o l  c a n  b e  f o u n d  h e r e .  
+I n s t a l l :  
+s u d o  a p t - g e t  i n s t a l l  g i t  p y t h o n 3  p y t h o n 3 - d e v  p y t h o n 3 - p i p  p y t h o n - i s - p y t h o n 3  l i b p c a p - d e v  
+b u i l d - e s s e n t i a l  p r o c p s  s c h e d t o o l  
+s u d o  p i p 3  i n s t a l l  p c a p y - n g  
+g i t  c l o n e  - - d e p t h  1  h t t p s : / / g i t h u b . c o m / s t a m p a r m / m a l t r a i l . g i t  
+c d  m a l t r a i l  
+U s a g e :  
+s u d o  p y t h o n 3  s e n s o r . p y  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+V e l o c i r a p t o r  🕸
+V e l o c i r a p t o r i s a  u n i q u e , a d v a n c e d  o p e n - s o u r c e  e n d p o i n t  m o n i t o r i n g ,  d i g i t a l  f o r e n s i c  a n d  c y b e r  
+r e s p o n s e  p l a t f o r m .  
+I t  w a s  d e v e l o p e d  b y  D i g i t a l  F o r e n s i c  a n d  I n c i d e n t  R e s p o n s e  ( D F I R )  p r o f e s s i o n a l s  w h o  n e e d e d  a  
+p o w e r f u l  a n d  e f f i c i e n t  w a y  t o  h u n t  f o r  s p e c i f i c  a r t i f a c t s  a n d  m o n i t o r  a c t i v i t i e s  a c r o s s  f l e e t s  o f  
+e n d p o i n t s .  V e l o c i r a p t o r  p r o v i d e s  y o u  w i t h  t h e  a b i l i t y  t o  m o r e  e f f e c t i v e l y  r e s p o n d  t o  a  w i d e  r a n g e  
+o f  d i g i t a l  f o r e n s i c  a n d  c y b e r  i n c i d e n t  r e s p o n s e  i n v e s t i g a t i o n s  a n d  d a t a  b r e a c h e s :  
+F e a t u r e s :  
+•  
+•  
+•  
+•  
+•  
+•  
+R e c o n s t r u c t  a t t a c k e r  a c t i v i t i e s  t h r o u g h  d i g i t a l  f o r e n s i c  a n a l y s i s  
+H u n t  f o r  e v i d e n c e  o f  s o p h i s t i c a t e d  a d v e r s a r i e s  
+I n v e s t i g a t e  m a l w a r e  o u t b r e a k s  a n d  o t h e r  s u s p i c i o u s  n e t w o r k  a c t i v i t i e s  
+M o n i t o r y  c o n t i n u o u s l y  f o r  s u s p i c i o u s  u s e r  a c t i v i t i e s ,  s u c h  a s  f i l e s  c o p i e d  t o  U S B  d e v i c e s  
+D i s c o v e r  w h e t h e r  d i s c l o s u r e  o f  c o n f i d e n t i a l  i n f o r m a t i o n  o c c u r r e d  o u t s i d e  t h e  n e t w o r k  
+G a t h e r  e n d p o i n t  d a t a  o v e r  t i m e  f o r  u s e  i n  t h r e a t  h u n t i n g  a n d  f u t u r e  i n v e s t i g a t i o n s  
+I n s t a l l :  
+D o w n l o a d  t h e  b i n a r y  f r o m  t h e  r e l e a s e  p a g e .  
+I n s t a l l i n g  V e l o c i r a p t o r  
+W e  w i l l  i n s t a l l  V e l o c i r a p t o r  o n  a n  U b u n t u  V M .  T h e  i n s t a l l a t i o n  i s  t h e  s a m e  r e g a r d l e s s  o f  t h e  
+h y p e r v i s o r  y o u  u s e  P r o x m o x ,  V i r t u a l b o x ,  o r  V M W a r e .  B e f o r e  i n s t a l l i n g  i t  i s  i m p o r t a n t  t o  g i v e  t h e  
+U b u n t u  a  s t a t i c  I P  a d d r e s s .  U s e  t h e  c o m m a n d  b e l o w  t o  s e t  a  s t a t i c  I P  a d d r e s s .  I f  n e t - t o o l s  i s  n o t  
+a l r e a d y  i n s t a l l e d ,  i n s t a l l  t h e m  n o w .  
+•  s u d o  a p t  i n s t a l l  n e t - t o o l s  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+ 
+D o w n l o a d  V e l o c i r a p t o r  f r o m  t h e  g i t h u b  p a g e  u s i n g  t h e  w g e t  c o m m a n d  b e l o w .  
+w g e t  h t t p s : / / g i t h u b . c o m / V e l o c i d e x / v e l o c i r a p t o r / r e l e a s e s / d o w n l o a d / v 0 . 7 3 / v e l o c i r a p t o r - v 0 . 7 3 . 1 -
+l i n u x - a m d 6 4  
+R u n  l s  - l a  t o  c o n f i r m  t h e  d o w n l o a d  a n d  t h e n  c h a n g e  t h e  p e r m i s s i o n  t o  a l l o w  u s  t o  e x e c t u t e  i t .  
+l s  - l a  
+c h m o d  7 6 4  v e l o c i r a p t o r - v 0 . 7 3 . 1 - l i n u x - a m d 6 4  
+s u d o  m k d i r  / o p t / v e l o c i r a p t o r  
+s u d o  . / v e l o c i r a p t o r - v 0 . 7 3 . 1 - l i n u x - a m d 6 4  c o n f i g  g e n e r a t e  - i  
+M a k e  t h e  f o l l o w i n g  s e l e c t i o n s  d u r i n g  t h e  i n t e r a c t i v e  c o n f i g u r a t i o n .  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+l s  - l a  / o p t / v e l o c i r a p t o r
+W e  n e e d  t o  e d i t  t h e  s e r v e r  . y a m l  b y  u s i n g  t h e  t e x t  e d i t o r  n a n o  t o  c h a n g e  t h e  G U I  I P  a d d r e s s  t o  
+t h e  I P  a d d r e s s  o f  t h e  V e l o c i r a p t o r  s e r v e r  w e  j u s t  i n s t a l l e d .  
+s u d o  n a n o  / o p t / v e l o c i r a p t o r / s e r v e r . c o n f i g . y a m l  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+N o w  t h a t  t h e  p a c k a g e  i s  c r e a t e d  w e  c a n  r u n  i t .
+s u d o  d p k g  - i  v e l o c i r a p t o r _ s e r v e r _ 0 . 7 3 . 1 _ a m d 6 4 . d e b  
+S c r o l l  d o w n  t o  G U I  b i n d  I P  a d d r e s s  a n d  c h a n g e  t h e  I P  a d d r e s s  f r o m  1 2 7 . 0 . 0 . 1  t o  t h e  I P  o f  t h e
+s e r v e r ,  i n  m y  c a s e  i t  i s  1 0 . 0 . 2 . 8 .  
+C r e a t e  a  d e b i a n  p a c k a g e  f o r  t h e  s e r v e r  b y  u s i n g  t h e  c o m m a n d  b e l o w .
+s u d o  . / v e l o c i r a p t o r - v 0 . 7 3 . 1 - l i n u x - a m d 6 4  — c o n f i g  / o p t / v e l o c i r a p t o r / s e r v e r . c o n f i g . y a m l  d e b i a n  
+s e r v e r  - - b i n a r y  v e l o c i r a p t o r - v 0 . 7 3 . 1 - l i n u x - a m d 6 4  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+T h e  p a c k a g e  c r e a t e d  a  n e w  g r o u p ,  s y s t e m  u s e r ,  a n d  t h e  v e l o c i r a p t o r  p r o c e s s .  W e  c a n  c o n f i r m
+t h e  s e r v i c e  i s  r u n n i n g  b y  u s i n g  t h e  c o m m a n d  b e l o w .  
+s y s t e m c t l  s t a t u s  v e l o c i r a p t o r _ s e r v e r . s e r v i c e  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+ 
+T o  c r e a t e  a  c l i e n t  w e  n e e d  t o  d o w n l o a d  t h e  W i n d o w s  V e l o c i r a p t o r  b i n a r y .  W e  c a n  d o w n l o a d  i t  
+f r o m  t h e  g i t h u b  s i m i l a r  t o  t h e  w a y  w e  d o w n l o a d e d  t h e  L i n u x  V e l o c i r a p t o r  b i n a r y .  
+w g e t  h t t p s : / / g i t h u b . c o m / V e l o c i d e x / v e l o c i r a p t o r / r e l e a s e s / d o w n l o a d / v 0 . 7 3 / v e l o c i r a p t o r - v 0 . 7 3 . 1 -
+w i n d o w s - a m d 6 4  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+R e p a c k a g e  t h e  b i n a r y  b y  i m p o r t i n g  i n  t h e  c l i e n t  c o n f i g  f i l e  w e  c r e a t e d  e a r l i e r
+s u d o  . / v e l o c i r a p t o r - v 0 . 7 3 . 1 - l i n u x - a m d 6 4  c o n f i g  r e p a c k  - - e x e  v e l o c i r a p t o r - v 0 . 7 3 . 1 - w i n d o w s -
+a m d 6 4  / o p t / v e l o c i r a p t o r / c l i e n t . c o n f i g . y a m l  v r a p t o r c l i e n t . e x e  
+A s  s e e n  a b o v e  t h e  . e x e  f i l e  w a s  c r e a t e d .
+T o  m o v e  t h e  . e x e  t o  o u r  W i n d o w s  V M  w e  c a n  s e t  u p  a  w e b s e r v e r  u s i n g  p y t h o n ’ s  w e b s e r v e r  
+m o d u l e .  
+s u d o  p y t h o n 3  - m  h t t p . s e r v e r  1 3 3 7  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🎇 S y s m o n S e a r c h  
+S y s m o n S e a r c h  m a k e s  e v e n t  l o g  a n a l y s i s  m o r e  e f f e c t i v e  a n d  l e s s  t i m e  c o n s u m i n g ,  b y
+a g g r e g a t i n g  e v e n t  l o g s  g e n e r a t e d  b y  M i c r o s o f t ' s  S y s m o n .  
+S y s m o n S e a r c h  u s e s  E l a s t i c s e r a c h  a n d  K i b a n a  ( a n d  K i b a n a  p l u g i n ) .  
+•  E l a s t i c s e r a c h  
+E l a s t i c s e a r c h  c o l l e c t s / s t o r e s  S y s m o n ' s  e v e n t  l o g .  
+K i b a n a  
+K i b a n a  p r o v i d e s  u s e r  i n t e r f a c e  f o r  y o u r  S y s m o n ' s  e v e n t  l o g  a n a l y s i s .  T h e  f o l l o w i n g  
+f u n c t i o n s  a r e  i m p l e m e n t e d  a s  K i b a n a  p l u g i n .  
+•  
+o  V i s u a l i z e s  F u n c t i o n  
+T h i s  f u n c t i o n  v i s u a l i z e s  S y s m o n ' s  e v e n t  l o g s  t o  i l l u s t r a t e  c o r r e l a t i o n  o f  
+p r o c e s s e s  a n d  n e t w o r k s .  
+S t a t i s t i c a l  F u n c t i o n  
+T h i s  f u n c t i o n  c o l l e c t s  t h e  s t a t i s t i c s  o f  e a c h  d e v i c e  o r  S y s m o n ' s  e v e n t  I D .  
+M o n i t o r  F u n c t i o n  
+T h i s  f u n c t i o n  m o n i t o r  i n c o m i n g  l o g s  b a s e d  o n  t h e  p r e c o n f i g u r e d  r u l e s ,  a n d  
+t r i g e r s  a l e r t .  
+o  
+o  
+•  S t i x I o C  s e r v e r  
+Y o u  c a n  a d d  s e a r c h / m o n i t o r  c o n d i t i o n  b y  u p l o a d i n g  S T I X / I O C  f i l e .  F r o m  S t i x I o C  s e r v e r  
+W e b  U I ,  y o u  c a n  u p l o a d  S T I X v 1 ,  S T I X v 2  a n d  O p e n I O C  f o r m a t  f i l e s .  
+I n s t a l l :  ( L i n u x )
+g i t  c l o n e  h t t p s : / / g i t h u b . c o m / J P C E R T C C / S y s m o n S e a r c h . g i t
+M o d i f y  E l a s t i c s e a r c h  c o n f i g u r a t i o n
+M o d i f y  K i b a n a  c o n f i g u r a t i o n
+F u l l  i n s t a l l a t i o n  i n s t r u c t i o n s  c a n  b e  f o u n d  h e r e .
+U s a g e : O n c e  E l a s t i c s e a r c h  a n d  K i b a n a  c o n f i g u r a t i o n s  h a v e  b e e n  m o d i f i e d ,  r e s t a r t  t h e  s e r v i c e s  
+a n d  n a v i g a t e  t o  y o u r  K i b a n a  i n t e r f a c e .  T h e  S y s m o n S e a r c h  r i b b o n  s h o u l d  b e  v i s i b l e .  
+V i s u a l i z e  t h e  S y s m o n  l o g  t o  i n v e s t i g a t e  s u s p i c i o u s  b e h a v i o r  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸 W a z u h  
+1 . O p e r a t i n g  S y s t e m :  
+•
+•  
+L i n u x  d i s t r i b u t i o n s  ( D e b i a n ,  U b u n t u ,  C e n t O S ,  R H E L ,  A m a z o n  L i n u x )
+W i n d o w s  ( f o r  a g e n t  i n s t a l l a t i o n  o n l y )  
+2 .  H a r d w a r e  ( d e p e n d s  o n  e n v i r o n m e n t  s i z e ) :  
+•  S m a l l  d e p l o y m e n t  ( u p  t o  1 , 0 0 0  a g e n t s ) :  
+o
+o
+o  
+C P U :  2  c o r e s
+R A M :  4  G B
+D i s k :  2 0  G B  
+•  M e d i u m  d e p l o y m e n t  ( u p  t o  5 , 0 0 0  a g e n t s ) :  
+o
+o
+o  
+C P U :  4  c o r e s
+R A M :  8 – 1 6  G B
+D i s k :  5 0 – 1 0 0  G B  
+•  L a r g e  d e p l o y m e n t  ( t e n s  o f  t h o u s a n d s  o f  a g e n t s ) :  
+o
+o  
+C P U :  8 +  c o r e s
+R A M :  3 2 +  G B  
+o  D i s k :  2 0 0 +  G B  ( S S D  r e c o m m e n d e d )  
+3 .  S o f t w a r e  D e p e n d e n c i e s :  
+•
+•
+•
+•
+•  
+E l a s t i c s e a r c h  ( 7 . x  f o r  W a z u h  4 . x ,  8 . x  f o r  W a z u h  5 . x )
+K i b a n a  ( m a t c h i n g  v e r s i o n  w i t h  E l a s t i c s e a r c h )
+O p e n J D K  1 1  ( f o r  E l a s t i c s e a r c h )
+F i l e b e a t  /  L o g s t a s h  ( o p t i o n a l  f o r  l o g  f o r w a r d i n g )
+P y t h o n  3 . x  ( f o r  s o m e  W a z u h  s c r i p t s )  
+4 .  N e t w o r k  R e q u i r e m e n t s :  
+•
+•
+•
+•  
+T C P  1 5 1 4  ( a g e n t  →  m a n a g e r ,  d e f a u l t )
+T C P  5 5 0 0 0  ( a g e n t  r e g i s t r a t i o n ,  o p t i o n a l )
+T C P  4 4 3 / 5 6 0 1  ( K i b a n a )
+T C P  9 2 0 0  ( E l a s t i c s e a r c h )  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+T h r e a t  T o o l s  a n d  T e c h n i q u e s  
+L i v i n g  o f f  t h e  l a n d  b i n a r i e s  ( L O L B i n s )  a r e  l e g i t i m a t e  W i n d o w s  e x e c u t a b l e s  t h a t  c a n  b e  u s e d  b y
+t h r e a t  a c t o r s  t o  c a r r y  o u t  m a l i c i o u s  a c t i v i t i e s  w i t h o u t  r a i s i n g  s u s p i c i o n .  
+U s i n g  L O L B i n s  a l l o w s  a t t a c k e r s  t o  b l e n d  i n  w i t h  n o r m a l  s y s t e m  a c t i v i t y  a n d  e v a d e  d e t e c t i o n ,  
+m a k i n g  t h e m  a  p o p u l a r  c h o i c e  f o r  m a l i c i o u s  a c t o r s .  
+T h e  L O L B A S  p r o j e c t  i s  a  M I T R E  m a p p e d  l i s t  o f  L O L B I N S  w i t h  c o m m a n d s ,  u s a g e  a n d  d e t e c t i o n  
+i n f o r m a t i o n  f o r  d e f e n d e r s .  
+V i s i t  h t t p s : / / l o l b a s - p r o j e c t . g i t h u b . i o / .  
+U s a g e :  
+U s e  t h e  i n f o r m a t i o n  f o r  d e t e c t i o n  o p p o r t u n i t i e s  t o  h a r d e n  y o u r  i n f r a s t r u c t u r e  a g a i n s t  L O L B I N  
+u s a g e .  
+H e r e  a r e  s o m e  p r o j e c t  l i n k s  t o  g e t  s t a r t e d :  
+•  
+•  
+•  
+B i t s a d m i n . e x e  
+C e r t u t i l . e x e  
+C s c r i p t . e x e  
+lolbas-project.github.io  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+gtfobins.github.io  ⚒
+G T F O B i n s  ( s h o r t  f o r  " G e t T h e  F *  O u t  B i n a r i e s " )  i s  a  c o l l e c t i o n  o f  U n i x  b i n a r i e s  t h a t  c a n  b e  u s e d  
+t o  e s c a l a t e  p r i v i l e g e s ,  b y p a s s  r e s t r i c t i o n s ,  o r  e x e c u t e  a r b i t r a r y  c o m m a n d s  o n  a  s y s t e m .  
+T h e y  c a n  b e  u s e d  b y  t h r e a t  a c t o r s  t o  g a i n  u n a u t h o r i z e d  a c c e s s  t o  s y s t e m s  a n d  c a r r y  o u t  
+m a l i c i o u s  a c t i v i t i e s .  
+T h e  G T F O B i n s  p r o j e c t  i s  a  l i s t  o f  U n i x  b i n a r i e s  w i t h  c o m m a n d  a n d  u s a g e  i n f o r m a t i o n  f o r  
+a t t a c k e r s .  T h i s  i n f o r m a t i o n  c a n  b e  u s e d  t o  i m p l e m e n t  u n i x  d e t e c t i o n s .  
+V i s i t  h t t p s : / / g t f o b i n s . g i t h u b . i o / .  
+U s a g e :  
+H e r e  a r e  s o m e  p r o j e c t  l i n k s  t o  g e t  s t a r t e d :  
+•  
+•  
+•  
+b a s e 6 4  
+c u r l  
+n a n o  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸 f i l e s e c . i o  
+F i l e s e c  i s  a l i s t  o f f i l e  e x t e n s i o n s  t h a t  c a n  b e  u s e d  b y  a t t a c k e r s  f o r  p h i s h i n g ,  e x e c u t i o n ,  m a c r o s
+e t c .  
+T h i s  i s  a  n i c e  r e s o u r c e  t o  u n d e r s t a n d  t h e  m a l i c i o u s  u s e  c a s e s  o f  c o m m o n  f i l e  e x t e n t i o n s  a n d  
+w a y s  t h a t  y o u  c a n  d e f e n d  a g a i n s t  t h e m .  
+E a c h  f i l e  e x t e n s i o n  p a g e  c o n t a i n s  a  d e s c r i p t i o n ,  r e l a t e d  o p e r a t i n g  s y s t e m  a n d  
+r e c o m m e n d a t i o n s .  
+V i s i t  h t t p s : / / f i l e s e c . i o / .  
+U s a g e :  
+H e r e  a r e  s o m e  p r o j e c t  l i n k s  t o  g e t  s t a r t e d :  
+•  
+•  
+•  
+. D o c m  
+. I s o  
+. P p a m  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+K Q L  S e a r c h  
+K Q L  s t a n d s f o r " K u s t o  Q u e r y  L a n g u a g e " ,  a n d  i t  i s  a  q u e r y  l a n g u a g e  u s e d  t o  s e a r c h  a n d  f i l t e r  d a t a
+i n  A z u r e  M o n i t o r  l o g s .  I t  i s  s i m i l a r  t o  S Q L ,  b u t  i s  m o r e  o p t i m i z e d  f o r  l o g  a n a l y t i c s  a n d  t i m e - s e r i e s
+d a t a .  
+K Q L  q u e r y  l a n g u a g e  i s  p a r t i c u l a r l y  u s e f u l  f o r  b l u e  t e a m e r s  b e c a u s e  i t  a l l o w s  y o u  t o  q u i c k l y  a n d  
+e a s i l y  s e a r c h  t h r o u g h  l a r g e  v o l u m e s  o f  l o g  d a t a  t o  i d e n t i f y  s e c u r i t y  e v e n t s  a n d  a n o m a l i e s  t h a t  
+m a y  i n d i c a t e  a  t h r e a t .
+K Q L  S e a r c h  i s  a  w e b  a p p  c r e a t e d  b y  @ u g u r k o c d e  t h a t  a g g r e g a t e s  K Q L  q u e r i e s  t h a t  a r e  s h a r e d  
+o n  G i t H u b .  
+Y o u  c a n  v i s i t  t h e  s i t e  a t  h t t p s : / / w w w . k q l s e a r c h . c o m / .  
+M o r e  i n f o r m a t i o n  a b o u t  K u s t o  Q u e r y  L a n g u a g e  ( K Q L )  c a n  b e  f o u n d  h e r e .  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸 U n p r o t e c t  P r o j e c t  
+M a l w a r e  a u t h o r s  s p e n d  a  g r e a t  d e a l  o f  t i m e  a n d  e f f o r t  t o  d e v e l o p  c o m p l e x  c o d e  t o  p e r f o r m
+m a l i c i o u s  a c t i o n s  a g a i n s t  a  t a r g e t  s y s t e m .  I t  i s  c r u c i a l  f o r  m a l w a r e  t o  r e m a i n  u n d e t e c t e d  a n d
+a v o i d  s a n d b o x  a n a l y s i s ,  a n t i v i r u s e s  o r  m a l w a r e  a n a l y s t s .  
+W i t h  t h i s  k i n d  o f  t e c h n i c s ,  m a l w a r e  a r e  a b l e  t o  p a s s  u n d e r  t h e  r a d a r  a n d  s t a y  u n d e t e c t e d  o n  a  
+s y s t e m .  T h e  g o a l  o f  t h i s  f r e e  d a t a b a s e  i s  t o  c e n t r a l i z e  t h e  i n f o r m a t i o n  a b o u t  m a l w a r e  e v a s i o n  
+t e c h n i q u e s .
+T h e  p r o j e c t  a i m s  t o  p r o v i d e  M a l w a r e  A n a l y s t s  a n d  D e f e n d e r s  w i t h  a c t i o n a b l e  i n s i g h t s  a n d  
+d e t e c t i o n  c a p a b i l i t i e s  t o  s h o r t e n  t h e i r  r e s p o n s e  t i m e s .  
+T h e  p r o j e c t  c a n  b e  f o u n d  a t  h t t p s : / / u n p r o t e c t . i t / .  
+T h e  p r o j e c t  h a s  a n  A P I  -  D o c s  h e r e .  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸 C h a i n s a w  
+U s a g e :
+. / c h a i n s a w  h u n t  E V T X - A T T A C K - S A M P L E S /  - s  s i g m a /  - - m a p p i n g  m a p p i n g s / s i g m a - e v e n t - l o g s -
+a l l . y m l  
+C h a i n s a w  p r o v i d e s  a  p o w e r f u l  ‘ f i r s t - r e s p o n s e ’  c a p a b i l i t y  t o  q u i c k l y  i d e n t i f y  t h r e a t s  w i t h i n
+W i n d o w s  f o r e n s i c  a r t e f a c t s  s u c h  a s  E v e n t  L o g s  a n d  M F T s .  C h a i n s a w  o f f e r s  a  g e n e r i c  a n d  f a s t
+m e t h o d  o f  s e a r c h i n g  t h r o u g h  e v e n t  l o g s  f o r  k e y w o r d s ,  a n d  b y  i d e n t i f y i n g  t h r e a t s  u s i n g  b u i l t - i n
+s u p p o r t  f o r  S i g m a  d e t e c t i o n  r u l e s ,  a n d  v i a  c u s t o m  C h a i n s a w  d e t e c t i o n  r u l e s .  
+F e a t u r e s :  
+•  
+•  
+•  
+•  
+•  
+•  
+H u n t  f o r  t h r e a t s  u s i n g  S i g m a  d e t e c t i o n  r u l e s  a n d  c u s t o m  C h a i n s a w  d e t e c t i o n  r u l e s  
+S e a r c h  a n d  e x t r a c t  f o r e n s i c  a r t e f a c t s  b y  s t r i n g  m a t c h i n g ,  a n d  r e g e x  p a t t e r n s  
+L i g h t n i n g  f a s t ,  w r i t t e n  i n  r u s t ,  w r a p p i n g  t h e  E V T X  p a r s e r  l i b r a r y  b y  @ O B e n a m r a m  
+C l e a n  a n d  l i g h t w e i g h t  e x e c u t i o n  a n d  o u t p u t  f o r m a t s  w i t h o u t  u n n e c e s s a r y  b l o a t  
+D o c u m e n t  t a g g i n g  ( d e t e c t i o n  l o g i c  m a t c h i n g )  p r o v i d e d  b y  t h e  T A U  E n g i n e  L i b r a r y  
+O u t p u t  r e s u l t s  i n  a  v a r i e t y  o f  f o r m a t s ,  s u c h  a s  A S C I I  t a b l e  f o r m a t ,  C S V  f o r m a t ,  a n d  J S O N  
+f o r m a t  
+C a n  b e  r u n  o n  M a c O S ,  L i n u x  a n d  W i n d o w s  
+•  
+•
+•
+•
+•  
+I n s t a l l :  
+g i t  c l o n e  h t t p s : / / g i t h u b . c o m / c o u n t e r c e p t / c h a i n s a w . g i t
+c a r g o  b u i l d  - - r e l e a s e
+g i t  c l o n e  h t t p s : / / g i t h u b . c o m / S i g m a H Q / s i g m a
+g i t  c l o n e  h t t p s : / / g i t h u b . c o m / s b o u s s e a d e n / E V T X - A T T A C K - S A M P L E S . g i t  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸 F r e q  
+A d v e r s a r i e s  a t t e m p t  t o  b y p a s s  s i g n a t u r e  b a s e d / p a t t e r n  m a t c h i n g / b l a c k l i s t  t e c h n i q u e s  b y
+i n t r o d u c i n g  r a n d o m :  f i l e n a m e s ,  s e r v i c e  n a m e s ,  w o r k s t a t i o n  n a m e s ,  d o m a i n s ,  h o s t n a m e s ,  S S L
+c e r t  s u b j e c t s  a n d  i s s u e r  s u b j e c t s ,  e t c .  
+F r e q  i s  a  p y t h o n  A P I  d e s i g n e d  b y  M a r k  B a g g e t t  t o  h a n d l e  m a s s  e n t r o p y  t e s t i n g .  I t  w a s  d e s i g n e d  
+t o  b e  u s e d  i n  c o n j u n c t i o n  w i t h  a  S I E M  s o l u t i o n s  b u t  c a n  w o r k  w i t h  a n y t h i n g  t h a t  c a n  s u b m i t  a  
+w e b  r e q u e s t .  
+T h e  t o o l  u s e s  f r e q u e n c y  t a b l e s  t h a t  m a p  h o w  l i k e l y  o n e  c h a r a c t e r  w i l l  f o l l o w  a n o t h e r  
+I n s t a l l :
+g i t  c l o n e  h t t p s : / / g i t h u b . c o m / M a r k B a g g e t t / f r e q
+c d  f r e q
+U s a g e :
+#  R u n n i n g  f r e q _ s e r v e r . p y  o n  p o r t  1 0 0 0 4  a n d  u s i n g  a  f r e q u e n c y  t a b l e  o f  / o p t / f r e q / d n s . f r e q
+/ u s r / b i n / p y t h o n  / o p t / f r e q / f r e q _ s e r v e r . p y  1 0 0 0 4  / o p t / f r e q / d n s . f r e q  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸 Y a r G e n  
+#  U p d a t e  t h e  o n c e  c r e a t e d  d a t a b a s e s  w i t h  t h e  " - u "  p a r a m e t e r
+y a r G e n . p y  - u  - - o p c o d e s  - i  o f f i c e  - g  / o p t / p a c k s / o f f i c e 3 6 5
+U s a g e  e x a m p l e s  c a n  b e  f o u n d  h e r e .  
+y a r G e n i s  a  g e n e r a t o r  f o r  Y A R A  r u l e s
+T h e  m a i n  p r i n c i p l e  i s  t h e  c r e a t i o n  o f  y a r a  r u l e s  f r o m  s t r i n g s  f o u n d  i n  m a l w a r e  f i l e s  w h i l e  
+r e m o v i n g  a l l  s t r i n g s  t h a t  a l s o  a p p e a r  i n  g o o d w a r e  f i l e s .  T h e r e f o r e  y a r G e n  i n c l u d e s  a  b i g  
+g o o d w a r e  s t r i n g s  a n d  o p c o d e  d a t a b a s e  a s  Z I P  a r c h i v e s  t h a t  h a v e  t o  b e  e x t r a c t e d  b e f o r e  t h e  f i r s t  
+u s e .  
+T h e  r u l e  g e n e r a t i o n  p r o c e s s  a l s o  t r i e s  t o  i d e n t i f y  s i m i l a r i t i e s  b e t w e e n  t h e  f i l e s  t h a t  g e t  a n a l y z e d  
+a n d  t h e n  c o m b i n e s  t h e  s t r i n g s  t o  s o  c a l l e d  s u p e r  r u l e s .  T h e  s u p e r  r u l e  g e n e r a t i o n  d o e s  n o t  
+r e m o v e  t h e  s i m p l e  r u l e  f o r  t h e  f i l e s  t h a t  h a v e  b e e n  c o m b i n e d  i n  a  s i n g l e  s u p e r  r u l e .  T h i s  m e a n s  
+t h a t  t h e r e  i s  s o m e  r e d u n d a n c y  w h e n  s u p e r  r u l e s  a r e  c r e a t e d .  Y o u  c a n  s u p p r e s s  a  s i m p l e  r u l e  f o r  
+a  f i l e  t h a t  w a s  a l r e a d y  c o v e r e d  b y  s u p e r  r u l e  b y  u s i n g  - - n o s i m p l e .
+I n s t a l l :
+D o w n l o a d  t h e  l a t e s t  r e l e a s e .
+p i p  i n s t a l l  - r  r e q u i r e m e n t s . t x t
+p y t h o n  y a r G e n . p y  - - u p d a t e
+U s a g e :
+#  C r e a t e  a  n e w  s t r i n g s  a n d  o p c o d e s  d a t a b a s e  f r o m  a n  O f f i c e  2 0 1 3  p r o g r a m  d i r e c t o r y
+y a r G e n . p y  - c  - - o p c o d e s  - i  o f f i c e  - g  / o p t / p a c k s / o f f i c e 2 0 1 3  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+🕸 E m a i l A n a l y z e r  
+W i t h  E m a i l A n a l y z e r y o u c a n  a b l e  t o  a n a l y z e  y o u r  s u s p i c i o u s  e m a i l s .  Y o u  c a n  e x t r a c t  h e a d e r s ,
+l i n k s  a n d  h a s h e s  f r o m  t h e  . e m l  f i l e  
+I n s t a l l :  
+g i t  c l o n e  h t t p s : / / g i t h u b . c o m / k e r a a t t i n / E m a i l A n a l y z e r  
+c d  E m a i l A n a l y z e r  
+U s a g e :  
+#  V i e w  h e a d e r s  i n  e m l  f i l e  
+p y t h o n 3  e m a i l - a n a l y z e r . p y  - f  < e m l  f i l e &gt;  - - h e a d e r s  
+#  G e t  h a s h e s  
+p y t h o n 3  e m a i l - a n a l y z e r . p y  - f  < e m l  f i l e &gt;  - - d i g e s t s  
+#  G e t  l i n k s  
+p y t h o n 3  e m a i l - a n a l y z e r . p y  - f  < e m l  f i l e &gt;  - - l i n k s  
+#  G e t  a t t a c h m e n t s  
+p y t h o n 3  e m a i l - a n a l y z e r . p y  - f  < e m l  f i l e &gt;  - - a t t a c h m e n t s  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+🕸 V C G  
+V C G  i s a n  a u t o m a t e d  c o d e  s e c u r i t y  r e v i e w  t o o l  t h a t  h a n d l e s  C / C + + ,  J a v a ,  C # ,  V B  a n d  P L / S Q L .  I t
+h a s  a  f e w  f e a t u r e s  t h a t  s h o u l d  h o p e f u l l y  m a k e  i t  u s e f u l  t o  a n y o n e  c o n d u c t i n g  c o d e  s e c u r i t y
+r e v i e w s ,  p a r t i c u l a r l y  w h e r e  t i m e  i s  a t  a  p r e m i u m :  
+•  I n  a d d i t i o n  t o  p e r f o r m i n g  s o m e  m o r e  c o m p l e x  c h e c k s  i t  a l s o  h a s  a  c o n f i g  f i l e  f o r  e a c h  
+l a n g u a g e  t h a t  b a s i c a l l y  a l l o w s  y o u  t o  a d d  a n y  b a d  f u n c t i o n s  ( o r  o t h e r  t e x t )  t h a t  y o u  w a n t  
+t o  s e a r c h  f o r
+I t  a t t e m p t s  t o  f i n d  a  r a n g e  o f  a r o u n d  2 0  p h r a s e s  w i t h i n  c o m m e n t s  t h a t  c a n  i n d i c a t e  
+b r o k e n  c o d e  ( “ T o D o ” ,  “ F i x M e ” ,  “ K l u d g e ” ,  e t c . )  
+I t  p r o v i d e s  a  n i c e  p i e  c h a r t  ( f o r  t h e  e n t i r e  c o d e b a s e  a n d  f o r  i n d i v i d u a l  f i l e s )  s h o w i n g  
+r e l a t i v e  p r o p o r t i o n s  o f  c o d e ,  w h i t e s p a c e ,  c o m m e n t s ,  ‘ T o D o ’  s t y l e  c o m m e n t s  a n d  b a d  
+c o d e  
+•  
+•  
+I n s t a l l :
+Y o u  c a n  i n s t a l l  t h e  p r e - c o m p i l e d  b i n a r y  h e r e .
+O p e n  t h e  p r o j e c t  . s l n ,  c h o o s e  " R e l e a s e " ,  a n d  b u i l d .  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+T h r e a t  I n t e l l i g e n c e  
+M I S P  ( s h o r t  f o r  M a l w a r e  I n f o r m a t i o n  S h a r i n g  P l a t f o r m )  i s  a n  o p e n - s o u r c e  p l a t f o r m  f o r  s h a r i n g ,
+s t o r i n g ,  a n d  c o r r e l a t i n g  I n d i c a t o r s  o f  C o m p r o m i s e  ( I O C s )  o f  t a r g e t e d  a t t a c k s ,  t h r e a t s ,  a n d
+m a l i c i o u s  a c t i v i t y .  
+M I S P  i n c l u d e s  a  r a n g e  o f  f e a t u r e s ,  s u c h  a s  r e a l - t i m e  s h a r i n g  o f  I O C s ,  s u p p o r t  f o r  m u l t i p l e  
+f o r m a t s ,  a n d  t h e  a b i l i t y  t o  i m p o r t  a n d  e x p o r t  d a t a  t o  a n d  f r o m  o t h e r  t o o l s .  
+I t  a l s o  p r o v i d e s  a  R E S T f u l  A P I  a n d  v a r i o u s  d a t a  m o d e l s  t o  f a c i l i t a t e  t h e  i n t e g r a t i o n  o f  M I S P  w i t h  
+o t h e r  s e c u r i t y  s y s t e m s .  I n  a d d i t i o n  t o  i t s  u s e  a s  a  t h r e a t  i n t e l l i g e n c e  p l a t f o r m ,  M I S P  i s  a l s o  u s e d  
+f o r  i n c i d e n t  r e s p o n s e ,  f o r e n s i c  a n a l y s i s ,  a n d  m a l w a r e  r e s e a r c h .
+F u l l  i n s t a l l a t i o n  i n s t r u c t i o n s  c a n  b e  f o u n d  h e r e .  
+U s a g e :  
+M I S P  d o c u m e n t a t i o n  c a n  b e  f o u n d  h e r e .  
+M I S P  u s e r  g u i d e  
+M I S P  T r a i n i n g  C h e a t  s h e e t  
+🕸 M I S P  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+ThreatConnect  🕸
+T h r e a t C o n n e c t  i s  a  t h r e a t  i n t e l l i g e n c e  p l a t f o r m  t h a t  h e l p s  o r g a n i z a t i o n s  a g g r e g a t e ,  a n a l y z e ,  a n d  
+a c t  o n  t h r e a t  d a t a .  I t  i s  d e s i g n e d  t o  p r o v i d e  a  s i n g l e ,  u n i f i e d  v i e w  o f  a n  o r g a n i z a t i o n ' s  t h r e a t  
+l a n d s c a p e  a n d  e n a b l e  u s e r s  t o  c o l l a b o r a t e  a n d  s h a r e  i n f o r m a t i o n  a b o u t  t h r e a t s .
+T h e  p l a t f o r m  i n c l u d e s  a  r a n g e  o f  f e a t u r e s  f o r  c o l l e c t i n g ,  a n a l y z i n g ,  a n d  d i s s e m i n a t i n g  t h r e a t  
+i n t e l l i g e n c e ,  s u c h  a s  a  c u s t o m i z a b l e  d a s h b o a r d ,  i n t e g r a t i o n  w i t h  t h i r d - p a r t y  d a t a  s o u r c e s ,  a n d  
+t h e  a b i l i t y  t o  c r e a t e  c u s t o m  r e p o r t s  a n d  a l e r t s .
+I t  i s  i n t e n d e d  t o  h e l p  o r g a n i z a t i o n s  i m p r o v e  t h e i r  s e c u r i t y  p o s t u r e  b y  p r o v i d i n g  t h e m  w i t h  t h e  
+i n f o r m a t i o n  t h e y  n e e d  t o  i d e n t i f y ,  p r i o r i t i z e ,  a n d  r e s p o n d  t o  p o t e n t i a l  t h r e a t s .  
+Y o u  c a n  r e q u e s t  a  d e m o  f r o m  h e r e .  
+T h r e a t C o n n e c t  f o r  T h r e a t  I n t e l  A n a l y s t s  -  P D F  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+Incident Response Planning  
+🕸 N I S T  
+T h e  N I S T C y b e r s e c u r i t y  F r a m e w o r k  ( C S F )  i s  a  f r a m e w o r k  d e v e l o p e d  b y  t h e  N a t i o n a l  I n s t i t u t e  o f
+S t a n d a r d s  a n d  T e c h n o l o g y  ( N I S T )  t o  h e l p  o r g a n i z a t i o n s  m a n a g e  c y b e r s e c u r i t y  r i s k s .  I t  p r o v i d e s  a
+s e t  o f  g u i d e l i n e s ,  b e s t  p r a c t i c e s ,  a n d  s t a n d a r d s  f o r  i m p l e m e n t i n g  a n d  m a i n t a i n i n g  a  r o b u s t
+c y b e r s e c u r i t y  p r o g r a m .  
+T h e  f r a m e w o r k  i s  o r g a n i z e d  a r o u n d  f i v e  c o r e  f u n c t i o n s :  I d e n t i f y ,  P r o t e c t ,  D e t e c t ,  R e s p o n d ,  a n d  
+R e c o v e r .  T h e s e  f u n c t i o n s  p r o v i d e  a  s t r u c t u r e  f o r  u n d e r s t a n d i n g  a n d  a d d r e s s i n g  t h e  v a r i o u s  
+c o m p o n e n t s  o f  c y b e r s e c u r i t y  r i s k .
+T h e  C S F  i s  d e s i g n e d  t o  b e  f l e x i b l e  a n d  a d a p t a b l e ,  a n d  i t  c a n  b e  c u s t o m i z e d  t o  f i t  t h e  s p e c i f i c  
+n e e d s  a n d  g o a l s  o f  a n  o r g a n i z a t i o n .  I t  i s  i n t e n d e d  t o  b e  u s e d  a s  a  t o o l  f o r  i m p r o v i n g  a n  
+o r g a n i z a t i o n ' s  c y b e r s e c u r i t y  p o s t u r e  a n d  f o r  h e l p i n g  o r g a n i z a t i o n s  b e t t e r  u n d e r s t a n d  a n d  
+m a n a g e  t h e i r  c y b e r s e c u r i t y  r i s k s .  
+U s e f u l  L i n k s :  
+N I S T  Q u i c k s t a r t  G u i d e  
+F r a m e w o r k  f o r  I m p r o v i n g  C r i t i c a l  I n f r a s t r u c t u r e  C y b e r s e c u r i t y  
+D a t a  B r e a c h  R e s p o n s e :  A  G u i d e  f o r  B u s i n e s s  
+N I S T  E v e n t s  a n d  P r e s e n t a t i o n s  
+T w i t t e r  -  @ N I S T c y b e r  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+I n c i d e n t  R e s p o n s e  P l a n  
+A n  i n c i d e n t  r e s p o n s e  p l a n  i s  a  s e t  o f  p r o c e d u r e s  t h a t  a  c o m p a n y  p u t s  i n  p l a c e  t o  m a n a g e  a n d
+m i t i g a t e  t h e  i m p a c t  o f  a  s e c u r i t y  i n c i d e n t ,  s u c h  a s  a  d a t a  b r e a c h  o r  a  c y b e r  a t t a c k .  
+T h e  t h e o r y  b e h i n d  a n  i n c i d e n t  r e s p o n s e  p l a n  i s  t h a t  i t  h e l p s  a  c o m p a n y  t o  b e  p r e p a r e d  f o r  a n d  
+r e s p o n d  e f f e c t i v e l y  t o  a  s e c u r i t y  i n c i d e n t ,  w h i c h  c a n  m i n i m i z e  t h e  d a m a g e  a n d  r e d u c e  t h e  
+c h a n c e s  o f  i t  h a p p e n i n g  a g a i n  i n  t h e  f u t u r e .
+T h e r e  a r e  s e v e r a l  r e a s o n s  w h y  b u s i n e s s e s  n e e d  a n  i n c i d e n t  r e s p o n s e  p l a n :  
+1 .  T o  m i n i m i z e  t h e  i m p a c t  o f  a  s e c u r i t y  i n c i d e n t :  A n  i n c i d e n t  r e s p o n s e  p l a n  h e l p s  a  
+c o m p a n y  t o  i d e n t i f y  a n d  a d d r e s s  t h e  s o u r c e  o f  a  s e c u r i t y  i n c i d e n t  a s  q u i c k l y  a s  p o s s i b l e ,  
+w h i c h  c a n  h e l p  t o  m i n i m i z e  t h e  d a m a g e  a n d  r e d u c e  t h e  c h a n c e s  o f  i t  s p r e a d i n g .  
+2 .  T o  m e e t  r e g u l a t o r y  r e q u i r e m e n t s :  M a n y  i n d u s t r i e s  h a v e  r e g u l a t i o n s  t h a t  r e q u i r e  
+c o m p a n i e s  t o  h a v e  a n  i n c i d e n t  r e s p o n s e  p l a n  i n  p l a c e .  F o r  e x a m p l e ,  t h e  P a y m e n t  C a r d  
+I n d u s t r y  D a t a  S e c u r i t y  S t a n d a r d  ( P C I  D S S )  r e q u i r e s  m e r c h a n t s  a n d  o t h e r  o r g a n i z a t i o n s  
+t h a t  a c c e p t  c r e d i t  c a r d s  t o  h a v e  a n  i n c i d e n t  r e s p o n s e  p l a n .  
+3 .  T o  p r o t e c t  r e p u t a t i o n :  A  s e c u r i t y  i n c i d e n t  c a n  d a m a g e  a  c o m p a n y ' s  r e p u t a t i o n ,  w h i c h  
+c a n  l e a d  t o  a  l o s s  o f  c u s t o m e r s  a n d  r e v e n u e .  A n  i n c i d e n t  r e s p o n s e  p l a n  c a n  h e l p  a  
+c o m p a n y  t o  m a n a g e  t h e  s i t u a t i o n  a n d  m i n i m i z e  t h e  d a m a g e  t o  i t s  r e p u t a t i o n .  
+4 .  T o  r e d u c e  t h e  c o s t  o f  a  s e c u r i t y  i n c i d e n t :  T h e  c o s t  o f  a  s e c u r i t y  i n c i d e n t  c a n  b e  
+s i g n i f i c a n t ,  i n c l u d i n g  t h e  c o s t  o f  r e m e d i a t i o n ,  l e g a l  f e e s ,  a n d  l o s t  b u s i n e s s .  A n  i n c i d e n t  
+r e s p o n s e  p l a n  c a n  h e l p  a  c o m p a n y  t o  m i n i m i z e  t h e s e  c o s t s  b y  p r o v i d i n g  a  r o a d m a p  f o r  
+r e s p o n d i n g  t o  t h e  i n c i d e n t .  
+U s e f u l  L i n k s :  
+N a t i o n a l  C y b e r  S e c u r i t y  C e n t r e  -  I n c i d e n t  R e s p o n s e  o v e r v i e w  
+S A N S  -  S e c u r i t y  P o l i c y  T e m p l a t e s  
+S A N S  -  I n c i d e n t  H a n d l e r ' s  H a n d b o o k  
+F R S e c u r e  -  I n c i d e n t  R e s p o n s e  P l a n  T e m p l a t e  
+C y b e r s e c u r i t y  a n d  I n f r a s t r u c t u r e  S e c u r i t y  A g e n c y  -  C Y B E R  I N C I D E N T  R E S P O N S E  
+F B I  -  I n c i d e n t  R e s p o n s e  P o l i c y  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+R a n s o m w a r e  R e s p o n s e  P l a n  
+R a n s o m w a r e i s a  t y p e o f  m a l i c i o u s  s o f t w a r e  t h a t  e n c r y p t s  a  v i c t i m ' s  f i l e s .  T h e  a t t a c k e r s  t h e n
+d e m a n d  a  r a n s o m  f r o m  t h e  v i c t i m  t o  r e s t o r e  a c c e s s  t o  t h e  f i l e s ;  h e n c e  t h e  n a m e  r a n s o m w a r e .  
+T h e  t h e o r y  b e h i n d  a  r a n s o m w a r e  r e s p o n s e  p l a n  i s  t h a t  i t  h e l p s  a  c o m p a n y  t o  b e  p r e p a r e d  f o r  
+a n d  r e s p o n d  e f f e c t i v e l y  t o  a  r a n s o m w a r e  a t t a c k ,  w h i c h  c a n  m i n i m i z e  t h e  i m p a c t  o f  t h e  a t t a c k  
+a n d  r e d u c e  t h e  c h a n c e s  o f  i t  h a p p e n i n g  a g a i n  i n  t h e  f u t u r e .
+T h e r e  a r e  s e v e r a l  r e a s o n s  w h y  b u s i n e s s e s  n e e d  a  r a n s o m w a r e  r e s p o n s e  p l a n :  
+1 .  T o  m i n i m i z e  t h e  i m p a c t  o f  a  r a n s o m w a r e  a t t a c k :  A  r a n s o m w a r e  r e s p o n s e  p l a n  h e l p s  a  
+c o m p a n y  t o  i d e n t i f y  a n d  a d d r e s s  a  r a n s o m w a r e  a t t a c k  a s  q u i c k l y  a s  p o s s i b l e ,  w h i c h  c a n  
+h e l p  t o  m i n i m i z e  t h e  d a m a g e  a n d  r e d u c e  t h e  c h a n c e s  o f  t h e  r a n s o m w a r e  s p r e a d i n g  t o  
+o t h e r  s y s t e m s .  
+2 .  T o  p r o t e c t  a g a i n s t  d a t a  l o s s :  R a n s o m w a r e  a t t a c k s  c a n  r e s u l t  i n  t h e  l o s s  o f  i m p o r t a n t  
+d a t a ,  w h i c h  c a n  b e  c o s t l y  a n d  d i s r u p t i v e  f o r  a  b u s i n e s s .  A  r a n s o m w a r e  r e s p o n s e  p l a n  
+c a n  h e l p  a  c o m p a n y  t o  r e c o v e r  f r o m  a n  a t t a c k  a n d  a v o i d  d a t a  l o s s .  
+3 .  T o  p r o t e c t  r e p u t a t i o n :  A  r a n s o m w a r e  a t t a c k  c a n  d a m a g e  a  c o m p a n y ' s  r e p u t a t i o n ,  
+w h i c h  c a n  l e a d  t o  a  l o s s  o f  c u s t o m e r s  a n d  r e v e n u e .  A  r a n s o m w a r e  r e s p o n s e  p l a n  c a n  
+h e l p  a  c o m p a n y  t o  m a n a g e  t h e  s i t u a t i o n  a n d  m i n i m i z e  t h e  d a m a g e  t o  i t s  r e p u t a t i o n .  
+4 .  T o  r e d u c e  t h e  c o s t  o f  a  r a n s o m w a r e  a t t a c k :  T h e  c o s t  o f  a  r a n s o m w a r e  a t t a c k  c a n  b e  
+s i g n i f i c a n t ,  i n c l u d i n g  t h e  c o s t  o f  r e m e d i a t i o n ,  l e g a l  f e e s ,  a n d  l o s t  b u s i n e s s .  A  
+r a n s o m w a r e  r e s p o n s e  p l a n  c a n  h e l p  a  c o m p a n y  t o  m i n i m i z e  t h e s e  c o s t s  b y  p r o v i d i n g  a  
+r o a d m a p  f o r  r e s p o n d i n g  t o  t h e  a t t a c k .  
+U s e f u l  L i n k s :  
+N a t i o n a l  C y b e r  S e c u r i t y  C e n t r e  -  M i t i g a t i n g  m a l w a r e  a n d  r a n s o m w a r e  a t t a c k s  
+N I S T  -  R a n s o m w a r e  P r o t e c t i o n  a n d  R e s p o n s e  
+C y b e r s e c u r i t y  a n d  I n f r a s t r u c t u r e  S e c u r i t y  A g e n c y  -  R a n s o m w a r e  G u i d e  
+M i c r o s o f t  S e c u r i t y  -  R a n s o m w a r e  r e s p o n s e  
+B l o g  -  C r e a t i n g  a  R a n s o m w a r e  R e s p o n s e  P l a n  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+ N I S T  8 0 0 - 6 1  –  C o m p u t e r  S e c u r i t y  I n c i d e n t  H a n d l i n g  G u i d e
+A u t h o r i t a t i v e  g u i d e  b y  N I S T  o n  h a n d l i n g  a n d  m a n a g i n g  c o m p u t e r  s e c u r i t y  i n c i d e n t s .  
+D o w n l o a d :  N I S T  S P  8 0 0 - 6 1  R e v .  2  ( P D F  
+S A N S  I n c i d e n t  H a n d l e r ’ s  H a n d b o o k  
+P r a c t i c a l  s t e p - b y - s t e p  g u i d a n c e  f o r  i n c i d e n t  r e s p o n s e ,  p u b l i s h e d  b y  S A N S  I n s t i t u t e .  
+D o w n l o a d :  S A N S  W h i t e p a p e  
+T h e H i v e  –  I n c i d e n t  R e s p o n s e  &  C a s e  M a n a g e m e n t  
+O p e n - s o u r c e  p l a t f o r m  f o r  s e c u r i t y  i n c i d e n t  r e s p o n s e  a n d  c a s e  m a n a g e m e n t ,  o f t e n  p a i r e d  w i t h  
+C o r t e x .  
+W e b s i t e :  t h e h i v e - p r o j e c t . o r g  
+S A N S  I n c i d e n t  H a n d l e r ’ s  H a n d b o o k  
+P r a c t i c a l  s t e p - b y - s t e p  g u i d a n c e  f o r  i n c i d e n t  r e s p o n s e ,  p u b l i s h e d  b y  S A N S  I n s t i t u t e .  
+D o w n l o a d :  S A N S  W h i t e p a p e  
+T h e H i v e  –  I n c i d e n t  R e s p o n s e  &  C a s e  M a n a g e m e n t  
+O p e n - s o u r c e  p l a t f o r m  f o r  s e c u r i t y  i n c i d e n t  r e s p o n s e  a n d  c a s e  m a n a g e m e n t ,  o f t e n  p a i r e d  w i t h  
+C o r t e x .  
+W e b s i t e :  t h e h i v e - p r o j e c t . o r g  
+C o r t e x  –  O b s e r v a b l e  A n a l y s i s  &  A u t o m a t e d  R e s p o n s e  
+P o w e r f u l  c o m p a n i o n  t o  T h e H i v e ,  d e s i g n e d  f o r  a n a l y z i n g  o b s e r v a b l e s  a n d  t r i g g e r i n g  a u t o m a t e d  
+r e s p o n s e s .  
+W e b s i t e :  t h e h i v e - p r o j e c t . o r g  
+S h u f f l e  S O A R  –  S e c u r i t y  O r c h e s t r a t i o n ,  A u t o m a t i o n ,  a n d  R e s p o n s e  
+C o m m u n i t y - d r i v e n  S O A R  p l a t f o r m  f o r  a u t o m a t i n g  s e c u r i t y  w o r k f l o w s  a n d  i n t e g r a t i n g  w i t h  I R  
+p r o c e s s e s .  
+W e b s i t e :  s h u f f l e r . i o  
+V e l o c i r a p t o r  –  E n d p o i n t  V i s i b i l i t y  &  F o r e n s i c  C o l l e c t i o n  
+O p e n - s o u r c e  p l a t f o r m  f o r  e n d p o i n t  m o n i t o r i n g ,  l i v e  c o l l e c t i o n ,  a n d  i n c i d e n t  i n v e s t i g a t i o n s .  
+W e b s i t e :  v e l o c i d e x . c o m  
+G R R  R a p i d  R e s p o n s e  –  I n c i d e n t  R e s p o n s e  F r a m e w o r k  b y  G o o g l e  
+G o o g l e ’ s  o p e n - s o u r c e  f r a m e w o r k  f o r  l i v e  r e m o t e  f o r e n s i c s  a n d  i n c i d e n t  r e s p o n s e  a t  s c a l e .  
+G i t H u b :  h t t p s : / / g i t h u b . c o m / g o o g l e / g r r . g i t  
+I R I S  –  I n c i d e n t  R e s p o n s e  I n v e s t i g a t i o n  S y s t e m  
+O p e n - s o u r c e  w e b - b a s e d  p l a t f o r m  f o r  m a n a g i n g  i n c i d e n t  i n v e s t i g a t i o n s  a n d  d i g i t a l  f o r e n s i c s .  
+W e b s i t e :  d f i r - i r i s . o r g  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+M a l w a r e  D e t e c t i o n  a n d  A n a l y s i s :  
+O f f i c i a l  D o w n l o a d  L i n k s  
+•  C u c k o o  S a n d b o x  –  G e t  t h e  l a t e s t  i n s t a l l e r  v i a  p i p  o r  c l o n e  i t s  G i t H u b  r e p o s i t o r y  f o r  
+m a n u a l  s e t u p  a n d  d o c u m e n t a t i o n .  
+I n s t a l l a t i o n :  h t t p s : / / g i t h u b . c o m / c u c k o o s a n d b o x / c u c k o o
+R E M n u x  –  D o w n l o a d  t h e  R E M n u x  v i r t u a l  m a c h i n e  ( O V A  f o r m a t )  t o  i m p o r t  i n t o  y o u r  
+h y p e r v i s o r ,  o r  i n s t a l l  o n  U b u n t u  d i r e t l y :  h t t p s : / / r e m n u x . o r g /  
+I n t e z e r  A n a l y z e  –  A v a i l a b l e  a s  a  C h r o m e  e x t e n s i o n  f o r  h a s h  a n d  U R L  a n a l y s i s ,  o r  u s e  t h e  
+P e S t u d i o  –  P o r t a b l e  W i n d o w s  e x e c u t a b l e  a n a l y s i s  t o o l ;  d o w n l o a d  t h e  f r e e  B a s i c  v e r s i o n  
+( Z I P )  f r o m  t h e  o f f i c i a l  P e S t u d i o  
+G h i d r a  –  D o w n l o a d  t h e  l a t e s t  r e l e a s e  ( m u l t i - p l a t f o r m  Z I P )  f r o m  t h e  o f f i c i a l  G i t H u b  
+r e p o s i t o r y  o r  N S A ’ s  s i t e .  h t t p s : / / g i t h u b . c o m / N a t i o n a l S e c u r i t y A g e n c y / g h i d r a  
+Y A R A  –  A c c e s s  t h e  l a t e s t  r e l e a s e  f r o m  t h e  V i r u s T o t a l  G i t H u b  r e l e a s e s  p a g e  o r  
+S o u r c e F o r g e  m i r r o r .  h t t p s : / / v i r u s t o t a l . g i t h u b . i o / y a r a /  
+C l a m A V  –  O f f e r s  i n s t a l l e r s  a n d  p a c k a g e s  f o r  L i n u x  ( D E B / R P M ) ,  W i n d o w s  ( M S I ) ,  m a c O S  
+( P K G ) ,  D o c k e r ,  a n d  s o u r c e s  f r o m  C l a m A V . n e t .  h t t p s : / / w w w . c l a m a v . n e t /  
+R a d a r e 2  –  C l o n e  t h e  r e p o  a n d  i n s t a l l  v i a  s c r i p t ,  o r  d o w n l o a d  b i n a r i e s  f r o m  G i t H u b  o r  
+S o u r c e F o r g e  
+M a l w a r e B a z a a r  –  ( N o t  l o c a t e d  v i a  s e a r c h  r e s u l t s ;  l i k e l y  a c c e s s e d  v i a  A b u s e . c h ’ s  o f f i c i a l  
+s i t e . )  
+H y b r i d  A n a l y s i s  –  ( N o  d i r e c t  d o w n l o a d  a v a i l a b l e ;  t h i s  i s  a  w e b - b a s e d  a n a l y s i s  p l a t f o r m ,  
+t y p i c a l l y  u s e d  o n l i n e . )  
+•  
+•  
+•  
+•  
+•  
+•  
+•  
+•  
+•  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+ 
+R e c u v a  
+ 
+D a t a  R e c o v e r y  
+T o o l s f o r r e c o v e r i n g  d a t a  f r o m  d a m a g e d o r c o r r u p t e d s y s t e m s  a n d  d e v i c e s .  
+R e c u v a  i s  a d a t a  r e c o v e r y  t o o l  t h a t  c a n  b e  u s e d  t o  r e c o v e r  d e l e t e d  f i l e s  f r o m  y o u r  c o m p u t e r .
+I t  i s  o f t e n  u s e d  t o  r e c o v e r  d e l e t e d  f i l e s  t h a t  m a y  c o n t a i n  v a l u a b l e  i n f o r m a t i o n ,  s u c h  a s  d e l e t e d  
+l o g s  o r  d o c u m e n t s  t h a t  c o u l d  b e  u s e d  t o  i n v e s t i g a t e  a  s e c u r i t y  i n c i d e n t .  
+R e c u v a  c a n  r e c o v e r  f i l e s  f r o m  h a r d  d r i v e s ,  U S B  d r i v e s ,  a n d  m e m o r y  c a r d s ,  a n d  i t  i s  a v a i l a b l e  f o r  
+W i n d o w s  a n d  M a c  o p e r a t i n g  s y s t e m s .  
+I n s t a l l :  
+Y o u  c a n  d o w n l o a d  t h e  t o o l  f r o m  h e r e .  
+U s a g e :  
+N i c e  s t e p  b y  s t e p  g u i d e .  
+🕸
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+E x t u n d e l e t e
+E x t u n d e l e t e  i s  a  u t i l i t y  t h a t  c a n  b e  u s e d  t o  r e c o v e r  d e l e t e d  f i l e s  f r o m  a n  e x t 3  o r  e x t 4  f i l e  s y s t e m .
+I t  w o r k s  b y  s e a r c h i n g  t h e  f i l e  s y s t e m  f o r  b l o c k s  o f  d a t a  t h a t  u s e d  t o  b e l o n g  t o  a  f i l e ,  a n d  t h e n  
+a t t e m p t i n g  t o  r e c r e a t e  t h e  f i l e  u s i n g  t h o s e  b l o c k s  o f  d a t a .  I t  i s  o f t e n  u s e d  t o  r e c o v e r  i m p o r t a n t  
+f i l e s  t h a t  h a v e  b e e n  a c c i d e n t a l l y  o r  m a l i c i o u s l y  d e l e t e d .
+I n s t a l l :
+Y o u  c a n  d o w n l o a d  t h e  t o o l  f r o m  h e r e .
+T e s t D i s k
+T e s t D i s k  i s  a  f r e e  a n d  o p e n - s o u r c e  d a t a  r e c o v e r y  s o f t w a r e  t o o l  t h a t  i s  d e s i g n e d  t o  h e l p  r e c o v e r  
+l o s t  p a r t i t i o n s  a n d  m a k e  n o n - b o o t i n g  d i s k s  b o o t a b l e  a g a i n .  I t  i s  u s e f u l  f o r  b o t h  c o m p u t e r  
+f o r e n s i c s  a n d  d a t a  r e c o v e r y .
+I t  c a n  b e  u s e d  t o  r e c o v e r  d a t a  t h a t  h a s  b e e n  l o s t  d u e  t o  a  v a r i e t y  o f  r e a s o n s ,  s u c h  a s  a c c i d e n t a l  
+d e l e t i o n ,  f o r m a t t i n g ,  o r  c o r r u p t i o n  o f  t h e  p a r t i t i o n  t a b l e .  
+T e s t D i s k  c a n  a l s o  b e  u s e d  t o  r e p a i r  d a m a g e d  b o o t  s e c t o r s ,  r e c o v e r  d e l e t e d  p a r t i t i o n s ,  a n d  
+r e c o v e r  l o s t  f i l e s .  I t  s u p p o r t s  a  w i d e  r a n g e  o f  f i l e  s y s t e m s ,  i n c l u d i n g  F A T ,  N T F S ,  a n d  e x t 2 / 3 / 4 ,  a n d  
+c a n  b e  u s e d  t o  r e c o v e r  d a t a  f r o m  d i s k s  t h a t  a r e  d a m a g e d  o r  f o r m a t t e d  w i t h  a  d i f f e r e n t  f i l e  
+s y s t e m  t h a n  t h e  o n e  t h e y  w e r e  o r i g i n a l l y  c r e a t e d  w i t h .  
+I n s t a l l :  
+Y o u  c a n  d o w n l o a d  t h e  t o o l  f r o m  h e r e .  
+U s a g e :  
+F u l l  u s a g e  e x a m p l e s  h e r e .  
+S t e p  b y  s t e p  g u i d e  
+T e s t D i s k  D o c u m e n t a t i o n  P D F  -  6 0  P a g e s  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+D i g i t a l  F o r e n s i c s  
+S A N S  S I F T  ( S A N S  I n v e s t i g a t i v e  F o r e n s i c  T o o l k i t )  i s  a  p o w e r f u l t o o l k i t  f o r  f o r e n s i c  a n a l y s i s  a n d
+i n c i d e n t  r e s p o n s e .  
+I t  i s  a  c o l l e c t i o n  o f  o p e n  s o u r c e  a n d  c o m m e r c i a l  t o o l s  t h a t  c a n  b e  u s e d  t o  p e r f o r m  f o r e n s i c  
+a n a l y s i s  o n  a  w i d e  r a n g e  o f  s y s t e m s ,  i n c l u d i n g  W i n d o w s ,  L i n u x ,  a n d  M a c  O S  X .  T h e  S A N S  S I F T  
+k i t  i s  d e s i g n e d  t o  b e  r u n  o n  a  f o r e n s i c  w o r k s t a t i o n ,  w h i c h  i s  a  s p e c i a l i z e d  c o m p u t e r  t h a t  i s  u s e d  
+t o  p e r f o r m  f o r e n s i c  a n a l y s i s  o n  d i g i t a l  e v i d e n c e .  
+T h e  S A N S  S I F T  k i t  i s  p a r t i c u l a r l y  u s e f u l  f o r  b l u e  t e a m e r s ,  a s  i t  p r o v i d e s  a  w i d e  r a n g e  o f  t o o l s  a n d  
+r e s o u r c e s  t h a t  c a n  b e  u s e d  t o  i n v e s t i g a t e  i n c i d e n t s ,  r e s p o n d  t o  t h r e a t s ,  a n d  p e r f o r m  f o r e n s i c  
+a n a l y s i s  o n  c o m p r o m i s e d  s y s t e m s .
+I n s t a l l :  
+1 .  V i s i t  h t t p s : / / w w w . s a n s . o r g / t o o l s / s i f t - w o r k s t a t i o n / .
+2 .  C l i c k  t h e  ' L o g i n  t o  D o w n l o a d '  b u t t o n  a n d  i n p u t  ( o r  c r e a t e )  y o u r  S A N S  P o r t a l  a c c o u n t  
+c r e d e n t i a l s  t o  d o w n l o a d  t h e  v i r t u a l  m a c h i n e .  
+3 .  O n c e  y o u  h a v e  b o o t e d  t h e  v i r t u a l  m a c h i n e ,  u s e  t h e  c r e d e n t i a l s  b e l o w  t o  g a i n  a c c e s s .  
+L o g i n  =  s a n s f o r e n s i c s  
+P a s s w o r d  =  f o r e n s i c s  
+N o t e :  U s e  t o  e l e v a t e  p r i v i l e g e s  t o  r o o t  w h i l e  m o u n t i n g  d i s k  i m a g e s .  
+A d d i t i o n a l  i n s t a l l  o p t i o n s  h e r e .  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+T h e  S l e u t h  K i t
+T h e  S l e u t h  K i t  i s  a  c o l l e c t i o n  o f  c o m m a n d  l i n e  t o o l s  t h a t  c a n  b e  u s e d  t o  a n a l y z e  d i s k  i m a g e s  a n d  
+r e c o v e r  f i l e s  f r o m  t h e m .  
+I t  i s  p r i m a r i l y  u s e d  b y  f o r e n s i c  i n v e s t i g a t o r s  t o  e x a m i n e  d i g i t a l  e v i d e n c e  a f t e r  a  c o m p u t e r  h a s  
+b e e n  s e i z e d  o r  a n  i m a g e  o f  a  d i s k  h a s  b e e n  m a d e .  I t  c a n  b e  u s e f u l  b e c a u s e  i t  c a n  h e l p  
+u n d e r s t a n d  w h a t  h a p p e n e d  d u r i n g  a  s e c u r i t y  i n c i d e n t  a n d  i d e n t i f y  a n y  m a l i c i o u s  a c t i v i t y .
+T h e  t o o l s  i n  T h e  S l e u t h  K i t  c a n  b e  u s e d  t o  e x t r a c t  d e l e t e d  f i l e s ,  a n a l y z e  d i s k  p a r t i t i o n  s t r u c t u r e s ,  
+a n d  e x a m i n e  t h e  f i l e  s y s t e m  f o r  e v i d e n c e  o f  t a m p e r i n g  o r  u n u s u a l  a c t i v i t y .  
+I n s t a l l :  
+D o w n l o a d  t o o l  f r o m  h e r e .  
+U s a g e :  
+L i n k  t o  d o c u m e n t a t i o n .  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+A u t o p s y  A u t o p s y  i s  a  d i g i t a l  f o r e n s i c s  p l a t f o r m  a n d  g r a p h i c a l  i n t e r f a c e  t o  T h e  S l e u t h  K i t  a n d  o t h e r
+d i g i t a l  
+f o r e n s i c s  t o o l s .  
+I t  i s  u s e d  b y  l a w  e n f o r c e m e n t ,  m i l i t a r y ,  a n d  c o r p o r a t e  e x a m i n e r s  t o  i n v e s t i g a t e  w h a t  h a p p e n e d  
+o n  a  c o m p u t e r .  Y o u  c a n  u s e  i t  t o  a n a l y z e  d i s k  i m a g e s  a n d  r e c o v e r  f i l e s ,  a s  w e l l  a s  t o  i d e n t i f y  
+s y s t e m  a n d  u s e r  a c t i v i t y .  A u t o p s y  i s  u s e d  b y  " b l u e  t e a m s "  ( t h e  c y b e r s e c u r i t y  p r o f e s s i o n a l s  w h o
+d e f e n d  o r g a n i z a t i o n s  
+a g a i n s t  a t t a c k s )  t o  c o n d u c t  f o r e n s i c  a n a l y s i s  a n d  i n c i d e n t  r e s p o n s e .  I t  c a n  h e l p  b l u e  t e a m s  
+u n d e r s t a n d  t h e  n a t u r e  a n d  s c o p e  o f  a n  a t t a c k ,  a n d  i d e n t i f y  a n y  m a l i c i o u s  a c t i v i t y  t h a t  m a y  h a v e  
+o c c u r r e d  o n  a  c o m p u t e r  o r  n e t w o r k .  
+I n s t a l l :  
+D o w n l o a d  t h e  t o o l  f r o m  h e r e .  
+U s a g e :  
+A u t o p s y  U s e r  G u i d e  
+S A N S  -  I n t r o d u c t i o n  t o  u s i n g  t h e  A U T O P S Y  F o r e n s i c  B r o w s e r  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p
+T o o l
+A u t o p s y
+V o l a t i l i t y  
+O f f i c i a l  D o w n l o a d  L o c a t i o n
+a u t o p s y . c o m  ( a l s o  G i t H u b ,  S o u r c e F o r g e )
+v o l a t i l i t y f o u n d a t i o n . o r g  /  G i t H u b  
+F T K  ( F o r e n s i c  T o o l k i t )  E x t e r r o  –  “ F T K  P r o d u c t  D o w n l o a d s ”  
+S l e u t h  K i t
+X - W a y s  F o r e n s i c s
+C A P E  S a n d b o x
+K A P E
+V e l o c i r a p t o r
+P l a s o
+R e d l i n e  
+s l e u t h k i t . o r g
+x - w a y s . n e t  ( l i c e n s e d  u s e r s )
+R e a d T h e D o c s  /  G i t H u b  ( C A P E v 2 )
+K r o l l  s i t e  /  G i t H u b
+v e l o c i r a p t o r . a p p  /  G i t H u b  r e l e a s e s
+P i p  o r  L i n u x  p a c k a g e  m a n a g e r
+M a n d i a n t  r e s o u r c e s  ( f r e e  W i n d o w s  t o o l )  
+D o w n l o a d  L i n k s  f o r  D i g i t a l  F o r e n s i c s  T o o l s  
+•  A u t o p s y  
+O f f i c i a l  s i t e  w i t h  i n s t a l l e r s  f o r  W i n d o w s  a n d  Z I P  p a c k a g e s  f o r  L i n u x / m a c O S  ( a l o n g  w i t h  
+v e r s i o n s  o n  G i t H u b  a n d  S o u r c e F o r g e )  
+A u t o p s y S l e u t h  K i t  
+V o l a t i l i t y  
+O f f i c i a l  d o w n l o a d s  a v a i l a b l e  v i a  t h e  V o l a t i l i t y  F o u n d a t i o n  w e b s i t e  a n d  G i t H u b  r e p o s i t o r y  
+v o l a t i l i t y f o u n d a t i o n . o r g G i t H u b
+F T K  ( F o r e n s i c  T o o l k i t )  
+T r i a l  a n d  l i c e n s e d  v e r s i o n s  a v a i l a b l e  o n  E x t e r r o ’ s  F o r e n s i c  T o o l k i t  d o w n l o a d s  p a g e  
+E x t e r r o + 1
+S l e u t h  K i t  
+O f f i c i a l  d o w n l o a d  p a g e  o f f e r i n g  s o u r c e  c o d e  a n d  W i n d o w s  b i n a r i e s  
+S l e u t h  K i t + 1
+X - W a y s  F o r e n s i c s  
+D o w n l o a d  a v a i l a b l e  t o  l i c e n s e d  u s e r s ;  i n s t r u c t i o n s  a n d  l o g i n  r e q u i r e d  v i a  o f f i c i a l  s i t e  
+X - W a y s + 1
+C A P E  S a n d b o x  ( C A P E v 2 )  
+A v a i l a b l e  f r o m  t h e  o f f i c i a l  d o c u m e n t a t i o n  a n d  G i t H u b ;  i n s t a l l a t i o n  i n s t r u c t i o n s  i n c l u d e d  
+c a p e v 2 . r e a d t h e d o c s . i o + 1 G i t H u b  
+•  
+•  
+•  
+•  
+•  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+•
+•
+•
+•
+K A P E  ( K r o l l  A r t i f a c t  P a r s e r  a n d  E x t r a c t o r )
+O f f i c i a l  d o w n l o a d  l i n k  a n d  d o c u m e n t a t i o n  a v a i l a b l e  o n  K r o l l ’ s  s i t e ;  o p e n - s o u r c e
+d i s t r i b u t i o n  a l s o  o n  G i t H u b
+K r o l l G i t H u b T h r e a t  I n t e l l i g e n c e  L a b  
+V e l o c i r a p t o r  
+B i n a r i e s  a n d  l a t e s t  r e l e a s e s  a v a i l a b l e  o n  t h e  o f f i c i a l  d o w n l o a d s  p a g e  a n d  G i t H u b  
+r e l e a s e s  s e c t i o n  
+d o c s . v e l o c i r a p t o r . a p p G i t H u b + 1  
+P l a s o  
+D o w n l o a d  v i a  p i p  ( p l a s o ,  p l a s o - t o o l s )  o r  s t a n d a r d  L i n u x  p a c k a g e  m a n a g e r s  ( e . g . ,  a p t )  
+S l e u t h  K i t S l e u t h  K i t  ( N o t e :  i n s t a l l a t i o n  m e t h o d s  a r e  b a s e d  o n  t y p i c a l  d i s t r i b u t i o n  
+p r a c t i c e s  s i n c e  a  d i r e c t  s i t e  w a s n ’ t  r e t r i e v e d ,  b u t  t h e y ’ r e  s t a n d a r d . )  
+R e d l i n e  
+A v a i l a b l e  a s  a  f r e e  d o w n l o a d  f o r  W i n d o w s  d i r e c t l y  f r o m  M a n d i a n t ’ s  r e s o u r c e s  p a g e  
+E x t e r r o E x t e r r o  ( N o t e :  t h e r e ’ s  a l s o  a  f r e e  v e r s i o n  o f  F T K  I m a g e r — u s e f u l  w i t h  R e d l i n e  b u t  
+n o t  R e d l i n e  i t s e l f ;  M a n d i a n t  s i t e  r e f e r e n c e  i n f e r r e d . )  
+h e x .s e c
+h e x s e c _ to o ls
+h e x s e c te a m
+h e x s e c . n e t l i f y . a p p

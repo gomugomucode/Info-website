@@ -1,0 +1,208 @@
+---
+title: "Metasploit for Beginners"
+description: "A defensive hardening, auditing, and threat detection reference guide for Metasploit for Beginners."
+date: "2026-05-28"
+tags: ["metasploit", "hardening", "auditing", "compliance"]
+category: "notes"
+subcategory: "security"
+difficulty: "Intermediate"
+readingTime: "34 min read"
+---
+
+# Metasploit for Beginners
+
+> [!IMPORTANT]
+> **Defensive & Authorized Auditing Purposes Only**
+> This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
+
+1 / 1 2
+h e x s e c t e a m h e x s e c _ t o o l s h e x s e c t e a m
+
+ 
+W h a t  i s  M e t a s p l o i t ?
+ 
+W h y  i s  M e t a s p l o i t  U s e f u l  f o r
+P e n e t r a t i o n  T e s t e r s ?
+ 
+N e x t ,  i t  h e l p s  w i t h  r e c o n n a i s s a n c e  a n d  s c a n n i n g .  M e t a s p l o i t ’ s
+s c a n n i n g  t o o l s  g a t h e r  i n f o r m a t i o n  a b o u t  a  t a r g e t ,  s u c h  a s  o p e n
+p o r t s ,  r u n n i n g  s e r v i c e s ,  a n d  l i k e l y  v u l n e r a b i l i t i e s .
+I n s t e a d  o f  w r i t i n g  y o u r  o w n  s c r i p t s  t o  e x p l o i t  v u l n e r a b i l i t i e s ,
+M e t a s p l o i t  g i v e s  y o u  p r e - b u i l t  m o d u l e s  t o  a u t o m a t e  a  l o t  o f  y o u r
+w o r k .
+M e t a s p l o i t  p r o v i d e s  a  c o l l e c t i o n  o f  e x p l o i t s ,  p a y l o a d s ,  a n d  h e l p e r
+t o o l s .  I t ’ s  o f t e n  c a l l e d  t h e  “ S w i s s  a r m y  k n i f e ”  f o r  p e n  t e s t e r s .
+M e t a s p l o i t  i s  a n  o p e n - s o u r c e f r a m e w o r k f o r  p e n e t r a t i o n  t e s t i n g .
+Y o u  c a n  u s e  i t  t o  f i n d  v u l n e r a b i l i t i e s ,  e x p l o i t  t h e m ,  a n d  g e t  a c c e s s  t o
+t h e  t a r g e t .
+F i r s t ,  i t  s i m p l i f i e s  e x p l o i t a t i o n .  M e t a s p l o i t  h a s  a  l a r g e  l i b r a r y  o f
+e x p l o i t s  t h a t  a l l o w s  u s  t o  a t t a c k  k n o w n  w e a k n e s s e s  i n  s o f t w a r e  a n d
+s y s t e m s  q u i c k l y .
+A  m o d u l e  i s  a  p i e c e  o f  c o d e  t h a t  p e r f o r m s  a n  a c t i o n .  T h e s e  a c t i o n s
+c a n  i n c l u d e  s c a n n i n g ,  e x p l o i t a t i o n ,  o r  a n y t h i n g  t h a t  h e l p s  t o  s i m p l i f y
+a  p e n - t e s t .
+P e n t e s t e r s  t r y t o a t t a c k n e t w o r k s , a p p l i c a t i o n s ,  a n d  s y s t e m s  t o
+c h e c k  t h e i r  s e c u r i t y .  M e t a s p l o i t  h e l p s  m a k e  t h i s  j o b  e a s i e r  i n  s e v e r a l
+w a y s .
+2 / 1 2
+
+H e r e  i s  a  s a m p l e  l i s t  o f  a u x i l i a r i e s  f r o m  m e t a s p l o i t :
+A u x i l i a r y  m o d u l e s  a r e  h e l p e r  t o o l s  w i t h i n  M e t a s p l o i t  t h a t  p e r f o r m
+t a s k s  o t h e r  t h a n  e x p l o i t a t i o n .
+M e t a s p l o i t  i s  a l s o  v e r y  f l e x i b l e .  W e  c a n  b u i l d  o r  c h a n g e  m o d u l e s  t o
+f i t  o u r  s p e c i f i c  n e e d s .
+ 
+A f t e r  b r e a k i n g  i n ,  M e t a s p l o i t  p r o v i d e s  p o s t - e x p l o i t a t i o n  f e a t u r e s .
+T o o l s  l i k e  M e t e r p r e t e r  l e t  p e n t e s t e r s  k e e p  a c c e s s ,  c o l l e c t  d a t a ,  a n d
+t e s t  d e f e n s e s  f u r t h e r .
+I n  s h o r t ,  M e t a s p l o i t  l e t s  u s  d o  c o m p l e t e  s e c u r i t y  t e s t s ,  f r o m  f i n d i n g
+v u l n e r a b i l i t i e s  t o  e x p l o i t i n g  t h e m .
+T h e y ’ r e  u s e d  f o r  r e c o n n a i s s a n c e ,  s c a n n i n g ,  b r u t e - f o r c i n g  a n d  m o r e .
+T h e s e  f l e x i b l e  m o d u l e s  c a n  h e l p  y o u  g a t h e r  v a l u a b l e  i n f o r m a t i o n
+a b o u t  a  t a r g e t .
+F o r  e x a m p l e ,  a n  a u x i l i a r y  m o d u l e  c a n  s c a n  a  n e t w o r k  f o r  o p e n  p o r t s ,
+c h e c k  f o r  v u l n e r a b l e  s e r v i c e s ,  o r  a t t e m p t  a  b r u t e - f o r c e  l o g i n  o n  a n
+a p p l i c a t i o n .
+W h a t  A r e  M e t a s p l o i t  A u x i l i a r i e s ?
+3 / 1 2
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+E x p l o i t s  a r e  s c r i p t s  o r  p r o g r a m s  t h a t  t a k e  a d v a n t a g e  o f
+v u l n e r a b i l i t i e s  i n  s y s t e m s .
+F o r  e x a m p l e ,  i f  a  t a r g e t  s y s t e m  i s  r u n n i n g  a n  o u t d a t e d  v e r s i o n  o f
+S a m b a ,  M e t a s p l o i t  m a y  h a v e  a n  e x p l o i t  s p e c i f i c a l l y  d e s i g n e d  t o
+e x p l o i t  t h a t  v u l n e r a b i l i t y .
+P a y l o a d s  a r e  s c r i p t s  t h a t  r u n  o n  t h e  t a r g e t  s y s t e m  a f t e r  a n  e x p l o i t
+h a s  b e e n  s u c c e s s f u l l y  e x e c u t e d .
+T h e y  h e l p  a n  a t t a c k e r  g a i n  a c c e s s  o r  p e r f o r m  m a l i c i o u s  a c t i v i t i e s .
+M e t a s p l o i t ’ s  l i b r a r y  i n c l u d e s  h u n d r e d s  o f  e x p l o i t s ,  c o v e r i n g  a  wi d e
+r a n g e  o f  p l a t f o r m s  a n d  s e r v i c e s .
+Y o u  c a n  s e e  t h a t  M e t a s p l o i t  h a s  a  r a n g e  o f  a u x i l i a r i e s ,  f r o m  s c a n n e r s
+t o  b r u t e - f o r c e  m o d u l e s ,  w h i c h  h e l p  r e v e a l  a n d  e x p l o i t  s e c u r i t y  g a p s .
+W h a t  A r e  M e t a s p l o i t  E x p l o i t s ?
+W h a t  A r e  M e t a s p l o i t  P a y l o a d s ?
+4 / 1 2
+
+s h e l l  o n  t h e  t a r g e t  s y s t e m .
+T h e r e  a r e  t w o  m a i n  t y p e s  o f  p a y l o a d s :
+1 .  S i n g l e  P a y l o a d s :  T h e s e  p e r f o r m  o n e  t a s k ,  s u c h  a s  c r e a t i n g
+a  u s e r  a c c o u n t  o n  t h e  t a r g e t .
+2 .  S t a g e d  P a y l o a d s :  T h e s e  d o w n l o a d  a  l a r g e r  p a y l o a d  i n
+s t a g e s ,  a l l o w i n g  f o r  m o r e  c o m p l e x  a c t i o n s .
+O n e  o f  t h e  m o s t  c o m m o n l y  u s e d  p a y l o a d s  i s
+w i n d o w s / m e t e r p r e t e r / r e v e r s e _ t c p
+,  w h i c h  g i v e s  y o u  a  c o m m a n d
+U s i n g  M e t e r p r e t e r ,  y o u  c a n  g a t h e r  d e t a i l s  a b o u t  t h e  o p e r a t i n g
+s y s t e m ,  t r a n s f e r  f i l e s  b e t w e e n  t h e  a t t a c k e r  a n d  t a r g e t ,  a n d  e v e n
+e x e c u t e  c o m m a n d s  d i r e c t l y  o n  t h e  t a r g e t  m a c h i n e .
+Y o u  c a n  a l s o  s e t  u p  a  p e r s i s t e n t  b a c k d o o r  t o  m a i n t a i n  a c c e s s  e v e n
+a f t e r  a  s y s t e m  r e b o o t .
+T h e y  d e t e r m i n e  w h a t  h a p p e n s  n e x t  —  w h e t h e r  y o u  o p e n  a  r e v e r s e
+s h e l l ,  a d d  a  b a c k d o o r ,  o r  p e r f o r m  a n o t h e r  p o s t - e x p l o i t a t i o n  t a s k .
+M e t e r p r e t e r  i s  l o a d e d  d i r e c t l y  i n t o  t h e  t a r g e t ' s  m e m o r y ,  m a k i n g  i t
+s t e a l t h i e r  t h a n  t r a d i t i o n a l  p a y l o a d s .
+M e t e r p r e t e r  i s  a n  a d v a n c e d ,  i n t e r a c t i v e  p a y l o a d  w i t h i n  M e t a s p l o i t .
+I t  a l l o w s  y o u  t o  i n t e r a c t  w i t h  t h e  t a r g e t  s y s t e m  a f t e r  e x p l o i t i n g  i t .
+P e n  t e s t e r s  a n d  s e c u r i t y  e x p e r t s  u s e  e x p l o i t s  t o  u n c o v e r  w e a k
+p o i n t s  i n  n e t w o r k s  a n d  s y s t e m s .  B y  t e s t i n g  t h e s e  g a p s  i n  a
+c o n t r o l l e d  w a y ,  t h e y  c a n  f i n d  f a u l t s  b e f o r e  a t t a c k e r s  d o .  O n c e  f o u n d ,
+t h e s e  f l a w s  a r e  f i x e d  o r  p a t c h e d  t o  p r e v e n t  h a r m .  T h i s  a p p r o a c h
+h e l p s  p r o t e c t  d a t a  a n d  k e e p s  s y s t e m s  m o r e  s e c u r e .
+W h a t  i s  M e t a s p l o i t  M e t e r p r e t e r ?
+5 / 1 2
+
+O n c e  i t  l o a d s ,  y o u ’ l l  s e e  a  p r o m p t  l i k e  t h i s
+L e t ' s  g e t  s o m e  h a n d s - o n  e x p e r i e n c e  w i t h  M e t a s p l o i t .
+A f t e r  i n s t a l l i n g  M e t a s p l o i t ,  l a u n c h  t h e  c o n s o l e  b y  t y p i n g :
+T h i s  i s  w h e r e  y o u ’ l l  t y p e  c o m m a n d s  t o  i n t e r a c t  w i t h  M e t a s p l o i t .
+L e t ’ s  t r y  s o m e  b a s i c  c o m m a n d s  t o  g e t  y o u  s t a r t e d .
+m s f c o n s o l e
+ i s  t h e  c o m m a n d - l i n e  i n t e r f a c e  ( C L I )  f o r  M e t a s p l o i t .  I t ’ s
+t h e  m a i n  w a y  t o  i n t e r a c t  w i t h  t h e  f r a m e w o r k .
+M e t a s p l o i t  i s  p r e - i n s t a l l e d  i n  K a l i  L i n u x .  I f  y o u  a r e  u s i n g  K a l i  L i n u x ,
+y o u  c a n  f i n d  t h e  i n s t a l l a t i o n  i n s t r u c t i o n s  h e r e .
+M e t e r p r e t e r  i s  a  p o w e r f u l  t o o l  f o r  p o s t - e x p l o i t a t i o n  a c t i v i t i e s ,  g i v i n g
+y o u  c o m p l e t e  c o n t r o l  o v e r  t h e  c o m p r o m i s e d  s y s t e m .
+H o w  t o  W o r k  w i t h  m s f c o n s o l e
+msfconsole
+6 / 1 2
+
+ 
+M e t a s p l o i t  c o m m a n d s
+ 1 .
+2 .  s e a r c h :  T h e  s e a r c h  c o m m a n d  h e l p s  u s  t o  f i n d  s p e c i f i c
+m o d u l e s ,  s u c h  a s  e x p l o i t s  o r  a u x i l i a r i e s  ( h e l p e r  m o d u l e s ) .
+F o r  e x a m p l e ,  i f  y o u ’ r e  l o o k i n g  f o r  m o d u l e s  r e l a t e d  t o
+s c a n n i n g ,  y o u ’ d  t y p e :
+h e l p
+h e l p
+b r i e f  d e s c r i p t i o n s .  F o r  e x a m p l e :
+msf6 &gt; search scanner
+7 / 1 2
+
+4 .  
+5 .  o p t i o n s :  O n c e  y o u  h a v e  l o a d e d  a  m o d u l e  w i t h  t h e  u s e
+c o m m a n d ,  y o u  c a n  s e e  t h e  l i s t  o f  o p t i o n s  u s i n g  t h e
+o p t i o n s
+ c o m m a n d .  i t  w i l l  g i v e  y o u  t h e  l i s t  o f  o p t i o n s  y o u
+c a n  s e t  f o r  t h a t  m o d u l e .
+u s e :  T o  u s e  a n  e x p l o i t  o r  a n  a u x i l i a r y ,  w e  c a n  s i m p l y  t y p e   
+a l o n g  w i t h  t h e  m o d u l e  n a m e .  L e t ' s  u s e  t h e  s c a n n i n g
+u s e
+module auxiliary/scanner/portscan/tcp  which will scan
+f o r  o p e n  T C P  p o r t s  i n  a  s e r v e r .
+3 .  i n f o :  Y o u  c a n  u s e  t h e  i n f o  c o m m a n d  t o  l e a r n  m o r e  a b o u t
+a  m o d u l e ,  i n c l u d i n g  i t s  o p t i o n s  a n d  h o w  i t  w o r k s .  F o r
+e x a m p l e :
+M e t a s p l o i t  w i l l  d i s p l a y  a l l  m o d u l e s  t h a t  m a t c h  t h e  k e y w o r d  s c a n n e r .
+msf6&gt; use auxiliary/scanner/portscan/tcp
+msf6 &gt; info auxiliary/scanner/portscan/tcp
+8 / 1 2
+
+F o r  e x a m p l e ,  t h e  R H O S T S  p a r a m e t e r  i s  u s e d  t o  s e t  t h e  t a r g e t  I P
+a d d r e s s  f o r  s c a n n i n g .  s c a n m e . n m a p . o r g  l e t s  u s  r u n  p o r t  s c a n s  o n
+t h a t  s e r v e r ,  s o  l e t ' s  u s e  t h a t  t o  r u n  a  s c a n .
+L e t ’ s  g r a b  t h e  I P  a d d r e s s  o f  t h e  s e r v e r .  W e  w i l l  i s s u e  a  s i m p l e  p i n g
+c o m m a n d  t o  g e t  t h e  I P  a d d r e s s  o f  t h e  s e r v e r .
+6 .  r u n :  T o  r u n  a  m o d u l e ,  w e  u s e  t h e  r u n  c o m m a n d .  N o w  t h a t
+w e  h a v e  s e t  t h e  t a r g e t  I P  a d d r e s s ,  l e t ' s  r u n  t h e  m o d u l e  t o
+s e e  i f  a n y  p o r t s  a r e  o p e n .
+W e  c a n  s e e  t h a t  t h e  I P  a d d r e s s  o f  t h e  s e r v e r  i s  4 5 . 3 3 . 3 2 . 1 5 6  ( i t  c a n
+c h a n g e  w h e n  y o u  r u n  t h e  p i n g  c o m m a n d ) .  N o w  l e t ’ s  u s e  t h i s  I P  a s
+o u r  i n p u t  f o r  R H O S T S  p a r a m e t e r .  W e  w i l l  u s e  t h e  s e t  c o m m a n d  t o
+s e t  t h e  I P  a d d r e s s .
+msf6 auxiliary(scanner/portscan/tcp)&gt; set RHOSTS 45.33.32.156
+9 / 1 2
+
+M e t a s p l o i t  i s  o n e  o f  t h e  m o s t  p o w e r f u l  t o o l s  i n  a  p e n e t r a t i o n
+t e s t e r ’ s  t o o l k i t .
+A s  y o u  g r o w  m o r e  f a m i l i a r  w i t h  M e t a s p l o i t ,  y o u ’ l l  u n l o c k  i t s  f u l l
+p o t e n t i a l  a n d  g a i n  d e e p e r  i n s i g h t s  i n t o  h o w  a t t a c k e r s  e x p l o i t
+s y s t e m s  —  a n d  h o w  y o u  c a n  d e f e n d  a g a i n s t  t h e m .  K e e p  l e a r n i n g ,
+s t a y  c u r i o u s ,  a n d  a l w a y s  u s e  M e t a s p l o i t  r e s p o n s i b l y !
+7 .  e x i t :  W h e n  y o u ’ r e  d o n e  u s i n g  M e t a s p l o i t ,  s i m p l y  t y p e
+e x i t
+ t o  l e a v e  t h e  c o n s o l e .
+T h e  m s f c o n s o l e  i s  u s e r - f r i e n d l y  o n c e  y o u  g e t  t h e  h a n g  o f  t h e s e
+b a s i c  c o m m a n d s .  T a k e  y o u r  t i m e  e x p l o r i n g  a n d  e x p e r i m e n t i n g  w i t h
+t h e  h e l p  o f  t h e  h e l p  c o m m a n d .
+A s  y o u  c a n  s e e ,  w e  h a v e  f o u n d  3  p o r t s  —  2 2 , 8 0  a n d  9 9 2 9 .  T o o l s  l i k e
+N m a p  a r e  b e t t e r  f o r  i n - d e p t h  p o r t  s c a n n i n g ,  b u t  M e t a s p l o i t  o f f e r s
+m o d u l e s  f o r  a l m o s t  e v e r y  s e g m e n t  o f  a  c y b e r s e c u r i t y  a u d i t .
+C o n c l u s i o n
+1 0 / 1 2
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+F o l l o w  H e x S e c  o n  s o c i a l  m e d i a  f o r  m o r e  e t h i c a l
+h a c k i n g  a n d  c y b e r s e c u r i t y  e d u c a t i o n a l  c o n t e n t ,  w i t h
+p r e m i u m  c a r o u s e l  g u i d e s  a n d  p r a c t i c a l  t o o l
+b r e a k d o w n s .
+h e x s e c t e a m
+h e x s e c _ t o o l s
+h e x s e c t e a m
+📘 🔓  W a n t  t h e  P D F  v e r s i o n  w i t h  a l l  t h e  t o o l s  i n  o n e  p l a c e ?
+C o m m e n t  “ I N T E R E S T E D ”  a n d  I ’ l l  s e n d  i t  t o  y o u .
+📚 🔐  E d u c a t i o n a l  p u r p o s e s  o n l y  —  e t h i c a l  l e a r n i n g  &
+r e s p o n s i b l e  u s e .
