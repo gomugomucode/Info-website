@@ -10,11 +10,9 @@ readingTime: "243 min read"
 ---
 
 # Python Guide
-
 > [!IMPORTANT]
 > **Defensive & Authorized Auditing Purposes Only**
 > This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
-
 T ABLE  OF  C ONTENTS
 DEDICATION
 PREFACE – WHY YOU WANT TO READ THIS BOOK
@@ -203,22 +201,18 @@ words can help illuminate the path for others just beginning to navigate
 their way. And, who knows, your insights might just be the lighthouse
 guiding someone else to their 'Eureka!' moment.
 For your convenience, here is the QR code and link to Amazon:
-Amazon 
-Absolute Beginner’s Guide to Python Programming 
+Amazon
+Absolute Beginner’s Guide to Python Programming
 https://www.amazon.com/review/create-review/?
 asin=B0D77D2YDR
 W ORDS  OF  W ISDOM
 Often, the greatest barrier to acquiring knowledge is the belief that we
 already possess it, leading us to overlook the need for further learning.
 Always stay humble and hungry for knowledge— or become irrelevant.
-
 This I know: The more I know, the more I know that I don’t know.
-
 Don’t confuse brilliance with wisdom. Wisdom comes from experience, not
 brilliance. Use your brilliance to get experience and become wise.
-
 The definition of a programmer is a machine that converts pizza into code.
-
 Life is like a game composed of doors of opportunity. Each action you take
 or refrain from taking will open or close doors. The trick is to make the
 right choices that open the doors you desire while closing the ones you'd
@@ -229,7 +223,7 @@ small, is achieved, line-upon-line, precept-upon-precept, concept-upon-
 concept. Here a little, there a little. Until you have acquired much of it, but
 you still haven’t scratched the surface. So, don’t get a big head and get back
 to learning.
-T HE  A RT  OF  F ALLING :  
+T HE  A RT  OF  F ALLING :
 A P ROGRAMMER ’ S  J OURNEY  TO  M ASTERY
 Just as an infant learns to walk, every programmer begins their journey
 amid uncertainty and frequent stumbles. Each fall and setback are not
@@ -334,8 +328,8 @@ The complete source code for this book is available on GitHub. This
 includes exercise files and full solutions for chapter projects, organized in a
 repository with separate folders for each chapter. You do not need a GitHub
 account to access these files.
-GitHub 
-Wizardry Press – Beginners Guide to Python Repository 
+GitHub
+Wizardry Press – Beginners Guide to Python Repository
 https://github.com/wizardrypress/Beginners_Guide_To_Python
 The Appendix provides a primer on the basics of navigating the repository,
 downloading files, and utilizing the available resources for those unfamiliar
@@ -360,8 +354,8 @@ Python simplifies the trial-and-error process by using an interpreter, making it
 In the world of Python programming, choosing the right Integrated DevelopmentEnvironment (IDE) can significantly impact your productivity and enjoyment. Theideal IDE becomes your digital workshop, providing the tools and environment tocraft elegant code. To help you find the perfect fit, here's a quick comparison ofpopular options:
 Visual Studio Code (VS Code): Microsoft's VS Code has taken the programmingworld by storm. It is highly customizable and versatile and caters to a wide range ofprogramming languages, including Python. Its lightweight nature makes it incrediblyfast, ideal for those who prefer a minimalist approach. However, to unlock its fullpotential for Python development, you'll need to install extensions for features likelinting, debugging, and code completion. Later in this chapter, we walk you throughinstalling VS Code.
 PyCharm: Developed by JetBrains, PyCharm is often considered the gold standardfor professional Python development. Its comprehensive suite of tools includes
-intelligent code completion, powerful refactoring capabilities, and integrated testingsupport. PyCharm's polished and user-friendly interface makes it easy to navigate,even for complex projects. However, its extensive features can make it resource-intensive on less powerful machines. This happens to be my personal preference.Mainly because I use other JetBrains IDEs for other languages.
-Jupyter Notebooks: Jupyter Notebooks offers a unique web-based environment thatis perfectly suited for data science and analysis. Their interactive nature allows you toseamlessly blend code, visualizations, and explanatory text within a single document.This makes them ideal for experimentation, teaching, and sharing your findings.However, Jupyter Notebooks might not be the most efficient choice for large-scalesoftware development projects.
+intelligent code completion, powerful refactoring capabilities, and integrated testingsupport. PyCharm's polished and user-friendly interface makes it easy to navigate,even for complex projects. However, its extensive features can make it resource-intensive on less powerful machines. This happens to be my personal preference. Mainly because I use other JetBrains IDEs for other languages.
+Jupyter Notebooks: Jupyter Notebooks offers a unique web-based environment thatis perfectly suited for data science and analysis. Their interactive nature allows you toseamlessly blend code, visualizations, and explanatory text within a single document. This makes them ideal for experimentation, teaching, and sharing your findings. However, Jupyter Notebooks might not be the most efficient choice for large-scalesoftware development projects.
 PyDev (Eclipse Plugin): PyDev brings Python power to the Eclipse ecosystem. Itoffers robust features, including code analysis, refactoring, debugging, and Djangointegration. Its high degree of customizability allows you to tailor your workflow toperfection. However, if you're not already familiar with Eclipse, the learning curvecan be steep.
 IDLE: Included with Python itself, IDLE is the simplest IDE on this list. It's perfectfor beginners and small scripts, providing a straightforward interface and basicfeatures like syntax highlighting and debugging. While it lacks the advancedcapabilities of other IDEs, its ease of use makes it a great starting point for those newto Python.
 For a more in-depth comparison of these and other IDEs, including information onlicensing, version control integration, debugging tools, community support, anddocumentation, refer to the Appendix. By carefully considering your specific needsand preferences, you can choose an IDE that empowers you to write better Pythoncode more efficiently.
@@ -373,9 +367,8 @@ By focusing on Visual Studio Code, we aim to provide a stable and flexiblefounda
 1.4 Windows: Installing Python and VS Code
 Steps to Install of Python
 1. Open your web browser and go to the official Python website:
-Python.org 
-https://www.python.org/downloads 
-
+Python.org
+https://www.python.org/downloads
 2. Download the latest Python installer for Windows by finding the latestrelease (which is 3.12.3 at the time of writing this book)
 The next web page will display all kinds of information about therelease you selected. Scroll down to the “Files” section.
 Select either “Windows Installer (64-bit)” or Windows Installer (32-bit)”. Whichever is appropriate for your computer.
@@ -385,11 +378,11 @@ But you will need to reboot your computer for changes to your system’sPATH to 
 4. Follow the installation wizard instructions, and Python will be installed onyour Windows machine.
 Steps to Install of VS Code
 1. Open your web browser and navigate to the official VS Code website:
-Microsoft 
-Visual Studio Code Download 
+Microsoft
+Visual Studio Code Download
 https://code.visualstudio.com/download
 2. Download the latest Visual Studio Code installer for Windows by clickingon the “x64” or “Arm64” (depending on your computer) button. This willdownload the .exe installer suitable for Windows.
-3. Run the installer once it's downloaded. Execute the downloaded .exe file.If prompted by Windows, confirm that you trust the source of theapplication to proceed with the installation.
+3. Run the installer once it's downloaded. Execute the downloaded .exe file. If prompted by Windows, confirm that you trust the source of theapplication to proceed with the installation.
 4. Follow the installation wizard instructions. During installation, you canchoose options such as adding a desktop icon, adding 'Open with Code'actions in the file context menu, and registering Visual Studio Code as thedefault editor for supported file types.
 5. Complete the installation and launch Visual Studio Code. Once theinstallation is complete, you can launch Visual Studio Code directly fromthe installer's last screen or from the Start menu.
 With Visual Studio Code installed on your Windows machine, you can beginconfiguring it by installing extensions such as the Python extension for Pythondevelopment. This extension will enhance the coding experience by providing featureslike IntelliSense, linting, and debugging capabilities.
@@ -397,16 +390,15 @@ Next, jump to the section titled “Configuring Visual Studio Code for PythonDev
 1.5 macOS: Installing Python and VS Code
 Steps to Install of Python
 1. Open your web browser and go to the official Python website:
-Python.org Downloads 
-https://www.python.org/downloads/mac-osx 
-
-2. Download the latest Python installer for macOS by clicking on the"Download macOS X.XX installer" link.
+Python.org Downloads
+https://www.python.org/downloads/mac-osx
+2. Download the latest Python installer for macOS by clicking on the"Download macOS X. XX installer" link.
 3. Once it's downloaded, run the installer. The installer package willhave a ".pkg" extension. Double-click it to start the installation.
 4. Follow the installation wizard instructions, and Python will beinstalled on your macOS.
 Steps to Install of VS Code
 1. Open Your Web Browser and go to the official Visual Studio Code websiteto access the latest version:
-Microsoft 
-Visual Studio Code Download 
+Microsoft
+Visual Studio Code Download
 https://code.visualstudio.com/download
 2. Download Visual Studio Code for macOS. Click on the "Download forMac" button. This will download a .zip file containing the Visual StudioCode installer.
 3. Install Visual Studio Code:
@@ -416,7 +408,7 @@ Drag the Visual Studio Code application to your 'Applications' folder toinstall 
 4. Launch Visual Studio Code:
 Open your 'Applications' folder and double-click on the Visual StudioCode icon to launch it.
 You may see a warning the first time you run Visual Studio Code as it isdownloaded from the Internet. Click "Open" to continue.
-Next, jump to the section titled “Configuring Visual Studio Code for PythonDevelopment.”             
+Next, jump to the section titled “Configuring Visual Studio Code for PythonDevelopment.”
 1.6 Linux: Installing Python and VS Code
 Steps to Install of Python
 Most Linux distributions come with Python pre-installed. To check if Python isalready installed on your Linux system, open a terminal and type:
@@ -447,10 +439,9 @@ Visual Studio Code has an integrated terminal that can be usedto run shell comma
 Configure the default shell by clicking on the dropdown menu inthe terminal window and selecting "Select Default Shell."
 4. Configure Version Control Integration:
 All of the source code for this book is downloadable fromGitHub, which integrates nicely with Visual Studio Codethrough Git.
-GitHub 
-Wizardry Press – Beginners Guide To Python Repository 
-https://github.com/wizardrypress/Beginners_Guide_To_Python 
-
+GitHub
+Wizardry Press – Beginners Guide To Python Repository
+https://github.com/wizardrypress/Beginners_Guide_To_Python
 Visual Studio Code supports Git out of the box. Set up Git bynavigating to the Source Control menu (the branch icon on thesidebar), where you can initialize repositories, commit changes, andpush or pull from remote repositories.
 Ensure Git is installed on your system and properly configured in theVisual Studio Code settings to link with your repositories.
 5. Customize Workspaces:
@@ -470,7 +461,7 @@ VS Code is more than just a text editor; it’s a robust environment equipped wi
 1. Launching Visual Studio Code:
 Start VS Code from your desktop shortcut, Start menu, or Applications folder.
 2. Creating a New Python File:
-Click the "New File" icon and save the file with a .py extension, like hello.py.This extension signals that the file is a Python script.
+Click the "New File" icon and save the file with a .py extension, like hello.py. This extension signals that the file is a Python script.
 3. Writing Your First Python Code:
 In your new file, enter the following line of code:
 print("Hello, Python World!")
@@ -488,7 +479,7 @@ Using Escape Characters
 To enhance the format of your output, Python provides escape characters:
 print("Hello World!\n\tThis is an example of a newline and a tab.")
 This script demonstrates \n for a new line and \t for a tab, organizing output as:
-Hello World!This is an example of a newline and a tab.
+Hello World! This is an example of a newline and a tab.
 Common Escape Sequences Include:
 EscapeSequence Description
 \' Single Quote - Displays a single quote inside single-quotedstrings.
@@ -503,13 +494,13 @@ function, it's time to write and execute your first Python script. Open your cho
 .py extension tells your computer that this is a Python script.
 In this file, type the following line:
 print("Hello, World!")
-Save your file. Now, navigate to your terminal or command prompt, ensuring you're inthe same directory as your hello.py file. Type python hello.py and press enter. Ifeverything's set up correctly, you should see Hello, World! printed out on the screen.Congratulations, you've just written and executed your first Python script!
+Save your file. Now, navigate to your terminal or command prompt, ensuring you're inthe same directory as your hello.py file. Type python hello.py and press enter. Ifeverything's set up correctly, you should see Hello, World! printed out on the screen. Congratulations, you've just written and executed your first Python script!
 From writing code in a text editor to seeing it run in your terminal, this process is thebackbone of Python programming. It might seem like a small step, but it's a giant leap
 in your coding adventure. Every complex program, application, or system starts withsimple lines of code like these.
 1.10 Taking User Input
 Python makes it simple to prompt the user for input and store that input in a variablefor further use. The input() function pauses your program and waits for the user to typesomething into the console, then press enter.
 Let's create a script that asks for the user's name and then greets them. Open your texteditor or IDE and create a new file named greet.py. Type in the following lines:
-user_name = input("What is your name? ")print("Hello, " + user_name + "!") 
+user_name = input("What is your name? ")print("Hello, " + user_name + "!")
 In the first line, we use the input() function with a string argument. This string isdisplayed to the user as a prompt: "What is your name?". Whatever the user types inresponse to this prompt is then stored in the variable user_name.
 1.11 Displaying Output
 The second line of the script constructs a greeting message by concatenating stringsand the user's input, then displays this message using the print() function. Here, we'reusing the + operator to concatenate, or combine, the strings "Hello, ", the user's inputstored in user_name, and "!" into a single string that print() then displays.
@@ -575,9 +566,9 @@ calculates how old they'll be in five years. The user input comes as a string, s
 you'll need to convert that input into an integer before doing the math:
 age_now = input("How old are you? ")
 age_in_five_years = int(age_now) + 5
-print(f"In five years, you'll be {age_in_five_years} years old.")
+print(f"In five years, you'll be &#123;age_in_five_years&#125; years old.")
 By understanding and utilizing type conversion, you ensure your data is in the
-right format for the task at hand. 
+right format for the task at hand.
 The last line introduced F-String without explanation. F-String and the
 format() method are slick ways to format output. Let’s talk about them next.
 2.2 String Formatting in Python: F-Strings and format()
@@ -585,34 +576,33 @@ Method
 Python offers several ways to format strings, making integrating variables and
 expressions within text easier. Two popular methods are f-strings, introduced
 in Python 3.6, and the format() method.
-F-Strings
-F-strings, or formatted string literals, allow for the direct inclusion of
-expressions inside string literals using curly braces {}. These expressions are
+F-Strings, or formatted string literals, allow for the direct inclusion of
+expressions inside string literals using curly braces &#123;&#125;. These expressions are
 evaluated at runtime, which simplifies the process of string formatting:
 age_in_five_years = 25
-print(f"In five years, you'll be {age_in_five_years} years old.")
+print(f"In five years, you'll be &#123;age_in_five_years&#125; years old.")
 # Output: In five years, you’ll be 25 years old.
 F-strings excel in formatting floats by including a colon : followed by a
 format specifier inside the curly braces, enabling precise control over
 numerical displays:
 temperature = 23.45678
-print(f"The current temperature is {temperature:.2f}°C.")
+print(f"The current temperature is &#123;temperature:.2f&#125;°C.")
 # Output: The current temperature is 23.46°C.
-In this example, with {temperature:.2f} we are instructing Python to display a
+In this example, with &#123;temperature:.2f&#125; we are instructing Python to display a
 float value found in temperature, with 2 decimal places. Notice that it also
 rounded up.
 The format() Method
 Before f-strings were introduced, the format() method was commonly used for
-string formatting. It replaces placeholders defined by curly braces {} with
+string formatting. It replaces placeholders defined by curly braces &#123;&#125; with
 values specified in the method call:
 name = "Alice"
 age = 30
-print("Hello, {0}. You are {1} years old.".format(name, age))
+print("Hello, &#123;0&#125;. You are &#123;1&#125; years old.".format(name, age))
 # Output: Hello, Alice. You are 30 years old.
 The format() method is versatile and supports various formatting options,
 including positional and keyword arguments, which can make it preferable in
 scenarios where dynamic formatting is needed:
-print("The current temperature is {:.2f}°C.".format(temperature))
+print("The current temperature is &#123;:.2f&#125;°C.".format(temperature))
 # Using the same temperature variable as before.
 Choosing Between F-Strings and format()
 Choosing between f-strings and the .format() method often comes down to
@@ -632,7 +622,7 @@ Both f-strings and the format() method can be used effectively for debugging.
 F-strings have the advantage of the = specifier, which simplifies debugging by
 automatically including both variable names and their values:
 count = 10
-print(f"{count=}")        # Output: count=10
+print(f"&#123;count=&#125;")        # Output: count=10
 Whether you choose f-strings for their simplicity and readability or the format()
 method for its flexibility and compatibility, Python's string formatting
 capabilities greatly enhance code clarity and maintainability. Understanding
@@ -647,7 +637,7 @@ This might sound like a quirk, but it's by design. Immutability has several
 benefits, including easier debugging and optimization by Python under the
 hood. Here's a quick illustration:
 original_string = "cat"
-modified_string = original_string + "s" 
+modified_string = original_string + "s"
 What happens here is that the original_string does not get an "s" added to it.
 Instead, modified_string is a totally new string that combines original_string and
 "s". Understanding this behavior is key, especially as you start to manipulate
@@ -667,10 +657,8 @@ explaining what the code does and why certain decisions were made. Python
 supports single-line comments, initiated with a # symbol, and multi-line
 comments, which can be created using triple quotes (''' or """).
 # This is a single-line comment
-""" 
-this is a multiple-line  
-comment 
-"""
+this is a multiple-line
+comment
 As we delve into more complex concepts, such as control structures, the ability
 to annotate your code with comments becomes invaluable. It helps you keep
 track of your thought process and makes your code more accessible to others.
@@ -727,7 +715,7 @@ Let’s take an example from the official Python documentation (using the
 Python Interpreter, 2024) that demonstrates a simple use of a boolean variable
 and an IF statement:
 the_earth_is_flat = True
-if the_earth_is_flat: 
+if the_earth_is_flat:
    print("Be careful not to fall off!")
 Since the_earth_is_flat is true, it will output Be careful not to fall off!
 I don’t subscribe to the belief that the Earth is flat. But if I happen to be wrong,
@@ -744,7 +732,7 @@ beginners must understand are indentation and the use of the colon (:).
 Indentation Matters
 In Python, whitespace is not just for readability; it's a part of the syntax.
 Indentation indicates a block of code that belongs together. Unlike many other
-programming languages that use braces {} to define a block of code, Python
+programming languages that use braces &#123;&#125; to define a block of code, Python
 uses indentation levels. This means that all the code aligned at the same level
 of indentation is considered to be part of the same block.
 # Correct Indentation
@@ -776,20 +764,20 @@ and that is that the Earth is round. And if I’m right, then let's explore a mo
 “down to earth” version of our program that calculates the surface of the Earth.
 the_earth_is_flat = False
 the_earth_is_donut_shaped = False
-if the_earth_is_flat: 
-    print("Be careful not to fall off!") 
-elif the_earth_is_donut_shaped: 
-    print("Hmmm, interesting theory.") 
-    print("Not sure how to calculate that.") 
-else: 
+if the_earth_is_flat:
+    print("Be careful not to fall off!")
+elif the_earth_is_donut_shaped:
+    print("Hmmm, interesting theory.")
+    print("Not sure how to calculate that.")
+else:
     pi = 3.14159265359
     radius_in_mi = 3959
     radius_in_km = 6371
-    earth_area_in_mi = 4 * pi * (radius_in_mi ** 2) 
-    earth_area_in_km = 4 * pi * (radius_in_km ** 2) 
-    print("The surface area of the Earth:") 
-    print("in square miles is {earth_area_in_mi}") 
-    print("and in square kilometers is {earth_area_in_km}")
+    earth_area_in_mi = 4 * pi * (radius_in_mi ** 2)
+    earth_area_in_km = 4 * pi * (radius_in_km ** 2)
+    print("The surface area of the Earth:")
+    print("in square miles is &#123;earth_area_in_mi&#125;")
+    print("and in square kilometers is &#123;earth_area_in_km&#125;")
 2.7 if, elif, and else
 This is a classic example where if, elif, and else statements shine. These
 statements evaluate whether a condition is true or false, leading to actions
@@ -798,17 +786,16 @@ The elif statement is a seamless blend of else and if, enabling a conditional
 check right after an initial if condition is found to be false, before potentially
 defaulting to an else block. The same thing could be accomplished by doing
 something like this:
-if the_earth_is_flat: 
-    print("Be careful not to fall off!") 
-else if the_earth_is_donut_shaped: 
-    print("Hmmm, interesting theory.") 
-    print("Not sure how to calculate that.") 
-else: 
-…
+if the_earth_is_flat:
+    print("Be careful not to fall off!")
+else if the_earth_is_donut_shaped:
+    print("Hmmm, interesting theory.")
+    print("Not sure how to calculate that.")
+else:
 2.8 Calculations in Python
 In our “science project,” we use 4πR2 to calculate the surface of the Earth.
 This is how to code it in Python:
-earth_area_in_mi = 4 * pi * (radius_in_mi ** 2) 
+earth_area_in_mi = 4 * pi * (radius_in_mi ** 2)
 earth_area_in_km = 4 * pi * (radius_in_km ** 2)
 pi, radius_in_mi, and radius_in_km are all “constants” defined right after the else.
 In Python speak, * represents multiply, and ** is the exponentiation operator.
@@ -817,8 +804,7 @@ The output of this version of the program is:
 The surface area of the Earth:
 in square miles is 196961284.33725268
 and in square kilometers is 510064471.90982187
-2.9 Python Operators
-Operators in Python can be broadly categorized into three main types: logical
+2.9 Python Operators in Python can be broadly categorized into three main types: logical
 operators, comparison operators, and arithmetic operators. Each category
 serves a distinct purpose, enabling programmers to express conditions,
 compare values, and perform mathematical computations efficiently and
@@ -896,7 +882,7 @@ shine, enabling us to compare values within our code. Let's dive into an
 example that incorporates these operators:
 current_score = 450
 high_score = 400
-if current_score &gt; high_score: 
+if current_score &gt; high_score:
     print("Congratulations! You've set a new high score.")
 high_score = current_score
 else:
@@ -920,12 +906,12 @@ becomes true.
 values are not equal, then the condition becomes true.
 > It checks if the value of the left operand is greater than the value
 of the right operand; if yes, then the condition becomes true.
-< It checks if the value of the left operand is greater than the value
+&lt; It checks if the value of the left operand is greater than the value
 of the right operand; if yes, then the condition becomes true.
 >= It checks if the value of the left operand is greater than or equal
 to the value of the right operand. If yes, then the condition
 becomes true.
-<= It checks if the value of the left operand is less than or equal to
+&lt;= It checks if the value of the left operand is less than or equal to
 the value of the right operand. If yes, then the condition becomes
 true.
 Logical Operators
@@ -937,10 +923,10 @@ making process even more powerful. Using the earlier example, but with an
 additional condition for night-time:
 temperature = 18
 is_night = True
-if temperature < 20 and is_night:
-    print("It's cold and night. Turning the heating on.") 
-else: 
-    print("No need for heating right now.")  
+if temperature &lt; 20 and is_night:
+    print("It's cold and night. Turning the heating on.")
+else:
+    print("No need for heating right now.")
 Here, both conditions must be true (it must be cold and night) for the system to
 decide to turn the heating on. Logical operators are invaluable for crafting
 more nuanced, intelligent decision flows in your programs.
@@ -985,11 +971,11 @@ otherwise, set it to "sneakers." Simple, right?
 Here's another example. Suppose you want to display a message about
 outstanding invoices:
 invoice_count = 2
-print(f"You have {invoice_count} outstanding invoices")
+print(f"You have &#123;invoice_count&#125; outstanding invoices")
 But if you have only one invoice, the message would be incorrect
 grammatically. Using a ternary expression:
 invoice_count = 1
-print(f"You have {invoice_count} outstanding invoice{'s' if invoice_count != 1 else ''}")
+print(f"You have &#123;invoice_count&#125; outstanding invoice&#123;'s' if invoice_count != 1 else ''&#125;")
 Why Use Ternary Conditional Expressions?
 Conciseness: Condenses multiple lines of an if-else block into a
 single line.
@@ -1112,9 +1098,9 @@ n is the total number of payments (loan duration in years
 multiplied by 12).
 The point of this project is not to know how to read math formulas, so
 here is the code to calculate the monthly payment:
-# Car loan monthly payment calculation 
-numerator = loan_amount * monthly_interest_rate 
-denominator = 1 - (1 + monthly_interest_rate) ** -total_payments 
+# Car loan monthly payment calculation
+numerator = loan_amount * monthly_interest_rate
+denominator = 1 - (1 + monthly_interest_rate) ** -total_payments
 monthly_payment = numerator / denominator
 4. Output Detailed Loan Information:
 Display the loan amount (after any down payment
@@ -1154,8 +1140,8 @@ Loan Details:
     Interest Rate: 10.000
     Monthly Payment: $276.21
 2.14 References
-The Python Tutorial 
-Using the Python Interpreter – Earth is Flat 
+The Python Tutorial
+Using the Python Interpreter – Earth is Flat
 https://docs.python.org/3/tutorial/interpreter.html
 M
 C HAPTER  3: E XPLORING  P YTHON  WITH  L OOPS  AND  C OLLECTIONS
@@ -1166,8 +1152,7 @@ explore some of these essential data structures, such as lists, dictionaries,
 tuples, and sets, as well as loops that allow us to perform repetitive tasks.
 Understanding these concepts will help you write more efficient and
 organized code.
-3.1 Lists
-Lists in Python are like those versatile kitchen drawers. You can stuff them
+3.1 Lists in Python are like those versatile kitchen drawers. You can stuff them
 with different items, from integers and strings to even other lists. Creating a
 list is as simple as enclosing items in square brackets [], separated by
 commas. For instance, ingredients = ["flour", "sugar", "eggs"] neatly packages your
@@ -1231,7 +1216,6 @@ second_shelf = [
 "The Adventures of Huckleberry Finn",
 "Little Women",
 "Sense and Sensibility"
-]
 third_shelf = [
 "Les Misérables",
 "The Jungle",
@@ -1241,7 +1225,6 @@ third_shelf = [
 "The Metamorphosis",
 "Dubliners",
 "Beyond Good and Evil"
-]
 We can assemble these shelves into a bookshelf, which is a list of lists—a
 two-dimensional array:
 bookshelf = [first_shelf,
@@ -1262,7 +1245,7 @@ new_book = "The Great Gatsby"
 # Add the new book to the second shelf
 bookshelf[1].append(new_book)
 # Now the second shelf has 4 books
-print(f"Updated second shelf: {bookshelf[1]}")
+print(f"Updated second shelf: &#123;bookshelf[1]&#125;")
 The append() method adds an element to the end of the list. If we run the
 above code, our second shelf will now include "The Great Gatsby" as the
 fourth book.
@@ -1271,10 +1254,10 @@ To look at our entire bookshelf, we use a for loop to iterate over each shelf
 and then over each book within that shelf:
 # Iterate over each shelf in the bookshelf
 for shelf_number, shelf in enumerate(bookshelf):
-    print(f"Shelf {shelf_number} contains:")
+    print(f"Shelf &#123;shelf_number&#125; contains:")
     # Iterate over each book in the shelf
     for book in shelf:
-        print(f" - {book}")
+        print(f" - &#123;book&#125;")
     print()  # Print a newline for better readability
 The enumerate() function is handy here because it gives us both the index (the
 shelf number) and the value (the list of books on that shelf). This code will
@@ -1300,16 +1283,15 @@ Shelf 2 contains:
 - The Wind in the Willows
 - The Metamorphosis
 - Dubliners
-- Beyond Good and Evil 
+- Beyond Good and Evil
 By dynamically adding items and using loops to view our data, we've
 mimicked managing a real bookshelf, showcasing the power and flexibility
 of lists in Python. These actions are foundational in many Python programs,
 especially those involving data collection and manipulation.
-3.3 Introduction to Tuples
-Tuples are very similar to Lists. But they are immutable. Once you create a
+3.3 Introduction to Tuples are very similar to Lists. But they are immutable. Once you create a
 tuple, it's set. You can't change its contents. Creating a tuple is like creating
 a list, but instead of square brackets, you use parentheses ().
-point = (5, 10) 
+point = (5, 10)
 print(point[0], point[1])  # Output: 5 10
 Why use a tuple over a list? Speed and safety. Tuples load faster than lists,
 making them ideal for storing data that doesn't need changing, like the days
@@ -1319,8 +1301,7 @@ When to Use Lists vs. Tuples
 Choosing between lists and tuples often comes down to your data's nature
 and how you plan to use it. Here's a quick guide:
 Choose lists when your data collection might change over time,
-like a to-do list where tasks can be added or removed. 
-
+like a to-do list where tasks can be added or removed.
 Choose tuples for data that remain constant, where the safety of
 immutability is beneficial, like the coordinates of a city on a map.
 In the end, whether you reach for a list or a tuple depends on the task at
@@ -1347,41 +1328,40 @@ more complex data structures.
 Dictionaries in Python act as containers storing data as key-value pairs.
 Each key opens the door to its corresponding value, much like a real key
 opens a lock. Creating a dictionary is akin to drawing a map, where you
-define destinations and paths. For example, my_pet = {"name": "Fido", "species":
-"dog", "age": 5} constructs a dictionary about a pet, associating each piece of
+define destinations and paths. For example, my_pet = &#123;"name": "Fido", "species":
+"dog", "age": 5&#125; constructs a dictionary about a pet, associating each piece of
 information (value) with a descriptive label (key).
 Accessing data in a dictionary is straightforward. Using the key is like
 telling a GPS system exactly where you want to go, promptly leading you
 to your destination. If you want to know Fido's age:
-my_pet = {"name": "Fido",
+my_pet = &#123;"name": "Fido",
           "species": "dog",
-          "age": 5} 
-print(my_pet["age"])  # Output: 5  
+          "age": 5&#125;
+print(my_pet["age"])  # Output: 5
 This direct access to data elements makes dictionaries incredibly efficient
 for retrieving information.
-Manipulating Dictionaries
-Dictionaries are dynamic; they can evolve. You can add new key-value
+Manipulating Dictionaries are dynamic; they can evolve. You can add new key-value
 pairs, offering a way to update your map with new locations. Perhaps Fido
 has a new favorite toy. Adding this information is simple: my_pet["fav_toy"] =
 "rubber bone". Now, the dictionary includes this new detail about Fido.
-my_pet = {"name": "Fido",
+my_pet = &#123;"name": "Fido",
           "species": "dog",
-          "age": 5} 
-print(my_pet) # outputs: {'name': 'Fido', 'species': 'dog', 'age': 5} 
-my_pet["fav_toy"] = "rubber bone" 
-print(my_pet) # outputs: {'name': 'Fido', 'species': 'dog', 'age': 5, 'fav_toy': 'rubber bone'}
+          "age": 5&#125;
+print(my_pet) # outputs: &#123;'name': 'Fido', 'species': 'dog', 'age': 5&#125;
+my_pet["fav_toy"] = "rubber bone"
+print(my_pet) # outputs: &#123;'name': 'Fido', 'species': 'dog', 'age': 5, 'fav_toy': 'rubber bone'&#125;
 But what if a piece of information changes or becomes irrelevant? Python
 gives you tools to modify or remove entries. Let's say Fido celebrates a
 birthday. Updating his age is as easy as my_pet["age"] = 6.
-my_pet = {"name": "Fido", "species": "dog", "age": 5} 
+my_pet = &#123;"name": "Fido", "species": "dog", "age": 5&#125;
 my_pet["age"] = 6
-print(my_pet) # outputs: {'name': 'Fido', 'species': 'dog', 'age': 6}
+print(my_pet) # outputs: &#123;'name': 'Fido', 'species': 'dog', 'age': 6&#125;
 And if, for some reason, the species becomes unnecessary, del
 my_pet["species"] removes it from the dictionary, keeping your data clean and
 relevant.
-my_pet = {"name": "Fido", "species": "dog", "age": 5} 
-del my_pet["species"] 
-print(my_pet)  # outputs: {'name': 'Fido', 'age': 5}
+my_pet = &#123;"name": "Fido", "species": "dog", "age": 5&#125;
+del my_pet["species"]
+print(my_pet)  # outputs: &#123;'name': 'Fido', 'age': 5&#125;
 Practical Use Cases
 The real power of dictionaries becomes apparent when applied to practical
 scenarios. Their structure makes them ideal for representing complex data
@@ -1430,16 +1410,15 @@ to mathematical sets you might remember from school, designed to hold
 only unique elements. This unique feature makes sets an invaluable tool in
 various scenarios, especially when dealing with large datasets where
 uniqueness is key.
-Introduction to Sets
-Sets are created in Python using curly braces {} or the set() function, and
+Introduction to Sets are created in Python using curly braces &#123;&#125; or the set() function, and
 they automatically ensure that all elements within them are distinct. If you
 try to add a duplicate item to a set, Python quietly ignores the attempt,
 maintaining the set's unique collection. This behavior is particularly handy
 when you need to eliminate duplicates from data or when the order of
 elements is immaterial to your task.
 Here’s a quick look at how you might create a set:
-unique_flavors = {"chocolate", "vanilla", "strawberry", "chocolate"}
-print(unique_flavors) # Outputs: {'chocolate', 'strawberry', 'vanilla'}
+unique_flavors = &#123;"chocolate", "vanilla", "strawberry", "chocolate"&#125;
+print(unique_flavors) # Outputs: &#123;'chocolate', 'strawberry', 'vanilla'&#125;
 Notice how "chocolate" is listed twice? When this set is printed,
 "chocolate" will only appear once because sets allow only unique items.
 Set Operations
@@ -1449,30 +1428,30 @@ operations include:
 Union: Combines two sets into a new set containing all elements
 from both sets. If both sets have the same item, it will appear
 only once in the union.
-set1 = {"apple", "banana", "cherry"}
-set2 = {"cherry", "date", "fig"}
+set1 = &#123;"apple", "banana", "cherry"&#125;
+set2 = &#123;"cherry", "date", "fig"&#125;
 union_set = set1.union(set2)
 # or
 union_set = set1 | set2
-print(union_set)  # Outputs: {'banana', 'cherry', 'apple', 'date', 'fig'}
+print(union_set)  # Outputs: &#123;'banana', 'cherry', 'apple', 'date', 'fig'&#125;
 Intersection: Determines which items are shared between two
 sets, creating a new set of these common elements.
 intersection_set = set1.intersection(set2)
 # or
 intersection_set = set1 & set2
-print(intersection_set)  # Outputs: {'cherry'}
+print(intersection_set)  # Outputs: &#123;'cherry'&#125;
 Difference: This indicates items present in one set but not the
 other, which is useful for identifying what's unique to a set.
 difference_set = set1.difference(set2)
 # or
 difference_set = set1 - set2
-print(difference_set)  # Outputs: {'banana', 'apple'}
+print(difference_set)  # Outputs: &#123;'banana', 'apple'&#125;
 Symmetric Difference: Finds items in either of the two sets but
 not in both, essentially the opposite of intersection.
 sym_diff_set = set1.symmetric_difference(set2)
 # or
 sym_diff_set = set1 ^ set2
-print(sym_diff_set)  # Outputs: {'banana', 'date', 'apple', 'fig'}
+print(sym_diff_set)  # Outputs: &#123;'banana', 'date', 'apple', 'fig'&#125;
 These operations can be performed with methods or operators, giving you
 the flexibility to choose the syntax you find more readable.
 Use Cases for Sets
@@ -1483,12 +1462,12 @@ application, converting a list to a set removes any duplicate
 entries, simplifying your data.
 response_list = ["yes", "no", "yes", "maybe", "no"]
 unique_responses = set(response_list)
-print(unique_responses)  # Outputs: {'yes', 'no', 'maybe'}
+print(unique_responses)  # Outputs: &#123;'yes', 'no', 'maybe'&#125;
 Membership Testing: Checking if an item is in a set is faster
 than checking if it's in a list or tuple, especially for large
 collections. This speed advantage makes sets ideal for quickly
 determining whether an element exists in your dataset.
-allowed_users = {"alice", "bob", "charlie"}
+allowed_users = &#123;"alice", "bob", "charlie"&#125;
 user = "david"
 if user in allowed_users:
 print("Access granted")
@@ -1547,8 +1526,8 @@ list of your favorite books and you want to print each title. Rather than
 writing a print statement for each one, a for loop lets you do this in just a
 few lines:
 favorite_books = ["Absolute Beginner’s Guide to Python Programming",
-                  "1984", "The Great Gatsby", "The Hobbit"] 
-for book in favorite_books: 
+                  "1984", "The Great Gatsby", "The Hobbit"]
+for book in favorite_books:
     print(book)
 Here, the loop runs through each item in favorite_books, assigns it to book,
 and prints it. The simplicity and readability of for loops make them a
@@ -1560,7 +1539,7 @@ commonly used in for loops to iterate over a sequence of numbers,
 allowing you to perform an action multiple times. This function is
 beneficial when you know in advance how many times you need to iterate
 but do not necessarily have a list of items to iterate over.
-for i in range(start, stop, step): 
+for i in range(start, stop, step):
     # Perform action
 start: The starting point of the sequence. This parameter is
 optional, and if omitted, the sequence starts at 0.
@@ -1568,7 +1547,7 @@ stop: The endpoint of the sequence. The sequence does not
 include this number.
 step: The difference between each number in the sequence. This
 parameter is optional, and if omitted, the step is 1.
-for i in range(0, 5): 
+for i in range(0, 5):
     print(i)
 This loop prints numbers from 0 to 4. The range(0, 5) generates a sequence of
 numbers starting from 0 and ending before 5.
@@ -1578,15 +1557,15 @@ enumerate object. This can be directly used in for loops to get both the
 index and the value of each item in the sequence. It is especially useful
 when you need to have access to the index of each item when looping
 through a list or any other iterable.
-for index, value in enumerate(iterable, start=0): 
+for index, value in enumerate(iterable, start=0):
     # Perform action
 iterable: Any object that supports iteration.
 start: The starting index for the counter. This parameter is
 optional, and if omitted, the counting starts at 0.
 favorite_books = ["Absolute Beginner’s Guide to Python Programming",
-                  "1984", "The Great Gatsby", "The Hobbit"] 
-for index, book in enumerate(favorite_books): 
-    print(f"{index + 1}: {book}")
+                  "1984", "The Great Gatsby", "The Hobbit"]
+for index, book in enumerate(favorite_books):
+    print(f"&#123;index + 1&#125;: &#123;book&#125;")
 This loop prints each book in the favorite_books list along with its position in
 the list. The enumerate(favorite_books) function provides a convenient way to
 access both the index ( index) and the value ( book) during each iteration.
@@ -1604,9 +1583,9 @@ might not know how many weeks it'll take to save enough, so a while loop
 is perfect:
 savings = 0
 ticket_price = 100
-while savings < ticket_price:
+while savings &lt; ticket_price:
     savings += 25  # Assume you save $25 per week
-    print(f"Savings so far: ${savings}")
+    print(f"Savings so far: $&#123;savings&#125;")
 This loop continues to run – and you continue to save – until your savings
 match or exceed the ticket price. While loops are incredibly useful but
 require careful handling to avoid creating an infinite loop.
@@ -1642,7 +1621,6 @@ expenses = [
     [250, 150, 60],  # Category 1 expenses
     [80, 20],        # Category 2 expenses
     [100, 200, 150]  # Category 3 expenses
-]
 for category in expenses:
     print("New category:")
     for expense in category:
@@ -1729,22 +1707,21 @@ Setup Instructions
 1. Define Questions and Answers:
 Create a list of dictionaries, where each dictionary
 represents a quiz question, its multiple-choice options,
-and the correct answer.  
+and the correct answer.
 Since the focus of the project isn’t to test your
 creativity, I will provide you with some questions
 below. Use them, or don’t use them. Either works.
 2. Gameplay Flow:
 Display a welcome message to the user.
-Loop through the questions.  
+Loop through the questions.
 Optionally: You could randomly shuffle the questions
 to ensure a unique gameplay experience each time. To
 do so, you would need to import Python’s random
 package and then shuffle the questions. We haven’t
 talked about importing Python packages, so here is the
 code to do it:
-# Shuffle the questions 
-​import random 
-random.shuffle(questions)
+# Shuffle the questions
+​import random.shuffle(questions)
 Iterate through the questions, presenting each one to the
 user along with the answer choices.
 Prompt the user for their answer to each question.
@@ -1889,8 +1866,8 @@ Creating Functions
 A function is defined using the def keyword, followed by the function name
 and parentheses () which may include parameters. The code block within
 the function starts with a colon : and is indented.
-def greet(name): 
-    print(f"Hello, {name}!")
+def greet(name):
+    print(f"Hello, &#123;name&#125;!")
 Calling Functions
 To execute a function, you use the function name followed by parentheses.
 If the function expects arguments, you provide them inside the parentheses.
@@ -1905,7 +1882,7 @@ Moreover, functions aren't limited to performing actions; they can also
 return results using the return keyword. This feature is particularly useful
 when you need the output of a function for further computation or decision-
 making in your program. For instance:
-def add_numbers(num1, num2): 
+def add_numbers(num1, num2):
    return num1 + num2
 Here, add_numbers accepts two arguments, adds them, and returns the result,
 which can then be used elsewhere in your program.
@@ -1918,12 +1895,12 @@ allowing them to be called with fewer arguments than they are defined to
 accept.
 Default parameters are defined by assigning values in the function
 declaration. For example:
-def greet(name, message="Hello"): 
-    print(f"{message}, {name}!")
+def greet(name, message="Hello"):
+    print(f"&#123;message&#125;, &#123;name&#125;!")
 In this greet function, name is a required parameter, while message is
 optional with a default value of "Hello". This allows the function to be
 called in two ways:
-greet("Jasmin")               # Uses the default message: "Hello, Jasmin!" 
+greet("Jasmin")               # Uses the default message: "Hello, Jasmin!"
 greet("Bob", "Good morning")  # Uses a custom message: "Good morning, Bob!"
 This feature is particularly useful for functions that have options that are
 frequently not specified because they have common defaults. It also helps
@@ -1947,8 +1924,7 @@ affecting the rest of your program.
 Understanding scope and lifetime helps prevent conflicts and errors in your
 code, ensuring that each function interacts with the rest of your program in
 a predictable manner.
-4.3 Modules
-Modules in Python are fundamental in organizing functions, variables, and
+4.3 Modules in Python are fundamental in organizing functions, variables, and
 classes into separate files. This organization enhances code readability and
 manageability, facilitating code reuse and clear namespace separation.
 Creating a Module
@@ -1956,23 +1932,22 @@ A Python file with a .py extension can be considered a module. Within this
 file, you can define functions, variables, and classes, which can then be
 imported and used in other Python scripts. For example, let’s create a
 simple module:
-# mymodule.py 
-def say_hello(name): 
-    print(f"Hello, {name}!")
+# mymodule.py
+def say_hello(name):
+    print(f"Hello, &#123;name&#125;!")
 Using Modules
 To use the module you've created, employ the import statement to bring any
 definitions from the module into your current script.
-​import mymodule
-mymodule.say_hello("Bob")
+​import mymodule.say_hello("Bob")
 The if __name__ == "__main__": Idiom
 One important aspect of Python modules is the ability to determine whether
 the module is being run as the main program or being imported into another
 script. This is where the if __name__ == "__main__": idiom comes into play.
-# mymodule.py 
-def say_hello(name): 
-    print(f"Hello, {name}!") 
-if __name__ == "__main__": 
-    # Code block that runs only when the module is executed directly 
+# mymodule.py
+def say_hello(name):
+    print(f"Hello, &#123;name&#125;!")
+if __name__ == "__main__":
+    # Code block that runs only when the module is executed directly
     say_hello("Alice")
 When mymodule.py is run directly, the code under if __name__ == "__main__":
 executes. This allows for a module to have a dual use: as a reusable module
@@ -2073,16 +2048,15 @@ include arithmetic, logical operations, and more.
 Simple Example of Lambda: Multiplying Numbers
 Consider a lambda function that multiplies two numbers:
 multiply = lambda x, y: x * y
-print(multiply(2, 3))  # Output: 6 
+print(multiply(2, 3))  # Output: 6
 This demonstrates how a lambda function can succinctly perform an
 operation on two arguments.
-Ideal Usages of Lambda
-Lambda functions are best suited for operations that can be expressed in a
+Ideal Usages of Lambda functions are best suited for operations that can be expressed in a
 single line. For example, in a loan calculator program, calculating monthly
 payments can be succinctly done with a lambda:
-payment = lambda P, r, n: P * (r * (1 + r) ** n) / ((1 + r) ** n - 1) 
-monthly_payment = payment(100000, 0.05/12, 10*12) 
-print(f"Monthly Payment: ${monthly_payment:.2f}")
+payment = lambda P, r, n: P * (r * (1 + r) ** n) / ((1 + r) ** n - 1)
+monthly_payment = payment(100000, 0.05/12, 10*12)
+print(f"Monthly Payment: $&#123;monthly_payment:.2f&#125;")
 4.6 Enhancing Lambda Functions with filter, map, and
 sorted
 Lambda functions shine when used in conjunction with higher-order
@@ -2093,24 +2067,24 @@ Using filter with Lambda Functions
 The filter() function is used to create an iterator from elements of an iterable
 for which a function returns true. In combination with a lambda function,
 filter() can succinctly filter items in a collection. For example:
-numbers = [1, 2, 3, 4, 5, 6] 
-even_numbers = list(filter(lambda x: x % 2 == 0, numbers)) 
+numbers = [1, 2, 3, 4, 5, 6]
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
 print(even_numbers)  # Output: [2, 4, 6]
 Using map with Lambda Functions
 The map() function applies a given function to all items in an input list. A
 lambda function used with map() allows simple transformations to be
 applied to each element in the collection. For example:
-numbers = [1, 2, 3, 4, 5] 
-squared_numbers = list(map(lambda x: x**2, numbers)) 
+numbers = [1, 2, 3, 4, 5]
+squared_numbers = list(map(lambda x: x**2, numbers))
 print(squared_numbers)  # Output: [1, 4, 9, 16, 25]
 Sorting with Lambda Functions
 The sorted() function sorts the items of a given iterable in a specific order
 (default is ascending) and returns a new sorted list. Lambda functions can
 be used as the key argument in sorted() to define custom sorting logic. For
 example:
-fruits = [('apple', 2), ('orange', 5), ('banana', 1)] 
-sorted_fruits = sorted(fruits, key=lambda x: x[1]) 
-print(sorted_fruits) # Output: [('banana', 1), ('apple', 2), ('orange', 5)] 
+fruits = [('apple', 2), ('orange', 5), ('banana', 1)]
+sorted_fruits = sorted(fruits, key=lambda x: x[1])
+print(sorted_fruits) # Output: [('banana', 1), ('apple', 2), ('orange', 5)]
 Best Practices with Lambda Functions
 Use Sparingly: For more complex or reusable code, a full
 function definition is preferable for the sake of readability and
@@ -2180,17 +2154,11 @@ Understanding Game Flow
 Before we dive into coding, it's important to understand the flow of Tic-
 Tac-Toe. Here's a simplified flowchart to help visualize the game's process:
 Start
-↓
 Initialize Board
-↓
 Player 1 Input → Validate Move → Update Board
-↓
 Check for Win or Draw
-↓
 Switch Player
-↓
 Repeat Until Win or Draw
-↓
 End
 Each part of this flow represents a step we'll implement. Using Python, we
 will handle player inputs, validate moves, update the game state, and
@@ -2218,12 +2186,10 @@ empty, like this:
 board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 or a more concise version of the same thing by using a single list with nine
 empty string spaces, using list multiplication for a concise setup:
-board = [" "] * 9   
+board = [" "] * 9
 Visual representation of the board:
 0 | 1 | 2
----+---+---
 3 | 4 | 5
----+---+---
 6 | 7 | 8
 4.11 Step-by-Step Guide to Building the Game
 Step 1: Implement game_mechanics.py
@@ -2240,8 +2206,7 @@ are left).
 Implementation Tip: Iterate over the board to see if any
 cells are still empty. Return True if none are found;
 otherwise, return False.
-A slick Pythonic approach would be: return " " not in board
-board is a list variable containing the board.
+A slick Pythonic approach would be: return " " not in board is a list variable containing the board.
 3. Check for Game Winner function:
 Purpose: Write a method to determine if a player has
 won the game.
@@ -2400,8 +2365,7 @@ complex games like chess, checkers, Stratego™, Connect Four™, Reversi
 (Othello™), and Gomoku, where the ability to anticipate and counteract an
 opponent's moves is crucial.
 M ID -J OURNEY  M USINGS : A B RIEF
-I NTERLUDE  IN  O UR  P YTHONIC  Q UEST … 
-
+I NTERLUDE  IN  O UR  P YTHONIC  Q UEST …
 You've battled through the first half of our Python adventure, mastering
 loops, variables, and functions like a true code wizard! As we pause here,
 let's talk about something magical yet entirely within your grasp—your
@@ -2420,8 +2384,8 @@ darkness for those who will embark on this journey after you. Scan the QR
 code, share your tale, and then, snack in hand, venture forth. The second
 half awaits, with mysteries only you can uncover.
 Let's code on towards greatness together.
-Amazon 
-Absolute Beginner’s Guide to Python Programming 
+Amazon
+Absolute Beginner’s Guide to Python Programming
 https://www.amazon.com/review/create-review/?
 asin=B0D77D2YDR
 I
@@ -2534,7 +2498,7 @@ print("The file was not found.")
 except PermissionError:
 print("You do not have permission to read this file.")
 except Exception as e:
-print(f"An unexpected error occurred: {e}")
+print(f"An unexpected error occurred: &#123;e&#125;")
 finally:
 print("Finished reading the file.")
 In this example, we handle both FileNotFoundError and PermissionError. The
@@ -2555,8 +2519,8 @@ descriptions. Reading error messages during testing and development will
 help you identify specific exceptions your program should handle.
 By anticipating these potential issues, you can write more robust code that
 handles errors gracefully and provides a better user experience.
-The Python Standard Library 
-Built-in Exceptions 
+The Python Standard Library
+Built-in Exceptions
 https://docs.python.org/3/library/exceptions.html
 5.3 Working with Text Files
 Reading from Text Files
@@ -2572,7 +2536,7 @@ print("The file was not found.")
 except PermissionError:
 print("You do not have permission to read this file.")
 except Exception as e:
-print(f"An unexpected error occurred: {e}")
+print(f"An unexpected error occurred: &#123;e&#125;")
 finally:
 print("Finished reading the file.")
 In this example, we read the entire content of journal.txt and print it.
@@ -2584,7 +2548,7 @@ try:
 with open('journal.txt', 'w') as file:
 file.write("2024-05-25: Learned about file handling in Python.\n")
 except Exception as e:
-print(f"An error occurred: {e}")
+print(f"An error occurred: &#123;e&#125;")
 finally:
 print("Finished writing to the file.")
 In this example, we write a new entry to journal.txt.
@@ -2592,7 +2556,7 @@ try:
 with open('journal.txt', 'a') as file:
 file.write("2024-05-26: Practiced writing and reading files.\n")
 except Exception as e:
-print(f"An error occurred: {e}")
+print(f"An error occurred: &#123;e&#125;")
 finally:
 print("Finished appending to the file.")
 In this example, we append a new entry to journal.txt.
@@ -2609,7 +2573,7 @@ print("The file was not found.")
 except PermissionError:
 print("You do not have permission to read this file.")
 except Exception as e:
-print(f"An unexpected error occurred: {e}")
+print(f"An unexpected error occurred: &#123;e&#125;")
 finally:
 print("Finished reading the file.")
 Write Files Safely: Use the 'x' mode to create a new file, which
@@ -2621,7 +2585,7 @@ file.write("New entry.\n")
 except FileExistsError:
 print("The file already exists.")
 except Exception as e:
-print(f"An error occurred: {e}")
+print(f"An error occurred: &#123;e&#125;")
 finally:
 print("Finished writing to the file.")
 5.4 Working with JSON Files
@@ -2640,10 +2604,10 @@ data = json.load(file)
 print(data)
 except FileNotFoundError:
 print("The file was not found.")
-except json.JSONDecodeError:
+except json. JSONDecodeError:
 print("Error decoding JSON.")
 except Exception as e:
-print(f"An unexpected error occurred: {e}")
+print(f"An unexpected error occurred: &#123;e&#125;")
 finally:
 print("Finished reading the file.")
 In this example, we read JSON data from expenses.json and print it, with error
@@ -2653,16 +2617,15 @@ To write data to a JSON file, you use the json.dump() method, which converts
 Python objects into JSON format and writes them to a file.
 ​import json
 expenses = [
-{"date": "2024-05-25", "amount": 50.75, "category": "Grocery", "description": "Weekly
-groceries"},
-{"date": "2024-05-26", "amount": 120.00, "category": "Utilities", "description": "Electricity
-bill"}
-]
+&#123;"date": "2024-05-25", "amount": 50.75, "category": "Grocery", "description": "Weekly
+groceries"&#125;,
+&#123;"date": "2024-05-26", "amount": 120.00, "category": "Utilities", "description": "Electricity
+bill"&#125;
 try:
 with open('expenses.json', 'w') as file:
 json.dump(expenses, file, indent=4)
 except Exception as e:
-print(f"An error occurred: {e}")
+print(f"An error occurred: &#123;e&#125;")
 finally:
 print("Finished writing to the file.")
 In this example, we write a list of expense entries to expenses.json, with error
@@ -2677,21 +2640,21 @@ with open('expenses.json', 'r') as file:
 expenses = json.load(file)
 except FileNotFoundError:
 expenses = []
-except json.JSONDecodeError:
+except json. JSONDecodeError:
 print("Error decoding JSON.")
 expenses = []
 except Exception as e:
-print(f"An unexpected error occurred: {e}")
-new_expense = {"date": "2024-05-27",
+print(f"An unexpected error occurred: &#123;e&#125;")
+new_expense = &#123;"date": "2024-05-27",
 "amount": 75.20,
 "category": "Entertainment",
-"description": "Concert tickets"}
+"description": "Concert tickets"&#125;
 expenses.append(new_expense)
 try:
 with open('expenses.json', 'w') as file:
 json.dump(expenses, file, indent=4)
 except Exception as e:
-print(f"An error occurred: {e}")
+print(f"An error occurred: &#123;e&#125;")
 finally:
 print("Finished updating the file.")
 In this example, we add a new expense to the list and save it back to the
@@ -2708,21 +2671,20 @@ if isinstance(data, list) and all(isinstance(item, dict) for item in data):
 print("Valid JSON structure")
 else:
 print("Invalid JSON structure")
-except json.JSONDecodeError:
+except json. JSONDecodeError:
 print("Error decoding JSON.")
 Pretty-Print JSON: Use the indent parameter in json.dump() to
 write more readable JSON files.
 ​import json
 expenses = [
-{"date": "2024-05-25",
+&#123;"date": "2024-05-25",
 "amount": 50.75,
 "category": "Grocery",
-"description": "Weekly groceries"},
-{"date": "2024-05-26",
+"description": "Weekly groceries"&#125;,
+&#123;"date": "2024-05-26",
 "amount": 120.00,
 "category": "Utilities",
-"description": "Electricity bill"}
-]
+"description": "Electricity bill"&#125;
 with open('expenses.json', 'w') as file:
 json.dump(expenses, file, indent=4)
 Handle Missing Files Gracefully: When loading JSON data,
@@ -2751,7 +2713,6 @@ your chosen tech stack, should guide your choice of which to use. This
 section aims to demonstrate these other structured file formats, highlighting
 their unique characteristics and suggesting the appropriate Python libraries
 for working with each.
-CSV
 CSV (Comma-Separated Values) files are a simple text format for storing
 tabular data. Each line of the file is a data record, and each record consists
 of one or more fields separated by commas. This format is widely supported
@@ -2775,29 +2736,28 @@ with open('example.csv', mode='r') as file:
 reader = csv.reader(file)
 for row in reader:
 print(row)
-XML
 XML (eXtensible Markup Language) is a markup language that defines a
 set of rules for encoding documents in a human-readable and machine-
 readable format. It is primarily used for the storage and transport of data.
 Unlike JSON, XML is more verbose and allows for a greater degree of
 structure and metadata, making it well-suited for complex data
 representations. Python provides several libraries for working with XML
-data, with xml.etree.ElementTree being one of the most commonly used. It
+data, with xml.etree. ElementTree being one of the most commonly used. It
 offers a simple and efficient way to parse XML data, navigate through
 elements, and modify or create XML documents from scratch.
 XML File Example ( example.xml):
-<root&gt;
-<child&gt;This is child 1</child&gt;
-<child&gt;This is child 2</child&gt;
-</root&gt;
-​import xml.etree.ElementTree as ET
+&lt;root&gt;
+&lt;child&gt;This is child 1&lt;/child&gt;
+&lt;child&gt;This is child 2&lt;/child&gt;
+&lt;/root&gt;
+​import xml.etree. ElementTree as ET
 # Creating an XML file
-root = ET.Element("root")
-child1 = ET.SubElement(root, "child")
+root = ET. Element("root")
+child1 = ET. SubElement(root, "child")
 child1.text = "This is child 1"
-child2 = ET.SubElement(root, "child")
+child2 = ET. SubElement(root, "child")
 child2.text = "This is child 2"
-tree = ET.ElementTree(root)
+tree = ET. ElementTree(root)
 tree.write("example.xml")
 # Reading an XML file
 tree = ET.parse("example.xml")
@@ -2826,20 +2786,19 @@ Port = 50022
 ForwardX11 = no
 ​import configparser
 # Writing to an INI file
-config = configparser.ConfigParser()
-config['DEFAULT'] = {'ServerAliveInterval': '45',
+config = configparser. ConfigParser()
+config['DEFAULT'] = &#123;'ServerAliveInterval': '45',
 'Compression': 'yes',
-'CompressionLevel': '9'}
-config['bitbucket.org'] = {'User': 'hg'}
-config['topsecret.server.com'] = {'Port': '50022', 'ForwardX11': 'no'}
+'CompressionLevel': '9'&#125;
+config['bitbucket.org'] = &#123;'User': 'hg'&#125;
+config['topsecret.server.com'] = &#123;'Port': '50022', 'ForwardX11': 'no'&#125;
 with open('example.ini', 'w') as configfile:
 config.write(configfile)
 # Reading from an INI file
-config = configparser.ConfigParser()
+config = configparser. ConfigParser()
 config.read('example.ini')
 for section in config.sections():
 print(section, dict(config[section]))
-YAML
 YAML (YAML Ain't Markup Language) is a human-readable data
 serialization standard, ideal for configuration files, input files for data
 processing, and more due to its readability and support for complex data
@@ -2855,16 +2814,15 @@ age: 30
 city: New York
 ​import yaml
 # Writing to a YAML file
-data = {
+data = &#123;
 'name': 'Alice',
 'age': 30,
 'city': 'New York'
-}
 with open('example.yaml', 'w') as file:
 yaml.dump(data, file)
 # Reading from a YAML file
 with open('example.yaml', 'r') as file:
-data = yaml.load(file, Loader=yaml.FullLoader)
+data = yaml.load(file, Loader=yaml. FullLoader)
 print(data)
 5.6 Chapter Summary
 In this chapter, you learned about file handling in Python, focusing on
@@ -2881,7 +2839,6 @@ In the next chapter, we will dive into the world of object-oriented
 programming (OOP) in Python. You'll learn about classes, objects,
 inheritance, and other key concepts that will help you easily structure your
 programs and manage complex data.
-
 5.7 Chapter Exercises
 Exercise 1: Reading from a Text File
 Description: Write a Python script to read and print the content of a text
@@ -2889,11 +2846,9 @@ file.
 Task:
 1.            Open the File: Use the open() function to open a text file in read
 mode ('r'). Ensure to handle the file using a with statement for
-automatic closing. 
-
+automatic closing.
 2.            Read the Content: Use the read() method to read the entire
-content of the file. Print the content to the console. 
-
+content of the file. Print the content to the console.
 3.            Error Handling: Handle potential exceptions such as
 FileNotFoundError and PermissionError.
 Exercise 2: Writing to a Text File
@@ -2925,7 +2880,7 @@ file in read mode ( 'r').
 the JSON data into a Python dictionary or list and then print the
 parsed data.
 4. Error Handling: Handle potential exceptions such as
-FileNotFoundError and json.JSONDecodeError.
+FileNotFoundError and json. JSONDecodeError.
 Exercise 5: Writing to a JSON File
 Description: Write a Python script to write a list of dictionaries to a JSON
 file.
@@ -2952,7 +2907,6 @@ expenses.
 updated list to the JSON file.
 5. Error Handling: Handle potential exceptions during file
 operations.
-
 5.8 Chapter Project: Personal Expense Tracker
 Description: Create a personal expense tracker that reads, writes, and
 manipulates expense data stored in JSON files.
@@ -2974,11 +2928,10 @@ and JSON data processing.
 Step-by-Step Guide:
 1. Define the Data Structure:
 expenses = [
-{"date": "2024-05-25", "amount": 50.75, "category": "Grocery", "description": "Weekly
-groceries"},
-{"date": "2024-05-26", "amount": 120.00, "category": "Utilities", "description":
-"Electricity bill"}
-]
+&#123;"date": "2024-05-25", "amount": 50.75, "category": "Grocery", "description": "Weekly
+groceries"&#125;,
+&#123;"date": "2024-05-26", "amount": 120.00, "category": "Utilities", "description":
+"Electricity bill"&#125;
 2. Reading Data:
 ​import json
 def read_expenses(file_path):
@@ -2987,11 +2940,11 @@ with open(file_path, 'r') as file:
 return json.load(file)
 except FileNotFoundError:
 return []
-except json.JSONDecodeError:
+except json. JSONDecodeError:
 print("Error decoding JSON.")
 return []
 except Exception as e:
-print(f"An unexpected error occurred: {e}")
+print(f"An unexpected error occurred: &#123;e&#125;")
 return []
 3. Writing Data:
 def write_expenses(file_path, expenses):
@@ -2999,7 +2952,7 @@ try:
 with open(file_path, 'w') as file:
 json.dump(expenses, file, indent=4)
 except Exception as e:
-print(f"An error occurred: {e}")
+print(f"An error occurred: &#123;e&#125;")
 4. Adding an Expense
 def add_expense(file_path, new_expense):
 expenses = read_expenses(file_path)
@@ -3009,8 +2962,8 @@ write_expenses(file_path, expenses)
 def view_expenses(file_path):
 expenses = read_expenses(file_path)
 for expense in expenses:
-print(f"Date: {expense['date']}, Amount: {expense['amount']}, Category:
-{expense['category']}, Description: {expense['description']}")
+print(f"Date: &#123;expense['date']&#125;, Amount: &#123;expense['amount']&#125;, Category:
+&#123;expense['category']&#125;, Description: &#123;expense['description']&#125;")
 6. Main Function to Test the Tracker:
 def main():
 file_path = 'expenses.json'
@@ -3022,11 +2975,11 @@ date = input("Enter date (YYYY-MM-DD): ")
 amount = float(input("Enter amount: "))
 category = input("Enter category: ")
 description = input("Enter description: ")
-new_expense = {
+new_expense = &#123;
 "date": date,
 "amount": amount,
 "category": category,
-"description": description}
+"description": description&#125;
 add_expense(file_path, new_expense)
 elif choice == '2':
 view_expenses(file_path)
@@ -3125,10 +3078,10 @@ class Lamp:
         self.is_on = is_on
     def turn_on(self):
         self.is_on = True
-        print(f"The {self.color} lamp is now on.")
+        print(f"The &#123;self.color&#125; lamp is now on.")
     def turn_off(self):
         self.is_on = False
-        print(f"The {self.color} lamp is now off.")
+        print(f"The &#123;self.color&#125; lamp is now off.")
 There are a few new things in this code, that requiring a bit of explanation:
 Class Definition: The keyword class followed by Lamp starts the
 definition of our class. Lamp is the name of our class, which acts
@@ -3209,13 +3162,13 @@ class Customer:
         self.address = address  # This is an Address object
     def display_customer_info(self):
         """Displays the customer's information."""
-        print(f"Name: {self.name}")
-        print(f"Email: {self.email}")
+        print(f"Name: &#123;self.name&#125;")
+        print(f"Email: &#123;self.email&#125;")
         print("Address:")
-        print(f"  Street: {self.address.street}")
-        print(f"  City: {self.address.city}")
-        print(f"  State: {self.address.state}")
-        print(f"  Postal Code: {self.address.postal_code}")
+        print(f"  Street: &#123;self.address.street&#125;")
+        print(f"  City: &#123;self.address.city&#125;")
+        print(f"  State: &#123;self.address.state&#125;")
+        print(f"  Postal Code: &#123;self.address.postal_code&#125;")
     def update_address(self, street, city, state, postal_code):
         """Updates the customer's address."""
         self.address.update_address(street, city, state, postal_code)
@@ -3281,8 +3234,7 @@ is to explore the equally vital principles of inheritance, polymorphism, and
 abstraction. Each of these builds upon our foundation, weaving a richer
 tapestry of understanding that will allow you to craft more sophisticated and
 efficient software.
-6.6 Embracing Inheritance
-Inheritance in OOP is akin to inheriting traits from our parents yet
+6.6 Embracing Inheritance in OOP is akin to inheriting traits from our parents yet
 possessing unique characteristics. It allows one class, known as a subclass
 or child class, to inherit the attributes and methods of another class, referred
 to as a superclass or parent class. This principle fosters a natural
@@ -3298,13 +3250,13 @@ class Vehicle:
         self.make = make
         self.year = year
     def start(self):
-        print(f"The {self.make} vehicle is starting.")
+        print(f"The &#123;self.make&#125; vehicle is starting.")
 class Car(Vehicle):  # Inherits from Vehicle
     def __init__(self, make, year, model):
         super().__init__(make, year)  # Call the parent class's constructor
         self.model = model
     def start(self):
-        print(f"The {self.make} {self.model}, {self.year}, is starting.")
+        print(f"The &#123;self.make&#125; &#123;self.model&#125;, &#123;self.year&#125;, is starting.")
 Key Concepts of Inheritance
 Single Inheritance: When a class inherits from only one parent
 class. Our Car class demonstrates single inheritance by deriving
@@ -3343,19 +3295,17 @@ capability for electric vehicles).
 # Create an instance of ElectricCar
 tesla_model_s = ElectricCar("Tesla", 2020, "Model S")
 tesla_model_s.charge()  # Specific to ElectricCar
-tesla_model_s.start()  # Overridden method from Car, which inherits Vehicle's method 
+tesla_model_s.start()  # Overridden method from Car, which inherits Vehicle's method
 This hierarchy simplifies the representation of different vehicle types,
 allowing for shared and unique behaviors among them.
-6.7 Wrapping up Inheritance
-Inheritance is a cornerstone of OOP, enabling efficient code reuse, logical
+6.7 Wrapping up Inheritance is a cornerstone of OOP, enabling efficient code reuse, logical
 hierarchies, and easy extensibility. By understanding and applying
 inheritance, programmers can craft more organized, scalable, and
 maintainable codebases.
 Next, we'll explore Polymorphism, another OOP principle that allows
 objects of different classes to be treated as objects of a common superclass,
 further enhancing the flexibility and functionality of our programs.
-6.8 Exploring Polymorphism
-Polymorphism, from the Greek words for "many shapes," is a concept in
+6.8 Exploring Polymorphism, from the Greek words for "many shapes," is a concept in
 object-oriented programming (OOP) that allows objects of different classes
 to be treated as objects of a common superclass. It's the ability for different
 classes to respond to the same method call in different, yet related ways.
@@ -3397,7 +3347,7 @@ car = Car()
 bike = Bike()
 # Demonstrating polymorphism
 start_vehicle(car)  # Output: Starting the car
-start_vehicle(bike)  # Output: Starting the bike 
+start_vehicle(bike)  # Output: Starting the bike
 In this example, the start_vehicle function uses the start method of whichever
 vehicle it's given, showcasing polymorphism by treating different objects as
 instances of their superclass Vehicle.
@@ -3422,8 +3372,7 @@ integration and management of various payment methods (credit
 cards, PayPal, cryptocurrencies) in a system by allowing them to
 be processed through a common interface, facilitating the easy
 addition of new payment methods.
-6.9 Wrapping up Polymorphism
-Polymorphism is a pivotal concept in OOP that grants programmers the
+6.9 Wrapping up Polymorphism is a pivotal concept in OOP that grants programmers the
 ability to design flexible and dynamic systems. Polymorphism enhances
 code reusability, simplicity, and maintainability by treating objects of
 different classes similarly. As we've seen, its applications range from
@@ -3434,8 +3383,7 @@ Moving forward, we will delve into Abstraction, another fundamental OOP
 principle. Abstraction complements polymorphism by allowing us to focus
 on what an object does instead of how it does it, further contributing to the
 robustness and clarity of our software designs.
-6.10 Mastering Abstraction
-Abstraction in software development is akin to focusing on what a car does
+6.10 Mastering Abstraction in software development is akin to focusing on what a car does
 —moving forward or backward—without needing to understand the
 intricacies of its engine or transmission systems. This principle of hiding
 complexity while revealing necessary functionalities is pivotal in Object-
@@ -3449,8 +3397,7 @@ achieved by defining classes that represent abstract concepts and entities.
 These classes expose methods and properties relevant to their role while the
 inner workings remain concealed, promoting a cleaner, more intuitive
 interface for developers.
-Implementing Abstraction in Python
-Python achieves abstraction through abstract classes and interfaces, albeit in
+Implementing Abstraction in Python achieves abstraction through abstract classes and interfaces, albeit in
 its unique, dynamically typed way.
 Abstract Classes: Python's ABC (Abstract Base Class) module
 provides the infrastructure for defining abstract classes. An
@@ -3503,8 +3450,7 @@ lead to unnecessary complexity, potentially impacting performance and
 maintainability. It's essential to find the right balance, ensuring that
 abstraction simplifies development without introducing additional layers of
 complexity.
-6.12 Wrapping up Abstraction
-Abstraction is a cornerstone of OOP, essential for developing scalable,
+6.12 Wrapping up Abstraction is a cornerstone of OOP, essential for developing scalable,
 maintainable, and usable code. By focusing on "what" an object does rather
 than "how" it achieves it, abstraction lays the foundation for more complex
 principles like encapsulation, inheritance, and polymorphism.
@@ -3539,7 +3485,6 @@ software. With a solid foundation in OOP, you are now equipped to tackle
 more complex programming challenges, ready to design and implement
 sophisticated systems that mirror the complexity and elegance of the real
 world.
-
 6.14 Chapter Exercises
 Exercise 1: Define and Use a Class
 Description: Create a class to represent a book and instantiate objects of
@@ -3618,8 +3563,8 @@ self.amount = amount
 self.category = category
 self.description = description
 def __str__(self):
-return f"Date: {self.date}, Amount: {self.amount}, Category: {self.category}, Description:
-{self.description}"
+return f"Date: &#123;self.date&#125;, Amount: &#123;self.amount&#125;, Category: &#123;self.category&#125;, Description:
+&#123;self.description&#125;"
 2. Define the ExpenseTracker Class:
 ​import json
 class ExpenseTracker:
@@ -3633,18 +3578,18 @@ expenses_data = json.load(file)
 return [Expense(**expense) for expense in expenses_data]
 except FileNotFoundError:
 return []
-except json.JSONDecodeError:
+except json. JSONDecodeError:
 print("Error decoding JSON.")
 return []
 except Exception as e:
-print(f"An unexpected error occurred: {e}")
+print(f"An unexpected error occurred: &#123;e&#125;")
 return []
 def write_expenses(self):
 try:
 with open(self.file_path, 'w') as file:
 json.dump([expense.__dict__ for expense in self.expenses], file, indent=4)
 except Exception as e:
-print(f"An error occurred: {e}")
+print(f"An error occurred: &#123;e&#125;")
 def add_expense(self, new_expense):
 self.expenses.append(new_expense)
 self.write_expenses()
@@ -3710,8 +3655,7 @@ Create a new Python file and name it something like
 verify_tkinter.py.
 2. Write the Verification Code:
 In the new file, write the following code:
-​import tkinter
-tkinter._test()
+​import tkinter._test()
 3. Run the File: Save the file and run it using your text editor or
 IDE.
 You should see something like this:
@@ -3742,20 +3686,20 @@ favorite code editor or IDE, and let’s begin by typing the following code:
 Creating the Main Window
 The main window serves as the foundation for your application, where all
 other widgets (like buttons, labels, and text fields) will reside. Create the
-main window using the tk.Tk() class:
-root = tk.Tk() 
+main window using the tk. Tk() class:
+root = tk. Tk()
 root.title("My First Tkinter Application")
 Here, root is a common convention for naming the main window object. It
 is the base or starting point of all graphical objects in your entire
 application, much like the root of a tree.
 Adding a Label and Button
 Next, let’s add a label and a button to the main window:
-label = tk.Label(root, text="Hello, Tkinter!", font=('Arial', 14)) 
-label.pack(pady=10) 
-button = tk.Button(root, text="Click Me", command=on_button_click) 
+label = tk. Label(root, text="Hello, Tkinter!", font=('Arial', 14))
+label.pack(pady=10)
+button = tk. Button(root, text="Click Me", command=on_button_click)
 button.pack(pady=10)
 Add the following function under the import statement:
-def on_button_click(): 
+def on_button_click():
     label.config(text="Button clicked!")
 Starting the Event Loop
 Finally, start the Tkinter event loop:
@@ -3767,11 +3711,11 @@ Now, your code should look like this:
 ​import tkinter as tk
 def on_button_click():
 label.config(text="Button clicked!")
-root = tk.Tk()
+root = tk. Tk()
 root.title("My First Tkinter Application")
-label = tk.Label(root, text="Hello, Tkinter!", font=('Arial', 14))
+label = tk. Label(root, text="Hello, Tkinter!", font=('Arial', 14))
 label.pack(pady=10)
-button = tk.Button(root, text="Click Me", command=on_button_click)
+button = tk. Button(root, text="Click Me", command=on_button_click)
 button.pack(pady=10)
 root.mainloop()
 Go ahead and run the code, You should see a window like the window on
@@ -3787,15 +3731,15 @@ awesome. But how did I do it?” Let’s talk about that now:
 Explanation of the code:
 Importing Tkinter: import tkinter as tk imports the Tkinter module
 and aliases it as tk for convenience.
-Creating the Main Window: root = tk.Tk() initializes the main
+Creating the Main Window: root = tk. Tk() initializes the main
 window.
 Setting the Window Title: root.title("My First Tkinter Application") sets
 the title of the window.
-Adding a Label: label = tk.Label(root, text="Hello, Tkinter!", font=('Arial',
+Adding a Label: label = tk. Label(root, text="Hello, Tkinter!", font=('Arial',
 14)) creates a label with specified text and font.
 Adding the Label to the Window: label.pack(pady=10) places the
 label in the window with padding.
-Adding a Button: button = tk.Button(root, text="Click Me",
+Adding a Button: button = tk. Button(root, text="Click Me",
 command=on_button_click) creates a button that calls on_button_click
 when clicked.
 Adding the Button to the Window: button.pack(pady=10) places
@@ -3824,11 +3768,11 @@ The fill="x" option used with "Label 2" and "Label 3" allows these labels to
 expand horizontally to fill the available space.
 Here is the example code that produces this layout:
 ​import tkinter as tk
-root = tk.Tk()
+root = tk. Tk()
 root.title("Pack Layout Example")
-label1 = tk.Label(root, text="Label 1", bg="red", fg="white")
-label2 = tk.Label(root, text="Label 2", bg="green", fg="white")
-label3 = tk.Label(root, text="Label 3", bg="blue", fg="white")
+label1 = tk. Label(root, text="Label 1", bg="red", fg="white")
+label2 = tk. Label(root, text="Label 2", bg="green", fg="white")
+label3 = tk. Label(root, text="Label 3", bg="blue", fg="white")
 label1.pack(side="top", fill="x")
 label2.pack(side="left", fill="y")
 label3.pack(side="left", fill="y")
@@ -3856,11 +3800,11 @@ column=1).
 column=2).
 Here is the example code that produces this layout:
 ​import tkinter as tk
-root = tk.Tk()
+root = tk. Tk()
 root.title("Grid Layout Example")
-label1 = tk.Label(root, text="Label 1", bg="red", fg="white")
-label2 = tk.Label(root, text="Label 2", bg="green", fg="white")
-label3 = tk.Label(root, text="Label 3", bg="blue", fg="white")
+label1 = tk. Label(root, text="Label 1", bg="red", fg="white")
+label2 = tk. Label(root, text="Label 2", bg="green", fg="white")
+label3 = tk. Label(root, text="Label 3", bg="blue", fg="white")
 label1.grid(row=0, column=0)
 label2.grid(row=1, column=1)
 label3.grid(row=2, column=2)
@@ -3889,11 +3833,11 @@ specific coordinates within the window:
 "Label 3" is placed at coordinates (150, 150).
 Here is the example code that produces this layout:
 ​import tkinter as tk
-root = tk.Tk()
+root = tk. Tk()
 root.title("Place Layout Example")
-label1 = tk.Label(root, text="Label 1", bg="red", fg="white")
-label2 = tk.Label(root, text="Label 2", bg="green", fg="white")
-label3 = tk.Label(root, text="Label 3", bg="blue", fg="white")
+label1 = tk. Label(root, text="Label 1", bg="red", fg="white")
+label2 = tk. Label(root, text="Label 2", bg="green", fg="white")
+label3 = tk. Label(root, text="Label 3", bg="blue", fg="white")
 label1.place(x=50, y=50)
 label2.place(x=100, y=100)
 label3.place(x=150, y=150)
@@ -3934,33 +3878,32 @@ A Label widget displays text or images. It’s one of the simplest yet essential
 widgets in Tkinter, often used to provide information to the user.
 Example Code:
 ​import tkinter as tk
-root = tk.Tk()
+root = tk. Tk()
 root.title("Label Widget Example")
-label = tk.Label(root, text="This is a label", font=('Arial', 14), bg="yellow")
+label = tk. Label(root, text="This is a label", font=('Arial', 14), bg="yellow")
 label.pack(pady=10)
 root.mainloop()
 Explanation of the Code:
-Adding a Label: label = tk.Label(root, text="This is a label", font=('Arial', 14),
+Adding a Label: label = tk. Label(root, text="This is a label", font=('Arial', 14),
 bg="yellow") creates a label with specified text, font, and
 background color.
 Adding the Label to the Window: label.pack(pady=10) places the
 label in the window with padding.
-Buttons
 Buttons are interactive widgets that users can click to trigger actions. They
 are crucial for creating interactive applications.
 ​import tkinter as tk
 def button_click():
 print("Button clicked!")
-root = tk.Tk()
+root = tk. Tk()
 root.title("Button Widget Example")
-button = tk.Button(root, text="Click Me", command=button_click, bg="lightblue", font=('Arial',
+button = tk. Button(root, text="Click Me", command=button_click, bg="lightblue", font=('Arial',
 14))
 button.pack(pady=10)
 root.mainloop()
 Explanation of the Code:
 Defining the Callback Function: The button_click function prints
 a message when the button is clicked.
-Adding a Button: button = tk.Button(root, text="Click Me",
+Adding a Button: button = tk. Button(root, text="Click Me",
 command=button_click, bg="lightblue", font=('Arial', 14)) creates a button
 with specified text, command, background color, and font.
 Adding the Button to the Window: button.pack(pady=10) places the
@@ -3969,20 +3912,19 @@ Entry
 An Entry widget allows users to input a single line of text. It's commonly
 used in forms and data input scenarios.
 ​import tkinter as tk
-root = tk.Tk()
+root = tk. Tk()
 root.title("Entry Widget Example")
-label = tk.Label(root, text="Enter your name:", font=('Arial', 14))
+label = tk. Label(root, text="Enter your name:", font=('Arial', 14))
 label.pack(pady=10)
-entry = tk.Entry(root, width=30, font=('Arial', 14))
+entry = tk. Entry(root, width=30, font=('Arial', 14))
 entry.pack(pady=10)
 root.mainloop()
-
 Explanation of the Code:
-Adding a Label: label = tk.Label(root, text="Enter your name:", font=('Arial',
+Adding a Label: label = tk. Label(root, text="Enter your name:", font=('Arial',
 14)) creates a label with specified text and font.
 Adding the Label to the Window: label.pack(pady=10) places the
 label in the window with padding.
-Adding an Entry: entry = tk.Entry(root, width=30, font=('Arial', 14))
+Adding an Entry: entry = tk. Entry(root, width=30, font=('Arial', 14))
 creates an entry widget with specified width and font.
 Adding the Entry to the Window: entry.pack(pady=10) places the
 entry in the window with padding.
@@ -3991,23 +3933,22 @@ For multiline text input, the Text widget is your go-to. It provides a versatile
 area for user input, ideal for applications requiring more extensive data
 entry.
 Example Code:
-​import tkinter as tk 
-root = tk.Tk() 
-root.title("Text Widget Example") 
-label = tk.Label(root, text="Enter your address:", font=('Arial', 14)) 
-label.grid(row=0, column=0, padx=10, pady=10, sticky="e") 
-text_box = tk.Text(root, height=10, width=40, font=('Arial', 14), bg="lightyellow") 
-text_box.grid(row=0, column=1, padx=10, pady=10) 
+​import tkinter as tk
+root = tk. Tk()
+root.title("Text Widget Example")
+label = tk. Label(root, text="Enter your address:", font=('Arial', 14))
+label.grid(row=0, column=0, padx=10, pady=10, sticky="e")
+text_box = tk. Text(root, height=10, width=40, font=('Arial', 14), bg="lightyellow")
+text_box.grid(row=0, column=1, padx=10, pady=10)
 root.mainloop()
-
 Explanation of the Code:
-Adding a Label: label = tk.Label(root, text="Enter your
+Adding a Label: label = tk. Label(root, text="Enter your
 address:", font=('Arial', 14)) creates a label with specified text
 and font.
 Adding the Label to the Window: label.grid(row=0, column=0,
 padx=10, pady=10, sticky="e") places the label in the grid layout
 at row 0, column 0, with padding and aligns it to the right (east).
-Adding a Text Box: text_box = tk.Text(root, height=10,
+Adding a Text Box: text_box = tk. Text(root, height=10,
 width=40, font=('Arial', 14), bg="lightyellow") creates a text
 widget with specified height, width, font, and background color.
 Adding the Text Box to the Window: text_box.grid(row=0,
@@ -4027,25 +3968,24 @@ from tkinter import messagebox
 def submit_form():
 name = name_entry.get()
 email = email_entry.get()
-messagebox.showinfo("Form Submitted", f"Name: {name}\nEmail: {email}")
-root = tk.Tk()
+messagebox.showinfo("Form Submitted", f"Name: &#123;name&#125;\nEmail: &#123;email&#125;")
+root = tk. Tk()
 root.title("Frame Widget Example")
-frame = tk.Frame(root, relief=tk.RAISED, borderwidth=2)
+frame = tk. Frame(root, relief=tk. RAISED, borderwidth=2)
 frame.pack(padx=10, pady=10)
-name_label = tk.Label(frame, text="Name:", font=('Arial', 14))
+name_label = tk. Label(frame, text="Name:", font=('Arial', 14))
 name_label.grid(row=0, column=0, padx=5, pady=5, sticky="e")
-name_entry = tk.Entry(frame, width=30, font=('Arial', 14))
+name_entry = tk. Entry(frame, width=30, font=('Arial', 14))
 name_entry.grid(row=0, column=1, padx=5, pady=5)
-email_label = tk.Label(frame, text="Email:", font=('Arial', 14))
+email_label = tk. Label(frame, text="Email:", font=('Arial', 14))
 email_label.grid(row=1, column=0, padx=5, pady=5, sticky="e")
-email_entry = tk.Entry(frame, width=30, font=('Arial', 14))
+email_entry = tk. Entry(frame, width=30, font=('Arial', 14))
 email_entry.grid(row=1, column=1, padx=5, pady=5)
-submit_button = tk.Button(frame, text="Submit", command=submit_form, font=('Arial', 14))
+submit_button = tk. Button(frame, text="Submit", command=submit_form, font=('Arial', 14))
 submit_button.grid(row=2, column=0, columnspan=2, pady=10)
 root.mainloop()
-
 Explanation of the Code:
-Adding a Frame: frame = tk.Frame(root, relief=tk.RAISED, borderwidth=2)
+Adding a Frame: frame = tk. Frame(root, relief=tk. RAISED, borderwidth=2)
 creates a frame with a raised relief and a border width of 2.
 Adding the Frame to the Window: frame.pack(padx=10, pady=10)
 places the frame in the window with padding.
@@ -4055,7 +3995,7 @@ column 1, with padding.
 Adding the Email Entry to the Frame: email_entry.grid(row=1,
 column=1, padx=5, pady=5) places the entry in the grid layout at row 1,
 column 1, with padding.
-Adding a Submit Button: submit_button = tk.Button(frame, text="Submit",
+Adding a Submit Button: submit_button = tk. Button(frame, text="Submit",
 command=submit_form, font=('Arial', 14)) creates a button that calls the
 submit_form function when clicked.
 Adding the Submit Button to the Frame: submit_button.grid(row=2,
@@ -4099,7 +4039,7 @@ def show_error():
 messagebox.showerror("Error",
      "Humor Not Found. Please check your joke settings.",
 icon='error')
-root = tk.Tk()
+root = tk. Tk()
 root.withdraw()  # Hide the root window
 show_error()
 root.mainloop()
@@ -4126,7 +4066,7 @@ if response:
 messagebox.showinfo("Response", "You chose Yes!")
 else:
 messagebox.showinfo("Response", "You chose No!")
-root = tk.Tk()
+root = tk. Tk()
 root.withdraw()  # Hide the root window
 ask_yes_no()
 root.mainloop()
@@ -4158,31 +4098,31 @@ callback function is executed.
 Binding Events to Widgets
 Most commonly, you’ll bind events to widgets. For instance, you can bind a
 function to a button’s click event.
-def on_click(event=None): 
-    label.config(text="Button was clicked!") 
-button = tk.Button(root, text="Click Me") 
-button.pack() 
-button.bind("<Button-1&gt;", on_click)  # Bind left mouse click to on_click
+def on_click(event=None):
+    label.config(text="Button was clicked!")
+button = tk. Button(root, text="Click Me")
+button.pack()
+button.bind("&lt;Button-1&gt;", on_click)  # Bind left mouse click to on_click
 Handling Keyboard Events
 Tkinter can also respond to keyboard events, allowing you to trigger actions
 based on the keys pressed by the user.
-def on_keypress(event): 
-    label.config(text=f"You pressed {event.char}") 
-root.bind("<Key&gt;", on_keypress)  # Bind all key presses to on_keypress
+def on_keypress(event):
+    label.config(text=f"You pressed &#123;event.char&#125;")
+root.bind("&lt;Key&gt;", on_keypress)  # Bind all key presses to on_keypress
 This code makes the entire window listen for key presses and updates the
 label with the character of the pressed key.
 Using Lambda Functions for Parameters
 Sometimes, you might want to pass additional parameters to your callback
 function. This can be achieved using lambda functions, enabling you to
 include extra arguments when the event is triggered.
-button = tk.Button(root, text="Click Me") 
-button.pack() 
-button.bind("<Button-1&gt;", lambda event, arg="Extra Info": on_click(event, arg))
+button = tk. Button(root, text="Click Me")
+button.pack()
+button.bind("&lt;Button-1&gt;", lambda event, arg="Extra Info": on_click(event, arg))
 7.9 Event Sequences and Modifiers
 Tkinter supports a variety of event sequences and modifiers, allowing you
 to create complex event bindings. For example, you can specify events for
 different mouse buttons, key combinations, and more.
-root.bind("<Control-c&gt;", on_copy)  # Bind Control+c to on_copy function
+root.bind("&lt;Control-c&gt;", on_copy)  # Bind Control+c to on_copy function
 7.10 Advanced Widget Customization and Styles
 After grasping the fundamentals of Tkinter widgets and mastering event
 handling, the next step in refining your GUI applications involves advanced
@@ -4196,12 +4136,12 @@ keyword arguments at the time of widget creation or dynamically modified
 with methods during runtime.
 Colors: Customize the background (bg) and foreground (fg)
 colors to enhance the visual layout of your widgets.
-button = tk.Button(root, text="Click Me", bg="blue", fg="white") 
-button.pack() 
+button = tk. Button(root, text="Click Me", bg="blue", fg="white")
+button.pack()
 Fonts: The font option allows you to adjust the font type, size,
 and style to make the text in labels, buttons, and entries more
 readable or visually pleasing.
-label = tk.Label(root, text="Welcome", font=("Arial", 12, "bold")) 
+label = tk. Label(root, text="Welcome", font=("Arial", 12, "bold"))
 label.pack()
 Dimensions: Control the size of widgets through height and
 width options, and manage the space around widgets using padx
@@ -4218,21 +4158,21 @@ application with style.theme_use("theme_name").
 Styles: Create and apply custom styles to individual widgets or
 types of widgets.
 from tkinter import ttk
-style = ttk.Style()
+style = ttk. Style()
 style.theme_use("clam") # Using a predefined theme
-#Creating a custom style for buttons style.configure(“C.TButton”, font=(“Arial”, 10),
+#Creating a custom style for buttons style.configure(“C. TButton”, font=(“Arial”, 10),
 padding=10)
-#Applying the custom style to a button button = ttk.Button(root, text=“Styled Button”,
-style=“C.TButton”) button.pack()
+#Applying the custom style to a button = ttk. Button(root, text=“Styled Button”,
+style=“C. TButton”) button.pack()
 7.12 Dynamic Widget Updates
 Beyond static customization, Tkinter allows for dynamic updates to
 widgets, enabling your applications to respond to events with visual
 feedback. For example, you can change the text of a label in response to a
 button click or update the background color of a widget to indicate a state
 change.
-def update_label(): 
-    label.config(text="Updated Text", fg="green") 
-button = tk.Button(root, text="Update Label", command=update_label) 
+def update_label():
+    label.config(text="Updated Text", fg="green")
+button = tk. Button(root, text="Update Label", command=update_label)
 button.pack()
 7.13 Integrating External Data and Services in Tkinter
 Applications
@@ -4250,22 +4190,22 @@ updates, financial information, shipping status, or social media feeds.
 Choosing a Python HTTP Client: To make HTTP requests to
 an API, you can use Python’s requests library, which simplifies
 sending HTTP requests and handling responses.
-​import requests 
-def fetch_weather_data(city_name): 
+​import requests
+def fetch_weather_data(city_name):
     api_url = f"http://api.weatherapi.com/v1/current.json?key=YOUR_API_KEY&q=
-{city_name}"     response = requests.get(api_url) 
-    if response.status_code == 200: 
-        return response.json()  # Parse JSON data from the response 
-    else: 
+&#123;city_name&#125;"     response = requests.get(api_url)
+    if response.status_code == 200:
+        return response.json()  # Parse JSON data from the response
+    else:
         return None
 Integrating API Calls into Tkinter: Use the data fetched from
 APIs to update your GUI elements dynamically.
-def update_weather(): 
-    city = city_entry.get() 
-    data = fetch_weather_data(city) 
-    if data: 
-        weather_label.config(text=f"{city}: {data['current']['temp_c']}°C") 
-    else: 
+def update_weather():
+    city = city_entry.get()
+    data = fetch_weather_data(city)
+    if data:
+        weather_label.config(text=f"&#123;city&#125;: &#123;data['current']['temp_c']&#125;°C")
+    else:
         weather_label.config(text="Data not found.")
 Reading and Writing Files
 Many applications require reading from and writing to files for data
@@ -4273,35 +4213,35 @@ persistence. Python’s built-in file-handling functions work seamlessly
 within Tkinter applications.
 Reading from a File: Display content from a text file in a
 Tkinter Text widget.
-def load_file_content(): 
-    with open('example.txt', 'r') as file: 
-        content = file.read() 
-        text_widget.insert(tk.END, content)
+def load_file_content():
+    with open('example.txt', 'r') as file:
+        content = file.read()
+        text_widget.insert(tk. END, content)
 Writing to a File: Save content from a Tkinter Entry or Text
 widget to a file.
-def save_content_to_file(): 
-    content = text_widget.get("1.0", tk.END) 
-    with open('output.txt', 'w') as file: 
+def save_content_to_file():
+    content = text_widget.get("1.0", tk. END)
+    with open('output.txt', 'w') as file:
         file.write(content)
 Integrating with Databases
 Integrating a database can provide structured data storage and retrieval for
 applications requiring more complex data management.
 SQLite Database: Python’s sqlite3 module allows you to interact
 with SQLite databases directly, ideal for local data storage.
-​import sqlite3 
-def create_db(): 
-    conn = sqlite3.connect('my_app.db') 
-    c = conn.cursor() 
-    c.execute('''CREATE TABLE IF NOT EXISTS users (username text, age integer)''') 
-    conn.commit() 
+​import sqlite3
+def create_db():
+    conn = sqlite3.connect('my_app.db')
+    c = conn.cursor()
+    c.execute('''CREATE TABLE IF NOT EXISTS users (username text, age integer)''')
+    conn.commit()
     conn.close()
 CRUD Operations: Implement functions to create, read, update,
 and delete records in your database.
-def insert_user(username, age): 
-    conn = sqlite3.connect('my_app.db') 
-    c = conn.cursor() 
-    c.execute("INSERT INTO users VALUES (?, ?)", (username, age)) 
-    conn.commit() 
+def insert_user(username, age):
+    conn = sqlite3.connect('my_app.db')
+    c = conn.cursor()
+    c.execute("INSERT INTO users VALUES (?, ?)", (username, age))
+    conn.commit()
     conn.close()
 Integrating external data and services into your Tkinter applications opens
 up endless possibilities for creating rich and interactive applications.
@@ -4329,8 +4269,7 @@ module and library your program needs to run. Then, it collects
 copies of all those files — including the active Python
 interpreter! — and puts them with your script in a single folder
 or, optionally, in a single executable file.
-pip install pyinstaller 
-pyinstaller --onefile your_script.py
+pip install pyinstaller --onefile your_script.py
 The --onefile flag tells PyInstaller to bundle everything into a single
 executable. After running this command, you’ll find the executable in
 the dist directory.
@@ -4419,12 +4358,12 @@ return "Error"
 def on_button_click(char):
 if char == "=":
 result = evaluate_expression(entry.get())
-entry.delete(0, tk.END)
-entry.insert(tk.END, str(result))
+entry.delete(0, tk. END)
+entry.insert(tk. END, str(result))
 elif char == "C":
-entry.delete(0, tk.END)
+entry.delete(0, tk. END)
 else:
-entry.insert(tk.END, char)
+entry.insert(tk. END, char)
 # Set up main window, entry widget, and buttons here...
 Exercise 2: Create a To-Do List Application
 Description: Create a GUI-based to-do list application where users can add,
@@ -4455,8 +4394,8 @@ from tkinter import messagebox
 def add_task():
 task = entry.get()
 if task != "":
-tasks_listbox.insert(tk.END, task)
-entry.delete(0, tk.END)
+tasks_listbox.insert(tk. END, task)
+entry.delete(0, tk. END)
 else:
 messagebox.showwarning("Warning", "You must enter a task.")
 def delete_task():
@@ -4466,7 +4405,6 @@ tasks_listbox.delete(task_index)
 except:
 messagebox.showwarning("Warning", "You must select a task to delete.")
 # Set up main window, entry widget, listbox, and buttons here...
-
 7.17 Chapter Project – Convert Tic-Tac-Toe to Tkinter
 This project will guide you through converting the previously developed
 console Tic-Tac-Toe game into an interactive graphical user interface (GUI)
@@ -4566,33 +4504,33 @@ and feel.
 Creating the Game Window: Create a new module called game_gui.py.
 Start by importing Tkinter and setting up your main application window.
 This window will serve as the foundation for your game’s GUI.
-​import tkinter as tk 
-root = tk.Tk() 
+​import tkinter as tk
+root = tk. Tk()
 root.title('Tic-Tac-Toe')
 Setting Up the Grid: The Tic-Tac-Toe board is essentially a 3x3 grid.
 We’ll use buttons to represent each cell on the grid. When a player clicks a
 button, it’ll mark an ‘X’ or ‘O’ in the cell.
 Here’s how to create the grid without using lambda for simplicity:
-def create_button(row, col): 
-    def button_action(): 
-        button_click(row, col) 
-    return tk.Button(root, text='', width=10, height=3, command=button_action) 
-for row in range(3): 
-    for col in range(3): 
-        button = create_button(row, col) 
+def create_button(row, col):
+    def button_action():
+        button_click(row, col)
+    return tk. Button(root, text='', width=10, height=3, command=button_action)
+for row in range(3):
+    for col in range(3):
+        button = create_button(row, col)
         button.grid(row=row, column=col)
 In this setup, button_click is a function you’ll define to handle the game’s
 logic when a cell is clicked.
 Adding Status Messages: Use Tkinter’s Label widget to display messages
 like whose turn it is or who won the game. Place this label at the top or
 bottom of the window.
-status_label = tk.Label(root, text="Player X's Turn", font=('Helvetica', 12)) 
+status_label = tk. Label(root, text="Player X's Turn", font=('Helvetica', 12))
 status_label.pack(side="top")
 7.20 Updating the Main File - Initializing the Tkinter Loop
 In main.py, the newly created file for our GUI version, we start the Tkinter
 loop. This loop keeps the application running, waiting for user actions like
 button clicks.
-if __name__ == '__main__': 
+if __name__ == '__main__':
     root.mainloop()
 Tying Together UI and Game Logic
 The main.py file plays a crucial role in our application. It connects the visual
@@ -4625,7 +4563,7 @@ from game_ai import get_rules_based_ai_move
 ​import random
 2. Creating the Main Window
 Initialize Tkinter window: Set up the main window for the game.
-root = tk.Tk()
+root = tk. Tk()
 root.title('Tic-Tac-Toe')
 3. Setting Up the Game Board
 Create buttons: Each cell in the Tic-Tac-Toe grid is a button. Define
@@ -4633,7 +4571,7 @@ a function to create buttons and place them in a grid layout.
 buttons = []
 board = initialize_board()
 def create_button(row, col):
-button = tk.Button(root, text='', width=10, height=3,
+button = tk. Button(root, text='', width=10, height=3,
 command=lambda: button_click(row, col))
 button.grid(row=row, column=col)
 return button
@@ -4648,8 +4586,8 @@ Update game state: Define a function to handle button clicks,
 update the game state, and check for a winner or a draw.
 current_player = X_PLAYER
 computer_player = random.choice([X_PLAYER, O_PLAYER])
-status_label = tk.Label(root,
-text=f"Player {current_player}'s Turn",
+status_label = tk. Label(root,
+text=f"Player &#123;current_player&#125;'s Turn",
 font=('Helvetica', 12))
 status_label.grid(row=3, columnspan=3)
 def button_click(row, col):
@@ -4658,7 +4596,7 @@ if board[row * 3 + col] == ' ':
 board[row * 3 + col] = current_player
 buttons[row][col].config(text=current_player)
 if check_winner(board):
-messagebox.showinfo("Game Over", f"Player {current_player} wins!")
+messagebox.showinfo("Game Over", f"Player &#123;current_player&#125; wins!")
 reset_board()
 elif check_draw(board):
 messagebox.showinfo("Game Over", "The game is a draw!")
@@ -4666,7 +4604,7 @@ reset_board()
 else:
 current_player = O_PLAYER if current_player == X_PLAYER else
 X_PLAYER
-status_label.config(text=f"Player {current_player}'s Turn")
+status_label.config(text=f"Player &#123;current_player&#125;'s Turn")
 if current_player == computer_player:
 ai_move()
 5. Implementing AI Moves
@@ -4678,14 +4616,14 @@ board[move] = computer_player
 row, col = divmod(move, 3)
 buttons[row][col].config(text=computer_player)
 if check_winner(board):
-messagebox.showinfo("Game Over", f"Player {computer_player} wins!")
+messagebox.showinfo("Game Over", f"Player &#123;computer_player&#125; wins!")
 reset_board()
 elif check_draw(board):
 messagebox.showinfo("Game Over", "The game is a draw!")
 reset_board()
 else:
 current_player = O_PLAYER if current_player == X_PLAYER else X_PLAYER
-status_label.config(text=f"Player {current_player}'s Turn")
+status_label.config(text=f"Player &#123;current_player&#125;'s Turn")
 6. Resetting the Game
 Reset board: Define a function to reset the game board.
 def reset_board():
@@ -4695,11 +4633,11 @@ current_player = X_PLAYER
 for row in range(3):
 for col in range(3):
 buttons[row][col].config(text='')
-status_label.config(text=f"Player {current_player}'s Turn")
+status_label.config(text=f"Player &#123;current_player&#125;'s Turn")
 7. Running the Game
 Start the Tkinter main loop: Ensure the main loop is started to run
 the GUI application.
-if __name__ == "__main__":     
+if __name__ == "__main__":
 root.mainloop()
 C
 C HAPTER  8: E XPLORING  THE  F UTURE : W HERE  TO  G O  FROM  H ERE
@@ -4741,14 +4679,14 @@ Django: A high-level web framework that encourages rapid development
 and clean, pragmatic design. It includes many built-in features, such as
 authentication, an admin interface, and an ORM (Object-Relational
 Mapping) for database interactions.
-Django Documentation 
+Django Documentation
 https://docs.djangoproject.com/
 Flask: A micro-framework that provides the essentials to get started with
 web development without imposing any constraints on how you should
 structure your application. It's lightweight and flexible, making it ideal for
 smaller projects or developers who want more control over their
 application's components.
-Flask Project 
+Flask Project
 https://flask.palletsprojects.com/
 8.3 Data Science
 Data scientists use Python for data analysis, visualization, and machine learning.
@@ -4757,22 +4695,22 @@ visualization, while Scikit-learn and TensorFlow provide tools for machine learn
 Pandas: A powerful library for data manipulation and analysis. It
 provides data structures like DataFrames, which allow you to work with
 structured data easily and efficiently.
-Pandas Documentation 
+Pandas Documentation
 https://pandas.pydata.org/pandas-docs/stable/
 NumPy: The fundamental package for numerical computing in Python. It
 provides support for arrays, matrices, and many mathematical functions
 to operate on these data structures.
-NumPy Documentation 
+NumPy Documentation
 https://numpy.org/doc/
 Scikit-learn: A library for machine learning that provides simple and
 efficient tools for data mining and data analysis. It is built on NumPy,
 SciPy, and Matplotlib.
-Scikit-learn Documentation 
+Scikit-learn Documentation
 https://scikit-learn.org/stable/
 TensorFlow: An end-to-end open-source platform for machine learning.
 It has a comprehensive ecosystem of tools, libraries, and community
 resources.
-TensorFlow Documentation 
+TensorFlow Documentation
 https://www.tensorflow.org/
 8.4 Artificial Intelligence (AI)
 Python is a primary language for AI due to its simplicity and the wide range of AI
@@ -4781,12 +4719,12 @@ development of neural networks and other AI models.
 Keras: A high-level neural networks API, written in Python and capable
 of running on top of TensorFlow, CNTK, or Theano. It allows for easy
 and fast prototyping.
-Keras Documentation 
+Keras Documentation
 https://keras.io/
 PyTorch: An open-source machine learning library based on the Torch
 library. It provides a flexible and dynamic interface for building neural
 networks.
-PyTorch Documentation 
+PyTorch Documentation
 https://pytorch.org
 8.5 Scientific Computing
 Python is widely used in scientific research for its ability to handle and process large
@@ -4795,7 +4733,7 @@ two key libraries in this field.
 SciPy: A Python library used for scientific and technical computing. It
 builds on NumPy and provides a large number of functions that operate
 on NumPy arrays.
-SciPy Documentation 
+SciPy Documentation
 https://docs.scipy.org/doc/scipy/reference/
 8.6 Automation and Scripting
 Python's simplicity makes it a popular choice for writing scripts to automate
@@ -4803,12 +4741,12 @@ repetitive tasks and processes on computers without the need to develop complete
 programs.
 Selenium: A tool for automating web browsers. You can use it to perform
 automated testing of web applications or to scrape data from websites.
-Selenium Documentation 
+Selenium Documentation
 https://www.selenium.dev/documentation
 BeautifulSoup: A library for parsing HTML and XML documents. It
 provides Pythonic idioms for iterating, searching, and modifying the
 parse tree, which makes it easy to scrape information from web pages.
-BeautifulSoup Documentation 
+BeautifulSoup Documentation
 https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 8.7 Software Development
 Python is often used for developing desktop and command-line applications. It's
@@ -4816,11 +4754,11 @@ valued for rapid development and cross-platform compatibility with tools like Py
 and Tkinter.
 PyQt is a set of Python bindings for Qt libraries that can be used to create
 cross-platform applications with a native look and feel.
-PyQt Documentation 
+PyQt Documentation
 https://www.riverbankcomputing.com/software/pyqt/intro
 Tkinter: The standard GUI library for Python. Python when combined
 with Tkinter provides a fast and easy way to create GUI applications.
-Tkinter Documentation 
+Tkinter Documentation
 https://docs.python.org/3/library/tkinter.html
 8.8 Game Development
 Python's Pygame library is a set of Python modules designed for writing video
@@ -4828,7 +4766,7 @@ games. It includes graphics and sound libraries, making it suitable for game
 prototyping and development.
 Pygame: A set of Python modules designed for writing video games. It
 includes computer graphics and sound libraries.
-Pygame Documentation 
+Pygame Documentation
 https://www.pygame.org/docs/
 8.9 Network Programming
 Python provides libraries like socket which is used in network programming for tasks
@@ -4837,7 +4775,7 @@ analysis.
 socket: A low-level networking interface in Python that provides access
 to the BSD socket interface. It allows you to create network connections
 and transfer data between servers and clients.
-Socket Documentation 
+Socket Documentation
 https://docs.python.org/3/library/socket.html
 8.10 Finance
 Python is extensively used in quantitative finance to analyze financial markets, back-
@@ -4845,10 +4783,10 @@ test trading strategies, calculate financial risk, and build algorithmic trading
 with libraries like QuantLib and Pyalgotrade.
 QuantLib: A library for quantitative finance that provides tools for
 pricing derivatives, managing portfolios, and more.
-QuantLib Documentation 
+QuantLib Documentation
 https://www.quantlib.org/
 Pyalgotrade: A Python library for backtesting trading strategies.
-Pyalgotrade Documentation 
+Pyalgotrade Documentation
 https://github.com/gbeced/pyalgotrade
 8.11 Chapter Summary
 As you can see, Python's versatility knows no bounds. Its simplicity and
@@ -4939,21 +4877,21 @@ Exercise 2: Type Conversion
 user_input = input("Enter a number: ")
 user_number = int(user_input)
 result = user_number * 2
-print("Double your number is:", result) 
+print("Double your number is:", result)
 Exercise 3: String Formatting
 # Using f-string
 name = "Alice"
 age = 30
-print(f"Hello, {name}. You are {age} years old.")
+print(f"Hello, &#123;name&#125;. You are &#123;age&#125; years old.")
 # Using format() method
 temperature = 23.45678
-print("The current temperature is {:.2f}°C.".format(temperature))
+print("The current temperature is &#123;:.2f&#125;°C.".format(temperature))
 Exercise 4: Control Structures
 # Checking if a number is positive, negative, or zero
 number = int(input("Enter a number: "))
 if number &gt; 0:
 print("The number is positive.")
-elif number < 0:
+elif number &lt; 0:
 print("The number is negative.")
 else:
 print("The number is zero.")
@@ -4965,15 +4903,15 @@ print("Addition:", num1 + num2)
 print("Subtraction:", num1 - num2)
 print("Multiplication:", num1 * num2)
 print("Division:", num1 / num2)
-print("Exponentiation:", num1 ** num2) 
+print("Exponentiation:", num1 ** num2)
 Exercise 6: Comparison and Logical Operators
 # Determining age category
 age = int(input("Enter your age: "))
-if age < 13:
+if age &lt; 13:
 print("You are a child.")
-elif age &gt;= 13 and age < 18:
+elif age &gt;= 13 and age &lt; 18:
 print("You are a teenager.")
-elif age &gt;= 18 and age < 65:
+elif age &gt;= 18 and age &lt; 65:
 print("You are an adult.")
 else:
 print("You are a senior.")
@@ -4981,7 +4919,7 @@ Exercise 7: Ternary Conditional Expression
 # Checking if a number is even or odd
 number = int(input("Enter a number: "))
 result = "even" if number % 2 == 0 else "odd"
-print(f"The number is {result}.")
+print(f"The number is &#123;result&#125;.")
 Chapter 3 Solutions
 Exercise 1: List Manipulation
 # Create a list of your favorite movies
@@ -4992,34 +4930,30 @@ favorite_movies.append("Pulp Fiction")
 # Remove one movie
 favorite_movies.remove("The Matrix")
 # Print the updated list
-print(favorite_movies)  # Output: ['Inception', 'Interstellar', 'The Godfather', 'Pulp Fiction'] 
+print(favorite_movies)  # Output: ['Inception', 'Interstellar', 'The Godfather', 'Pulp Fiction']
 Exercise 2: 2D Array Access
-# Create a 3x3 matrix
-matrix = [
+# Create a 3x3 matrix = [
 [1, 2, 3],
 [4, 5, 6],
 [7, 8, 9]
-]
 # Print each element using nested loops
 for row in matrix:
 for element in row:
 print(element)
 Exercise 3: Dictionary Operations
 # Create a dictionary with information about a book
-book_info = {
+book_info = &#123;
 "title": "1984",
 "author": "George Orwell",
 "year": 1949
-}
 # Add a key for genre and update the year
 book_info["genre"] = "Dystopian"
 book_info["year"] = 1950
 # Print all keys and values
 for key, value in book_info.items():
-print(f"{key}: {value}")
+print(f"&#123;key&#125;: &#123;value&#125;")
 Exercise 4: Set Operations
-# Create a set of unique words from a given sentence
-sentence = "the quick brown fox jumps over the lazy dog"
+# Create a set of unique words from a given sentence = "the quick brown fox jumps over the lazy dog"
 words = sentence.split()
 unique_words = set(words)
 # Print the set of unique words
@@ -5042,13 +4976,12 @@ print(reversed_string)  # Output: 'olleh'
 Exercise 7: Combined Data Types
 # Create a list of dictionaries, each representing a student with name and grade
 students = [
-{"name": "Alice", "grade": 90},
-{"name": "Bob", "grade": 85},
-{"name": "Charlie", "grade": 95}
-]
+&#123;"name": "Alice", "grade": 90&#125;,
+&#123;"name": "Bob", "grade": 85&#125;,
+&#123;"name": "Charlie", "grade": 95&#125;
 # Print each student's name and grade using a loop
 for student in students:
-print(f"Name: {student['name']}, Grade: {student['grade']}")
+print(f"Name: &#123;student['name']&#125;, Grade: &#123;student['grade']&#125;")
 Chapter 4 Solutions
 Exercise 1: Basic Function Creation
 def sum_numbers(numbers):
@@ -5056,8 +4989,7 @@ return sum(numbers)
 Exercise 2: Scope and Lifetime
 total = 0
 def modify_global():
-global total
-total += 10
+global total += 10
 def use_local():
 total = 5
 print("Local total:", total)
@@ -5068,7 +5000,7 @@ return math.pi * (radius ** 2)
 Exercise 4: Creating and Importing Custom Modules
 # mymodule.py
 def is_prime(n):
-if n <= 1:
+if n &lt;= 1:
 return False
 for i in range(2, int(n ** 0.5) + 1):
 if n % i == 0:
@@ -5084,10 +5016,10 @@ mypackage/
 └── module2.py
 # module1.py
 def greet(name):
-return f"Hello, {name}!"
+return f"Hello, &#123;name&#125;!"
 # module2.py
 def farewell(name):
-return f"Goodbye, {name}!"
+return f"Goodbye, &#123;name&#125;!"
 # main.py
 from mypackage.module1 import greet
 from mypackage.module2 import farewell
@@ -5109,7 +5041,7 @@ print("The file was not found.")
 except PermissionError:
 print("You do not have permission to read this file.")
 except Exception as e:
-print(f"An unexpected error occurred: {e}")
+print(f"An unexpected error occurred: &#123;e&#125;")
 read_file('journal.txt')
 Exercise 2: Writing to a Text File
 def write_to_file(file_path, content):
@@ -5117,7 +5049,7 @@ try:
 with open(file_path, 'w') as file:
 file.write(content)
 except Exception as e:
-print(f"An error occurred: {e}")
+print(f"An error occurred: &#123;e&#125;")
 write_to_file('journal.txt', '2024-05-25: Learned about file handling in Python.\n')
 Exercise 3: Appending to a Text File
 def append_to_file(file_path, content):
@@ -5125,7 +5057,7 @@ try:
 with open(file_path, 'a') as file:
 file.write(content)
 except Exception as e:
-print(f"An error occurred: {e}")
+print(f"An error occurred: &#123;e&#125;")
 append_to_file('journal.txt', '2024-05-26: Practiced writing and reading files.\n')
 Exercise 4: Reading from a JSON File
 ​import json
@@ -5136,25 +5068,24 @@ data = json.load(file)
 print(data)
 except FileNotFoundError:
 print("The file was not found.")
-except json.JSONDecodeError:
+except json. JSONDecodeError:
 print("Error decoding JSON.")
 except Exception as e:
-print(f"An unexpected error occurred: {e}")
+print(f"An unexpected error occurred: &#123;e&#125;")
 read_json('expenses.json')
 Exercise 5: Writing to a JSON File
 ​import json
 expenses = [
-{"date": "2024-05-25", "amount": 50.75, "category": "Grocery", "description": "Weekly
-groceries"},
-{"date": "2024-05-26", "amount": 120.00, "category": "Utilities", "description": "Electricity
-bill"}
-]
+&#123;"date": "2024-05-25", "amount": 50.75, "category": "Grocery", "description": "Weekly
+groceries"&#125;,
+&#123;"date": "2024-05-26", "amount": 120.00, "category": "Utilities", "description": "Electricity
+bill"&#125;
 def write_json(file_path, data):
 try:
 with open(file_path, 'w') as file:
 json.dump(data, file, indent=4)
 except Exception as e:
-print(f"An error occurred: {e}")
+print(f"An error occurred: &#123;e&#125;")
 write_json('expenses.json', expenses)
 Exercise 6: Adding a New Expense to a JSON File
 ​import json
@@ -5164,30 +5095,29 @@ with open(file_path, 'r') as file:
 expenses = json.load(file)
 except FileNotFoundError:
 expenses = []
-except json.JSONDecodeError:
+except json. JSONDecodeError:
 print("Error decoding JSON.")
 expenses = []
 except Exception as e:
-print(f"An unexpected error occurred: {e}")
+print(f"An unexpected error occurred: &#123;e&#125;")
 return
 expenses.append(new_expense)
 try:
 with open(file_path, 'w') as file:
 json.dump(expenses, file, indent=4)
 except Exception as e:
-print(f"An error occurred: {e}")
-new_expense = {"date": "2024-05-27", "amount": 75.20, "category": "Entertainment",
-"description": "Concert tickets"}
+print(f"An error occurred: &#123;e&#125;")
+new_expense = &#123;"date": "2024-05-27", "amount": 75.20, "category": "Entertainment",
+"description": "Concert tickets"&#125;
 add_expense('expenses.json', new_expense)
 Chapter 6 Solutions
-Exercise 1: Define and Use a Class
-class Book:
+Exercise 1: Define and Use a Class Book:
 def __init__(self, title, author, year):
 self.title = title
 self.author = author
 self.year = year
 def display_details(self):
-print(f"Title: {self.title}, Author: {self.author}, Year: {self.year}")
+print(f"Title: &#123;self.title&#125;, Author: &#123;self.author&#125;, Year: &#123;self.year&#125;")
 # Creating instances
 book1 = Book("1984", "George Orwell", 1949)
 book2 = Book("To Kill a Mockingbird", "Harper Lee", 1960)
@@ -5210,16 +5140,15 @@ book2 = Book("To Kill a Mockingbird", "Harper Lee", 1960)
 library = Library()
 library.add_book(book1)
 library.add_book(book2)
-# Displaying all books in the library
-library.display_books()
+# Displaying all books in the library.display_books()
 Exercise 3: Implement Inheritance
 class EBook(Book):
 def __init__(self, title, author, year, file_size):
 super().__init__(title, author, year)
 self.file_size = file_size
 def display_details(self):
-print(f"Title: {self.title}, Author: {self.author}, Year: {self.year}, File Size:
-{self.file_size}MB")
+print(f"Title: &#123;self.title&#125;, Author: &#123;self.author&#125;, Year: &#123;self.year&#125;, File Size:
+&#123;self.file_size&#125;MB")
 # Creating instances of EBook
 ebook1 = EBook("1984", "George Orwell", 1949, 2)
 ebook2 = EBook("To Kill a Mockingbird", "Harper Lee", 1960, 1.5)
@@ -5263,8 +5192,8 @@ return 2 * (self.length + self.width)
 # Creating instances and calling methods
 circle = Circle(5)
 rectangle = Rectangle(4, 7)
-print(f"Circle Area: {circle.calculate_area()}, Perimeter: {circle.calculate_perimeter()}")
-print(f"Rectangle Area: {rectangle.calculate_area()}, Perimeter: {rectangle.calculate_perimeter()}")
+print(f"Circle Area: &#123;circle.calculate_area()&#125;, Perimeter: &#123;circle.calculate_perimeter()&#125;")
+print(f"Rectangle Area: &#123;rectangle.calculate_area()&#125;, Perimeter: &#123;rectangle.calculate_perimeter()&#125;")
 Chapter 7 Solutions
 Exercise 1: Create a Simple Calculator
 ​import tkinter as tk
@@ -5277,27 +5206,26 @@ return "Error"
 def on_button_click(char):
 if char == "=":
 result = evaluate_expression(entry.get())
-entry.delete(0, tk.END)
-entry.insert(tk.END, str(result))
+entry.delete(0, tk. END)
+entry.insert(tk. END, str(result))
 elif char == "C":
-entry.delete(0, tk.END)
+entry.delete(0, tk. END)
 else:
-entry.insert(tk.END, char)
-root = tk.Tk()
+entry.insert(tk. END, char)
+root = tk. Tk()
 root.title("Simple Calculator")
-entry = tk.Entry(root, width=16, font=('Arial', 24), borderwidth=2, relief="solid")
+entry = tk. Entry(root, width=16, font=('Arial', 24), borderwidth=2, relief="solid")
 entry.grid(row=0, column=0, columnspan=4)
 buttons = [
 '7', '8', '9', '/',
 '4', '5', '6', '*',
 '1', '2', '3', '-',
 '0', 'C', '=', '+'
-]
 row_val = 1
 col_val = 0
 for button in buttons:
 action = lambda x=button: on_button_click(x)
-tk.Button(root, text=button, width=10, height=2, command=action).grid(row=row_val,
+tk. Button(root, text=button, width=10, height=2, command=action).grid(row=row_val,
 column=col_val)
 col_val += 1
 if col_val &gt; 3:
@@ -5310,8 +5238,8 @@ from tkinter import messagebox
 def add_task():
 task = entry.get()
 if task != "":
-tasks_listbox.insert(tk.END, task)
-entry.delete(0, tk.END)
+tasks_listbox.insert(tk. END, task)
+entry.delete(0, tk. END)
 else:
 messagebox.showwarning("Warning", "You must enter a task.")
 def delete_task():
@@ -5320,21 +5248,21 @@ task_index = tasks_listbox.curselection()[0]
 tasks_listbox.delete(task_index)
 except:
 messagebox.showwarning("Warning", "You must select a task to delete.")
-root = tk.Tk()
+root = tk. Tk()
 root.title("To-Do List")
-frame = tk.Frame(root)
+frame = tk. Frame(root)
 frame.pack(pady=10)
-tasks_listbox = tk.Listbox(frame, width=50, height=10, bd=0)
-tasks_listbox.pack(side=tk.LEFT, fill=tk.BOTH)
-scrollbar = tk.Scrollbar(frame)
-scrollbar.pack(side=tk.RIGHT, fill=tk.BOTH)
+tasks_listbox = tk. Listbox(frame, width=50, height=10, bd=0)
+tasks_listbox.pack(side=tk. LEFT, fill=tk. BOTH)
+scrollbar = tk. Scrollbar(frame)
+scrollbar.pack(side=tk. RIGHT, fill=tk. BOTH)
 tasks_listbox.config(yscrollcommand=scrollbar.set)
 scrollbar.config(command=tasks_listbox.yview)
-entry = tk.Entry(root, width=50)
+entry = tk. Entry(root, width=50)
 entry.pack(pady=10)
-add_button = tk.Button(root, text="Add Task", command=add_task)
+add_button = tk. Button(root, text="Add Task", command=add_task)
 add_button.pack(pady=5)
-delete_button = tk.Button(root, text="Delete Task", command=delete_task)
+delete_button = tk. Button(root, text="Delete Task", command=delete_task)
 delete_button.pack(pady=5)
 root.mainloop()
 A PPENDIX  B: G IT H UB  P RIMER  FOR  D OWNLOADING  S OURCE
@@ -5440,59 +5368,67 @@ mastered, significantly enhances the quality and longevity of your software
 projects.
 A PPENDIX  D: C HOOSING  THE  R IGHT  IDE
 In the Python world, there are excellent IDE options to consider, and lots of them cater to arange of expertise from beginners to seasoned developers. The 2023 Stack Overflow surveyoffers insights into IDE popularity and user satisfaction, guiding our curated list of 8 popularPython IDEs. Each IDE is unique, with specific features, benefits, and suited project types,ensuring there’s an ideal environment for every programmer’s needs.
-Stack Overflow 
-Integrated Development Environment 
+Stack Overflow
+Integrated Development Environment
 https://survey.stackoverflow.co/2023/#section-most-popular-technologies-integrated-development-
 environment
-We provide a convenient way to explore these IDEs further through anchor URLs and QRcodes for each, accommodating both digital and print readers. As you evaluate these options,consider the IDE's features in relation to your coding style, project requirements, and the valueof its community and support. The goal is to find an IDE that enhances your efficiency andenjoyment of Python programming, making your coding journey as intuitive and productive aspossible. 
+We provide a convenient way to explore these IDEs further through anchor URLs and QRcodes for each, accommodating both digital and print readers. As you evaluate these options,consider the IDE's features in relation to your coding style, project requirements, and the valueof its community and support. The goal is to find an IDE that enhances your efficiency andenjoyment of Python programming, making your coding journey as intuitive and productive aspossible.
 Here is a brief list of the more popular IDEs:
 Visual Studio Code (VS Code)
-Visual Studio Code is one of the most popular choices among developers. It's renowned for itsuser-friendly interface, extensive library of extensions, and robust debugging capabilities.Plus, it's completely free to use, making it an ideal choice for both beginners andprofessionals. VS Code is a generic IDE. As a result, it needs further configuration to workwith Python.
-Microsoft 
-Visual Studio Code Download 
+Visual Studio Code is one of the most popular choices among developers. It's renowned for itsuser-friendly interface, extensive library of extensions, and robust debugging capabilities. Plus, it's completely free to use, making it an ideal choice for both beginners andprofessionals. VS Code is a generic IDE. As a result, it needs further configuration to workwith Python.
+Microsoft
+Visual Studio Code Download
 https://code.visualstudio.com/download
-PyCharm
 PyCharm is a powerful and widely used IDE specifically designed for Python. It offersfeatures like code analysis, intelligent code completion, and a variety of tools for webdevelopment, scientific computing, and data science. If you like JetBrains other IDEs, likeIntelliJ (Java), this is an excellent option. PyCharm was specifically written for Python. As aresult, it doesn’t require much more configuration to start using it. There are two versions:Community Edition (which is free) and Pro Edition (not so much). Check out this website tocompare the editions and download:
-JetBrains 
-PyCharm Community and Professional Editions Explained 
+JetBrains
+PyCharm Community and Professional Editions Explained
 https://blog.jetbrains.com/pycharm/2017/09/pycharm-community-edition-and-
 professional-edition-explained-licenses-and-more/
 Jupyter Notebook
 Jupyter Notebook is an interactive computing environment that's excellent for data analysisand scientific computing. It allows you to write and execute Python code in a document-styleformat, making it great for experimentation and documentation. Jupyter Notebook supports40+ languages. It will require further configuration to work with Python.
 Jupyter Network
 https://jupyter.org/
-Spyder
 Spyder is an IDE tailored for scientific and data-driven Python development. It provides aMATLAB-like interface with features like variable exploration, data visualization, andintegrated IPython support. https://www.spyder-ide.org/
-Spyder 
-The Scientific Python Development Environment 
+Spyder
+The Scientific Python Development Environment
 https://www.spyder-ide.org/
-Thonny
 Thonny is a beginner-friendly IDE designed to simplify Python programming for learners. Ithas a straightforward interface and includes features like code completion, debugger, and abuilt-in package manager.
-Thonny 
-Python IDE for Beginners 
+Thonny
+Python IDE for Beginners
 https://thonny.org/
 IDLE (Python's Built-in IDE)
 Python comes with its own basic IDE called IDLE. It's a simple and lightweight option forbeginners to get started quickly. While it lacks some advanced features, it's a good choice forbasic Python scripting. Since IDLE comes with Python and well…you will be installingPython in the next section, here is a link to its documentation:
-Python.org 
-IDLE is Python’s Integrated Development and Learning Environment 
+Python.org
+IDLE is Python’s Integrated Development and Learning Environment
 https://docs.python.org/3/library/idle.html
 PyDev (for Eclipse)
 If you're already using the Eclipse IDE, you can add the PyDev plugin to enable Pythondevelopment within Eclipse. It offers features like code analysis, debugging, and an integratedPython console.
-PyDev 
-Eclipse AddOn 
+PyDev
+Eclipse AddOn
 https://www.pydev.org/download.html
 Anaconda Navigator
 Anaconda Navigator is a platform that includes a variety of data science and machine learningtools. It provides a user-friendly interface for managing Python packages and environmentsand includes the Jupyter Notebook IDE.
-Anaconda Distribution 
-Free Download 
+Anaconda Distribution
+Free Download
 https://www.anaconda.com/download/
 As far as this book is concerned, choosing an integrated development environment (IDE) isentirely up to you, and it is tailored to meet your needs as a learner and developer.
 We understand that each programmer's journey is unique, with diverse preferences, projectrequirements, and learning styles. Therefore, we encourage you to select an IDE that alignswith your personal goals, enhances your coding experience, and supports your growth inPython programming. Whether you prioritize a rich set of features, an intuitive user interface,or robust community support, the most important factor is finding an environment where youfeel comfortable and empowered to explore the vast possibilities of Python.
 G LOSSARY
 Abstract Base Class: A module in Python that provides the infrastructure for definingabstract classes and methods. (ch. 6)Abstract Class: A class that cannot be instantiated on its own and is designed to besubclassed. Abstract classes typically contain one or more abstract methods. (ch. 6)Abstract Method: A method that is declared in an abstract class but does not have animplementation. Subclasses of the abstract class are required to provide an implementation forthe abstract method. (ch. 6)API: Application Programmers Interface. A set of rules and protocols that allow differentsoftware applications to communicate and interact with each other. (ch. 7)Arithmetic Operators: Symbols that represent basic mathematical operations, such as +, -, *,/, and **. (ch. 2)BASH: See Command Prompt (ch. 1)BeautifulSoup: A library for parsing HTML and XML documents, providing Pythonicidioms for iterating, searching, and modifying the parse tree, making it easy to scrapeinformation from web pages. (ch. 8)
-Boolean: A data type that can hold one of two values: True or False. Example: is_python_fun= True (ch. 1)break Statement: Exits a loop. (ch. 3)Button: A Button is a widget in Tkinter that users can click to trigger actions. It is crucial forcreating interactive applications. (ch. 7)Callback Function: A Callback Function in Tkinter is a function that is called when aspecific event occurs, such as a button click. (ch. 7)Child Class: See Subclass (ch. 6)Class: A blueprint or template for creating objects. It defines a set of attributes (properties)and methods (behaviors) that the objects created from the class will have. (ch. 6)Command Prompt: A text-based interface used to run commands on the operating system.Example: Command Prompt on Windows, Terminal on macOS and Linux. (ch. 1)Comparison Operators: Symbols that compare two values, returning a boolean result, suchas ==, !=, &gt;, =, and <=. (ch. 2)Compiler: A tool that translates a program written in a high-level language into machinecode, which the computer's processor can execute directly. (ch. 1)Composition: A principle where objects are constructed using other objects, allowing forcomplex structures by combining simpler ones. It involves including instances of other classesas attributes within a class. (ch. 6)Concatenation: The operation of joining two strings together using the + operator. Example:"Hello, " + "World!" results in "Hello, World!" (ch. 1)continue Statement: Skips the current iteration of a loop. (ch. 3)Control Structure: A block of programming that determines the flow of control based onspecified conditions, including if, elif, else statements. (ch. 2)CRUD: An acronym for Create, Read, Update, and Delete, representing the basic operationsperformed on data in a database or a similar system. (ch. 7)CSV File: Comma-Separated Values. A simple text format for storing tabular data where eachline represents a data record, and each record consists of fields separated by commas. (ch. 5)Data Science: An interdisciplinary field that uses scientific methods, algorithms, and systemsto extract knowledge and insights from structured and unstructured data. It involves datacollection, cleaning, analysis, and visualization to inform decision-making.Data Type: A classification that specifies which type of value a variable can hold inprogramming, such as integer, float, string, or boolean. (ch. 2)Default Button: The Default Button in a Tkinter message box is the button that is pre-selected when the message box appears, which can be activated by pressing the Enter key.(ch. 7)Dictionary: A collection of key-value pairs. (ch. 3)Django: A high-level web framework that encourages rapid development and clean,pragmatic design, including built-in features such as authentication, an admin interface, andan ORM for database interactions. (ch. 8)Duct Typing: A concept in dynamically typed languages like Python where an object's type isdetermined by its behavior (methods and properties) rather than its explicit class. It follows
-"If it looks like a duck and quacks like a duck, it must be a duck." (ch. 6)Dynamic Typing: A feature of Python where the type of a variable is interpreted at runtime,meaning you don't have to declare the type of a variable explicitly. (ch. 1)Encapsulation: The concept of bundling data and methods that operate on that data within asingle unit or class. Encapsulation also involves hiding the internal state and requiring allinteraction to be performed through an object's methods. (ch. 6)Entry: An Entry is a widget in Tkinter that allows users to input a single line of text. It iscommonly used in forms and data input scenarios. (ch. 7)Environment Variable: A variable outside of the Python program that can affect thebehavior of running processes. Often used to set paths and other system-wide settings.Example: PATH in the operating system's environment. (ch. 1)Event Loop: The Event Loop is a loop in GUI programming that waits for and dispatchesevents or messages in a program. In Tkinter, root.mainloop() starts the event loop, allowingthe application to respond to user actions. (ch. 7)except Statement: See try/except/finallyFile Handling: The process of opening, reading, writing, and closing files in a programminglanguage. (ch. 5)filter Function: Constructs a list from those elements of the input list for which a functionreturns true. (ch. 4)finally Statement: See try/except/finallyFlask: A micro-framework that provides the essentials to get started with web developmentwithout imposing constraints on application structure, making it ideal for smaller projects ordevelopers wanting more control. (ch. 8)Float: A data type representing numbers with a fractional component, denoted by a decimalpoint. Example: 3.14, 0.923 (ch. 1)For Loop: Iterates over a sequence. (ch. 3)format() Method: A method for formatting strings in Python, which allows insertion ofvariables and expressions into strings using curly braces {} as placeholders. (ch. 2)Frame: A Frame is a container widget in Tkinter that can hold and organize other widgets. Itis useful for complex layouts and grouping related elements together. (ch. 7)F-String: A formatted string literal in Python, introduced in Python 3.6, that allowsexpressions to be embedded inside string literals, using curly braces {}. (ch. 2)Function: A block of organized, reusable code that performs a single action. Functions cantake inputs (arguments) and return an output (result). Example: def greet(name): return "Hello" + name (ch. 1)Global Variable: A variable that is accessible from anywhere in the code. (ch. 4)Grid: The grid() method in Tkinter places widgets into a grid of rows and columns, providingmore complex layouts. (ch. 7)GUI: Graphical User Interface (GUI) is a type of user interface that allows users to interactwith electronic devices through graphical icons and visual indicators, as opposed to text-basedinterfaces. (ch. 7)IDE (Integrated Development Environment): A software application that provides
+Boolean: A data type that can hold one of two values: True or False. Example: is_python_fun= True (ch. 1)break Statement: Exits a loop. (ch. 3)Button: A Button is a widget in Tkinter that users can click to trigger actions. It is crucial forcreating interactive applications. (ch. 7)Callback Function: A Callback Function in Tkinter is a function that is called when aspecific event occurs, such as a button click. (ch. 7)Child Class: See Subclass (ch. 6)Class: A blueprint or template for creating objects. It defines a set of attributes (properties)and methods (behaviors) that the objects created from the class will have. (ch. 6)Command Prompt: A text-based interface used to run commands on the operating system. Example: Command Prompt on Windows, Terminal on macOS and Linux. (ch. 1)Comparison Operators: Symbols that compare two values, returning a boolean result, suchas ==, !=, &gt;, =, and &lt;=. (ch. 2)Compiler: A tool that translates a program written in a high-level language into machinecode, which the computer's processor can execute directly. (ch. 1)Composition: A principle where objects are constructed using other objects, allowing forcomplex structures by combining simpler ones. It involves including instances of other classesas attributes within a class. (ch. 6)Concatenation: The operation of joining two strings together using the + operator. Example:"Hello, " + "World!" results in "Hello, World!" (ch. 1)continue Statement: Skips the current iteration of a loop. (ch. 3)Control Structure: A block of programming that determines the flow of control based onspecified conditions, including if, elif, else statements. (ch. 2)CRUD: An acronym for Create, Read, Update, and Delete, representing the basic operationsperformed on data in a database or a similar system. (ch. 7)CSV File: Comma-Separated Values. A simple text format for storing tabular data where eachline represents a data record, and each record consists of fields separated by commas. (ch. 5)Data Science: An interdisciplinary field that uses scientific methods, algorithms, and systemsto extract knowledge and insights from structured and unstructured data. It involves datacollection, cleaning, analysis, and visualization to inform decision-making. Data Type: A classification that specifies which type of value a variable can hold inprogramming, such as integer, float, string, or boolean. (ch. 2)Default Button: The Default Button in a Tkinter message box is the button that is pre-selected when the message box appears, which can be activated by pressing the Enter key.(ch. 7)Dictionary: A collection of key-value pairs. (ch. 3)Django: A high-level web framework that encourages rapid development and clean,pragmatic design, including built-in features such as authentication, an admin interface, andan ORM for database interactions. (ch. 8)Duct Typing: A concept in dynamically typed languages like Python where an object's type isdetermined by its behavior (methods and properties) rather than its explicit class. It follows
+"If it looks like a duck and quacks like a duck, it must be a duck." (ch. 6)Dynamic Typing: A feature of Python where the type of a variable is interpreted at runtime,meaning you don't have to declare the type of a variable explicitly. (ch. 1)Encapsulation: The concept of bundling data and methods that operate on that data within asingle unit or class. Encapsulation also involves hiding the internal state and requiring allinteraction to be performed through an object's methods. (ch. 6)Entry: An Entry is a widget in Tkinter that allows users to input a single line of text. It iscommonly used in forms and data input scenarios. (ch. 7)Environment Variable: A variable outside of the Python program that can affect thebehavior of running processes. Often used to set paths and other system-wide settings. Example: PATH in the operating system's environment. (ch. 1)Event Loop: The Event Loop is a loop in GUI programming that waits for and dispatchesevents or messages in a program. In Tkinter, root.mainloop() starts the event loop, allowingthe application to respond to user actions. (ch. 7)except Statement: See try/except/finallyFile Handling: The process of opening, reading, writing, and closing files in a programminglanguage. (ch. 5)filter Function: Constructs a list from those elements of the input list for which a functionreturns true. (ch. 4)finally Statement: See try/except/finallyFlask: A micro-framework that provides the essentials to get started with web developmentwithout imposing constraints on application structure, making it ideal for smaller projects ordevelopers wanting more control. (ch. 8)Float: A data type representing numbers with a fractional component, denoted by a decimalpoint. Example: 3.14, 0.923 (ch. 1)For Loop: Iterates over a sequence. (ch. 3)format() Method: A method for formatting strings in Python, which allows insertion ofvariables and expressions into strings using curly braces &#123;&#125; as placeholders. (ch. 2)Frame: A Frame is a container widget in Tkinter that can hold and organize other widgets. Itis useful for complex layouts and grouping related elements together. (ch. 7)F-String: A formatted string literal in Python, introduced in Python 3.6, that allowsexpressions to be embedded inside string literals, using curly braces &#123;&#125;. (ch. 2)Function: A block of organized, reusable code that performs a single action. Functions cantake inputs (arguments) and return an output (result). Example: def greet(name): return "Hello" + name (ch. 1)Global Variable: A variable that is accessible from anywhere in the code. (ch. 4)Grid: The grid() method in Tkinter places widgets into a grid of rows and columns, providingmore complex layouts. (ch. 7)GUI: Graphical User Interface (GUI) is a type of user interface that allows users to interactwith electronic devices through graphical icons and visual indicators, as opposed to text-basedinterfaces. (ch. 7)IDE (Integrated Development Environment): A software application that provides
 comprehensive facilities to computer programmers for software development. An IDEtypically includes a code editor, a debugger, and build automation tools. Example: PyCharm,Visual Studio Code, Jupyter Notebook (ch. 1)Immutability: A property of data types where the value cannot be changed after it is created,such as with strings and tuples. (ch. 2)Indentation: The use of whitespace (spaces or tabs) at the beginning of lines to define thelevel of nesting and structure in Python code. (ch. 2)Inheritance: A mechanism in which one class (subclass or child class) inherits attributes andmethods from another class (superclass or parent class). It allows for code reuse and thecreation of a hierarchical relationship between classes. (ch. 6)INI File: A simple text file with a basic structure composed of sections, properties, andvalues, commonly used for configuration settings. (ch. 5)Input Function: A built-in Python function that allows the program to receive input from theuser. Example: user_name = input("What is your name? ") (ch. 1)Integer: A data type representing whole numbers without a fractional component. Example:10, -3 (ch. 1)Interpreter: A program that reads and executes code written in a programming language. ThePython interpreter reads and executes Python code line by line. (ch. 1)JSON: JavaScript Object Notation. A lightweight data-interchange format that is easy forhumans to read and write and easy for machines to parse and generate. (ch. 5)#DeletedLabel: A Label is a widget in Tkinter used to display text or images. It is often used toprovide information to the user. (ch. 7)Lambda Function: An anonymous function defined using the lambda keyword. (ch. 4)Layout Manager: Layout Managers in Tkinter (such as pack(), grid(), and place()) are usedto control the positioning and sizing of widgets within a window. (ch. 7)List: An ordered collection of items. (ch. 3)Local Variable: A variable that is only accessible within the function or block where it isdefined. (ch. 4)Logical Operators: Operators that combine multiple boolean expressions or values,including and, or, and not. (ch. 2)Loop: A control structure that repeatedly executes a block of code. (ch. 3)map Function: Applies a given function to all items in an input list. (ch. 4)Message Box: A Message Box is a popup dialog in Tkinter used to display messages to theuser. It can be informational, warning, or error messages, and can also ask for userconfirmation. (ch. 7)Method Overloading: A feature in OOP where a subclass provides a specific implementationof a method that is already defined in its superclass. The overridden method in the subclasshas the same name and parameters as the method in the superclass. (ch. 6)Module: A file containing Python definitions and statements. (ch. 4)Nested Loop: A loop inside another loop. (ch. 3)NumPy: The fundamental package for numerical computing in Python, supporting arrays,
-matrices, and many mathematical functions to operate on these data structures. (ch. 8)Object: An instance of a class that encapsulates data and functionality. Objects are the actualentities that are manipulated in OOP. (ch. 6)OOP: Object Oriented Programming. A programming paradigm that uses objects and classesto structure software in a way that models real-world entities and their interactions. (ch. 6)Pack: The pack() method in Tkinter arranges widgets in blocks before placing them in theparent widget. It can arrange widgets horizontally or vertically. (ch. 7)Package: A collection of related modules. (ch. 4)Pandas: A powerful library for data manipulation and analysis, providing data structures likeDataFrames to work with structured data easily and efficiently. (ch. 8)Parent Class: See Superclass (ch. 6)Place: The place() method in Tkinter allows for precise control of widget positioning using xand y coordinates. (ch. 7)Polymorphism: The ability of different classes to respond to the same method call indifferent, but related ways. It allows objects of different classes to be treated as objects of acommon superclass. (ch. 6)Print Function: A built-in Python function that outputs text or other data to the console.Example: print("Hello, World!") (ch. 1)pyalgotrade: A Python library for backtesting trading strategies. (ch. 8)Pygame: A set of Python modules designed for writing video games, including computergraphics and sound libraries. (ch. 8)PyQt: A set of Python bindings for Qt libraries used to create cross-platform applicationswith a native look and feel. (ch. 8)Python: A high-level, interpreted programming language known for its readability andversatility. Python supports multiple programming paradigms, including procedural, object-oriented, and functional programming. (ch. 1)Python Script: A file containing a series of Python commands that can be executed as aprogram. (ch. 1)PyTorch: An open-source machine learning library based on the Torch library, providing aflexible and dynamic interface for building neural networks. (ch. 8)QuantLib: A library for quantitative finance that provides tools for pricing derivatives,managing portfolios, and more. (ch. 8)Scikit-learn: A library for machine learning that provides simple and efficient tools for datamining and data analysis, built on NumPy, SciPy, and Matplotlib. (ch. 8)SciPy: A Python library used for scientific and technical computing, building on NumPy andproviding many functions that operate on NumPy arrays. (ch. 8)Scope: The region of a program where a variable is defined and accessible. (ch. 4)Script: A file containing a series of commands that can be executed as a program. See PythonScript (ch. 1)Selenium: A tool for automating web browsers, useful for automated testing of webapplications or scraping data from websites. (ch. 8)Set: An unordered collection of unique items. (ch. 3)
+matrices, and many mathematical functions to operate on these data structures. (ch. 8)Object: An instance of a class that encapsulates data and functionality. Objects are the actualentities that are manipulated in OOP. (ch. 6)OOP: Object Oriented Programming. A programming paradigm that uses objects and classesto structure software in a way that models real-world entities and their interactions. (ch. 6)Pack: The pack() method in Tkinter arranges widgets in blocks before placing them in theparent widget. It can arrange widgets horizontally or vertically. (ch. 7)Package: A collection of related modules. (ch. 4)Pandas: A powerful library for data manipulation and analysis, providing data structures likeDataFrames to work with structured data easily and efficiently. (ch. 8)Parent Class: See Superclass (ch. 6)Place: The place() method in Tkinter allows for precise control of widget positioning using xand y coordinates. (ch. 7)Polymorphism: The ability of different classes to respond to the same method call indifferent, but related ways. It allows objects of different classes to be treated as objects of acommon superclass. (ch. 6)Print Function: A built-in Python function that outputs text or other data to the console. Example: print("Hello, World!") (ch. 1)pyalgotrade: A Python library for backtesting trading strategies. (ch. 8)Pygame: A set of Python modules designed for writing video games, including computergraphics and sound libraries. (ch. 8)PyQt: A set of Python bindings for Qt libraries used to create cross-platform applicationswith a native look and feel. (ch. 8)Python: A high-level, interpreted programming language known for its readability andversatility. Python supports multiple programming paradigms, including procedural, object-oriented, and functional programming. (ch. 1)Python Script: A file containing a series of Python commands that can be executed as aprogram. (ch. 1)PyTorch: An open-source machine learning library based on the Torch library, providing aflexible and dynamic interface for building neural networks. (ch. 8)QuantLib: A library for quantitative finance that provides tools for pricing derivatives,managing portfolios, and more. (ch. 8)Scikit-learn: A library for machine learning that provides simple and efficient tools for datamining and data analysis, built on NumPy, SciPy, and Matplotlib. (ch. 8)SciPy: A Python library used for scientific and technical computing, building on NumPy andproviding many functions that operate on NumPy arrays. (ch. 8)Scope: The region of a program where a variable is defined and accessible. (ch. 4)Script: A file containing a series of commands that can be executed as a program. See PythonScript (ch. 1)Selenium: A tool for automating web browsers, useful for automated testing of webapplications or scraping data from websites. (ch. 8)Set: An unordered collection of unique items. (ch. 3)
 Shell: See Command Prompt (ch. 1)Socket: A low-level networking interface in Python that provides access to the BSD socketinterface, allowing the creation of network connections and data transfer between servers andclients. (ch. 8)sorted Function: Returns a new sorted list from the elements of any iterable. (ch. 4)SQL: Structured Query Language. A standard programming language specifically designedfor managing and manipulating relational databases. SQL is used to query, insert, update, anddelete data, as well as to create and modify the structure of database systems. (ch. 7)String: A sequence of characters used to represent text in a program. Strings are enclosed ineither single or double quotes. Example: "Hello, World!" (ch. 1)Subclass: A class that inherits attributes and methods from another class (superclass or parentclass). (ch. 6)super() function: A function used in a subclass to call a method from its superclass. It isoften used to extend or modify the behavior of inherited methods. (ch. 6)Superclass: A class whose attributes and methods are inherited by other classes (subclassesor child classes). (ch. 6)Syntax: The set of rules that defines the combinations of symbols that are considered to be acorrectly structured program in a programming language. (ch. 1)TensorFlow: An end-to-end open-source platform for machine learning offering acomprehensive ecosystem of tools, libraries, and community resources. (ch. 8)Terminal: See Command Prompt (ch. 1)Ternary Conditional Expression: A shorthand for an if-else statement that returns a valuebased on a condition. (ch. 2)Text: A Text widget in Tkinter allows for multiline text input. It is versatile for user input andis ideal for applications requiring extensive data entry. (ch. 7)Text File: A file that contains plain text and can be opened and edited with text editors. (ch.5)Tkinter: Tkinter is Python's standard GUI (Graphical User Interface) toolkit. It allows Pythondevelopers to create windows, buttons, text fields, and other widgets to create interactiveapplications. (ch. 7)try/except/finally: A construct in Python used for handling exceptions and ensuring thatcleanup code runs regardless of whether an exception occurred. (ch. 5)Tuple: An immutable ordered collection of items. (ch. 3)Type Conversion: The process of converting one data type to another, such as converting astring to an integer (ch. 2)Variable: A named location in memory used to store data that can be modified duringprogram execution. Example: x = 10 (ch. 1, 2)Web Development: The process of creating websites or web applications. Python is oftenused on the server-side to handle backend logic, database interactions, and serverconfiguration. Popular frameworks include Django and Flask. (ch. 8)While Loop: Repeats as long as a condition is true. (ch. 3)Widget: A widget is an element of a graphical user interface, such as a button, label, text
 field, or slider, that users can interact with. (ch. 7)with Statement: A control flow structure in Python that ensures proper acquisition andrelease of resources, such as file handles. (ch. 5)XML File: eXtensible Markup Language. A markup language that defines a set of rules forencoding documents in a format that is both human-readable and machine-readable. (ch. 5)YAML File: YAML Ain't Markup Language. A human-readable data serialization standard,ideal for configuration files and data processing, known for its readability and support forcomplex data structures. (ch. 5)
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

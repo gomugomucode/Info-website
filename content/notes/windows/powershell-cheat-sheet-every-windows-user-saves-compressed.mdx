@@ -10,11 +10,9 @@ readingTime: "12 min read"
 ---
 
 # PowerShell Cheat Sheet Every Windows User Saves compressed
-
 > [!IMPORTANT]
 > **Defensive & Authorized Auditing Purposes Only**
 > This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
-
 System Information
 systeminfo — Full system information
 hostname — Show device hostname
@@ -37,7 +35,6 @@ Network adapter config
 Get-WmiObject Win32_ComputerSystem —
 Hardware/system details
 Get-PSVersionTable — PowerShell version info
-
 Network Enumeration
 ipconfig — Show IP configuration
 ipconfig /all — Detailed adapter information
@@ -56,52 +53,49 @@ nslookup google.com — DNS query check
 netstat -ano — Connections with process IDs
 Get-NetIPConfiguration — Full network summary
 Get-NetNeighbor — Local neighbor table
-
-P r o c e s s e s  &  S e r v i c e s
-G e t - P r o c e s s  —  R u n n i n g  p r o c e s s e s  l i s t
-G e t - S e r v i c e  —  L i s t  W i n d o w s  s e r v i c e s
-S t o p - P r o c e s s  - N a m e  n o t e p a d  —  S t o p  t a r g e t  p r o c e s s
-S t a r t - P r o c e s s  n o t e p a d . e x e  —  L a u n c h  a p p l i c a t i o n
-R e s t a r t - S e r v i c e  s p o o l e r  —  R e s t a r t  W i n d o w s  s e r v i c e
+Processes & Services
+G e t - P r o c e s s — Running processes list
+G e t - S e r v i c e — List Windows services
+S t o p - P r o c e s s - N a m e notepad — Stop target process
+S t a r t - P r o c e s s n o t e p a d . e x e — Launch application
+R e s t a r t - S e r v i c e spooler — Restart Windows service
 G e t - P r o c e s s  |  S o r t  C P U  - d e s c  —  H i g h  C P U  u s a g e
 G e t - S e r v i c e  |  W h e r e  S t a t u s  - e q  " R u n n i n g "  —  A c t i v e
-s e r v i c e s  o n l y
-t a s k l i s t  —  Q u i c k  p r o c e s s  o v e r v i e w
-G e t - J o b  —  B a c k g r o u n d  P o w e r S h e l l  j o b s
-W a i t - P r o c e s s  —  W a i t  f o r  p r o c e s s  e x i t
+services only
+tasklist — Quick process overview
+G e t - J o b — Background PowerShell jobs
+W a i t - P r o c e s s — Wait for process exit
 G e t - P r o c e s s  |  S o r t  W o r k i n g S e t  - d e s c  —  H i g h  m e m o r y
-u s a g e
+usage
 G e t - S e r v i c e  |  W h e r e  S t a r t T y p e  - e q  " A u t o m a t i c "  —  A u t o -
-s t a r t  s e r v i c e s
-G e t - C i m I n s t a n c e  W i n 3 2 _ S e r v i c e  —  D e t a i l e d  s e r v i c e  i n f o
-s c  q u e r y  —  S e r v i c e  s t a t u s  o v e r v i e w
+start services
+G e t - C i m I n s t a n c e W i n 3 2 _ S e r v i c e — Detailed service info
+sc query — Service status overview
 t a s k k i l l  / P I D  1 2 3 4  —  K i l l  p r o c e s s  b y  P I D
 G e t - P r o c e s s  |  E x p o r t - C s v  p r o c e s s e s . c s v  —  S a v e  p r o c e s s
-r e p o r t
-
-E v e n t  L o g s  &  M o n i t o r i n g
-G e t - E v e n t L o g  - L o g N a m e  S e c u r i t y  —  R e a d  s e c u r i t y  l o g s
-G e t - W i n E v e n t  - L o g N a m e  S y s t e m  —  S y s t e m  e v e n t
-m o n i t o r i n g
-C l e a r - E v e n t L o g  A p p l i c a t i o n  —  C l e a r  l o g s ,  c a u t i o n
-G e t - E v e n t L o g  - N e w e s t  2 0  —  R e c e n t  e v e n t  e n t r i e s
-G e t - W i n E v e n t  - M a x E v e n t s  1 0  —  L a t e s t  e v e n t  r e c o r d s
-w e v t u t i l  e l  —  L i s t  e v e n t  l o g s
-G e t - E v e n t S u b s c r i b e r  —  E v e n t  s u b s c r i p t i o n s  l i s t
-G e t - H i s t o r y  —  P o w e r S h e l l  c o m m a n d  h i s t o r y
-S t a r t - T r a n s c r i p t  —  R e c o r d  P o w e r S h e l l  s e s s i o n
-S t o p - T r a n s c r i p t  —  S t o p  s e s s i o n  l o g g i n g
-G e t - W i n E v e n t  - L i s t L o g  *  —  S h o w  a l l  l o g s
-G e t - W i n E v e n t  - L o g N a m e  A p p l i c a t i o n  —  A p p l i c a t i o n  l o g
-r e v i e w
-G e t - E v e n t L o g  - L o g N a m e  S y s t e m  - N e w e s t  5 0  —  L a t e s t
-s y s t e m  l o g s
+report
+Event Logs & Monitoring
+G e t - E v e n t L o g - L o g N a m e Security — Read security logs
+G e t - W i n E v e n t - L o g N a m e System — System event
+monitoring
+C l e a r - E v e n t L o g Application — Clear l o g s , caution
+G e t - E v e n t L o g - N e w e s t 2 0 — Recent event entries
+G e t - W i n E v e n t - M a x E v e n t s 1 0 — Latest event records
+wevtutil el — List event logs
+G e t - E v e n t S u b s c r i b e r — Event subscriptions list
+G e t - H i s t o r y — PowerShell command history
+S t a r t - T r a n s c r i p t — Record PowerShell session
+S t o p - T r a n s c r i p t — Stop session logging
+G e t - W i n E v e n t - L i s t L o g * — Show all logs
+G e t - W i n E v e n t - L o g N a m e Application — Application log
+review
+G e t - E v e n t L o g - L o g N a m e System - N e w e s t 5 0 — Latest
+system logs
 w e v t u t i l  q e  S y s t e m  / c : 1 0  —  Q u e r y  r e c e n t  e v e n t s
-G e t - W i n E v e n t  - F i l t e r H a s h t a b l e
-@ { L o g N a m e = " S e c u r i t y " ; I d = 4 6 2 4 }  —  L o g o n  e v e n t s
-G e t - W i n E v e n t  - F i l t e r H a s h t a b l e
-@ { L o g N a m e = " S e c u r i t y " ; I d = 4 6 2 5 }  —  F a i l e d  l o g o n s
-
+G e t - W i n E v e n t - F i l t e r H a s h t a b l e
+@ &#123; L o g N a m e = " S e c u r i t y " ; I d = 4 6 2 4 &#125;  —  L o g o n  e v e n t s
+G e t - W i n E v e n t - F i l t e r H a s h t a b l e
+@ &#123; L o g N a m e = " S e c u r i t y " ; I d = 4 6 2 5 &#125;  —  F a i l e d  l o g o n s
 File & Directory Operations
 Get-ChildItem — List files/directories
 Set-Location C:\ — Change current directory
@@ -119,7 +113,6 @@ Get-Item file.txt — File metadata
 Get-ChildItem -Recurse — Recursive file listing
 Get-FileHash file.exe — Calculate file hash
 Compare-Object file1 file2 — Compare file content
-
 Security & Defender
 Get-MpComputerStatus — Microsoft Defender status
 Get-MpThreatDetection — Detected threats overview
@@ -137,7 +130,6 @@ Get-NetFirewallRule — Firewall rules list
 Get-BitLockerVolume — BitLocker protection status
 Get-AppLockerPolicy -Local — AppLocker local policy
 Get-AuthenticodeSignature file.exe — Check file signature
-
 Users & Permissions
 net user — List local users
 net localgroup administrators — Admin group members
@@ -157,7 +149,6 @@ net accounts — Password policy overview
 Get-Acl C:\Users — Folder permission review
 icacls C:\Users — NTFS permissions check
 Get-SmbShare — Shared folders overview
-
 PowerShell Scripting Basics
 Get-Command — Available PowerShell commands
 Get-Help Get-Process — Command help page
@@ -175,7 +166,6 @@ Group-Object Status — Group results quickly
 Out-File report.txt — Save output to file
 Import-Csv users.csv — Read CSV data
 Read-Host "Input" — Ask user input
-
 Remote Administration
 Enter-PSSession host — Interactive remote session
 Invoke-Command — Execute remote commands
@@ -192,10 +182,9 @@ Get-CimSession — Active CIM sessions
 New-CimSession host — Create CIM session
 Get-WmiObject Win32_OperatingSystem — Remote system
 info
-Invoke-Command -ScriptBlock {hostname} — Run script
+Invoke-Command -ScriptBlock &#123;hostname&#125; — Run script
 block
 Test-Connection host — Ping remote host
-
 Useful Admin & Troubleshooting
 Commands
 Restart-Computer — Reboot Windows machine
@@ -216,26 +205,28 @@ chkdsk C: /scan — Scan disk health
 Get-Printer — Installed printers list
 Get-WindowsUpdateLog — Build update log
 powercfg /batteryreport — Battery health report
-Follow  community 
+Follow  community
 For More Cybersecurity Guides
 Tools • Commands • Security Tips
-📌
-📘
 💬 INTERESTED
 Want the PDF?
- Want the PDF version with all the tools in one place?
  Comment “ ” and I’ll send it to you.
-💾
+ Save this post so you don't lose the commands!
+Follow  community
+For More Cybersecurity Guides
+Tools • Commands • Security Tips
+💬 INTERESTED
+Want the PDF?
+ Comment “ ” and I’ll send it to you.
  Save this post so you don't lose the commands!
 
-Follow  community 
-For More Cybersecurity Guides
-Tools • Commands • Security Tips
-📌
-📘
-💬 INTERESTED
-Want the PDF?
- Want the PDF version with all the tools in one place?
- Comment “ ” and I’ll send it to you.
-💾
- Save this post so you don't lose the commands!
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

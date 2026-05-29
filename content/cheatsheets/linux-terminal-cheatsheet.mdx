@@ -9,13 +9,9 @@ readingTime: "12 min read"
 ---
 
 # The Ultimate Linux & Terminal Cheatsheet
-
 Whether you are navigating a local environment, configuring an Ubuntu server, or troubleshooting network issues, mastering the Linux terminal is a superpower. Here is your go-to reference for everyday terminal commands and administration workflows.
-
 ## Linux Commands Cheat Sheet
-
 The essential commands for navigating and manipulating the filesystem.
-
 ```bash
 # List directory contents (detailed, including hidden files)
 ls -la
@@ -48,11 +44,8 @@ tail -n 50 file.log   # Read last 50 lines
 grep "search term" filename.txt
 grep -r "search term" /path/to/search  # Recursive search
 ```
-
 ## Ubuntu Server Setup
-
 Basic commands to get a fresh Ubuntu server secured and updated.
-
 ```bash
 # Update package lists and upgrade existing packages
 sudo apt update && sudo apt upgrade -y
@@ -73,11 +66,8 @@ sudo ufw status
 sudo ufw allow OpenSSH
 sudo ufw enable
 ```
-
 ## File Permissions Explained
-
 In Linux, `r` (read = 4), `w` (write = 2), and `x` (execute = 1) determine who can access files.
-
 ```bash
 # Check permissions
 ls -l
@@ -91,11 +81,8 @@ chmod +x script.sh    # Make a file executable for everyone
 sudo chown user:group filename.txt
 sudo chown -R user:group directory/  # Change recursively
 ```
-
 ## SSH Commands
-
 Secure Shell is the standard way to connect to remote servers.
-
 ```bash
 # Connect to a remote server
 ssh user@hostname_or_ip
@@ -115,18 +102,14 @@ ssh-copy-id user@hostname_or_ip
 # Securely copy files from local to remote (SCP)
 scp local_file.txt user@hostname_or_ip:/path/to/remote/
 ```
-
 ## Nano vs Vim Commands
-
 The two most common terminal text editors.
-
 ### Nano (Beginner Friendly)
 Nano is straightforward. You navigate with arrow keys.
 - **Open a file:** `nano filename.txt`
 - **Save file:** `Ctrl + O`, then `Enter`
 - **Exit:** `Ctrl + X`
 - **Search:** `Ctrl + W`
-
 ### Vim (Advanced & Fast)
 Vim has modes. You start in **Normal mode**. Press `i` to enter **Insert mode** (to type). Press `Esc` to return to Normal mode.
 - **Open a file:** `vim filename.txt`
@@ -136,11 +119,8 @@ Vim has modes. You start in **Normal mode**. Press `i` to enter **Insert mode** 
 - **Undo:** `u`
 - **Copy line (yank):** `yy`
 - **Paste:** `p`
-
 ## Process Management
-
 Commands to monitor and control running programs.
-
 ```bash
 # View running processes (interactive)
 top
@@ -161,11 +141,8 @@ kill -9 1234
 # Kill all processes with a specific name
 killall nginx
 ```
-
 ## Networking Commands
-
 Tools for troubleshooting connectivity and finding information.
-
 ```bash
 # Test connectivity to a host
 ping google.com
@@ -186,3 +163,14 @@ curl -O https://example.com/file.zip  # Download file
 dig example.com
 nslookup example.com
 ```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

@@ -9,13 +9,9 @@ readingTime: "9 min read"
 ---
 
 # The Ultimate Docker Cheatsheet
-
 Docker has completely transformed how software is built, shipped, and run. Whether you're containerizing a local development environment or deploying microservices to production, this cheatsheet provides the essential commands and concepts you need.
-
 ## Docker Commands (The Basics)
-
 The core commands for interacting with the Docker engine.
-
 ```bash
 # Check Docker version and info
 docker version
@@ -27,11 +23,7 @@ docker login
 # Search for an image on Docker Hub
 docker search nginx
 ```
-
-## Build Docker Images
-
-Images are the read-only templates used to create containers.
-
+## Build Docker Images are the read-only templates used to create containers.
 ```bash
 # Pull an image from Docker Hub
 docker pull ubuntu:22.04
@@ -52,11 +44,8 @@ docker rmi my-app:latest
 # Remove all unused, dangling images
 docker image prune
 ```
-
 ## Container Management
-
 Containers are the running instances of Docker images.
-
 ```bash
 # Run a container from an image
 # -d runs it in the background (detached mode)
@@ -94,11 +83,8 @@ docker rm -f <container_id_or_name>
 # Remove all stopped containers
 docker container prune
 ```
-
 ## Docker Compose Basics
-
 Docker Compose is a tool for defining and running multi-container Docker applications using a `docker-compose.yml` file.
-
 ```yaml
 # Example docker-compose.yml
 version: '3.8'
@@ -114,7 +100,6 @@ services:
     environment:
       POSTGRES_PASSWORD: secretpassword
 ```
-
 ```bash
 # Start all services defined in docker-compose.yml (in the background)
 docker compose up -d
@@ -134,11 +119,8 @@ docker compose up -d --build
 # Run a one-off command against a service
 docker compose run web npm run test
 ```
-
 ## Docker Networking
-
 Docker handles communication between containers and the outside world via networks.
-
 ```bash
 # List all networks
 docker network ls
@@ -155,7 +137,16 @@ docker network disconnect my-network <container_id_or_name>
 # Inspect a network (shows connected containers and IP addresses)
 docker network inspect my-network
 ```
-
 > [!TIP]
 > By default, containers on the same custom network can talk to each other using their container names as hostnames!
-```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

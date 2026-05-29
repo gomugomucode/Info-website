@@ -9,15 +9,10 @@ readingTime: "10 min read"
 ---
 
 # The Ultimate Git & GitHub Cheatsheet
-
 Whether you are just starting out or managing complex monorepos, mastering Git and GitHub is essential for modern software development. This cheat sheet is designed to cover everything from beginner commands to advanced history manipulation.
-
 ## Beginner
-
 ### Git Commands Cheat Sheet
-
 The foundational commands you will use every single day.
-
 ```bash
 # Initialize a new local repository
 git init
@@ -35,22 +30,16 @@ git commit -m "Your commit message"
 # View the commit history
 git log --oneline
 ```
-
 ### GitHub Workflow Guide
-
 A standard workflow for collaborating on GitHub.
-
 1. **Clone the repository:** `git clone https://github.com/user/repo.git`
 2. **Create a feature branch:** `git checkout -b feature/new-button`
 3. **Make changes and commit:** `git commit -am "Add new button"`
 4. **Push the branch to GitHub:** `git push origin feature/new-button`
 5. **Open a Pull Request (PR)** on GitHub's interface.
 6. **Merge the PR** and pull the latest changes locally: `git checkout main && git pull origin main`
-
 ### Git Branching Basics
-
 Branches allow you to work in isolated environments.
-
 ```bash
 # List all local branches
 git branch
@@ -64,11 +53,8 @@ git checkout new-feature
 # Delete a local branch safely
 git branch -d new-feature
 ```
-
 ### Git Merge vs Rebase
-
 Understanding how to integrate changes from one branch into another is critical.
-
 - **Merge:** Takes all the changes from one branch and merges them into the current branch in a single "merge commit". It preserves the exact history of both branches.
   ```bash
   git checkout main
@@ -81,11 +67,8 @@ Understanding how to integrate changes from one branch into another is critical.
   ```
 > [!WARNING]
 > Never rebase commits that exist outside your local repository (e.g., branches others are working on).
-
 ### Fix Common Git Errors
-
 Quick fixes for everyday mistakes.
-
 - **Forgot to add a file to the last commit?**
   ```bash
   git add missing-file.txt
@@ -99,15 +82,9 @@ Quick fixes for everyday mistakes.
   ```bash
   git checkout -- filename.txt
   ```
-
----
-
 ## Advanced
-
 ### Interactive Rebase
-
 Interactive rebasing lets you edit, squash, reorder, or drop commits before merging them into the main branch.
-
 ```bash
 # Start an interactive rebase for the last 3 commits
 git rebase -i HEAD~3
@@ -118,11 +95,8 @@ This opens an editor where you can change the commands next to your commits:
 - `edit`: Stop and allow amending of the commit.
 - `squash` (`s`): Use the commit, but meld it into the previous commit.
 - `drop` (`d`): Remove the commit entirely.
-
 ### Cherry Pick Guide
-
 Apply the changes introduced by some existing commits onto the current branch. This is incredibly useful for porting bug fixes across release branches.
-
 ```bash
 # Cherry-pick a specific commit by its hash
 git cherry-pick <commit-hash>
@@ -130,11 +104,8 @@ git cherry-pick <commit-hash>
 # Cherry-pick multiple commits
 git cherry-pick <hash1> <hash2>
 ```
-
 ### Git Stash Commands
-
 Stashing takes the messy state of your working directory and saves it on a stack of unfinished changes so you can safely switch branches.
-
 ```bash
 # Save your local modifications to a new stash
 git stash
@@ -154,11 +125,8 @@ git stash apply
 # Drop the most recent stash entirely
 git stash drop
 ```
-
 ### Undo Git Commits
-
 When you need to completely reverse or erase history.
-
 - **Revert (Safe):** Creates a new commit that explicitly undoes the changes of a previous commit. Perfect for public branches.
   ```bash
   git revert <commit-hash>
@@ -174,3 +142,14 @@ When you need to completely reverse or erase history.
   # Hard reset: Completely wipes all uncommitted changes and moves HEAD back
   git reset --hard HEAD~1
   ```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

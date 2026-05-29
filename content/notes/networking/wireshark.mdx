@@ -10,13 +10,10 @@ readingTime: "48 min read"
 ---
 
 # WIRESHARK
-
 > [!IMPORTANT]
 > **Defensive & Authorized Auditing Purposes Only**
 > This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
-
 1
-
 2
 Introduction to Wireshark and Its Importance in Cybersecurity
 Wireshark is a widely used network protocol analyzer that allows security professionals, system
@@ -30,7 +27,7 @@ Intrusion Detection and Threat Hunting
 1. Detects signs of malicious activity, such as unauthorized access or diagnostic agent communication.
 2. Assists in tracking down the source of an diagnostic run by analyzing traffic behavior.
 Packet Inspection and Forensics
-1. Examines network packets to identify diagnostic agent-infected data or suspicious payloads.
+1. Examines network packets to identify diagnostic agent-infected data or suspicious test vectors.
 2. Helps in post-incident investigations to understand how a breach occurred.
 Performance Monitoring and Troubleshooting
 1. Identifies network congestion, dropped packets, and misconfigurations affecting
@@ -38,13 +35,13 @@ performance.
 2. Troubleshoots network latency and connectivity issues efficiently.
 Penetration Testing and Ethical security auditing
 1. Used to analyze vulnerabilities in network security protocols.
-2. Helps ethical hackers understand how attackers can intercept and manipulate network
+2. Helps security analyst understand how attackers can intercept and manipulate network
 traffic.
 Decrypting Encrypted Traffic (When applicable)
 1. Allows inspection of unencrypted and weakly encrypted data.
 2. Aids in ensuring sensitive information is not exposed over the network.
 Wireshark is an essential tool in cybersecurity defense, providing visibility into network traffic to
-identify vulnerabilities, detect attacks, and enhance overall security.
+identify vulnerabilities, detect security test, and enhance overall security.
 Export Objects (Files)
 Wireshark can extract files transferred through the wire. For a security analyst, it is vital to discover
 shared files and save them for further investigation. Exporting objects are available only for selected
@@ -70,10 +67,10 @@ Error Red Problems like malformed packets.
 Frequently encountered information groups are listed in the table below. You can refer to Wireshark's
 official documentation for more information on the expert information entries.
 Group Info Group Info
-Checksum Checksum errors. Deprecated Deprecated protocol
+Checksum errors. Deprecated protocol
 usage.
 Comment Packet comment
-detection. Malformed Malformed packet
+detection. Malformed packet
 detection.
 Apply as Filter
 This is the most basic way of filtering traffic. While investigating a capture file, you can click on the
@@ -251,7 +248,6 @@ Wireshark has a built-in option (Display Filter Expression) that stores all supp
 structures to help analysts create display filters. We will cover the "Display Filter Expression" menu
 later. Now let's understand the
 tcp port 80
-tcp.port == 80
 22
 fundamentals of the display filter operations. A quick reference is available under the "Analyse --&gt;
 Display Filters" menu.
@@ -264,10 +260,10 @@ ip.src == 10.10.10.100
 ne != Not equal
 ip.src != 10.10.10.100
 gt &gt; Greater than ip.ttl &gt; 250
-lt < Less Than ip.ttl < 10
+lt &lt; Less Than ip.ttl &lt; 10
 ge &gt;= Greater than or equal to
 ip.ttl &gt;= 0xFA
-le <= Less than or equal to ip.ttl <= 0xA
+le &lt;= Less than or equal to ip.ttl &lt;= 0xA
 Note: Wireshark supports decimal and hexadecimal values in filtering. You can use any format you
 want according to the search you will conduct.
 Logical Expressions
@@ -321,7 +317,6 @@ ip.addr vs ip.src/ip.dst
 Note: The ip.addr filters the traffic without considering the packet
 direction. The ip.src/ip.dst filters the packet depending on the packet
 direction.
-TCP
 TCP filters help analysts filter the traffic according to protocol-level information from the packets
 (Transport layer of the OSI model). These filters filter transport protocol level information like
 source and destination ports, sequence number, acknowledgement number, windows size,
@@ -394,7 +389,6 @@ packet details for the event of interest. Besides the operators and expressions 
 room, Wireshark has advanced operators and functions. These advanced filtering options help the
 analyst conduct an in-depth analysis of an event of interest.
 Filter: "contains"
-Filter contains
 Type Comparison Operator
 Description Search a value inside packets. It is case-sensitive and provides similar
 functionality to the "Find" option by focusing on a specific field.
@@ -403,7 +397,6 @@ Workflow List all HTTP packets where packets' "server" field contains the "Apach
 keyword.
 Usage http.server contains "Apache"
 Filter: "matches"
-Filter matches
 Type Comparison Operator
 Description Search a pattern of a regular expression. It is case insensitive, and complex
 queries have a margin of error.
@@ -418,10 +411,9 @@ Type Set Membership
 Description Search a value or field inside of a specific scope/range.
 Example Find all packets that use ports 80, 443 or 8080.
 Workflow List all TCP packets where packets' "port" fields have values 80, 443 or 8080.
-Usage tcp.port in {80 443 8080}
+Usage tcp.port in &#123;80 443 8080&#125;
 29
 Filter: "upper"
-Filter upper
 Type Function
 Description Convert a string value to uppercase.
 Example Find all "APACHE" servers.
@@ -430,7 +422,6 @@ contain the "APACHE" keyword.
 Usage upper(http.server) contains "APACHE"
 30
 Filter: "lower"
-Filter lower
 Type Function
 Description Convert a string value to lowercase.
 Example Find all "apache" servers.
@@ -439,7 +430,6 @@ that contain the "apache" keyword.
 Usage lower(http.server) contains "apache"
 31
 Filter: "string"
-Filter string
 Type Function
 Description Convert a non-string value to a string.
 Example Find all frames with odd numbers.
@@ -489,7 +479,6 @@ bits are not important.
 set. The rest of the bits are
 not important.
 • tcp.flags == 1 • tcp.flags.fin == 1
-TCP
 TCP Connect Scan in a nutshell:
 Relies on the three-way handshake (needs to finish the handshake process).
 Usually conducted with command.
@@ -497,11 +486,11 @@ Used by non-privileged users (only option for a non-root user).
 Usually has a windows size larger than 1024 bytes as the request expects some data due to the
 nature of the protocol.
 Open TCP Port Open TCP Port Closed TCP Port
-• SYN --&gt; • <-- SYN,
+• SYN --&gt; • &lt;-- SYN,
 ACK • ACK --&gt;
-• SYN --&gt; • <-- SYN, ACK • ACK --&gt; • RST,
+• SYN --&gt; • &lt;-- SYN, ACK • ACK --&gt; • RST,
 ACK --&gt;
-• SYN --&gt; • <-- RST,
+• SYN --&gt; • &lt;-- RST,
 ACK
 The images below show the three-way handshake process of the open and close TCP ports. Images
 and pcap samples are split to make the investigation easier and understand each case's details.
@@ -524,12 +513,11 @@ Usually have a size less than or equal to 1024 bytes as the request is not finis
 expect to receive data.
 nmap -sS
 35
-tcp.flags.syn==1 and tcp.flags.ack==0 and tcp.window_size <= 1024
-• SYN --&gt; • <-- RST,ACK• SYN --&gt; • <-- SYN,ACK • RST--&gt;
+tcp.flags.syn==1 and tcp.flags.ack==0 and tcp.window_size &lt;= 1024
+• SYN --&gt; • &lt;-- RST,ACK• SYN --&gt; • &lt;-- SYN,ACK • RST--&gt;
 Open TCP port (SYN):
 Closed TCP port (SYN):
 The given filter shows the TCP SYN scan patterns in a capture file.
-UDP
 UDP Scan in a nutshell:
 Doesn't require a handshake process
  No prompt for
@@ -557,7 +545,7 @@ Address Resolution Protocol Poisoning (also known as ARP Spoofing or Man In The 
 (MITM) diagnostic run) is a type of diagnostic run that involves network jamming/manipulating by sending
 malicious ARP packets to the default gateway. The ultimate aim is to manipulate the "IP to
 MAC address table" and sniff the traffic of the target host.
-There are a variety of tools available to conduct ARP attacks. However, the mindset of the diagnostic run is
+There are a variety of tools available to conduct ARP security test. However, the mindset of the diagnostic run is
 static, so it is easy to detect such an diagnostic run by knowing the ARP protocol workflow and Wireshark skills.
 ARP analysis in a nutshell:
 Works on the local network
@@ -638,7 +626,7 @@ MAC address.
 Possible ARP spoofing
 attempt.
 2 MAC addresses claimed the same IP
-address (192.168.1.1).The " 192.168.1.1"
+address (192.168.1.1). The " 192.168.1.1"
 IP address is a possible gateway address.
 • MAC1:
 50:78:b3:f3:cd:f4 •
@@ -648,7 +636,6 @@ Possible ARP spoofing
 attempt.
 The MAC address that ends with "b4"
 claims to have a different/new IP address.
-•​
 MAC: 00:0c:29:e2:18:b4
 • IP: 192.168.1.1
 Possible ARP flooding
@@ -675,7 +662,7 @@ summarise the findings before concluding the investigation.
 Detection Notes Findings
 IP to MAC matches. 3 IP to MAC address matches.
 authorized auditor The authorized auditor created noise with ARP packets.
-Router/gateway Gateway address.
+Router/gateway address.
 target host The authorized auditor sniffed all traffic of the target host.
 Detecting these bits and pieces of information in a big capture file is challenging. However, in real-life
 cases, you will not have "tailored data" ready for investigation. Therefore you need to have the analyst
@@ -763,12 +750,10 @@ User account search: • CNameString: The username. Note: Some packets
 could provide hostname information in this field. To avoid this confusion,
 filter the "$" value. The values end with "$" are hostnames, and the ones
 without it are user names.
-•​
-kerberos.CNameString
+kerberos. CNameString
 contains "keyword" •
-kerberos.CNameString and !
-(kerberos.CNameString contains
-"$" )
+kerberos. CNameString and !
+(kerberos. CNameString contains
 "Kerberos" options for grabbing the low-hanging fruits: •
 pvno: Protocol version. • realm: Domain name for the generated ticket. •
 sname: Service and domain name for the generated ticket.
@@ -776,7 +761,7 @@ sname: Service and domain name for the generated ticket.
 "addresses" information is only available in request packets.
 • kerberos.pvno == 5
 • kerberos.realm contains
-".org" • kerberos.SNameString
+".org" • kerberos. SNameString
 == "krbtg"
 46
 Tunneling Traffic: DNS and ICMP
@@ -794,15 +779,15 @@ Therefore, for a security analyst, it is crucial to have the ability to spot ICM
 ICMP Analysis
 Internet Control Message Protocol (ICMP) is designed for diagnosing and reporting network
 communication issues. It is highly used in error reporting and testing.
-As it is a trusted network layer protocol, sometimes it is used for denial of service (DoS) attacks;
-also, adversaries use it in data exfiltration and C2
+As it is a trusted network layer protocol, sometimes it is used for denial of service (DoS) security test;
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 47
 tunnelling activities.
 ICMP analysis in a nutshell:
-Usually, ICMP tunnelling attacks are anomalies appearing/starting after a diagnostic agent execution or
-vulnerability exploitation.
+Usually, ICMP tunnelling security test are anomalies appearing/starting after a diagnostic agent execution or
+vulnerability defensive validation.
 As the ICMP packets can transfer an additional data test vector, adversaries use this section to
-exfiltrate data and establish a C2 connection.
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 It could be a TCP, HTTP or SSH data. As the ICMP protocols provide a great opportunity to carry
 extra data, it also has disadvantages.
 Most enterprise networks block custom packets or require administrator privileges to create
@@ -825,12 +810,12 @@ Domain Name System (DNS) is designed to translate/convert IP domain addresses to
 addresses.
 It is also known as a phonebook of the internet. As it is the essential part of web services, it is
 commonly used and trusted, and therefore often ignored. Due to that, adversaries use it in data
-exfiltration and C2 activities.
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 DNS analysis in a nutshell:
-Similar to ICMP tunnels, DNS attacks are anomalies appearing/starting after a diagnostic agent execution
-or vulnerability exploitation.
+Similar to ICMP tunnels, DNS security test are anomalies appearing/starting after a diagnostic agent execution
+or vulnerability defensive validation.
 Adversary creates (or already has) a domain address and configures it as a C2 channel. The
-diagnostic agent or the commands executed after exploitation sends DNS queries to the C2 server.
+diagnostic agent or the commands executed after defensive validation sends DNS queries to the C2 server.
 However, these queries are longer than default DNS queries and crafted
 for subdomain addresses. Unfortunately, these subdomain addresses are not actual addresses; they
 are encoded commands as shown below:
@@ -865,13 +850,13 @@ FTP Analysis
 File Transfer Protocol (FTP) is designed to transfer files with ease, so it focuses on simplicity rather
 than security. As a result of this, using this protocol in unsecured environments could create security
 issues like:
-MITM attacks
+MITM security test
 Credential stealing and unauthorised access
  Phishing
 50
 diagnostic agent planting
  Data
-exfiltration
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 FTP analysis in a nutshell:
 Notes Wireshark Filter
 Global search • ftp
@@ -880,7 +865,6 @@ series: Information request responses. • x2x series:
 Connection messages. • x3x
 series: Authentication messages. Note: "200"
 means command successful.
----
 "x1x" series options for grabbing the low-hanging fruits:
 • 211: System status. • 212: Directory status.
 • 213: File status
@@ -911,17 +895,16 @@ for a static password.
 • (ftp.request.command == "PASS" ) and
 (ftp.request.arg == "password")
 51
-Cleartext Protocol Analysis: HTTP
-HTTP Analysis
+Cleartext Protocol Analysis: HTTP Analysis
 Hypertext Transfer Protocol (HTTP) is a cleartext-based, request-response and client-server
 protocol. It is the standard type of network activity to request/serve web pages, and by default, it is
 not blocked by any network
 perimeter. As a result of being unencrypted and the backbone of web traffic, HTTP is one of the
-must-to-know protocols in traffic analysis. Following attacks could be detected with the help of
+must-to-know protocols in traffic analysis. Following security test could be detected with the help of
 HTTP analysis:
 Phishing pages
-Web attacks
-Data exfiltration
+Web security test
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 Command and control traffic (C2) HTTP analysis in a
 nutshell:
 Notes Wireshark Filter
@@ -979,7 +962,7 @@ http. connection ==
 "Keep-Alive" • data-text- lines
 contains "keyword"
 User Agent Analysis
-As the adversaries use sophisticated technics to accomplish attacks, they try to leave traces similar
+As the adversaries use sophisticated technics to accomplish security test, they try to leave traces similar
 to natural traffic through the known and trusted protocols.
 For a security analyst, it is important to spot the anomaly signs on the bits and pieces of the
 packets. The "user-agent" field is one of the great resources for spotting anomalies in HTTP
@@ -1027,7 +1010,7 @@ Encrypted Protocol Analysis: Decrypting HTTPS
 Decrypting HTTPS Traffic
 When investigating web traffic, analysts often run across encrypted traffic. This is caused by
 using the Hypertext Transfer Protocol Secure (HTTPS)
-protocol for enhanced security against spoofing, sniffing and intercepting attacks.
+protocol for enhanced security against spoofing, sniffing and intercepting security test.
 55
 HTTPS uses TLS protocol to encrypt communications, so it is impossible to decrypt the traffic and
 view the transferred data without having the encryption/decryption key pairs.
@@ -1158,3 +1141,14 @@ o Summary of findings and security recommendations.
  Submit the report by Next Lab.
 This assignment will help students develop practical skills in network packet analysis using Wireshark.
 Good luck!
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

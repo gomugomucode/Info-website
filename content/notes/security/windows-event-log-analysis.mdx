@@ -10,63 +10,39 @@ readingTime: "8 min read"
 ---
 
 # Windows Event Log Auditing & Analysis
-
 Windows Event Logs are critical for monitoring enterprise system activity and investigating security incidents. This guide details key Security Event IDs (logon types, process creation, service installation) and outlines workflows to identify potential security threats.
-
-<Callout type="danger" title="Audit Policy Requirement">
+&lt;Callout type="danger" title="Audit Policy Requirement"&gt;
 Process creation command-line logging (Event ID `4688`) must be explicitly enabled via Group Policy (`Computer Configuration > Policies > Administrative Templates > System > Audit Process Creation > Include command line in process creation events`) to capture complete command strings.
-</Callout>
-
+&lt;/Callout&gt;
 ## Critical Event ID Mappings
-
 Security teams monitor these Event IDs to detect credential abuse, lateral movement, and unauthorized changes:
-
 | Category | Event ID | Description | Security Insight |
-| :--- | :--- | :--- | :--- |
 | **Authentication** | `4624` | Successful Logon | Identify logon session types (network, interactive, RDP). |
 | **Authentication** | `4625` | Failed Logon | Detect brute force or credential spraying. |
 | **Execution** | `4688` | New Process Created | Tracks process execution and command line parameters. |
 | **Persistence** | `7045` | New Service Installed | Audit new system services (common persistence vector). |
 | **Logs Auditing** | `1102` | Audit Log Cleared | Investigate log clearing (indicates attempts to hide activity). |
-
----
-
 ## 1. Authentication Analysis (Event 4624 & 4625)
-
 Successful logons (Event ID `4624`) include a "Logon Type" field that reveals how the user authenticated.
-
 ### Key Logon Types
 *   **Type 2 (Interactive)**: Logon at the local console (keyboard/monitor).
 *   **Type 3 (Network)**: Accessing resources via network shares or connections (e.g., SMB, IIS).
 *   **Type 10 (RemoteInteractive)**: Logging in via Remote Desktop (RDP).
-
 > **Defensive Check:** A Type 10 logon using a service or admin account outside standard working hours should be investigated immediately.
-
----
-
 ## 2. Process Creation Auditing (Event 4688)
-
 Event ID `4688` logs when a process starts. Combining this with command line auditing lets you inspect the exact commands executed.
-
 ### Querying Process Creation Logs
 Use PowerShell to list the 20 most recent process creation events:
-
 ```powershell
 Get-WinEvent -FilterHashtable @{
     LogName='Security';
     Id=4688
 } -MaxEvents 20 | Select-Object TimeCreated, Message | Format-Table -Wrap
 ```
-
----
-
 ## 3. Detecting Persistence (Event 7045)
-
 Malicious programs often install services to run code on system boot. Event ID `7045` records when a new service is installed.
-
 ### Verification Steps
 Inspect the executable path of new services to identify unquoted paths or binaries running from temporary directories:
-
 ```powershell
 Get-WinEvent -FilterHashtable @{
     LogName='System';
@@ -74,3 +50,14 @@ Get-WinEvent -FilterHashtable @{
     Id=7045
 } | Select-Object TimeCreated, Message
 ```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

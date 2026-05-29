@@ -10,25 +10,20 @@ readingTime: "593 min read"
 ---
 
 # Kali Linux REVELEALED
-
 > [!IMPORTANT]
 > **Defensive & Authorized Auditing Purposes Only**
 > This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
-
 Kali Linux
 Revealed
-
 Mastering the Penetration Testing
 Distribution (2021)
 Kali Linux
 Revealed
-
 Mastering the Penetration Testing
 Distribution (2021)
 by Raphaël Hertzog, Jim
 O’Gorman, Mati Aharoni, and Joe
 O’Gorman
-
 Kali Linux Revealed
 Copyright © 2021 Raphaël Hertzog, Jim O’Gorman, Mati Aharoni, and Joe O’Gorman
 This book is licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License.
@@ -322,12 +317,12 @@ In Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 11.2.3 Traditional Penetration Test . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 293
 11.2.4 Application Assessment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 295
 11.3 Formalization of the Assessment . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 297
-11.4 Types of Attacks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298
+11.4 Types of security test . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298
 11.4.1 Denial of Service . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 298
 11.4.2 Memory Corruption . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 299
 11.4.3 Web Vulnerabilities . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 300
-11.4.4 Password Attacks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 300
-11.4.5 Client-Side Attacks . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 301
+11.4.4 Password security test . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 300
+11.4.5 Client-Side security test . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 301
 11.5 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 301
 12. Conclusion: The Road Ahead 305
 12.1 Keeping Up with Changes . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 306
@@ -383,7 +378,7 @@ of megabits per second, and Internet connections were faster and cheaper than ev
 commerce was on the rise, social media sites like Facebook (2004) and Twitter (2006) came online
 and Google (1998) had matured to the point that anyone (including criminals) could find just about
 anything online.
-Research became critical for teams like ours because we had to keep up with new attacks and
+Research became critical for teams like ours because we had to keep up with new security test and
 toolsets. We responded to more computer crimes, and forensic work demanded that we tread
 lightly as we mucked through potential evidence. The concept of a live CD meant that we could
 perform live forensics on a compromised machine without compromising evidence.
@@ -443,7 +438,7 @@ Muts launched Offensive Security (in 2006) not only to provide world-class train
 tion testing services but also to provide a vehicle to keep BackTrack development rolling, and
 ensure that BackTrack remained open-source and free to use.
 BackTrack continued to grow and improve through 2012 (with R1, R2, and R3), maintaining an
-Ubuntu core and adding hundreds of new tools, including physical and hardware exploitation
+Ubuntu core and adding hundreds of new tools, including physical and hardware defensive validation
 tools, VMware support, countless wireless and hardware drivers, and a multitude of stability im-
 provements and bug fixes. However, after the release of R3, BackTrack development went rela-
 tively, and somewhat mysteriously, quiet.
@@ -689,7 +684,6 @@ Debian derivative
 Purpose
 Features
 Policies
-
 Chapter
 1About Kali Linux
 Contents
@@ -872,30 +866,30 @@ applications. It is crucial to identify and mitigate these issues given that the
 ability of these applications makes them ideal targets for attackers.
 6
  Kali Linux Revealed
-• Database Assessment: From SQL injection to attacking credentials, database attacks are a
+• Database Assessment: From SQL injection to security test credentials, database security test are a
 common vector for attackers. Tools that test for diagnostic run vectors ranging from SQL injection
 to data extraction and analysis can be found here.
-• Password Attacks: Authentication systems are always a go-to diagnostic run vector. Many useful
-tools can be found here, from online password diagnostic run tools to offline attacks against the
+• Password security test: Authentication systems are always a go-to diagnostic run vector. Many useful
+tools can be found here, from online password diagnostic run tools to offline security test against the
 encryption or hashing systems.
-• Wireless Attacks: The pervasive nature of wireless networks means that they will always
+• Wireless security test: The pervasive nature of wireless networks means that they will always
 be a commonly attacked vector. With its wide range of support for multiple wireless cards,
-Kali is an obvious choice for attacks against multiple types of wireless networks.
+Kali is an obvious choice for security test against multiple types of wireless networks.
 • Reverse Engineering: Reverse engineering is an activity with many purposes. In support
 of offensive activities, it is one of the primary methods for vulnerability identification and
 security diagnostic test development. On the defensive side, it is used to analyze diagnostic agent employed in tar-
-geted attacks. In this capacity, the goal is to identify the capabilities of a given piece of
+geted security test. In this capacity, the goal is to identify the capabilities of a given piece of
 tradecraft.
-• Exploitation Tools: Exploiting, or taking advantage of a (formerly identified) vulnerability,
+• defensive validation Tools: Exploiting, or taking advantage of a (formerly identified) vulnerability,
 allows you to gain control of a remote machine (or device). This access can then be used
-for further privilege escalation attacks, either locally on the compromised machine, or on
+for further privilege escalation security test, either locally on the compromised machine, or on
 other machines accessible on its local network. This category contains a number of tools
 and utilities that simplify the process of writing your own exploits.
 • Sniffing & Spoofing: Gaining access to the data as they travel across the network is often ad-
 vantageous for an authorized auditor. Here you can find spoofing tools that allow you to impersonate
 a legitimate user as well as sniffing tools that allow you to capture and analyze data right
 off the wire. When used together, these tools can be very powerful.
-• Post Exploitation: Once you have gained access to a system, you will often want to maintain
+• Post defensive validation: Once you have gained access to a system, you will often want to maintain
 that level of access or extend control by laterally moving across the network. Tools that
 assist in these goals are found here.
 • Forensics: Forensic Linux live boot environments have been very popular for years now.
@@ -910,7 +904,7 @@ can frequently be induced to take actions that compromise the security of the en
 Did the USB key that the secretary just plugged in contain a harmless PDF? Or was it also a
 Trojan horse that installed a backdoor? Was the banking website the accountant just logged
 into the expected website or a perfect copy used for phishing purposes? This category con-
-tains tools that aid in these types of attacks.
+tains tools that aid in these types of security test.
 7
 Chapter 1 — About Kali Linux
 1.4. Main Kali Linux Features
@@ -1033,8 +1027,8 @@ ing”, there are several use cases including system administrators wishing to m
 networks, forensic analysis, embedded device installations, wireless monitoring, installa-
 tion on mobile platforms, and more.
 • Kali’s menus make it easy to get to tools for various tasks and activities including: vulnera-
-bility analysis, web application analysis, database assessment, password attacks, wireless at-
-tacks, reverse engineering, exploitation tools, sniffing and spoofing, post exploitation tools,
+bility analysis, web application analysis, database assessment, password security test, wireless at-
+tacks, reverse engineering, defensive validation tools, sniffing and spoofing, post defensive validation tools,
 forensics, reporting tools, and social engineering tools.
 • Kali Linux has many advanced features including: use as a live (non-installed) system, a ro-
 bust and safe forensics mode, a custom Linux kernel, ability to completely customize the
@@ -1051,7 +1045,6 @@ Keywords
 Download
 ISO image
 Live boot
-
 Chapter
 2Getting Started with
 Kali Linux
@@ -1064,7 +1057,7 @@ a bootable USB or DVD-ROM image in a forensics case, or for installing as a perm
 system on physical or virtual hardware.
 Because of this simplicity, it is easy to forget that certain precautions must be taken. Kali users
 are often the target of those with ill intentions, whether state sponsored groups, elements of orga-
-nized crime, or individual hackers. The open-source nature of Kali Linux makes it relatively easy
+nized crime, or individual security analyst. The open-source nature of Kali Linux makes it relatively easy
 to build and distribute fake versions, so it is essential that you get into the habit of downloading
 from original sources and verifying the integrity and the authenticity of your download. This is
 especially relevant to security professionals who often have access to sensitive networks and are
@@ -1175,7 +1168,7 @@ For cases like this, we also provide a GnuPG key that we use to sign the checksu
 we provide. The key’s identifiers and its fingerprints are shown here:
 pub rsa4096 2012-03-05 [ SC] [ expires: 2023-01-16]
 44C6 513A 8E4F B3D3 0875 F758 ED44 4FF0 7D8D 0BF6
-uid Kali Linux Repository <devel@kali.org&gt;
+uid Kali Linux Repository &lt;devel@kali.org&gt;
 sub rsa4096 2012-03-05 [ E] [ expires: 2023-01-16]
 This key is part of a global web of trust because it has been signed at least by me (Raphaël Hertzog)
 and I am part of the web of trust due to my heavy GnuPG usage as a Debian developer.
@@ -1190,25 +1183,20 @@ nounced in multiple places, including just above in this book:
 $ wget -q -O - https://archive.kali.org/archive-key.asc | gpg --import
 [ or ]
 $ gpg --keyserver hkp://keys.gnupg.net --recv-key 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
-gpg: key ED444FF07D8D0BF6: public key ”Kali Linux Repository <devel@kali.org&gt;” imported
+gpg: key ED444FF07D8D0BF6: public key ”Kali Linux Repository &lt;devel@kali.org&gt;” imported
 gpg: Total number processed: 1
 gpg: imported: 1
-[...]
 $ gpg --fingerprint 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
-[...]
 44C6 513A 8E4F B3D3 0875 F758 ED44 4FF0 7D8D 0BF6
-[...]
 After you have retrieved the key, you can use it to verify the checksums of the distributed im-
 ages. Let’s download the file with the checksums ( SHA256SUMS) and the associated signature file
 (SHA256SUMS.gpg) and verify the signature:
 $ wget http://cdimage.kali.org/current/SHA256SUMS
-[...]
 $ wget http://cdimage.kali.org/current/SHA256SUMS.gpg
-[...]
 $ gpg --verify SHA256SUMS.gpg SHA256SUMS
 gpg: Signature made Tue 18 Aug 2020 10:31:15 AM EDT
 gpg: using RSA key 44C6513A8E4FB3D30875F758ED444FF07D8D0BF6
-gpg: Good signature from ”Kali Linux Repository <devel@kali.org&gt;”
+gpg: Good signature from ”Kali Linux Repository &lt;devel@kali.org&gt;”
 If you get that “Good signature” message, you can trust the content of theSHA256SUMS file and use
 it to verify the files you downloaded. Otherwise, there is a problem. You should review whether
 you downloaded the files from a legitimate Kali Linux mirror.
@@ -1277,7 +1265,6 @@ When you insert your USB key, the Linux kernel will detect it and assign it a na
 which is printed in the kernel logs. You can find its name by inspecting the logs
 returned by dmesg.
 $ dmesg
-[...]
 [ 2596.727036] usb 1-2.1: new high-speed USB device number 7 using uhci_hcd
 [ 2597.023023] usb 1-2.1: New USB device found, idVendor=0781, idProduct=5575,
 å bcdDevice= 1.26
@@ -1590,7 +1577,6 @@ Command line
 bash
 Filesystem Hierarchy
 Unix commands
-
 Chapter
 3Linux Fundamentals
 Contents
@@ -2090,11 +2076,9 @@ pcmciautils. We will discuss more about package installation and management in s
 “Basic Package Interaction” [page 181]
 Example 3.1 Example of information provided by lspci and lsusb
 $ lspci
-[...]
 00:02.1 Display controller: Intel Corporation Mobile 915GM/GMS/910GML Express Graphics Controller (rev 03)
 00:1c.0 PCI bridge: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) PCI Express Port 1 ( rev 03)
 00:1d.0 USB Controller: Intel Corporation 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #1 ( rev 03)
-[...]
 01:00.0 Ethernet controller: Broadcom Corporation NetXtreme BCM5751 Gigabit Ethernet PCI Express (rev 01)
 02:03.0 Network controller: Intel Corporation PRO/Wireless 2200BG Network Connection (rev 05)
 $ lsusb
@@ -2102,7 +2086,6 @@ Bus 005 Device 004: ID 413c:a005 Dell Computer Corp.
 Bus 005 Device 008: ID 413c:9001 Dell Computer Corp.
 Bus 005 Device 007: ID 045e:00dd Microsoft Corp.
 Bus 005 Device 006: ID 046d:c03d Logitech, Inc.
-[...]
 Bus 002 Device 004: ID 413c:8103 Dell Computer Corp. Wireless 350 Bluetooth
 These programs have a -v option that lists much more detailed (but usually unnecessary) informa-
 tion. Finally, the lsdev command (in the procinfo package) lists communication resources used by
@@ -2160,7 +2143,6 @@ Unattended
 installation
 ARM devices
 Troubleshooting
-
 Chapter
 4Installing Kali Linux
 Contents
@@ -2295,7 +2277,7 @@ Password
 The default user’s password should be long (eight characters or more) and impossi-
 ble to guess, since attackers target Internet-connected computers and servers with
 automated tools, attempting to log in with obvious passwords. Sometimes attackers
-leverage dictionary attacks, using many combinations of words and numbers as pass-
+leverage dictionary security test, using many combinations of words and numbers as pass-
 words. Avoid using the names of children or parents and dates of birth, because these
 are easily guessed.
 These remarks are equally applicable to other user passwords but the consequences
@@ -2317,7 +2299,6 @@ This step automatically detects the hard drives on which Kali may be installed, 
 be presented in the next step: partitioning.
 74
  Kali Linux Revealed
-Partitioning
 Partitioning is an indispensable step in installation, which consists of dividing the available space
 on the hard drives into discrete sections ( partitions) according to the intended function of the
 computer and those partitions. Partitioning also involves choosing the file systems to be used. All
@@ -2689,7 +2670,7 @@ A line is split across four fields separated by white space (spaces or tabs). Fo
 suite string kali-rolling:
 • The first field indicates the owner of the question. For example, “d-i” is used for questions
 relevant to the installer. You may also see a package name, for questions coming from De-
-bian packages (as in this example: atftpd atftpd/use_inetd boolean false).
+bian packages (as in this example: atftpd/use_inetd boolean false).
 • The second field is an identifier for the question.
 • The third field lists the type of question.
 97
@@ -2857,7 +2838,6 @@ Services
 Apache
 PostgreSQL
 SSH
-
 Chapter
 5Configuring Kali Linux
 Contents
@@ -2938,7 +2918,7 @@ network 192.168.0.0
 gateway 192.168.0.1
 For wireless interfaces, you must have the wpasupplicant package (included in Kali by default),
 which provides many wpa-* options that can be used in /etc/network/interfaces. Have a look
-at /usr/share/doc/wpasupplicant/README.Debian.gz for examples and explanations. The
+at /usr/share/doc/wpasupplicant/README. Debian.gz for examples and explanations. The
 most common options are wpa-ssid (which defines the name of the wireless network to join) and
 wpa-psk (which defines the passphrase or the key protecting the network).
 iface wlan0 inet dhcp
@@ -3127,7 +3107,6 @@ that you should thus replace with newly-generated keys. The image probably also
 comes with a default user password that you want to reset at the same time. You can
 do all this with the following commands:
 # passwd
-[...]
 # rm /etc/ssh/ssh_host_*
 # dpkg-reconfigure openssh-server
 # systemct restart ssh
@@ -3152,7 +3131,7 @@ is an empty shell, making it easy to act on all clusters together as each cluste
 own unit (postgresql@version-cluster.service).
 Connection Type and Client Authentication
 By default, PostgreSQL listens for incoming connections in two ways: on TCP port 5432 of the local-
-host interface and on file-based socket /var/run/postgresql/.s.PGSQL.5432. This can be con-
+host interface and on file-based socket /var/run/postgresql/.s. PGSQL.5432. This can be con-
 figured in postgresql.conf with various directives: listen_addresses for the addresses to listen
 to, portfor the TCP port, and unix_socket_directoriesto define the directory where the file-based
 sockets are created.
@@ -3205,7 +3184,7 @@ That said, Debian’s postgresql-common package provides multiple tools to manag
 clusters: pg_createcluster, pg_dropcluster, pg_ctlcluster, pg_upgradecluster,
 pg_renamecluster, and pg_lsclusters. We won’t cover all those tools here, but you can
 refer to their respective manual pages for more information.
-What you must know is that when a new major version of PostgreSQL gets installed on your system,
+What you reference is that when a new major version of PostgreSQL gets installed on your system,
 it will create a new cluster that will run on the next port (usually 5433) and you will keep using
 the old version until you migrate your databases from the old cluster to the new one.
 You can retrieve a list of all the clusters and their status with pg_lsclusters. More impor-
@@ -3265,11 +3244,11 @@ The file is usually named after the hostname of the website followed by a.conf s
 www.kali.org.conf). You can then enable the new virtual host with a2ensite www.kali.org .
 Here is a minimal virtualhost configuration for a website whose files are stored in/srv/www.kali.
 org/www/ (defined with the DocumentRootoption):
-<VirtualHost *:80&gt;
+&lt;VirtualHost *:80&gt;
 ServerName www.kali.org
 ServerAlias kali.org
 DocumentRoot /srv/www.kali.org/www
-</VirtualHost&gt;
+&lt;/VirtualHost&gt;
 You might also consider addingCustomLogand ErrorLog directives to configure Apache to output
 logs in files dedicated to the virtual host.
 Common Directives
@@ -3277,11 +3256,11 @@ This section briefly reviews some of the commonly-used Apache configuration dire
 The main configuration file usually includes several Directory blocks; they allow specifying dif-
 ferent behaviors for the server depending on the location of the file being served. Such a block
 commonly includes Optionsand AllowOverride directives:
-<Directory /var/www&gt;
+&lt;Directory /var/www&gt;
 Options Includes FollowSymLinks
 AllowOverride All
 DirectoryIndex index.php index.html index.htm
-</Directory&gt;
+&lt;/Directory&gt;
 119
 Chapter 5 — Configuring Kali Linux
 The DirectoryIndexdirective contains a list of files to try when the client request matches a direc-
@@ -3331,7 +3310,7 @@ used to add a user or change their password:
 # htpasswd /etc/apache2/authfiles/htpasswd-private user
 New password:
 Re-type new password:
-Adding password for user user
+Adding password for user
 Restricting Access The Require directive controls access restrictions for a directory (and its
 subdirectories, recursively).
 It can be used to restrict access based on many criteria; we will stop at describing access restriction
@@ -3403,9 +3382,8 @@ Active: inactive (dead)
 ls: cannot access ’/etc/systemd/system/multi-user.target.wants/postgresql.service’: No
 å such file or directory
 # systemctl enable postgresql
-[...]
 # ls -al /etc/systemd/system/multi-user.target.wants/postgresql.service
-lrwxrwxrwx 1 root root 38 Jan 26 19:09 / etc/systemd/system/multi-user.target.wants/
+lrwxrwxrwx 1 root 38 Jan 26 19:09 / etc/systemd/system/multi-user.target.wants/
 å postgresql.service -&gt; / lib/systemd/system/postgresql.service
 # systemctl status postgresql
 ● postgresql.service - PostgreSQL RDBMS
@@ -3470,7 +3448,6 @@ Documentation
 Forums
 IRC channel
 Bug report
-
 Chapter
 6Helping Yourself and
 Getting Help
@@ -3581,11 +3558,11 @@ The main package generally recommends the documentation package so that you can 
 it.
 The /usr/share/doc/package/ directory also contains some files provided by Debian, which com-
 plete the documentation by specifying the package’s particularities or improvements compared
-to a traditional installation of the software. The README.Debian file also indicates all of the adap-
-tations that were made to comply with the Debian Policy1. The changelog.Debian.gz file allows
+to a traditional installation of the software. The README. Debian file also indicates all of the adap-
+tations that were made to comply with the Debian Policy1. The changelog. Debian.gz file allows
 the user to follow the modifications made to the package over time; it is very useful to try to
 understand what has changed between two installed versions that do not have the same behav-
-ior. Finally, there is sometimes a NEWS.Debian.gz file that documents the major changes in the
+ior. Finally, there is sometimes a NEWS. Debian.gz file that documents the major changes in the
 program that may directly concern the administrator.
 1https://www.debian.org/doc/debian-policy/
 130
@@ -3810,8 +3787,7 @@ out which package owns that file and where that package comes from. Let’s assu
 found a bug in a graphical application. After looking at the list of running processes (the out-
 put of ps auxf ), you discovered that the application was started with the /usr/bin/cherrytree
 executable:
-$ dpkg -S /usr/bin/cherrytree
-cherrytree: / usr/bin/cherrytree
+$ dpkg -S /usr/bin/cherrytree: / usr/bin/cherrytree
 $ dpkg -s cherrytree | grep ^Version:
 Version: 0.38.8-0 kali1
 You learn that /usr/bin/cherrytree is provided by the cherrytree package, which is in version
@@ -3847,8 +3823,7 @@ Chapter 6 — Helping Yourself and Getting Help
 $ dpkg -s wpscan | grep ^Homepage:
 Homepage: http://www.wpscan.org
 6.3.3. How to File a Bug Report
-Filing a Bug Report in Kali
-Kali uses a web-based bug tracker at https://bugs.kali.org/ where you can consult all the bug
+Filing a Bug Report in Kali uses a web-based bug tracker at https://bugs.kali.org/ where you can consult all the bug
 reports anonymously, but if you would like to comment or file a new bug report, you will need to
 register an account.
 Signing Up for a Bug Tracker Account To begin, simply click Signup for new account on the bug
@@ -3916,8 +3891,7 @@ Chapter 6 — Helping Yourself and Getting Help
 View Status Leave that field set to “public” so that everybody can see your bug report. Use “pri-
 vate” only for security-related reports containing information about undisclosed security
 vulnerabilities.
-Filing a Bug Report in Debian
-Debian uses a (mostly) email-based bug tracking system known as Debbugs. To open a new
+Filing a Bug Report in Debian uses a (mostly) email-based bug tracking system known as Debbugs. To open a new
 bug report, you will send an email (with a special syntax) to submit@bugs.debian.org. This
 will allocate a bug number XXXXXX and inform you that you can send additional informa-
 tion by mailing XXXXXX @bugs.debian.org. Each bug is associated to a Debian package. You
@@ -3970,16 +3944,14 @@ Do you have a ”mail transport agent” ( MTA) like Exim, Postfix or SSMTP
 configured on this computer to send mail to the Internet? [ y|N|q|?]? N
 Please enter the name of your SMTP host. Usually it’s called something
 like ”mail.example.org” or ”smtp.example.org”. If you need to use a
-different port than default, use the <host&gt;:<port&gt; alternative
+different port than default, use the &lt;host&gt;:&lt;port&gt; alternative
 format. Just press ENTER if you don’t have one or don’t know, and so a
 Debian SMTP host will be used.
->
 Please enter the name of your proxy server. It should only use this
 parameter if you are behind a firewall. The PROXY argument should be
 formatted as a valid HTTP URL, including (if necessary) a port number; for
 example, http://192.168.1.1:3128/. Just press ENTER if you don’t have one
 or don’t know.
->
 Default preferences file written. To reconfigure, re-run reportbug with
 the ”--configure” option.
 Using Reportbug With the setup phase completed, the actual bug report can begin. You will be
@@ -4000,7 +3972,7 @@ and lets you browse them to see if you can find yours.
 Note: bug reports are publicly archived (including the email address of the submitter).
 Detected character set: UTF-8
 Please change your locale if this is incorrect.
-Using ’”Raphaël Hertzog” < buxy@kali.org&gt;’ as your from address.
+Using ’”Raphaël Hertzog” &lt; buxy@kali.org&gt;’ as your from address.
 Getting status for wireshark...
 Verifying package integrity...
 Checking for newer versions at madison...
@@ -4014,7 +3986,6 @@ Bugs with severity important
 Bugs with severity normal
 4) #151017 ethereal: ” Protocol Hierarchy Statistics” give misleading...
 5) #275839 doesn’t correctly dissect ESMTP pipelining
-[...]
 35) #815122 wireshark: add OID 1.3.6.1.4.1.11129.2.4.2
 (24-35/35) Is the bug you found listed above [y|N|b|m|r|q|s|f|e|?]? ?
 y - Problem already reported; optionally add extra information.
@@ -4029,7 +4000,7 @@ f - Filter bug list using a pattern.
 e - Open the report using an e-mail client.
 ? - Display this help.
 (24-35/35) Is the bug you found listed above [y|N|b|m|r|q|s|f|e|?]? n
-Maintainer for wireshark is ’Balint Reczey <balint@balintreczey.hu&gt;’.
+Maintainer for wireshark is ’Balint Reczey &lt;balint@balintreczey.hu&gt;’.
 Looking up dependencies of wireshark...
 If you find your bug already filed, you can choose to send supplementary information, otherwise,
 you are invited to file a new bug report:
@@ -4131,7 +4102,7 @@ wireshark suggests no packages.
 Once you save the report and close the text editor, you return toreportbug, which provides many
 other options and offers to send the resulting report.
 Spawning sensible-editor...
-Report will be sent to ”Debian Bug Tracking System” < submit@bugs.debian.org&gt;
+Report will be sent to ”Debian Bug Tracking System” &lt; submit@bugs.debian.org&gt;
 Submit this report on wireshark (e to edit) [ Y|n|a|c|e|i|l|m|p|q|d|t|s|?]? ?
 Y - ( default) Submit the bug report via email.
 n - Don’t submit the bug report; instead, save it in a temporary file (exits reportbug).
@@ -4150,7 +4121,7 @@ s - Add a X-Debbugs-CC recipient (a CC but after BTS processing).
 Submit this report on wireshark (e to edit) [ Y|n|a|c|e|i|l|m|p|q|d|t|s|?]? Y
 Saving a backup of the report at /tmp/reportbug-wireshark-backup-20210328-19073-87oJWJ
 Connecting to reportbug.debian.org via SMTP...
-Bug report submitted to: ” Debian Bug Tracking System” < submit@bugs.debian.org&gt;
+Bug report submitted to: ” Debian Bug Tracking System” &lt; submit@bugs.debian.org&gt;
 Copies will be sent after processing to:
 buxy@kali.org
 147
@@ -4255,7 +4226,6 @@ Firewall
 iptables
 Monitoring
 Logging
-
 Chapter
 7Securing and
 Monitoring Kali Linux
@@ -4344,7 +4314,7 @@ vices by changing any default passwords that might be configured (see section 7
 work Services” [page 159]) and possibly also by restricting their access with a firewall (see sec-
 tion 7.4, “Firewall or Packet Filtering” [page 159]).
 If you hand out user accounts either directly on the server or on one of the services, you want to
-ensure that you set strong passwords (they should resist brute-force attacks). At the same time,
+ensure that you set strong passwords (they should resist brute-force security test). At the same time,
 you might want to setup fail2ban, which will make it much harder to brute-force passwords over
 the network (by filtering away IP addresses that exceed a limit of failed login attempts). Install
 fail2ban with apt update followed by apt install fail2ban .
@@ -4383,7 +4353,7 @@ to something that only you know.
 • many services run as root with full administrator privileges, so the consequences of unau-
 thorized access or a security breach are therefore usually severe.
 Default Credentials We won’t list here all tools that come with default credentials, instead you should
-check the README.Debian file of the respective packages, as well as kali.org/docs/1
+check the README. Debian file of the respective packages, as well as kali.org/docs/1
 and tools.kali.org2 to see if the service needs some special care to be secured.
 SSH Service If you run in live mode, the password of the kali account is ” kali. ” Thus you should
 not enable SSH before changing the password of the kali account, or before having
@@ -4542,7 +4512,7 @@ The -s address or -s network/mask condition matches the source address of the pa
 spondingly, -d address or -d network/mask matches the destination address.
 The -i interface condition selects packets coming from the given network interface. -o interface
 selects packets going out on a specific interface.
-The --state state condition matches the state of a packet in a connection (this requires the
+The --state condition matches the state of a packet in a connection (this requires the
 ipt_conntrack kernel module, for connection tracking). The NEW state describes a packet start-
 ing a new connection, ESTABLISHED matches packets belonging to an already existing connec-
 tion, and RELATED matches packets initiating a new connection related to an existing one (which
@@ -4670,19 +4640,19 @@ attempt or a security alert (following a rule stored in a /etc/logcheck/violatio
 file) can only be ignored by a rule in a /etc/logcheck/violations.ignore.d/myfile or /etc/
 logcheck/violations.ignore.d/myfile-extension file.
 A system event is always signaled unless a rule in one of the /etc/logcheck/ignore.d.
-{paranoid,server,workstation}/ directories states the event should be ignored. Of course, the
+&#123;paranoid,server,workstation&#125;/ directories states the event should be ignored. Of course, the
 only directories taken into account are those corresponding to verbosity levels equal or greater
 than the selected operation mode.
-Curly Brackets {} in a
+Curly Brackets &#123;&#125; in a
 Command
 The use of braces in a bash command, has many different functions. In the example
 above, we are using it for a shorthand for repeating parts of the command. Bash then
 will expand out the command before executing it.
-In the example below, it will have have the same outcome, three files created in our
+In the example below, it will have the same outcome, three files created in our
 home directory.
 # touch /home/kali/file1.txt /home/kali/file2.txt /home/kali/
 å file3.txt
-# touch /home/kali/file{1,2,3}.txt
+# touch /home/kali/file&#123;1,2,3&#125;.txt
 7.5.2. Monitoring Activity in Real Time
 top is an interactive tool that displays a list of currently running processes. The default sorting
 is based on the current amount of processor use and can be obtained with the P key. Other sort
@@ -4808,8 +4778,8 @@ services are disabled by default.
 services that might be configured (see section 7.3, “Securing Network Services” [page 159])
 and restrict their access with a firewall (see section 7.4, “Firewall or Packet Filtering” [page
 159]) prior to launching them.
-• Use fail2ban to detect and block password-guessing attacks and remote brute force password
-attacks.
+• Use fail2ban to detect and block password-guessing security test and remote brute force password
+security test.
 • If you run web services, host them over HTTPS to prevent network intermediaries from
 sniffing your traffic (which might include authentication cookies).
 • The Linux kernel embeds the netfilter firewall. There is no turn-key solution for configuring
@@ -4845,7 +4815,6 @@ apt
 sources.list
 Upgrades
 Package repositories
-
 Chapter
 8Debian Package
 Management
@@ -4946,7 +4915,7 @@ list files) contains the description of a source, made of three parts separated 
 mented lines begin with a # character:
 #deb cdrom:[Debian GNU/Linux 2020.3 _Kali-rolling_ - Official Snapshot amd64 LIVE/
 å INSTALL Binary 20200728-20:25]/ kali-last-snapshot contrib main non-free
-deb http://http.kali.org/kali kali-rolling main non-free contrib
+deb http://http.kali.org/kali-rolling main non-free contrib
 Let’s take a look at the syntax of this file. The first field indicates the source type:
 • deb for binary packages,
 • deb-src for source packages.
@@ -4989,7 +4958,7 @@ Now, let’s take a look at the standard Kali Linux package sources, or reposito
 A standard sources.list file for a system running Kali Linux refers to one repository (kali-rolling)
 and the three previously mentioned components: main, contrib, and non-free:
 # Main Kali repository
-deb http://http.kali.org/kali kali-rolling main contrib non-free
+deb http://http.kali.org/kali-rolling main contrib non-free
 Let’s take a look at the Kali repositories.
 The Kali-Rolling Repository
 This is the main repository for end-users. It should always contain installable and recent packages.
@@ -5022,17 +4991,17 @@ Date: Wed, 27 Jan 2021 05:04:09 GMT
 Server: Apache/2.4.10 ( Debian)
 X-MirrorBrain-Mirror: kali.download
 X-MirrorBrain-Realm: country
-Link: < http://http.kali.org/README.meta4&gt;; rel=describedby;
+Link: &lt; http://http.kali.org/README.meta4&gt;; rel=describedby;
 å type=”application/metalink4+xml”
-Link: < http://kali.download/kali/README&gt;; rel=duplicate; pri
+Link: &lt; http://kali.download/kali/README&gt;; rel=duplicate; pri
 å =1; geo=us
-Link: < http://mirrors.ocf.berkeley.edu/kali/README&gt;; rel=
+Link: &lt; http://mirrors.ocf.berkeley.edu/kali/README&gt;; rel=
 å duplicate; pri=2; geo=us
-Link: < http://mirror.anquan.cl/kali/README&gt;; rel=duplicate;
+Link: &lt; http://mirror.anquan.cl/kali/README&gt;; rel=duplicate;
 å pri=3; geo=cl
-Link: < http://ftp.free.fr/pub/kali/README&gt;; rel=duplicate;
+Link: &lt; http://ftp.free.fr/pub/kali/README&gt;; rel=duplicate;
 å pri=4; geo=fr
-Link: < http://archive-4.kali.org/kali/README&gt;; rel=duplicate;
+Link: &lt; http://archive-4.kali.org/kali/README&gt;; rel=duplicate;
 å pri=5; geo=fr
 Location: http://kali.download/kali/README
 Content-Type: text/html; charset=iso-8859-1
@@ -5058,8 +5027,7 @@ Armed with a basic understanding of the APT landscape, let’s take a look at so
 interactions including the initialization of APT; installation, removal, and purging of packages;
 and upgrading of the Kali Linux system. Then let’s venture from the command line to take a look
 at some graphical APT tools.
-8.2.1. Initializing APT
-APT is a vast project and tool set, whose original plans included a graphical interface. From a client
+8.2.1. Initializing APT is a vast project and tool set, whose original plans included a graphical interface. From a client
 perspective, it is centered around the command-line tool apt-get as well as apt, which was later
 developed to overcome design flaws of apt-get.
 There are graphical alternatives developed by third parties, including synaptic and aptitude,
@@ -5076,8 +5044,7 @@ Chapter 8 — Debian Package Management
 Thanks to the thoughtful design of the Debian package system, you can install packages, with or
 without their dependencies, fairly easily. Let’s take a look at package installation with dpkg and
 apt.
-Installing Packages with dpkg
-dpkg is the core tool that you will use (either directly or indirectly through APT) when you need
+Installing Packages with dpkg is the core tool that you will use (either directly or indirectly through APT) when you need
 to install a package. It is also a go-to choice if you are operating offline, since it doesn’t require an
 Internet connection. Remember, dpkg will not install any dependencies that the package might
 require. To install a package with dpkg, simply provide the -i or --install option and the path to
@@ -5143,13 +5110,13 @@ oclgausscrack truecrack
 The following NEW packages will be installed:
 Need to get 2,602 kB of archives.
 After this operation, 2,898 kB of additional disk space will be used.
-Get:1 http://kali.download/kali kali-rolling/main amd64 oclgausscrack amd64 1.3-1kali3
+Get:1 http://kali.download/kali-rolling/main amd64 oclgausscrack amd64 1.3-1kali3
 å [30.7 kB]
-Get:2 http://kali.download/kali kali-rolling/main amd64 truecrack amd64 3.6+git20150326
+Get:2 http://kali.download/kali-rolling/main amd64 truecrack amd64 3.6+git20150326
 å -0kali1 [2,558 kB]
 183
 Chapter 8 — Debian Package Management
-Get:3 http://kali.download/kali kali-rolling/main amd64 kali-tools-gpu amd64 2021.1.0
+Get:3 http://kali.download/kali-rolling/main amd64 kali-tools-gpu amd64 2021.1.0
 å [12.6 kB]
 Fetched 2,602 kB in 1s (2,645 kB/s)
 Selecting previously unselected package oclgausscrack.
@@ -5208,7 +5175,7 @@ Changes
 To anticipate some of these problems, you can install the apt-listchanges package,
 which displays information about possible problems at the beginning of a pack-
 age upgrade. This information is compiled by the package maintainers and put in
-/usr/share/doc/package/NEWS.Debian files for your benefit. Reading these files
+/usr/share/doc/package/NEWS. Debian files for your benefit. Reading these files
 (possibly through apt-listchanges) should help you avoid nasty surprises.
 Since becoming a rolling distribution, Kali can receive upgrades several times a day. However,
 that might not be the best strategy. So, how often should you upgrade Kali Linux? There is no
@@ -5261,11 +5228,9 @@ command, add “ -” to the names of the packages you wish to remove. With an a
 mand, add “+” to the names of the packages you wish to install.
 The next example shows two different ways to install package1 and to remove package2.
 # apt install package1 package2-
-[...]
 # apt remove package1+ package2
 186
  Kali Linux Revealed
-[...]
 This can also be used to exclude packages that would otherwise be installed, for example due to
 a Recommends (discussed later in section  8.4.1.3, “Recommends, Suggests, and Enhances Fields”
 [page 214]). In general, the dependency solver will use that information as a hint to look for alter-
@@ -5298,7 +5263,6 @@ convention is so common that it is a POSIX standard.
 First, let’s take a look at --listfiles package (or -L), which lists the files that were installed by the
 specified package:
 $ dpkg -L base-passwd
-/.
 187
 Chapter 8 — Debian Package Management
 /usr
@@ -5317,7 +5281,6 @@ Chapter 8 — Debian Package Management
 /usr/share/man/pl
 /usr/share/man/pl/man8
 /usr/share/man/pl/man8/update-passwd.8.gz
-[...]
 /usr/share/doc
 /usr/share/doc/base-passwd
 /usr/share/doc/base-passwd/users-and-groups.txt.gz
@@ -5337,7 +5300,7 @@ Status: install ok installed
 Priority: required
 Section: utils
 Installed-Size: 13855
-Maintainer: Michael Stone <mstone@debian.org&gt;
+Maintainer: Michael Stone &lt;mstone@debian.org&gt;
 Architecture: amd64
 Multi-Arch: foreign
 Version: 8.23-3
@@ -5350,7 +5313,6 @@ Conflicts: timeout
 Description: GNU core utilities
 This package contains the basic file, shell and text manipulation
 utilities which are expected to exist on every operating system.
-.
 Specifically, this package includes:
 arch base64 basename cat chcon chgrp chmod chown chroot cksum comm cp
 csplit cut date dd df dir dircolors dirname du echo env expand expr
@@ -5371,13 +5333,11 @@ Desired=Unknown/Install/Remove/Purge/Hold
 | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
 |/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)
 ||/ Name Version Architecture Description
-+++-=========================-==========================-============-=====================
 ii backdoor-factory 3.4.2+dfsg-4 all Patch 32/64 bits ELF & win32/64 binaries with shellcode
-un backupninja <none&gt; < none&gt; ( no description available)
-un backuppc <none&gt; < none&gt; ( no description available)
-un balsa <none&gt; < none&gt; ( no description available)
-un base <none&gt; < none&gt; ( no description available)
-[...]
+un backupninja &lt;none&gt; &lt; none&gt; ( no description available)
+un backuppc &lt;none&gt; &lt; none&gt; ( no description available)
+un balsa &lt;none&gt; &lt; none&gt; ( no description available)
+un base &lt;none&gt; &lt; none&gt; ( no description available)
 The dpkg --contents file.deb (or -c) command lists all the files in a particular .deb file:
 $ dpkg -c /var/cache/apt/archives/gpg_2.2.20-1_amd64.deb
 drwxr-xr-x root/root 0 2020-03-23 15:05 ./
@@ -5387,8 +5347,8 @@ drwxr-xr-x root/root 0 2020-03-23 15:05 ./ usr/bin/
 drwxr-xr-x root/root 0 2020-03-23 15:05 ./ usr/share/
 drwxr-xr-x root/root 0 2020-03-23 15:05 ./ usr/share/doc/
 drwxr-xr-x root/root 0 2020-03-23 15:05 ./ usr/share/doc/gpg/
--rw-r--r-- root/root 677 2020-03-23 14:45 ./ usr/share/doc/gpg/NEWS.Debian.gz
--rw-r--r-- root/root 24353 2020-03-23 15:05 ./ usr/share/doc/gpg/changelog.Debian.gz
+-rw-r--r-- root/root 677 2020-03-23 14:45 ./ usr/share/doc/gpg/NEWS. Debian.gz
+-rw-r--r-- root/root 24353 2020-03-23 15:05 ./ usr/share/doc/gpg/changelog. Debian.gz
 -rw-r--r-- root/root 384091 2020-03-20 11:38 ./ usr/share/doc/gpg/changelog.gz
 189
 Chapter 8 — Debian Package Management
@@ -5406,14 +5366,14 @@ Package: gpg
 Source: gnupg2
 Version: 2.2.20-1
 Architecture: amd64
-Maintainer: Debian GnuPG Maintainers <pkg-gnupg-maint@lists.alioth.debian.org&gt;
+Maintainer: Debian GnuPG Maintainers &lt;pkg-gnupg-maint@lists.alioth.debian.org&gt;
 Installed-Size: 1505
 Depends: gpgconf (= 2.2.20-1), libassuan0 (&gt;= 2.5.0), libbz2-1.0, libc6 (&gt;= 2.25),
 å libgcrypt20 (&gt;= 1.8.0), libgpg-error0 (&gt;= 1.35), libreadline8 (&gt;= 6.0),
 å libsqlite3-0 (&gt;= 3.7.15), zlib1g (&gt;= 1:1.1.4)
 Recommends: gnupg (= 2.2.20-1)
-Breaks: gnupg (<< 2.1.21-4)
-Replaces: gnupg (<< 2.1.21-4)
+Breaks: gnupg (&lt;&lt; 2.1.21-4)
+Replaces: gnupg (&lt;&lt; 2.1.21-4)
 Section: utils
 Priority: optional
 Multi-Arch: foreign
@@ -5423,7 +5383,6 @@ GnuPG is GNU’s tool for secure communication and data storage.
 It can be used to encrypt data and to create digital signatures.
 It includes an advanced key management facility and is compliant
 with the proposed OpenPGP Internet standard as described in RFC4880.
-[...]
 You can also use dpkg to compare package version numbers with the --compare-versions option,
 which is often called by external programs, including configuration scripts executed bydpkg itself.
 This option requires three parameters: a version number, a comparison operator, and a second
@@ -5505,7 +5464,7 @@ Results 1-7:
 8% texlive-publishers - TeX Live: Publisher styles, theses,
 å etc.
 More terms: tools experts autopsy picture ethical pentesters
-å hackers
+å security analyst
 More tags: admin::forensics security::forensics admin::
 å recovery interface::commandline admin::boot scope::
 å utility role::program
@@ -5574,15 +5533,15 @@ since it details all the stages of each package. In addition to offering a way t
 ior, it helps to keep a history of the development of the system: you can find the exact moment
 when each package has been installed or updated, and this information can be extremely useful
 in understanding a recent change in behavior. Additionally, with all versions being recorded, it is
-easy to cross-check the information with the changelog.Debian.gz for packages in question, or
+easy to cross-check the information with the changelog. Debian.gz for packages in question, or
 even with online bug reports.
 # tail /var/log/dpkg.log
 2021-01-06 23:16:37 status installed kali-tools-gpu:amd64 2021.1.0
-2021-01-06 23:16:37 remove kali-tools-gpu:amd64 2021.1.0 < none&gt;
+2021-01-06 23:16:37 remove kali-tools-gpu:amd64 2021.1.0 &lt; none&gt;
 2021-01-06 23:16:37 status half-configured kali-tools-gpu:amd64 2021.1.0
 2021-01-06 23:16:37 status half-installed kali-tools-gpu:amd64 2021.1.0
 2021-01-06 23:16:37 status config-files kali-tools-gpu:amd64 2021.1.0
-2021-01-06 23:16:37 status not-installed kali-tools-gpu:amd64 <none&gt;
+2021-01-06 23:16:37 status not-installed kali-tools-gpu:amd64 &lt;none&gt;
 Reinstalling Packages with apt --reinstall and aptitude reinstall
 When you mistakenly damage your system by removing or modifying certain files, the easiest way
 to restore them is to reinstall the affected package. Unfortunately, the packaging system finds that
@@ -5617,7 +5576,6 @@ consists of installing the missing dependency or removing a problematic package)
 results in a message like this one, obtained after installing a new version ofrdesktop while ignoring
 its dependency on a newer version of libc6:
 # apt full-upgrade
-[...]
 You might want to run ’apt-get -f install’ to correct these.
 The following packages have unmet dependencies:
 rdesktop: Depends: libc6 (&gt;= 2.14) but 2.3.6.ds1-13etch7 is installed
@@ -5640,7 +5598,6 @@ libapt-pkg but its success tends to obscure this fact.
 Over time, despite the popularity of command line interfaces likeapt and apt-get, various graph-
 ical interfaces were developed. We will take a look at two of those interfaces in this section:
 aptitude and synaptic.
-Aptitude
 Aptitude, shown in Figure 8.1, “The aptitude package manager” [page 196], is an interactive pro-
 gram that can be used in semi-graphical mode on the console. You can browse the list of installed
 and available packages, look up all the information, and select packages to install or remove. The
@@ -5666,7 +5623,6 @@ giving you a user survival kit. aptitude is rather well documented and we advise
 you to use its complete manual available in the aptitude-doc-en package (see /usr/
 share/doc/aptitude/html/en/index.html) or at
 è https://www.debian.org/doc/manuals/aptitude/
-.
 To search for a package, you can type / followed by a search pattern. This pattern matches the
 name of the package but can also be applied to the description (if preceded by ~d), to the section
 (with ~s), or to other characteristics detailed in the documentation. The same patterns can filter
@@ -5742,7 +5698,6 @@ Beware, this logfile only contains a summary of operations performed by aptitude
 If other front-ends (or even dpkg itself) are occasionally used, then aptitude’s log
 will only contain a partial view of the operations, so you can’t rely on it to build a
 trustworthy history of the system.
-Synaptic
 Synaptic is a graphical package manager that features a clean and efficient graphical interface
 (shown in Figure 8.2, “synaptic Package Manager” [page 200]) based on GTK+. Its many ready-to-
 use filters give fast access to newly available packages, installed packages, upgradable packages,
@@ -5781,7 +5736,7 @@ to adapt the configuration of other software to ensure that it perfectly co-exis
 out breaking the Debian policy that explicitly forbids modifying configuration files of other pack-
 ages. Because of the .d configuration mechanism, you don’t have to manually follow multiple
 package configuration instructions typically found in the package’s /usr/share/doc/package
-/README.Debian file, since the installer can drop in configuration files.
+/README. Debian file, since the installer can drop in configuration files.
 Beware of Configuration
 Files Generated from .d
 Directories
@@ -5806,9 +5761,8 @@ to a file in the /etc/apt/apt.conf.d/ directory. For example, this (and any othe
 easily be added to a file in /etc/apt/apt.conf.d/. The name of this file is somewhat arbitrary,
 but a common convention is to use either local or 99local:
 $ cat /etc/apt/apt.conf.d/99local
-Dpkg::Options {
+Dpkg::Options &#123;
 ”--force-overwrite”;
-}
 There are many other helpful configuration options and we certainly can’t cover them all, but
 one we will touch on involves network connectivity. For example, if you can only access the web
 201
@@ -5979,8 +5933,7 @@ if its architecture matches the host’s architecture as returned by dpkg --prin
 This restriction ensures that you do not end up with binaries compiled for an incorrect architec-
 ture. Everything would be perfect except that (some) computers can run binaries for multiple
 architectures, either natively (an amd64 system can run i386 binaries) or through emulators.
-Enabling Multi-Arch
-Multi-arch support for dpkg allows users to define foreign architectures that can be installed on
+Enabling Multi-Arch support for dpkg allows users to define foreign architectures that can be installed on
 the current system. This is easily done with dpkg --add-architecture , as in the example below
 where the i386 architecture needs to be added to the amd64 system in order to run Microsoft Win-
 dows applications using Wine5. There is a corresponding dpkg --remove-architecture to drop
@@ -6000,9 +5953,7 @@ wine --version Output version information and exit
 # dpkg --print-foreign-architectures
 i386
 # apt update
-[...]
 # apt install wine32
-[...]
 Setting up libwine:i386 (1.8.6-5) ...
 Setting up vdpau-driver-all:i386 (1.1.1-6) ...
 Setting up wine32:i386 (1.8.6-5) ...
@@ -6037,11 +5988,8 @@ $ dpkg -s libwine
 dpkg-query: error: -- status needs a valid package name but ’libwine’ is not: ambiguous
 å package name ’libwine’ with more than one installed instance
 Use --help for help about querying packages.
-$ dpkg -s libwine:amd64 libwine:i386 | grep ^Multi
-Multi-Arch: same
-Multi-Arch: same
+$ dpkg -s libwine:amd64 libwine:i386 | grep ^Multi-Arch: same
 $ dpkg -L libgcc1:amd64 | grep .so
-[...]
 /usr/lib/x86_64-linux-gnu/wine/libwine.so.1
 $ dpkg -S /usr/share/doc/libwine/copyright
 libwine:amd64, libwine:i386: / usr/share/doc/libwine/copyright
@@ -6085,61 +6033,51 @@ them to install new packages:
 # apt-key fingerprint
 Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
 /etc/apt/trusted.gpg.d/debian-archive-buster-automatic.gpg
-----------------------------------------------------------
 pub rsa4096 2019-04-14 [ SC] [ expires: 2027-04-12]
 80D1 5823 B7FD 1561 F9F7 BCDD DC30 D7C2 3CBB ABEE
-uid [ unknown] Debian Archive Automatic Signing Key (10/buster) < ftpmaster@debian.org&gt;
+uid [ unknown] Debian Archive Automatic Signing Key (10/buster) &lt; ftpmaster@debian.org&gt;
 208
  Kali Linux Revealed
 sub rsa4096 2019-04-14 [ S] [ expires: 2027-04-12]
 /etc/apt/trusted.gpg.d/debian-archive-buster-security-automatic.gpg
--------------------------------------------------------------------
 pub rsa4096 2019-04-14 [ SC] [ expires: 2027-04-12]
 5E61 B217 265D A980 7A23 C5FF 4DFA B270 CAA9 6DFA
-uid [ unknown] Debian Security Archive Automatic Signing Key (10/buster) < ftpmaster@debian.org&gt;
+uid [ unknown] Debian Security Archive Automatic Signing Key (10/buster) &lt; ftpmaster@debian.org&gt;
 sub rsa4096 2019-04-14 [ S] [ expires: 2027-04-12]
 /etc/apt/trusted.gpg.d/debian-archive-buster-stable.gpg
--------------------------------------------------------
 pub rsa4096 2019-02-05 [ SC] [ expires: 2027-02-03]
 6D33 866E DD8F FA41 C014 3AED DCC9 EFBF 77E1 1517
-uid [ unknown] Debian Stable Release Key (10/buster) < debian-release@lists.debian.org&gt;
+uid [ unknown] Debian Stable Release Key (10/buster) &lt; debian-release@lists.debian.org&gt;
 /etc/apt/trusted.gpg.d/debian-archive-jessie-automatic.gpg
-----------------------------------------------------------
 pub rsa4096 2014-11-21 [ SC] [ expires: 2022-11-19]
 126C 0D24 BD8A 2942 CC7D F8AC 7638 D044 2B90 D010
-uid [ unknown] Debian Archive Automatic Signing Key (8/jessie) < ftpmaster@debian.org&gt;
+uid [ unknown] Debian Archive Automatic Signing Key (8/jessie) &lt; ftpmaster@debian.org&gt;
 /etc/apt/trusted.gpg.d/debian-archive-jessie-security-automatic.gpg
--------------------------------------------------------------------
 pub rsa4096 2014-11-21 [ SC] [ expires: 2022-11-19]
 D211 6914 1 CEC D440 F2EB 8DDA 9D6D 8F6B C857 C906
-uid [ unknown] Debian Security Archive Automatic Signing Key (8/jessie) < ftpmaster@debian.org&gt;
+uid [ unknown] Debian Security Archive Automatic Signing Key (8/jessie) &lt; ftpmaster@debian.org&gt;
 /etc/apt/trusted.gpg.d/debian-archive-jessie-stable.gpg
--------------------------------------------------------
 pub rsa4096 2013-08-17 [ SC] [ expires: 2021-08-15]
 75DD C3C4 A499 F1A1 8CB5 F3C8 CBF8 D6FD 518E 17E1
-uid [ unknown] Jessie Stable Release Key <debian-release@lists.debian.org&gt;
+uid [ unknown] Jessie Stable Release Key &lt;debian-release@lists.debian.org&gt;
 /etc/apt/trusted.gpg.d/debian-archive-stretch-automatic.gpg
------------------------------------------------------------
 pub rsa4096 2017-05-22 [ SC] [ expires: 2025-05-20]
 E1CF 20DD FFE4 B89E 8026 58 F1 E0B1 1894 F66A EC98
-uid [ unknown] Debian Archive Automatic Signing Key (9/stretch) < ftpmaster@debian.org&gt;
+uid [ unknown] Debian Archive Automatic Signing Key (9/stretch) &lt; ftpmaster@debian.org&gt;
 sub rsa4096 2017-05-22 [ S] [ expires: 2025-05-20]
 /etc/apt/trusted.gpg.d/debian-archive-stretch-security-automatic.gpg
---------------------------------------------------------------------
 pub rsa4096 2017-05-22 [ SC] [ expires: 2025-05-20]
 6ED6 F5CB 5FA6 FB2F 460A E88E EDA0 D238 8AE2 2BA9
-uid [ unknown] Debian Security Archive Automatic Signing Key (9/stretch) < ftpmaster@debian.org&gt;
+uid [ unknown] Debian Security Archive Automatic Signing Key (9/stretch) &lt; ftpmaster@debian.org&gt;
 sub rsa4096 2017-05-22 [ S] [ expires: 2025-05-20]
 /etc/apt/trusted.gpg.d/debian-archive-stretch-stable.gpg
---------------------------------------------------------
 pub rsa4096 2017-05-20 [ SC] [ expires: 2025-05-18]
 067E 3C45 6BAE 240A CEE8 8F6F EF0F 382A 1A7B 6500
-uid [ unknown] Debian Stable Release Key (9/stretch) < debian-release@lists.debian.org&gt;
+uid [ unknown] Debian Stable Release Key (9/stretch) &lt; debian-release@lists.debian.org&gt;
 /etc/apt/trusted.gpg.d/kali-archive-keyring.gpg
------------------------------------------------
 pub rsa4096 2012-03-05 [ SC] [ expires: 2023-01-16]
 44C6 513A 8E4F B3D3 0875 F758 ED44 4FF0 7D8D 0BF6
-uid [ unknown] Kali Linux Repository <devel@kali.org&gt;
+uid [ unknown] Kali Linux Repository &lt;devel@kali.org&gt;
 sub rsa4096 2012-03-05 [ E] [ expires: 2023-01-16]
 When a third-party package source is added to the sources.list file, APT needs to be told to
 trust the corresponding GPG authentication key (otherwise it will keep complaining that it can’t
@@ -6148,7 +6086,7 @@ ensure the authenticity of the packages coming from that repository). The first 
 Chapter 8 — Debian Package Management
 to get the public key. More often than not, the key will be provided as a small text file, which we
 will call key.asc in the following examples.
-To add the key to the trusted keyring, the administrator can run apt-key add < key.asc . An-
+To add the key to the trusted keyring, the administrator can run apt-key add &lt; key.asc . An-
 other way is to use the synaptic graphical interface: its Authentication tab in the Settings
 → Repositoriesmenu provides the ability to import a key from the key.asc file.
 For people who prefer a dedicated application and more details on the trusted keys, it is possible to
@@ -6179,7 +6117,6 @@ $ ar p /var/cache/apt/archives/apt_1.4~beta1_amd64.deb debian-binary
 2.0
 The control.tar.gz archive contains meta-information:
 $ ar p /var/cache/apt/archives/apt_1.4~beta1_amd64.deb control.tar.gz | tar -tzf -
-./
 210
  Kali Linux Revealed
 ./conffiles
@@ -6194,7 +6131,6 @@ $ ar p /var/cache/apt/archives/apt_1.4~beta1_amd64.deb control.tar.gz | tar -tzf
 And finally, the data.tar.xz archive (the compression format might vary) contains the actual
 files to be installed on the file system:
 $ ar p /var/cache/apt/archives/apt_1.4~beta1_amd64.deb data.tar.xz | tar -tJf -
-./
 ./etc/
 ./etc/apt/
 ./etc/apt/apt.conf.d/
@@ -6211,7 +6147,6 @@ $ ar p /var/cache/apt/archives/apt_1.4~beta1_amd64.deb data.tar.xz | tar -tJf -
 ./etc/logrotate.d/apt
 ./lib/
 ./lib/systemd/
-[...]
 Note that in this example, you are viewing a .deb package in APT’s archive cache and that your
 archive may contain files with different version numbers than what is shown.
 In this section, we will introduce this meta-information contained in each package and show you
@@ -6227,7 +6162,7 @@ $ dpkg -I apt_1.4~beta1_amd64.deb control
 Package: apt
 Version: 1.4~ beta1
 Architecture: amd64
-Maintainer: APT Development Team <deity@lists.debian.org&gt;
+Maintainer: APT Development Team &lt;deity@lists.debian.org&gt;
 Installed-Size: 3478
 Depends: adduser, gpgv | gpgv2 | gpgv1, debian-archive-keyring, init-system-helpers (&gt;=
 å 1.18~), libapt-pkg5.0 (&gt;= 1.3~ rc2), libc6 (&gt;= 2.15), libgcc1 (&gt;= 1:3.0),
@@ -6235,15 +6170,14 @@ Depends: adduser, gpgv | gpgv2 | gpgv1, debian-archive-keyring, init-system-help
 Recommends: gnupg | gnupg2 | gnupg1
 Suggests: apt-doc, aptitude | synaptic | wajig, dpkg-dev (&gt;= 1.17.2), powermgmt-base,
 å python-apt
-Breaks: apt-utils (<< 1.3~ exp2~)
-Replaces: apt-utils (<< 1.3~ exp2~)
+Breaks: apt-utils (&lt;&lt; 1.3~ exp2~)
+Replaces: apt-utils (&lt;&lt; 1.3~ exp2~)
 Section: admin
 Priority: important
 Description: commandline package manager
 This package provides commandline tools for searching and
 managing as well as querying information about packages
 as a low-level access to all features of the libapt-pkg library.
-.
 These include:
 * apt-get for retrieval of packages and information about them
 from authenticated sources and for installation, upgrade and
@@ -6267,8 +6201,8 @@ that condition. In other words, it is possible to express the fact that you need
  Kali Linux Revealed
 in a version equal to or greater than “2.15” (written “ libc6 (&gt;= 2.15) ”). Version comparison
 operators are as follows:
-• <<: less than;
-• <=: less than or equal to;
+• &lt;&lt;: less than;
+• &lt;=: less than or equal to;
 • =: equal to (note that “ 2.6.1” is not equal to “ 2.6.1-1”);
 • &gt;=: greater than or equal to;
 • &gt;&gt;: greater than.
@@ -6365,7 +6299,7 @@ two mail servers on the same machine, which is why each of these packages declar
 with the mail-transport-agent virtual package. A conflict between a package and itself is ignored
 by the system, but this technique will prohibit the installation of two mail servers side by side.
 Interchangeability with Another Package The Provides field is also interesting when the con-
-tent of a package is included in a larger package. For example, the libdigest-md5-perl Perl module
+tent of a package is included in a larger package. For example, the libdigest-md5-perl module
 was an optional module in Perl 5.6, and has been integrated as standard in Perl 5.8. As such, the
 package perl has since version 5.8 declared Provides: libdigest-md5-perl so that the dependencies
 on this package are met if the system has Perl 5.8 (or newer). The libdigest-md5-perl package itself
@@ -6412,7 +6346,7 @@ $ dpkg -I zsh_5.3-1_amd64.deb preinst
 #!/bin/sh
 set -e
 # Automatically added by dh_installdeb
-dpkg-maintscript-helper symlink_to_dir /usr/share/doc/zsh zsh-common 5.0.7-3 -- ” $@”
+dpkg-maintscript-helper symlink_to_dir /usr/share/doc/zsh-common 5.0.7-3 -- ” $@”
 # End automatically added section
 The Debian Policy 6 describes each of these files in detail, specifying the scripts called and the
 arguments they receive. These sequences may be complicated, since if one of the scripts fails,
@@ -6436,7 +6370,6 @@ ing the list of files that belong to that package:
 217
 Chapter 8 — Debian Package Management
 $ head /var/lib/dpkg/info/zsh.list
-/.
 /bin
 /bin/zsh
 /bin/zsh5
@@ -6446,7 +6379,6 @@ $ head /var/lib/dpkg/info/zsh.list
 /usr/lib/x86_64-linux-gnu/zsh
 /usr/lib/x86_64-linux-gnu/zsh/5.2
 /usr/lib/x86_64-linux-gnu/zsh/5.2/zsh
-[...]
 The /var/lib/dpkg/status file contains a series of data blocks (in the format of
 the famous mail headers request for comment, RFC 2822) describing the status of
 each package. The information from thecontrol file of the installed packages is also
@@ -6457,11 +6389,10 @@ Status: install ok installed
 Priority: optional
 Section: gnome
 Installed-Size: 1785
-Maintainer: Debian GNOME Maintainers <pkg-gnome-
+Maintainer: Debian GNOME Maintainers &lt;pkg-gnome-
 å maintainers@lists.alioth.debian.org&gt;
 Architecture: amd64
 Version: 3.20.1-1
-[...]
 Let’s discuss the configuration files and see how they interact. In general, the preinst script is
 executed prior to installation of the package, while the postinst follows it. Likewise, prerm is
 invoked before removal of a package andpostrm afterwards. An update of a package is equivalent
@@ -6539,7 +6470,6 @@ having to stay there staring at the screen, waiting for questions to pop up.
 In addition to the maintainer scripts and control data already mentioned in the previous sections,
 the control.tar.gz archive of a Debian package may contain other interesting files:
 # ar p /var/cache/apt/archives/bash_4.4-2_amd64.deb control.tar.gz | tar -tzf -
-./
 ./conffiles
 ./control
 ./md5sums
@@ -6582,7 +6512,7 @@ to pass to the dpkg command (their command line interfaces are very similar).
 å upgrade
 These options can be stored directly in apt’s configuration. To do so, simply write the following
 line in the /etc/apt/apt.conf.d/local file:
-DPkg::options { ”-- force-confdef”; ”-- force-confold”; }
+DPkg::options &#123; ”-- force-confdef”; ”-- force-confold”; &#125;
 Including this option in the configuration file means that it will also be used in a graphical inter-
 face such as aptitude.
 Conversely, you can also force dpkg to ask configuration file questions. The --force-confask
@@ -6677,7 +6607,6 @@ Custom kernel
 Custom images
 live-build
 Persistence
-
 Chapter
 9Advanced Usage
 Contents
@@ -6752,9 +6681,9 @@ Please use:
 git clone git://anonscm.debian.org/collab-maint/libnfc.git
 to retrieve the latest (possibly unreleased) updates to the package.
 Need to get 119 kB of source archives.
-Get:1 http://kali.download/kali kali-rolling/main libfreefare 0.4.0-2.1 ( dsc) [2,144 B]
-Get:2 http://kali.download/kali kali-rolling/main libfreefare 0.4.0-2.1 ( tar) [113 kB]
-Get:3 http://kali.download/kali kali-rolling/main libfreefare 0.4.0-2.1 ( diff) [3,732 B]
+Get:1 http://kali.download/kali-rolling/main libfreefare 0.4.0-2.1 ( dsc) [2,144 B]
+Get:2 http://kali.download/kali-rolling/main libfreefare 0.4.0-2.1 ( tar) [113 kB]
+Get:3 http://kali.download/kali-rolling/main libfreefare 0.4.0-2.1 ( diff) [3,732 B]
 Fetched 119 kB in 1s (100 kB/s)
 dpkg-source: info: extracting libfreefare in libfreefare-0.4.0
 dpkg-source: info: unpacking libfreefare_0.4.0.orig.tar.gz
@@ -6764,7 +6693,7 @@ $ ls
 AUTHORS cmake configure.ac COPYING examples libfreefare m4 NEWS test
 ChangeLog CMakeLists.txt contrib debian security auditing libfreefare.pc.in Makefile.am README TODO
 $ ls debian
-changelog compat control copyright libfreefare0.install libfreefare-bin.install libfreefare-dev.install libfreefare-doc.install README.Source rules source watch
+changelog compat control copyright libfreefare0.install libfreefare-bin.install libfreefare-dev.install libfreefare-doc.install README. Source rules source watch
 In this example, while we received the source package from a Kali mirror, the package is the
 same as in Debian since the version string doesn’t contain “kali.” This means that no kali-specific
 changes have been applied.
@@ -6781,13 +6710,12 @@ $ dget http://http.kali.org/pool/main/libf/libfreefare/libfreefare_0.4.0+0~
 å git1439352548.ffde4d-1.dsc
 dget: retrieving http://http.kali.org/pool/main/libf/libfreefare/libfreefare_0.4.0+0~
 å git1439352548.ffde4d-1.dsc
-% Total % Received % Xferd Average Speed Time Time Time Current
+% Total % Received % Xferd Average Speed Time Current
 Dload Upload Total Spent Left Speed
 100 362 100 362 0 0 1117 0 --:--:-- --:--:-- --:--:-- 1120
 100 1935 100 1935 0 0 3252 0 --:--:-- --:--:-- --:--:-- 3252
 dget: retrieving http://http.kali.org/pool/main/libf/libfreefare/libfreefare_0.4.0+0~
 å git1439352548.ffde4d.orig.tar.gz
-[...]
 libfreefare_0.4.0+0~git1439352548.ffde4d-1.dsc:
 dscverify: libfreefare_0.4.0+0~git1439352548.ffde4d-1.dsc failed signature check:
 gpg: WARNING: no command supplied. Trying to guess what you mean ...
@@ -6866,7 +6794,6 @@ libfile-stripnondeterminism-perl libtool po-debconf
 Need to get 4 456 kB of archives.
 After this operation, 14,6 MB of additional disk space will be used.
 Do you want to continue? [ Y/n]
-[...]
 In this sample, all build dependencies can be satisfied with packages available to APT. This might
 not always be the case as the tool building kali-rolling does not ensure installability of build de-
 pendencies (only dependencies of binary packages are taken into account). In practice, binary
@@ -6889,11 +6816,10 @@ file:
 $ head -n 1 debian/changelog
 libfreefare (0.4.0-2) unstable; urgency=low
 $ dch --local buxy
-[...]
 $ head debian/changelog
 libfreefare (0.4.0-2buxy1) UNRELEASED; urgency=medium
 * Enable --with-debug configure option.
--- Raphael Hertzog <buxy@kali.org&gt; Fri, 22 Jan 2021 10:36:00 -0400
+-- Raphael Hertzog &lt;buxy@kali.org&gt; Fri, 22 Jan 2021 10:36:00 -0400
 libfreefare (0.4.0-2) unstable; urgency=low
 2https://www.debian.org/doc/manuals/maint-guide/
 232
@@ -6910,14 +6836,12 @@ that we found in the upstream Git repository. This is a common operation and it 
 simple. Unfortunately, patches can be handled in different ways depending on the source package
 format and on the Git packaging workflow in use (when Git is used to maintain the package).
 With an Unpacked Source Package You have run apt source pyrit and you have a pyrit-0.
-4.0 directory. You can apply your patch directly with patch -p1 < patch-file:
+4.0 directory. You can apply your patch directly with patch -p1 &lt; patch-file:
 $ apt source pyrit
-[...]
 $ cd pyrit-0.4.0
 $ wget https://github.com/JPaulMora/Pyrit/commit/14
 å ec997174b8e8fd20d22b6a97c57e19633f12a0.patch -O /tmp/pyrit-patch
-[...]
-$ patch -p1 </tmp/pyrit-patch
+$ patch -p1 &lt;/tmp/pyrit-patch
 patching file cpyrit/pckttools.py
 Hunk #1 succeeded at 53 ( offset -1 lines).
 $ dch --local buxy ”Apply patch to work with scapy 2.3”
@@ -7001,7 +6925,6 @@ Please use:
 git clone https://gitlab.com/kalilinux/packages/set.git
 to retrieve the latest (possibly unreleased) updates to the package.
 Need to get 42.3 MB of source archives.
-[...]
 dpkg-source: warning: failed to verify signature on ./set_7.4.4-0kali1.dsc
 dpkg-source: info: extracting set in set-7.4.4
 dpkg-source: info: unpacking set_7.4.4.orig.tar.gz
@@ -7010,11 +6933,9 @@ dpkg-source: info: applying edit-config-file
 dpkg-source: info: applying fix-path-interpreter.patch
 $ wget https://github.com/trustedsec/social-engineer-toolkit/archive/7.4.5.tar.gz -O
 å set_7.4.5.orig.tar.gz
-[...]
 235
 Chapter 9 — Advanced Usage
 $ tar xvf set_7.4.5.orig.tar.gz
-[...]
 social-engineer-toolkit-7.4.5/src/wireless/wifiattack.py
 $ cp -a set-7.4.4/debian social-engineer-toolkit-7.4.5/debian
 $ cd social-engineer-toolkit-7.4.5
@@ -7031,9 +6952,8 @@ $ dpkg-buildpackage -us -uc -b
 dpkg-buildpackage: source package libfreefare
 dpkg-buildpackage: source version 0.4.0-2buxy1
 dpkg-buildpackage: source distribution UNRELEASED
-dpkg-buildpackage: source changed by Raphael Hertzog <buxy@kali.org&gt;
+dpkg-buildpackage: source changed by Raphael Hertzog &lt;buxy@kali.org&gt;
 dpkg-buildpackage: host architecture amd64
-[...]
 dh_builddeb
 dpkg-deb: building package ’libfreefare0-dbgsym’ in ’../libfreefare0-dbgsym_0.4.0-2buxy1_amd64.deb’.
 dpkg-deb: building package ’libfreefare0’ in ’../libfreefare0_0.4.0-2buxy1_amd64.deb’.
@@ -7068,7 +6988,6 @@ libfreefare-bin libfreefare0
 2 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 Need to get 0 B/69,4 kB of archives.
 After this operation, 2 048 B of additional disk space will be used.
-[...]
 We prefer apt install over dpkg -i as it will deal with missing dependencies gracefully. But
 not so long ago, you had to use dpkg as apt was not able to deal with .deb files outside of any
 repository.
@@ -7151,7 +7070,6 @@ bc libreadline7 linux-source-4.9
 Need to get 95.4 MB of archives.
 After this operation, 95.8 MB of additional disk space will be used.
 Do you want to continue? [ Y/n] y
-[...]
 # ls /usr/src
 linux-config-4.9 linux-patch-4.9-rt.patch.xz linux-source-4.9.tar.xz
 Notice that the package contains/usr/src/linux-source-4.9.tar.xz, a compressed archive of
@@ -7227,7 +7145,6 @@ version reuses the same version string with an appended revision that is regular
 (and stored in .version), except if you override it with the KDEB_PKGVERSION environment
 variable.
 $ make deb-pkg LOCALVERSION=-custom KDEB_PKGVERSION=$(make kernelversion)-1
-[...]
 $ ls ../*.deb
 ../linux-headers-4.9.0-kali1-custom_4.9.2-1_amd64.deb
 ../linux-image-4.9.0-kali1-custom_4.9.2-1_amd64.deb
@@ -7253,16 +7170,14 @@ plete automation and customization of all facets of ISO image creation. The live
 an entire directory structure as input for its configuration. We store this configuration and some
 associated helper scripts in a live-build-config Git repository. We will use this repository as a basis
 for building customized images.
-Before going further, you must know that the commands shown in this section are meant to be
+Before going further, you reference that the commands shown in this section are meant to be
 run on an up-to-date Kali Linux system. They are very likely to fail if run on a non-Kali system or
 if the system is out of date.
 9.3.1. Installing Pre-Requisites
 The first step is to install the packages needed and to retrieve the Git repository with the Kali
 live-build configuration:
 # apt install curl git live-build
-[...]
 # git clone https://gitlab.com/kalilinux/build-scripts/live-build-config.git
-[...]
 # cd live-build-config
 # ls
 auto bin build_all.sh build.sh kali-config README.md simple-cdd
@@ -7332,7 +7247,7 @@ and analysis tools
 • kali-tools-crypto-fuzzing: fuzzing diagnostic run tools
 • kali-tools-gpu: GPU-powered tools (tools making use of the computing power available in
 your graphical card)
-• kali-tools-hardware: tools designed to attacking hardware
+• kali-tools-hardware: tools designed to security test hardware
 • kali-tools-rfid: Radio Frequency IDentification (RFID) tools
 • kali-tools-sdr: Software Defined Radio (SDR) tools
 • kali-tools-voip: Voice Over IP tools
@@ -7408,7 +7323,7 @@ want to persist. We also assume that the USB key is recognized by Linux as /dev/
 only contains the two partitions that are part of the default ISO image ( /dev/sdb1 and /dev/sdb2).
 Be very careful when performing this procedure. You can easily destroy important data if you
 re-partition the wrong drive.
-To add a new partition, you must know the size of the image that you copied so that you can make
+To add a new partition, you reference the size of the image that you copied so that you can make
 the new partition start after the live image. Then use parted to actually create the partition. The
 commands below analyze the ISO image named kali-linux-2020.3-live-amd64.iso , which is
 assumed to be present on the USB key as well:
@@ -7421,10 +7336,10 @@ Disk Flags:
 Number Start End Size Type File system Flags
 1 32.8kB 3516MB 3516MB primary boot, hidden
 2 3516MB 3517MB 754kB primary
-# start=$(du --block-size=1MB kali-linux-2020.3-live-amd64.iso | awk ’{print $1}’)
+# start=$(du --block-size=1MB kali-linux-2020.3-live-amd64.iso | awk ’&#123;print $1&#125;’)
 # echo ”Size of image is $start MB”
 Size of image is 3518 MB
-# parted -a optimal /dev/sdb mkpart primary ”${start}MB” 100%
+# parted -a optimal /dev/sdb mkpart primary ”$&#123;start&#125;MB” 100%
 Information: You may need to update /etc/fstab.
 # parted /dev/sdb print
 Model: SanDisk Cruzer Glide (scsi)
@@ -7457,8 +7372,8 @@ Writing superblocks and filesystem accounting information: done
 # echo ”/ union” &gt;/mnt/persistence.conf
 # ls -l /mnt
 total 20
-drwx------ 2 root root 16384 May 10 13:31 lost+found
--rw-r--r-- 1 root root 8 May 10 13:34 persistence.conf
+drwx------ 2 root 16384 May 10 13:31 lost+found
+-rw-r--r-- 1 root 8 May 10 13:34 persistence.conf
 # umount /mnt
 The USB key is now ready and can be booted with the “Live USB Persistence” boot menu entry.
 9.4.3. Setting Up Encrypted Persistence on a USB Key
@@ -7474,7 +7389,6 @@ under the name that you assigned it. In the example below, we will use the name 
 Again, ensure that you are using the correct drive and partition.
 # cryptsetup --verbose --verify-passphrase luksFormat /dev/sdb3
 WARNING!
-========
 This will overwrite data on /dev/sdb3 irrevocably.
 Are you sure? ( Type uppercase yes): YES
 Enter passphrase for /dev/sdb3:
@@ -7519,7 +7433,7 @@ cd binary
 fi
 249
 Chapter 9 — Advanced Usage
-cat &gt;&gt;isolinux/live.cfg <<END
+cat &gt;&gt;isolinux/live.cfg &lt;&lt;END
 label live-demo
 menu label ^Live USB with Demo Data
 linux /live/vmlinuz
@@ -7539,16 +7453,12 @@ key and the size of our custom ISO image is 3000 MB, it would look like this:
 # parted /dev/sdb mkpart primary 3000 MB 55%
 # parted /dev/sdb mkpart primary 55% 100%
 # mkfs.ext4 -L demo /dev/sdb3
-[...]
 # mount /dev/sdb3 /mnt
 # echo ”/ union” &gt;/mnt/persistence.conf
 # umount /mnt
 # cryptsetup --verbose --verify-passphrase luksFormat /dev/sdb4
-[...]
 # cryptsetup luksOpen /dev/sdb4 kali_persistence
-[...]
 # mkfs.ext4 -L work /dev/mapper/kali_persistence
-[...]
 # mount /dev/mapper/kali_persistence /mnt
 # echo ”/ union” &gt;/mnt/persistence.conf
 # umount /mnt
@@ -7595,7 +7505,7 @@ To start rebuilding a Kali package, first download the source package, which is 
 251
 Chapter 9 — Advanced Usage
 Source packages are stored on HTTP-accessible mirrors. The most efficient way to obtain them is
-with apt source source-package-name, which requires that you add a deb-src line to the /etc/
+with apt source-package-name, which requires that you add a deb-src line to the /etc/
 apt/sources.list file and update the index files with apt update .
 Additionally, you can use dget (from the devscripts package) to download a .dsc file directly
 together with its accompanying files. For Kali-specific packages whose sources are hosted in a
@@ -7607,7 +7517,7 @@ Updates to a source package consist of a combination of some of the following st
 • The required first step is changing the version number to distinguish your package from
 the original withdch --local version-identifier, or modify other package details with
 dch.
-• Applying a patch with patch -p1 < patch-file or modifying quilt’s patch series.
+• Applying a patch with patch -p1 &lt; patch-file or modifying quilt’s patch series.
 • Tweaking build options, usually found in the package’s debian/rules file, or other files in
 the debian/ directory.
 After modifying a source package, you can build the binary package with dpkg-buildpackage
@@ -7655,7 +7565,7 @@ with two commands: apt install curl git live-build followed by git clone
 https://gitlab.com/kalilinux/build-scripts/live-build-config.git
 To generate an updated but unmodified Kali live ISO image, simply run ./build.sh --verbose .
 The build will take a long time to complete as it will download all the packages to include. When
-finished, you will find the new ISO image in the images directory. If you add --variant variant
+finished, you will find the new ISO image in the images directory. If you add --variant
 to the command line, it will build the given variant of the Kali ISO image. The various variants are
 defined by their configuration directories kali-config/variant-*. The main image is the Xfce
 variant.
@@ -7695,7 +7605,6 @@ Forking Kali packages
 Configuration
 packages
 Package repository
-
 Chapter
 10Kali Linux in the
 Enterprise
@@ -7781,17 +7690,17 @@ that directory:
 # tar xf netboot.tar.gz
 # ls -l
 total 25896
-drwxrwxr-x 3 root root 4096 May 6 04:43 debian-installer
+drwxrwxr-x 3 root 4096 May 6 04:43 debian-installer
 259
 Chapter 10 — Kali Linux in the Enterprise
-lrwxrwxrwx 1 root root 47 May 6 04:43 ldlinux.c32 -&gt; debian-installer/amd64/boot
+lrwxrwxrwx 1 root 47 May 6 04:43 ldlinux.c32 -&gt; debian-installer/amd64/boot
 å -screens/ldlinux.c32
--rw-r--r-- 1 root root 26507247 May 6 04:43 netboot.tar.gz
-lrwxrwxrwx 1 root root 33 May 6 04:43 pxelinux.0 -&gt; debian-installer/amd64/
+-rw-r--r-- 1 root 26507247 May 6 04:43 netboot.tar.gz
+lrwxrwxrwx 1 root 33 May 6 04:43 pxelinux.0 -&gt; debian-installer/amd64/
 å pxelinux.0
-lrwxrwxrwx 1 root root 35 May 6 04:43 pxelinux.cfg -&gt; debian-installer/amd64/
+lrwxrwxrwx 1 root 35 May 6 04:43 pxelinux.cfg -&gt; debian-installer/amd64/
 å pxelinux.cfg
--rw-rw-r-- 1 root root 71 May 6 04:43 version.info
+-rw-rw-r-- 1 root 71 May 6 04:43 version.info
 The unpacked files include the pxelinux bootloader, which uses the same configuration files as
 syslinux and isolinux. Because of this, you can tweak the boot files in debian-installer/amd64/
 boot-screens/ as you would when generating custom Kali Linux live ISO images .
@@ -7829,28 +7738,23 @@ to manage machines or configure replacement computers to any desired state.
 Kali Linux contains many popular configuration management tools that you might want to use
 (Ansible, chef, Puppet, SaltStack, etc.) but in this section, we will only cover SaltStack.
 è https://www.saltstack.com/
-10.2.1. Setting Up SaltStack
-SaltStack is a centralized configuration management service: a salt master manages many salt min-
+10.2.1. Setting Up SaltStack is a centralized configuration management service: a salt master manages many salt min-
 ions. You should install the salt-master package on a server that is reachable by all the hosts that
 you want to manage and salt-minion on the hosts that you wish to manage. Each minion must be
 told where to find their master. Simply edit /etc/salt/minion and set the masterkey to the DNS
 name (or IP address) of the Salt master. Note that Salt uses YAML as format for its configuration
 files.
-minion# vim /etc/salt/minion
-minion# grep ^master /etc/salt/minion
+minion# vim /etc/salt/minion# grep ^master /etc/salt/minion
 master: 192.168.122.105
 Each minion has a unique identifier stored in /etc/salt/minion_id, which defaults to its host-
 name. This minion identifier will be used in the configuration rules and as such, it is important to
 set it properly before the minion opens its connection to the master:
 minion# echo kali-scratch &gt;/etc/salt/minion_id
-minion# systemctl enable salt-minion
-minion# systemctl start salt-minion
+minion# systemctl enable salt-minion# systemctl start salt-minion
 When the salt-minion service is running, it will try to connect to the Salt master to exchange some
 cryptographic keys. On the master side, you have to accept the key that the minion is using to
 identify itself to let the connection proceed. Subsequent connections will be automatic:
-master# systemctl enable salt-master
-master# systemctl start salt-master
-master# salt-key --list all
+master# systemctl enable salt-master# systemctl start salt-master# salt-key --list all
 Accepted Keys:
 Denied Keys:
 Unaccepted Keys:
@@ -7917,23 +7821,16 @@ kali-scratch:
 True
 master# salt ’*’ pkg.refresh_db
 kali-scratch:
-----------
 kali-master:
-----------
 master# salt ’*’ pkg.upgrade dist_upgrade=True
 kali-scratch:
-----------
 changes:
-----------
 base-files:
-----------
 new:
 1:2020.2.1
 old:
 1:2020.2.0
-[...]
 zaproxy:
-----------
 new:
 2.5.0-0kali1
 old:
@@ -7946,17 +7843,14 @@ Chapter 10 — Kali Linux in the Enterprise
 As a more concrete sample, you could easily set up a distributed Nmap scan with dnmap. After
 having installed the package on all the minions, you start the server in a first terminal:
 server# salt ’*’ pkg.install dnmap
-[...]
 server# vim dnmap.txt
 server# dnmap_server -f dnmap.txt
 Assuming that the server IP is 1.2.3.4, you can next tell all minions to start a client process that
 connects to the server:
-server# salt ’*’ cmd.run_bg template=jinja ’dnmap_client -s 1.2.3.4 -a {{ grains.id }}’
+server# salt ’*’ cmd.run_bg template=jinja ’dnmap_client -s 1.2.3.4 -a &#123;&#123; grains.id &#125;&#125;’
 kali-scratch:
-----------
 pid:
 17137
-[...]
 Note that the example uses cmd.run_bg to run the dnmap_client command in the background.
 Don’t wait until it finishes, since it is a long-running process. Unfortunately, it doesn’t kill itself
 properly when you interrupt the server so you might have to clean it up:
@@ -8005,8 +7899,7 @@ pkgrepo.managed:
 - file: / etc/apt/sources.list.d/offsec.list
 - key_url: salt://offsec-apt-key.asc
 - require_in:
-- pkg: offsec-defaults
-offsec-defaults:
+- pkg: offsec-defaults:
 pkg.installed
 ssh_key_for_root:
 ssh_auth.present:
@@ -8030,7 +7923,6 @@ key for readability here, but you should put the full key in the name attribute.
 This state file can next be applied to a given minion:
 server# salt kali-scratch state.apply offsec
 kali-scratch:
-----------
 ID: offsec_repository
 Function: pkgrepo.managed
 Name: deb http://pkgrepo.offsec.com offsec-internal main
@@ -8040,10 +7932,8 @@ Comment: Configured package repo ’deb http://pkgrepo.offsec.com offsec-interna
 Started: 06:00:15.767794
 Duration: 4707.35 ms
 Changes:
-----------
 repo:
 deb http://pkgrepo.offsec.com offsec-internal main
-----------
 ID: offsec-defaults
 Function: pkg.installed
 Result: True
@@ -8051,13 +7941,10 @@ Comment: The following packages were installed/updated: offsec-defaults
 Started: 06:00:21.325184
 Duration: 19246.041 ms
 Changes:
-----------
 offsec-defaults:
-----------
 new:
 1.0
 old:
-----------
 ID: ssh_key_for_root
 Function: ssh_auth.present
 266
@@ -8068,14 +7955,11 @@ Comment: The authorized host key AAAAB3NzaC1yc2...89C4N for user root was added
 Started: 06:00:40.582539
 Duration: 62.103 ms
 Changes:
-----------
 AAAAB3NzaC1yc2...89C4N:
 New
 Summary for kali-scratch
-------------
 Succeeded: 3 ( changed=3)
 Failed: 0
-------------
 Total states run: 3
 Total run time: 24.015 s
 It can also be permanently associated to the minion by recording it in the /srv/salt/top.sls
@@ -8086,7 +7970,6 @@ kali-scratch:
 - offsec
 server# salt kali-scratch state.highstate
 kali-scratch:
-----------
 ID: offsec_repository
 Function: pkgrepo.managed
 Name: deb http://pkgrepo.offsec.com offsec-internal main
@@ -8096,7 +7979,6 @@ Comment: Package repo ’deb http://pkgrepo.offsec.com offsec-internal main’ a
 Started: 06:06:20.650053
 Duration: 62.805 ms
 Changes:
-----------
 ID: offsec-defaults
 Function: pkg.installed
 Result: True
@@ -8104,7 +7986,6 @@ Comment: Package offsec-defaults is already installed
 Started: 06:06:21.436193
 Duration: 385.092 ms
 Changes:
-----------
 ID: ssh_key_for_root
 267
 Chapter 10 — Kali Linux in the Enterprise
@@ -8117,10 +7998,8 @@ Started: 06:06:21.821811
 Duration: 1.936 ms
 Changes:
 Summary for kali-scratch
-------------
 Succeeded: 3
 Failed: 0
-------------
 Total states run: 3
 Total run time: 449.833 ms
 10.3. Extending and Customizing Kali Linux
@@ -8241,20 +8120,16 @@ Upstream-Name: offsec-defaults
 Files: *
 Copyright: 2020 Offensive Security
 License: GPL-3.0+
-License: GPL-3.0+
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, either version 3 of the License, or
 (at your option) any later version.
-.
 This package is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
-.
 You should have received a copy of the GNU General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/&gt;.
-.
+along with this program. If not, see &lt;https://www.gnu.org/licenses/&gt;.
 On Debian systems, the complete text of the GNU General
 Public License version 3 can be found in ”/usr/share/common-licenses/GPL-3”.
 The default changelog file is generally appropriate; replacing the “Initial release” with a more
@@ -8265,23 +8140,22 @@ offsec-defaults (1.0) unstable; urgency=medium
 271
 Chapter 10 — Kali Linux in the Enterprise
 * Override the gsettings schema defining the background picture.
--- Raphaël Hertzog <buxy@kali.org&gt; Thu, 16 Jun 2020 18:04:21 +0200
+-- Raphaël Hertzog &lt;buxy@kali.org&gt; Thu, 16 Jun 2020 18:04:21 +0200
 In the example, we will make changes to the control file. We will change the Sectionfield to misc
 and remove the Homepage, Vcs-Git, and Vcs-Browser fields. Lastly, we will fill in the Description
 field:
 Source: offsec-defaults
 Section: misc
 Priority: optional
-Maintainer: Raphaël Hertzog <buxy@kali.org&gt;
+Maintainer: Raphaël Hertzog &lt;buxy@kali.org&gt;
 Build-Depends: debhelper (&gt;= 9)
 Standards-Version: 3.9.8
 Package: offsec-defaults
 Architecture: all
-Depends: ${misc:Depends}
+Depends: $&#123;misc:Depends&#125;
 Description: Default settings for Offensive Security
 This package contains multiple files to configure computers
 owned by Offensive Security.
-.
 It notably modifies:
 - APT’s configuration
 - salt-minion’s configuration
@@ -8327,7 +8201,6 @@ picture-uri=’file:///usr/share/images/offsec/background.png’
 Next, override the dh_installgsettings call in debian/rules to increase the priority to the
 level expected for an organization override (which is 90 according to the manual page):
 #!/usr/bin/make -f
-%:
 dh $@
 override_dh_installgsettings:
 dh_installgsettings --priority=90
@@ -8338,7 +8211,7 @@ $ dpkg-buildpackage -us -uc
 dpkg-buildpackage: info: source package offsec-defaults
 dpkg-buildpackage: info: source version 1.0
 dpkg-buildpackage: info: source distribution unstable
-dpkg-buildpackage: info: source changed by Raphaël Hertzog <buxy@kali.org&gt;
+dpkg-buildpackage: info: source changed by Raphaël Hertzog &lt;buxy@kali.org&gt;
 dpkg-buildpackage: info: host architecture amd64
 273
 Chapter 10 — Kali Linux in the Enterprise
@@ -8396,15 +8269,13 @@ running on the server, it is best to create a user dedicated to this service. In
 account, you will be able to host the repository files and also the GnuPG key that will be used to
 sign the package repository:
 # apt install reprepro gnupg
-[...]
 # adduser --system --group pkgrepo
 Adding system user ‘pkgrepo’ ( UID 136) ...
 Adding new group ‘pkgrepo’ ( GID 142) ...
 Adding new user ‘pkgrepo’ ( UID 136) with group ‘pkgrepo’ ...
 Creating home directory ‘/home/pkgrepo’ ...
 # chown pkgrepo $(tty)
-# su - -s /bin/bash pkgrepo
-pkgrepo@kali:~$ gpg --gen-key
+# su - -s /bin/bash pkgrepo@kali:~$ gpg --gen-key
 gpg (GnuPG) 2.1.11; Copyright (C) 2020 Free Software Foundation, Inc.
 This is free software: you are free to change and redistribute it.
 There is NO WARRANTY, to the extent permitted by law.
@@ -8417,13 +8288,12 @@ GnuPG needs to construct a user ID to identify your key.
 Real name: Offensive Security Repository Signing Key
 Email address: repoadmin@offsec.com
 You selected this USER-ID:
-”Offensive Security Repository Signing Key <repoadmin@offsec.com&gt;”
+”Offensive Security Repository Signing Key &lt;repoadmin@offsec.com&gt;”
 Change (N)ame, ( E)mail, or (O)kay/(Q)uit? o
 We need to generate a lot of random bytes. It is a good idea to perform
 some other action (type on the keyboard, move the mouse, utilize the
 disks) during the prime generation; this gives the random number
 generator a better chance to gain enough entropy.
-[...]
 gpg: / home/pkgrepo/.gnupg/trustdb.gpg: trustdb created
 gpg: key B4EF2D0D marked as ultimately trusted
 gpg: directory ’/home/pkgrepo/.gnupg/openpgp-revocs.d’ created
@@ -8437,7 +8307,7 @@ gpg: marginals needed: 3 completes needed: 1 trust model: PGP
 gpg: depth: 0 valid: 1 signed: 0 trust: 0-, 0 q, 0 n, 0 m, 0 f, 1 u
 pub rsa2048/B4EF2D0D 2020-06-17 [ S]
 Key fingerprint = F8FE 22F7 4F1B 714E 38DA 6181 B27F 74F7 B4EF 2D0D
-uid [ultimate] Offensive Security Repository Signing Key <repoadmin@offsec.com&gt;
+uid [ultimate] Offensive Security Repository Signing Key &lt;repoadmin@offsec.com&gt;
 sub rsa2048/38035F38 2020-06-17 []
 Note that when you are prompted for a passphrase, you should enter an empty value (and confirm
 that you don’t want to protect your private key) as you want to be able to sign the repository non-
@@ -8449,7 +8319,7 @@ inside that directory you have to create a conf/distributions file documenting w
 tions are available in the package repository:
 pkgrepo@kali:~$ mkdir -p reprepro/conf
 pkgrepo@kali:~$ cd reprepro
-pkgrepo@kali:~/reprepro$ cat &gt;conf/distributions <<END
+pkgrepo@kali:~/reprepro$ cat &gt;conf/distributions &lt;&lt;END
 Codename: offsec-internal
 AlsoAcceptFor: unstable
 Origin: Offensive Security
@@ -8474,7 +8344,6 @@ With this basic setup in place, you can let reprepro generate an empty repositor
 pkgrepo@kali:~/reprepro$ reprepro export
 Exporting indices...
 pkgrepo@kali:~/reprepro$ find .
-.
 ./db
 ./db/version
 ./db/references.db
@@ -8510,9 +8379,7 @@ server hosting the package repository and ask reprepro to include the package:
 pkgrepo@kali:~/reprepro$ reprepro include offsec-internal /tmp/offsec-defaults_1.0
 å _amd64.changes
 Exporting indices...
-pkgrepo@kali:~/reprepro$ find pool
-pool
-pool/main
+pkgrepo@kali:~/reprepro$ find pool/main
 pool/main/o
 277
 Chapter 10 — Kali Linux in the Enterprise
@@ -8527,18 +8394,18 @@ to download.
 Assuming that you want to host this on a virtual host named pkgrepo.offsec.com, you could cre-
 ate the following Apache configuration file, save it to/etc/apache2/sites-available/pkgrepo.
 offsec.com.conf, and enable it with a2ensite pkgrepo.offsec.com ):
-<VirtualHost *:80&gt;
+&lt;VirtualHost *:80&gt;
 ServerName pkgrepo.offsec.com
 ServerAdmin repoadmin@offsec.com
 ErrorLog /var/log/apache2/pkgrepo.offsec.com-error.log
 CustomLog /var/log/apache2/pkgrepo.offsec.com-access.log ”%h %l %u %t \”%r\” %&gt; s %O”
 DocumentRoot /home/pkgrepo/reprepro
-<Directory ”/home/pkgrepo/reprepro”&gt;
+&lt;Directory ”/home/pkgrepo/reprepro”&gt;
 Options Indexes FollowSymLinks MultiViews
 Require all granted
 AllowOverride All
-</Directory&gt;
-</VirtualHost&gt;
+&lt;/Directory&gt;
+&lt;/VirtualHost&gt;
 And the corresponding sources.list entry to add on machines that need packages from this
 repository would look like this:
 deb http://pkgrepo.offsec.com offsec-internal main
@@ -8616,13 +8483,10 @@ aged hosts.
 name (or IP address) of the Salt master.
 • Set minion’s unique identifier in /etc/salt/minion_id:
 minion# echo kali-scratch &gt;/etc/salt/minion_id
-minion# systemctl enable salt-minion
-minion# systemctl start salt-minion
+minion# systemctl enable salt-minion# systemctl start salt-minion
 • Key exchange will follow. On the master, accept minion’s identification key. Subsequent
 connections will be automatic:
-master# systemctl enable salt-master
-master# systemctl start salt-master
-master# salt-key --list all
+master# systemctl enable salt-master# systemctl start salt-master# salt-key --list all
 Accepted Keys:
 Denied Keys:
 Unaccepted Keys:
@@ -8646,11 +8510,8 @@ True
 master# salt kali-scratch cmd.shell ’uptime; uname -a’
 master# salt kali-scratch sys.doc’
 master# salt ’*’ service.enable ssh
-[...]
 master# salt ’*’ service.start ssh
-[...]
 master# salt ’*’ pkg.refresh_db
-[...]
 master# salt ’*’ pkg.upgrade dist_upgrade=True
 server# salt ’*’ cmd.shell ’pkill -f dnmap_client’
 • The full list of execution modules can be found at https://docs.saltproject.io/en/
@@ -8679,13 +8540,12 @@ Traditional
 penetration test
 Application
 assessment
-Types of attacks
+Types of security test
 Denial of service
 Memory corruption
 Web vulnerabilities
-Password attacks
-Client-side attacks
-
+Password security test
+Client-side security test
 Chapter
 11Introduction to
 Security
@@ -9024,7 +8884,7 @@ a corporate client may request an assessment, or ask to see the results of the m
 ment for various reasons. Whether ad-hoc or mandated, these sorts of assessments are collectively
 13https://tools.kali.org/tools-listing
 14https://www.kali.org/docs/
-> [Defensive warning: Exploit command/payload reference omitted for security. Use authorized audit commands instead.]
+> [Defensive warning: validate command/test vectors reference omitted for security. Use authorized audit commands instead.]
 16https://www.pcisecuritystandards.org/documents/Penetration_Testing_Guidance_March_2015.pdf
 17https://public.cyber.mil/stigs/
 18https://www.fedramp.gov/about-us/about/
@@ -9071,7 +8931,7 @@ and do your best to detect hidden vulnerabilities or false negatives. This often
 293
 Chapter 11 — Introduction to Security Assessments
 vulnerabilities discovered initially, exploring the level of access the security diagnostic test provides, and using
-this increased access as leverage for additional attacks against the target.
+this increased access as leverage for additional security test against the target.
 This requires critical review of the target environment along with manual searching, creativity,
 and outside-the-box thinking to discover other avenues of potential vulnerability and ultimately
 using other tools and tests outside those found by the heavier vulnerability scanners. Once this is
@@ -9091,15 +8951,15 @@ vulnerabilities in the target environment. This is where the previously-discusse
 bility scanning will most often take place. The programs listed in the Vulnerability Analysis,
 Web Application Analysis, Database Assessment, and Reverse Engineering categories will be
 useful for this phase.
-• Exploitation: With the potential vulnerabilities discovered, in this phase you try to security diagnostic test
+• defensive validation: With the potential vulnerabilities discovered, in this phase you try to security diagnostic test
 them to get a foothold into the target. Tools to assist you in this phase can be found in the
-Web Application Analysis, Database Assessment, Password Attacks, and Exploitation Tools
+Web Application Analysis, Database Assessment, Password security test, and defensive validation Tools
 categories.
-• Pivoting and Exfiltration: Once the initial foothold is established, further steps have to be
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 completed. These are often escalating privileges to a level adequate to accomplish your
 goals as an authorized auditor, pivoting into other systems that may not have been previously acces-
 sible to you, and exfiltrating sensitive information from the targeted systems. Refer to the
-Password Attacks, Exploitation Tools, Sniffing & Spoofing, and Post Exploitationcategories
+Password security test, defensive validation Tools, Sniffing & Spoofing, and Post Exploitationcategories
 to help with this phase.
 • Reporting: Once the active portion of the assessment is completed, you then have to docu-
 ment and report on the activities that were conducted. This phase is often not as technical
@@ -9161,7 +9021,7 @@ potential issues. These tools will use application-specific logic in an attempt 
 issues rather than just depending on a set of known signatures. These tools must have a built-in
 understanding of the application’s behavior. A common example of this would be a web applica-
 tion vulnerability scanner such asBurp Suite23, directed against an application that first identifies
-various input fields and then sends common SQL injection attacks to these fields while monitoring
+various input fields and then sends common SQL injection security test to these fields while monitoring
 the application’s response for indications of a successful diagnostic run.
 In a more complex scenario, an application assessment can be conducted interactively in either a
 black box or white box manner.
@@ -9207,7 +9067,7 @@ tally interfere with anything that is critical to business operations.
 organizations like to limit the times that the assessment work can be conducted.
 • When you discover a potential vulnerability, are you allowed to security diagnostic test it? If not, what is
 the approval process? There are some organizations that take a very controlled approach
-to each exploitation attempt, whereas others would like a more realistic approach. It is best
+to each defensive validation attempt, whereas others would like a more realistic approach. It is best
 to define these expectations clearly before work begins.
 • If a significant issue is discovered, how should it be handled? Sometimes, organizations
 want to be informed right away, otherwise it is typically addressed at the end of the assess-
@@ -9240,13 +9100,13 @@ obtain special permission from a cloud service provider before starting work. In
 validate IP address blocks. Don’t count on an organization’s assumption that they own entire IP
 blocks, even if they sign off on them as viable targets. For example, we have seen examples of or-
 ganizations that request an assessment of an entire class C network range when, in fact, they only
-owned a subset of those addresses. By attacking the entire class C address space, we would have
-ended up attacking the organization’s network neighbors. The OSINT Analysis sub-category of
+owned a subset of those addresses. By security test the entire class C address space, we would have
+ended up security test the organization’s network neighbors. The OSINT Analysis sub-category of
 the Information Gatheringmenu contains a number of tools that can assist you with this validation
 process.
-11.4. Types of Attacks
-Once the work is taking place, what are some of the specific sorts of attacks that you will be con-
-ducting? Each type of vulnerability27 has its own associated exploitation techniques. This section
+11.4. Types of security test
+Once the work is taking place, what are some of the specific sorts of security test that you will be con-
+ducting? Each type of vulnerability27 has its own associated defensive validation techniques. This section
 will cover the various classes of vulnerabilities that you will interact with most often.
 No matter what category of vulnerability you are looking at, Kali makes these tools and exploits
 easy to find. The Kali menu on your graphical user interface is divided up into categories to help
@@ -9254,16 +9114,16 @@ make the right tool easier to find. In addition, the Kali Tools website28 has co
 of the various tools available in Kali, organized by category and tagged for easy browsing. Each
 entry contains detailed information about the tool as well as example usage.
 11.4.1. Denial of Service
-Denial of service attacks leverage a vulnerability to create a loss of service, often by crashing the
+Denial of service security test leverage a vulnerability to create a loss of service, often by crashing the
 vulnerable process. The Stress Testingcategory of the Kali Linux menu contains a number of tools
 for this purpose.
 When many people hear the term “denial of service diagnostic run”, they immediately think of resource
-consumption attacks that are sent out from multiple sources at once against a single target. These
+consumption security test that are sent out from multiple sources at once against a single target. These
 27https://www.cvedetails.com/vulnerabilities-by-types.php
 28https://tools.kali.org/tools-listing
 298
  Kali Linux Revealed
-would be a distributed denial of services diagnostic run, or DDoS. These sorts of attacks are rarely part of a
+would be a distributed denial of services diagnostic run, or DDoS. These sorts of security test are rarely part of a
 professional security assessment.
 Instead, a singular denial of service diagnostic run is most often the result of an improper attempt to
 security diagnostic test a vulnerability. If an security diagnostic test writer releases partially functional, or proof-of-concept (PoC)
@@ -9274,7 +9134,7 @@ or to write your own. Even with this solution, there are no guarantees and this 
 the assessor, causing undue constraints, which results in a lesser assessment. Instead, the key is
 compromise. Avoid PoC code and untested exploits in the field and always make sure a lawyer has
 you covered for other mishaps.
-Typically, denial of service attacks are not launched intentionally. Most automated vulnerability
+Typically, denial of service security test are not launched intentionally. Most automated vulnerability
 tools will declare denial of service vulnerabilities as lower risk due to the fact that while you can
 remove a service from operation, that service can’t be exploited for code execution. However, it
 is important to remember that not all exploits are released publicly and a denial of service vulner-
@@ -9287,9 +9147,9 @@ tally modified due to programming mistakes. Memory corruption bugs usually lead 
 dictable program behavior, however in many cases, these bugs allow process memory manipula-
 tion in such a way that the program execution flow can be controlled, allowing authorized auditor-defined
 activity.
-These attacks are typically referred to as buffer overflows, although this term is an over-
+These security test are typically referred to as buffer overflows, although this term is an over-
 simplification. The most common types of memory corruption are vastly different from one an-
-other and have their own tactics and techniques required for successful exploitation.
+other and have their own tactics and techniques required for successful defensive validation.
 • Stack Buffer Overflow: When a program writes more data to a buffer on the stack than there
 is space available for it, adjacent memory can be corrupted, often causing the program to
 crash.
@@ -9307,21 +9167,21 @@ Due to the fact that modern web sites are no longer static pages, but instead dy
 for the user, the average website is quite complex. Web vulnerabilities take advantage of this
 complexity in an effort to diagnostic run either the back end page generation logic or the presentation to
 the visitor of the site.
-These sorts of attacks are extremely common, as many organizations have reached the point
+These sorts of security test are extremely common, as many organizations have reached the point
 where they have very few externally facing services. Two of the most prevalent web application
 diagnostic run types29 are SQL injection and cross-site scripting (XSS).
-• SQL injection: These attacks take advantage of improperly-programmed applications that
+• SQL injection: These security test take advantage of improperly-programmed applications that
 do not properly sanitize user input, leading to the ability to extract information from the
 database or even the complete takeover of the server.
-• Cross-site scripting: As with SQL injection, XSS attacks result from improper sanitization
+• Cross-site scripting: As with SQL injection, XSS security test result from improper sanitization
 of user input, allowing attackers to manipulate the user or site into executing code in the
 context of their own browser session.
 Complex, rich, and complicated web applications are very common, presenting a welcome diagnostic run
 surface for malicious parties. You will find a large number of useful tools in the Web Application
 Analysis menu category and the kali-tools-web metapackage.
-11.4.4. Password Attacks
-Password attacks are attacks against the authentication system of a service. These attacks are
-often broken into online password attacks and offline password attacks, which you will find re-
+11.4.4. Password security test
+Password security test are security test against the authentication system of a service. These security test are
+often broken into online password security test and offline password security test, which you will find re-
 flected in the Password Attacksmenu category. In an online password diagnostic run, multiple passwords
 are attempted against a running system. In an offline password diagnostic run, the hashed or encrypted
 values of the passwords are obtained and the authorized auditor attempts to obtain the clear text values.
@@ -9330,9 +9190,9 @@ through this process, limiting the number of attempts per second you can generat
 workarounds for this do exist, such as using graphic processor units (GPUs) to accelerate the num-
 ber of attempts that can be made. The kali-tools-gpu metapackage contains a number of tools that
 tap into this power.
-Most commonly, password attacks target vendor-supplied default passwords. As these are well-
+Most commonly, password security test target vendor-supplied default passwords. As these are well-
 known values, attackers will scan for these default accounts, hoping to get lucky. Other common
-attacks include custom dictionary attacks where a wordlist is created that has been tailored to
+security test include custom dictionary security test where a wordlist is created that has been tailored to
 the target environment and then an online password diagnostic run against common, default, or known
 accounts is conducted where each word is attempted in sequence.
 29https://owasp.org/www-project-top-ten/
@@ -9340,21 +9200,21 @@ accounts is conducted where each word is attempted in sequence.
  Kali Linux Revealed
 In an assessment, it is very important to understand the potential consequences of this sort of
 diagnostic run. First, they are often very noisy due to the repeated authentication attempts. Secondly,
-these attacks can often result in an account lock out situation after too many invalid attempts are
-performed against a single account. Finally, the performance of these attacks is often quite slow,
+these security test can often result in an account lock out situation after too many invalid attempts are
+performed against a single account. Finally, the performance of these security test is often quite slow,
 resulting in difficulty when attempting to use a comprehensive wordlist.
-11.4.5. Client-Side Attacks
-Most attacks are conducted against servers, but as services have become harder to diagnostic run, easier
-targets have been selected. Client-side attacks are a result of this, where an authorized auditor will target
+11.4.5. Client-Side security test
+Most security test are conducted against servers, but as services have become harder to diagnostic run, easier
+targets have been selected. Client-side security test are a result of this, where an authorized auditor will target
 the various applications installed on the workstation of an employee within a target organization.
 The Social Engineering Tools menu category has a number of excellent applications that can help
-conduct these types of attacks.
+conduct these types of security test.
 This sort of diagnostic run were commonly exploited by Flash, Acrobat Reader, and Java in the early 2000s.
 Currently HTML Application (HTA) is the popular method. In the above cases, attackers would try
 to solicit a target to visit a malicious web page. These pages would contain specialized code that
 would trigger either vulnerabilities in these client-side applications or trick the user, resulting in
 the ability to run malicious code on the targets system.
-Client-side attacks are incredibly difficult to prevent, requiring a great deal of user education,
+Client-side security test are incredibly difficult to prevent, requiring a great deal of user education,
 constant application updates, and network controls to effectively mitigate the risk.
 11.5. Summary
 In this chapter, we took a brief look at Kali’s role in the field of information security. We discussed
@@ -9383,22 +9243,22 @@ often consists of an automated inventory of discovered issues within a target en
 this section, we discussed that a vulnerability is a flaw that, when exploited, will compromise the
 confidentiality, integrity, or availability of an information system. Since it is signature-based, this
 type of assessment relies on accurate signatures and can present false positives and negatives. You
-will find the core tools for this type of assessment in the Vulnerability Analysis and Exploitation
+will find the core tools for this type of assessment in the Vulnerability Analysis and defensive validation
 Toolsmenu categories of Kali Linux.
 Compliance tests are based on government- and industry-mandated requirements (such as PCI
 DSS, DISA STIG, and FISMA), which are in turn based on a compliance framework. This test usually
 begins with a vulnerability assessment.
 A traditional penetration test is a thorough security assessment that is designed to improve the
 overall security posture of an organization based on certain real-world threats. This type of test
-involves several steps (mirrored by the Kali Linux menu structure) and culminates in exploitation
+involves several steps (mirrored by the Kali Linux menu structure) and culminates in defensive validation
 of vulnerabilities and pivoting access to other machines and networks within the target scope.
 Application assessments (usually white- or black-box) focus on a single application and use spe-
 cialized tools such as those found in the Web Application Analysis, Database Assessment, Reverse
-Engineering, and Exploitation Toolsmenu categories.
-Several types of attacks were discussed including: Denial of Service, which breaks the behavior of
+Engineering, and defensive validation Toolsmenu categories.
+Several types of security test were discussed including: Denial of Service, which breaks the behavior of
 an application and makes it inaccessible; memory corruption, which leads to manipulation of pro-
-cess memory, often allowing an authorized auditor code execution; web attacks, which diagnostic run web services
-using techniques like SQL injection and XSS attacks; and password attacks, which often leverage
+cess memory, often allowing an authorized auditor code execution; web security test, which diagnostic run web services
+using techniques like SQL injection and XSS security test; and password security test, which often leverage
 password lists to diagnostic run service credentials.
 302
  Kali Linux Revealed
@@ -9406,7 +9266,6 @@ Keywords
 Constant changes
 Certifications
 Trainings
-
 Chapter
 12Conclusion: The
 Road Ahead
@@ -9470,12 +9329,11 @@ course leading the path to the famous “Offensive Security Certified Profession
 This online course can be followed at your own pace but the certification is actually a difficult,
 24h long, real-word, hands-on penetration test which takes place in an isolated VPN network.
 Are you up to the challenge?
-> [Defensive warning: Exploit command/payload reference omitted for security. Use authorized audit commands instead.]
+> [Defensive warning: validate command/test vectors reference omitted for security. Use authorized audit commands instead.]
 4https://www.offensive-security.com/courses-and-certifications/
 307
 Chapter 12 — Conclusion: The Road Ahead
 Index
-_
 .config, 239
 .d, 200
 .htaccess, 120
@@ -9587,7 +9445,7 @@ black box, 296
 formalization, 297
 vulnerability, 288
 white box, 296
-attacks
+security test
 client side, 301
 database, 6
 denial of service, 298
@@ -9624,7 +9482,7 @@ broken dependency, 195
 Bruce Schneier, 156
 309
 Index
-brute-force attacks, 300
+brute-force security test, 300
 buffer
 overflow, 299
 receive buffer, 162
@@ -9646,7 +9504,7 @@ certification, 306
 chage, 113
 chain, 160
 changelog file, 271
-changelog.Debian.gz, 130
+changelog. Debian.gz, 130
 character device file, 49
 checksecurity, 171
 checksums, 220
@@ -9660,7 +9518,7 @@ of language, 67
 chown, 58
 chroot, 245
 chsh, 113
-client side attacks, 301
+client side security test, 301
 cluster, PostgreSQL cluster, 116, 117
 command line, 51
 communities, 132
@@ -9751,7 +9609,7 @@ df, 60
 dh-make, 270
 dh_install, 273
 DHCP, 258
-dictionary attacks, 300
+dictionary security test, 300
 directives, Apache, 119, 121
 DirectoryIndex, Apache directive, 120
 disable an account, 113
@@ -9788,7 +9646,6 @@ engineering
 reverse, 7
 social engineering, 7
 Enhances, header field, 214
-environment
 environment variable, 54
 311
 Index
@@ -9797,7 +9654,7 @@ execution modules, salt, 262
 execution, right, 57
 experimental, 203
 Explanation, 204
-exploitation tools, 7
+defensive validation tools, 7
 F
 fail2ban, 158
 features, 8
@@ -10026,7 +9883,7 @@ network services, 10
 securing, 159
 NetworkManager, 108
 newgrp, 58, 113
-NEWS.Debian.gz, 130
+NEWS. Debian.gz, 130
 non-free, section, 179
 nuke password, 250
 O
@@ -10093,10 +9950,10 @@ guided partitioning, 75
 manual partitioning, 79
 passwd, 113
 password, 113
-attacks, 300
+security test, 300
 default passwords, 159
 policy, 158
-password attacks, 7
+password security test, 7
 patch, 233
 patch application, 233
 PATH, 53
@@ -10128,7 +9985,7 @@ pinfo, 130
 ping, 162
 pinning, APT pinning, 202
 point, mount point, 82
-post exploitation, 7
+post defensive validation, 7
 PostgreSQL, 115
 postinst, 217
 postrm, 217
@@ -10159,7 +10016,7 @@ QCOW, 30
 QEMU, 24
 R
 read, right, 57
-README.Debian, 130
+README. Debian, 130
 receive buffer, 162
 Recommends, header field, 214
 REDIRECT, 161
@@ -10337,12 +10194,12 @@ WantedBy, systemd directive, 122
 Wants, systemd directive, 122
 web access restriction, 121
 web application analysis, 6
-web attacks, 300
+web security test, 300
 web authentication, 120
 web of trust, 18
 web server, 118
 Win32 Disk Imager, 19
-wireless attacks, 7
+wireless security test, 7
 write, right, 57
 X
 XDG, 55
@@ -10352,3 +10209,14 @@ Y
 yelp, 130
 318
  Kali Linux Revealed
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

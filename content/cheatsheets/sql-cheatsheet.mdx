@@ -9,13 +9,9 @@ readingTime: "10 min read"
 ---
 
 # The Ultimate SQL Cheatsheet
-
 Whether you're building a simple app or managing a massive data warehouse, SQL (Structured Query Language) is an indispensable skill. This cheatsheet covers everything from basic queries to database normalization and performance optimization.
-
 ## CRUD Queries
-
 The foundational operations of any database: Create, Read, Update, and Delete.
-
 ```sql
 -- CREATE (Insert Data)
 INSERT INTO users (first_name, last_name, email)
@@ -33,11 +29,8 @@ WHERE id = 1;
 -- DELETE (Remove Data)
 DELETE FROM users WHERE id = 1;
 ```
-
 ## SQL Joins Cheat Sheet
-
 Joins are used to combine rows from two or more tables based on a related column between them.
-
 ```sql
 -- INNER JOIN: Returns records that have matching values in both tables
 SELECT orders.id, customers.name
@@ -59,11 +52,7 @@ SELECT customers.name, orders.amount
 FROM customers
 FULL OUTER JOIN orders ON customers.id = orders.customer_id;
 ```
-
-## Aggregate Functions
-
-Functions that perform a calculation on a set of values and return a single value.
-
+## Aggregate Functions that perform a calculation on a set of values and return a single value.
 ```sql
 -- COUNT: Returns the number of rows
 SELECT COUNT(*) FROM users;
@@ -78,21 +67,18 @@ SELECT AVG(price) FROM products;
 SELECT MIN(price), MAX(price) FROM products;
 
 -- GROUP BY: Groups rows that have the same values into summary rows
-SELECT status, COUNT(*) 
-FROM orders 
+SELECT status, COUNT(*)
+FROM orders
 GROUP BY status;
 
 -- HAVING: Used instead of WHERE with aggregate functions
-SELECT status, COUNT(*) 
-FROM orders 
-GROUP BY status 
+SELECT status, COUNT(*)
+FROM orders
+GROUP BY status
 HAVING COUNT(*) > 10;
 ```
-
 ## PostgreSQL Commands
-
 PostgreSQL (psql) specific CLI commands for database administration.
-
 ```bash
 # Connect to a database
 psql -U username -d dbname
@@ -112,23 +98,16 @@ psql -U username -d dbname
 # Quit psql
 \q
 ```
-
 ## MySQL vs PostgreSQL
-
 A quick comparison of the two most popular open-source relational databases.
-
 | Feature | MySQL | PostgreSQL |
-| :--- | :--- | :--- |
 | **Primary Use Case** | Web applications, simple read-heavy apps | Complex analytical apps, data integrity |
 | **JSON Support** | Basic JSON data type | Advanced JSONB type with indexing |
 | **Concurrency** | Good (Table/Row locking) | Excellent (MVCC) |
 | **Extensibility** | Limited | Highly extensible (Custom types, PostGIS) |
 | **Syntax Strictness** | Forgiving | Very Strict (Standard SQL compliant) |
-
 ## SQL Query Optimization
-
 Tips for writing faster, more efficient queries.
-
 1. **Use `EXPLAIN`**: Prepend `EXPLAIN` or `EXPLAIN ANALYZE` to your query to see the execution plan.
    ```sql
    EXPLAIN SELECT * FROM users WHERE email = 'test@example.com';
@@ -140,17 +119,25 @@ Tips for writing faster, more efficient queries.
    ```
 4. **Avoid leading wildcards in `LIKE`**: `LIKE '%name'` prevents the database from using an index. Use `LIKE 'name%'` if possible.
 5. **Limit results**: Use `LIMIT` when you only need a subset of the data.
-
 ## Database Normalization
-
 The process of structuring a relational database to reduce data redundancy and improve data integrity.
-
-- **1st Normal Form (1NF)**: 
+- **1st Normal Form (1NF)**:
   - Each table cell should contain a single value.
   - Each record needs to be unique.
-- **2nd Normal Form (2NF)**: 
+- **2nd Normal Form (2NF)**:
   - Must be in 1NF.
   - Single Column Primary Key that does not functionally depend on any subset of candidate key relation.
-- **3rd Normal Form (3NF)**: 
+- **3rd Normal Form (3NF)**:
   - Must be in 2NF.
   - Has no transitive functional dependencies (Every non-key attribute must depend directly on the primary key).
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

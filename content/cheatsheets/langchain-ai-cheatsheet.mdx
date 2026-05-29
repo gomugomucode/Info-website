@@ -9,13 +9,9 @@ readingTime: "12 min read"
 ---
 
 # The Ultimate AI & LangChain Cheatsheet
-
 Building AI-powered applications is one of the fastest-growing niches in software development. This cheatsheet covers the foundational concepts and code snippets you need to build Large Language Model (LLM) applications, particularly focusing on the LangChain ecosystem.
-
 ## LangChain Basics
-
 LangChain is a framework designed to simplify the creation of applications using LLMs.
-
 ```python
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
@@ -37,11 +33,8 @@ chain = LLMChain(llm=llm, prompt=prompt)
 result = chain.run("Artificial Intelligence")
 print(result)
 ```
-
 ## OpenAI API Guide
-
 How to directly interact with OpenAI's API using the official Python client.
-
 ```python
 import openai
 import os
@@ -49,7 +42,7 @@ import os
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 # Chat Completion (Standard GPT-4/GPT-3.5 interaction)
-response = openai.ChatCompletion.create(
+response = openai. ChatCompletion.create(
   model="gpt-4",
   messages=[
         {"role": "system", "content": "You are a helpful coding assistant."},
@@ -59,11 +52,8 @@ response = openai.ChatCompletion.create(
 
 print(response.choices[0].message['content'])
 ```
-
 ## Prompt Engineering
-
 The art of communicating effectively with LLMs.
-
 - **Be Specific:** Instead of "Write a blog post", use "Write a 500-word blog post about React Hooks aimed at beginners."
 - **Provide Context:** "You are an expert Python developer. Given the following code snippet..."
 - **Few-Shot Prompting:** Provide examples within the prompt.
@@ -71,14 +61,11 @@ The art of communicating effectively with LLMs.
   Translate English to French:
   sea otter => loutre de mer
   peppermint => menthe poivrée
-  cheese => 
+  cheese =>
   ```
 - **Chain of Thought:** Encourage the model to reason. "Let's think step by step."
-
 ## Embeddings Explained
-
 Embeddings are numerical representations (vectors) of text. They capture semantic meaning, allowing computers to understand that "King" and "Queen" are related concepts.
-
 ```python
 from langchain.embeddings import OpenAIEmbeddings
 
@@ -90,17 +77,13 @@ vector = embeddings.embed_query("What are embeddings in AI?")
 # The resulting vector can be stored and compared against other vectors
 print(len(vector)) # e.g., 1536 dimensions for OpenAI's standard model
 ```
-
 ## Vector Databases
-
 Vector databases store and query embeddings efficiently, usually via similarity search (e.g., Cosine Similarity).
-
 **Popular Vector Databases:**
 - Pinecone (Managed SaaS)
 - ChromaDB (Open-source, local)
 - Qdrant (High-performance, Rust-based)
 - pgvector (PostgreSQL extension)
-
 **Basic ChromaDB Example with LangChain:**
 ```python
 from langchain.vectorstores import Chroma
@@ -121,11 +104,8 @@ query = "What color is the sky?"
 results = db.similarity_search(query, k=1)
 print(results[0].page_content) # Output: "The sky is blue."
 ```
-
 ## RAG Architecture
-
 **Retrieval-Augmented Generation (RAG)** is a pattern that grounds an LLM's response in external data, preventing hallucinations.
-
 **The Workflow:**
 1. **Load Data:** Extract text from PDFs, websites, or databases.
 2. **Chunking:** Split the text into smaller, manageable chunks.
@@ -133,7 +113,6 @@ print(results[0].page_content) # Output: "The sky is blue."
 4. **Store:** Save embeddings in a Vector Database.
 5. **Retrieve:** When a user asks a question, embed the query and search the Vector DB for the most similar chunks.
 6. **Generate:** Send the retrieved chunks + the user's question to the LLM to formulate a final answer.
-
 ```python
 # Simplified LangChain RAG Example
 from langchain.chains import RetrievalQA
@@ -145,11 +124,8 @@ qa_chain = RetrievalQA.from_chain_type(llm=OpenAI(), retriever=retriever)
 
 answer = qa_chain.run("What color is the sky based on the document?")
 ```
-
 ## AI Agent Workflow
-
 Agents use LLMs as reasoning engines to determine which actions to take and in what order, using provided tools.
-
 ```python
 from langchain.agents import load_tools, initialize_agent, AgentType
 from langchain.llms import OpenAI
@@ -159,14 +135,24 @@ llm = OpenAI(temperature=0)
 # Load tools the agent can use (e.g., a calculator and a Wikipedia searcher)
 tools = load_tools(["wikipedia", "llm-math"], llm=llm)
 
-# Initialize the agent
-agent = initialize_agent(
-    tools, 
-    llm, 
-    agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, 
+# Initialize the agent = initialize_agent(
+    tools,
+    llm,
+    agent=AgentType. ZERO_SHOT_REACT_DESCRIPTION,
     verbose=True
 )
 
 # The agent decides which tool to use based on the prompt
 agent.run("What is the square root of the birth year of Albert Einstein?")
 ```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

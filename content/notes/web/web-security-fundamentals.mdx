@@ -10,43 +10,24 @@ readingTime: "7 min read"
 ---
 
 # Web Application Security & Hardening
-
 Securing web applications requires proactive coding practices, secure configuration, and defensive header policies. This guide details key mitigation strategies for web vulnerabilities and explains how to configure security headers.
-
----
-
 ## 1. Essential HTTP Security Headers
-
 Security headers are returned in server responses to instruct the browser to restrict certain behaviors.
-
 ### Header Configuration Table
-
 | HTTP Header | Example Value | Security Purpose |
-| :--- | :--- | :--- |
 | **HSTS** | `max-age=63072000; includeSubDomains` | Enforce HTTPS connections. |
 | **CSP** | `default-src 'self';` | Limit what script sources can execute (mitigates XSS). |
 | **X-Frame-Options** | `DENY` | Prevent site from being embedded in frames (mitigates clickjacking). |
 | **X-Content-Type** | `nosniff` | Prevent browsers from MIME-sniffing away from declared types. |
-
----
-
 ## 2. Mitigating Cross-Site Scripting (XSS)
-
 XSS occurs when an application includes untrusted data in a web page without proper validation or escaping.
-
 ### Mitigation Strategies
 *   **Context-Aware Output Encoding**: Encode all user data before rendering it in the DOM (e.g., using `htmlspecialchars()` in PHP or template bindings in React/Next.js).
 *   **Implement a Content Security Policy (CSP)**: Limit script execution to trusted domains only.
-
----
-
 ## 3. Template Creation Guide (Nuclei)
-
 Nuclei is a vulnerability scanner that uses YAML templates to define and execute security checks.
-
 ### Example Diagnostic Template
 This template checks if a server returns the `Server` header in HTTP responses (helps verify configuration privacy):
-
 ```yaml
 id: server-header-check
 
@@ -67,3 +48,14 @@ http:
         words:
           - "Server:"
 ```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

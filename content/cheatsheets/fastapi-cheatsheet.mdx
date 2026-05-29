@@ -9,13 +9,9 @@ readingTime: "10 min read"
 ---
 
 # The Ultimate FastAPI Cheatsheet
-
 FastAPI is one of the fastest and most popular Python web frameworks for building APIs. Thanks to its native support for async execution and automatic data validation via Pydantic, it makes backend development a breeze. Here is your reference guide to its core features.
-
 ## Async API Basics
-
 FastAPI is built to be asynchronous from the ground up, allowing your server to handle concurrent requests efficiently.
-
 ```python
 from fastapi import FastAPI
 import asyncio
@@ -33,11 +29,8 @@ async def async_endpoint():
     await asyncio.sleep(1) # Simulating a non-blocking I/O operation
     return {"message": "I am fast and concurrent!"}
 ```
-
 ## FastAPI Routes
-
 Defining routes and handling path and query parameters.
-
 ```python
 # Path Parameters
 @app.get("/users/{user_id}")
@@ -60,11 +53,8 @@ async def create_data():
 async def update_data(item_id: int):
     return {"message": f"Updated {item_id}"}
 ```
-
 ## Pydantic Models
-
 FastAPI uses Pydantic for data validation, serialization, and schema generation.
-
 ```python
 from pydantic import BaseModel, EmailStr, Field
 
@@ -79,11 +69,8 @@ async def create_user(user: UserCreate):
     # The 'user' parameter is automatically parsed from JSON and validated!
     return {"username": user.username, "email": user.email}
 ```
-
 ## Dependency Injection
-
 A powerful feature to share logic (like database connections or authentication) across routes.
-
 ```python
 from fastapi import Depends, Header, HTTPException
 
@@ -98,11 +85,8 @@ async def verify_token(x_token: str = Header(...)):
 async def get_secure_data(token: str = Depends(verify_token)):
     return {"message": "You have access!", "token": token}
 ```
-
 ## FastAPI CRUD API
-
 A quick blueprint for a standard Create, Read, Update, Delete setup using an in-memory database.
-
 ```python
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -147,11 +131,8 @@ async def delete_item(item_id: int):
     del db[item_id]
     return {"message": "Deleted successfully"}
 ```
-
 ## JWT Authentication
-
 Securing your API using JSON Web Tokens (requires `PyJWT` and `passlib`).
-
 ```python
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -178,7 +159,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     # In a real app, verify username and password against a database here
     if form_data.username != "admin" or form_data.password != "password":
         raise HTTPException(status_code=400, detail="Incorrect username or password")
-    
+
     token = create_jwt_token({"sub": form_data.username})
     return {"access_token": token, "token_type": "bearer"}
 
@@ -190,8 +171,19 @@ async def read_users_me(token: str = Depends(oauth2_scheme)):
         username = payload.get("sub")
         if username is None:
             raise HTTPException(status_code=401, detail="Invalid token")
-    except jwt.PyJWTError:
+    except jwt. PyJWTError:
         raise HTTPException(status_code=401, detail="Invalid token")
-        
+
     return {"username": username, "status": "Authenticated"}
 ```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

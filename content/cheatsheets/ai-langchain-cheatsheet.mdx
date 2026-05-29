@@ -7,26 +7,16 @@ category: "Cheatsheets"
 ---
 
 # The Ultimate AI & LangChain Cheatsheet
-
 Artificial Intelligence is the fastest-growing niche in software development. This cheatsheet covers everything from calling the OpenAI API to building production-ready AI agent workflows with LangChain.
-
----
-
 ## LangChain Basics
-
 **LangChain** is a framework for building applications powered by Large Language Models (LLMs). It provides composable abstractions for chains, agents, memory, and tools.
-
 ### Installation
-
 ```bash
-pip install langchain langchain-openai langchain-community
+pip install langchain-openai langchain-community
 pip install python-dotenv  # for environment variables
 ```
-
 ### Core Concepts
-
 | Concept     | Description                                         |
-|-------------|-----------------------------------------------------|
 | LLM         | The underlying language model (GPT-4, Claude, etc.) |
 | Prompt      | The structured input sent to the LLM                |
 | Chain       | A sequence of calls (prompt → LLM → output)         |
@@ -35,9 +25,7 @@ pip install python-dotenv  # for environment variables
 | Memory      | Persisting conversation history across turns        |
 | Retriever   | Fetches relevant documents for RAG                  |
 | Vector Store| Database for storing and searching embeddings       |
-
 ### Hello World with LangChain
-
 ```python
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import HumanMessage
@@ -47,9 +35,7 @@ llm = ChatOpenAI(model="gpt-4o", temperature=0)
 response = llm.invoke([HumanMessage(content="What is LangChain?")])
 print(response.content)
 ```
-
 ### Using Prompt Templates
-
 ```python
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -62,28 +48,19 @@ chain = prompt | llm
 result = chain.invoke({"text": "LangChain is an open-source framework..."})
 print(result.content)
 ```
-
----
-
 ## OpenAI API Guide
-
 The **OpenAI API** gives you direct access to GPT-4o, DALL-E, Whisper, and more.
-
 ### Setup
-
 ```bash
 pip install openai
 ```
-
 ```python
 import os
 from openai import OpenAI
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 ```
-
 ### Chat Completion (GPT-4o)
-
 ```python
 response = client.chat.completions.create(
     model="gpt-4o",
@@ -97,9 +74,7 @@ response = client.chat.completions.create(
 
 print(response.choices[0].message.content)
 ```
-
 ### Streaming Response
-
 ```python
 stream = client.chat.completions.create(
     model="gpt-4o",
@@ -111,19 +86,14 @@ for chunk in stream:
     if chunk.choices[0].delta.content is not None:
         print(chunk.choices[0].delta.content, end="", flush=True)
 ```
-
 ### Key Parameters
-
 | Parameter     | Description                                      | Range       |
-|---------------|--------------------------------------------------|-------------|
 | `temperature` | Creativity/randomness of output                  | 0.0 – 2.0   |
 | `max_tokens`  | Maximum tokens to generate                       | 1 – 128,000 |
 | `top_p`       | Nucleus sampling (alternative to temperature)    | 0.0 – 1.0   |
 | `n`           | Number of completions to generate                | 1+          |
 | `stop`        | Stop sequence(s) to end generation               | string/list |
-
 ### Available Models
-
 ```
 gpt-4o           → Most capable, multimodal (text + images)
 gpt-4o-mini      → Fast, cheap, great for simple tasks
@@ -134,9 +104,7 @@ text-embedding-3-large → Embeddings (high quality)
 whisper-1        → Audio transcription
 dall-e-3         → Image generation
 ```
-
 ### Image Generation (DALL-E 3)
-
 ```python
 response = client.images.generate(
     model="dall-e-3",
@@ -148,22 +116,15 @@ response = client.images.generate(
 
 print(response.data[0].url)
 ```
-
----
-
 ## Prompt Engineering
-
 **Prompt engineering** is the art of crafting inputs to get the best possible outputs from an LLM.
-
 ### Core Techniques
-
 #### 1. Zero-Shot Prompting
 Ask directly without examples:
 ```
 Classify the sentiment of this review: "The product is amazing!"
 Answer: Positive / Negative / Neutral
 ```
-
 #### 2. Few-Shot Prompting
 Provide examples to guide the model:
 ```
@@ -173,9 +134,8 @@ Review: "This is terrible." → Negative
 Review: "Absolutely love it!" → Positive
 Review: "It's okay, nothing special." → Neutral
 
-Review: "Best purchase I've ever made!" → 
+Review: "Best purchase I've ever made!" →
 ```
-
 #### 3. Chain-of-Thought (CoT)
 Ask the model to reason step by step:
 ```
@@ -188,15 +148,13 @@ Let's think step by step:
 
 Answer: 135
 ```
-
 #### 4. Role Prompting
 Assign a persona for better context:
 ```
 You are a senior Python engineer with 15 years of experience.
-Review the following code and suggest improvements focusing on 
+Review the following code and suggest improvements focusing on
 performance and readability...
 ```
-
 #### 5. Structured Output Prompting
 Force JSON or structured responses:
 ```
@@ -209,9 +167,7 @@ Text: "Hi, I'm Alice from TechCorp. Reach me at alice@tech.com"
 
 Return only valid JSON, no other text.
 ```
-
 ### Prompt Best Practices
-
 ```
 ✅ Be specific and detailed
 ✅ Provide context and role ("You are a...")
@@ -223,15 +179,9 @@ Return only valid JSON, no other text.
 ❌ Don't rely on the model knowing the "right" format
 ❌ Don't ask multiple unrelated questions in one prompt
 ```
-
----
-
 ## RAG Architecture
-
 **RAG (Retrieval-Augmented Generation)** combines a retrieval system with an LLM to answer questions based on your own data.
-
 ### Why RAG?
-
 ```
 ❌ LLMs have a knowledge cutoff date
 ❌ LLMs hallucinate facts
@@ -239,9 +189,7 @@ Return only valid JSON, no other text.
 
 ✅ RAG solves all three by fetching real, relevant context at query time
 ```
-
 ### RAG Pipeline
-
 ```
          ┌─────────────┐
          │ Your Docs   │
@@ -264,9 +212,7 @@ Return only valid JSON, no other text.
          │ + Context   │       │  (GPT-4o) │
          └─────────────┘       └───────────┘
 ```
-
 ### Implementing RAG with LangChain
-
 ```python
 from langchain_openai import ChatOpenAI, OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -306,15 +252,9 @@ rag_chain = create_retrieval_chain(retriever, question_answer_chain)
 result = rag_chain.invoke({"input": "What is RAG?"})
 print(result["answer"])
 ```
-
----
-
 ## AI Agent Workflow
-
 **Agents** use LLMs as a reasoning engine to decide *which tools to call* and *in what order* to solve a task.
-
 ### ReAct Agent Pattern
-
 ```
 Loop:
   Thought  → LLM reasons about what to do next
@@ -323,9 +263,7 @@ Loop:
   ... repeat until ...
   Final Answer → LLM gives the user a response
 ```
-
 ### Building an Agent with LangChain
-
 ```python
 from langchain_openai import ChatOpenAI
 from langchain.agents import AgentExecutor, create_tool_calling_agent
@@ -364,25 +302,16 @@ agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
 result = agent_executor.invoke({"input": "What's the weather in Kathmandu?"})
 print(result["output"])
 ```
-
----
-
 ## Embeddings Explained
-
 **Embeddings** convert text into dense numerical vectors that capture semantic meaning.
-
 ### Why Embeddings?
-
 ```
 "cat"    → [0.21, -0.54, 0.87, ...]  (1536 dimensions)
 "kitten" → [0.19, -0.51, 0.84, ...]  (very similar!)
 "car"    → [-0.63, 0.11, -0.22, ...] (very different)
 ```
-
 Similar meaning → Similar vectors → Close in vector space
-
 ### Creating Embeddings with OpenAI
-
 ```python
 from openai import OpenAI
 
@@ -399,14 +328,11 @@ def embed(text: str) -> list[float]:
 vector = embed("What is machine learning?")
 print(f"Dimensions: {len(vector)}")  # 1536
 
-# Batch embed multiple texts
-texts = ["Hello world", "Machine learning is fun", "Python is great"]
+# Batch embed multiple texts = ["Hello world", "Machine learning is fun", "Python is great"]
 response = client.embeddings.create(input=texts, model="text-embedding-3-small")
 vectors = [item.embedding for item in response.data]
 ```
-
 ### Similarity Search (Cosine Similarity)
-
 ```python
 import numpy as np
 
@@ -421,26 +347,17 @@ doc2  = embed("The stock market closed higher today.")
 print(cosine_similarity(query, doc1))  # ~0.85 (high similarity)
 print(cosine_similarity(query, doc2))  # ~0.12 (low similarity)
 ```
-
----
-
 ## Vector Databases
-
 **Vector databases** are specialized databases for storing, indexing, and searching high-dimensional embedding vectors at scale.
-
 ### Popular Options
-
 | Database    | Type         | Best For                       | Hosted? |
-|-------------|--------------|--------------------------------|---------|
 | **FAISS**   | In-memory    | Local dev, prototyping         | ❌ Self  |
 | **Chroma**  | Local/Server | Small-medium RAG apps          | ❌ Self  |
 | **Pinecone**| Managed      | Production, large scale        | ✅ Cloud |
 | **Weaviate**| Hybrid       | Full-text + vector search      | Both    |
 | **Qdrant**  | Managed/Self | High performance, filtering    | Both    |
 | **pgvector**| PostgreSQL   | Already using Postgres         | Both    |
-
 ### FAISS (Local — great for prototyping)
-
 ```python
 from langchain_community.vectorstores import FAISS
 from langchain_openai import OpenAIEmbeddings
@@ -462,9 +379,7 @@ for doc in results:
 db.save_local("faiss_index")
 db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
 ```
-
 ### Chroma (Local — persistent)
-
 ```python
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
@@ -483,16 +398,14 @@ db.add_texts(["Document 1 content", "Document 2 content"])
 # Query
 results = db.similarity_search("search query", k=3)
 ```
-
 ### Pinecone (Production)
-
 ```python
 from pinecone import Pinecone
 from langchain_pinecone import PineconeVectorStore
 from langchain_openai import OpenAIEmbeddings
 
 pc = Pinecone(api_key="YOUR_PINECONE_API_KEY")
-index = pc.Index("my-index")
+index = pc. Index("my-index")
 
 embeddings = OpenAIEmbeddings(model="text-embedding-3-small")
 vector_store = PineconeVectorStore(index=index, embedding=embeddings)
@@ -503,13 +416,8 @@ vector_store.add_texts(["Your document text here"])
 # Search
 results = vector_store.similarity_search("query", k=5)
 ```
-
----
-
 ## Quick Reference
-
 ### LangChain LCEL (LangChain Expression Language)
-
 ```python
 # Pipe operator chains components together
 chain = prompt | llm | output_parser
@@ -524,9 +432,7 @@ chain = RunnableParallel(
     keywords=keyword_chain,
 )
 ```
-
 ### Environment Setup
-
 ```bash
 # .env file
 OPENAI_API_KEY=sk-...
@@ -534,14 +440,11 @@ LANGCHAIN_API_KEY=ls__...    # for LangSmith tracing
 LANGCHAIN_TRACING_V2=true
 LANGCHAIN_PROJECT=my-project
 ```
-
 ```python
 from dotenv import load_dotenv
 load_dotenv()  # loads .env automatically
 ```
-
 ### Useful AI Terminology
-
 ```
 LLM         → Large Language Model (GPT-4, Claude, Gemini)
 Token        → ~4 characters of text; billing unit for APIs
@@ -558,3 +461,14 @@ Zero-shot    → No examples in the prompt
 Chain-of-Thought → Asking the LLM to reason step-by-step
 Agent        → LLM + tools that takes autonomous actions
 ```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
+

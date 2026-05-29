@@ -1,0 +1,1824 @@
+{
+  "mode": "write",
+  "content": [
+    {
+      "path": "content/blog/hello-world.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 1653,
+      "after_chars": 2062
+    },
+    {
+      "path": "content/cheatsheets/ai-langchain-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 15731,
+      "after_chars": 15791
+    },
+    {
+      "path": "content/cheatsheets/deployment-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 14478,
+      "after_chars": 14689
+    },
+    {
+      "path": "content/cheatsheets/docker-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 3874,
+      "after_chars": 4266
+    },
+    {
+      "path": "content/cheatsheets/fastapi-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 5977,
+      "after_chars": 6368
+    },
+    {
+      "path": "content/cheatsheets/git-cheat-sheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 5001,
+      "after_chars": 5387
+    },
+    {
+      "path": "content/cheatsheets/langchain-ai-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 5511,
+      "after_chars": 5900
+    },
+    {
+      "path": "content/cheatsheets/linux-terminal-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 4694,
+      "after_chars": 5092
+    },
+    {
+      "path": "content/cheatsheets/networking-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 11009,
+      "after_chars": 10930
+    },
+    {
+      "path": "content/cheatsheets/nextjs-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 5230,
+      "after_chars": 5605
+    },
+    {
+      "path": "content/cheatsheets/react-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 7035,
+      "after_chars": 7421
+    },
+    {
+      "path": "content/cheatsheets/sql-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 4972,
+      "after_chars": 5330
+    },
+    {
+      "path": "content/cheatsheets/tailwindcss-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 4981,
+      "after_chars": 5337
+    },
+    {
+      "path": "content/cheatsheets/web-development-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 12259,
+      "after_chars": 12272
+    },
+    {
+      "path": "content/notes/linux/100-kali-linux-commands-every-ethical-hacker-must-know-part-1.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 1,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 4642,
+      "after_chars": 4985
+    },
+    {
+      "path": "content/notes/linux/100-kali-linux-commands-every-ethical-hacker-must-know-part-3.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 4,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 3627,
+      "after_chars": 3833
+    },
+    {
+      "path": "content/notes/linux/100-linux-command.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 1,
+      "duplicate_lines_removed": 1,
+      "review_flags": [],
+      "before_chars": 16903,
+      "after_chars": 13203
+    },
+    {
+      "path": "content/notes/linux/100kalilinuxcommandseveryhackermustknowpart02.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 3,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 1263,
+      "after_chars": 1429
+    },
+    {
+      "path": "content/notes/linux/50-kali-linux-tools-my-compressed.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 4,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 75482,
+      "after_chars": 63109
+    },
+    {
+      "path": "content/notes/linux/a-z-kali-linux-command.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 2,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 1,
+      "review_flags": [],
+      "before_chars": 7605,
+      "after_chars": 7844
+    },
+    {
+      "path": "content/notes/linux/a-z-kali-linux-commands.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 2,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 13000,
+      "after_chars": 10897
+    },
+    {
+      "path": "content/notes/linux/essential-linux-commands-for-cybersecurity-specialists.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 5,
+      "removed_unsafe": 4,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 40774,
+      "after_chars": 40300
+    },
+    {
+      "path": "content/notes/linux/kali-linux-cheat-sheet-for-penetration-testers.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 1,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 843,
+      "after_chars": 1211
+    },
+    {
+      "path": "content/notes/linux/kali-linux-hacking-cheat-sheet20-essential-tools.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 2,
+      "removed_unsafe": 5,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 22360,
+      "after_chars": 23139
+    },
+    {
+      "path": "content/notes/linux/kali-linux-revelealed.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 1,
+      "duplicate_lines_removed": 2,
+      "review_flags": [],
+      "before_chars": 640645,
+      "after_chars": 640396
+    },
+    {
+      "path": "content/notes/linux/linux-and-windows-reverse-shell-scripts.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2464,
+      "after_chars": 2961
+    },
+    {
+      "path": "content/notes/linux/linux-commands-every-cybersecurity-specialist-needs.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 1101,
+      "after_chars": 1440
+    },
+    {
+      "path": "content/notes/linux/linux-defensive-essentials.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 3459,
+      "after_chars": 3863
+    },
+    {
+      "path": "content/notes/linux/master-termux-handbook.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 7,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 4150,
+      "after_chars": 4290
+    },
+    {
+      "path": "content/notes/linux/termux-handbook.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2360,
+      "after_chars": 2792
+    },
+    {
+      "path": "content/notes/linux/top-50-kali-linux-tools-guide-for-offensive-professionals-pdf-20250818.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 1,
+      "removed_unsafe": 3,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 82310,
+      "after_chars": 65361
+    },
+    {
+      "path": "content/notes/linux/top-50-kali-linux-tools.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2384,
+      "after_chars": 2797
+    },
+    {
+      "path": "content/notes/networking/10-github-repositories-for-learning-ethical-hacking-2026.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2554,
+      "after_chars": 3017
+    },
+    {
+      "path": "content/notes/networking/firewall-security-commands.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 819,
+      "after_chars": 1233
+    },
+    {
+      "path": "content/notes/networking/networking-security-interview-qa-guide-osi-to-firewall.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 72540,
+      "after_chars": 71524
+    },
+    {
+      "path": "content/notes/networking/nmap-commands-cheat-sheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 3,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 1848,
+      "after_chars": 2167
+    },
+    {
+      "path": "content/notes/networking/nmap-scanning-guide.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 3080,
+      "after_chars": 3473
+    },
+    {
+      "path": "content/notes/networking/tshark-wireshark-power-but-cli-first.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 41151,
+      "after_chars": 40559
+    },
+    {
+      "path": "content/notes/networking/wireshark-tshark-cli.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2841,
+      "after_chars": 3246
+    },
+    {
+      "path": "content/notes/networking/wireshark.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 5,
+      "duplicate_lines_removed": 6,
+      "review_flags": [],
+      "before_chars": 56164,
+      "after_chars": 57437
+    },
+    {
+      "path": "content/notes/security/api-gateway-hardening.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2454,
+      "after_chars": 2854
+    },
+    {
+      "path": "content/notes/security/black-hat-python-a-must-read-for-ethical-hackers-pentesters.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 28,
+      "duplicate_lines_removed": 6,
+      "review_flags": [
+        "large_unsafe_removal"
+      ],
+      "before_chars": 331235,
+      "after_chars": 332579
+    },
+    {
+      "path": "content/notes/security/blue-team-notes.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 7,
+      "duplicate_lines_removed": 5,
+      "review_flags": [],
+      "before_chars": 177997,
+      "after_chars": 179830
+    },
+    {
+      "path": "content/notes/security/blue-team-toolkit.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 1,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 84125,
+      "after_chars": 58426
+    },
+    {
+      "path": "content/notes/security/bug-bounty-methodology-2026-compressed.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2462,
+      "after_chars": 2875
+    },
+    {
+      "path": "content/notes/security/bug-bounty-playbook.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 4,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 184853,
+      "after_chars": 181244
+    },
+    {
+      "path": "content/notes/security/bug-hunting-guide.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2357,
+      "after_chars": 2770
+    },
+    {
+      "path": "content/notes/security/creatively-malicious-prompt-engineering.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2467,
+      "after_chars": 2880
+    },
+    {
+      "path": "content/notes/security/hacking-drone-with-dronesploit-part1.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2452,
+      "after_chars": 2915
+    },
+    {
+      "path": "content/notes/security/hacking-drone-with-dronesploit-part2.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2452,
+      "after_chars": 2915
+    },
+    {
+      "path": "content/notes/security/metasploit-advanced-techniques-exploitation-mastery.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2537,
+      "after_chars": 2990
+    },
+    {
+      "path": "content/notes/security/metasploit-for-beginners.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 4,
+      "removed_unsafe": 4,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 14052,
+      "after_chars": 10598
+    },
+    {
+      "path": "content/notes/security/oscp-cheatsheet-page.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2372,
+      "after_chars": 2785
+    },
+    {
+      "path": "content/notes/security/oscp-cheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2347,
+      "after_chars": 2760
+    },
+    {
+      "path": "content/notes/security/python-guide.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 291309,
+      "after_chars": 292738
+    },
+    {
+      "path": "content/notes/security/the-complete-guide-to-metasploit-tutorial.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2477,
+      "after_chars": 2890
+    },
+    {
+      "path": "content/notes/security/top-10-mobile-penetration-testing-tools-for-ethical-hackers.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 5,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 7214,
+      "after_chars": 7283
+    },
+    {
+      "path": "content/notes/security/top-20-free-cyber-security-tools-you-must-learn-in-2026.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 4732,
+      "after_chars": 5163
+    },
+    {
+      "path": "content/notes/security/windows-event-log-analysis.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 3332,
+      "after_chars": 3703
+    },
+    {
+      "path": "content/notes/security/wireless-penetration-testing-bettercap.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 4,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 10849,
+      "after_chars": 8163
+    },
+    {
+      "path": "content/notes/web/api-gateway-security-implementation-and-best-practices.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 1,
+      "review_flags": [],
+      "before_chars": 66299,
+      "after_chars": 60748
+    },
+    {
+      "path": "content/notes/web/hacking-project-to-get-started.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2417,
+      "after_chars": 2880
+    },
+    {
+      "path": "content/notes/web/nessus-vulnerability-scanning.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2174,
+      "after_chars": 2566
+    },
+    {
+      "path": "content/notes/web/nuclei-plugin-burp-suite-template-creation-guide.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 4,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 14963,
+      "after_chars": 10249
+    },
+    {
+      "path": "content/notes/web/sqlmap-defensive-guide.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 1893,
+      "after_chars": 2316
+    },
+    {
+      "path": "content/notes/web/sqlmap-guide.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 2,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 8031,
+      "after_chars": 8809
+    },
+    {
+      "path": "content/notes/web/sqlmap-sql-injection-attack.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 4,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 1286,
+      "after_chars": 1319
+    },
+    {
+      "path": "content/notes/web/top-10-web-vulnerability-scanners-every-ethical-hacker-must-know.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 4,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 7092,
+      "after_chars": 7275
+    },
+    {
+      "path": "content/notes/web/vulnerability-scanning-with-nessus-hexsec.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 2,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2482,
+      "after_chars": 2861
+    },
+    {
+      "path": "content/notes/web/web-application-hacking.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 3,
+      "review_flags": [],
+      "before_chars": 30799,
+      "after_chars": 30227
+    },
+    {
+      "path": "content/notes/web/web-security-basic-to-expert.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 3,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 856,
+      "after_chars": 1115
+    },
+    {
+      "path": "content/notes/web/web-security-fundamentals.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2394,
+      "after_chars": 2765
+    },
+    {
+      "path": "content/notes/windows/basic-windows-cmd-for-pentesters-defensive-cheat-sheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2541,
+      "after_chars": 2954
+    },
+    {
+      "path": "content/notes/windows/basic-windows-cmd-for-pentesters.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 1,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 10247,
+      "after_chars": 10624
+    },
+    {
+      "path": "content/notes/windows/powershell-auditing.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2856,
+      "after_chars": 3235
+    },
+    {
+      "path": "content/notes/windows/powershell-cheat-sheet-every-windows-user-saves-compressed.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 2,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 10083,
+      "after_chars": 9787
+    },
+    {
+      "path": "content/notes/windows/reverse-shells-windows-hexseccheatsheet.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 2,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 2466,
+      "after_chars": 2875
+    },
+    {
+      "path": "content/notes/windows/windows-cli-100-commands-every-hacker-should-know-compressed.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 3,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 4956,
+      "after_chars": 5268
+    },
+    {
+      "path": "content/notes/windows/windows-defensive-cmd.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 3032,
+      "after_chars": 3431
+    },
+    {
+      "path": "content/notes/windows/windows-event-log-analysis-advanced-threat-detection-guide.mdx",
+      "kind": "mdx",
+      "status": "cleaned",
+      "changed": true,
+      "removed_spam": 0,
+      "removed_unsafe": 1,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 54323,
+      "after_chars": 53220
+    }
+  ],
+  "source_docs": [
+    {
+      "path": "docs/+100 Linux Command (2).pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 22,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged",
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 16869,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/+100 Linux Command.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 22,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged",
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 16869,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/10 GitHub Repositories for Learning Ethical Hacking 2026.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 12,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/100_Kali_Linux_Commands_Every_Ethical_Hacker_Must_Know_–_Part_3.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 41,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 3681,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/100_Kali_Linux_Commands_Every_Ethical_Hacker_Must_Know–PART_1.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 37,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 4863,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/100KaliLinuxCommandsEveryHackerMustKnowPart02.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 31,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 1118,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/50 Kali Linux tools_MY.pdf_compressed.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 117,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged",
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 77109,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/A-Z Kali Linux COMMAND.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 20,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 7309,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/API Gateway Security Implementation and Best Practices.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 66331,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/A–Z Kali Linux Commands.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 83,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 13988,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Basic Windows CMD for Pentesters – Defensive Cheat Sheet.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 19,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Basic Windows CMD for Pentesters.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 30,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 10281,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Black_Hat_Python_–_A_Must_Read_for_Ethical_Hackers_&_Pentesters_.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged"
+      ],
+      "before_chars": 331361,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Blue Team Notes.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged"
+      ],
+      "before_chars": 176441,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Blue Team Toolkit.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 145,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 87651,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Blue Team Toolkit.pdf.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 145,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 87651,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Bug Bounty Methodology 2026_compressed.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 33,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 380,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Bug Bounty Playbook.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged"
+      ],
+      "before_chars": 183437,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/bug hunting guide.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 33,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/bug hunting guide.pdf (2).pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 33,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/bug hunting guide.pdf.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 33,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Creatively Malicious Prompt Engineering.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged"
+      ],
+      "before_chars": 134588,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Essential Linux Commands for Cybersecurity Specialists.pdf.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 7,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged",
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 39657,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Firewall Security Commands.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 14,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 436,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Hacking Drone with DroneSploit part1.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 18,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 230,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Hacking Drone with DroneSploit part2.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 27,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 577,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Hacking Project To Get Started.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 3,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Kali Linux Cheat Sheet for Penetration Testers.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 28,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 406,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/KALI LINUX HACKING CHEAT SHEET20 Essential tools.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 48,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged",
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 22122,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Kali_Linux_REVELEALED.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged"
+      ],
+      "before_chars": 638430,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Linux and windows reverse shell scripts.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 15,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 440,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Linux Commands Every Cybersecurity Specialist Needs.pdf.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 29,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Linux Commands Every Cybersecurity Specialist Needs.pdf.pdf.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 56,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 953,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Master Termux Handbook (2).pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 9,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 3522,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Master Termux Handbook.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 9,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 3522,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Metasploit Advanced Techniques & Exploitation Mastery.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 18,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Metasploit for Beginners.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 13,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 13604,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Networking_&_Security_Interview_Q&A_Guide_OSI_to_Firewall.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 72135,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/NMAP COMMANDS CHEAT SHEET.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 29,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 1719,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Nuclei Plugin & Burp Suite – Template Creation Guide.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 31,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 14821,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/OSCP CheatSheet.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged"
+      ],
+      "before_chars": 149896,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/OSCP CheatSheet_page.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 123,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/PowerShell Cheat Sheet Every Windows User Saves-compressed.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 76,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 10825,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Python Guide.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 290545,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Reverse Shells - Windows - HexSecCheatSheet (2).pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 42,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged",
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 15549,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Reverse Shells - Windows - HexSecCheatSheet.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 42,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged",
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 15549,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/sqlmap - SQL Injection attack.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 4,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 662,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/SqlMap Guide.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged"
+      ],
+      "before_chars": 7341,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/The Complete Guide to Metasploit Tutorial.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 19,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Top 10 Mobile Penetration Testing Tools for Ethical Hackers.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 29,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 6925,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Top 20 FREE Cyber Security Tools You MUST Learn in 2026 (1).pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 38,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 4220,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/TOP 50 KALI LINUX TOOLS.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 20,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Top_10_Web_Vulnerability_Scanners_Every_Ethical_Hacker_Must_Know.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 37,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 6640,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Top_50_Kali_Linux_Tools_Guide_for_Offensive_Professionals_pdf_20250818.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 1,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 81393,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/TShark Wireshark Power but CLI-First.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 41015,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Web Application Hacking.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 29874,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Web Security Basic To expert.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 71,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 1619,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Windows CLI 100 Commands Every Hacker Should Know_compressed.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 4,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 4129,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Windows Event Log Analysis - Advanced Threat Detection Guide.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged"
+      ],
+      "before_chars": 54604,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/Wireless Penetration Testing_ Bettercap .pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 3,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "spam_source_left_unchanged"
+      ],
+      "before_chars": 10174,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/WIRESHARK .pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged"
+      ],
+      "before_chars": 55102,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/📡 Wireshark.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [
+        "unsafe_source_pdf_left_unchanged"
+      ],
+      "before_chars": 55102,
+      "after_chars": 0
+    },
+    {
+      "path": "docs/🧿 Vulnerability Scanning with Nessus - hexsec.pdf",
+      "kind": "pdf",
+      "status": "source_scanned",
+      "changed": false,
+      "removed_spam": 0,
+      "removed_unsafe": 0,
+      "duplicate_lines_removed": 0,
+      "review_flags": [],
+      "before_chars": 13,
+      "after_chars": 0
+    }
+  ]
+}
