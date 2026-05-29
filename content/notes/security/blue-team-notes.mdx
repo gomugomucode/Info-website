@@ -574,7 +574,7 @@ Select -Property ProcessName, CPU, ID, StartTime |
 ft -autosize -wrap | out-string -width 800
 $CpuCores = (Get-WMIObject Win32_ComputerSystem). NumberOfLogicalProcessors;
 $Samples = (Get-Counter "\Process($Processname*)\% Processor Time"). CounterSamples;
-$Samples | Select `InstanceName,@{Name="CPU %";Expression={[Decimal]::Round(($_. CookedValue /
+$Samples | Select `InstanceName,@&#123;Name="CPU %";Expression=&#123;[Decimal]::Round(($_. CookedValue /
 Stop a Process
 Get-Process -Name "memeprocess" | Stop-Process -Force -Confirm:$false -verbose
 Process Tree

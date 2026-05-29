@@ -51,16 +51,17 @@ SPAM_PATTERNS = [
     ("follow_for_more", re.compile(r"(?im)^.*follow\s+for\s+more.*$")),
     ("part_coming_soon", re.compile(r"(?im)^.*part\s+\d+\s+coming\s+soon.*$")),
     ("profile_cta", re.compile(r"(?im)^.*(?:available|posted)\s+on\s+(?:my\s+)?profile.*$")),
-    ("telegram_cta", re.compile(r"(?im)^.*\btelegram\b.*(?:group|channel|join|dm|message|send).*$")),
+    ("telegram_cta", re.compile(r"(?im)^.*\bt\s*e\s*l\s*e\s*g\s*r\s*a\s*m\b.*(?:g\s*r\s*o\s*u\s*p|channel|join|dm|message|send).*$")),
     ("instagram_cta", re.compile(r"(?im)^.*\binstagram\b.*@[\w.-]+.*$")),
     ("tiktok_cta", re.compile(r"(?im)^.*\btiktok\b.*(?:follow|@[\w.-]+).*$")),
     ("save_share_follow", re.compile(r"(?im)^.*\bsave\b.*\bshare\b.*\bfollow\b.*$")),
+    ("repost_support", re.compile(r"(?im)^.*\brepost\b.*\bsupport\b.*(?:community|c\s*o\s*m\s*m\s*u\s*n\s*i\s*t\s*y).*$")),
     ("follow_social_brand", re.compile(r"(?im)^.*\bfollow\b.*(?:hex\s*sec|hexsec|social\s+media|for\s+more).*$")),
-    ("pdf_send_cta", re.compile(r"(?im)^.*(?:want\s+the\s+pdf\s+version|pdf\s+version|full\s+tool\s+list).*$")),
+    ("pdf_send_cta", re.compile(r"(?im)^.*(?:want\s+the\s+pdf\s+version|pdf\s+version|full\s+tool\s+list|pdf\)?\s+is\s+available).*$")),
     ("special_thanks_social", re.compile(r"(?im)^.*special\s+thanks\s+to\s+(?:instagram\s+)?@[\w.-]+.*$")),
     ("hexsec_brand", re.compile(r"(?i)\bhex\s*sec(?:\s*team|\s*tools|\s*cheatsheet)?\b")),
     ("hexsec_compact", re.compile(r"(?i)\bhexsec(?:team|_tools|cheatsheet)?\b")),
-    ("hexsec_embedded", re.compile(r"(?i)h\s*e\s*x\s*s\s*e\s*c(?:\s*t\s*e\s*a\s*m|\s*t\s*o\s*o\s*l\s*s|\s*c\s*o\s*m\s*m\s*u\s*n\s*i\s*t\s*y)?")),
+    ("hexsec_embedded", re.compile(r"(?i)@?\s*h\s*e\s*x[\s_]*s\s*e\s*c(?:\s*t\s*e\s*a\s*m|\s*t\s*o\s*o\s*l\s*s|\s*c\s*o\s*m\s*m\s*u\s*n\s*i\s*t\s*y)?")),
     ("by_hexsec", re.compile(r"(?im)^.*\bby\s+hex\s*sec\b.*$")),
     ("educational_promo", re.compile(r"(?im)^.*educational\s+purposes\s+only.*(?:responsible|ethical).*$")),
     ("mojibake_icon_line", re.compile(r"(?im)^[\sÂâðŸ™œ“”’‘€¢–—\W]*(?:ðŸ|â|Â)[^\n]*$")),
@@ -288,6 +289,12 @@ def escape_mdx_line(line: str) -> str:
     if match:
         blockquote_prefix = match.group(1)
         remainder = match.group(2)
+
+    if remainder.count("`") % 2:
+        escaped = remainder.replace("{", "&#123;").replace("}", "&#125;")
+        escaped = escaped.replace("<", "&lt;").replace(">", "&gt;")
+        escaped = re.sub(r"^(?=\s*(?:import|export)\b)", "&#8203;", escaped)
+        return blockquote_prefix + escaped
 
     parts = remainder.split("`")
     escaped_parts = []

@@ -1,6 +1,6 @@
 # Duplicate Cleanup Report
 
-Duplicate lines removed from content: 25
+Duplicate lines removed from content: 2
 
 ## Exact Duplicate Source Text Groups
 

@@ -1050,7 +1050,6 @@ to DoS",
                 # If any blocking rule matches, return immediately
                 if rule.action == RuleAction. BLOCK:
                     return results
-        return results
 # Example middleware usage
 def waf_middleware(request):
     """Example middleware for WAF implementation."""

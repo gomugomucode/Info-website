@@ -2,93 +2,24 @@
 
 Mode: write
 Content files scanned: 80
-Content files cleaned: 80
+Content files cleaned: 11
 Source docs scanned: 63
-Unsafe content removals: 69
-Spam/branding removals: 1447
+Unsafe content removals: 65
+Spam/branding removals: 1590
 
 ## Files Cleaned
 
-- `content/blog/hello-world.mdx`
-- `content/cheatsheets/ai-langchain-cheatsheet.mdx`
-- `content/cheatsheets/deployment-cheatsheet.mdx`
-- `content/cheatsheets/docker-cheatsheet.mdx`
-- `content/cheatsheets/fastapi-cheatsheet.mdx`
-- `content/cheatsheets/git-cheat-sheet.mdx`
-- `content/cheatsheets/langchain-ai-cheatsheet.mdx`
-- `content/cheatsheets/linux-terminal-cheatsheet.mdx`
-- `content/cheatsheets/networking-cheatsheet.mdx`
-- `content/cheatsheets/nextjs-cheatsheet.mdx`
-- `content/cheatsheets/react-cheatsheet.mdx`
-- `content/cheatsheets/sql-cheatsheet.mdx`
-- `content/cheatsheets/tailwindcss-cheatsheet.mdx`
-- `content/cheatsheets/web-development-cheatsheet.mdx`
-- `content/notes/linux/100-kali-linux-commands-every-ethical-hacker-must-know-part-1.mdx`
-- `content/notes/linux/100-kali-linux-commands-every-ethical-hacker-must-know-part-3.mdx`
-- `content/notes/linux/100-linux-command.mdx`
-- `content/notes/linux/100kalilinuxcommandseveryhackermustknowpart02.mdx`
-- `content/notes/linux/50-kali-linux-tools-my-compressed.mdx`
-- `content/notes/linux/a-z-kali-linux-command.mdx`
 - `content/notes/linux/a-z-kali-linux-commands.mdx`
 - `content/notes/linux/essential-linux-commands-for-cybersecurity-specialists.mdx`
-- `content/notes/linux/kali-linux-cheat-sheet-for-penetration-testers.mdx`
 - `content/notes/linux/kali-linux-hacking-cheat-sheet20-essential-tools.mdx`
-- `content/notes/linux/kali-linux-revelealed.mdx`
-- `content/notes/linux/linux-and-windows-reverse-shell-scripts.mdx`
 - `content/notes/linux/linux-commands-every-cybersecurity-specialist-needs.mdx`
-- `content/notes/linux/linux-defensive-essentials.mdx`
 - `content/notes/linux/master-termux-handbook.mdx`
-- `content/notes/linux/termux-handbook.mdx`
-- `content/notes/linux/top-50-kali-linux-tools-guide-for-offensive-professionals-pdf-20250818.mdx`
-- `content/notes/linux/top-50-kali-linux-tools.mdx`
-- `content/notes/networking/10-github-repositories-for-learning-ethical-hacking-2026.mdx`
 - `content/notes/networking/firewall-security-commands.mdx`
-- `content/notes/networking/networking-security-interview-qa-guide-osi-to-firewall.mdx`
 - `content/notes/networking/nmap-commands-cheat-sheet.mdx`
-- `content/notes/networking/nmap-scanning-guide.mdx`
-- `content/notes/networking/tshark-wireshark-power-but-cli-first.mdx`
-- `content/notes/networking/wireshark-tshark-cli.mdx`
-- `content/notes/networking/wireshark.mdx`
-- `content/notes/security/api-gateway-hardening.mdx`
-- `content/notes/security/black-hat-python-a-must-read-for-ethical-hackers-pentesters.mdx`
 - `content/notes/security/blue-team-notes.mdx`
-- `content/notes/security/blue-team-toolkit.mdx`
-- `content/notes/security/bug-bounty-methodology-2026-compressed.mdx`
-- `content/notes/security/bug-bounty-playbook.mdx`
-- `content/notes/security/bug-hunting-guide.mdx`
-- `content/notes/security/creatively-malicious-prompt-engineering.mdx`
-- `content/notes/security/hacking-drone-with-dronesploit-part1.mdx`
-- `content/notes/security/hacking-drone-with-dronesploit-part2.mdx`
-- `content/notes/security/metasploit-advanced-techniques-exploitation-mastery.mdx`
-- `content/notes/security/metasploit-for-beginners.mdx`
-- `content/notes/security/oscp-cheatsheet-page.mdx`
-- `content/notes/security/oscp-cheatsheet.mdx`
-- `content/notes/security/python-guide.mdx`
-- `content/notes/security/the-complete-guide-to-metasploit-tutorial.mdx`
 - `content/notes/security/top-10-mobile-penetration-testing-tools-for-ethical-hackers.mdx`
 - `content/notes/security/top-20-free-cyber-security-tools-you-must-learn-in-2026.mdx`
-- `content/notes/security/windows-event-log-analysis.mdx`
-- `content/notes/security/wireless-penetration-testing-bettercap.mdx`
 - `content/notes/web/api-gateway-security-implementation-and-best-practices.mdx`
-- `content/notes/web/hacking-project-to-get-started.mdx`
-- `content/notes/web/nessus-vulnerability-scanning.mdx`
-- `content/notes/web/nuclei-plugin-burp-suite-template-creation-guide.mdx`
-- `content/notes/web/sqlmap-defensive-guide.mdx`
-- `content/notes/web/sqlmap-guide.mdx`
-- `content/notes/web/sqlmap-sql-injection-attack.mdx`
-- `content/notes/web/top-10-web-vulnerability-scanners-every-ethical-hacker-must-know.mdx`
-- `content/notes/web/vulnerability-scanning-with-nessus-hexsec.mdx`
-- `content/notes/web/web-application-hacking.mdx`
-- `content/notes/web/web-security-basic-to-expert.mdx`
-- `content/notes/web/web-security-fundamentals.mdx`
-- `content/notes/windows/basic-windows-cmd-for-pentesters-defensive-cheat-sheet.mdx`
-- `content/notes/windows/basic-windows-cmd-for-pentesters.mdx`
-- `content/notes/windows/powershell-auditing.mdx`
-- `content/notes/windows/powershell-cheat-sheet-every-windows-user-saves-compressed.mdx`
-- `content/notes/windows/reverse-shells-windows-hexseccheatsheet.mdx`
-- `content/notes/windows/windows-cli-100-commands-every-hacker-should-know-compressed.mdx`
-- `content/notes/windows/windows-defensive-cmd.mdx`
-- `content/notes/windows/windows-event-log-analysis-advanced-threat-detection-guide.mdx`
 
 ## Manual Review Flags
 
