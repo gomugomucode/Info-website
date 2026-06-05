@@ -1,0 +1,125 @@
+// ─── schema.org types (scoped to what this site needs) ──────────────────────
+
+interface SchemaPerson {
+  "@type": "Person";
+  "@id": string;
+  name: string;
+  alternateName: string;
+  url: string;
+  jobTitle: string;
+  description: string;
+  knowsAbout: string[];
+  /**
+   * sameAs is the primary disambiguation signal.
+   * Google uses this list to distinguish this Anupam Baral (developer/gomugomucode)
+   * from the solar-energy founder and the defence officer who share the same name.
+   */
+  sameAs: string[];
+}
+
+interface SchemaWebSite {
+  "@type": "WebSite";
+  "@id": string;
+  name: string;
+  url: string;
+  description: string;
+  inLanguage: string;
+  author: { "@id": string };
+  /**
+   * SearchAction wires Google's Sitelinks Search Box directly to /api/search.
+   * Once indexed, users can search your site from the Google results page.
+   */
+  potentialAction: {
+    "@type": "SearchAction";
+    target: { "@type": "EntryPoint"; urlTemplate: string };
+    "query-input": string;
+  };
+}
+
+interface SchemaGraph {
+  "@context": "https://schema.org";
+  "@graph": [SchemaPerson, SchemaWebSite];
+}
+
+// ─── constants ───────────────────────────────────────────────────────────────
+
+const SITE_URL = "https://info.anupambaral.com.np";
+
+// Every URL here should resolve to a page that mentions "Anupam Baral".
+// Order matters: put the highest-authority profiles first.
+const SAME_AS_URLS: string[] = [
+  "https://github.com/gomugomucode",         // primary code identity
+  "https://medium.com/@gomugomucode",         // publication history
+  "https://anupambaral.com.np",              // personal portfolio
+];
+
+// ─── builder ─────────────────────────────────────────────────────────────────
+
+/**
+ * Returns a JSON-LD @graph combining a Person node and a WebSite node.
+ * The two nodes reference each other via their @id values so crawlers can
+ * understand that this site is authored by this specific person.
+ *
+ * Usage:
+ *   <script
+ *     type="application/ld+json"
+ *     dangerouslySetInnerHTML={{ __html: JSON.stringify(buildSchemaGraph()) }}
+ *   />
+ */
+export function buildSchemaGraph(): SchemaGraph {
+  const personId  = `${SITE_URL}/#person`;
+  const websiteId = `${SITE_URL}/#website`;
+
+  const person: SchemaPerson = {
+    "@type":         "Person",
+    "@id":           personId,
+    name:            "Anupam Baral",
+    alternateName:   "gomugomucode",
+    url:             SITE_URL,
+    jobTitle:        "Full Stack Developer",
+    description:
+      "Full Stack Developer and cybersecurity researcher from Nepal. " +
+      "Publishes practical guides on ethical hacking, Linux, penetration " +
+      "testing, Next.js, and AI engineering.",
+    knowsAbout: [
+      "Cybersecurity",
+      "Ethical Hacking",
+      "Penetration Testing",
+      "Linux",
+      "Kali Linux",
+      "Bug Bounty",
+      "Next.js",
+      "FastAPI",
+      "Python",
+      "Full Stack Development",
+      "AI Engineering",
+      "Networking",
+    ],
+    sameAs: SAME_AS_URLS,
+  };
+
+  const website: SchemaWebSite = {
+    "@type":       "WebSite",
+    "@id":         websiteId,
+    name:          "Anupam Baral — Developer Knowledge Hub",
+    url:           SITE_URL,
+    description:
+      "Tutorials, AI experiments, developer notes, Next.js guides, " +
+      "FastAPI resources, and real-world full-stack engineering insights.",
+    inLanguage:    "en-US",
+    author:        { "@id": personId },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type":       "EntryPoint",
+        urlTemplate:   `${SITE_URL}/api/search?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph":   [person, website],
+  };
+}
