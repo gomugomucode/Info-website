@@ -61,6 +61,11 @@ const nextConfig: NextConfig = {
         destination: "/notes/networking/wireshark",
         permanent: true,
       },
+      {
+        source: "/notes/networking/tshark-wireshark-power-but-cli-first",
+        destination: "/notes/networking/wireshark",
+        permanent: true,
+      },
 
       // ── Security stubs & duplicates ───────────────────────────────────────
       {
@@ -96,6 +101,16 @@ const nextConfig: NextConfig = {
       {
         source: "/notes/security/api-gateway-hardening",
         destination: "/notes/web/api-gateway-security-implementation-and-best-practices",
+        permanent: true,
+      },
+      {
+        source: "/notes/security/blue-team-notes",
+        destination: "/notes/security/blue-team-complete-guide",
+        permanent: true,
+      },
+      {
+        source: "/notes/security/blue-team-toolkit",
+        destination: "/notes/security/blue-team-complete-guide",
         permanent: true,
       },
 
