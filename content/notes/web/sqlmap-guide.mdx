@@ -177,6 +177,32 @@ SQLMap User Guide - SQL Injection Testing Methodology
 Created by: Janak Bhatta
 For more information, visit: https://sqlmap.org
 
+## Defenses: Preventing SQL Injection
+
+<Callout type="warning" title="Auditing Bounds">
+SqlMap testing generates high volumes of database requests. Only test application endpoints you own and host locally (like `http://localhost:3000`).
+</Callout>
+
+The most effective way to prevent SQL injection is to separate SQL query structures from user input data.
+
+### Parameterized Queries (Prepared Statements)
+
+Enforce parameterized queries in database calls. In PHP PDO, bind variables explicitly:
+
+```php
+$stmt = $pdo->prepare('SELECT name, role FROM users WHERE id = :id');
+$stmt->execute(['id' => $userId]);
+$user = $stmt->fetch();
+```
+
+### Input Filtering and Validation
+
+Validate input values against an allowed format (e.g., ensuring numeric IDs contain numbers only).
+
+### Sandbox Testing Command
+
+<TerminalCommand cmd='sqlmap -u "http://localhost:3000/product.php?id=1" --batch --level=1' />
+
 ---
 
 ## Educational Use Notice

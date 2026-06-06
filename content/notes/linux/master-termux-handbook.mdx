@@ -1,96 +1,84 @@
 ---
 title: "Master Termux Handbook"
-description: "A defensive hardening, auditing, and threat detection reference guide for Master Termux Handbook."
-date: "2026-05-28"
-tags: ["master", "hardening", "auditing", "compliance"]
+description: "Complete mobile Linux reference for Termux — setup, networking, SSH, and top security tools for authorized lab work on Android."
+date: "2026-06-06"
+tags: ["termux", "android", "kali-linux", "mobile", "pentest"]
 category: "notes"
 subcategory: "linux"
 difficulty: "Intermediate"
-readingTime: "4 min read"
+readingTime: "10 min read"
 ---
 
 # Master Termux Handbook
+
 > [!IMPORTANT]
-> **Defensive & Authorized Auditing Purposes Only**
-> This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
-Master Termux HandbookMaster Termux HandbookMaster Termux Handbook
-audit from your phone — anywhere.
-By By By
-Termux is a powerful Android app that gives you a full Linux
-terminal on your phone. You can install packages, run
-scripts, use Python, Git, SSH, and perform many tasks just
-like on a real Linux system.
-What it does:
-Runs Linux commands and packages
-Supports Python, Node, Git, etc.
-Allows SSH connections
-Perfect for automation, development, and legal
-cybersecurity learning
-How to download it (recommended way):
-Install F-Droid from f-droid.org.
-Search for Termux.
-Download it from there — this is the official updated
-version.
-(The Play Store version is outdated and no longer
-maintained.)
-🔥  Top Termux Tools Used by Real
-Pentesters
-1. Nmap
-Network scanning, fingerprinting, full recon.
- GitHub: https://github.com/nmap/nmap
-2. Metasploit Framework
-Industry-standard defensive validation framework for labs & training.
-> [Defensive warning: validate command/test vectors reference omitted for security. Use authorized audit commands instead.]
-3. Hydra
-Password-audit tool for your own authorized systems.
- GitHub: https://github.com/vanhauser-thc/thc-hydra
-4. Nikto
-Web server scanner for misconfigurations & outdated
-components.
- GitHub: https://github.com/sullo/nikto
-5. SQLmap
-Automation engine for SQL injection testing in controlled labs.
- GitHub: https://github.com/sqlmapproject/sqlmap
-6. RustScan
-Ultra-fast port scanner — perfect combo with Nmap.
- GitHub: https://github.com/RustScan/RustScan
-7. Wget / cURL
-Core tools for fetching data, automation & scripting.
- Wget: https://www.gnu.org/software/wget/
- cURL: https://github.com/curl/curl
-🔥  Top Termux Tools Used by Real
-Pentesters
-8. Git
-Essential for pulling tools, modules, and scripts.
- GitHub: https://github.com/git/git
-9. Python (with pip)
-Foundation for OSINT tools, automation, APIs & scripting.
- Python: https://github.com/python/cpython
-10. Zphisher
-Social surface analysis & awareness training.
- GitHub: https://github.com/htr-tech/zphisher
-11. Sherlock
-Find usernames across platforms — OSINT profiling.
- GitHub: https://github.com/sherlock-project/sherlock
-12. Htop
-Advanced system monitor (CPU, RAM, processes).
- GitHub: https://github.com/htop-dev/htop
-13. Netcat (nc)
-The classic socket & networking Swiss-army knife.
- GitHub: https://github.com/diegocr/netcat
-14. Termux-API
-Access your Android hardware through scripts (camera, GPS,
-sensors).
- GitHub: https://github.com/termux/termux-api
-15. Bettercap (when supported)
-Advanced network analysis toolkit for lab networks.
- GitHub: https://github.com/bettercap/bettercap
-T h e  T e r m u x  C o m m a n d  H a n d b o o k  ( P D F )  i s  a v a i l a b l e  i n  t h e
-All commands and updates are on G i t H u b :
-g i t h u b . c o m /  / T e r m u x - C o m m a n d - H a n d b o o k
-T h e  T e r m u x  C o m m a n d  H a n d b o o k  ( P D F )  i s  a v a i l a b l e  i n  t h e
-All commands and updates are on G i t H u b :
-g i t h u b . c o m /  / T e r m u x - C o m m a n d - H a n d b o o k
+> **Authorized Use Only**
+> Use Termux tools only on networks and systems you own or have explicit permission to test.
+
+Termux provides a sandboxed Linux environment on Android. You can install packages, run Python/Node scripts, use SSH, and perform many tasks like a full Linux terminal — useful for mobile lab work and authorized security learning.
+
+## Installation
+
+Install from [F-Droid](https://f-droid.org) (recommended). The Play Store version is outdated and no longer maintained.
+
+<Callout type="info" title="Sandbox Scope">
+Termux operates within the Android application sandbox. It does not have root access to the Android host unless you explicitly configure root on the device.
+</Callout>
+
+## Quick Setup
+
+<TerminalCommand cmd="pkg update && pkg install openssh nmap dnsutils tracepath tsu -y" />
+
+## Storage & Sandboxing
+
+By default, Termux cannot access shared Android storage. Grant access with:
+
+<TerminalCommand cmd="termux-setup-storage" />
+
+This creates a `$HOME/storage` link to standard Android paths like `/sdcard/`.
+
+## Network Auditing from Mobile
+
+### Local IP and routing
+
+<TerminalCommand cmd="ip route show" />
+
+### Port scan (authorized targets only)
+
+<TerminalCommand cmd="nmap -sT -F 192.168.1.1" />
+
+## SSH Server on Termux
+
+Run an SSH daemon to manage your phone from a desktop (default port `8022`):
+
+<TerminalCommand cmd="sshd" />
+
+Check your Termux username (e.g., `u0_a123`):
+
+<TerminalCommand cmd="whoami" />
+
+## Top Termux Tools for Security Labs
+
+| Tool | Purpose |
+| --- | --- |
+| **Nmap** | Network scanning and service fingerprinting |
+| **Hydra** | Password auditing on authorized systems |
+| **Nikto** | Web server misconfiguration checks |
+| **SQLMap** | SQL injection validation in controlled labs |
+| **RustScan** | Fast port discovery (pair with Nmap) |
+| **Git** | Pull tools, modules, and scripts |
+| **Python + pip** | Automation, OSINT, and scripting |
+| **Sherlock** | Username OSINT across platforms |
+| **Netcat** | Socket testing and connectivity checks |
+| **Termux-API** | Android hardware access via scripts |
+| **Htop** | Process and resource monitoring |
+
+## What Termux Can Do
+
+- Run Linux commands and package-managed tools
+- Support Python, Node.js, Git, and SSH workflows
+- Enable automation and legal cybersecurity learning on mobile
+- Perform authorized reconnaissance on lab networks
 
 ---
 
@@ -98,7 +86,4 @@ g i t h u b . c o m /  / T e r m u x - C o m m a n d - H a n d b o o k
 
 This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
 
-Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
-
----
-
+Always obtain proper authorization before testing systems or networks.

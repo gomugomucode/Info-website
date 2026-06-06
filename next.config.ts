@@ -25,13 +25,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/notes/linux/100-kali-linux-commands-every-ethical-hacker-must-know-part-1",
-        destination: "/notes/linux/100-linux-command",
-        permanent: true,
-      },
-      {
-        source: "/notes/linux/100-kali-linux-commands-every-ethical-hacker-must-know-part-3",
-        destination: "/notes/linux/100-linux-command",
+        source: "/notes/linux/kali-linux-revelealed",
+        destination: "/notes/linux/kali-linux-revealed",
         permanent: true,
       },
       {
@@ -123,6 +118,11 @@ const nextConfig: NextConfig = {
       {
         source: "/notes/web/vulnerability-scanning-with-nessus-hexsec",
         destination: "/notes/web/nessus-vulnerability-scanning",
+        permanent: true,
+      },
+      {
+        source: "/notes/web/sqlmap-defensive-guide",
+        destination: "/notes/web/sqlmap-guide",
         permanent: true,
       },
 
