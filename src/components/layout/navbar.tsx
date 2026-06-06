@@ -12,7 +12,7 @@ import { CommandPalette } from "@/components/layout/command-palette";
 const NAV_ITEMS = [
   { name: "Blog", url: "/blog" },
   { name: "Cheatsheets", url: "/blog?category=cheatsheets" },
-  { name: "Notes", url: "/blog?category=notes" },
+  { name: "Notes", url: "/notes" },
   { name: "AI Tools", url: "/tools" },
   { name: "About", url: "/about" },
 ];
@@ -26,8 +26,8 @@ function NavLinks() {
     if (url === "/blog?category=cheatsheets") {
       return pathname === "/blog" && searchParams.get("category") === "cheatsheets";
     }
-    if (url === "/blog?category=notes") {
-      return pathname === "/blog" && searchParams.get("category") === "notes";
+    if (url === "/notes") {
+      return pathname === "/notes" || pathname.startsWith("/notes/");
     }
     if (url === "/blog") {
       return pathname === "/blog" && !searchParams.get("category") && !searchParams.get("q");

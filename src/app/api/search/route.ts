@@ -16,6 +16,7 @@ export async function GET() {
       type: post.type,
       readingTime: post.frontmatter.readingTime || "",
       date: post.frontmatter.date || "",
+      subcategory: post.frontmatter.subcategory || "",
     }));
 
     const searchTools = tools.map((tool) => ({

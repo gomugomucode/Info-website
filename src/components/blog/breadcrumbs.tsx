@@ -19,7 +19,7 @@ export function Breadcrumbs({ subcategory, title }: BreadcrumbsProps) {
       <ChevronRight className="h-3.5 w-3.5 text-neutral-400 dark:text-neutral-600 shrink-0" />
       
       <Link
-        href="/blog?category=notes"
+        href="/notes"
         className="hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
       >
         Notes
@@ -29,7 +29,7 @@ export function Breadcrumbs({ subcategory, title }: BreadcrumbsProps) {
         <>
           <ChevronRight className="h-3.5 w-3.5 text-neutral-400 dark:text-neutral-600 shrink-0" />
           <Link
-            href={`/blog?q=${subcategory.toLowerCase()}`}
+            href={`/notes/${subcategory.toLowerCase()}`}
             className="capitalize hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors"
           >
             {subcategory}

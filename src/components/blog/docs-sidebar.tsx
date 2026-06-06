@@ -93,7 +93,8 @@ export function DocsSidebar({ posts }: DocsSidebarProps) {
               {isOpen && (
                 <div className="ml-4 pl-3.5 border-l border-neutral-200 dark:border-neutral-800 space-y-1">
                   {subPosts.map((post) => {
-                    const postUrl = `/blog/${post.slug}`;
+                    const sub = (post.frontmatter.subcategory || "linux").toLowerCase();
+                    const postUrl = `/notes/${sub}/${post.slug}`;
                     const isActive = pathname === postUrl;
 
                     return (

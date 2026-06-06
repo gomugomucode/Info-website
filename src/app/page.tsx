@@ -6,7 +6,7 @@ import { CategoryBadge } from "@/components/blog/category-badge";
 
 const CATEGORIES = [
   { label: "Cheatsheets", url: "/blog?category=cheatsheets", icon: FileSpreadsheet, color: "text-indigo-500" },
-  { label: "Dev Notes", url: "/blog?category=notes", icon: Notebook, color: "text-emerald-500" },
+  { label: "Dev Notes", url: "/notes", icon: Notebook, color: "text-emerald-500" },
   { label: "Blog", url: "/blog", icon: BookOpen, color: "text-cyan-500" },
   { label: "AI Tools", url: "/tools", icon: Wrench, color: "text-cyan-400" },
 ];
@@ -95,7 +95,7 @@ export default function Home() {
           <div className="container mx-auto max-w-5xl">
             <div className="flex items-center justify-between mb-8">
               <h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-white">Latest Dev Notes</h2>
-              <Link href="/blog?category=notes" className="text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 flex items-center gap-1">
+              <Link href="/notes" className="text-sm font-medium text-primary-600 hover:text-primary-500 dark:text-primary-400 flex items-center gap-1">
                 View all <ArrowRight className="h-4 w-4" />
               </Link>
             </div>

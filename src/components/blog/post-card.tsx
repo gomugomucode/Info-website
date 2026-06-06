@@ -7,6 +7,10 @@ interface PostCardProps {
 }
 
 export function PostCard({ post }: PostCardProps) {
+  const postUrl = post.type === "notes"
+    ? `/notes/${(post.frontmatter.subcategory || "linux").toLowerCase()}/${post.slug}`
+    : `/blog/${post.slug}`;
+
   return (
     <article className="group relative flex flex-col items-start justify-between rounded-2xl border border-neutral-200 bg-white p-6 shadow-sm transition-all hover:shadow-md dark:border-neutral-800 dark:bg-neutral-900/50 hover:border-primary-500/50 dark:hover:border-primary-500/50">
       <div className="flex items-center gap-x-4 text-xs">
@@ -19,7 +23,7 @@ export function PostCard({ post }: PostCardProps) {
       </div>
       <div className="group relative">
         <h3 className="mt-3 text-lg font-semibold leading-6 text-neutral-900 group-hover:text-primary-600 dark:text-neutral-50 dark:group-hover:text-primary-500 transition-colors">
-          <Link href={`/blog/${post.slug}`}>
+          <Link href={postUrl}>
             <span className="absolute inset-0" />
             {post.frontmatter.title}
           </Link>

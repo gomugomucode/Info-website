@@ -127,6 +127,13 @@ export function getPostsByCategory(category: string): Post[] {
   return allPosts.filter((post) => post.frontmatter.category.toLowerCase() === category.toLowerCase());
 }
 
+export function getNotesBySubcategory(subcategory: string): Post[] {
+  const allNotes = getAllPosts(["notes"]);
+  return allNotes.filter(
+    (post) => post.frontmatter.subcategory?.toLowerCase() === subcategory.toLowerCase()
+  );
+}
+
 export function getLatestPosts(limit: number = 3): Post[] {
   const allPosts = getAllPosts();
   return allPosts.slice(0, limit);

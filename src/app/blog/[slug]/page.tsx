@@ -1,6 +1,6 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug, getAllPosts, parseTOC, getRelatedPosts, Post } from "@/lib/mdx";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { formatDate } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowLeft, ChevronLeft, ChevronRight, BarChart } from "lucide-react";
@@ -129,12 +129,19 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
     notFound();
   }
 
+  if (post.type === "notes") {
+    const sub = post.frontmatter.subcategory?.toLowerCase() || "linux";
+    permanentRedirect(`/notes/${sub}/${post.slug}`);
+  }
+
   const toc = await parseTOC(post.content);
   const relatedPosts = getRelatedPosts(post, 2);
 
   // Load all posts of the same category to render the Docs Sidebar
   const allNotesPosts = getAllPosts(["notes"]);
-  const isNotesCategory = post.type === "notes" || post.frontmatter.category.toLowerCase() === "notes";
+  // After the permanentRedirect above, only non-notes (blog) posts reach here.
+  // isNotesCategory is always false at this point; kept for layout-branch clarity.
+  const isNotesCategory = false;
 
   // Calculate Next and Previous links
   let prevPost: Post | null = null;

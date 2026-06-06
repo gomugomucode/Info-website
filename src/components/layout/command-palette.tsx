@@ -97,7 +97,9 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
             description: post.description,
             category: post.category,
             tags: post.tags,
-            url: `/blog/${post.slug}`,
+            url: post.type === "notes"
+              ? `/notes/${(post.subcategory || "linux").toLowerCase()}/${post.slug}`
+              : `/blog/${post.slug}`,
             type: post.type,
           }));
 
