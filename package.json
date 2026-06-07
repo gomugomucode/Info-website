@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate:og": "node scripts/generate-og-images.mjs"
+    "generate:og": "node scripts/generate-og-images.mjs",
+    "restore:blue-team": "node scripts/restore-blue-team.mjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

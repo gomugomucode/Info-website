@@ -1,6 +1,13 @@
+import Link from "next/link";
+import { absoluteUrl } from "@/lib/site";
+
 export const metadata = {
   title: "Contact",
-  description: "Get in touch with Anupam Baral.",
+  description:
+    "Get in touch about cybersecurity reference content, corrections, or authorized security research collaboration.",
+  alternates: {
+    canonical: absoluteUrl("/contact"),
+  },
 };
 
 export default function ContactPage() {
@@ -9,13 +16,38 @@ export default function ContactPage() {
       <h1 className="text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50 sm:text-5xl mb-8">
         Contact
       </h1>
-      
-      <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-12">
-        I'm always open to discussing new projects, creative ideas, or opportunities to be part of your visions.
+
+      <p className="text-xl text-neutral-600 dark:text-neutral-400 mb-8">
+        Questions about a guide, spotted an error, or want to discuss authorized
+        security research? Reach out via the channels below.
       </p>
 
+      <ul className="mb-12 space-y-3 text-neutral-600 dark:text-neutral-400">
+        <li>
+          <strong className="text-neutral-900 dark:text-neutral-100">GitHub:</strong>{" "}
+          <a
+            href="https://github.com/gomugomucode"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-cyan-600 hover:underline dark:text-cyan-400"
+          >
+            github.com/gomugomucode
+          </a>
+        </li>
+        <li>
+          <strong className="text-neutral-900 dark:text-neutral-100">Reference library:</strong>{" "}
+          <Link href="/notes" className="text-cyan-600 hover:underline dark:text-cyan-400">
+            Browse all notes
+          </Link>
+        </li>
+      </ul>
+
       <div className="rounded-2xl border border-neutral-200 bg-white p-8 dark:border-neutral-800 dark:bg-neutral-900/50">
-        <form className="space-y-6">
+        <p className="text-sm text-neutral-500 dark:text-neutral-400 mb-6">
+          Direct messaging form coming soon. For now, open an issue on GitHub or
+          use the portfolio site for professional inquiries.
+        </p>
+        <form className="space-y-6 opacity-60 pointer-events-none" aria-hidden="true">
           <div>
             <label htmlFor="name" className="block text-sm font-medium leading-6 text-neutral-900 dark:text-neutral-100">
               Name
@@ -25,8 +57,9 @@ export default function ContactPage() {
                 type="text"
                 name="name"
                 id="name"
-                className="block w-full rounded-md border-0 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-neutral-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 dark:bg-neutral-950 dark:text-white dark:ring-neutral-700"
-                placeholder="John Doe"
+                disabled
+                className="block w-full rounded-md border-0 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 sm:text-sm sm:leading-6 dark:bg-neutral-950 dark:text-white dark:ring-neutral-700"
+                placeholder="Your name"
               />
             </div>
           </div>
@@ -39,8 +72,9 @@ export default function ContactPage() {
                 type="email"
                 name="email"
                 id="email"
-                className="block w-full rounded-md border-0 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-neutral-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 dark:bg-neutral-950 dark:text-white dark:ring-neutral-700"
-                placeholder="john@example.com"
+                disabled
+                className="block w-full rounded-md border-0 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 sm:text-sm sm:leading-6 dark:bg-neutral-950 dark:text-white dark:ring-neutral-700"
+                placeholder="you@example.com"
               />
             </div>
           </div>
@@ -53,18 +87,20 @@ export default function ContactPage() {
                 id="message"
                 name="message"
                 rows={4}
-                className="block w-full rounded-md border-0 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 placeholder:text-neutral-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6 dark:bg-neutral-950 dark:text-white dark:ring-neutral-700"
-                defaultValue={""}
+                disabled
+                className="block w-full rounded-md border-0 py-1.5 text-neutral-900 shadow-sm ring-1 ring-inset ring-neutral-300 sm:text-sm sm:leading-6 dark:bg-neutral-950 dark:text-white dark:ring-neutral-700"
               />
             </div>
           </div>
-          <button
-            type="button"
-            className="w-full rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-600 transition-colors"
-          >
-            Send Message
-          </button>
         </form>
+        <a
+          href="https://anupambaral.com.np"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-6 inline-flex w-full justify-center rounded-md bg-primary-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-500 transition-colors"
+        >
+          Professional inquiries → Portfolio
+        </a>
       </div>
     </div>
   );

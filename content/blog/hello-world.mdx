@@ -1,51 +1,42 @@
 ---
-title: "Building my Developer Knowledge Hub"
-description: "How I built this Next.js 15 powered developer hub to share tutorials, notes, and AI tools."
-date: "2026-05-21"
-tags: ["nextjs", "react", "tailwind"]
+title: "Launching the Cybersecurity Learning Hub"
+description: "How info.anupambaral.com.np was rebuilt as a structured reference library for Linux, networking, web security, Windows forensics, and blue team operations."
+date: "2026-06-07"
+tags: ["cybersecurity", "nextjs", "mdx", "learning-hub"]
 category: "Blog"
 featured: true
-readingTime: "5 min read"
+readingTime: "4 min read"
 ---
 
-# Building my Developer Knowledge Hub
-Welcome to my new developer knowledge hub! I built this site to complement my professional portfolio and serve as a living document for my learning journey.
-## Why a Knowledge Hub?
-As a developer, I'm constantly learning new things, experimenting with AI tools, and solving complex problems. I wanted a dedicated space to:
-1. **Share Tutorials:** Step-by-step guides on things I've built.
-2. **Document Tech Notes:** Quick snippets and cheat sheets for things I often forget.
-3. **Curate Tools:** A directory of the best AI and dev tools I discover.
-## The Tech Stack
-I chose a modern, high-performance stack for this project:
-- **Next.js 15:** The React framework for the web (using App Router).
-- **Type Script:** For type safety and better developer experience.
-- **Tailwind CSS v4:** For rapid UI development and easy dark mode.
-- **MDX:** To write content in Markdown but with the power of React components.
-### Example Code
-Here is a quick look at how the frontmatter is structured for these posts:
+# Launching the Cybersecurity Learning Hub
 
-```typescript
-export interface Post Frontmatter {
-  title: string;
-  description: string;
-  date: string;
-  tags: string[];
-  category: string;
-  featured?: boolean;
-  reading Time?: string;
-}
+This site is a structured reference library — not a portfolio or generic dev blog. It organizes field guides, checklists, and learning paths for defensive and authorized offensive security work.
 
-```
+## What changed
 
-## What's Next?
-I'll be regularly updating this hub with new tutorials on Lang Chain, Fast API, and more Next.js tips. Stay tuned!
+The previous developer-focused layout was replaced with:
 
----
+1. **Topic hubs** under `/notes` — Linux, networking, security, web, and Windows
+2. **Pillar pages** — canonical starting points (Wireshark, Nmap, web security fundamentals, blue team guide)
+3. **Learning paths** — curated sequences linking guides across hubs
+4. **Consolidated content** — duplicate cheat sheets merged; old slugs redirect to pillars
+
+## How content is built
+
+- **MDX** for notes with frontmatter, callouts, and terminal command components
+- **Next.js App Router** for static generation and SEO metadata
+- **JSON-LD** for Person, WebSite, Article, and Breadcrumb schemas
+
+## Where to start
+
+- New to the library? → [Reference Library](/notes)
+- Prefer a guided track? → [Learning Paths](/notes#learning-paths)
+- Network forensics? → [Wireshark Guide](/notes/networking/wireshark)
+
+More articles will cover audit workflows, content updates, and hub expansion as guides are rewritten from legacy PDF sources.
 
 ## Educational Use Notice
 
 This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
 
-Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
-
----
+Always obtain proper authorization before testing systems or networks.

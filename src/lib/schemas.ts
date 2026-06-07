@@ -11,7 +11,7 @@ interface SchemaPerson {
   knowsAbout: string[];
   /**
    * sameAs is the primary disambiguation signal.
-   * Google uses this list to distinguish this Anupam Baral (developer/gomugomucode)
+   * Google uses this list to distinguish this Anupam Baral (cybersecurity author/gomugomucode)
    * from the solar-energy founder and the defence officer who share the same name.
    */
   sameAs: string[];
@@ -76,24 +76,26 @@ export function buildSchemaGraph(): SchemaGraph {
     name:            "Anupam Baral",
     alternateName:   "gomugomucode",
     url:             SITE_URL,
-    jobTitle:        "Full Stack Developer",
+    jobTitle:        "Cybersecurity Researcher",
     description:
-      "Full Stack Developer and cybersecurity researcher from Nepal. " +
-      "Publishes practical guides on ethical hacking, Linux, penetration " +
-      "testing, Next.js, and AI engineering.",
+      "Cybersecurity researcher and author from Nepal. Publishes structured " +
+      "reference guides on blue team operations, Linux auditing, network forensics, " +
+      "web security testing, and Windows threat hunting.",
     knowsAbout: [
       "Cybersecurity",
-      "Ethical Hacking",
-      "Penetration Testing",
-      "Linux",
+      "Blue Team Operations",
+      "Incident Response",
+      "Network Forensics",
+      "Wireshark",
+      "Nmap",
+      "Linux Security",
       "Kali Linux",
+      "Web Application Security",
+      "OWASP",
       "Bug Bounty",
-      "Next.js",
-      "FastAPI",
-      "Python",
-      "Full Stack Development",
-      "AI Engineering",
-      "Networking",
+      "Windows Security",
+      "PowerShell Auditing",
+      "Penetration Testing",
     ],
     sameAs: SAME_AS_URLS,
   };

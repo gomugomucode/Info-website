@@ -1,69 +1,108 @@
 ---
 title: "PowerShell Auditing & Threat Detection"
-description: "An administrative reference guide using PowerShell cmdlets to analyze Event Logs, audit running services, and locate system configuration gaps."
-date: "2026-05-28"
-tags: ["powershell", "windows", "threat-hunting", "auditing"]
+description: "Administrative PowerShell reference for querying Security event logs, auditing services for unquoted paths, and hunting listening ports on Windows hosts."
+date: "2026-06-07"
+tags: ["powershell", "windows", "threat-hunting", "auditing", "event-logs"]
 category: "notes"
 subcategory: "windows"
 difficulty: "Intermediate"
-readingTime: "7 min read"
+readingTime: "10 min read"
+featured: true
 ---
 
-# Power Shell Auditing & Threat Detection
-Power Shell is a powerful tool for Windows system administration and threat hunting. This guide details using administrative cmdlets to query Event Logs, audit running processes, and identify common service configuration issues (like unquoted path vectors).
-&lt;Callout type="tip" title="Power Shell Execution Scope"&gt;
-Run your auditing shell with `Set-Execution Policy Remote Signed -Scope Process` to temporarily allow script executions in the current session without altering system-wide safety profiles.
-&lt;/Callout&gt;
-## Threat Hunting Command Reference
+# PowerShell Auditing & Threat Detection
 
-| Defensive Audit Target | Power Shell Cmdlet | Functional Goal |
-| **Failed Logins** | `Get-Win Event -Filter Hashtable @{Log Name='Security'; Id=4625}` | Filter Security Logs for failed authentication events. |
-| **Process Check** | `Get-Process | Select-Object Name, Id, Path` | Identify active process paths and running locations. |
-| **Service Paths** | `Get-Cim Instance -Class Name Win32_Service` | List system services and their executables. |
-| **Network Sockets** | `Get-Net TCPConnection -State Listen` | Audit active listening ports. |
-## 1. Querying Security Event Logs
-Checking for failed login events is key to identifying brute force or password-spraying attempts.
-### Fetching Failed Logon Events
-To query the Windows Security Log for Event ID `4625` (Logon Failure):
+PowerShell is the primary shell for Windows threat hunting and host auditing. This guide covers event log queries, service misconfiguration checks, and process/network baselines.
 
-```powershell
-Get-Win Event -Filter Hashtable @{
-    Log Name = 'Security'
-    Id = 4625
-} -Max Events 50 | Select-Object Time Created, Message | Format-Table -Wrap
+<Callout type="tip" title="Execution scope">
+Run `Set-ExecutionPolicy RemoteSigned -Scope Process` to allow local scripts in the current session without changing system-wide policy.
+</Callout>
 
-```
+## Learning path
 
-## 2. Auditing Service Configurations
-Attackers can validate loose folder permissions or unquoted service paths to execute arbitrary code.
-### Checking for Unquoted Service Paths
-An unquoted service path with spaces in directory names (e.g., `C:\Program Files\My Folder\Service.exe`) can lead to privilege escalation if write permissions are lax.
-Use this query to identify services that lack enclosing quotes and contain spaces:
+1. [Windows Defensive CMD](/notes/windows/windows-defensive-cmd) — CMD-based auditing baseline
+2. **This guide** — PowerShell hunting cmdlets
+3. [Windows Event Log Analysis](/notes/windows/windows-event-log-analysis-advanced-threat-detection-guide) — deep Event ID correlation
+4. [Blue Team Complete Guide](/notes/security/blue-team-complete-guide) — full defensive toolkit
+
+## Threat hunting command reference
+
+| Target | Cmdlet | Goal |
+| --- | --- | --- |
+| Failed logins | `Get-WinEvent` (Security 4625) | Brute force / spray detection |
+| Process inventory | `Get-Process` + path | Unsigned or unusual binaries |
+| Service paths | `Get-CimInstance Win32_Service` | Unquoted path vectors |
+| Listening ports | `Get-NetTCPConnection -State Listen` | Unexpected listeners |
+
+## 1. Querying Security event logs
+
+Failed logon events (Event ID 4625):
 
 ```powershell
-Get-Cim Instance -Class Name Win32_Service |
-    Where-Object { $_. Path Name -notlike '"*' -and $_. Path Name -like '* *' } |
-    Select-Object Name, Display Name, Path Name
-
+Get-WinEvent -FilterHashtable @{
+  LogName = 'Security'
+  Id = 4625
+} -MaxEvents 50 |
+  Select-Object TimeCreated, Message |
+  Format-Table -Wrap
 ```
 
-## 3. Auditing Running Processes
-Verify process integrity by listing active processes along with their executable paths:
+Successful logons from network (Type 3) — useful for lateral movement review:
+
+```powershell
+Get-WinEvent -FilterHashtable @{
+  LogName = 'Security'
+  Id = 4624
+  StartTime = (Get-Date).AddHours(-24)
+} |
+  Where-Object { $_.Properties[8].Value -eq 3 } |
+  Select-Object TimeCreated,
+    @{N='Account';E={$_.Properties[5].Value}},
+    @{N='SourceIP';E={$_.Properties[18].Value}}
+```
+
+See [Windows Event Log Analysis](/notes/windows/windows-event-log-analysis-advanced-threat-detection-guide) for full Event ID tables.
+
+## 2. Auditing service configurations
+
+Unquoted service paths with spaces can enable privilege escalation when parent directories are writable:
+
+```powershell
+Get-CimInstance -ClassName Win32_Service |
+  Where-Object { $_.PathName -notlike '"*' -and $_.PathName -like '* *' } |
+  Select-Object Name, DisplayName, PathName
+```
+
+## 3. Auditing running processes
 
 ```powershell
 Get-Process |
-    Where-Object { $_. Path -ne $null } |
-    Select-Object Name, Id, Path, Description |
-    Sort-Object Name
-
+  Where-Object { $_.Path -ne $null } |
+  Select-Object Name, Id, Path |
+  Sort-Object Name
 ```
 
----
+## 4. Network listeners
+
+```powershell
+Get-NetTCPConnection -State Listen |
+  Select-Object LocalAddress, LocalPort, OwningProcess,
+    @{N='Process';E={(Get-Process -Id $_.OwningProcess -ErrorAction SilentlyContinue).Name}} |
+  Sort-Object LocalPort
+```
+
+## Related guides
+
+- [Windows Event Log Analysis](/notes/windows/windows-event-log-analysis-advanced-threat-detection-guide)
+- [Windows Defensive CMD](/notes/windows/windows-defensive-cmd)
+- [Blue Team Complete Guide](/notes/security/blue-team-complete-guide)
+
+## Continue learning
+
+→ Next: [Windows Event Log Analysis](/notes/windows/windows-event-log-analysis-advanced-threat-detection-guide)
 
 ## Educational Use Notice
 
 This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
 
 Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
-
----

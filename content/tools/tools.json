@@ -1,30 +1,44 @@
 [
   {
-    "name": "Vercel",
-    "category": "Hosting",
-    "description": "Frontend deployment platform for Next.js apps",
-    "url": "https://vercel.com",
-    "tags": ["nextjs", "hosting"]
+    "name": "Burp Suite",
+    "category": "Web Testing",
+    "description": "HTTP proxy and web application security testing platform",
+    "url": "https://portswigger.net/burp",
+    "tags": ["web", "proxy", "owasp"]
   },
   {
-    "name": "Cursor",
-    "category": "IDE",
-    "description": "AI-first code editor that helps you build faster",
-    "url": "https://cursor.com",
-    "tags": ["ai", "editor", "productivity"]
+    "name": "Nmap",
+    "category": "Reconnaissance",
+    "description": "Network discovery and port scanning for authorized audits",
+    "url": "https://nmap.org",
+    "tags": ["networking", "recon", "scanning"]
   },
   {
-    "name": "LangChain",
-    "category": "AI Development",
-    "description": "Framework for developing applications powered by language models",
-    "url": "https://langchain.com",
-    "tags": ["ai", "llm", "framework"]
+    "name": "Wireshark",
+    "category": "Network Forensics",
+    "description": "Packet capture and protocol analysis for defensive investigations",
+    "url": "https://www.wireshark.org",
+    "tags": ["forensics", "networking", "pcap"]
   },
   {
-    "name": "Supabase",
-    "category": "Backend",
-    "description": "Open source Firebase alternative with Postgres",
-    "url": "https://supabase.com",
-    "tags": ["database", "auth", "backend"]
+    "name": "Nuclei",
+    "category": "Vulnerability Scanning",
+    "description": "Template-based scanner for fast, scoped security checks",
+    "url": "https://github.com/projectdiscovery/nuclei",
+    "tags": ["scanning", "templates", "web"]
+  },
+  {
+    "name": "Sysmon",
+    "category": "Endpoint Monitoring",
+    "description": "Windows system activity monitor for process, network, and file telemetry",
+    "url": "https://learn.microsoft.com/sysinternals/downloads/sysmon",
+    "tags": ["windows", "blue-team", "logging"]
+  },
+  {
+    "name": "Velociraptor",
+    "category": "DFIR",
+    "description": "Endpoint visibility and digital forensics collection at scale",
+    "url": "https://docs.velociraptor.app",
+    "tags": ["dfir", "hunting", "forensics"]
   }
 ]

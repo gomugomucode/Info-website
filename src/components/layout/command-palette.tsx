@@ -285,7 +285,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
               <input
                 ref={inputRef}
                 type="text"
-                placeholder="Search articles, notes, AI tools, cheatsheets..."
+                placeholder="Search notes, articles, security tools..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
                 className="w-full bg-transparent text-neutral-900 dark:text-neutral-50 placeholder-neutral-400 dark:placeholder-neutral-500 text-sm focus:outline-none font-medium leading-none"
@@ -447,7 +447,7 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
                         { title: "Linux Hub", url: "/notes/linux", desc: "CLI, Kali, and host auditing", icon: Terminal, color: "text-emerald-500" },
                         { title: "Web Security Hub", url: "/notes/web", desc: "OWASP, scanning, API security", icon: Globe, color: "text-cyan-500" },
                         { title: "Blog", url: "/blog", desc: "Articles and updates", icon: BookOpen, color: "text-cyan-500" },
-                        { title: "Tools", url: "/tools", desc: "Security & AI tool directory", icon: Wrench, color: "text-cyan-500" },
+                        { title: "Tools", url: "/tools", desc: "Security tools directory", icon: Wrench, color: "text-cyan-500" },
                       ].map((nav, index) => {
                         const globalIdx = recents.length + index;
                         const isActive = globalIdx === selectedIndex;
