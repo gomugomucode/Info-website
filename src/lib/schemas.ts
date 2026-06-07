@@ -123,3 +123,45 @@ export function buildSchemaGraph(): SchemaGraph {
     "@graph":   [person, website],
   };
 }
+
+// ─── per-article schema (notes & blog) ───────────────────────────────────────
+
+interface ArticleSchemaInput {
+  title: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  subcategory?: string;
+}
+
+export function buildArticleSchema(input: ArticleSchemaInput) {
+  const personId = `${SITE_URL}/#person`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: input.title,
+    description: input.description,
+    url: input.url,
+    datePublished: input.datePublished,
+    author: { "@id": personId },
+    publisher: { "@id": `${SITE_URL}/#website` },
+    mainEntityOfPage: { "@type": "WebPage", "@id": input.url },
+    articleSection: input.subcategory,
+    inLanguage: "en-US",
+  };
+}
+
+export function buildBreadcrumbSchema(
+  items: { name: string; url: string }[]
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  };
+}

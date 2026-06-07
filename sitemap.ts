@@ -29,12 +29,6 @@ const CONTENT_SOURCES = [
     priority:        0.8,
   },
   {
-    dir:             "content/cheatsheets",
-    urlPrefix:       "cheatsheets",
-    changeFrequency: "monthly" as const,
-    priority:        0.65,
-  },
-  {
     dir:             "content/notes/linux",
     urlPrefix:       "notes/linux",
     changeFrequency: "monthly" as const,

@@ -11,17 +11,17 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/notes/linux/kali-linux-cheat-sheet-for-penetration-testers",
-        destination: "/notes/linux/kali-linux-hacking-cheat-sheet20-essential-tools",
+        destination: "/notes/linux/kali-linux-toolkit-guide",
         permanent: true,
       },
       {
         source: "/notes/linux/top-50-kali-linux-tools",
-        destination: "/notes/linux/top-50-kali-linux-tools-guide-for-offensive-professionals-pdf-20250818",
+        destination: "/notes/linux/kali-linux-toolkit-guide",
         permanent: true,
       },
       {
         source: "/notes/linux/50-kali-linux-tools-my-compressed",
-        destination: "/notes/linux/top-50-kali-linux-tools-guide-for-offensive-professionals-pdf-20250818",
+        destination: "/notes/linux/kali-linux-toolkit-guide",
         permanent: true,
       },
       {
@@ -122,7 +122,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/notes/web/web-security-basic-to-expert",
-        destination: "/notes/web/web-application-hacking",
+        destination: "/notes/web/web-security-fundamentals",
         permanent: true,
       },
       {
@@ -150,6 +150,175 @@ const nextConfig: NextConfig = {
       {
         source: "/notes/windows/reverse-shells-windows-hexseccheatsheet",
         destination: "/notes/security/reverse-shells-cheatsheet",
+        permanent: true,
+      },
+
+      // ── Phase 1 content consolidation ─────────────────────────────────────
+      {
+        source: "/notes/linux/linux-defensive-essentials",
+        destination: "/notes/linux/essential-linux-commands-for-cybersecurity-specialists",
+        permanent: true,
+      },
+      {
+        source: "/notes/linux/100-linux-command",
+        destination: "/notes/linux/essential-linux-commands-for-cybersecurity-specialists",
+        permanent: true,
+      },
+      {
+        source: "/notes/linux/a-z-kali-linux-commands",
+        destination: "/notes/linux/essential-linux-commands-for-cybersecurity-specialists",
+        permanent: true,
+      },
+      {
+        source: "/notes/linux/kali-linux-hacking-cheat-sheet20-essential-tools",
+        destination: "/notes/linux/kali-linux-toolkit-guide",
+        permanent: true,
+      },
+      {
+        source: "/notes/linux/100-kali-linux-commands-every-ethical-hacker-must-know-part-1",
+        destination: "/notes/linux/kali-linux-toolkit-guide",
+        permanent: true,
+      },
+      {
+        source: "/notes/linux/100-kali-linux-commands-every-ethical-hacker-must-know-part-3",
+        destination: "/notes/linux/kali-linux-toolkit-guide",
+        permanent: true,
+      },
+      {
+        source: "/notes/linux/top-50-kali-linux-tools-guide-for-offensive-professionals-pdf-20250818",
+        destination: "/notes/linux/kali-linux-toolkit-guide",
+        permanent: true,
+      },
+      {
+        source: "/notes/linux/kali-linux-revealed",
+        destination: "/notes/linux/kali-linux-toolkit-guide",
+        permanent: true,
+      },
+      {
+        source: "/notes/windows/basic-windows-cmd-for-pentesters",
+        destination: "/notes/windows/windows-defensive-cmd",
+        permanent: true,
+      },
+      {
+        source: "/notes/windows/windows-cli-100-commands-every-hacker-should-know-compressed",
+        destination: "/notes/windows/windows-defensive-cmd",
+        permanent: true,
+      },
+      {
+        source: "/notes/windows/powershell-cheat-sheet-every-windows-user-saves-compressed",
+        destination: "/notes/windows/powershell-auditing",
+        permanent: true,
+      },
+      {
+        source: "/notes/web/web-application-hacking",
+        destination: "/notes/web/web-security-fundamentals",
+        permanent: true,
+      },
+      {
+        source: "/notes/security/top-20-free-cyber-security-tools-you-must-learn-in-2026",
+        destination: "/notes",
+        permanent: true,
+      },
+      {
+        source: "/notes/security/oscp-cheatsheet",
+        destination: "/notes/security/bug-bounty-playbook",
+        permanent: true,
+      },
+      {
+        source: "/notes/security/python-guide",
+        destination: "/notes/security/blue-team-complete-guide",
+        permanent: true,
+      },
+      {
+        source: "/notes/security/black-hat-python-a-must-read-for-ethical-hackers-pentesters",
+        destination: "/notes/security/blue-team-complete-guide",
+        permanent: true,
+      },
+      {
+        source: "/notes/networking/10-github-repositories-for-learning-ethical-hacking-2026",
+        destination: "/notes",
+        permanent: true,
+      },
+      {
+        source: "/notes/web/top-10-web-vulnerability-scanners-every-ethical-hacker-must-know",
+        destination: "/notes/web/web-security-fundamentals",
+        permanent: true,
+      },
+      {
+        source: "/notes/security/creatively-malicious-prompt-engineering",
+        destination: "/notes",
+        permanent: true,
+      },
+      {
+        source: "/notes/security/hacking-drone-with-dronesploit-part1",
+        destination: "/notes",
+        permanent: true,
+      },
+
+      // ── Archived dev cheatsheets (moved to audit/archived/cheatsheets/) ─
+      {
+        source: "/blog/ai-langchain-cheatsheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/deployment-cheatsheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/docker-cheatsheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/fastapi-cheatsheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/git-cheat-sheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/langchain-ai-cheatsheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/linux-terminal-cheatsheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/networking-cheatsheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/nextjs-cheatsheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/react-cheatsheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/sql-cheatsheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/tailwindcss-cheatsheet",
+        destination: "/blog",
+        permanent: true,
+      },
+      {
+        source: "/blog/web-development-cheatsheet",
+        destination: "/blog",
         permanent: true,
       },
     ];

@@ -17,6 +17,9 @@ import { Breadcrumbs } from "@/components/blog/breadcrumbs";
 import { DocsSidebar } from "@/components/blog/docs-sidebar";
 import { MobileTocDrawer } from "@/components/blog/mobile-toc-drawer";
 import { visit } from "unist-util-visit";
+import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/schemas";
+
+const SITE_URL = "https://info.anupambaral.com.np";
 
 export async function generateStaticParams() {
   const posts = getAllPosts(["notes"]);
@@ -163,8 +166,33 @@ export default async function NoteDetailPage({ params }: { params: Promise<{ sub
   const diffKey = (post.frontmatter.difficulty || "Beginner").toLowerCase();
   const diffBadgeColor = difficultyColors[diffKey] || difficultyColors.beginner;
 
+  const noteUrl = `${SITE_URL}/notes/${subcategory}/${slug}`;
+  const subcategoryLabel =
+    subcategory.charAt(0).toUpperCase() + subcategory.slice(1);
+  const articleSchema = buildArticleSchema({
+    title: post.frontmatter.title,
+    description: post.frontmatter.description,
+    url: noteUrl,
+    datePublished: post.frontmatter.date,
+    subcategory: subcategoryLabel,
+  });
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: "Notes", url: `${SITE_URL}/notes` },
+    { name: subcategoryLabel, url: `${SITE_URL}/notes/${subcategory}` },
+    { name: post.frontmatter.title, url: noteUrl },
+  ]);
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <ReadingProgress />
       <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
         

@@ -1,0 +1,110 @@
+---
+title: "Kali Linux Toolkit Guide — 50+ Tools for Authorized Security Professionals"
+description: "Canonical Kali Linux reference organized by engagement phase: recon, web testing, wireless, and forensics. Defensive use cases and lab-only safety notes."
+date: "2026-06-07"
+tags: ["kali-linux", "pentest-tools", "reconnaissance", "web-security", "defensive-auditing"]
+category: "notes"
+subcategory: "linux"
+difficulty: "Intermediate"
+readingTime: "45 min read"
+featured: true
+---
+
+# Kali Linux Toolkit Guide
+
+<Callout type="warning" title="Authorized Use Only">
+Use these tools only on systems and networks you own or have explicit written permission to test.
+</Callout>
+
+This is the canonical Kali Linux tool reference for **info.anupambaral.com.np**. It consolidates recon, web testing, and vulnerability-validation workflows that were previously split across multiple cheat sheets.
+
+## Learning path
+
+1. [Linux CLI Essentials](/notes/linux/essential-linux-commands-for-cybersecurity-specialists)
+2. [Nmap Scanning & Host Discovery](/notes/networking/nmap-scanning-guide)
+3. This guide — tool selection by engagement phase
+4. [Web Security Fundamentals](/notes/web/web-security-fundamentals)
+
+## Tool index by phase
+
+| Phase | Tools | Deep dive |
+| --- | --- | --- |
+| Recon & asset discovery | amass, subfinder, httpx, naabu, theHarvester, dnsrecon | [Recon & Web Tools](#recon-and-web-tools) |
+| Web application audit | nuclei, ffuf, katana, nikto, wpscan, sqlmap | [Web & Password Auditing](#web-and-password-auditing) · [SQLmap Guide](/notes/web/sqlmap-guide) |
+| Network analysis | nmap, wireshark, mitmproxy | [Nmap Guide](/notes/networking/nmap-scanning-guide) · [Wireshark](/notes/networking/wireshark) |
+| Exploitation research | metasploit, searchsploit, autorecon | [Metasploit for Beginners](/notes/security/metasploit-for-beginners) |
+| Host monitoring | pspy, enum4linux-ng | Sections below |
+
+## Recon and Web Tools
+
+Quick reference for passive/active recon and live-service validation.
+
+| Command / Tool | Purpose | Example | Notes |
+| --- | --- | --- | --- |
+| `nuclei` | Template-based vulnerability checks | `nuclei -u https://example.com -severity low,medium` | Use safe templates; confirm results manually. |
+| `amass` | External asset and subdomain discovery | `amass enum -passive -d example.com` | Keep scope limited to approved domains. |
+| `httpx` | HTTP probing and service fingerprinting | `httpx -l hosts.txt -title -status-code` | Good for validating live web assets. |
+| `subfinder` | Passive subdomain enumeration | `subfinder -d example.com -o subdomains.txt` | Uses public data sources. |
+| `naabu` | Fast port discovery | `naabu -host 192.0.2.10 -top-ports 100` | Use rate limits on shared networks. |
+| `ffuf` | Web content and parameter discovery | `ffuf -u https://example.com/FUZZ -w words.txt` | Run only in approved windows. |
+| `katana` | Web crawling and endpoint discovery | `katana -u https://example.com -depth 2` | Review discovered URLs before testing. |
+| `enum4linux-ng` | SMB and Windows service enumeration | `enum4linux-ng -A 192.0.2.10` | Limit to internal systems in scope. |
+| `mitmproxy` | HTTP/S traffic inspection | `mitmproxy --listen-port 8080` | Requires user consent and trusted certificates. |
+
+### Nuclei
+
+Nuclei runs template-based checks against web apps, APIs, and network endpoints.
+
+```bash
+nuclei -u https://example.com -severity low,medium
+nuclei -l live-hosts.txt -tags exposure,misconfig -o nuclei-results.txt
+```
+
+### ffuf
+
+Fast web fuzzer for directories, files, virtual hosts, and parameters.
+
+```bash
+ffuf -u https://example.com/FUZZ -w words.txt
+ffuf -u https://example.com/page?FUZZ=test -w params.txt -mc 200,301,302,403
+```
+
+## Web and Password Auditing
+
+| Command / Tool | Purpose | Example | Notes |
+| --- | --- | --- | --- |
+| `sqlmap` | SQL injection validation | `sqlmap -u "https://lab.example/item?id=1" --batch` | Authorized labs only. |
+| `nikto` | Web server misconfiguration checks | `nikto -h https://example.com` | Review findings manually. |
+| `wpscan` | WordPress security auditing | `wpscan --url https://example.com --enumerate vp` | Keep API keys private. |
+| `hydra` | Authentication control testing | `hydra -L users.txt -P test-passwords.txt ssh://lab-host` | Lab-only accounts; rate limits. |
+| `john` | Password hash strength review | `john --wordlist=wordlist.txt hashes.txt` | Approved sample hashes only. |
+| `theHarvester` | OSINT from public sources | `theHarvester -d example.com -b bing` | Confirm data is public and relevant. |
+| `dnsrecon` | DNS enumeration | `dnsrecon -d example.com` | Useful for exposed DNS records. |
+| `autorecon` | Automated recon workflow | `autorecon 192.0.2.10` | Best for lab ranges. |
+| `pspy` | Process and cron monitoring | `./pspy64` | Do not deploy without approval. |
+| `searchsploit` | Local vulnerability lookup | `searchsploit apache 2.4` | Research leads, not proof of exposure. |
+
+For SQL injection methodology and defensive validation, see the dedicated [SQLmap Guide](/notes/web/sqlmap-guide).
+
+## Best practices
+
+* Get written authorization before scanning, probing, fuzzing, or intercepting traffic.
+* Log operator, date, time, target scope, command, and output location.
+* Use isolated labs for intrusive tests, fuzzing, and proxy interception.
+* Run tools with least privilege; avoid unnecessary root access.
+* Keep target lists narrow; remove out-of-scope systems before testing.
+* Protect reports and scan output — they may reveal sensitive infrastructure details.
+
+## Related guides
+
+- [Linux CLI Essentials](/notes/linux/essential-linux-commands-for-cybersecurity-specialists)
+- [Nmap Scanning & Host Discovery](/notes/networking/nmap-scanning-guide)
+- [Web Security Fundamentals](/notes/web/web-security-fundamentals)
+- [Bug Bounty Playbook](/notes/security/bug-bounty-playbook)
+- [Blue Team Complete Guide](/notes/security/blue-team-complete-guide)
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.

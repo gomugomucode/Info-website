@@ -1,0 +1,22 @@
+file,slug,category,word_count,extraction_score,content_score,quality_score,topic,status,merge_into,title
+content/blog/hello-world.mdx,hello-world,Blog,174,100,45,67,Site intro,REWRITE,,Building my Developer Knowledge Hub
+content/notes/linux/essential-linux-commands-for-cybersecurity-specialists.mdx,essential-linux-commands-for-cybersecurity-specialists,Linux,5057,15,45,33,Linux CLI pillar,REWRITE,,Essential Linux Commands for Cybersecurity Specialists
+content/notes/linux/kali-linux-toolkit-guide.mdx,kali-linux-toolkit-guide,Linux,687,100,93,95,Kali hub,KEEP,,Kali Linux Toolkit Guide — 50+ Tools for Authorized Security Professionals
+content/notes/linux/master-termux-handbook.mdx,master-termux-handbook,Linux,308,85,80,82,Termux,REWRITE,,Master Termux Handbook
+content/notes/networking/networking-security-interview-qa-guide-osi-to-firewall.mdx,networking-security-interview-qa-guide-osi-to-firewall,Networking,11172,15,30,24,Interview Q&A,REWRITE,,Networking & Security Interview Q&A Guide OSI to Firewall
+content/notes/networking/nmap-scanning-guide.mdx,nmap-scanning-guide,Networking,354,100,80,88,Nmap hub,REWRITE,,Nmap Scanning & Host Discovery
+content/notes/networking/wireshark.mdx,wireshark,Networking,14388,70,70,70,Wireshark hub,REWRITE,,Wireshark & TShark Complete Guide
+content/notes/security/blue-team-complete-guide.mdx,blue-team-complete-guide,Security,30582,10,40,28,Blue Team hub,KEEP,,Blue Team Complete Guide
+content/notes/security/bug-bounty-playbook.mdx,bug-bounty-playbook,Security,29098,15,30,24,Bug bounty hub,REWRITE,,Bug Bounty Playbook
+content/notes/security/metasploit-for-beginners.mdx,metasploit-for-beginners,Security,985,15,30,24,Metasploit hub,REWRITE,,Metasploit for Beginners
+content/notes/security/reverse-shells-cheatsheet.mdx,reverse-shells-cheatsheet,Security,169,95,50,68,Shells reference,KEEP,,reverse-shells-cheatsheet
+content/notes/security/top-10-mobile-penetration-testing-tools-for-ethical-hackers.mdx,top-10-mobile-penetration-testing-tools-for-ethical-hackers,Security,812,30,30,30,Mobile tools,REWRITE,,Top 10 Mobile Penetration Testing Tools for Security Analysts
+content/notes/security/wireless-penetration-testing-bettercap.mdx,wireless-penetration-testing-bettercap,Security,814,15,30,24,Wireless,REWRITE,,Wireless Penetration Testing Bettercap
+content/notes/web/api-gateway-security-implementation-and-best-practices.mdx,api-gateway-security-implementation-and-best-practices,Web Security,5885,50,60,56,API security,KEEP,,API Gateway Security Implementation and Best Practices
+content/notes/web/nessus-vulnerability-scanning.mdx,nessus-vulnerability-scanning,Web Security,216,75,50,60,Scanning,KEEP,,Vulnerability Scanning with Nessus
+content/notes/web/nuclei-plugin-burp-suite-template-creation-guide.mdx,nuclei-plugin-burp-suite-template-creation-guide,Web Security,1026,15,30,24,Burp/Nuclei,REWRITE,,Nuclei Plugin & Burp Suite Template Creation Guide
+content/notes/web/sqlmap-guide.mdx,sqlmap-guide,Web Security,1175,80,65,71,SQLMap hub,REWRITE,,SqlMap Guide
+content/notes/web/web-security-fundamentals.mdx,web-security-fundamentals,Web Security,202,100,50,70,Web hub,KEEP,,Web Application Security & Hardening
+content/notes/windows/powershell-auditing.mdx,powershell-auditing,Windows,250,85,50,64,PowerShell hub,KEEP,,PowerShell Auditing & Threat Detection
+content/notes/windows/windows-defensive-cmd.mdx,windows-defensive-cmd,Windows,331,85,75,79,Windows CMD hub,KEEP,,Defensive Windows CMD Reference
+content/notes/windows/windows-event-log-analysis-advanced-threat-detection-guide.mdx,windows-event-log-analysis-advanced-threat-detection-guide,Windows,4898,50,55,53,Event logs,REWRITE,,Windows Event Log Analysis Advanced Threat Detection Guide

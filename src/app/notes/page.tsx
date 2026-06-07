@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Terminal, Network, Shield, Globe, Monitor, ArrowRight, BookOpen, Clock, Activity } from "lucide-react";
 import { getAllPosts } from "@/lib/mdx";
+import { LEARNING_PATHS } from "@/lib/learning-paths";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -121,6 +122,40 @@ export default function NotesPage() {
           </div>
         </div>
       </header>
+
+      {/* Structured learning paths */}
+      <section className="space-y-6">
+        <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-50">
+          Structured Learning Paths
+        </h2>
+        <div className="grid gap-6 sm:grid-cols-2">
+          {LEARNING_PATHS.map((path) => (
+            <div
+              key={path.id}
+              className="p-6 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/40"
+            >
+              <h3 className="text-lg font-bold text-neutral-900 dark:text-neutral-50">
+                {path.title}
+              </h3>
+              <p className="mt-1 text-sm text-neutral-500 dark:text-neutral-400">
+                {path.description}
+              </p>
+              <ol className="mt-4 space-y-2">
+                {path.steps.map((step, i) => (
+                  <li key={step.href}>
+                    <Link
+                      href={step.href}
+                      className="text-sm font-medium text-cyan-600 hover:text-cyan-700 dark:text-cyan-400 dark:hover:text-cyan-300 hover:underline"
+                    >
+                      {i + 1}. {step.title}
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))}
+        </div>
+      </section>
 
       {/* Categories Grid */}
       <section className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
