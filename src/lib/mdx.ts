@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import GithubSlugger from "github-slugger";
+import { HUB_PILLARS, isNoteSubcategory } from "./hub-config";
 
 const contentDirectory = path.join(process.cwd(), "content");
 
@@ -161,6 +162,27 @@ export function getFeaturedNotes(limit: number = 6): Post[] {
   const notes = getAllPosts(["notes"]);
   const featured = notes.filter((p) => p.frontmatter.featured);
   return (featured.length > 0 ? featured : notes).slice(0, limit);
+}
+
+/** Pillar guides for a topic hub — uses HUB_PILLARS order, then featured, then recent. */
+export function getHubPillarNotes(subcategory: string): Post[] {
+  const normalized = subcategory.toLowerCase();
+  const allNotes = getNotesBySubcategory(normalized);
+  if (allNotes.length === 0) return [];
+
+  if (isNoteSubcategory(normalized)) {
+    const slugs = HUB_PILLARS[normalized];
+    const ordered = slugs
+      .map((slug) => allNotes.find((post) => post.slug === slug))
+      .filter((post): post is Post => post !== undefined);
+
+    if (ordered.length > 0) return ordered;
+  }
+
+  const featured = allNotes.filter((post) => post.frontmatter.featured);
+  const fallback = featured.length > 0 ? featured : allNotes;
+  const limit = isNoteSubcategory(normalized) ? HUB_PILLARS[normalized].length : 3;
+  return fallback.slice(0, limit);
 }
 
 export function getRelatedPosts(currentPost: Post, limit: number = 2): Post[] {

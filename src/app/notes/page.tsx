@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Terminal, Network, Shield, Globe, Monitor, ArrowRight, BookOpen, Clock, Activity } from "lucide-react";
-import { getAllPosts } from "@/lib/mdx";
+import { getAllPosts, getHubPillarNotes } from "@/lib/mdx";
 import { LEARNING_PATHS } from "@/lib/learning-paths";
 import { Metadata } from "next";
 import { absoluteUrl } from "@/lib/site";
@@ -165,7 +165,7 @@ export default function NotesPage() {
           const notes = subcategoryMap.get(sub.id) || [];
           const count = notes.length;
           const CategoryIcon = sub.icon;
-          const recentNotes = notes.slice(0, 3);
+          const pillarNotes = getHubPillarNotes(sub.id);
 
           return (
             <div
@@ -194,13 +194,13 @@ export default function NotesPage() {
                 </div>
 
                 {/* Quick Internal Links list (SEO Equity passer) */}
-                {recentNotes.length > 0 && (
+                {pillarNotes.length > 0 && (
                   <div className="pt-4 border-t border-neutral-100 dark:border-neutral-900">
                     <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-wider block mb-2">
-                      Featured References
+                      Featured Pillars
                     </span>
                     <ul className="space-y-2">
-                      {recentNotes.map((note) => (
+                      {pillarNotes.map((note) => (
                         <li key={note.slug}>
                           <Link
                             href={`/notes/${sub.id}/${note.slug}`}

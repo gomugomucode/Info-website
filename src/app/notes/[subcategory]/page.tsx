@@ -1,9 +1,10 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Terminal, Network, Shield, Globe, Monitor, ArrowLeft, Home, ChevronRight, BookOpen, Clock, FileText, Search } from "lucide-react";
-import { getNotesBySubcategory } from "@/lib/mdx";
+import { getHubPillarNotes, getNotesBySubcategory } from "@/lib/mdx";
 import { getLearningPathsForHub } from "@/lib/learning-paths";
 import { buildBreadcrumbSchema } from "@/lib/schemas";
+import { getHubOgImageUrl } from "@/lib/hub-config";
 import { SITE_URL, absoluteUrl } from "@/lib/site";
 import { CategoryNotesList } from "./category-notes-list";
 
@@ -102,6 +103,18 @@ export async function generateMetadata({ params }: { params: Promise<{ subcatego
       title: `${data.title} — Cybersecurity Learning Hub`,
       description: data.longDescription,
       url: absoluteUrl(`/notes/${sub}`),
+      images: [
+        {
+          url: getHubOgImageUrl(sub),
+          width: 1200,
+          height: 630,
+          alt: `${data.title} — Cybersecurity Learning Hub`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image" as const,
+      images: [getHubOgImageUrl(sub)],
     },
   };
 }
@@ -116,6 +129,7 @@ export default async function SubcategoryHubPage({ params }: { params: Promise<{
   }
 
   const posts = getNotesBySubcategory(subcategory);
+  const pillarNotes = getHubPillarNotes(subcategory);
   const hubPaths = getLearningPathsForHub(subcategory);
   const CategoryIcon = subDetails.icon;
   const subcategoryLabel =
@@ -205,6 +219,35 @@ export default async function SubcategoryHubPage({ params }: { params: Promise<{
               </div>
             </div>
           </div>
+
+          {pillarNotes.length > 0 && (
+            <section className="space-y-4">
+              <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-50">
+                Featured pillars
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {pillarNotes.map((note) => (
+                  <Link
+                    key={note.slug}
+                    href={`/notes/${subcategory}/${note.slug}`}
+                    className="group p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900/40 hover:border-cyan-500/30 transition-all"
+                  >
+                    <h3 className="text-sm font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
+                      {note.frontmatter.title}
+                    </h3>
+                    <p className="mt-2 text-xs leading-relaxed text-neutral-500 dark:text-neutral-400 line-clamp-2">
+                      {note.frontmatter.description}
+                    </p>
+                    {note.frontmatter.readingTime && (
+                      <p className="mt-3 text-[10px] font-semibold text-neutral-400 dark:text-neutral-500">
+                        {note.frontmatter.readingTime}
+                      </p>
+                    )}
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           {hubPaths.length > 0 && (
             <section className="space-y-4">

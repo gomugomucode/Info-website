@@ -7,13 +7,23 @@ category: "notes"
 subcategory: "networking"
 difficulty: "Beginner"
 readingTime: "7 min read"
+featured: true
 ---
 
 # Nmap Scanning & Host Discovery
+
 Nmap is a powerful network discovery tool used to map assets, inspect open ports, and verify firewall rules. This guide outlines standard port scanning modes, safe service enumeration, and how network monitoring tools detect scans.
+
 <Callout type="warning" title="Auditing Permissions Notice">
 Port scanning generates active network traffic. Ensure you have explicit authorization before scanning networks outside your local container environments or local development networks.
 </Callout>
+
+## Learning path
+
+1. **This guide** — reconnaissance and port scanning
+2. [Wireshark & TShark](/notes/networking/wireshark) — recognize scan traffic in packet captures
+3. [Networking & Security Interview Q&A](/notes/networking/networking-security-interview-qa-guide-osi-to-firewall) — OSI-to-firewall context
+4. [Blue Team Complete Guide](/notes/security/blue-team-complete-guide) — defensive detection workflows
 
 ## Scan Type Reference Table
 
@@ -45,7 +55,19 @@ To query active ports and gather banner details:
 ## 3. Defensive Insight: Detecting Network Scans
 As a system defender, you should understand how security tools detect scans.
 *   **Log Footprints**: Firewalls, IDS (Snort/Suricata), and SIEMs monitor for multiple connection attempts from a single IP to different ports within a short time.
+*   **Packet evidence**: Use [Wireshark & TShark](/notes/networking/wireshark) to validate SYN floods, half-open scans, and unusual port sweeps in PCAPs.
 *   **Mitigation**: Configure rate-limiting on firewalls and block suspicious IPs that trigger automated scan alerts.
+
+## Related guides
+
+- [Wireshark & TShark — Network Forensics Guide](/notes/networking/wireshark)
+- [Networking & Security Interview Q&A](/notes/networking/networking-security-interview-qa-guide-osi-to-firewall)
+- [Blue Team Complete Guide](/notes/security/blue-team-complete-guide)
+- [Essential Linux Commands](/notes/linux/essential-linux-commands-for-cybersecurity-specialists)
+
+## Continue learning
+
+→ Next: [Wireshark & TShark — Network Forensics Guide](/notes/networking/wireshark)
 
 ---
 
