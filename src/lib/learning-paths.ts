@@ -76,3 +76,11 @@ export const LEARNING_PATHS: LearningPath[] = [
     ],
   },
 ];
+
+/** Learning paths whose steps include guides under `/notes/{subcategory}/`. */
+export function getLearningPathsForHub(subcategory: string): LearningPath[] {
+  const prefix = `/notes/${subcategory}/`;
+  return LEARNING_PATHS.filter((path) =>
+    path.steps.some((step) => step.href.startsWith(prefix)),
+  );
+}

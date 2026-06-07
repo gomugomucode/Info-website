@@ -12,6 +12,8 @@ import {
   X,
   FileSpreadsheet,
   Notebook,
+  Terminal,
+  Globe,
   ExternalLink,
   ChevronRight,
   Command,
@@ -441,11 +443,11 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 px-1">
                       {[
-                        { title: "Blog", url: "/blog", desc: "Articles, writeups & deep dives", icon: BookOpen, color: "text-cyan-500" },
-                        { title: "Cheatsheets", url: "/blog?category=cheatsheets", desc: "Quick reference commands & syntax", icon: FileSpreadsheet, color: "text-indigo-500" },
-                        { title: "Notes", url: "/blog?category=notes", desc: "Dev notes, configs & snippets", icon: Notebook, color: "text-emerald-500" },
-                        { title: "AI Tools", url: "/tools", desc: "Curated AI engineering stacks", icon: Wrench, color: "text-cyan-500" },
-                        { title: "About", url: "/about", desc: "Bio, portfolio & social profiles", icon: ChevronRight, color: "text-neutral-500" },
+                        { title: "Reference Library", url: "/notes", desc: "Cybersecurity guides & learning paths", icon: Notebook, color: "text-emerald-500" },
+                        { title: "Linux Hub", url: "/notes/linux", desc: "CLI, Kali, and host auditing", icon: Terminal, color: "text-emerald-500" },
+                        { title: "Web Security Hub", url: "/notes/web", desc: "OWASP, scanning, API security", icon: Globe, color: "text-cyan-500" },
+                        { title: "Blog", url: "/blog", desc: "Articles and updates", icon: BookOpen, color: "text-cyan-500" },
+                        { title: "Tools", url: "/tools", desc: "Security & AI tool directory", icon: Wrench, color: "text-cyan-500" },
                       ].map((nav, index) => {
                         const globalIdx = recents.length + index;
                         const isActive = globalIdx === selectedIndex;

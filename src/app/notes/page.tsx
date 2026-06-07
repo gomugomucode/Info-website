@@ -126,7 +126,7 @@ export default function NotesPage() {
       </header>
 
       {/* Structured learning paths */}
-      <section className="space-y-6">
+      <section id="learning-paths" className="space-y-6 scroll-mt-24">
         <h2 className="text-2xl font-bold text-neutral-900 dark:text-neutral-50">
           Structured Learning Paths
         </h2>

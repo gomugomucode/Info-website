@@ -10,10 +10,9 @@ import { CommandPalette } from "@/components/layout/command-palette";
 
 // Separated Navigation links structure
 const NAV_ITEMS = [
+  { name: "Learn", url: "/notes" },
   { name: "Blog", url: "/blog" },
-  { name: "Cheatsheets", url: "/blog?category=cheatsheets" },
-  { name: "Notes", url: "/notes" },
-  { name: "AI Tools", url: "/tools" },
+  { name: "Tools", url: "/tools" },
   { name: "About", url: "/about" },
 ];
 
@@ -23,16 +22,13 @@ function NavLinks() {
   const [hoveredIdx, setHoveredIdx] = React.useState<number | null>(null);
 
   const isActive = (url: string) => {
-    if (url === "/blog?category=cheatsheets") {
-      return pathname === "/blog" && searchParams.get("category") === "cheatsheets";
-    }
     if (url === "/notes") {
       return pathname === "/notes" || pathname.startsWith("/notes/");
     }
     if (url === "/blog") {
-      return pathname === "/blog" && !searchParams.get("category") && !searchParams.get("q");
+      return pathname === "/blog" || pathname.startsWith("/blog/");
     }
-    return pathname === url;
+    return pathname === url || pathname.startsWith(`${url}/`);
   };
 
   return (

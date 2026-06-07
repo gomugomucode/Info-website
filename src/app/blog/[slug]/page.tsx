@@ -21,7 +21,7 @@ import { DocsSidebar } from "@/components/blog/docs-sidebar";
 import { MobileTocDrawer } from "@/components/blog/mobile-toc-drawer";
 
 export async function generateStaticParams() {
-  const posts = getAllPosts();
+  const posts = getAllPosts(["blog", "cheatsheets"]);
   return posts.map((post) => ({
     slug: post.slug,
   }));
@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   try {
     const post = getPostBySlug(resolvedParams.slug);
     return {
-      title: `${post.frontmatter.title} | Developer Knowledge Base`,
+      title: post.frontmatter.title,
       description: post.frontmatter.description,
     };
   } catch (e) {

@@ -156,6 +156,13 @@ export function getLatestNotes(limit: number = 3): Post[] {
   return getAllPosts(["notes"]).slice(0, limit);
 }
 
+/** Featured notes, or most recent if none are marked featured */
+export function getFeaturedNotes(limit: number = 6): Post[] {
+  const notes = getAllPosts(["notes"]);
+  const featured = notes.filter((p) => p.frontmatter.featured);
+  return (featured.length > 0 ? featured : notes).slice(0, limit);
+}
+
 export function getRelatedPosts(currentPost: Post, limit: number = 2): Post[] {
   const allPosts = getAllPosts().filter((p) => p.slug !== currentPost.slug);
 

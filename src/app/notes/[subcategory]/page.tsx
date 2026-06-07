@@ -2,7 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Terminal, Network, Shield, Globe, Monitor, ArrowLeft, Home, ChevronRight, BookOpen, Clock, FileText, Search } from "lucide-react";
 import { getNotesBySubcategory } from "@/lib/mdx";
-import { absoluteUrl } from "@/lib/site";
+import { getLearningPathsForHub } from "@/lib/learning-paths";
+import { buildBreadcrumbSchema } from "@/lib/schemas";
+import { SITE_URL, absoluteUrl } from "@/lib/site";
 import { CategoryNotesList } from "./category-notes-list";
 
 interface SubcategoryData {
@@ -91,10 +93,15 @@ export async function generateMetadata({ params }: { params: Promise<{ subcatego
   }
 
   return {
-    title: `${data.title} Reference Hub | Anupam Baral`,
+    title: `${data.title} Hub`,
     description: data.longDescription,
     alternates: {
       canonical: absoluteUrl(`/notes/${sub}`),
+    },
+    openGraph: {
+      title: `${data.title} — Cybersecurity Learning Hub`,
+      description: data.longDescription,
+      url: absoluteUrl(`/notes/${sub}`),
     },
   };
 }
@@ -109,7 +116,16 @@ export default async function SubcategoryHubPage({ params }: { params: Promise<{
   }
 
   const posts = getNotesBySubcategory(subcategory);
+  const hubPaths = getLearningPathsForHub(subcategory);
   const CategoryIcon = subDetails.icon;
+  const subcategoryLabel =
+    subcategory.charAt(0).toUpperCase() + subcategory.slice(1);
+
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: "Home", url: SITE_URL },
+    { name: "Notes", url: absoluteUrl("/notes") },
+    { name: subcategoryLabel, url: absoluteUrl(`/notes/${subcategory}`) },
+  ]);
 
   // Calculate statistics
   const count = posts.length;
@@ -132,6 +148,11 @@ export default async function SubcategoryHubPage({ params }: { params: Promise<{
     }));
 
   return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
     <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10 sm:py-16 space-y-10">
       
       {/* Breadcrumbs */}
@@ -185,7 +206,61 @@ export default async function SubcategoryHubPage({ params }: { params: Promise<{
             </div>
           </div>
 
-          {/* Interactive Notes List (Filterable and searchable) */}
+          {hubPaths.length > 0 && (
+            <section className="space-y-4">
+              <h2 className="text-lg font-bold text-neutral-900 dark:text-neutral-50">
+                Recommended learning paths
+              </h2>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {hubPaths.map((path) => (
+                  <div
+                    key={path.id}
+                    className="p-5 rounded-2xl border border-neutral-200 dark:border-neutral-800 bg-neutral-50/50 dark:bg-neutral-950/20"
+                  >
+                    <h3 className="text-sm font-bold text-neutral-900 dark:text-neutral-100">
+                      {path.title}
+                    </h3>
+                    <p className="mt-1 text-xs text-neutral-500 dark:text-neutral-400">
+                      {path.description}
+                    </p>
+                    <ol className="mt-3 space-y-1.5">
+                      {path.steps
+                        .filter((step) =>
+                          step.href.startsWith(`/notes/${subcategory}/`),
+                        )
+                        .map((step, i) => (
+                          <li key={step.href}>
+                            <Link
+                              href={step.href}
+                              className="text-xs font-medium text-cyan-600 hover:underline dark:text-cyan-400"
+                            >
+                              {i + 1}. {step.title}
+                            </Link>
+                          </li>
+                        ))}
+                      {path.steps
+                        .filter(
+                          (step) =>
+                            !step.href.startsWith(`/notes/${subcategory}/`),
+                        )
+                        .slice(0, 2)
+                        .map((step) => (
+                          <li key={step.href}>
+                            <Link
+                              href={step.href}
+                              className="text-xs font-medium text-neutral-500 hover:text-cyan-600 dark:text-neutral-400 dark:hover:text-cyan-300"
+                            >
+                              → {step.title}
+                            </Link>
+                          </li>
+                        ))}
+                    </ol>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
           <CategoryNotesList initialPosts={posts} subcategory={subcategory} themeColor={subDetails.themeColor} />
           
         </div>
@@ -224,25 +299,26 @@ export default async function SubcategoryHubPage({ params }: { params: Promise<{
 
           {/* Lead capture sidebar magnet placeholder */}
           <div className="p-6 rounded-2xl border border-cyan-500/20 bg-gradient-to-br from-cyan-500/10 to-teal-500/5 dark:from-cyan-950/20 dark:to-teal-950/10 text-center space-y-4">
-            <Shield className="h-8 w-8 text-cyan-500 mx-auto" />
+            <BookOpen className="h-8 w-8 text-cyan-500 mx-auto" />
             <div className="space-y-1">
               <h3 className="text-xs font-bold text-neutral-900 dark:text-neutral-50 uppercase tracking-wider">
-                Production-Ready Kit
+                Full Reference Library
               </h3>
               <p className="text-[11px] leading-relaxed text-neutral-500 dark:text-neutral-400">
-                Download the Docker + FastAPI Security Hardening boilerplate.
+                Browse all topic hubs, learning paths, and cross-linked guides.
               </p>
             </div>
             <Link
-              href="/blog/api-gateway-security-implementation-and-best-practices"
+              href="/notes"
               className="inline-flex justify-center w-full rounded-lg bg-cyan-600 hover:bg-cyan-500 px-3 py-2 text-xs font-semibold text-white transition-colors"
             >
-              Access Resource
+              View All Notes
             </Link>
           </div>
         </aside>
         
       </div>
     </div>
+    </>
   );
 }
