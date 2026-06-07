@@ -19,28 +19,28 @@ Port scanning generates active network traffic. Ensure you have explicit authori
 
 | Scan Strategy | Command Syntax | Use Case / Security Insight |
 | --- | --- | --- |
-| **SYN Stealth Scan** | `nmap -sS -p- <target>` | Default scan. Sends SYN packets, analyzes responses. |
-| **TCP Connect Scan** | `nmap -sT -p <ports> <target>` | Completes 3-way handshake. Used when raw sockets are restricted. |
-| **UDP Scan** | `nmap -sU -p <ports> <target>` | Audits UDP services (DNS, DHCP, NTP). Slow but critical. |
-| **Service Enumeration** | `nmap -sV -O <target>` | Queries ports to detect software versions and OS. |
-| **Safe Scripting Scan** | `nmap -sC <target>` | Runs safe, default scripts to audit system configurations. |
+| **SYN Stealth Scan** | `nmap -s S -p- <target>` | Default scan. Sends SYN packets, analyzes responses. |
+| **TCP Connect Scan** | `nmap -s T -p <ports> <target>` | Completes 3-way handshake. Used when raw sockets are restricted. |
+| **UDP Scan** | `nmap -s U -p <ports> <target>` | Audits UDP services (DNS, DHCP, NTP). Slow but critical. |
+| **Service Enumeration** | `nmap -s V -O <target>` | Queries ports to detect software versions and OS. |
+| **Safe Scripting Scan** | `nmap -s C <target>` | Runs safe, default scripts to audit system configurations. |
 ## 1. Core Scanning Methods
 Selecting the correct scan mode is key to performing efficient network audits.
 ### SYN Stealth Scan
 To perform a full TCP port scan using the stealthy half-open connection model:
-<TerminalCommand cmd="nmap -sS -p- 192.168.1.1" />
-*   `-sS`: Execute a TCP SYN scan. Does not complete the 3-way handshake.
+<Terminal Command cmd="nmap -s S -p- 192.168.1.1" />
+*   `-s S`: Execute a TCP SYN scan. Does not complete the 3-way handshake.
 *   `-p-`: Scan all 65,535 TCP ports.
 ### TCP Connect Scan
 When running under user privilege levels that restrict opening raw sockets, use a TCP Connect scan:
-<TerminalCommand cmd="nmap -sT -p 22,80,443 192.168.1.1" />
-*   `-sT`: Complete the full TCP handshake. Highly visible in application server logs.
+<Terminal Command cmd="nmap -s T -p 22,80,443 192.168.1.1" />
+*   `-s T`: Complete the full TCP handshake. Highly visible in application server logs.
 ## 2. Service and OS Detection
 Verifying what version of software is running helps locate outdated and vulnerable software deployments.
 ### Enumerating Version Details
 To query active ports and gather banner details:
-<TerminalCommand cmd="nmap -sV -O 192.168.1.1" />
-*   `-sV`: Probe open ports to determine service name and version details.
+<Terminal Command cmd="nmap -s V -O 192.168.1.1" />
+*   `-s V`: Probe open ports to determine service name and version details.
 *   `-O`: Analyze TCP response packet parameters to identify the operating system.
 ## 3. Defensive Insight: Detecting Network Scans
 As a system defender, you should understand how security tools detect scans.
@@ -56,4 +56,3 @@ This content is provided strictly for educational purposes, defensive security a
 Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
 
 ---
-

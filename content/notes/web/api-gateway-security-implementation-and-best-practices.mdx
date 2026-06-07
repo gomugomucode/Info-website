@@ -10,9 +10,11 @@ readingTime: "33 min read"
 ---
 
 # API Gateway Security Implementation and Best Practices
-> [!IMPORTANT]
-> **Defensive & Authorized Auditing Purposes Only**
-> This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
+
+<Callout type="warning" title="Defensive & Authorized Auditing Purposes Only">
+This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
+</Callout>
+
 Introduction............................................................................................................................3
 API Gateway Security Architecture......................................................................................4
 Understanding the API Gateway Security Perimeter.........................................................4
@@ -60,7 +62,7 @@ Understanding the API Gateway Security Perimeter
 An effective API gateway security architecture implements multiple layers of
 defense to protect against various diagnostic run vectors:
 │                      Internet                               │
-│                    DDoS Protection                          │
+│                    DDo S Protection                          │
 │                      WAF Layer                              │
 │                    API Gateway Layer                        │
 │  │ Authentication│  │  Rate Limiting │  │ Input         │   │
@@ -92,13 +94,13 @@ const app = express();
 // Apply security headers
 app.use(helmet());
 // TLS options with modern cipher suites and protocols
-const tlsOptions = &#123;
-  key: fs.readFileSync('/path/to/private.key'),
-  cert: fs.readFileSync('/path/to/certificate.crt'),
-  ca: fs.readFileSync('/path/to/ca_bundle.crt'),
-  minVersion: 'TLSv1.2',
-  preferServerCipherSuites: true,
-  cipherSuites: [
+const tls Options = &#123;
+  key: fs.read File Sync('/path/to/private.key'),
+  cert: fs.read File Sync('/path/to/certificate.crt'),
+  ca: fs.read File Sync('/path/to/ca_bundle.crt'),
+  min Version: 'TLSv1.2',
+  prefer Server Cipher Suites: true,
+  cipher Suites: [
     'TLS_AES_256_GCM_SHA384',
     'TLS_CHACHA20_POLY1305_SHA256',
     'TLS_AES_128_GCM_SHA256',
@@ -109,9 +111,9 @@ const tlsOptions = &#123;
     'ECDHE-ECDSA-AES128-GCM-SHA256',
     'ECDHE-RSA-AES128-GCM-SHA256'
   // Enable OCSP stapling
-  requestOCSP: true
+  request OCSP: true
 // Create HTTPS server with secure TLS configuration
-const server = https.createServer(tlsOptions, app);
+const server = https.create Server(tls Options, app);
 server.listen(443, () =&gt; &#123;
   console.log('API Gateway running on port 443');
 Best Practices for TLS:
@@ -119,70 +121,70 @@ Best Practices for TLS:
 ● Implement automatic certificate rotation with short-lived certificates
 ● Use OCSP stapling to improve performance and privacy
 ● Implement HTTP Strict Transport Security (HSTS)
-● Consider using mutual TLS (mTLS) for B2B integrations
+● Consider using mutual TLS (m TLS) for B2B integrations
 2. Authentication and Identity Management
 API gateways should implement robust, standardized authentication
 mechanisms:
 // Example Spring Cloud Gateway Authentication Filter
 @Component
-public class JwtAuthenticationFilter implements GatewayFilter &#123;
-    private final JwtTokenValidator tokenValidator;
-    private final ReactiveAuthenticationManager authManager;
-    public JwtAuthenticationFilter(JwtTokenValidator tokenValidator,
-                                  ReactiveAuthenticationManager authManager) &#123;
-        this.tokenValidator = tokenValidator;
-        this.authManager = authManager;
+public class Jwt Authentication Filter implements Gateway Filter &#123;
+    private final Jwt Token Validator token Validator;
+    private final Reactive Authentication Manager auth Manager;
+    public Jwt Authentication Filter(Jwt Token Validator token Validator,
+                                  Reactive Authentication Manager auth Manager) &#123;
+        this.token Validator = token Validator;
+        this.auth Manager = auth Manager;
     @Override
-    public Mono&lt;Void&gt; filter(ServerWebExchange exchange, GatewayFilterChain
+    public Mono&lt;Void&gt; filter(Server Web Exchange exchange, Gateway Filter Chain
 chain) &#123;
-        ServerHttpRequest request = exchange.getRequest();
+        Server Http Request request = exchange.get Request();
         // Extract JWT token from Authorization header
-        List&lt;String&gt; authHeader = request.getHeaders().get("Authorization");
-        if (authHeader != null && !authHeader.isEmpty()) &#123;
-            String authToken = authHeader.get(0);
-            if (authToken.startsWith("Bearer ")) &#123;
-                String token = authToken.substring(7);
+        List&lt;String&gt; auth Header = request.get Headers().get("Authorization");
+        if (auth Header != null && !auth Header.is Empty()) &#123;
+            String auth Token = auth Header.get(0);
+            if (auth Token.starts With("Bearer ")) &#123;
+                String token = auth Token.substring(7);
                 // Validate token format, signature, expiration, etc.
-                return tokenValidator.validateToken(token)
-                    .flatMap(tokenDetails -&gt; &#123;
+                return token Validator.validate Token(token)
+                    .flat Map(token Details -&gt; &#123;
                         // Convert to Authentication object
-                        JwtAuthenticationToken auth =
-                            new JwtAuthenticationToken(token,
-tokenDetails.getClaims());
+                        Jwt Authentication Token auth =
+                            new Jwt Authentication Token(token,
+token Details.get Claims());
                         // Authenticate through reactive authentication manager
-                        return authManager.authenticate(auth)
-                            .flatMap(authentication -&gt; &#123;
+                        return auth Manager.authenticate(auth)
+                            .flat Map(authentication -&gt; &#123;
                                 // Add authentication to the security context
-                                SecurityContextImpl securityContext = new
-SecurityContextImpl();
-securityContext.setAuthentication(authentication);
+                                Security Context Impl security Context = new
+Security Context Impl();
+security Context.set Authentication(authentication);
                                 // Modify request with authenticated user info
-                                ServerHttpRequest mutatedRequest =
+                                Server Http Request mutated Request =
 request.mutate()
                                     .header("X-User-ID",
-tokenDetails.getSubject())
+token Details.get Subject())
                                     .header("X-User-Roles", String.join(",",
-tokenDetails.getRoles()))
+token Details.get Roles()))
                                     .build();
                                 // Continue with modified request
                                 return chain.filter(exchange.mutate()
-                                    .request(mutatedRequest)
+                                    .request(mutated Request)
                                     .build());
-                    .onErrorResume(error -&gt; &#123;
+                    .on Error Resume(error -&gt; &#123;
                         // Handle authentication errors
-exchange.getResponse().setStatusCode(HttpStatus. UNAUTHORIZED);
-exchange.getResponse().getHeaders().add("WWW-Authenticate",
+exchange.get Response().set Status Code(Http Status. UNAUTHORIZED);
+exchange.get Response().get Headers().add("WWW-Authenticate",
                             "Bearer error=\"invalid_token\"");
-                        return exchange.getResponse().setComplete();
+                        return exchange.get Response().set Complete();
         // No token provided - reject if this endpoint requires authentication
-        if (isSecuredEndpoint(request.getPath().toString())) &#123;
-            exchange.getResponse().setStatusCode(HttpStatus. UNAUTHORIZED);
-            exchange.getResponse().getHeaders().add("WWW-Authenticate",
+        if (is Secured Endpoint(request.get Path().to String())) &#123;
+            exchange.get Response().set Status Code(Http Status. UNAUTHORIZED);
+            exchange.get Response().get Headers().add("WWW-Authenticate",
 "Bearer");
-            return exchange.getResponse().setComplete();
+            return exchange.get Response().set Complete();
         // Endpoint doesn't require authentication
         return chain.filter(exchange);
-    private boolean isSecuredEndpoint(String path) &#123;
+    private boolean is Secured Endpoint(String path) &#123;
         // Logic to determine if path requires authentication Implementation Strategies:
 1. JWT Authentication:
 ○ Use RS256 (RSA) rather than HS256 (HMAC) for signature verification
@@ -190,7 +192,7 @@ exchange.getResponse().getHeaders().add("WWW-Authenticate",
 ○ Implement token revocation capabilities
 ○ Validate token claims (iss, aud, exp, nbf, iat)
 ○ Store minimal information in tokens to reduce exposure
-2. OAuth 2.0 and OpenID Connect:
+2. OAuth 2.0 and Open ID Connect:
 ○ Implement complete OAuth flow with separate authorization server
 ○ Use PKCE (Proof Key for Code Exchange) for public clients
 ○ Implement strict redirect_uri validation
@@ -264,92 +266,92 @@ package ratelimit
     "net/http"
     "time"
     "github.com/redis/go-redis/v9"
-// RateLimiter manages API rate limiting using Redis
-type RateLimiter struct &#123;
-    redisClient *redis. Client
-// RateLimitConfig defines rate limiting parameters
-type RateLimitConfig struct &#123;
-    RequestsPerMinute int
-    BurstSize         int
-    ClientIdentifier  string   // IP, API key, user ID
-    PathPatterns      []string // Which paths this config applies to
+// Rate Limiter manages API rate limiting using Redis
+type Rate Limiter struct &#123;
+    redis Client *redis. Client
+// Rate Limit Config defines rate limiting parameters
+type Rate Limit Config struct &#123;
+    Requests Per Minute int
+    Burst Size         int
+    Client Identifier  string   // IP, API key, user ID
+    Path Patterns      []string // Which paths this config applies to
     Methods           []string // HTTP methods this config applies to
-// NewRateLimiter creates a new rate limiter with Redis backend
-func NewRateLimiter(redisURL string) (*RateLimiter, error) &#123;
-    options, err := redis. ParseURL(redisURL)
+// New Rate Limiter creates a new rate limiter with Redis backend
+func New Rate Limiter(redis URL string) (*Rate Limiter, error) &#123;
+    options, err := redis. Parse URL(redis URL)
     if err != nil &#123;
         return nil, err
-    client := redis. NewClient(options)
-    return &RateLimiter&#123;
-        redisClient: client,
+    client := redis. New Client(options)
+    return &Rate Limiter&#123;
+        redis Client: client,
     &#125;, nil
-// CheckRateLimit verifies if the request is within rate limits
-func (rl *RateLimiter) CheckRateLimit(ctx context. Context, config
-RateLimitConfig) (bool, int, time. Time, error) &#123;
+// Check Rate Limit verifies if the request is within rate limits
+func (rl *Rate Limiter) Check Rate Limit(ctx context. Context, config
+Rate Limit Config) (bool, int, time. Time, error) &#123;
     // Use sliding window algorithm for rate limiting
     now := time. Now()
-    windowKey := config. ClientIdentifier + ":" + now. Format("2006-01-02-15-04")
+    window Key := config. Client Identifier + ":" + now. Format("2006-01-02-15-04")
     // Create a transaction
-    pipe := rl.redisClient. TxPipeline()
+    pipe := rl.redis Client. Tx Pipeline()
     // Increment the counter for this minute
-    countResult := pipe. Incr(ctx, windowKey)
+    count Result := pipe. Incr(ctx, window Key)
     // Set expiration for automatic cleanup
-    pipe. Expire(ctx, windowKey, 2*time. Minute)
+    pipe. Expire(ctx, window Key, 2*time. Minute)
     // Execute transaction
     _, err := pipe. Exec(ctx)
     if err != nil &#123;
         return false, 0, time. Time&#123;&#125;, err
-    // Get the current count, err := countResult. Result()
+    // Get the current count, err := count Result. Result()
     if err != nil &#123;
         return false, 0, time. Time&#123;&#125;, err
     // Calculate when the client can make another request
-    resetTime := now. Truncate(time. Minute). Add(time. Minute)
+    reset Time := now. Truncate(time. Minute). Add(time. Minute)
     // Check if we've exceeded the rate limit
-    if count &gt; int64(config. RequestsPerMinute) &#123;
+    if count &gt; int64(config. Requests Per Minute) &#123;
         // Rate limit exceeded
-        return false, int(count), resetTime, nil
+        return false, int(count), reset Time, nil
     // Request is allowed
-    return true, int(count), resetTime, nil
+    return true, int(count), reset Time, nil
 // Middleware implements HTTP middleware for rate limiting
-func (rl *RateLimiter) Middleware(config RateLimitConfig) func(http. Handler)
+func (rl *Rate Limiter) Middleware(config Rate Limit Config) func(http. Handler)
 http. Handler &#123;
     return func(next http. Handler) http. Handler &#123;
-        return http. HandlerFunc(func(w http. ResponseWriter, r *http. Request) &#123;
+        return http. Handler Func(func(w http. Response Writer, r *http. Request) &#123;
             // Determine client identifier (IP, API key, etc.)
-            clientID := getClientIdentifier(r, config. ClientIdentifier)
+            client ID := get Client Identifier(r, config. Client Identifier)
             // Check if this path and method should be rate limited
-            if !shouldRateLimit(r, config) &#123;
-                next. ServeHTTP(w, r)
+            if !should Rate Limit(r, config) &#123;
+                next. Serve HTTP(w, r)
                 return
             // Check rate limit
-            allowed, current, reset, err := rl. CheckRateLimit(r. Context(),
+            allowed, current, reset, err := rl. Check Rate Limit(r. Context(),
 config)
             if err != nil &#123;
                 // In case of errors, allow the request to proceed
                 // but log the error
-                logRateLimitError(err)
-                next. ServeHTTP(w, r)
+                log Rate Limit Error(err)
+                next. Serve HTTP(w, r)
                 return
             // Set rate limit headers
-            w. Header(). Set("X-RateLimit-Limit", fmt. Sprintf("%d",
-config. RequestsPerMinute))
-            w. Header(). Set("X-RateLimit-Remaining", fmt. Sprintf("%d",
-config. RequestsPerMinute-current))
-            w. Header(). Set("X-RateLimit-Reset", fmt. Sprintf("%d", reset. Unix()))
+            w. Header(). Set("X-Rate Limit-Limit", fmt. Sprintf("%d",
+config. Requests Per Minute))
+            w. Header(). Set("X-Rate Limit-Remaining", fmt. Sprintf("%d",
+config. Requests Per Minute-current))
+            w. Header(). Set("X-Rate Limit-Reset", fmt. Sprintf("%d", reset. Unix()))
             if !allowed &#123;
                 // Rate limit exceeded
                 w. Header(). Set("Retry-After", fmt. Sprintf("%d",
 int(reset. Sub(time. Now()). Seconds())))
-                http. Error(w, "Rate limit exceeded", http. StatusTooManyRequests)
+                http. Error(w, "Rate limit exceeded", http. Status Too Many Requests)
                 return
             // Proceed with the request
-            next. ServeHTTP(w, r)
+            next. Serve HTTP(w, r)
 // Helper functions
-func getClientIdentifier(r *http. Request, identifierType string) string &#123;
+func get Client Identifier(r *http. Request, identifier Type string) string &#123;
     // Implementation to get client identifier based on configuration
-func shouldRateLimit(r *http. Request, config RateLimitConfig) bool &#123;
+func should Rate Limit(r *http. Request, config Rate Limit Config) bool &#123;
     // Implementation to determine if request should be rate limited
-func logRateLimitError(err error) &#123;
+func log Rate Limit Error(err error) &#123;
     // Implementation to log rate limiting errors
 Advanced Rate Limiting Strategies:
 1. Multi-Dimensional Rate Limiting:
@@ -365,60 +367,60 @@ Advanced Rate Limiting Strategies:
 ○ Implement proper 429 (Too Many Requests) responses
 ○ Include Retry-After headers
 ○ Provide clear rate limit headers:
-■ X-RateLimit-Limit
-■ X-RateLimit-Remaining
-■ X-RateLimit-Reset
+■ X-Rate Limit-Limit
+■ X-Rate Limit-Remaining
+■ X-Rate Limit-Reset
 5. Input Validation and Threat Protection
 Robust input validation at the gateway level prevents many security test:
-// Example TypeScript validation middleware for API Gateway
-​import &#123; Request, Response, NextFunction &#125; from 'express';
-​import &#123; AJV, JSONSchemaType &#125; from 'ajv';
+// Example Type Script validation middleware for API Gateway
+​import &#123; Request, Response, Next Function &#125; from 'express';
+​import &#123; AJV, JSONSchema Type &#125; from 'ajv';
 ​import &#123; LRUCache &#125; from 'lru-cache';
 // Define interface for request data
-interface ProductRequest &#123;
+interface Product Request &#123;
   name: string;
   description: string;
   price: number;
   category: string;
   tags: string[];
 // JSON Schema for validation
-const productSchema: JSONSchemaType&lt;ProductRequest&gt; = &#123;
+const product Schema: JSONSchema Type&lt;Product Request&gt; = &#123;
   type: 'object',
   properties: &#123;
-    name: &#123; type: 'string', minLength: 1, maxLength: 100 &#125;,
-    description: &#123; type: 'string', maxLength: 2000 &#125;,
+    name: &#123; type: 'string', min Length: 1, max Length: 100 &#125;,
+    description: &#123; type: 'string', max Length: 2000 &#125;,
     price: &#123; type: 'number', minimum: 0 &#125;,
     category: &#123; type: 'string', enum: ['electronics', 'clothing', 'food',
 'other'] &#125;,
     tags: &#123;
       type: 'array',
-      items: &#123; type: 'string', pattern: '^[a-zA-Z0-9-_]+$', maxLength: 50 &#125;,
-      maxItems: 10
+      items: &#123; type: 'string', pattern: '^[a-z A-Z0-9-_]+$', max Length: 50 &#125;,
+      max Items: 10
   required: ['name', 'price', 'category'],
-  additionalProperties: false
+  additional Properties: false
 // Instantiate validator
-const ajv = new AJV(&#123; allErrors: true, removeAdditional: 'all' &#125;);
-const validate = ajv.compile(productSchema);
+const ajv = new AJV(&#123; all Errors: true, remove Additional: 'all' &#125;);
+const validate = ajv.compile(product Schema);
 // Cache for compiled schemas
-const schemaCache = new LRUCache&lt;string, ReturnType&lt;typeof ajv.compile&gt;&gt;(&#123;
+const schema Cache = new LRUCache&lt;string, Return Type&lt;typeof ajv.compile&gt;&gt;(&#123;
   max: 100,
   ttl: 1000 * 60 * 60, // 1 hour
 // Validation middleware
-​export function validateRequest(schemaName: string, schema: any) &#123;
+​export function validate Request(schema Name: string, schema: any) &#123;
   // Get or compile validator
-  let validator = schemaCache.get(schemaName);
+  let validator = schema Cache.get(schema Name);
   if (!validator) &#123;
     validator = ajv.compile(schema);
-    schemaCache.set(schemaName, validator);
-  return (req: Request, res: Response, next: NextFunction) =&gt; &#123;
+    schema Cache.set(schema Name, validator);
+  return (req: Request, res: Response, next: Next Function) =&gt; &#123;
     // Decide what to validate based on request type
-    const dataToValidate = req.method === 'GET' ? req.query : req.body;
+    const data To Validate = req.method === 'GET' ? req.query : req.body;
     // Perform validation
-    const valid = validator(dataToValidate);
+    const valid = validator(data To Validate);
     if (!valid) &#123;
       // Format validation errors
       const errors = validator.errors?.map(err =&gt; (&#123;
-        field: err.instancePath,
+        field: err.instance Path,
         message: err.message
       return res.status(400).json(&#123;
         error: 'Invalid request data',
@@ -426,30 +428,30 @@ const schemaCache = new LRUCache&lt;string, ReturnType&lt;typeof ajv.compile&gt;
     // Request is valid, continue
     next();
 // Sanitization middleware for additional protection
-​export function sanitizeRequest() &#123;
-  return (req: Request, res: Response, next: NextFunction) =&gt; &#123;
+​export function sanitize Request() &#123;
+  return (req: Request, res: Response, next: Next Function) =&gt; &#123;
     // Sanitize headers
-    const sanitizedHeaders = new Map&lt;string, string&gt;();
+    const sanitized Headers = new Map&lt;string, string&gt;();
     for (const [key, value] of Object.entries(req.headers)) &#123;
       // Remove any headers that might contain dangerous content
-      if (key.toLowerCase().startsWith('x-forwarded-')) &#123;
+      if (key.to Lower Case().starts With('x-forwarded-')) &#123;
         // Only allow from trusted proxies
-        if (isTrustedProxy(req.socket.remoteAddress)) &#123;
-          sanitizedHeaders.set(key, Array.isArray(value) ? value[0] : value as
+        if (is Trusted Proxy(req.socket.remote Address)) &#123;
+          sanitized Headers.set(key, Array.is Array(value) ? value[0] : value as
 string);
       &#125; else &#123;
-        sanitizedHeaders.set(key, Array.isArray(value) ? value[0] : value as
+        sanitized Headers.set(key, Array.is Array(value) ? value[0] : value as
 string);
     // Replace req.headers with sanitized headers
-    req.headers = sanitizedHeaders as any;
+    req.headers = sanitized Headers as any;
     // If using Express raw body parser, sanitize the raw body too
     if (req.body && typeof req.body === 'string') &#123;
-      req.body = sanitizeString(req.body);
+      req.body = sanitize String(req.body);
     next();
 // Helper functions
-function isTrustedProxy(ip: string | undefined): boolean &#123;
+function is Trusted Proxy(ip: string | undefined): boolean &#123;
   // Implementation to check if IP is a trusted proxy
-function sanitizeString(input: string): string &#123;
+function sanitize String(input: string): string &#123;
   // Implementation to sanitize string (remove control chars, etc.)
 Input Validation Security Guidelines:
 1. Schema-Based Validation:
@@ -462,7 +464,7 @@ Input Validation Security Guidelines:
 ○ XSS test vector detection
 ○ Command injection prevention
 ○ XML/JSON entity diagnostic run mitigation
-○ Regular expression denial of service (ReDoS) protection
+○ Regular expression denial of service (Re Do S) protection
 3. Content Security:
 ○ Enforce maximum request sizes
 ○ Validate Content-Type headers
@@ -471,7 +473,7 @@ Input Validation Security Guidelines:
 6. API Gateway Logging and Monitoring
 Comprehensive security monitoring is crucial for detecting and responding to
 security test:
-# Example OpenTelemetry configuration for API Gateway monitoring
+# Example Open Telemetry configuration for API Gateway monitoring
 receivers:
   otlp:
     protocols:
@@ -552,7 +554,7 @@ Security Monitoring and Logging Requirements:
 ■ Authentication failures
 ■ Unexpected API usage patterns
 ○ Set up alerting for security-related events
-○ Monitor response times as indicators of potential DoS
+○ Monitor response times as indicators of potential Do S
 3. Security Analytics:
 ○ Aggregate logs for security analysis
 ○ Implement behavior-based threat detection
@@ -584,7 +586,7 @@ Secure Deployment Practices:
 ○ Use cloud provider security services (AWS WAF, Azure Front Door,
 etc.)
 ○ Implement private endpoints for backend connectivity
-○ Enable DDoS protection services
+○ Enable DDo S protection services
 ○ Apply appropriate IAM controls
 Secure API Gateway Configuration
 # Example Terraform configuration for secure API Gateway in AWS
@@ -593,7 +595,7 @@ resource "aws_api_gateway_rest_api" "secure_api" &#123;
   description = "Secure API Gateway with comprehensive security controls"
   endpoint_configuration &#123;
     types = ["REGIONAL"]
-  # Enable detailed CloudWatch metrics
+  # Enable detailed Cloud Watch metrics
   minimum_compression_size = 1024
   policy = jsonencode(&#123;
     Version = "2012-10-17"
@@ -603,8 +605,8 @@ resource "aws_api_gateway_rest_api" "secure_api" &#123;
         Action = "execute-api:Invoke"
         Resource = "execute-api:/*"
         Condition = &#123;
-          IpAddress = &#123;
-            "aws:SourceIp" = var.allowed_ip_ranges
+          Ip Address = &#123;
+            "aws:Source Ip" = var.allowed_ip_ranges
 # Configure API Gateway WAF
 resource "aws_wafv2_web_acl" "api_waf" &#123;
   name        = "api-gateway-waf"
@@ -614,7 +616,7 @@ resource "aws_wafv2_web_acl" "api_waf" &#123;
     allow &#123;&#125;
   # SQL injection prevention
   rule &#123;
-    name     = "SQLInjectionRule"
+    name     = "SQLInjection Rule"
     priority = 1
     statement &#123;
       sql_injection_match_statement &#123;
@@ -627,11 +629,11 @@ resource "aws_wafv2_web_acl" "api_waf" &#123;
       block &#123;&#125;
     visibility_config &#123;
       cloudwatch_metrics_enabled = true
-      metric_name                = "SQLInjectionRule"
+      metric_name                = "SQLInjection Rule"
       sampled_requests_enabled   = true
   # Rate-based rule (IP-based rate limiting)
   rule &#123;
-    name     = "RateLimitRule"
+    name     = "Rate Limit Rule"
     priority = 2
     statement &#123;
       rate_based_statement &#123;
@@ -641,7 +643,7 @@ resource "aws_wafv2_web_acl" "api_waf" &#123;
       block &#123;&#125;
     visibility_config &#123;
       cloudwatch_metrics_enabled = true
-      metric_name                = "RateLimitRule"
+      metric_name                = "Rate Limit Rule"
       sampled_requests_enabled   = true
   # Prevent XSS security test
   rule &#123;
@@ -662,7 +664,7 @@ resource "aws_wafv2_web_acl" "api_waf" &#123;
       sampled_requests_enabled   = true
   visibility_config &#123;
     cloudwatch_metrics_enabled = true
-    metric_name                = "ApiGatewayWaf"
+    metric_name                = "Api Gateway Waf"
     sampled_requests_enabled   = true
 # Associate WAF with API Gateway stage
 resource "aws_wafv2_web_acl_association" "api_waf_assoc" &#123;
@@ -673,27 +675,27 @@ resource "aws_api_gateway_stage" "production" &#123;
   deployment_id = aws_api_gateway_deployment.latest.id
   rest_api_id   = aws_api_gateway_rest_api.secure_api.id
   stage_name    = "production"
-  # Enable detailed CloudWatch logs
+  # Enable detailed Cloud Watch logs
   access_log_settings &#123;
     destination_arn = aws_cloudwatch_log_group.api_gateway.arn
     format = jsonencode(&#123;
-      requestId               = "$context.requestId"
-      ip                      = "$context.identity.sourceIp"
-      requestTime             = "$context.requestTime"
-      httpMethod              = "$context.httpMethod"
-      resourcePath            = "$context.resourcePath"
+      request Id               = "$context.request Id"
+      ip                      = "$context.identity.source Ip"
+      request Time             = "$context.request Time"
+      http Method              = "$context.http Method"
+      resource Path            = "$context.resource Path"
       status                  = "$context.status"
       protocol                = "$context.protocol"
-      responseLength          = "$context.responseLength"
-      integrationError        = "$context.integrationErrorMessage"
-      authorizerError         = "$context.authorizer.error"
-      authorizerLatency       = "$context.authorizer.latency"
-      authorizerStatus        = "$context.authorizer.status"
-      userAgent               = "$context.identity.userAgent"
-      apiKeyId                = "$context.identity.apiKeyId"
-      cognitoAuthenticationType = "$context.identity.cognitoAuthenticationType"
-      cognitoIdentityId       = "$context.identity.cognitoIdentityId"
-      cognitoIdentityPoolId   = "$context.identity.cognitoIdentityPoolId"
+      response Length          = "$context.response Length"
+      integration Error        = "$context.integration Error Message"
+      authorizer Error         = "$context.authorizer.error"
+      authorizer Latency       = "$context.authorizer.latency"
+      authorizer Status        = "$context.authorizer.status"
+      user Agent               = "$context.identity.user Agent"
+      api Key Id                = "$context.identity.api Key Id"
+      cognito Authentication Type = "$context.identity.cognito Authentication Type"
+      cognito Identity Id       = "$context.identity.cognito Identity Id"
+      cognito Identity Pool Id   = "$context.identity.cognito Identity Pool Id"
   # Enable X-Ray tracing
   xray_tracing_enabled = true
   # Configure throttling for all methods
@@ -746,7 +748,7 @@ location or asset ownership. For API gateways, this means:
 │ Authentication    │ │ Policy        │ │ Traffic           │
 Key Zero Trust Implementation Strategies for API Gateways:
 1. Strong Identity Verification:
-○ Implement mutual TLS (mTLS) between clients and gateways
+○ Implement mutual TLS (m TLS) between clients and gateways
 ○ Use strong authentication mechanisms (OAuth 2.0, OIDC)
 ○ Validate client certificates against trusted CAs
 ○ Enforce regular credential rotation
@@ -783,13 +785,13 @@ static_resources:
         typed_config:
           "@type":
 type.googleapis.com/envoy.extensions.filters.network.http_connection_manager.v3.
-HttpConnectionManager
+Http Connection Manager
           stat_prefix: ingress_http
           access_log:
           - name: envoy.access_loggers.file
             typed_config:
               "@type":
-type.googleapis.com/envoy.extensions.access_loggers.file.v3. FileAccessLog
+type.googleapis.com/envoy.extensions.access_loggers.file.v3. File Access Log
               path: /dev/stdout
               format: |
                 [%START_TIME%] "%REQ(:METHOD)%
@@ -809,7 +811,7 @@ type.googleapis.com/envoy.extensions.access_loggers.file.v3. FileAccessLog
           - name: envoy.filters.http.jwt_authn
             typed_config:
               "@type":
-type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3. JwtAuthentication
+type.googleapis.com/envoy.extensions.filters.http.jwt_authn.v3. Jwt Authentication
               providers:
                 primary_jwt:
                   issuer: https://auth.example.com
@@ -861,7 +863,7 @@ type.googleapis.com/envoy.extensions.filters.http.rbac.v3. RBAC
           - name: envoy.filters.http.ext_authz
             typed_config:
               "@type":
-type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3. ExtAuthz
+type.googleapis.com/envoy.extensions.filters.http.ext_authz.v3. Ext Authz
               transport_api_version: V3
               with_request_body:
                 max_request_bytes: 8192
@@ -927,24 +929,24 @@ Modern API gateways require sophisticated threat protection capabilities:
 from dataclasses import dataclass
 from enum import Enum
 from typing import Dict, List, Optional, Pattern, Set, Tuple, Union
-class RuleAction(Enum):
+class Rule Action(Enum):
     ALLOW = "allow"
     BLOCK = "block"
     MONITOR = "monitor"
     CHALLENGE = "challenge"
-class RuleSeverity(Enum):
+class Rule Severity(Enum):
     LOW = "low"
     MEDIUM = "medium"
     HIGH = "high"
     CRITICAL = "critical"
 @dataclass
-class WafRule:
+class Waf Rule:
     id: str
     name: str
     description: str
     patterns: List[Pattern]
-    action: RuleAction
-    severity: RuleSeverity
+    action: Rule Action
+    severity: Rule Severity
     targets: Set[str]  # e.g. "body", "query", "headers", "uri"
     def evaluate(self, request_data: Dict[str, str]) -&gt; Tuple[bool,
 Optional[str]]:
@@ -958,13 +960,13 @@ Optional[str]]:
                     return True, f"Rule &#123;self.id&#125;: &#123;self.name&#125; matched &#123;target&#125;"
         return False, None
 # Example WAF rule implementation
-class ApiWaf:
+class Api Waf:
     def __init__(self):
-        self.rules: List[WafRule] = []
+        self.rules: List[Waf Rule] = []
         self._initialize_rules()
     def _initialize_rules(self):
         # SQL Injection rules
-        self.rules.append(WafRule(
+        self.rules.append(Waf Rule(
             id="sql-001",
             name="SQL Injection - Basic",
             description="Detects basic SQL injection attempts",
@@ -974,11 +976,11 @@ re.compile(r"(?i)('|\")?\s*(OR|AND)\s*('|\")?\s*\d+\s*=\s*\d+\s*--"),
                 re.compile(r"(?i)UNION\s+SELECT"),
                 re.compile(r"(?i)SELECT\s+.*FROM\s+information_schema"),
                 re.compile(r"(?i)INSERT\s+INTO.*VALUES")
-            action=RuleAction. BLOCK,
-            severity=RuleSeverity. HIGH,
+            action=Rule Action. BLOCK,
+            severity=Rule Severity. HIGH,
             targets=&#123;"body", "query", "uri"&#125;
         # XSS rules
-        self.rules.append(WafRule(
+        self.rules.append(Waf Rule(
             id="xss-001",
             name="Cross-Site Scripting - Basic",
             description="Detects basic XSS attempts",
@@ -989,31 +991,31 @@ re.compile(r"(?i)('|\")?\s*(OR|AND)\s*('|\")?\s*\d+\s*=\s*\d+\s*--"),
                 re.compile(r"(?i)onload="),
                 re.compile(r"(?i)eval\("),
                 re.compile(r"(?i)document\.cookie")
-            action=RuleAction. BLOCK,
-            severity=RuleSeverity. HIGH,
+            action=Rule Action. BLOCK,
+            severity=Rule Severity. HIGH,
             targets=&#123;"body", "query", "uri"&#125;
         # JWT diagnostic run rules
-        self.rules.append(WafRule(
+        self.rules.append(Waf Rule(
             id="jwt-001",
             name="JWT None Algorithm diagnostic run",
             description="Detects JWT None algorithm security test",
             patterns=[
-re.compile(r"eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]&#123;0,3&#125;$")
-            action=RuleAction. BLOCK,
-            severity=RuleSeverity. CRITICAL,
+re.compile(r"ey J[a-z A-Z0-9_-]*\.ey J[a-z A-Z0-9_-]*\.[a-z A-Z0-9_-]&#123;0,3&#125;$")
+            action=Rule Action. BLOCK,
+            severity=Rule Severity. CRITICAL,
             targets=&#123;"headers"&#125;
-        # GraphQL Introspection
-        self.rules.append(WafRule(
+        # Graph QL Introspection
+        self.rules.append(Waf Rule(
             id="graphql-001",
-            name="GraphQL Introspection Query",
-            description="Detects GraphQL introspection queries",
+            name="Graph QL Introspection Query",
+            description="Detects Graph QL introspection queries",
             patterns=[
                 re.compile(r'(?i)query\s+[^&#123;]*&#123;?\s*__schema')
-            action=RuleAction. MONITOR,
-            severity=RuleSeverity. MEDIUM,
+            action=Rule Action. MONITOR,
+            severity=Rule Severity. MEDIUM,
             targets=&#123;"body"&#125;
         # Command Injection
-        self.rules.append(WafRule(
+        self.rules.append(Waf Rule(
             id="cmd-001",
             name="Command Injection",
             description="Detects OS command injection attempts",
@@ -1021,19 +1023,19 @@ re.compile(r"eyJ[a-zA-Z0-9_-]*\.eyJ[a-zA-Z0-9_-]*\.[a-zA-Z0-9_-]&#123;0,3&#125;$
 re.compile(r"(?i)[;|&]?\s*(cat|ls|pwd|whoami|wget|curl|nc|bash|sh|sudo|chmod)"),
 re.compile(r"(?i)[;|&]?\s*(cmd\.exe|powershell|net\s+user|systeminfo|tasklist)")
                 re.compile(r"(?i)/etc/(passwd|shadow|hosts)")
-            action=RuleAction. BLOCK,
-            severity=RuleSeverity. CRITICAL,
+            action=Rule Action. BLOCK,
+            severity=Rule Severity. CRITICAL,
             targets=&#123;"body", "query", "uri"&#125;
         # API-specific security test
-        self.rules.append(WafRule(
+        self.rules.append(Waf Rule(
             id="api-001",
             name="Excessive API Nesting",
             description="Detects excessively nested API fields that could lead
-to DoS",
+to Do S",
             patterns=[
                 re.compile(r"[^&#123;&#125;]*(\&#123;[^&#123;&#125;]*)&#123;5,&#125;")
-            action=RuleAction. BLOCK,
-            severity=RuleSeverity. MEDIUM,
+            action=Rule Action. BLOCK,
+            severity=Rule Severity. MEDIUM,
             targets=&#123;"body"&#125;
     def evaluate_request(self, request_data: Dict[str, str]) -&gt; List[Dict]:
         """Evaluate all rules against the request."""
@@ -1048,12 +1050,12 @@ to DoS",
                     "action": rule.action.value,
                     "message": message
                 # If any blocking rule matches, return immediately
-                if rule.action == RuleAction. BLOCK:
+                if rule.action == Rule Action. BLOCK:
                     return results
 # Example middleware usage
 def waf_middleware(request):
     """Example middleware for WAF implementation."""
-    waf = ApiWaf()
+    waf = Api Waf()
     # Construct request data for WAF evaluation
     request_data = &#123;
         "uri": request.path,
@@ -1088,7 +1090,7 @@ Advanced API Threat Protection Strategies:
 ○ Protect against parameter tampering
 ○ Identify business process abuse
 3. API-Specific Protections:
-○ GraphQL query depth and complexity limitations
+○ Graph QL query depth and complexity limitations
 ○ REST resource exhaustion protection
 ○ SOAP XML entity diagnostic run prevention
 ○ API parameter pollution detection
@@ -1237,7 +1239,7 @@ validation
 ○ Traditional: Network perimeters, segments
 ○ API gateways: Service boundaries, fine-grained API controls
 5. Threat Models:
-○ Traditional: Network-based security test (DDoS, port scanning)
+○ Traditional: Network-based security test (DDo S, port scanning)
 ○ API gateways: API-specific security test (injection, broken authentication,
 excessive data exposure)
 What are the security considerations for transitioning
@@ -1285,7 +1287,7 @@ A comprehensive API gateway security testing program should include:
 ○ JWT/OAuth implementation review
 4. Performance and Resilience Testing:
 ○ Rate limiting effectiveness
-○ DDoS resilience
+○ DDo S resilience
 ○ Failover and circuit breaking
 ○ Resource exhaustion testing
 5. Runtime Security Validation:
@@ -1362,7 +1364,7 @@ Key takeaways from this guide include:
 1. Defense-in-Depth: Implement multiple security layers including authentication,
 authorization, encryption, rate limiting, and threat protection.
 2. Standardized Controls: Leverage industry standards like OAuth 2.0, OIDC,
-and mTLS for authentication and authorization.
+and m TLS for authentication and authorization.
 3. Proactive Protection: Use advanced rate limiting, input validation, and
 API-specific threat protection to prevent security test.
 4. Comprehensive Monitoring: Implement detailed logging, monitoring, and
@@ -1384,4 +1386,3 @@ This content is provided strictly for educational purposes, defensive security a
 Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
 
 ---
-

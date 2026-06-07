@@ -10,9 +10,11 @@ readingTime: "162 min read"
 ---
 
 # Bug Bounty Playbook
-> [!IMPORTANT]
-> **Defensive & Authorized Auditing Purposes Only**
-> This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
+
+<Callout type="warning" title="Defensive & Authorized Auditing Purposes Only">
+This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
+</Callout>
+
 P a g e | 2
 Section 1: Pre Game 14
 Introduction 14
@@ -49,7 +51,7 @@ CVE Feed 29
 Introduction 29
 NIST 30
 Twitter 30
-GitHub 31
+Git Hub 31
 Conclusion 32
 RSS Feeds 32
 Introduction 32
@@ -85,7 +87,7 @@ CIDR 45
 IP 45
 Web Applications 46
 Conclusion 46
-GitHub Workflow 47
+Git Hub Workflow 47
 Introduction 47
 Workflow 47
 Conclusion 48
@@ -185,7 +187,7 @@ Forward DNS 89
 Introduction 89
 Rapid 7 Forward DNS 90
 Conclusion 90
-GitHub 91
+Git Hub 91
 Brute Force 92
 Introduction 92
 Gobuster 92
@@ -207,7 +209,7 @@ Wayback machine crawl data 102
 Common crawl data 104
 Directory brute force 105
 Conclusion 106
-Inspecting JavaScript Files 107
+Inspecting Java Script Files 107
 Introduction 107
 Link Finder 107
 Jssearch 108
@@ -243,10 +245,10 @@ Subdomain Takeover 132
 Introduction 132
 Subdomain Takeover 133
 Conclusion 135
-GitHub 135
+Git Hub 135
 Introduction 135
-GitHub Dorks 136
-Company GitHub 138
+Git Hub Dorks 136
+Company Git Hub 138
 Conclusion 141
 Misconfigured Cloud Storage Buckets 141
 Introduction 141
@@ -282,7 +284,7 @@ Conclusion 165
 Summary 165
 Chapter 10: defensive validation CMS 166
 Introduction 166
-WordPress 166
+Word Press 166
 Joomla 168
 Drupal 169
 Adobe AEM 170
@@ -424,7 +426,7 @@ Ghostlulz AKA Alex Thomas
 Laptop/Desktop
 People often ask “what is the best hardware for security auditing?” and my answer is
 always the same. It doesn't matter if your using a 10k rig or a $500 laptop you
-purchased off on eBay, as long as you have the tools to access the web, and the
+purchased off on e Bay, as long as you have the tools to access the web, and the
 minimums listed below you are good to go!  That being said, some minimum
 specs you can start with include any operating system, 8GB RAM, a 250GB hard
 drive, along with the information in this book will set you up to start hunting!
@@ -573,7 +575,7 @@ taking tool specifically
 designed for penetration
 tester. It’s fairly nice but it
 cost money to use to use.
-https://github.com/ehrishirajsharma/SwiftnessX This is another tool designed
+https://github.com/ehrishirajsharma/Swiftness X This is another tool designed
 specifically for penetration
 tester. Unlike pentest.ws this
 tool must be downloaded
@@ -677,12 +679,12 @@ will often be some of the first people share a working proof of concept (POC) fo
 a known CVE as shown below:
 As you can see someone shared a Joomla zero day with a working POC. This
 information can immediately be leveraged to find vulnerabilities.
-GitHub
+Git Hub
 One of the biggest issues with new CVEs is the lack of a working proof of
 concept (POC). Without a working POC, you will have to spend numerous man-
 hours writing a custom security diagnostic test. If you lack this skill set you will have to wait for a
 public POC to be released by someone else. These POCs will typically be
-uploaded to GitHub. It's a good idea to search GitHub for working POCs when a
+uploaded to Git Hub. It's a good idea to search Git Hub for working POCs when a
 new CVE comes out so you can immediately weaponize it.
 Figure 6: Twitter post of a Joomla CVE with POC
 Page  | 32
@@ -692,7 +694,7 @@ The key takeaway here is to establish a plan to receive real time updates on
 newly posted CVEs. Being the first person to know about a new security diagnostic test places
 you in a great position to identify and submit vulnerability before anyone else.
 Get in the habit of checking new CVEs every day. When a high severity CVE is
-found look on GitHub for a working POC so you can start targeting systems. If
+found look on Git Hub for a working POC so you can start targeting systems. If
 you have the knowledge it may be worth creating your own POC if none is
 available.
 RSS Feeds
@@ -796,7 +798,7 @@ far the most popular place to find infosec news and information.
 ● https://www.reddit.com/r/netsec/
 Other
 There are plenty of other social media platforms that contain useful information.
-You can also utilize YouTube, Facebook groups, slack channels, discord
+You can also utilize You Tube, Facebook groups, slack channels, discord
 channels, security auditing forums, podcasts, and much more.
 Page  | 36
 Ghostlulz AKA Alex Thomas
@@ -966,8 +968,8 @@ The final step in this recon process is to take the list of subdomains and IPs
 running a web application and perform fingerprinting and content discovery on
 them. You will need to know what technology runs on each endpoint. Properly
 fingerprinting your target is extremely important as it can directly lead to finding
-vulnerabilities. For instance, if you see a site is running WordPress you might run
-a WordPress scanner on it. If you see an Apache Struts page you might try some
+vulnerabilities. For instance, if you see a site is running Word Press you might run
+a Word Press scanner on it. If you see an Apache Struts page you might try some
 known CVEs for that, the list goes on. After your fingerprint the host you will want
 to perform content discovery. This means you will try to figure out what pages are
 on the target domain. This is typically done by crawling or performing a directory
@@ -980,11 +982,11 @@ are definitely some other tricks to the game but almost everyone follows this
 basic workflow to some degree.
 Page  | 47
 Ghostlulz AKA Alex Thomas
-GitHub Workflow
+Git Hub Workflow
 Introduction
 This is probably one of my favorite workflows because it’s so easy to perform and
 it has a high chance of producing critical severity findings if done properly.
-Almost every developer uses GitHub to store their source code. Sometimes
+Almost every developer uses Git Hub to store their source code. Sometimes
 developers will upload hard coded credentials in their source code and config
 files for the world to see. These can be used to do all kinds of things.
 Workflow
@@ -994,13 +996,13 @@ some may say it belongs in the security diagnostic test phase because the moment
 working credentials it becomes a vulnerability. However, I decided to put this in
 the recon phase because you must do a substantial amount of recon find these
 source code repositories.
-Figure 13: GitHub workflow flowchart
+Figure 13: Git Hub workflow flowchart
 Page  | 48
 Ghostlulz AKA Alex Thomas
 Conclusion
-Searching for sensitive information in GitHub is an up and coming technique that
+Searching for sensitive information in Git Hub is an up and coming technique that
 a lot of people are using to compromise organizations. Almost every developer
-uses GitHub to manage and store their source code. With a little recon you can
+uses Git Hub to manage and store their source code. With a little recon you can
 find these repositories and if you get lucky you will find some hard-coded
 credentials that can be used to login to their application or server. I have
 personally used this technique to pop multiple fortune 500 companies. You could
@@ -1077,7 +1079,7 @@ find these you will have to do that yourself. Once you have your database leaks
 the final step is to grep through these files for your target domain, something like
 “*@example.com”.  After that is completed you should have a list of emails with
 their associated clear text password.
-Figure 17: Parsing LinkedIn database leak for company credentials
+Figure 17: Parsing Linked In database leak for company credentials
 Some stuff has been blurred out but as you can see, we have a list of emails and
 their associated passwords. These credentials could then be used to login to an
 organization's SSH, VPN, email, or any other service that is exposed to the
@@ -1172,7 +1174,7 @@ This workflow is similar to known security diagnostic test/misconfiguration work
 specifically targeting content management systems (CMS). According to the
 company w3techs over half of the internet uses some kind of CMS.
 Figure 20: Percentage of internet using CMS
-WordPress alone runs over 30% of all sites on the internet. So being able to
+Word Press alone runs over 30% of all sites on the internet. So being able to
 properly probe these systems for vulnerabilities is vital as you are guaranteed to
 come across them in the wild.
 Page  | 58
@@ -1236,8 +1238,8 @@ Ghostlulz AKA Alex Thomas
 type of testing but I’m going to talk about it anyway because it’s a valuable
 technique to know.
 Workflow
-This workflow works well with the GitHub workflow and the leaked credentials
-workflow. If you find working credentials on GitHub or if you find a database leak
+This workflow works well with the Git Hub workflow and the leaked credentials
+workflow. If you find working credentials on Git Hub or if you find a database leak
 with the targets credentials you could spray those across all of their login
 services to see if they work. You could also build a list of default or common
 usernames and passwords and spray those across the target’s login services.
@@ -1259,7 +1261,7 @@ These workflows stay true regardless of what tool you use, though some tools
 may enhance your results.
 Everyone should master the traditional workflow which includes finding
 subdomains, IPs, fingerprinting endpoints, and other standard practices. This
-recon workflow is critical for other workflows to happen. The GitHub and cloud
+recon workflow is critical for other workflows to happen. The Git Hub and cloud
 workflow are excellent for finding vulnerabilities from the start, if you’re looking for
 quick dirty wins these are the workflows for you.
 The information gathered in the traditional workflow feeds the vast majority of the
@@ -1389,7 +1391,7 @@ server must be owned by Facebook, though you may find a few edge cases.
 Figure 26: DNS nameserver lookup
 It is important to note that this name server isn’t pointing to a generic name
 server like “ns1.godaddy.com”. There are hundreds of thousands of domains
-pointing to GoDaddy nameservers, it’s a generic name server that a lot of people
+pointing to Go Daddy nameservers, it’s a generic name server that a lot of people
 use. To perform reverse name server lookups the name server must be owned
 by the organization otherwise you will get a lot of false results.
 Page  | 72
@@ -1517,7 +1519,7 @@ Introduction
 Seclists from danielmiessler is a very popular source of different wordlists. If
 you’re looking for a good wordlist this should be the first place you look, chances
 are they have the wordlist you're looking for.
-● https://github.com/danielmiessler/SecLists
+● https://github.com/danielmiessler/Sec Lists
 Robots Disallow
 When performing directory brute force security test, I generally try to focus my efforts
 on finding interesting endpoints. I don't really care that there is an index.php
@@ -1525,8 +1527,8 @@ page, I want to know if there is something juicy that can lead to a quick win th
 can be accomplished with the robots disallow wordlist:
 Page  | 81
 Ghostlulz AKA Alex Thomas
-● https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-
-Content/RobotsDisallowed-Top1000.txt
+● https://github.com/danielmiessler/Sec Lists/blob/master/Discovery/Web-
+Content/Robots Disallowed-Top1000.txt
  As you know the robots.txt disallow directory is used to tell scraping bots such
 as google to not crawl certain files and file paths, this can be a good indication
 that they are trying to hide something. The robots disallow wordlists is a
@@ -1540,9 +1542,9 @@ and I can see why. The RAFT wordlists contains a large number of interesting
 filenames and directories. There are several different versions of this list ranging
 in size but I generally just go with the largest list. Make sure to use both the
 directories and files wordlist:
-● https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-
+● https://github.com/danielmiessler/Sec Lists/blob/master/Discovery/Web-
 Content/raft-large-directories.txt
-● https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-
+● https://github.com/danielmiessler/Sec Lists/blob/master/Discovery/Web-
 Content/raft-large-files.txt
 Technology Specific
 During the fingerprinting phase you will determine the technology stacks used by
@@ -1554,12 +1556,12 @@ technology. If you are running a directory brute force on a PHP application it
 doesn't make sense to use a wordlist that contains . ASP filenames as those are
 associated with . NET applications. Seclists contains specific wordlists for PHP,
 Golang, ASP, Apache, IIS, and a bunch more.
-Figure 36: Seclists GitHub repo
+Figure 36: Seclists Git Hub repo
 Page  | 83
 Ghostlulz AKA Alex Thomas
-There are also specific wordlists for CMSs. If you find a WordPress application it
+There are also specific wordlists for CMSs. If you find a Word Press application it
 would be a good idea to perform a directory brute force using a wordlist
-specifically made for WordPress.
+specifically made for Word Press.
 Conclusion
 Seclists is a one stop shop for wordlists. This repo will contain almost every
 wordlist you will need while hunting for bugs or performing a penetration test.
@@ -1643,7 +1645,7 @@ Ghostlulz AKA Alex Thomas
 Figure 39: Command line certificate transparency search
 If you want to use the command line for this checkout my tool I created to extract
 subdomains from cert.sh:
-● https://github.com/ghostlulzhacks/CertificateTransparencyLogs
+● https://github.com/ghostlulzhacks/Certificate Transparency Logs
 Conclusion
 Certificate transparency logs contain a list of all websites who request an SSL
 certificate for their domain. These logs were created to help spot forged
@@ -1686,15 +1688,15 @@ Page  | 91
 Ghostlulz AKA Alex Thomas
 belonging to our target. Although this process is slow, it will provide you with a
 large set of subdomains.
-GitHub
-Almost every developer uses GitHub to store their source code. Developers will
+Git Hub
+Almost every developer uses Git Hub to store their source code. Developers will
 often hard code private or hidden endpoint points in their source code. Scraping
-subdomains from GitHub is an excellent way to find hidden endpoints that other
+subdomains from Git Hub is an excellent way to find hidden endpoints that other
 methods would miss. This can be accomplished by using the following tool by
 gwen001:
 ● https://github.com/gwen001/github-search/blob/master/github-
 subdomains.py
-Figure 42: GitHub subdomain enumeration tool
+Figure 42: Git Hub subdomain enumeration tool
 Page  | 92
 Ghostlulz AKA Alex Thomas
 This is an amazing technique and you should definitely incorporate it into your
@@ -1836,10 +1838,10 @@ does it look interesting, is there login functionality, and much more. There hav
 been several cases where browsing screen shots has led me directly to remote
 code execution (RCE). When gather screenshots I generally use the tool
 eyewitness:
-● https://github.com/FortyNorthSecurity/EyeWitness
+● https://github.com/Forty North Security/Eye Witness
 Once you download and install the tool you can run it with the following
 command:
-Python3 EyeWitness.py -f subdomains.txt --web
+Python3 Eye Witness.py -f subdomains.txt --web
 Page  | 100
 Ghostlulz AKA Alex Thomas
 Figure 47: Eyewitness screen shot tool
@@ -1904,7 +1906,7 @@ Ghostlulz AKA Alex Thomas
 Some people like using the web UI to pull a list of paths but I prefer to use the
 command line. I created a small script that can be used to pull a list of paths from
 the Wayback Machine:
-● https://github.com/ghostlulzhacks/waybackMachine
+● https://github.com/ghostlulzhacks/wayback Machine
 Before you decide to crawl a website yourself check out the Wayback Machine. It
 might save you a lot of time and effort by using other peoples crawled data. Once
 you get the data start looking for interesting files and GET parameters that might
@@ -1954,28 +1956,28 @@ endpoints just make sure your using a high-quality wordlist. When it comes to
 brute forcing your wordlist is everything.
 Page  | 107
 Ghostlulz AKA Alex Thomas
-Inspecting JavaScript Files
+Inspecting Java Script Files
 Introduction
-A lot of modern-day front ends are built with JavaScript, this can cause traditional
-tooling to fail. For instance, while crawling a built with JavaScript you might find
+A lot of modern-day front ends are built with Java Script, this can cause traditional
+tooling to fail. For instance, while crawling a built with Java Script you might find
 yourself missing a lot of endpoints. There are also other interesting things in
-JavaScript files such as AWS keys, S3 bucket endpoints, API keys, and much
-more. To deal with applications that utilize JavaScript you need to use special
+Java Script files such as AWS keys, S3 bucket endpoints, API keys, and much
+more. To deal with applications that utilize Java Script you need to use special
 tools and techniques.
 Link Finder
-Linkfinder is one of the best tools for parsing endpoints from JavaScript files. The
+Linkfinder is one of the best tools for parsing endpoints from Java Script files. The
 tool works by using jsbeautifier with a list of regexes to find URLs. I will usually
 run this tool if the self-crawl phase fails to return any results or if an application is
-built in JavaScript.
-● https://github.com/GerbenJavado/LinkFinder
-The following command can be used to parse links from a JavaScript file:
-python linkfinder.py -i &lt;JavaScript File&gt; -o cli
+built in Java Script.
+● https://github.com/Gerben Javado/Link Finder
+The following command can be used to parse links from a Java Script file:
+python linkfinder.py -i &lt;Java Script File&gt; -o cli
 Page  | 108
 Ghostlulz AKA Alex Thomas
-Figure 53: Linkfinder parse URLS from JavaScript files
-Jssearch is another JavaScript parser except this tool primarily used to find
+Figure 53: Linkfinder parse URLS from Java Script files
+Jssearch is another Java Script parser except this tool primarily used to find
 sensitive or interesting strings. For instance, developers will sometimes hard
-code API keys, AWS credentials, and other sensitive information in JavaScript
+code API keys, AWS credentials, and other sensitive information in Java Script
 files. This information can easily be parsed out with the use of regexes.
 ● https://github.com/incogbyte/jsearch
 Figure 54: Jsearch regexes
@@ -1989,7 +1991,7 @@ You can run the tool with the following command, make sure your using python
 3.7 or above or the tool will throw errors:
 python3.7 jsearch.py -u https://starbucks.com -n Starbucks
 Figure 55: Jsearch parse URLs, API keys, and other information
-This tool is really good when it comes to analyzing JavaScript files. Make sure to
+This tool is really good when it comes to analyzing Java Script files. Make sure to
 add your own custom regexes to improve your results.
 Google Dorks
 Introduction
@@ -2021,7 +2023,7 @@ There are a bunch more google dorks but I’m not going to talk about all of the
 the best way to learn them is to explore them yourself.
 Third Party Vendors
 One of the main things I use Google dorks for is to locate third party vendors.
-Organizations utilize sites such as Trello, Pastebin, GitHub, Jira, and more in
+Organizations utilize sites such as Trello, Pastebin, Git Hub, Jira, and more in
 their daily operations. Using Google dorks, you can find these endpoints and
 search for sensitive information. There have been several instances where I have
 found credentials stored on a public Trello board. A typical dork when looking for
@@ -2043,11 +2045,11 @@ books and E-books but you can
 sometimes find internal files
 uploaded by employees that
 contain passwords
-NPM site:npmjs.com “Company Name” Use this to find NodeJS source
+NPM site:npmjs.com “Company Name” Use this to find Node JS source
 code used by a company
 NPM site:npm.runkit.com “Company
 Name”
-Use this to find NodeJS source
+Use this to find Node JS source
 code used by a company
 Page  | 113
 Ghostlulz AKA Alex Thomas
@@ -2076,7 +2078,7 @@ Prezi site:prezi.com “Company Name” This site is used to make
 presentations and can
 sometimes contain internal
 links and credentials.
-Jsdeliver site:jsdelivr.net “Company Name” CDN for NPM and GitHub.
+Jsdeliver site:jsdelivr.net “Company Name” CDN for NPM and Git Hub.
 Codepen site:codepen.io “Company Name” Codepen is an online tool for
 creating/testing front end
 code. You can sometimes find
@@ -2102,7 +2104,7 @@ credentials, internal links, and
 other info.
 Page  | 114
 Ghostlulz AKA Alex Thomas
-Bitbucket site:bitbucket.org “Company Name” Bitbucket like GitHub is a place
+Bitbucket site:bitbucket.org “Company Name” Bitbucket like Git Hub is a place
 to store source code. You can
 often find hard coded
 credentials and other
@@ -2113,7 +2115,7 @@ This dork can be used to find
 confluence , Jira, and other
 products that can contain
 sensitive information
-Gitlab Inurl:gitlab “Company Name” Gitlab like GitHub is used to
+Gitlab Inurl:gitlab “Company Name” Gitlab like Git Hub is used to
 store source code. You can
 often find internal source code
 and other sensitive
@@ -2153,7 +2155,7 @@ subdomain enumeration phase and the content discovery phase so make sure to
 pick a good one. If you only take one lesson from this phase it should be
 subdomain enumeration. Getting the subdomain enumeration phase done right is
 critical to succeeding, so don't go being lazy during this phase. There are also
-other techniques such as analyzing JavaScript files, utilizing google dorks, and
+other techniques such as analyzing Java Script files, utilizing google dorks, and
 much more. You should be spending a fair amount of time during the recon
 phase, the more assets and endpoints you can uncover the better your odds of
 finding a vulnerability.
@@ -2169,10 +2171,10 @@ anything else that can be used to identify what's running on an endpoint.
 Figure 59: Fingerprinting workflow flowchart
 Your ability to properly fingerprint your targets assets will have a direct impact on
 the vulnerabilities you find. For instance, if a new remote code execution (RCE)
-security diagnostic test comes out for WordPress you need to be able to identify every
+security diagnostic test comes out for Word Press you need to be able to identify every
 Page  | 118
 Ghostlulz AKA Alex Thomas
-WordPress application your target environment. You may also want to fingerprint
+Word Press application your target environment. You may also want to fingerprint
 for SSH, RDP, VNC, and other login services so you can perform brute force
 security test. The data collected during the fingerprint phase is what enables you to
 excel during the defensive validation phase.
@@ -2255,7 +2257,7 @@ was built to scan the entire internet in just a few hours so it should be able t
 scan a large organization with ease.
 ● https://github.com/robertdavidgraham/masscan
 sudo masscan -p&lt;Port Here&gt; &lt;CIDR Range Here&gt; --exclude &lt;Exclude IP&gt; --
-banners -oX &lt;Out File Name&gt;
+banners -o X &lt;Out File Name&gt;
 Page  | 124
 Ghostlulz AKA Alex Thomas
 Figure 64: Masscan internet scan on port 80
@@ -2307,13 +2309,13 @@ This tool can only scan one domain at a time but with a little bash scripting yo
 can create a wrapper script to scan multiple domains. This information will let you
 know your targets exact technology stack. You will know what server, plugins,
 version, and programing languages an application is using.  If you know an
-application is running WordPress version 2.0 you can use this information to find
+application is running Word Press version 2.0 you can use this information to find
 related vulnerabilities and misconfiguration.
 Firewall
 It’s not uncommon to see an application protected by a web application firewall
 > [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 check to see if there is a WAF.
-● https://github.com/EnableSecurity/wafw00f
+● https://github.com/Enable Security/wafw00f
 Wafw00f &lt;URL HERE&gt;
 Page  | 128
 Ghostlulz AKA Alex Thomas
@@ -2322,9 +2324,9 @@ As you can see the site is behind the Kona Site Defender firewall. If you do
 detect a WAF you will need to modify your test vectors to bypass it. The security auditing
 community has been bypassing WAFs ever since the first WAF came out and
 much of it is documented.
-● https://github.com/0xInfection/Awesome-WAF#known-bypasses
+● https://github.com/0x Infection/Awesome-WAF#known-bypasses
 If you lookup Konsa Site Defender you will see several XSS bypasses available.
-Figure 69: Kona SiteDefender WAF bypass
+Figure 69: Kona Site Defender WAF bypass
 Page  | 129
 Ghostlulz AKA Alex Thomas
 This information is extremely valuable and could be the difference between
@@ -2344,7 +2346,7 @@ identify an endpoint. Fingerprinting IPs consists of port scans and banners grab
 This can be done passively using something like Shodan or actively with Nmap
 and masscan. In addition to fingerprinting IPs you will want to fingerprint web
 applications. Here you are looking to determine the applications technology
-stack. If a website is running WordPress version 2.0 you need to know about it.
+stack. If a website is running Word Press version 2.0 you need to know about it.
 In addition to the technology stack you will also want to know if the endpoint is
 behind a firewall. If your target is behind a firewall you can properly prepare your
 test vectors to bypass it. The information gathered in this phase feed directly to the
@@ -2368,7 +2370,7 @@ I want quick and easy wins that have really good payouts. I’m looking to
 maximize my payout while minimizing my time spent looking for bugs.  I would
 rather spend 10 minutes searching for a bug than 10 hours.
 Note you want to pay special attention to the sections on subdomain takeover,
-GitHub, and cloud services. I use those three techniques month after month to
+Git Hub, and cloud services. I use those three techniques month after month to
 find vulnerabilities they are reliable, easy to find, and can sometimes have insane
 payouts.
 Subdomain Takeover
@@ -2412,30 +2414,30 @@ Ghostlulz AKA Alex Thomas
 In this case the subdomain already exists so it was a false positive but if it didn't
 exist, we would have gotten subdomain hijacking vulnerability. Not that this
 explains how to take over traffic manager but there are lots of other hosting
-providers such as AWS, GitHub, Tumblr, and the list goes on. Each of these
+providers such as AWS, Git Hub, Tumblr, and the list goes on. Each of these
 services will be slightly different as they each have their own process for
 registering domains. The following page should be utilized if you have any
 questions on how to take over a specific service:
-• https://github.com/EdOverflow/can-i-take-over-xyz
+• https://github.com/Ed Overflow/can-i-take-over-xyz
 Conclusion
 Subdomain takeover is one of the easiest high impact vulnerabilities you can
 search for. As long as you have a list of subdomains checking for this
 vulnerability is a matter of running a command. Administrators are constantly
 changing DNS setting so a company may be safe one day and vulnerable the
 next because of this it’s a good idea to constantly check for this vulnerability.
-GitHub
+Git Hub
 Introduction
-When performing your initial recon on an organization don’t forget about GitHub.
-GitHub is used by developers to maintain and share their code, most of the time
+When performing your initial recon on an organization don’t forget about Git Hub.
+Git Hub is used by developers to maintain and share their code, most of the time
 they end up sharing much more though. Most of the organizations I come across
-have a public GitHub which can contain a tun of use full information. I have
+have a public Git Hub which can contain a tun of use full information. I have
 Page  | 136
 Ghostlulz AKA Alex Thomas
-personally popped boxes using only information gained from a GitHub account.
+personally popped boxes using only information gained from a Git Hub account.
 Depending on the size of the company you could literally spend a week or more
-looking for exposures on GitHub.
-GitHub Dorks
-You probably know what google dorks are but what are GitHub dorks. GitHub
+looking for exposures on Git Hub.
+Git Hub Dorks
+You probably know what google dorks are but what are Git Hub dorks. Git Hub
 dorks are basically the same thing as google dorks. A dork is used to find specific
 information in a sea of information. It helps us narrow down the search to exactly
 what we want. We can match on file extensions, file names, or a specific set or
@@ -2443,37 +2445,37 @@ words. This can be very handy when searching for sensitive files, API keys,
 passwords, and a lot more.
 We can use dorks to find sensitive files that developers might have accidentally
 uploaded. For instance, one time I was performing an external pentest against
-company and I was able to use GitHub dorks to find an exposed bash history file
+company and I was able to use Git Hub dorks to find an exposed bash history file
 which had SSH passwords. This was easily done by submitting the following
 dork:
 filename:.bash_history DOMAIN-NAME
 Page  | 137
 Ghostlulz AKA Alex Thomas
-Figure 73: GitHub dork to find exposed bash history files
-People are always uploading sensitive files to GitHub, it's a gold mine. It's also a
+Figure 73: Git Hub dork to find exposed bash history files
+People are always uploading sensitive files to Git Hub, it's a gold mine. It's also a
 good idea to look for exposed passwords, tokens, and api keys, usernames.
 Often, I will search for these words followed by the company name as shown
 below:
 Page  | 138
 Ghostlulz AKA Alex Thomas
-Figure 74: GitHub dork
+Figure 74: Git Hub dork
 Usernames are often associated with passwords and api keys. As shown above
 someone is leaking their secret key. If this was an engagement, I would use that
 key to login to their application. A good list of these dorks can be found below:
 ● https://github.com/techgaun/github-dorks/blob/master/github-dorks.txt
-Company GitHub
-Instead of using GitHub dorks to find exposures you might want to go directly to
-the source. To do this you must find the companies GitHub page and from there
+Company Git Hub
+Instead of using Git Hub dorks to find exposures you might want to go directly to
+the source. To do this you must find the companies Git Hub page and from there
 Page  | 139
 Ghostlulz AKA Alex Thomas
 you can locate all their developers and monitor their accounts. Not all companies
-have a public GitHub page but you can do a google search to find out.
-Figure 75: GitHub company page
+have a public Git Hub page but you can do a google search to find out.
+Figure 75: Git Hub company page
 Once you find a company's page you want to get a list of people that are
 associated with the company. This can be done by clicking on the “people” tab.
 Page  | 140
 Ghostlulz AKA Alex Thomas
-Figure 76: GitHub company employees
+Figure 76: Git Hub company employees
 Now you will need to manually go through each one and look for exposures.
 That's why this process can take so long. Facebook has 184 people and looking
 through each one can be boring and take a long time. However, if there are a lot
@@ -2483,10 +2485,10 @@ passwords, vulnerabilities, and anything else that could provide value.
 Page  | 141
 Ghostlulz AKA Alex Thomas
 Conclusion
-GitHub is a great source of information. The vast majority of companies now a
-days have a GitHub page. If you find this page you can monitor all of their
-employees for sensitive exposures. You can also use GitHub dorks to do a broad
-search across all of GitHub. You should be looking for passwords, tokens, api
+Git Hub is a great source of information. The vast majority of companies now a
+days have a Git Hub page. If you find this page you can monitor all of their
+employees for sensitive exposures. You can also use Git Hub dorks to do a broad
+search across all of Git Hub. You should be looking for passwords, tokens, api
 keys, usernames, hidden URLs, or anything else that provides value.
 Misconfigured Cloud Storage Buckets
 Introduction
@@ -2524,7 +2526,7 @@ There are way too many S3 bucket brute force tools a new one seems to come
 out every day. I typically use this one (its mine) but they all do the same thing in
 the end:
 ● https://github.com/ghostlulzhacks/s3brute
-python amazon-s3-enum.py -w BucketNames.txt -d &lt;Domain Here&gt;
+python amazon-s3-enum.py -w Bucket Names.txt -d &lt;Domain Here&gt;
 Figure 78: S3 bucket brute force
 If you go to the vulnerable endpoint you should be able to list all files in the
 bucket. You should be looking for sensitive files such as backup files, zip files,
@@ -2547,7 +2549,7 @@ following tool can be used to brute force these bucket names. Similar to by AWS
 tool it uses permutations to generate bucket names.
 Page  | 145
 Ghostlulz AKA Alex Thomas
-● https://github.com/RhinoSecurityLabs/GCPBucketBrute
+● https://github.com/Rhino Security Labs/GCPBucket Brute
 python3 gcpbucketbrute.py -k &lt;Domain Here&gt; -u
 Figure 80: Google bucket brute force tool
 In this example the tool didn’t find anything. However, if you discover that your
@@ -2582,8 +2584,8 @@ at the source code of a page. These are quick easy wins and depending on what
 you find you could get a very nice finding.
 Elastic Search DB
 Introduction
-You have probably heard of the popular relational database called MySQL.
-Elastic search like MySQL is a database used to hold and query information.
+You have probably heard of the popular relational database called My SQL.
+Elastic search like My SQL is a database used to hold and query information.
 However, elastic search is typically used to perform full text searches on very
 large datasets.
 Elasticsearch Basics
@@ -2591,15 +2593,15 @@ The definition from google describes elastic search as: “ES is a document-
 oriented database designed to store, retrieve, and manage document-oriented or
 semi-structured data. When you use Elasticsearch, you store data in JSON
 document form. Then, you query them for retrieval.”
-Unlike MySQL which stores its information in tables elastic search uses
+Unlike My SQL which stores its information in tables elastic search uses
 something called types. Each type can have several rows which are called
 documents. Documents are basically a json blob that hold your data as shown in
 the example below:
-&#123;"id":1, "name":"ghostlulz", "password":"SuperSecureP@ssword"&#125;
+&#123;"id":1, "name":"ghostlulz", "password":"Super Secure P@ssword"&#125;
 Page  | 148
 Ghostlulz AKA Alex Thomas
-In MySQL we use column names but in Elasticsearch we use field names. The
-field names in the above json blob would be id, name, and password. In MySQL
+In My SQL we use column names but in Elasticsearch we use field names. The
+field names in the above json blob would be id, name, and password. In My SQL
 we would store all of our tables in a database. In Elastic search we store our
 documents in something called an index. An index is basically a collection of
 documents.
@@ -2618,7 +2620,7 @@ check if it is an Elasticsearch database by hitting the root directory with a GE
 request. The response should look something like:
   "name" : "r2XXXX",
   "cluster_name" : "elasticsearch",
-  "cluster_uuid" : "wIVyutV-XXXXXXXXXX",
+  "cluster_uuid" : "w IVyut V-XXXXXXXXXX",
   "version" : &#123;
     "number" : "5.6.1",
     "build_hash" : "667b497",
@@ -2634,49 +2636,49 @@ Page  | 150
 Ghostlulz AKA Alex Thomas
 health status index            uuid                   pri rep docs.count docs.deleted store.size
 pri.store.size
-yellow open   bookings         lz8yHxqbQuGEDijkdEozAA   5   1        524            0    303.5kb
+yellow open   bookings         lz8y Hxqb Qu GEDijkd Eoz AA   5   1        524            0    303.5kb
 303.5kb
-yellow open   company          HMOFvOQDSiapSoI_QAsxzg   5   1          0            0       960b
+yellow open   company          HMOFv OQDSiap So I_QAsxzg   5   1          0            0       960b
 960b
-yellow open   geosys           _J9pwm4vSrWLhbo9pchzMg   5   1      61722            0     32.4mb
+yellow open   geosys           _J9pwm4v Sr WLhbo9pchz Mg   5   1      61722            0     32.4mb
 32.4mb
-yellow open   article          J6UaQSS0RIaRrrokZ1V6lg   5   1        809            0        6mb
+yellow open   article          J6Ua QSS0RIa Rrrok Z1V6lg   5   1        809            0        6mb
 6mb
-yellow open   service          SApBMxLLSEWWJOrQoF07Ug   5   1        591            0    433.5kb
+yellow open   service          SAp BMx LLSEWWJOr Qo F07Ug   5   1        591            0    433.5kb
 433.5kb
-yellow open   job_application  DSibZjaoQ-mU1MySC4zKrQ   5   1          2            0     16.7kb
+yellow open   job_application  DSib Zjao Q-m U1My SC4z Kr Q   5   1          2            0     16.7kb
 16.7kb
-yellow open   payment          az5VYu9tQAy41u2PIA-daw   5   1          6            0    142.1kb
+yellow open   payment          az5VYu9t QAy41u2PIA-daw   5   1          6            0    142.1kb
 142.1kb
-yellow open   users            6kHqdkvOSx6dmXXIs_JGNg   5   1       1701          463      4.7mb
+yellow open   users            6k Hqdkv OSx6dm XXIs_JGNg   5   1       1701          463      4.7mb
 4.7mb
-yellow open   articles         JKsFXGXfRXuUULpzjLuPLg   5   1          3            0     79.6kb
+yellow open   articles         JKs FXGXf RXu UULpzj Lu PLg   5   1          3            0     79.6kb
 79.6kb
-yellow open   invoice          bgXAHuOLSJaI-37eiBcRBw   5   1         18            0    272.3kb
+yellow open   invoice          bg XAHu OLSJa I-37ei Bc RBw   5   1         18            0    272.3kb
 272.3kb
-yellow open   booking          zjbhkI4ZS8egwyuhweNY8g   5   1        545            1      1.7mb
+yellow open   booking          zjbhk I4ZS8egwyuhwe NY8g   5   1        545            1      1.7mb
 1.7mb
-yellow open   address          CKteiX6qRUCYWxkBZCe6Bg   5   1       6245            0        2mb
+yellow open   address          CKtei X6q RUCYWxk BZCe6Bg   5   1       6245            0        2mb
 2mb
-yellow open   job_post         qrzfzvvKT3uSOXIY3nzW6Q   5   1         36            0    344.6kb
+yellow open   job_post         qrzfzvv KT3u SOXIY3nz W6Q   5   1         36            0    344.6kb
 344.6kb
-yellow open   user             HZBWADUeST-pBY4c0L88Pw   5   1       2134           12      9.1mb
+yellow open   user             HZBWADUe ST-p BY4c0L88Pw   5   1       2134           12      9.1mb
 9.1mb
-yellow open   job_applications B9dyKfW7TbeJppKu-4zpvA   5   1          1            0      8.2kb
+yellow open   job_applications B9dy Kf W7Tbe Jpp Ku-4zpv A   5   1          1            0      8.2kb
 8.2kb
-yellow open   services         0cXzhBcoR8ecQMurouw6Qg   5   1        579            0      479kb
+yellow open   services         0c Xzh Bco R8ec QMurouw6Qg   5   1        579            0      479kb
 479kb
-yellow open   addressables     ZM45C_69QXugOFLP-M16LQ   5   1       6245          745      2.4mb
+yellow open   addressables     ZM45C_69QXug OFLP-M16LQ   5   1       6245          745      2.4mb
 2.4mb
-yellow open   job_posts        _-nkfsW2TiKHLhTdSRmfuA   5   1         35            0     70.8kb
+yellow open   job_posts        _-nkfs W2Ti KHLh Td SRmfu A   5   1         35            0     70.8kb
 70.8kb
-yellow open   invoices         PoNCOfg6QjSi0I7fPhPbBw   5   1         12            0     84.7kb
+yellow open   invoices         Po NCOfg6Qj Si0I7f Ph Pb Bw   5   1         12            0     84.7kb
 84.7kb
-yellow open   user_services    bBwhZ0eDTAeqS5AID8Z-2g   5   1       1384          298      1.7mb
+yellow open   user_services    b Bwh Z0e DTAeq S5AID8Z-2g   5   1       1384          298      1.7mb
 1.7mb
-yellow open   user_service     _c75afkpQVWjyeWHQUoMDw   5   1       1485           22      1.2mb
+yellow open   user_service     _c75afkp QVWjye WHQUo MDw   5   1       1485           22      1.2mb
 1.2mb
-yellow open   payments         de4kC0k-RfuoypmE19cLRw   5   1          6
+yellow open   payments         de4k C0k-Rfuoypm E19c LRw   5   1          6
 This information along with other details about the service can also be found by
 querying the “/_stats/?pretty=1” endpoint.
 To perform a full text search on the database you can use the following
@@ -2800,26 +2802,26 @@ the /version endpoint. This will print out a json blob as shown below:
       "Name": "Engine",
       "Version": "18.09.0",
       "Details": &#123;
-        "ApiVersion": "1.39",
+        "Api Version": "1.39",
         "Arch": "amd64",
-        "BuildTime": "2018-11-07T00:56:41.000000000+00:00",
+        "Build Time": "2018-11-07T00:56:41.000000000+00:00",
         "Experimental": "false",
-        "GitCommit": "4d60db4",
-        "GoVersion": "go1.10.4",
-        "KernelVersion": "10.0 14393 (14393.3204.amd64fre.rs1_release.190830-1500)",
-        "MinAPIVersion": "1.24",
+        "Git Commit": "4d60db4",
+        "Go Version": "go1.10.4",
+        "Kernel Version": "10.0 14393 (14393.3204.amd64fre.rs1_release.190830-1500)",
+        "Min APIVersion": "1.24",
         "Os": "windows"
 Page  | 155
 Ghostlulz AKA Alex Thomas
   "Version": "18.09.0",
-  "ApiVersion": "1.39",
-  "MinAPIVersion": "1.24",
-  "GitCommit": "4d60db4",
-  "GoVersion": "go1.10.4",
+  "Api Version": "1.39",
+  "Min APIVersion": "1.24",
+  "Git Commit": "4d60db4",
+  "Go Version": "go1.10.4",
   "Os": "windows",
   "Arch": "amd64",
-  "KernelVersion": "10.0 14393 (14393.3204.amd64fre.rs1_release.190830-1500)",
-  "BuildTime": "2018-11-07T00:56:41.000000000+00:00"
+  "Kernel Version": "10.0 14393 (14393.3204.amd64fre.rs1_release.190830-1500)",
+  "Build Time": "2018-11-07T00:56:41.000000000+00:00"
 Once you have confirmed that a docker API is exposed I will generally move to
 the CLI version of docker. From the CLI you can execute the following command
 to get a list of containers that are currently being ran:
@@ -2860,20 +2862,20 @@ Figure 87: Shodan search for Kubernetes API
 Once a Kubernetes service is detected the first thing to do is to get a list of pods
 by sending a GET request to the /pods endpoint. The server should respond with
 something like:
-“kind”: “PodList”,
-“apiVersion”: “v1”,
+“kind”: “Pod List”,
+“api Version”: “v1”,
 “metadata”: &#123;&#125;,
 “items”: [
 “metadata”: &#123;
 “name”: “pushgateway-5fc955dd8d-674qn”,
-“generateName”: “pushgateway-5fc955dd8d-“,
+“generate Name”: “pushgateway-5fc955dd8d-“,
 “namespace”: “monitoring”,
-“selfLink”: “/api/v1/namespaces/monitoring/pods/pushgateway-5fc955dd8d-674qn”,
+“self Link”: “/api/v1/namespaces/monitoring/pods/pushgateway-5fc955dd8d-674qn”,
 “uid”: “d554e035-b759-11e9-814c-525400bdacd2”,
-“resourceVersion”: “9594”,
+“resource Version”: “9594”,
 Page  | 158
 Ghostlulz AKA Alex Thomas
-“creationTimestamp”: “2019-08-05T08:20:07Z”,
+“creation Timestamp”: “2019-08-05T08:20:07Z”,
 “labels”: &#123;
 “app”: “pushgateway”,
 “pod-template-hash”: “1975118848”,
@@ -2882,28 +2884,28 @@ Ghostlulz AKA Alex Thomas
 “kubernetes.io/config.seen”: “2019-08-05T16:20:07.080938229+08:00”,
 “kubernetes.io/config.source”: “api”,
 “kubernetes.io/created-by”:
-“&#123;\”kind\”:\”SerializedReference\”,\”apiVersion\”:\”v1\”,\”reference\”:&#123;\”kind\”:\”ReplicaSet\”,\”name
+“&#123;\”kind\”:\”Serialized Reference\”,\”api Version\”:\”v1\”,\”reference\”:&#123;\”kind\”:\”Replica Set\”,\”name
 space\”:\”monitoring\”,\”name\”:\”pushgateway-5fc955dd8d\”,\”uid\”:\”d552bfb3-b759-11e9-814c-
-525400bdacd2\”,\”apiVersion\”:\”extensions\”,\”resourceVersion\”:\”9591\”&#125;&#125;\n”
-“ownerReferences”: [
-“apiVersion”: “extensions/v1beta1”,
-“kind”: “ReplicaSet”,
+525400bdacd2\”,\”api Version\”:\”extensions\”,\”resource Version\”:\”9591\”&#125;&#125;\n”
+“owner References”: [
+“api Version”: “extensions/v1beta1”,
+“kind”: “Replica Set”,
 “name”: “pushgateway-5fc955dd8d”,
 “uid”: “d552bfb3-b759-11e9-814c-525400bdacd2”,
 “controller”: true,
-“blockOwnerDeletion”: true
+“block Owner Deletion”: true
 “spec”: &#123;
 “volumes”: [
 “name”: “default-token-qgm5l”,
 “secret”: &#123;
-“secretName”: “default-token-qgm5l”,
-“defaultMode”: 420
+“secret Name”: “default-token-qgm5l”,
+“default Mode”: 420
 “containers”: [
 “name”: “pushgateway”,
 “image”: “10.10.0.15:35000/prom/pushgateway:v0.4.1”,
 “ports”: [
 “name”: “http”,
-“containerPort”: 9091,
+“container Port”: 9091,
 “protocol”: “TCP”
 From the above response we get namespace name, pod names, and container
 names:
@@ -2926,7 +2928,7 @@ NAME&gt;/&lt;CONTAINER NAME&gt;?command=&lt;COMMAND TO
 EXECUTE&gt;&input=1&output=1&tty=1”
 After sending the requests you should receive a response similar to the message
 below:
-Figure 88: Initiate WebSocket connection to Kubernetes API
+Figure 88: Initiate Web Socket connection to Kubernetes API
 Page  | 160
 Ghostlulz AKA Alex Thomas
 As you can see the above response indicates it was successful and a web socket
@@ -2951,7 +2953,7 @@ exposing the Kubernetes API to the world. This could allow remote attackers to
 execute commands on containers unauthenticated.
 .git / .svn
 Introduction
-Source code repositories like GitHub are extremely popular. A lot of people will
+Source code repositories like Git Hub are extremely popular. A lot of people will
 simple copy down a git directory and throw it on their website without realizing
 they might have just exposed their sites source code to the world. Git and
 Subversion are two of the most popular revision control systems and they contain
@@ -2968,7 +2970,7 @@ Ghostlulz AKA Alex Thomas
 Figure 90: Endpoint with .git file exposed
 You can then recreate the repository which will contain the websites source
 code. To recreate the repository, you can use the following tool:
-● https://github.com/internetwache/GitTools/tree/master/Dumper
+● https://github.com/internetwache/Git Tools/tree/master/Dumper
 To use the tool type “./gitdumper.sh https://example.com/.git/ /output-
 directory/”. This will clone the entire repository as shown below:
 Page  | 163
@@ -3003,7 +3005,7 @@ might find an easy win.
 Summary
 This section was all about finding quick easy wins when searching for
 vulnerabilities. You want to make sure you have a strong grasp on subdomain
-takeovers, GitHub dorks, and cloud storage misconfigurations. Mastering these
+takeovers, Git Hub dorks, and cloud storage misconfigurations. Mastering these
 three techniques alone will significantly increase the amount of vulnerabilities you
 find.
 Page  | 166
@@ -3016,37 +3018,37 @@ used for enterprise content management and web content management.
 Figure 94: Internet CMS usage stats
 Over half of the websites on the internet are built with a CMS so you're definitely
 going to be running into these technologies.
-WordPress
-As of right now over a quarter (25%) of the internet is built using WordPress. This
+Word Press
+As of right now over a quarter (25%) of the internet is built using Word Press. This
 is useful to know because that means a single security diagnostic test has the potential to impact
 Page  | 167
 Ghostlulz AKA Alex Thomas
 a large portion of your target’s assets. There are in fact hundreds of exploits and
-misconfigurations impacting WordPress and its associated plugins. One common
+misconfigurations impacting Word Press and its associated plugins. One common
 tool to scan for these vulnerabilities is wpscan:
 ● https://github.com/wpscanteam/wpscan
 The only thing that’s annoying about this tool is that its written in ruby, I prefer
 tools written in python or Golang.
 During the fingerprinting phase you should've discovered the technologies
 running on your targets assets so it should be easy to search for sites running
-WordPress. Once you find a site scan it with wpscan as shown below:
+Word Press. Once you find a site scan it with wpscan as shown below:
 wpscan --URL &lt;URL&gt;
 Figure 95: WPScan vulnerability scan
 The vast majority of the sites you scan are going to be patched. This is because
-most of these WordPress sites are managed by third party vendors who perform
+most of these Word Press sites are managed by third party vendors who perform
 automatic updates. However, you will run into vulnerable plugins quite frequently
 Page  | 168
 Ghostlulz AKA Alex Thomas
 but many of these exploits require credentials to security diagnostic test. Another thing I find all
 the time is directly listing on the uploads folder. Always make sure to check “/wp-
 content/uploads/” .
-Figure 96: WordPress site with directory listing on uploads directory
+Figure 96: Word Press site with directory listing on uploads directory
 You can often find sensitive information such as user emails, passwords, paid
 digital products, and much more.
 Joomla
-WordPress is by far the most popular CMS with over 60% of the market share.
+Word Press is by far the most popular CMS with over 60% of the market share.
 Joomla comes in second so you can expect to run into this CMS as well. Unlike
-WordPress sites who seem to be fairly locked down Joomla is a mess. If you
+Word Press sites who seem to be fairly locked down Joomla is a mess. If you
 want to scan for vulnerabilities the most popular tool is Joomscan:
 ● https://github.com/rezasp/joomscan
 perl joomscan.pl -u &lt;URL Here&gt;
@@ -3075,7 +3077,7 @@ IP that the target server can connect back to.
 Other
 There are hundreds of different CMSs so it wouldn't be practical for me to
 mention every single one of them. The vast majority of sites are going to be
-running WordPress, Joomla, and Drupal but you still might run into other CMSs.
+running Word Press, Joomla, and Drupal but you still might run into other CMSs.
 Page  | 171
 Ghostlulz AKA Alex Thomas
 Figure 100: Wappalyzer list of CMS frameworks
@@ -3092,7 +3094,7 @@ out that are not on security diagnostic test db yet.
 Figure 102: Search google for known Magento exploits
 As you can see there is an unauthenticated SQLi security diagnostic test that doesn't seem to be
 in the security diagnostic test-db database, this is probably because it’s still fairly new. In addition
-to finding single exploits you want to search GitHub to see if there is a tool that
+to finding single exploits you want to search Git Hub to see if there is a tool that
 can scan for all the possible vulnerabilities and misconfigurations.
 Figure 103: Search Google for Magento vulnerability scanner
 Page  | 173
@@ -3197,7 +3199,7 @@ To test for XXE simply put in your malicious external entity and replace each
 node value with it as shown below:
 Figure 105: XXE test vector
 As shown above I created an external entity to grab the data in the “/etc/passwd”
-file and stored it in the entity XXE. I then placed the variable in the “&lt;productID&gt;”
+file and stored it in the entity XXE. I then placed the variable in the “&lt;product ID&gt;”
 node. If the server doesn’t block external entities the response will be reflected
 you. You will then be able to retrieve the contents of the “/etc/passwd” file as
 shown below:
@@ -3218,7 +3220,7 @@ Introduction
 Cross site scripting (XSS) is one of the most popular vulnerabilities in today’s
 web applications. This vulnerability has been on the OWASP top 10 for several
 years and doesn’t seem to be going away. This vulnerability can be used to
-execute malicious JavaScript in a user’s web browser. This could then be used to
+execute malicious Java Script in a user’s web browser. This could then be used to
 steal users JWT tokens, CSRF tokens, and cookies. There are three types of
 XSS reflected, stored, and DOM based. The following sections will discuss each
 of these.
@@ -3236,14 +3238,14 @@ Ghostlulz AKA Alex Thomas
 Figure 107: Possible XSS
 As you can see the GET parameter “error” is being reflected in the user web
 browser. If the application doesn’t protect against XSS we could insert malicious
-JavaScript code into the user browser.
+Java Script code into the user browser.
 Page  | 181
 Ghostlulz AKA Alex Thomas
 Figure 108: XSS test vector triggering
-As you can tell in the above image the JavaScript code in the “error” GET
+As you can tell in the above image the Java Script code in the “error” GET
 parameter is being embedded in the applications source code. Since our input is
 being reflected back without XSS protections we can easily execute malicious
-JavaScript code in users’ browsers if they visit this link.
+Java Script code in users’ browsers if they visit this link.
 Stored XSS
 Unlike reflected XSS stored XSS persistence in the application. Usually this
 occurs when an application takes user supplied input and stores it in the backend
@@ -3260,7 +3262,7 @@ Suppose you have an application that allows you to create an account. The
 application also has a page which lists out all the members of the site. You could
 assume that the username you create is being stored in the backend database
 otherwise how would the application be able to retrieve this information. If you
-were to put a malicious JavaScript test vector as your username it would then be
+were to put a malicious Java Script test vector as your username it would then be
 stored in the back-end database. If the application isn’t blocking XSS security test
 whenever someone visits the members list page your username would be
 retrieved from the back-end database and your XSS test vector would trigger.
@@ -3268,15 +3270,15 @@ Page  | 183
 Ghostlulz AKA Alex Thomas
 DOM XSS
 Document Object Model (DOM) based XSS occurs when an application takes
-user supplied input passes it to a JavaScript function and that function uses the
+user supplied input passes it to a Java Script function and that function uses the
 input to modify the DOM environment. This can occur via reflected or stored XSS
-the main thing to remember is that the test vector is being executed via JavaScript.
+the main thing to remember is that the test vector is being executed via Java Script.
 &lt;html&gt;
     &lt;h1&gt; You Searched for:&lt;/h1&gt;
     &lt;div id ="searchquery"&gt; &lt;/div&gt;
     &lt;script&gt;
         var keyword = location.search.substring(3);
-        document.querySelector('searchquery').innerHTML = keyword;
+        document.query Selector('searchquery').inner HTML = keyword;
     &lt;script&gt;
 &lt;/html&gt;
 The above source code is an example of DOM based XSS.
@@ -3287,8 +3289,8 @@ is an example of a basic SVG file that will show a picture of a rectangle:
 &lt;svg width="400" height="110"&gt;
     &lt;rect width="300" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" /&gt;
 &lt;/svg&gt;
-SVG files also support inline JavaScript code. For instance, a developer might
-use JavaScript in an SVG image so they can manipulate it in real time. This can
+SVG files also support inline Java Script code. For instance, a developer might
+use Java Script in an SVG image so they can manipulate it in real time. This can
 be used for animation and other tasks. Another thing to note is that SVG files can
 be treated as images in HTML. This means you can place an SVG file in an
 image tag and it will render perfectly:
@@ -3301,7 +3303,7 @@ an alert XSS test vector can be found below:
 &lt;?xml version="1.0" standalone="no"?&gt;
     &lt;! DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
-&lt;svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;svg version="1.1" base Profile="full" xmlns="http://www.w3.org/2000/svg"&gt;
    &lt;rect width="300" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" /&gt;
    &lt;script type="text/javascript"&gt;
       alert("Ghostlulz XSS");
@@ -3326,7 +3328,7 @@ Content-Type: image/svg+xml
 &lt;?xml version="1.0" standalone="no"?&gt;
 &lt;! DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;
-&lt;svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;svg version="1.1" base Profile="full" xmlns="http://www.w3.org/2000/svg"&gt;
    &lt;rect width="300" height="100" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" /&gt;
    &lt;script type="text/javascript"&gt;
       alert("Ghostlulz XSS");
@@ -3362,7 +3364,7 @@ endpoint in the local network.
 Page  | 187
 Ghostlulz AKA Alex Thomas
 Figure 111: SSRF test vector
-In the above requests I changed the “stockApi” value to an admin directory on
+In the above requests I changed the “stock Api” value to an admin directory on
 the systems local IP. The request will be performed by the target application thus
 it will perform a request against itself. This endpoint has an admin application
 hosted on the local host, normally this would be impossible to access from the
@@ -3395,11 +3397,11 @@ used to change a user’s password and email, like a page or video, send money
 to an authorized auditor, and anything else you can do via a POST request.
 CSRF
 In order to security diagnostic test CSRF the target user has to be logged in to the target web
-application while visiting malicious site in the same browser. Using JavaScript, it
+application while visiting malicious site in the same browser. Using Java Script, it
 is possible to send requests to sites on behalf of users via their cookies. Cookies
 are sometimes used for authentication so if we can send requests using a user’s
 cookie, we can impersonate them.  So, if a user visits an authorized auditor controlled site,
-we can use JavaScript to send a POST request using the victims cookies.
+we can use Java Script to send a POST request using the victims cookies.
 Page  | 190
 Ghostlulz AKA Alex Thomas
 Figure 113: CSRF workflow
@@ -3424,7 +3426,7 @@ academy.net/email/change-email" method="post"&gt;
   &lt;input type='submit' value='submit'&gt;
  &lt;/form&gt;
  &lt;script&gt;
-  document.getElementById("security diagnostic test").submit()
+  document.get Element By Id("security diagnostic test").submit()
  &lt;/script&gt;
 &lt;/html&gt;
 The above code can be used as a POC to proof that CSRF is possible. It’s also a
@@ -3443,20 +3445,20 @@ SQL Injection (SQL) is a classic vulnerability that doesn’t seem to be going
 anywhere. This vulnerability can be exploited to dump the contents of an
 applications database. Databases typically hold sensitive information such as
 usernames and passwords so gaining access to this is basically game over. The
-most popular database is MySQL but you will run into others such as MSSQL,
-PostgreSQL, Oracle, and more. The way you security diagnostic test each of these is similar but
+most popular database is My SQL but you will run into others such as MSSQL,
+Postgre SQL, Oracle, and more. The way you security diagnostic test each of these is similar but
 > [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
 0Injection
 SQLI
-I seem to run into MySQL more than any other database but that doesn’t mean
-you won’t see others. A typically MySQL can be found below:
+I seem to run into My SQL more than any other database but that doesn’t mean
+you won’t see others. A typically My SQL can be found below:
 Page  | 193
 Ghostlulz AKA Alex Thomas
-Figure 115: MySQL error indicating SQL injection
+Figure 115: My SQL error indicating SQL injection
 If you ever see that error you know there is SQL injection. However, I’ll be
-demonstrating how to security diagnostic test a PostgreSQL server today. The error message I
+demonstrating how to security diagnostic test a Postgre SQL server today. The error message I
 got was a little less noticeable and could easily go undetected.
-Figure 116: PostgreSQL SQL error
+Figure 116: Postgre SQL SQL error
 If you suspect there is SQL injection you would then proceed to finding the
 number of columns being returned to the application. This can be done with the
 “order by" command.
@@ -3558,11 +3560,13 @@ command was
 successful
 Page  | 201
 Ghostlulz AKA Alex Thomas
+
 | echo “hi” | echo “bye” Windows & Linux Pipe the first
 commands
 output into the
 second
 command
+
 || echo “hi” || echo “bye” Windows & Linux Runs the
 second
 command only
@@ -3621,7 +3625,7 @@ set up a full duplex communication channel allows use to both read and post
 data. This vulnerability can be used to perform XSS, SQL injection, RCE, and
 anything else.
 Web Sockets
-WebSocket is a computer communications protocol, providing full-duplex
+Web Socket is a computer communications protocol, providing full-duplex
 communication channels over a single TCP connection. Full duplex means we
 can both read and write to the connection. Applications that utilize web sockets
 Page  | 205
@@ -3642,7 +3646,7 @@ Cross site web socket hijacking (CSWSH) is similar to CSRF because we utilize
 the targets cookies to make requests. Also, like CSRF the target would have to
 visit our malicious page while logged into the target site for this to work. The
 major difference is instead of sending a POST request we initiate a web socket
-connection. After the WebSocket connection is established we can do whatever
+connection. After the Web Socket connection is established we can do whatever
 we want.
 Suppose we have a web application with a live chat feature that uses web
 sockets for communication.
@@ -3655,7 +3659,7 @@ traffic as shown below:
 Page  | 208
 Ghostlulz AKA Alex Thomas
 Figure 129: Burp web socket traffic
-The next step is to create a POC to see if we can hijack a user’s WebSocket
+The next step is to create a POC to see if we can hijack a user’s Web Socket
 connection. We can use the following website to test for the vulnerability:
 ● http://websocket.org/echo.html
 To test for CSWSH you need to log into the target application as if you are a legit
@@ -3675,42 +3679,42 @@ The site also contains some POC code if you need to make any modification. It is
 always a good idea to submit POC code when submitting a bounty.
   &lt;! DOCTYPE html&gt;
   &lt;meta charset="utf-8" /&gt;
-  &lt;title&gt;WebSocket Test&lt;/title&gt;
-  &lt;script language="JavaScript" type="text/JavaScript"&gt;
-  var wsUri = "wss://echo.websocket.org/";
+  &lt;title&gt;Web Socket Test&lt;/title&gt;
+  &lt;script language="Java Script" type="text/Java Script"&gt;
+  var ws Uri = "wss://echo.websocket.org/";
   var output;
   function init()
 Page  | 210
 Ghostlulz AKA Alex Thomas
-    output = document.getElementById("output");
-    testWebSocket();
-  function testWebSocket()
-    websocket = new WebSocket(wsUri);
-    websocket.onopen = function(evt) &#123; onOpen(evt) &#125;;
-    websocket.onclose = function(evt) &#123; onClose(evt) &#125;;
-    websocket.onmessage = function(evt) &#123; onMessage(evt) &#125;;
-    websocket.onerror = function(evt) &#123; onError(evt) &#125;;
-  function onOpen(evt)
-    writeToScreen("CONNECTED");
-    doSend("WebSocket rocks");
-  function onClose(evt)
-    writeToScreen("DISCONNECTED");
-  function onMessage(evt)
-    writeToScreen('&lt;span style="color: blue;"&gt;RESPONSE: ' + evt.data+'&lt;/span&gt;');
+    output = document.get Element By Id("output");
+    test Web Socket();
+  function test Web Socket()
+    websocket = new Web Socket(ws Uri);
+    websocket.onopen = function(evt) &#123; on Open(evt) &#125;;
+    websocket.onclose = function(evt) &#123; on Close(evt) &#125;;
+    websocket.onmessage = function(evt) &#123; on Message(evt) &#125;;
+    websocket.onerror = function(evt) &#123; on Error(evt) &#125;;
+  function on Open(evt)
+    write To Screen("CONNECTED");
+    do Send("Web Socket rocks");
+  function on Close(evt)
+    write To Screen("DISCONNECTED");
+  function on Message(evt)
+    write To Screen('&lt;span style="color: blue;"&gt;RESPONSE: ' + evt.data+'&lt;/span&gt;');
     websocket.close();
-  function onError(evt)
-    writeToScreen('&lt;span style="color: red;"&gt;ERROR:&lt;/span&gt; ' + evt.data);
-  function doSend(message)
-    writeToScreen("SENT: " + message);
+  function on Error(evt)
+    write To Screen('&lt;span style="color: red;"&gt;ERROR:&lt;/span&gt; ' + evt.data);
+  function do Send(message)
+    write To Screen("SENT: " + message);
     websocket.send(message);
-  function writeToScreen(message)
-    var pre = document.createElement("p");
-    pre.style.wordWrap = "break-word";
-    pre.innerHTML = message;
-    output.appendChild(pre);
-  window.addEventListener("load", init, false);
+  function write To Screen(message)
+    var pre = document.create Element("p");
+    pre.style.word Wrap = "break-word";
+    pre.inner HTML = message;
+    output.append Child(pre);
+  window.add Event Listener("load", init, false);
   &lt;/script&gt;
-  &lt;h2&gt;WebSocket Test&lt;/h2&gt;
+  &lt;h2&gt;Web Socket Test&lt;/h2&gt;
   &lt;div id="output"&gt;&lt;/div&gt;
 Figure 131: CSWSH POC code
 Page  | 211
@@ -3749,4 +3753,3 @@ This content is provided strictly for educational purposes, defensive security a
 Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
 
 ---
-

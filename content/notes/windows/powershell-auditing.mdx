@@ -9,44 +9,53 @@ difficulty: "Intermediate"
 readingTime: "7 min read"
 ---
 
-# PowerShell Auditing & Threat Detection
-PowerShell is a powerful tool for Windows system administration and threat hunting. This guide details using administrative cmdlets to query Event Logs, audit running processes, and identify common service configuration issues (like unquoted path vectors).
-&lt;Callout type="tip" title="PowerShell Execution Scope"&gt;
-Run your auditing shell with `Set-ExecutionPolicy RemoteSigned -Scope Process` to temporarily allow script executions in the current session without altering system-wide safety profiles.
+# Power Shell Auditing & Threat Detection
+Power Shell is a powerful tool for Windows system administration and threat hunting. This guide details using administrative cmdlets to query Event Logs, audit running processes, and identify common service configuration issues (like unquoted path vectors).
+&lt;Callout type="tip" title="Power Shell Execution Scope"&gt;
+Run your auditing shell with `Set-Execution Policy Remote Signed -Scope Process` to temporarily allow script executions in the current session without altering system-wide safety profiles.
 &lt;/Callout&gt;
 ## Threat Hunting Command Reference
-| Defensive Audit Target | PowerShell Cmdlet | Functional Goal |
-| **Failed Logins** | `Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625}` | Filter Security Logs for failed authentication events. |
+
+| Defensive Audit Target | Power Shell Cmdlet | Functional Goal |
+| **Failed Logins** | `Get-Win Event -Filter Hashtable @{Log Name='Security'; Id=4625}` | Filter Security Logs for failed authentication events. |
 | **Process Check** | `Get-Process | Select-Object Name, Id, Path` | Identify active process paths and running locations. |
-| **Service Paths** | `Get-CimInstance -ClassName Win32_Service` | List system services and their executables. |
-| **Network Sockets** | `Get-NetTCPConnection -State Listen` | Audit active listening ports. |
+| **Service Paths** | `Get-Cim Instance -Class Name Win32_Service` | List system services and their executables. |
+| **Network Sockets** | `Get-Net TCPConnection -State Listen` | Audit active listening ports. |
 ## 1. Querying Security Event Logs
 Checking for failed login events is key to identifying brute force or password-spraying attempts.
 ### Fetching Failed Logon Events
 To query the Windows Security Log for Event ID `4625` (Logon Failure):
+
 ```powershell
-Get-WinEvent -FilterHashtable @{
-    LogName = 'Security'
+Get-Win Event -Filter Hashtable @{
+    Log Name = 'Security'
     Id = 4625
-} -MaxEvents 50 | Select-Object TimeCreated, Message | Format-Table -Wrap
+} -Max Events 50 | Select-Object Time Created, Message | Format-Table -Wrap
+
 ```
+
 ## 2. Auditing Service Configurations
 Attackers can validate loose folder permissions or unquoted service paths to execute arbitrary code.
 ### Checking for Unquoted Service Paths
 An unquoted service path with spaces in directory names (e.g., `C:\Program Files\My Folder\Service.exe`) can lead to privilege escalation if write permissions are lax.
 Use this query to identify services that lack enclosing quotes and contain spaces:
+
 ```powershell
-Get-CimInstance -ClassName Win32_Service |
-    Where-Object { $_. PathName -notlike '"*' -and $_. PathName -like '* *' } |
-    Select-Object Name, DisplayName, PathName
+Get-Cim Instance -Class Name Win32_Service |
+    Where-Object { $_. Path Name -notlike '"*' -and $_. Path Name -like '* *' } |
+    Select-Object Name, Display Name, Path Name
+
 ```
+
 ## 3. Auditing Running Processes
 Verify process integrity by listing active processes along with their executable paths:
+
 ```powershell
 Get-Process |
     Where-Object { $_. Path -ne $null } |
     Select-Object Name, Id, Path, Description |
     Sort-Object Name
+
 ```
 
 ---
@@ -58,4 +67,3 @@ This content is provided strictly for educational purposes, defensive security a
 Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
 
 ---
-

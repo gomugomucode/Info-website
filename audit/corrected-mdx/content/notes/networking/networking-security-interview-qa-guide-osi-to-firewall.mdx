@@ -394,12 +394,12 @@ Routing Protocol                Administrative Distance
 - Direct connect     →0
 - Static route   - →1
 - EIGRP (summary route) →5
-- eBGP route    →20
+- e BGP route    →20
 - EIGRP route   →90
 - OSPF route   →110
 - RIP route   →120
 - Exterior EIGRP   →170
-- iBGP    →200
+- i BGP    →200
 
 ### Q55: What is Distance-Vector Routing Protocol?
 
@@ -614,8 +614,13 @@ EIGRP router use the multicast address of 224.0.0.10
 
 ### Q92: Tell me some commands to troubleshoot EIGRP?
 
-- #show ip route         → It Shows full Routing Table
-- #show router ip eigrp         →  It Shows only EIGPR Routes
+
+| TCP | UDP |
+| --- | --- |
+| - #show ip route | It Shows full Routing Table |
+| - #show router ip eigrp | It Shows only EIGPR Routes |
+
+
 - #show ip eigrp neighbours →  It Shows EIGPR Neighbours Table
 - #show ip eigrp topology     →  It Shows EIGPR Topology Table
 
@@ -899,7 +904,7 @@ called Exterior Border Gateway Protocol, External BGP (e BGP).
 - Open standard protocol.
 - Classless routing protocol.
 - Used the Path vector algorithm.
-- Administrative distance for eBGP is 20,iBGP-200
+- Administrative distance for e BGP is 20,i BGP-200
 - BGP exchange router information between autonomous system.
 - Hello timer is 60 sec; hold on timer is 180 sec.
 - BGP used TCP port number 179.
@@ -910,7 +915,7 @@ Can does not require neighbours to be attached to the same subnet. Inste ad, BGP
 use a TCP connection between the routers to pass BGP message allowing neighbouring
 routers to be on the same or different subnet.
 
-### Q129: Different between eBGP & iBGP neighbors?
+### Q129: Different between e BGP & i BGP neighbors?
 
 - IBGP- neighborship is formed between routers within the same AS (autonomous
 system)
@@ -919,9 +924,9 @@ system)
 ### Q130: Explain Loop prevention mechanism in BGP?
 
 BGP used two mechanisms to prevent loops: -
-- When a router learns route from an iBGP peer, that router does not advertise the
+- When a router learns route from an i BGP peer, that router does not advertise the
 same routes to another i BGP peer.
-- By using AS_PATH- When advertising to an eBGP peer, a BGP router adds its own
+- By using AS_PATH- When advertising to an e BGP peer, a BGP router adds its own
 ASN to the AS_PATH. If a BGP router receives an Update and the route
 advertisement lists an_AS_PATH with its own ASN, the router ignores that route.
 Note: - A BGP router does not add its ASN when advertising to an i BGP Peer.
@@ -994,14 +999,14 @@ An origin code of “i” is most preferred. • e (EGP) – Originated from an 
 gateway protocol. • ? (incomplete) - Unknown origin. This usually indicates the route
 was redistributed into BGP (from either connected, static, or IGP routes). An origin
 code of “?” is the least preferred.
-- Multi-Exit Discriminator (MED)- The MED (MultiExit Discriminator) attribute is
+- Multi-Exit Discriminator (MED)- The MED (Multi Exit Discriminator) attribute is
 applied to outbound routes, dictating the best inbound path into the AS (assuming
 multiple paths exist). The MED is identified as the BGP metric when viewing the BGP
 routing table. A lower metric is preferred, and the default MED value is 0. Smaller is
 preferred.
-- Neighbour type- eBGP is preferred over iBGP
+- Neighbour type- e BGP is preferred over i BGP
 - IGP metric- Route with nearest IGP neighbour (lowest IGP metric) is preferred.
-- eBGP route- Oldest (longest known) route is preferred.
+- e BGP route- Oldest (longest known) route is preferred.
 - Neighbour Router ID- Lowest is preferred.
 - Neighbour IP Address- Lowest is preferred.
 

