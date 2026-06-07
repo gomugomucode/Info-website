@@ -4,6 +4,13 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { buildSchemaGraph } from "@/lib/schemas";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_SHORT_NAME,
+  SITE_URL,
+  absoluteUrl,
+} from "@/lib/site";
 import "./globals.css";
 
 // ─── fonts ───────────────────────────────────────────────────────────────────
@@ -20,28 +27,18 @@ const geistMono = Geist_Mono({
 
 // ─── site-wide metadata ──────────────────────────────────────────────────────
 
-const SITE_URL = "https://info.anupambaral.com.np";
-const SITE_NAME = "Anupam Baral — Developer Knowledge Hub";
-const SITE_DESCRIPTION =
-  "Tutorials, AI experiments, developer notes, Next.js guides, " +
-  "FastAPI resources, and real-world full-stack engineering insights.";
-
 export const metadata: Metadata = {
-  // ── titles ────────────────────────────────────────────────────────────────
-  // template applies to all child pages via generateMetadata().
-  // default fires only when a page exports no metadata of its own.
+  metadataBase: new URL(SITE_URL),
+
   title: {
-    default:  SITE_NAME,
+    default: SITE_NAME,
     template: "%s | Anupam Baral",
   },
 
   description: SITE_DESCRIPTION,
 
-  // ── canonical & authors ───────────────────────────────────────────────────
-  // canonical prevents duplicate-URL penalties when the same content is
-  // reachable at /notes/linux/foo and /blog/foo.
   alternates: {
-    canonical: SITE_URL,
+    canonical: "/",
   },
   authors: [{ name: "Anupam Baral", url: SITE_URL }],
 
@@ -64,14 +61,14 @@ export const metadata: Metadata = {
     title:       SITE_NAME,
     description: SITE_DESCRIPTION,
     url:         SITE_URL,
-    siteName:    "Anupam Baral Info",
+    siteName:    SITE_SHORT_NAME,
     locale:      "en_US",
     type:        "website",
     // Replace the src value once you have a real OG image at /public/og.png
     // Recommended size: 1200×630px
     images: [
       {
-        url:    `${SITE_URL}/og.jpg`,
+        url:    absoluteUrl("/og.jpg"),
         width:  1200,
         height: 630,
         alt:    SITE_NAME,
@@ -85,7 +82,7 @@ export const metadata: Metadata = {
     card:        "summary_large_image",
     title:       SITE_NAME,
     description: SITE_DESCRIPTION,
-    images:      [`${SITE_URL}/og.jpg`],
+    images:      [absoluteUrl("/og.jpg")],
   },
 };
 

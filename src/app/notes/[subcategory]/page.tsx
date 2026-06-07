@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Terminal, Network, Shield, Globe, Monitor, ArrowLeft, Home, ChevronRight, BookOpen, Clock, FileText, Search } from "lucide-react";
 import { getNotesBySubcategory } from "@/lib/mdx";
+import { absoluteUrl } from "@/lib/site";
 import { CategoryNotesList } from "./category-notes-list";
 
 interface SubcategoryData {
@@ -93,7 +94,7 @@ export async function generateMetadata({ params }: { params: Promise<{ subcatego
     title: `${data.title} Reference Hub | Anupam Baral`,
     description: data.longDescription,
     alternates: {
-      canonical: `https://info.anupambaral.com.np/notes/${sub}`,
+      canonical: absoluteUrl(`/notes/${sub}`),
     },
   };
 }

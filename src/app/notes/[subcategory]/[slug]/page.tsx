@@ -18,8 +18,7 @@ import { DocsSidebar } from "@/components/blog/docs-sidebar";
 import { MobileTocDrawer } from "@/components/blog/mobile-toc-drawer";
 import { visit } from "unist-util-visit";
 import { buildArticleSchema, buildBreadcrumbSchema } from "@/lib/schemas";
-
-const SITE_URL = "https://info.anupambaral.com.np";
+import { SITE_URL, absoluteUrl } from "@/lib/site";
 
 export async function generateStaticParams() {
   const posts = getAllPosts(["notes"]);
@@ -37,7 +36,9 @@ export async function generateMetadata({ params }: { params: Promise<{ subcatego
       title: `${post.frontmatter.title} | Security Knowledge Base`,
       description: post.frontmatter.description,
       alternates: {
-        canonical: `https://info.anupambaral.com.np/notes/${resolvedParams.subcategory}/${resolvedParams.slug}`,
+        canonical: absoluteUrl(
+          `/notes/${resolvedParams.subcategory}/${resolvedParams.slug}`,
+        ),
       },
     };
   } catch (e) {

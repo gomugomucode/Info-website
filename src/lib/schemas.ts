@@ -41,9 +41,9 @@ interface SchemaGraph {
   "@graph": [SchemaPerson, SchemaWebSite];
 }
 
-// ─── constants ───────────────────────────────────────────────────────────────
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/site";
 
-const SITE_URL = "https://info.anupambaral.com.np";
+// ─── constants ───────────────────────────────────────────────────────────────
 
 // Every URL here should resolve to a page that mentions "Anupam Baral".
 // Order matters: put the highest-authority profiles first.
@@ -101,18 +101,16 @@ export function buildSchemaGraph(): SchemaGraph {
   const website: SchemaWebSite = {
     "@type":       "WebSite",
     "@id":         websiteId,
-    name:          "Anupam Baral — Developer Knowledge Hub",
+    name:          SITE_NAME,
     url:           SITE_URL,
-    description:
-      "Tutorials, AI experiments, developer notes, Next.js guides, " +
-      "FastAPI resources, and real-world full-stack engineering insights.",
+    description:   SITE_DESCRIPTION,
     inLanguage:    "en-US",
     author:        { "@id": personId },
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type":       "EntryPoint",
-        urlTemplate:   `${SITE_URL}/api/search?q={search_term_string}`,
+        urlTemplate:   absoluteUrl("/api/search?q={search_term_string}"),
       },
       "query-input": "required name=search_term_string",
     },

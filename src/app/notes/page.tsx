@@ -3,12 +3,14 @@ import { Terminal, Network, Shield, Globe, Monitor, ArrowRight, BookOpen, Clock,
 import { getAllPosts } from "@/lib/mdx";
 import { LEARNING_PATHS } from "@/lib/learning-paths";
 import { Metadata } from "next";
+import { absoluteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Cybersecurity Reference Library | Anupam Baral",
-  description: "Technical, production-grade reference guides for security auditing, threat detection, systems hardening, and network analysis.",
+  title: "Cybersecurity Reference Library",
+  description:
+    "Technical reference guides for security auditing, threat detection, systems hardening, and network analysis.",
   alternates: {
-    canonical: "https://info.anupambaral.com.np/notes",
+    canonical: absoluteUrl("/notes"),
   },
 };
 
