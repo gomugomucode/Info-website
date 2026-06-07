@@ -1,1800 +1,296 @@
 ---
-title: "Wireshark & TShark Complete Guide"
-description: "Comprehensive GUI and CLI network packet analysis reference — Wireshark capture, filtering, forensics, and TShark command-line workflows."
-date: "2026-06-06"
-tags: ["wireshark", "tshark", "network-analysis", "packet-capture", "forensics"]
+title: "Wireshark & TShark — Network Forensics Guide"
+description: "Structured packet analysis for blue teams — capture workflows, display filters, HTTP/DNS/TCP protocol review, and defensive detection of scans, ARP spoofing, and C2 traffic."
+date: "2026-06-07"
+tags: ["wireshark", "tshark", "network-forensics", "blue-team", "packet-capture", "ids"]
 category: "notes"
 subcategory: "networking"
 difficulty: "Intermediate"
-readingTime: "80 min read"
+readingTime: "30 min read"
+featured: true
 ---
 
+# Wireshark & TShark — Network Forensics Guide
 
-# Wireshark & TShark Complete Guide
-> [!IMPORTANT]
-> **Defensive & Authorized Auditing Purposes Only**
-> This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
-1
-2
-Introduction to Wireshark and Its Importance in Cybersecurity
-Wireshark is a widely used network protocol analyzer that allows security professionals, system
-administrators, and network engineers to capture and inspect traffic in real time. It provides a detailed view
-of network communications, helping users analyze packets at a granular level.
-Why Wireshark is Used in Cybersecurity?
-Network Traffic Analysis
-1. Helps monitor and analyze real-time data transmission across a network.
-2. Identifies unusual traffic patterns that could indicate a cyber diagnostic run.
-Intrusion Detection and Threat Hunting
-1. Detects signs of malicious activity, such as unauthorized access or diagnostic agent communication.
-2. Assists in tracking down the source of an diagnostic run by analyzing traffic behavior.
-Packet Inspection and Forensics
-1. Examines network packets to identify diagnostic agent-infected data or suspicious test vectors.
-2. Helps in post-incident investigations to understand how a breach occurred.
-Performance Monitoring and Troubleshooting
-1. Identifies network congestion, dropped packets, and misconfigurations affecting
-performance.
-2. Troubleshoots network latency and connectivity issues efficiently.
-Penetration Testing and Ethical security auditing
-1. Used to analyze vulnerabilities in network security protocols.
-2. Helps security analyst understand how attackers can intercept and manipulate network
-traffic.
-Decrypting Encrypted Traffic (When applicable)
-1. Allows inspection of unencrypted and weakly encrypted data.
-2. Aids in ensuring sensitive information is not exposed over the network.
-Wireshark is an essential tool in cybersecurity defense, providing visibility into network traffic to
-identify vulnerabilities, detect security test, and enhance overall security.
-Export Objects (Files)
-Wireshark can extract files transferred through the wire. For a security analyst, it is vital to discover
-shared files and save them for further investigation. Exporting objects are available only for selected
-protocol's streams (DICOM, HTTP, IMF, SMB and TFTP).
-3
-Time Display Format
-Wireshark lists the packets as they are captured, so investigating the default flow is not always the best
-option. By default, Wireshark shows the time in "Seconds Since Beginning of Capture", the common
-usage is using the UTC Time Display Format for a better view. You can use the "View --&gt; Time
-Display Format" menu to change the time display format.
-4
-Expert Info
-Wireshark also detects specific states of protocols to help analysts easily spot possible anomalies and
-problems. Note that these are only suggestions, and there is always a chance of having false
-positives/negatives. Expert info can provide a group of categories in three different severities. Details
-are shown in the table below.
-Severity Colour Info
-Chat Blue Information on usual workflow.
-Note Cyan Notable events like application error codes.
-Warn Yellow Warnings like unusual error codes or problem statements.
-Error Red Problems like malformed packets.
-5
-Frequently encountered information groups are listed in the table below. You can refer to Wireshark's
-official documentation for more information on the expert information entries.
-Group Info Group Info
-Checksum errors. Deprecated protocol
-usage.
-Comment Packet comment
-detection. Malformed packet
-detection.
-Apply as Filter
-This is the most basic way of filtering traffic. While investigating a capture file, you can click on the
-field you want to filter and use the "right-click menu"
-or "Analyse --&gt; Apply as Filter" menu to filter the specific value. Once you apply the filter,
-Wireshark will generate the required filter query, apply it, show the packets according to your choice,
-and hide the unselected packets from the packet list pane. Note that the number of total and displayed
-packets are always shown on the status bar.
-6
-Conversation filter
-"Conversation Filter" option helps you view only the related packets and hide the rest of the packets
-easily. You can use the"right-click menu" or "Analyse -
--&gt; Conversation Filter" menu to filter conversations.
-Colourise Conversation
-This option is similar to the "Conversation Filter" with one difference. It highlights the linked
-packets without applying a display filter and decreasing the number of viewed packets. This option
-works with the "Colouring Rules" option ad changes the packet colours without considering the
-previously applied colour rule. You can use the "right-click menu" or "View --&gt; Colourise
-Conversation" menu to colourise a linked packet in a single click. Note that you can use the "View
---&gt; Colourise Conversation --&gt; Reset Colourisation" menu to undo this operation.
-7
-Prepare as Filter
-Similar to "Apply as Filter", this option helps analysts create display filters using the "right-click" menu.
-However, unlike the previous one, this model doesn't apply the filters after the choice. It adds the
-required query to the pane and waits for the execution command (enter) or another chosen filtering
-option by using the ".. and/or.." from the "right-click menu".
-8
-Apply as Column
-By default, the packet list pane provides basic information about each packet. You can use the
-"right-click menu" or "Analyse --&gt; Apply as
-Column" menu to add columns to the packet list pane. Once you click on a value and apply it as a
-column, it will be visible on the packet list pane. This function helps analysts examine the appearance
-of a specific value/field across the available packets in the capture file. You can enable/disable the
-columns shown in the packet list pane by clicking on the top of the packet list pane.
-9
-Follow Stream
-Wireshark displays everything in packet portion size. However, it is possible to reconstruct the streams
-and view the raw traffic as it is presented at the application level. Following the protocol, streams help
-analysts recreate the
-application-level data and understand the event of interest. It is also possible to view the unencrypted
-protocol data like usernames, passwords and other transferred data.
-You can use the"right-click menu" or "Analyse --&gt; Follow TCP/UDP/HTTP Stream" menu to
-follow traffic streams. Streams are shown in a separate dialogue box; packets originating from the
-server are highlighted with blue, and those originating from the client are highlighted with red.
-Once you follow a stream, Wireshark automatically creates and applies the required filter to view the
-specific stream. Remember, once a filter is applied, the number of the viewed packets will change. You
-will need to use the "X button" located on the right upper side of the display filter bar to remove the
-display filter and view all available packets in the capture file.
-Statistics
-This menu provides multiple statistics options ready to investigate to help users see the big picture
-in terms of the scope of the traffic, available protocols, endpoints and conversations, and some
-protocol-specific details like DHCP, DNS and HTTP/2. For a security analyst, it is crucial to know
-how to utilise the statical information. This section provides a quick summary of the processed
-pcap, which will help analysts create a hypothesis for an investigation. You can use the
-"Statistics" menu to view all available
-10
-options. Now start the given VM, open the Wireshark, load the "Exercise.pcapng" file and go
-through the walkthrough.
-Resolved Addresses
-This option helps analysts identify IP addresses and DNS names available in the capture file by
-providing the list of the resolved addresses and their hostnames. Note that the hostname information is
-taken from DNS answers in the capture file. Analysts can quickly identify the accessed resources by
-using this menu.
-Thus they can spot accessed resources and evaluate them according to the event of interest. You can use
-the "Statistics --&gt; Resolved Addresses" menu to view all resolved addresses by Wireshark.
-Protocol Hierarchy
-This option breaks down all available protocols from the capture file and helps analysts view the
-protocols in a tree view based on packet counters and percentages. Thus analysts can view the overall
-usage of the ports and services and focus on the event of interest. The golden rule mentioned in the
-previous
-room is valid in this section; you can right-click and filter the event of interest. You can use the
-"Statistics --&gt; Protocol Hierarchy" menu to view this info.
-11
-Conversations
-Conversation represents traffic between two specific endpoints. This option provides the list of the
-conversations in five base formats; ethernet, IPv4, IPv6, TCP and UDP. Thus analysts can identify
-all conversations and contact endpoints for the event of interest. You can use the "Statistic --&gt;
-Conversations" menu to view this info.
-12
-Endpoints
-The endpoints option is similar to the conversations option. The only difference is that this option
-provides unique information for a single information field (Ethernet, IPv4, IPv6, TCP and UDP ). Thus
-analysts can identify the unique endpoints in the capture file and use it for the event of interest. You can
-use
-the "Statistics --&gt; Endpoints" menu to view this info.
-Wireshark also supports resolving MAC addresses to human-readable format using the manufacturer
-name assigned by IEEE. Note that this conversion is done through the first three bytes of the MAC
-address and only works for the known manufacturers. When you review the ethernet endpoints, you can
-activate this option with the "Name resolution" button in the lower-left corner of the endpoints
-window.
-13
-Name resolution is not limited only to MAC addresses. Wireshark provides IP and port name
-resolution options as well. However, these options are not enabled by default.
-If you want to use these functionalities, you need to activate them through the "Edit --&gt;
-Preferences --&gt; Name Resolution" menu. Once you enable IP and port name resolution,
-you will see the resolved IP address and port names in the packet list pane and also will be
-able to view resolved names in the "Conversations" and "Endpoints" menus as well.
-14
-Endpoint menu view with name resolution:
-Besides name resolution, Wireshark also provides an IP geolocation mapping that helps analysts
-identify the map's source and destination
-15
-addresses.
-But this feature is not activated by default and needs supplementary data like the GeoIP
-database. Currently, Wireshark supports MaxMind databases, and the latest versions of the
-Wireshark come configured MaxMind DB
-resolver. However, you still need MaxMind DB files and provide the database path to Wireshark by
-using the "Edit --&gt; Preferences --&gt; Name Resolution --&gt; MaxMind database directories" menu.
-Once you download and indicate the path, Wireshark will automatically provide GeoIP information
-under the IP
-protocol details for the matched IP addresses.
-Endpoints and GeoIP view.
-IPv4 and IPv6
-16
-Up to here, almost all options provided information that contained both versions of the IP addresses.
-The statistics menu has two options for narrowing the statistics on packets containing a specific IP
-version. Thus, analysts can identify and list all events linked to specific IP versions in a single window
-and use it for the event of interest. You can use the "Statistics --&gt; IPvX Statistics" menu to view this
-info.
-DNS
-This option breaks down all DNS packets from the capture file and helps analysts view the findings in a
-tree view based on packet counters and percentages of the DNS protocol. Thus analysts can view the
-DNS service's overall usage, including rcode, opcode, class, query type, service and query stats and use
-it for the event of interest. You can use the "Statistics --&gt; DNS" menu to view this info.
-17
-HTTP
-This option breaks down all HTTP packets from the capture file and helps analysts view the findings
-in a tree view based on packet counters and percentages of the HTTP protocol. Thus analysts can
-view the HTTP service's overall usage, including request and response codes and the original
-requests. You can use the "Statistics --&gt; HTTP" menu to view this info.
-18
-Bookmarks and Filtering Buttons
-We've covered different types of filtering options, operators and functions. It is time to create filters and
-save them as bookmarks and buttons for later usage. As mentioned in the previous task, the filter toolbar
-has a filter bookmark section to save user-created filters, which helps analysts re-use favourite/complex
-filters with a couple of clicks. Similar to bookmarks, you can create filter buttons ready to apply with a
-single click.
-Creating and using bookmarks.
-19
-Creating and using display filter buttons.
-20
-Profiles
-Wireshark is a multifunctional tool that helps analysts to accomplish in-depth packet analysis. As we
-covered during the room, multiple preferences need to be configured to analyse a specific event of
-interest. It is cumbersome to re-change the configuration for each investigation case, which requires a
-different set of colouring rules and filtering buttons. This is where Wireshark profiles come into play.
-You can create multiple profiles for different investigation cases and use
-them accordingly. You can use the "Edit --&gt; Configuration Profiles" menu or the "lower right
-bottom of the status bar --&gt; Profile" section to create, modify and change the profile configuration.
-Packet Filtering
-Capture Filters This type of filter is used to save only a specific part of the traffic. It is set
-before capturing traffic and not changeable during the capture.
-Display Filters This type of filter is used to investigate packets by reducing the number of
-visible packets, and it is changeable during the capture.
-Note: You cannot use the display filter expressions for capturing traffic and vice versa.
-21
-The typical use case is capturing everything and filtering the packets according to the event of interest.
-Only experienced professionals use capture filters and sniff traffic. This is why Wireshark supports more
-protocol types in display filters.
-Capture Filter Syntax
-These filters use byte offsets hex values and masks with boolean operators, and it is not easy to
-understand/predict the filter's purpose at first glance. The base syntax is explained below:
-Scope: host, net, port and portrange.
-Direction: src, dst, src or dst, src and dst,
-Protocol: ether, wlan, ip, ip6, arp, rarp, tcp and udp.
-Sample filter to capture port 80 traffic:
-You can read more on capture filter syntax from here and here. A quick reference is available under
-the "Capture --&gt; Capture Filters" menu.
-Display Filter Syntax
-This is Wireshark's most powerful feature. It supports 3000 protocols and allows conducting packet-
-level searches under the protocol breakdown. The official "Display Filter Reference" provides all
-supported protocols breakdown for filtering.
-Sample filter to capture port 80 traffic:
-Wireshark has a built-in option (Display Filter Expression) that stores all supported protocol
-structures to help analysts create display filters. We will cover the "Display Filter Expression" menu
-later. Now let's understand the
-tcp port 80
-22
-fundamentals of the display filter operations. A quick reference is available under the "Analyse --&gt;
-Display Filters" menu.
-Comparison Operators
-You can create display filters by using different comparison operators to find the event of interest.
-The primary operators are shown in the table below.
-English C-Like Description Example
-eq == Equal
-ip.src == 10.10.10.100
-ne != Not equal
-ip.src != 10.10.10.100
-gt &gt; Greater than ip.ttl &gt; 250
-lt &lt; Less Than ip.ttl &lt; 10
-ge &gt;= Greater than or equal to
-ip.ttl &gt;= 0xFA
-le &lt;= Less than or equal to ip.ttl &lt;= 0xA
-Note: Wireshark supports decimal and hexadecimal values in filtering. You can use any format you
-want according to the search you will conduct.
-Logical Expressions
-Wireshark supports boolean syntax. You can create display filters by using logical operators as well.
-English C-Like Description Example
-and && Logical AND
-(ip.src == 10.10.10.100) AND (ip.src ==
-10.10.10.111)
-or || Logical OR
-(ip.src == 10.10.10.100) OR (ip.src ==
-10.10.10.111)
-23
-not ! Logical NOT !(ip.src == 10.10.10.222)
-Note: Usage of !=value is
-deprecated; using it could
-provide inconsistent results.
-Using the !(value) style is
-suggested for more consistent
-results.
-Packet Filter Toolbar
-The filter toolbar is where you create and apply your display filters. It is a smart toolbar that
-helps you create valid display filters with ease. Before starting to filter packets, here are a few
-tips:
-Packet filters are defined in lowercase.
-Packet filters have an autocomplete feature to break down protocol details, and each detail is
-represented by a "dot".
-Packet filters have a three-colour representation explained below.
-Green Valid filter
-Red Invalid filter
-Yellow Warning filter. This filter works, but it is unreliable, and it is suggested to
-change it with a valid filter.
-Protocol Filters
-As mentioned in the previous task, Wireshark supports 3000 protocols and allows packet-level
-investigation by filtering the protocol fields. This task shows the creation and usage of filters
-against different protocol fields.
-IP Filters
-IP filters help analysts filter the traffic according to the IP level information from the packets
-(Network layer of the OSI model). This is one of the most commonly used filters in Wireshark.
-These filters filter network-level
-24
-information like IP addresses, version, time to live, type of service, flags, and checksum values.
-The common filters are shown in the given table.
-Filter Description
-ip Show all IP packets.
-ip.addr == 10.10.10.111
-Show all packets containing IP address 10.10.10.111.
-ip.addr == 10.10.10.0/24 Show all packets containing IP addresses from 10.10.10.0/24 subnet.
-ip.src == 10.10.10.111 Show all packets originated from 10.10.10.111
-ip.dst == 10.10.10.111 Show all packets sent to 10.10.10.111
-ip.addr vs ip.src/ip.dst
-Note: The ip.addr filters the traffic without considering the packet
-direction. The ip.src/ip.dst filters the packet depending on the packet
-direction.
-TCP filters help analysts filter the traffic according to protocol-level information from the packets
-(Transport layer of the OSI model). These filters filter transport protocol level information like
-source and destination ports, sequence number, acknowledgement number, windows size,
-timestamps, flags, length and protocol errors.
-Filter Description Filter Expression
-tcp.port == 80 Show all TCP packets udp.port == 53 Show
-with port 80 all UDP packets
-with port 53
-tcp.srcport == 1234 Show all TCP packets
-originating from port 1234
-udp.srcport== 1234
-Show
-all UDP packets
-originating from
-port 1234
-25
-tcp.dstport == 80 Show all TCP packets sent
-to port 80
-udp.dstport== 5353
-Show
-all UDP packets
-sent to port 5353
-Application Level Protocol Filters | and DNS
-Application-level protocol filters help analysts filter the traffic according to application protocol
-level information from the packets (Application layer of the OSI model ). These filters filter
-application-specific information, like test vector and linked data, depending on the protocol type.
-Filter Description Filter Description
-http
-Show
-all HTTP packets
-dns
-Show
-all DNS packets
-http.response.code
-== 200
-Show all packets with
-HTTP response code
-"200"
-dns.flags.response
-== 0
-Show
-all DNS requests
-http.request.method
-== "GET"
-Show all HTTP GET
-requests
-dns.flags.response
-== 1
-Show
-all DNS responses
-http.request.method
-== "POST"
-Show
-all HTTP POST
-requests
-dns.qry.type == 1
-Show all DNS "A"
-records
-26
-Display Filter Expressions
-Wireshark has a built-in option (Display Filter Expression) that stores all supported protocol
-structures to help analysts create display filters. When an analyst can't recall the required filter
-for a specific protocol or is unsure about the assignable values for a filter, the Display Filter
-Expressions menu provides an easy-to-use display filter builder guide. It is available
-under the "Analyse --&gt; Display Filter Expression" menu.
-27
-Advanced Filtering
-So far, you have learned the basics of packet filtering operations. Now it is time to focus on specific
-packet details for the event of interest. Besides the operators and expressions covered in the previous
-room, Wireshark has advanced operators and functions. These advanced filtering options help the
-analyst conduct an in-depth analysis of an event of interest.
-Filter: "contains"
-Type Comparison Operator
-Description Search a value inside packets. It is case-sensitive and provides similar
-functionality to the "Find" option by focusing on a specific field.
-Example Find all "Apache" servers.
-Workflow List all HTTP packets where packets' "server" field contains the "Apache"
-keyword.
-Usage http.server contains "Apache"
-Filter: "matches"
-Type Comparison Operator
-Description Search a pattern of a regular expression. It is case insensitive, and complex
-queries have a margin of error.
-Example Find all .php and .html pages.
-28
-Workflow List all HTTP packets where packets' "host" fields match keywords ".php" or
-".html".
-Usage http.host matches "\.(php|html)"
-Filter: "in"
-Filter in
-Type Set Membership
-Description Search a value or field inside of a specific scope/range.
-Example Find all packets that use ports 80, 443 or 8080.
-Workflow List all TCP packets where packets' "port" fields have values 80, 443 or 8080.
-Usage tcp.port in &#123;80 443 8080&#125;
-29
-Filter: "upper"
-Type Function
-Description Convert a string value to uppercase.
-Example Find all "APACHE" servers.
-Workflow Convert all HTTP packets' "server" fields to uppercase and list packets that
-contain the "APACHE" keyword.
-Usage upper(http.server) contains "APACHE"
-30
-Filter: "lower"
-Type Function
-Description Convert a string value to lowercase.
-Example Find all "apache" servers.
-Workflow Convert all HTTP packets' "server" fields info to lowercase and list packets
-that contain the "apache" keyword.
-Usage lower(http.server) contains "apache"
-31
-Filter: "string"
-Type Function
-Description Convert a non-string value to a string.
-Example Find all frames with odd numbers.
-Workflow Convert all "frame number" fields to string values, and list frames end with
-odd values.
-Usage string(frame.number) matches "[13579]$"
-32
-Wireshark: Traffic Analysis
-Nmap Scans
-Nmap is an industry-standard tool for mapping networks, identifying live hosts and discovering the
-services. As it is one of the most used network scanner tools, a security analyst should identify the
-network patterns created with it. This section will cover identifying the most common Nmap scan types.
-TCP connect scans
- SYN scans
-UDP scans
-It is essential to know how Nmap scans work to spot scan activity on the network. However, it is
-impossible to understand the scan details without using the correct filters. Below are the base filters to
-probe Nmap scan behaviour on the network.
-TCP flags in a nutshell.
-Notes Wireshark Filters
-Global search. • tcp • udp
-• Only SYN flag. • SYN flag is
-set. The rest of the bits are not
-important.
-• tcp.flags == 2 • tcp.flags.syn == 1
-• Only ACK flag. • ACK flag is
-set. The rest of the bits are not
-important.
-• tcp.flags == 16 • tcp.flags.ack == 1
-33
-nmap -sT
-• Only SYN, ACK flags. • SYN
-and ACK are set. The rest of the
-bits are not important.
-• tcp.flags == 18 • (tcp.flags.syn == 1) and (tcp.flags.ack
-== 1)
-• Only RST flag. • RST flag is
-set. The rest of the bits are not
-important.
-• tcp.flags == 4 • tcp.flags.reset == 1
-• Only RST, ACK flags. • RST
-and ACK are set. The rest of the
-bits are not important.
-• tcp.flags == 20 • (tcp.flags.reset == 1) and (tcp.flags.ack
-== 1)
-• Only FIN flag • FIN flag is
-set. The rest of the bits are
-not important.
-• tcp.flags == 1 • tcp.flags.fin == 1
-TCP Connect Scan in a nutshell:
-Relies on the three-way handshake (needs to finish the handshake process).
-Usually conducted with command.
-Used by non-privileged users (only option for a non-root user).
-Usually has a windows size larger than 1024 bytes as the request expects some data due to the
-nature of the protocol.
-Open TCP Port Open TCP Port Closed TCP Port
-• SYN --&gt; • &lt;-- SYN,
-ACK • ACK --&gt;
-• SYN --&gt; • &lt;-- SYN, ACK • ACK --&gt; • RST,
-ACK --&gt;
-• SYN --&gt; • &lt;-- RST,
-ACK
-The images below show the three-way handshake process of the open and close TCP ports. Images
-and pcap samples are split to make the investigation easier and understand each case's details.
-Open TCP port (Connect):
-34
-tcp.flags.syn==1 and tcp.flags.ack==0 and tcp.window_size &gt; 1024
-Open TCP Port Close TCP Port
-Closed TCP port (Connect):
-The above images provide the patterns in isolated traffic. However, it is not always easy to spot the
-given patterns in big capture files. Therefore analysts need to use a generic filter to view the initial
-anomaly patterns, and then it will be easier to focus on a specific traffic point.
-The given filter shows the TCP Connect scan patterns in a capture file.
-SYN Scans
-TCP SYN Scan in a nutshell:
-Doesn't rely on the three-way handshake (no need to finish the handshake process).
-Usually conducted with Used by
-privileged users.
-command.
-Usually have a size less than or equal to 1024 bytes as the request is not finished and it doesn't
-expect to receive data.
-nmap -sS
-35
-tcp.flags.syn==1 and tcp.flags.ack==0 and tcp.window_size &lt;= 1024
-• SYN --&gt; • &lt;-- RST,ACK• SYN --&gt; • &lt;-- SYN,ACK • RST--&gt;
-Open TCP port (SYN):
-Closed TCP port (SYN):
-The given filter shows the TCP SYN scan patterns in a capture file.
-UDP Scan in a nutshell:
-Doesn't require a handshake process
- No prompt for
-open ports
-ICMP error message for close ports
-Usually conducted with command.
-Open UDP Port Closed UDP Port
-• UDP packet --&gt; • UDP packet --&gt; • ICMP Type 3, Code 3 message. (Destination
-unreachable, port unreachable)
-36
-Closed (port no 69) and open (port no 68) UDP ports:
-The above image shows that the closed port returns an ICMP error packet. No further information is
-provided about the error at first glance, so how can an analyst decide where this error message belongs?
-The ICMP error message uses the original request as encapsulated data to show the source/reason of
-the packet. Once you expand the ICMP section in the packet details pane, you will see the
-encapsulated data and the original request, as shown in the below image.
-37
-icmp.type==3 and icmp.code==3
-The given filter shows the UDP scan patterns in a capture file.
-38
-ARP Poisoning & Man In The Middle!
-ARP protocol, or Address Resolution Protocol (ARP), is the technology responsible for allowing
-devices to identify themselves on a network.
-Address Resolution Protocol Poisoning (also known as ARP Spoofing or Man In The Middle
-(MITM) diagnostic run) is a type of diagnostic run that involves network jamming/manipulating by sending
-malicious ARP packets to the default gateway. The ultimate aim is to manipulate the "IP to
-MAC address table" and sniff the traffic of the target host.
-There are a variety of tools available to conduct ARP security test. However, the mindset of the diagnostic run is
-static, so it is easy to detect such an diagnostic run by knowing the ARP protocol workflow and Wireshark skills.
-ARP analysis in a nutshell:
-Works on the local network
-Enables the communication between MAC addresses
- Not a secure
-protocol
-Not a routable protocol
-It doesn't have an authentication function
-Common patterns are request & response, announcement and gratuitous packets.
-Before investigating the traffic, let's review some legitimate and suspicious ARP packets. The
-legitimate requests are similar to the shown
-picture: a broadcast request that asks if any of the available hosts use an IP address and a reply from the
-host that uses the particular IP address.
-Notes Wireshark filter
-Global search • arp
-"ARP" options for grabbing the low-
-hanging fruits: • Opcode
-1: ARP requests. • Opcode
-2: ARP responses. • Hunt: Arp scanning •
-Hunt: Possible ARP poisoning
-detection •
-Hunt: Possible ARP flooding from
-detection:
-• arp.opcode == 1 • arp.opcode == 2 •
-arp.dst.hw_mac==00:00:00:00:00:00 • arp.duplicate- address-detected or
-arp.duplicate-address-frame • ((arp) && (arp.opcode == 1)) &&
-(arp.src.hw_mac == target-mac-address)
-39
-A suspicious situation means having two different ARP responses (conflict) for a particular IP
-address.
-In that case, Wireshark's expert info tab warns the analyst. However, it only shows the second
-occurrence of the duplicate value to highlight the conflict. Therefore, identifying the malicious
-packet from the legitimate one is the analyst's challenge. A possible IP spoofing case is shown in
-the picture
-below.
-40
-Here, knowing the network architecture and inspecting the traffic for a specific time frame can help
-detect the anomaly. As an analyst, you should take notes of your findings before going further. This will
-help you be organised and make it
-easier to correlate the further findings.
-Look at the given picture; there is a conflict; the MAC address that ends with "b4" crafted an ARP
-request with the "192.168.1.25" IP address, then claimed to have the "192.168.1.1" IP address.
-Notes Detection Notes Findings
-Possible IP address match. 1 IP address announced from a
-MAC address.
-• MAC:
-00:0c:29:e2:18:b4
-• IP: 192.168.1.25
-Possible ARP spoofing
-attempt.
-2 MAC addresses claimed the same IP
-address (192.168.1.1). The "192.168.1.1"
-IP address is a possible gateway address.
-• MAC1:
-50:78:b3:f3:cd:f4
-• MAC 2:
-00:0c:29:e2:18:b4
-Possible ARP flooding
-attempt.
-The MAC address that ends with "b4"
-claims to have a different/new IP address.
-• MAC:
-00:0c:29:e2:18:b4
-• IP: 192.168.1.1
-Let's keep inspecting the traffic to spot any other anomalies. Note that the case is split into multiple
-capture files to make the investigation easier.
-At this point, it is evident that there is an anomaly. A security analyst cannot ignore a flood of ARP
-requests. This could be malicious activity, scan or network problems. There is a new anomaly; the MAC
-address that ends with "b4" crafted multiple ARP requests with the "192.168.1.25" IP address. Let's
-focus on the source of this anomaly and extend the taken notes.
-41
-Notes Detection Notes Findings
-Possible IP address match. 1 IP address announced from a
-MAC address.
-• MAC:
-00:0c:29:e2:18:b4 • IP:
-192.168.1.25
-Possible ARP spoofing
-attempt.
-2 MAC addresses claimed the same IP
-address (192.168.1.1). The " 192.168.1.1"
-IP address is a possible gateway address.
-• MAC1:
-50:78:b3:f3:cd:f4 •
-MAC 2:
-00:0c:29:e2:18:b4
-Possible ARP spoofing
-attempt.
-The MAC address that ends with "b4"
-claims to have a different/new IP address.
-MAC: 00:0c:29:e2:18:b4
-• IP: 192.168.1.1
-Possible ARP flooding
-attempt.
-The MAC address that ends with "b4"
-crafted multiple ARP requests against a
-range of IP addresses.
-• MAC:
-00:0c:29:e2:18:b4 • IP:
-192.168.1.xxx
-Up to this point, it is evident that the MAC address that ends with "b4" owns the "192.168.1.25" IP
-address and crafted suspicious ARP requests against a range of IP addresses. It also claimed to have the
-possible gateway address as well.
-Let's focus on other protocols and spot the reflection of this anomaly in the following sections of the
-time frame.
-There is HTTP traffic, and everything looks normal at the IP level, so there is no linked information with
-our previous findings. Let's add the MAC addresses as columns in the packet list pane to reveal the
-communication behind the IP addresses.
-42
-One more anomaly! The MAC address that ends with "b4" is the destination of all HTTP packets! It is
-evident that there is a MITM diagnostic run, and the authorized auditor is the host with the MAC address that ends with
-"b4". All traffic linked to "192.168.1.12" IP addresses is forwarded to the malicious host. Let's
-summarise the findings before concluding the investigation.
-Detection Notes Findings
-IP to MAC matches. 3 IP to MAC address matches.
-authorized auditor The authorized auditor created noise with ARP packets.
-Router/gateway address.
-target host The authorized auditor sniffed all traffic of the target host.
-Detecting these bits and pieces of information in a big capture file is challenging. However, in real-life
-cases, you will not have "tailored data" ready for investigation. Therefore you need to have the analyst
-mindset, knowledge and
-tool skills to filter and detect the anomalies.
-Identifying Hosts: DHCP, NetBIOS and Kerberos
-Identifying Hosts
-When investigating a compromise or diagnostic agent infection activity, a security analyst should know
-how to identify the hosts on the network apart from IP to MAC address match.
-One of the best methods is identifying the hosts and users on the network to decide the
-investigation's starting point and list the hosts and users associated with the malicious
-traffic/activity.
-Usually, enterprise networks use a predefined pattern to name users and hosts.
-While this makes knowing and following the inventory easier, it has good and bad sides. The good side
-is that it will be easy to identify a user or host by looking at the name. The bad side is that it will be easy
-to clone that pattern and live in the enterprise network for adversaries. There are multiple solutions to
-avoid these kinds of activities, but for a security analyst, it is still essential to have host and
-user identification skills.
-Protocols that can be used in Host and User identification:
-Dynamic Host Configuration Protocol (DHCP) traffic
-43
-NetBIOS (NBNS) traffic
-Kerberos traffic
-DHCP
-Dynamic Host Configuration Protocol (DHCP), is the technology responsible for managing automatic
-IP address and required communication parameters assignment.
-DHCP investigation in a nutshell:
-Notes Wireshark Filter
-Global search. • dhcp or bootp
-Filtering the proper DHCP packet options is vital to finding
-an event of interest. • "DHCP
-Request" packets contain the hostname information •
-"DHCP ACK" packets represent the accepted requests •
-"DHCP NAK" packets represent denied requests Due to
-the nature of the protocol, only "Option 53" ( request type)
-has predefined static values. You should filter the packet
-type first, and then you can filter the rest of the options by
-"applying as column" or use the advanced filters like
-"contains" and
-"matches".
-• Request: dhcp.option.dhcp == 3
-• ACK: dhcp.option.dhcp == 5 • NAK:
-dhcp.option.dhcp == 6
-"DHCP Request" options for grabbing the low-
-hanging fruits: • Option 12: Hostname. • Option
-50: Requested IP address. • Option 51: Requested IP
-lease time. • Option 61: Client's MAC address.
-• dhcp.option.hostname contains "keyword"
-"DHCP ACK" options for grabbing the low-hanging fruits: •
-Option 15: Domain name. • Option
-51: Assigned IP lease time.
-• dhcp.option.domain_name contains "keyword"
-"DHCP NAK" options for grabbing the low-hanging fruits:
-• Option 56: Message (rejection details/reason).
-As the message could be unique
-according to the case/situation, It is
-suggested to read the message
-instead of filtering it.
-Thus, the analyst could create a
-more reliable hypothesis/result by
-understanding the event
-circumstances.
-44
-NetBIOS (NBNS) Analysis
-NetBIOS or Network Basic Input/Output System is the technology responsible for allowing applications
-on different hosts to communicate with each other.
-NBNS investigation in a nutshell:
-Notes Wireshark Filter
-Global search. • nbns
-"NBNS" options for grabbing the low-hanging fruits: •
-Queries: Query details. • Query details could
-contain "name, Time to live (TTL) and IP address details"
-• nbns.name contains
-"keyword"
-NetBIOS registration requests nbns.flags.opcode == 5
-45
-Kerberos Analysis
-Kerberos is the default authentication service for Microsoft Windows domains.
-It is responsible for authenticating service requests between two or more computers over the
-untrusted network. The ultimate aim is to prove identity securely.
-Kerberos investigation in a nutshell:
-Notes Wireshark Filter
-Global search. • kerberos
-User account search: • CNameString: The username. Note: Some packets
-could provide hostname information in this field. To avoid this confusion,
-filter the "$" value. The values end with "$" are hostnames, and the ones
-without it are user names.
-kerberos. CNameString
-contains "keyword" •
-kerberos. CNameString and !
-(kerberos. CNameString contains
-"Kerberos" options for grabbing the low-hanging fruits: •
-pvno: Protocol version. • realm: Domain name for the generated ticket. •
-sname: Service and domain name for the generated ticket.
-• addresses: Client IP address and NetBIOS name. Note: the
-"addresses" information is only available in request packets.
-• kerberos.pvno == 5
-• kerberos.realm contains
-".org" • kerberos. SNameString
-== "krbtg"
-46
-Tunneling Traffic: DNS and ICMP
-Tunnelling Traffic: ICMP and DNS
-Traffic tunnelling is (also known as "port forwarding") transferring the data/resources in a secure
-method to network segments and zones.
-It can be used for "internet to private networks" and "private networks to internet"
-flow/direction.
-There is an encapsulation process to hide the data, so the transferred data appear natural for the
-case, but it contains private data packets and transfers them to the final destination securely.
-Tunnelling provides anonymity and traffic security. Therefore it is highly used by enterprise networks.
-However, as it gives a significant level of data encryption, attackers use tunnelling to bypass security
-perimeters using the standard and trusted protocols used in everyday traffic like ICMP and DNS.
-Therefore, for a security analyst, it is crucial to have the ability to spot ICMP and DNS anomalies.
-ICMP Analysis
-Internet Control Message Protocol (ICMP) is designed for diagnosing and reporting network
-communication issues. It is highly used in error reporting and testing.
-As it is a trusted network layer protocol, sometimes it is used for denial of service (DoS) security test;
-> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
-47
-tunnelling activities.
-ICMP analysis in a nutshell:
-Usually, ICMP tunnelling security test are anomalies appearing/starting after a diagnostic agent execution or
-vulnerability defensive validation.
-As the ICMP packets can transfer an additional data test vector, adversaries use this section to
-> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
-It could be a TCP, HTTP or SSH data. As the ICMP protocols provide a great opportunity to carry
-extra data, it also has disadvantages.
-Most enterprise networks block custom packets or require administrator privileges to create
-custom ICMP packets.
-A large volume of ICMP traffic or anomalous packet sizes are indicators of ICMP tunnelling. Still, the
-adversaries could create custom packets that match the
-regular ICMP packet size (64 bytes), so it is still cumbersome to detect these tunnelling activities.
-However, a security analyst should know the normal and the abnormal to spot the possible anomaly and
-escalate it for further analysis.
-Notes Wireshark filters
-Global search • icmp
-"ICMP" options for grabbing the low-hanging fruits: • Packet length. •
-ICMP destination addresses. • Encapsulated protocol signs in ICMP
-test vector.
-• data.len &gt; 64 and
-icmp
-48
-DNS Analysis
-Domain Name System (DNS) is designed to translate/convert IP domain addresses to IP
-addresses.
-It is also known as a phonebook of the internet. As it is the essential part of web services, it is
-commonly used and trusted, and therefore often ignored. Due to that, adversaries use it in data
-> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
-DNS analysis in a nutshell:
-Similar to ICMP tunnels, DNS security test are anomalies appearing/starting after a diagnostic agent execution
-or vulnerability defensive validation.
-Adversary creates (or already has) a domain address and configures it as a C2 channel. The
-diagnostic agent or the commands executed after defensive validation sends DNS queries to the C2 server.
-However, these queries are longer than default DNS queries and crafted
-for subdomain addresses. Unfortunately, these subdomain addresses are not actual addresses; they
-are encoded commands as shown below:
-"encoded-commands.maliciousdomain.com"
-When this query is routed to the C2 server, the server sends the actual malicious commands to the
-host.
-As the DNS queries are a natural part of the networking activity, these packets have the chance of
-not being detected by network perimeters. A security analyst should know how to investigate the
-DNS packet lengths and target addresses to spot these anomalies.
-Notes Wireshark
-Filter
-Global search • dns
-"DNS" options for grabbing the low-hanging fruits: • Query length. •
-Anomalous and non-regular names in DNS addresses. •
-Long DNS addresses with encoded subdomain addresses. • Known
-patterns like dnscat and dns2tcp. • Statistical analysis like the anomalous
-volume of DNS requests for a particular target.
-!mdns: Disable local link device queries.
-• dns contains "dnscat"
-• dns.qry.name.len
-> 15 and !mdns
-49
-Cleartext Protocol Analysis: FTP
-Cleartext Protocol Analysis
-Investigating cleartext protocol traces sounds easy, but when the time comes to investigate a big
-network trace for incident analysis and response, the game changes. Proper analysis is more than
-following the stream and reading the cleartext data. For a security analyst, it is important to create
-statistics and key results from the investigation process. As mentioned earlier at the beginning of the
-Wireshark room series, the analyst should have the required network knowledge and tool skills to
-accomplish this. Let's simulate a cleartext protocol investigation with Wireshark!
-FTP Analysis
-File Transfer Protocol (FTP) is designed to transfer files with ease, so it focuses on simplicity rather
-than security. As a result of this, using this protocol in unsecured environments could create security
-issues like:
-MITM security test
-Credential stealing and unauthorised access
- Phishing
-50
-diagnostic agent planting
- Data
-> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
-FTP analysis in a nutshell:
-Notes Wireshark Filter
-Global search • ftp
-"FTP" options for grabbing the low-hanging fruits: • x1x
-series: Information request responses. • x2x series:
-Connection messages. • x3x
-series: Authentication messages. Note: "200"
-means command successful.
-"x1x" series options for grabbing the low-hanging fruits:
-• 211: System status. • 212: Directory status.
-• 213: File status
-• ftp.response.code == 211
-"x2x" series options for grabbing the low-hanging fruits:
-• 220: Service ready. • 227: Entering passive mode. •
-228: Long passive mode. • 229: Extended passive mode.
-• ftp.response.code == 227
-"x3x" series options for grabbing the low-hanging
-fruits: • 230: User login. • 231: User logout. • 331:
-Valid username. • 430: Invalid username or password
-• 530: No login, invalid password.
-• ftp.response.code == 230
-"FTP" commands for grabbing the low-hanging fruits: •
-USER: Username. • PASS: Password. • CWD: Current
-work directory. • LIST: List.
-• ftp.request.command == "USER" •
-ftp.request.command == "PASS" • ftp.request.arg
-== "password"
-Advanced usages examples for grabbing low- hanging
-fruits: • Bruteforce signal: List failed login attempts. •
-Bruteforce signal: List target username. • Password
-spray signal: List targets
-for a static password.
-• ftp.response.code == 530 •
-(ftp.response.code == 530) and (ftp.response.arg contains
-"username")
-• (ftp.request.command == "PASS" ) and
-(ftp.request.arg == "password")
-51
-Cleartext Protocol Analysis: HTTP Analysis
-Hypertext Transfer Protocol (HTTP) is a cleartext-based, request-response and client-server
-protocol. It is the standard type of network activity to request/serve web pages, and by default, it is
-not blocked by any network
-perimeter. As a result of being unencrypted and the backbone of web traffic, HTTP is one of the
-must-to-know protocols in traffic analysis. Following security test could be detected with the help of
-HTTP analysis:
-Phishing pages
-Web security test
-> [Defensive notice: Actionable exploit, malware, credential theft, phishing, or unauthorized access instructions were omitted. Use authorized defensive testing, monitoring, and hardening workflows instead.]
-Command and control traffic (C2) HTTP analysis in a
-nutshell:
-Notes Wireshark Filter
-Global search Note: HTTP2 is a revision of the HTTP protocol for
-better performance and security. It supports binary data
-transfer and request&response multiplexing.
-• http • http2
-"HTTP Request Methods" for grabbing the low-hanging fruits: •
-GET • POST • Request: Listing all requests
-• http.request.method == "GET" •
-http.request.method ==
-"POST" • http.request
-"HTTP Response Status Codes" for grabbing the low-hanging • http.response.code ==
-52
-fruits: • 200 OK: Request successful. • 301 Moved Permanently:
-Resource is moved to a new URL/path (permanently). • 302 Moved
-Temporarily: Resource is moved to a new URL/path (temporarily). •
-400 Bad Request: Server didn't understand the request. • 401
-Unauthorised: URL needs authorisation (login, etc.). • 403
-Forbidden: No access to the requested URL. • 404 Not Found:
-Server can't find the requested URL. • 405 Method Not Allowed:
-Used method is not suitable or blocked. • 408 Request Timeout:
-Request look longer than server wait time. • 500 Internal Server
-Error: Request not completed, unexpected error. • 503 Service
-Unavailable: Request not completed server or service is down.
-200 • http.response.code
-== 401 •
-http.response.code ==
-403 • http.response.code
-== 404 •
-http.response.code ==
-405 • http.response.code
-== 503
-"HTTP Parameters" for grabbing the low-hanging fruits: • User agent:
-Browser and operating system identification to a web
-server application. • Request URI: Points the requested resource from
-the server. • Full
-*URI: Complete URI information. *URI: Uniform Resource
-Identifier.
-• http. user_agent contains
-"nmap" • http. request . uri
-contains "admin" •
-http. request . full_uri
-contains "admin"
-"HTTP Parameters" for grabbing the low-hanging fruits: • Server:
-Server service name. • Host: Hostname of the server • Connection:
-Connection status. • Line-based text
-data: Cleartext data provided by the server. • HTML Form URL
-Encoded: Web form information.
-• http. server contains "apache" •
-http. host contains "keyword" •
-http. host ==
-"keyword" •
-http. connection ==
-"Keep-Alive" • data-text- lines
-contains "keyword"
-User Agent Analysis
-As the adversaries use sophisticated technics to accomplish security test, they try to leave traces similar
-to natural traffic through the known and trusted protocols.
-For a security analyst, it is important to spot the anomaly signs on the bits and pieces of the
-packets. The "user-agent" field is one of the great resources for spotting anomalies in HTTP
-traffic.
-In some cases, adversaries successfully modify the user-agent data, which could look super natural.
-A security analyst cannot rely only on the user-agent field to spot an anomaly.
-Never whitelist a user agent, even if it looks natural.
-53
-User agent-based anomaly/threat detection/hunting is an additional data source to check and is
-useful when there is an obvious anomaly. If you are unsure about a value, you can conduct a web
-search to validate your findings with the default and normal user-agent info (example site).
-User Agent analysis in a nutshell:
-Notes Wireshark Filter
-Global search. • http.user_agent
-Research outcomes for grabbing the low-hanging fruits: •
-Different user agent information from the same host in a
-short time notice. • Non-standard and custom user agent
-info. • Subtle spelling differences. ("Mozilla" is not the
-same as "Mozlilla" or "Mozlila") • Audit tools info like
-Nmap, Nikto, Wfuzz and sqlmap in the user agent field. •
-test vector data in the user agent field.
-• (http.user_agent contains "sqlmap") or
-(http.user_agent contains "Nmap") or (http.user_agent
-contains "Wfuzz") or (http.user_agent contains "Nikto")
-Log4j Analysis
-Log4j Analysis refers to the process of examining and assessing the logs generated by the Apache
-Log4j framework in order to identify security vulnerabilities, operational issues, or other relevant
-insights within an application or system.
-54
-A proper investigation starts with prior research on threats and anomalies going to be hunted.
-Let's review the knowns on the "Log4j" diagnostic run before launching Wireshark.
-Log4j vulnerability analysis in a nutshell:
-Notes Wireshark Filters
-Research outcomes for
-grabbing the low-hanging
-fruits: • The diagnostic run starts with
-a "POST" request • There are
-known cleartext patterns:
-"jndi:ldap" and
-"security diagnostic test.class".
-• http.request.method == "POST" • (ip contains "jndi") or ( ip contains "security diagnostic test") • (frame
-contains "jndi") or ( frame contains "security diagnostic test") • (http.user_agent contains "$") or
-(http.user_agent contains "==")
-Encrypted Protocol Analysis: Decrypting HTTPS
-Decrypting HTTPS Traffic
-When investigating web traffic, analysts often run across encrypted traffic. This is caused by
-using the Hypertext Transfer Protocol Secure (HTTPS)
-protocol for enhanced security against spoofing, sniffing and intercepting security test.
-55
-HTTPS uses TLS protocol to encrypt communications, so it is impossible to decrypt the traffic and
-view the transferred data without having the encryption/decryption key pairs.
-As this protocol provides a good level of security for transmitting sensitive data, attackers and
-malicious websites also use HTTPS.
-Therefore, a security analyst should know how to use key files to decrypt encrypted traffic and
-investigate the traffic activity.
-The packets will appear in different colours as the HTTP traffic is encrypted. Also, protocol and info
-details (actual URL address and data returned from the server) will not be fully visible. The first image
-below shows the HTTP packets encrypted with the TLS protocol. The second and third images
-demonstrate filtering HTTP packets without using a key log file.
-Additional information for HTTPS :
-Notes Wireshark Filter
-"HTTPS Parameters" for grabbing the low-hanging fruits: • Request:
-Listing all requests • TLS: Global TLS search • TLS Client Request • TLS
-Server response • Local Simple Service Discovery
-• http.request • tls •
-tls.handshake.type
-== 1 •
-Protocol (SSDP) Note: SSDP is a network protocol that provides
-advertisement and discovery of network services.
-tls.handshake.type
-== 2 • ssdp
-Similar to the TCP three-way handshake process, the TLS protocol has its handshake process.
-The first two steps contain "Client Hello" and "Server Hello" messages.
-56
-The given filters show the initial hello packets in a capture file. These filters are helpful to spot
-which IP addresses are involved in the TLS handshake.
-Client Hello:
-Server Hello: (http.request or tls.handshake.type == 2) and !(ssdp)
-(http.request or tls.handshake.type == 1) and !(ssdp)
-57
-An encryption key log file is a text file that contains unique key pairs to decrypt the encrypted
-traffic session.
-These key pairs are automatically created (per session) when a connection is established with an
-SSL/TLS-enabled webpage.
-As these processes are all accomplished in the browser, you need to configure your system and use a
-suitable browser (Chrome and Firefox support this) to save these values as a key log file.
-58
-To do this, you will need to set up an environment variable and create the SSLKEYLOGFILE,
-and the browser will dump the keys to this file as you browse the web.
-SSL/TLS key pairs are created per session at the connection time, so it is important to dump the
-keys during the traffic capture. Otherwise, it is not possible to create/generate a suitable key log file
-to decrypt captured traffic.
-You can use the "right-click" menu or "Edit --&gt; Preferences --&gt; Protocols --
-> TLS" menu to add/remove key log files.
-Adding key log files with the "right-click" menu:
-Adding key log files with the "Edit --&gt; Preferences --&gt; Protocols --&gt; TLS" menu:
-Viewing the traffic with/without the key log files:
-59
-The above image shows that the traffic details are visible after using the key log file. Note that the
-packet details and bytes pane provides the data in different formats for investigation. Decompressed
-header info and HTTP2 packet details are available after decrypting the traffic. Depending on the
-packet details, you can also have the following data formats:
-Frame
-Decrypted TLS
-Decompressed Header
- Reassembled
-TCP
-Reassembled SSL
-Hunt Cleartext Credentials!
-Bonus: Hunt Cleartext Credentials!
-60
-Some Wireshark dissectors (FTP, HTTP, IMAP, pop and SMTP) are programmed to extract
-cleartext passwords from the capture file. You can view detected credentials using the "Tools --&gt;
-Credentials" menu. This
-feature works only after specific versions of Wireshark (v3.1 and later). Since the feature works
-only with particular protocols, it is suggested to have
-manual checks and not entirely rely on this feature to decide if there is a cleartext credential in the
-traffic.
-Once you use the feature, it will open a new window and provide detected credentials. It will show
-the packet number, protocol, username and
-additional information. This window is clickable; clicking on the packet
-number will select the packet containing the password, and clicking on the username will select the
-packet containing the username info. The additional part prompts the packet number that contains
-the username.
-Actionable Results!
-Wireshark is not all about packet details; it can help you to create firewall rules ready to implement
-with a couple of clicks.
-You can create firewall rules by using the "Tools --&gt;
-Firewall ACL Rules" menu. Once you use this feature, it will open a new window and provide a
-combination of rules (IP, port and MAC address-
-based) for different purposes. Note that these rules are generated for implementation on an outside
-firewall interface.
-Currently, Wireshark can create rules for:
- Netfilter
-(iptables)
-Cisco IOS (standard/extended)
-61
-IP Filter (ipfilter) IPFirewall
-(ipfw) Packet filter (pf)
-Windows Firewall (netsh new/old format)
-Tasks:
-Task 1: Capturing and Exporting Objects
-1. Capture network traffic using Wireshark.
-2. Identify and extract transferred files from HTTP, SMB, or TFTP streams.
-3. Document findings with screenshots.
-Task 2: Time Display Format Analysis
-1. Change Wireshark’s time display format to UTC.
-2. Compare and analyze packet timing differences.
-3. Submit observations with relevant screenshots.
-Task 3: Expert Info Analysis
-1. Identify anomalies using Wireshark’s Expert Info feature.
-2. Classify errors, warnings, and malformed packets.
-3. Provide a detailed explanation of identified issues.
-Task 4: Applying Filters for Traffic Analysis
-1. Use “Apply as Filter” to isolate specific network traffic.
-2. Utilize conversation filters to analyze related packets.
-3. Provide examples and screenshots of applied filters.
-Task 5: Analyzing HTTP Streams
-1. Follow an HTTP stream to reconstruct application-layer data.
-2. Identify and document potential sensitive information.
-3. Submit a report including step-by-step findings.
-Task 6: Statistical Analysis
-62
-1. Use the Statistics menu to analyze protocol hierarchy and endpoints.
-2. Extract key insights about network traffic patterns.
-3. Document results and interpretations.
-Task 7: Resolving Addresses and Protocol Hierarchy
-1. Use Wireshark to resolve IP addresses to hostnames.
-2. View the protocol hierarchy to analyze network traffic structure.
-3. Submit a summary of key findings.
-Submission Requirements:
- A detailed report including:
-o Screenshots of each task performed.
-o Explanation of results and insights gained.
-o Summary of findings and security recommendations.
- Submit the report by Next Lab.
-This assignment will help students develop practical skills in network packet analysis using Wireshark.
-Good luck!
+<Callout type="warning" title="Authorized Capture Only">
+Capture traffic only on networks you own or have explicit permission to monitor. Promiscuous capture on shared networks without authorization may violate policy or law.
+</Callout>
+
+Canonical network forensics reference for **info.anupambaral.com.np**. This guide replaces the previous OCR book dump with four focused sections: **capture → filters → protocols → detection**.
+
+## Learning path
+
+1. [Nmap Scanning & Host Discovery](/notes/networking/nmap-scanning-guide) — generate scan traffic to recognize in captures
+2. **This guide** — packet capture and defensive analysis
+3. [Essential Linux Commands](/notes/linux/essential-linux-commands-for-cybersecurity-specialists) — host-side correlation
+4. [Blue Team Complete Guide](/notes/security/blue-team-complete-guide) — SOC workflow integration
+
+## Guide map
+
+| Section | GUI (Wireshark) | CLI (TShark) |
+| --- | --- | --- |
+| [Capture](#1-packet-capture) | Interface select, promiscuous mode, save `.pcapng` | `tshark -i eth0 -w capture.pcap` |
+| [Filters](#2-display-filters) | Display filter bar, Apply as Filter | `-Y 'display filter'` |
+| [Protocols](#3-protocol-analysis) | Follow Stream, Protocol Hierarchy | `-z io,phs`, `-z http,tree` |
+| [Detection](#4-defensive-detection-patterns) | Expert Info, Conversations | `-z expert`, filter hunting |
 
 ---
 
-## Part 2: TShark CLI Reference
+## 1. Packet capture
 
+### Wireshark GUI workflow
 
-# TShark Wireshark Power but CLI First
-> [!IMPORTANT]
-> **Defensive & Authorized Auditing Purposes Only**
-> This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
-Original Author: Shubham Sharma
-TShark
-Credits to security auditing Articles
-Page | 2
-Table of Contents
-Abstract ................................................................................................................................................... 4
-Network Packet Analysis ........................................................................................................................ 5
-Capture traffic ........................................................................................................................... 7
-Promiscuous mode ................................................................................................................... 8
-Packet count ............................................................................................................................ 10
-Read and Write in a file ....................................................................................................... 10
-Verbose mode .......................................................................................................................... 11
-Output formats ........................................................................................................................ 13
-Decoded Packets Vs. Encoded Packets .......................................................................... 19
-Converting PDML file HTML page ..................................................................................... 19
-Capturing packets of a particular port .......................................................................... 21
-Display filter ............................................................................................................................. 21
-Statistical Functionalities ..................................................................................................................... 22
-Read Filter Analysis ............................................................................................................... 24
-Endpoint Analysis ................................................................................................................... 26
-Conversation Analysis ........................................................................................................... 27
-Expert Mode Analysis ............................................................................................................ 27
-Packet Distribution Tree ..................................................................................................... 28
-Packet Length Tree ............................................................................................................... 29
-Color Based Output Analysis .............................................................................................. 30
-Ring Buffer Analysis............................................................................................................... 31
-Auto-Stop ................................................................................................................................... 32
-Data-Link Types ...................................................................................................................... 33
-Reporting Functionalities ..................................................................................................................... 34
-Column Formats ...................................................................................................................... 35
-Decodes ...................................................................................................................................... 36
-Dissector Tables ...................................................................................................................... 37
-Elastic Mapping ........................................................................................................................ 38
-Field Count ............................................................................................................................... 38
-Credits to security auditing Articles
-Page | 3
-Fields ........................................................................................................................................... 39
-Fundamental Types ............................................................................................................... 40
-Heuristic Decodes .................................................................................................................. 41
-Plugins ........................................................................................................................................ 42
-Protocols .................................................................................................................................... 42
-Values ......................................................................................................................................... 43
-Preferences .............................................................................................................................. 44
-Folders ........................................................................................................................................ 44
-PyShark ...................................................................................................................................... 45
-Live Capture ............................................................................................................................. 47
-Pretty Representation .......................................................................................................... 48
-Captured Length Field ......................................................................................................... 49
-Layers, Src and Dst Fields ................................................................................................... 49
-Promisc Capture ..................................................................................................................... 51
-Conclusion ............................................................................................................................................ 53
-References ........................................................................................................................................... 53
-Credits to security auditing Articles
-Page | 4
-Abstract
-TShark is a well -known network protocol analyzer  that allows us to capture data
-packets from a live network and read or analyze previously captured data packets
-from a saved file.
-In this report, we will cover TShark's statistical functionalities and explore different
-ways to sort our traffic capture for faster and more effective analysis. Additionally,
-we will discuss TShark's reporting functionalities and share some extra tips we
-discovered while experimenting with TShark.
-Disclaimer: This report is provided for educational and informational
-purpose only (Penetration Testing). Penetration Testing refer s to legal
-intrusion tests that aim to identify vulnerabilities and improve cybersecurity,
-rather than for malicious purposes.
-Credits to security auditing Articles
-Page | 5
-Network Packet Analysis
-Network traffic
-As we know, network traffic or data traffic is the amount of data transferring across the network
-at some given point of time. Network data, in computer networks, is in the form of network
-data packets. Analyzing these network packets provides network secu rity as it helps us to
-monitor traffic. As a benefit, if there is some unusual amount of data traffic in a network which
-is a possible sign of an diagnostic run then T Shark can help us know before it too late and the diagnostic run
-can be terminated as data traffic reports provide insights into preventing some good security test.
-Traffic volume is a term which comes under network traffic analyzing. Network traffic volume
-is the measure of the total work done. It is defined as the average data traffic intensity and time
-period of its network data packet study.
-Introduction to TShark, a well-known and powerful command-line tool and is used as a network analyzer . It
-is developed by Wireshark. It’s working structure is quite similar to Tcpdump, but it has some
-powerful decoders and filters. TShark is capable of capturing the data packets information of
-different network layers and display them in different formats.
-TShark is used to analyze real -time network traffic and it can read .pcap files to analyze the
-information, dig into the details of those connections, helping security professionals to identify
-their network problem.
-TShark is a command -line based tool, which can do anything that Wireshark does. So let us
-start our learning process with TShark and therefore launch this tool and explore its options.
-To check out all the parameters, use the following command:
-tshark -h
-Credits to security auditing Articles
-Page | 6
-List interfaces
-TShark prints a list of the interfaces whose traffic it can capture. Each interface is referred to
-by their serial number and as you can see it is followed by a text description of the network
-interface. These interfaces can be specified using -i parameter; which is used to specify the
-network whose traffic we want to capture. And to check out these interfaces you can use the
-parameter -D as shown in the image below:
-Credits to security auditing Articles
-Page | 7
-Capture traffic
-Let’s now try to capture traffic, we have various choice of interface to capture traffic and
-therefore one can choose whichever depending on their needs and requirement. But in our
-scenario, the interface which we are going to use is “eth0”. In order to capture traffic, we need
-to initiate one too as we are testing on a controlled network and for that use ping command and
-then to capture traffic, we have to just specify the interface name by using -i parameter as
-shown in the image below:
+1. Select the correct interface (`Capture → Options`).
+2. Enable **promiscuous mode** only when authorized to sniff all LAN traffic.
+3. Prefer capturing everything, then filter during analysis (display filters are more flexible than capture filters).
+4. Save as `.pcapng` with a timestamped filename for chain of custody.
+
+| Setting | Recommendation |
+| --- | --- |
+| Capture filter | Use sparingly — e.g. `host 192.0.2.10` for scoped IR |
+| Ring buffer | Enable for long-running monitoring |
+| Time display | Switch to **UTC** for multi-timezone investigations (`View → Time Display Format`) |
+| Name resolution | Disable during capture; resolve IPs afterward to avoid DNS leakage |
+
+### TShark capture commands
+
+```bash
+# List interfaces
 tshark -D
-ping www.hackingarticles.in
-tshark -i eth0
-Credits to security auditing Articles
-Page | 8
-As we can clearly see it is performing its three-way handshake, then starts the process of
-ICMP request and reply.
-Promiscuous mode
-In the networking, promiscuous mode is used as an interface controller that causes TShark to
-pass all the traffic it receives to the CPU rather than passing the frames to the promiscuous
-mode is normally used for packet sniffing that can take place on a router or on a computer
-connected to a wired network or a part of LAN.
-Credits to security auditing Articles
-Page | 9
-When using this mode, we will need to configure it with the help of ifconfig so that it let us
-capture the data packets of the whole network. Therefore, we will start by pinging a website
-and try to capture its data packets.
-Now, configure the promiscuous mode by following these commands and try to capture the
-packets:
-ifconfig eth0 promisc
-tshark -i eth0
-Credits to security auditing Articles
-Page | 10
-Packet count
- TShark has amazing features with which we can work more efficiently and we can access
-these features using various parameters. One such parameter is ‘-c’, it lets us capture the exact
-amount of data that we require and it will display only those. This option helps us to refine the
-outcome of captured traffic.
-As we can clearly see in the image above that it stops after the 10 counts.
-Read and Write in a file
-In TShark we can write and read into .pcap file. Write option (-w) allows us to write raw packet
-data output to a standard .pcap file whereas read option (-r) help us to read that raw output data
-packets in our desired manner. To write the packets into a .pcap file use the following
-command:
-And to read the said .pcap file use the following command:
-tshark -i eth0 -c 10
-tshark -i eth0 -c 10 -w packets.pcap
-Credits to security auditing Articles
-Page | 11
-Verbose mode
-The verbose mode provides us with additional details of a packet in traffic. Using the verbose
-mode, we can see the information that each packet contains and for this option we can use the
-parameter -V.
-tshark -r packets.pcap
-tshark -r packets.pcap -V
-Credits to security auditing Articles
-Page | 12
-Credits to security auditing Articles
-Page | 13
-Output formats
-For our convenience, in TShark, we have -T option that lets us save decoded packets in various
-output formats. It can set the format of the output in the way that it becomes easy to understand.
-To see all the available options, type the following command:
-PDML stands for Packet Details Mark -Up Language  which is an XML based. This
-information is quite equivalent to the verbose mode which we used earlier. And to have output
-in this format type the following command:
-tshark -T x
-tshark -r packets.pcap -T pdml
-Credits to security auditing Articles
-Page | 14
-PS
-PS stands for PostScript. This output is in a form of one-liner summary of each data packets
-or multi-line detail view of each data packets depending upon each data packet specification.
-These one-liners are very quick to understand as well as reliable. For this, use the following
-command:
-tshark -r packets.pcap -T ps
-Credits to security auditing Articles
-Page | 15
-PSML stands for Packet Summary Mark-Up Language. It is also an XML based format like
-PDML which summarises the detailed information of the packets. And for this format type:
-tshark -r packets.pcap -T psml
-Credits to security auditing Articles
-Page | 16
-JSON stands for Java -Script Object Notation. It is an open standard file format that displays
-text in a readable form. The information in this format is fully documented and referred at
-wolfram. To see that packet in this format, type:
-tshark -r packets.pcap -T json
-Credits to security auditing Articles
-Page | 17
-EK
-It is newline delimited JSON format function for bulk import into the elastic search option.
-And for this format use the following command:
-tshark -r packets.pcap -T ek
-Credits to security auditing Articles
-Page | 18
-Text is a human-readable one lines summary of each of the packets. This is the simplest of the
-formats. And for this, use the following command:
-Tabs
-This option is quite similar to the text except, it includes an ASCII horizontal tab (oxo9)
-character as the delimiter between each column. To try this, type:
-tshark -r packets.pcap -T text
-tshark -r packets.pcap -T tabs
-Credits to security auditing Articles
-Page | 19
-Decoded Packets Vs. Encoded Packets
-When we try to write the live data packets in a pcap format file; we compress all that data
-packets in smaller segments. To better understand these data packets, we need to decode them
-which leads to a difference in the size of the file and to check the size of any given file at the
-given moment use the following command:
-Like we discussed there is a huge difference in these files, that’s why we use decoding
-techniques to extract this information.
-Converting PDML file HTML page
-The only difference between the Wireshark and TShark is that Wireshark is a GUI based tool
-and TShark is a command-line based tool. But with the help of some external source, we can
-also view our data packets in HTML. So, to achieve that first, we need to save our data packets
-in PDML format and then convert it into an XML file using the following command:
-ls -lh packets.p*
-Credits to security auditing Articles
-Page | 20
-The XML file will be saved at location /usr/share/wireshark/pdml2html.xsl. So, we are going
-to use xsltproc tool to execute this file it which will help us to create our HTML page. Creating
-the HTML page will format all the unnecessary information and only let us view the usable
-data. To create the HTML use following command:
-To open the HTML page in the browser, refer to the above image and use the following
-command:
-tshark -r packets.pcap -T pdml &gt; packets.xml
-xsltproc /usr/share/wireshark/pdml2html.xsl packets.xml &gt; packets.html
-firefox packets.html &
-Credits to security auditing Articles
-Page | 21
-Capturing packets of a particular port
-A lot of times we use Wireshark on a dedicated port. And by using the -f option we can capture
-data packets of a particular port. It helps us to better analyze the data packets of the network.
-We are using this feature to capture TCP port 80 and the command for this is:
-Display filter
-Display filter was introduced by Wireshark. It helps us to filter the captured data packets or
-live data packets. With the help of this filter, we can request for any kind of filter that we want
-to capture in the live environment.
-In our scenario, we apply the GET request filter to capture only GET request from the traffic
-and for, use the following command:
-tshark -i eth0 -c 5 -f "tcp port 80"
-tshark -i eth0 -c 5 -f "tcp port 80" -Y 'http.request.method == "GET"'
-Credits to security auditing Articles
-Page | 22
-Statistical Functionalities
-Statistical Options
-TShark collects different types of Statistics and displays their result after finishing the reading
-of the captured file. To accomplish this, we will be using the “ -z” parameter with TShark.
-Initially, to learn about all the different options inside the “ -z” parameter, we will be running
-the TShark with the “-z” parameter followed by the help keyword. This gives us an exhaustive
-list of various supported formats as shown in the image given below.
-Credits to security auditing Articles
-Page | 23
-Protocol Hierarchy Statistics
-Using the TShark we can create a Protocol based Hierarchy Statistics listing the number of
-packets and bytes using the “io,phs” option in the “-z” parameter. In the case where no filter is
-given after the “io,phs” option, the statistics will be calculated for all the packets in the scope.
-But if a specific filter is provided than the TShark will calculate statistics for those packets that
-match the filter provided by the user. For our demonstration, we first captured some traffic and
-wrote the contents on a  pcap file using the techniques that we learned in part 1 of this article
-series. Then we will be taking the traffic from the file, and then sort the data into a Protocol
-Hierarchy.  Here we can observe that we have the frames count, size of packets in byt es and
-the Protocol used for the transmission.
-Credits to security auditing Articles
-Page | 24
-Read Filter Analysis
-During the first pass analysis of the packet, the specified filter (which uses the syntax of
-read/display filters, rather than that of capture filters) has to be applied. Packets which are not
-matching the filter are not considered for future passes. This parameter makes sense with
-multiple passes. Note that forward-looking fields such as ‘response in frame #’ cannot be used
-with this filter since they will not have been calculated when this filter is applied. The “ -2”
-parameter performs a two -pass analysis. This causes TShark to buffer output until the entire
-tshark  -r wlan.pcap -z io,phs
-Credits to security auditing Articles
-Page | 25
-first pass is done, but allows it to fill in fields that require future knowledge, it also permits
-reassembly frame dependencies to be calculated correctly. Here we can see two different
-analysis one of them is first-pass analysis and the latter is the two-pass analysis.
-tshark -r wlan.pcap -z io,phs,udp -q
-tshark -r wlan.pcap -z io,phs -q -2 -R udp
-Credits to security auditing Articles
-Page | 26
-Endpoint Analysis
-Our next option which helps us with the statistics is the “endpoints”. It will create a table that
-will list all endpoints that could be seen in the capture. The type function which can be used
-with the endpoint option will specify the endpoint type for which we want to generate the
-statistics.
-The list of Endpoints that are supported by TShark is:
-Sno. Filter Description
-1 “bluetooth” Bluetooth Addresses
-2 “eth” Ethernet Addresses
-3 “fc” Fiber Channel Addresses
-4 “fddi” FDDI Addresses
-5 “ip” IPv4 Addresses
-6 “ipv6” IPv6 Addresses
-7 “ipx” IPX Addresses
-8 “jxta” JXTS Addresses
-9 “ncp” NCP Addresses
-10 “rsvp” RSVP Addresses
-11 “sctp” SCTP Addresses
-12 “tcp” TCP/IP socket pairs Both IPv4 and IPv6
-supported
-13 “tr” Token Ring Addresses
-14 “usb” USB Addresses
-15 “udp” UDP/IP socket pairs Both IPv4 and IPv6
-supported
-16 “wlan” IEEE 802.11 addresses
-In case that we have specified the filter option then the statistics calculations are done for that
-particular specified filter. The table like the one generated in the image shown below is
-generated by picking up single line form each conversation and displayed against the number
-of packets per byte in each direction as well as the total number of packets per byte. This table
-is by default sorted according to the total number of frames.
-tshark -r wlan.pcap -z endpoints,wlan -q | head
-Credits to security auditing Articles
-Page | 27
-Conversation Analysis
-Let’s move on to the next option which is quite similar to the previous option. It helps us with
-the statistics is the “conversation”. It will create a table that will list all conversation that could
-be seen in the capture. The type function which can be used with the conversation option will
-specify the conversation type for which we want to generate the statistics.
-If we have specified the filter option then the statistics calculations are done for that particular
-specified filter. The table generated by picking up single line form each conversation and
-displayed against the number of packets per byte in each direction, the total number of packets
-per byte as well  as the direction of the conversation travel. This table is by default sorted
-according to the total number of frames.
-Expert Mode Analysis
-tshark -r wlan.pcap -z conv,wlan -q | head
-Credits to security auditing Articles
-Page | 28
-The TShark Statistics Module have an Expert Mode. It collects a huge amount of data based
-on Expert Info and then prints this information in a specific order. All this data is grouped in
-the sets of severity like Errors, Warnings, etc., We can use the expert mode wi th a particular
-protocol as well. In that case, it will display all the expert items of that particular protocol.
-Packet Distribution Tree
-In this option, we take the traffic form a packet and then drive it through the “http,tree” option
-under the “-z” parameter to count the number of the HTTP requests, their mods as well as the
-status code. This is a rather modular approach that is very easy to understand and analyse. Here
-in our case, we took the packet that we captured earlier and then drove it through the tree option
-that gave us the Information that a total of 126 requests were generated out of which 14 gave
-back the “200 OK”. It means that the rest of them either gave back an error or were redirected
-to another server giving back a 3XX series status code.
-tshark -r wlan.pcap -z expert -q | head
-tshark -r wlan.pcap -z http,tree -q
-Credits to security auditing Articles
-Page | 29
-Packet Length Tree
-As long as we are talking about the Tree option, let’s explore it a bit. We have a large variety
-of ways in which we can use the tree option in combination with other option. To demonstrate
-that, we decided to use the packet length option with the tree option. This will sort the data on
-the basis of the size of the packets and then generate a table with it. Now, this table will not
-only consist of the length of the packets, but it will also have the count of the packet. The
-minimum value of the length in the range of the size of the packets. It will also calculate the
-size as well as the Percentage of the packets inside the range of packet length.
-tshark -r wlan.pcap -z plen,tree -q
-Credits to security auditing Articles
-Page | 30
-Color Based Output Analysis
-Note: Your terminal must support color output in order for this option to work correctly.
-We can enable the coloring  of packets according to standard Wireshark color filters. On
-Windows, colors are limited to the standard console character attribute colors. In this option,
-we can set up the colors according to the display filter. This helps in quickly locating a specific
-packet in the bunch of similar packets. It also helps in locating Handshakes in communication
-traffic. This can be enabled using the following command.
-tshark -r color.pcap --color
-Credits to security auditing Articles
-Page | 31
-Ring Buffer Analysis
-By default, the TShark  to runs in the “multiple files” mode. In this mode, the TShark writes
-into several capture files. When the first capture file fills up to a certain capacity, the TShark
-switches to the next file and so on. The file names that we want to create can be stat ed using
-the -w parameter. The number of files, creation data and creation time will be concatenated
-with the name provided next to -w parameter to form the complete name of the file.
-The files option will fill up new files until the number of files is specified. at that moment the
-TShark will discard data in the first file and start writing to that file and so on. If the files option
-is not set, new files filled up until one of the captures stops conditions matches or until the disk
-is full.
-There are a lot of criteria upon which the ring buffer works but, in our demonstration, we used
-2 of them. Files and the Filesize.
-files: value begin again with the first file after value number of files were written (form a ring
-buffer). This value must be less than 100000.
-filesize: value switches to the next file after it reaches a size of value kB. Note that the file size
-is limited to a maximum value of 2 GiB.
-tshark -I eth0 -w packetsbuffer.pcap -b filesize:1 -b file:3
-Credits to security auditing Articles
-Page | 32
-Auto-Stop
-Under the huge array of the options, we have one option called auto-stop. As the name tells us
-that it will stop the traffic capture after the criteria are matched.
-Duration
-We have a couple of options, in our demonstration, we used the duration criteria. We specified
-the duration to 10. This value is in seconds. So, the capture tells us that in the time of 10
-seconds, we captured 9 packets.
-tshark -i eth0 -a duration:10
-Credits to security auditing Articles
-Page | 33
-File Size
-Now another criterion for the auto-stop option is the file size. The TShark will stop writing to
-the specified capture file after it reaches a size provided by the user. In our demonstration, we
-set the filesize to 1. This value is in kB. We used the directory listing command to show that
-the capture was terminated as soon as the file reached the size of 1 kB.
-Data-Link Types
-At last, we can also modify the statistics of the captured traffic data based on the Data -Link
-Types. For that we will have to use an independent parameter, “-L”. In our demonstration, we
-used the “ -L” parameter to show that we have data links like EN10MB specified for the
-Ethernet Traffic and others.
-tshark -i eth0 -w 1.pcap -a filesize:1
-tshark -L
-Credits to security auditing Articles
-Page | 34
-Reporting Functionalities
-Version Information
-Let’s begin with the very simple command so that we can understand and correlate that all the
-practical performed during this article and the previous articles are of the version depicted in
-the image given below. This parameter prints the Version information of the installed Tshark.
-Reporting Options
-During any Network capture or investigation, there is a dire need of the reports so that we can
-share the findings with the team as well as superiors and have a validated proof of any activity
-inside the network. For the same reasons, TShark has given us a  beautiful option ( -G). This
-option will make the TShark print a list of several types of reports that can be generated.
-Official Manual of TShark used the word Glossaries for describing the types of reports.
-tshark -v
-Credits to security auditing Articles
-Page | 35
-Column Formats
-From our previous practical, we saw that we have the Column Formats option available in the
-reporting section of TShark. To explore its contents, we ran the command as shown in the
-image given below. We see that it prints a list of wildcards that could be used while generating
-a report. We have the VLAN id, Date, Time, Destination Address, Destination Port, Packet
-Length, Protocol, etc.
-tshark -G help
-tshark -G column-formats
-Credits to security auditing Articles
-Page | 36
-Decodes
-This option generates 3 Fields related to Layers as well as the protocol decoded. There is a
-restriction enforced for one record per line with this option. The first field that has the
-“s1ap.proc.sout” tells us the layer type of the network packets. Followed by that we have the
-value of selector in decimal format. At l ast, we have the decoding that was performed on the
-capture. We used the head command as the output was rather big to fit in the screenshot.
-Credits to security auditing Articles
-Page | 37
-Dissector Tables
-Most of the users reading this article are already familiar with the concept of Dissector. If not,
-in simple words Dissector is simply a protocol parser. The output generated by this option
-consists of 6 fields. Starting from the Dissector Table Name then the name is used for the
-dissector table in the GUI format. Next, we have the type and the base for the display and the
-Protocol Name. Lastly, we have the decode as a format.
-tshark -G decodes | head
-Credits to security auditing Articles
-Page | 38
-Elastic Mapping is the outline of the documents stored in the index. Elasticsearch supports different
-data types for the fields in a document. The elastic-mapping option of the TShark prints out the
-data stored inside the ElasticSearch mapping file. Due to a large amount of data getting printed,
-we decided to use the head command as well.
-Field Count
-There are times in a network trace, where we need to get the count of the header fields travelling
-at any moment. In such scenarios, TShark got our back. With the fieldcount option, we can
-print the number of header fields with ease. As we can observe in t he image given below that
-we have 2522 protocols and 215000 fields were pre-allocated.
-tshark -G elastic-mapping | head
-tshark -G fieldcount
-Credits to security auditing Articles
-Page | 39
-Fields
-TShark can also get us the contents of the registration database. The output generated by this
-option is not as easy to interpret as the others. For some users, they can use any other parsing
-tool for generating a better output. Each record in the output is a protocol or a header file. This
-can be differentiated by the First field of the record. If the Field is P then it is a Protocol and if
-it is F then it’s a header field. In the case of the Protocols, we have 2 more fields. One tells us
-about the Protocol and other fields show the abbreviation used for the said protocol. In the case
-of Header, the facts are a little different. We have 7 more fields. We have the Descriptive Name,
-Abbreviation, Type, Parent Protocol Abbreviation, Base for Display, Bitmask, Blurb
-Describing Field, etc.
-tshark -G fields | head
-Credits to security auditing Articles
-Page | 40
-Fundamental Types
-TShark also helps us generate a report centralized around the fundamental types of network
-protocol. This is abbreviated as ftype. This type of report consists of only 2 fields. One for the
-FTYPE and other for its description.
-tshark -G ftypes
-Credits to security auditing Articles
-Page | 41
-Heuristic Decodes
-Sorting the Dissectors based on the heuristic decodes is one of the things that need to be easily
-and readily available. For the same reason, we have the option of heuristic decodes in TShark.
-This option prints all the heuristic decodes which are currently installed. It consists of 3 fields.
-First, one representing the underlying dissector, the second one representing the name of the
-heuristic decoded and the last one tells about the status of the heuristic. It will be T in case it is
-heuristics and F otherwise.
-tshark -G heuristic-decodes
-Credits to security auditing Articles
-Page | 42
-Plugins are a very important kind of option that was integrated with Tshark Reporting options.
-As the name states it prints the name of all the plugins that are installed. The field that this
-report consists of is made of the Plugin Library, Plugin Version, Plugin Type and the path
-where the plugin is located.
-Protocols
-If the users want to know the details about the protocols that are recorded in the registration
-database, then, they can use the protocols parameter. This output is also a bit less readable so
-that the user can take the help of any third-party tool to beautify the report. This parameter
-prints the data in 3 fields. We have the protocol name, short name, and the filter name.
-tshark –G plugins
-tshark –G protocols | head
-Credits to security auditing Articles
-Page | 43
-Values
-Let’s talk about the values report. It consists of value strings, range strings, true/false strings.
-There are three types of records available here. The first field can consist of one of these three
-characters representing the following:
-V: Value Strings
-R: Range Strings
-T: True/False Strings
-Moreover, in the value strings, we have the field abbreviation, integer value, and the string. In
-the range strings, we have the same values except it holds the lower bound and upper bound
-values.
-tshark –G values | head
-Credits to security auditing Articles
-Page | 44
-Preferences
-In case the user requires to revise the current preferences that are configured on the system,
-they can use the currentprefs options to read the preference saved in the file.
-Folders
-Suppose the user wants to manually change the configurations or get the program information
-or want to take a look at the lua configuration or some other important files. The users need the
-path of those files to take a peek at them. Here the folders option comes a little handy.
-tshark –G currentprefs | head
-tshark –G folders
-Credits to security auditing Articles
-Page | 45
-Since we talked so extensively about TShark, It won’t be justice if we won’t talk about the
-tool that is heavily dependent on the data from TShark. Let’s talk about PyShark.
-PyShark
-It is essentially a wrapper that is based on Python. Its functionality is that allows the python
-packet parsing using the TShark dissectors. Many tools do the same job more or less but the
-difference is that this tool can export XMLs to use its parsing. You can read more about it from
-its GitHub page.
-Installation
-As the PyShark was developed using Python 3 and we don’t Python 3 installed on our machine.
-We installed Python3 as shown in the image given below.
-apt install python3
-Credits to security auditing Articles
-Page | 46
-PyShark is available through the pip. But we don’t have the pip for python 3 so we need to
-install it as well.
-Since we have the python3 with pip we will install pyshark using pip command. You can also
-install PyShark by cloning the git and running the setup.
-apt install python3-pip
-pip3 install pyshark
-Credits to security auditing Articles
-Page | 47
-Live Capture
-Now to get started, we need the python interpreter. To get this we write python3 and press
-enter. Now that we have the interpreter, the very first thing that we plan on doing is importing
-PyShark. Then we define network interface for the capture. Followed by that we will define
-the value of the timeout parameter for the capture.sniff function. At last, we will begin the
-capture. Here we can see that in the timeframe that we provided PyShark captured 9 packets.
-python3
-​import pyshark
-capture =
-pyshark. LiveCapture(interface=’eth0’)
-capture.sniff(timeout=5)
-capture
-Credits to security auditing Articles
-Page | 48
-Pretty Representation
-There are multiple ways in which PyShark can represent data inside the captured packet. In the
-previous practical, we captured 9 packets. Let’s take a look at the first packet that was captured
-with PyShark. Here we can see that we have a layer -wise analysis with the ETH Layer, IP
-Layer, and the TCP Layer.
-capture[1].pretty_print()
-Credits to security auditing Articles
-Page | 49
-Captured Length Field
-In our capture, we saw some data that can consist of multiple attributes. These attributes need
-fields to get stored. To explore this field, we will be using the dir function in Python. We took
-the packet and then defined the variable named pkt with the va lue of that packet and saved it.
-Then using the dir function, we saw explored the fields inside that particular capture. Here we
-can see that we have the pretty_print function which we used in the previous practical. We also
-have one field called captured_ length to read into that we will write the name of the variable
-followed by the name of the field with a period (.) in between as depicted in the image below.
-Layers, Src and Dst Fields
-As we listed the fields in the previous step, we saw that we have another field named layers.
-We read its contents as we did earlier to find out that we have 3 layers in this capture. Now to
-look into the individual layer, we need to get the fields of that individual layer. For that, we
-will again us e the dir function. We used the dir function on the ETH layer as shown in the
-capture[2]
-pkt = capture[2]
-pkt
-dir(pkt)
-pkt.captured_length
-Credits to security auditing Articles
-Page | 50
-image given below. We observe that we have a field named src which means source, dst which
-means destination. We checked the value on those fields to find the physical address of the
-source and destination respectively.
-For our next step, we need the fields of the IP packet. We used the dir function on the IP layer
-and then we use src and dst fields here on this layer. We see that we have the IP Address as
-this is the IP layer. As the Ethernet layer works on the MAC Addresses, they store the MAC
-Addresses of the Source and the Destination which changes when we come to the IP Layer.
-pkt.layers
-pkt.eth.src
-pkt.eth.dst
-pkt.eth.type
-dir(pkt.ip)
-pkt.ip.src
-pkt.ip.dst
-pkt.ip.pretty_print()
-Credits to security auditing Articles
-Page | 51
-Similarly, we can use the dir function and the field’s value on any layer of the capture. This
-makes the investigation of the capture quite easier.
-Promisc Capture
-In previous articles we learned about the promisc  mode that means that a network interface
-card will pass all frames received up to the operating system for processing, versus the
-traditional mode of operation wherein only frames destined for the NIC’s MAC address or a
-broadcast address will be passed up to the OS. Generally, promiscuous mode is used to “sniff”
-all traffic on the wire. But we got stuck when we configured the network interface card to work
-on promisc mode. So, while capturing traffic on TShark we can switch between the normal
-capture and the promisc capture using the –p parameter as shown in the image given below.
-Credits to security auditing Articles
-Page | 52
-ifconfig eth0 promisc
-ifconfig eth0
-tshark -i eth0 -c 10
-tshark -i eth0 -c  10 -p
-Credits to security auditing Articles
-Page | 53
-Conclusion
-This report focuses on the basic commands and functionality of TShark. To help
-you get familiar with its features, we also cover advanced aspects of TShark, such
-as its statistical and reporting functionalities.
-Hence, one can make use of these commands as a cybersecurity professional to
-assess vulnerabilities on systems and keep these systems away from threat.
-References
-• https://www.hackingarticles.in/beginners-guide-to-tshark-part-1/
-• https://www.hackingarticles.in/beginners-guide-to-tshark-part-2/
-• https://www.hackingarticles.in/beginners-guide-to-tshark-part-3/
-• https://kiminewt.github.io/pyshark/
+
+# Capture 100 packets on eth0
+tshark -i eth0 -c 100 -w incident.pcapng
+
+# Capture filter (BPF) — port 443 only
+tshark -i eth0 -f "tcp port 443" -w https.pcapng
+
+# Read and summarize
+tshark -r incident.pcapng -q -z io,phs
+```
+
+### Capture vs display filters
+
+| Type | When set | Syntax | Example |
+| --- | --- | --- | --- |
+| **Capture filter** (BPF) | Before capture | `host`, `net`, `port`, `tcp`, `udp` | `tcp port 80` |
+| **Display filter** | During analysis | Wireshark field expressions | `http.request.method == "GET"` |
+
+Capture and display filters use **different syntax** — you cannot paste one into the other.
 
 ---
+
+## 2. Display filters
+
+Display filters reduce visible packets without deleting underlying capture data. Filters are lowercase; Wireshark shows green (valid), red (invalid), or yellow (unreliable).
+
+### Operators
+
+| Operator | Meaning | Example |
+| --- | --- | --- |
+| `==` | Equal | `ip.addr == 192.0.2.10` |
+| `!=` | Not equal | `ip.src != 10.0.0.1` |
+| `>`, `<`, `>=`, `<=` | Comparison | `ip.ttl < 64` |
+| `&&`, `\|\|`, `!` | AND, OR, NOT | `(tcp.port == 443) && (ip.src == 192.0.2.5)` |
+| `contains` | Substring (case-sensitive) | `http.host contains "admin"` |
+| `matches` | Regex | `http.host matches "\.(php\|asp)$"` |
+| `in` | Set membership | `tcp.port in {80 443 8080}` |
+
+### Essential filter reference
+
+| Goal | Display filter |
+| --- | --- |
+| All traffic to/from host | `ip.addr == 192.0.2.10` |
+| Outbound only | `ip.src == 192.0.2.10` |
+| TCP port 443 | `tcp.port == 443` |
+| DNS queries | `dns.flags.response == 0` |
+| DNS responses | `dns.flags.response == 1` |
+| HTTP GET requests | `http.request.method == "GET"` |
+| HTTP 4xx/5xx responses | `http.response.code >= 400` |
+| TLS Client Hello (SNI) | `tls.handshake.type == 1` |
+| SYN packets only | `tcp.flags.syn == 1 && tcp.flags.ack == 0` |
+| RST packets | `tcp.flags.reset == 1` |
+
+### GUI filter shortcuts
+
+* **Right-click field → Apply as Filter** — instant filter from a packet value
+* **Analyze → Follow → TCP/UDP/HTTP Stream** — reconstruct application data (auto-applies stream filter)
+* **Statistics → Protocol Hierarchy** — see protocol mix; right-click to filter
+* **Statistics → Conversations / Endpoints** — identify top talkers
+
+Save frequently used filters as **bookmarks** or **filter buttons** on the toolbar.
+
+### TShark filtering
+
+```bash
+# Display filter while reading
+tshark -r capture.pcapng -Y 'http.request.method == "POST"'
+
+# Capture filter + display filter combined
+tshark -i eth0 -f "tcp port 80" -Y 'http.response.code == 404' -c 50
+
+# Export matching packets to new file
+tshark -r capture.pcapng -Y 'dns.qry.name contains "evil"' -w dns-suspect.pcapng
+```
+
+---
+
+## 3. Protocol analysis
+
+### HTTP / HTTPS
+
+| Analysis step | Action |
+| --- | --- |
+| Find requests | `http.request` |
+| Inspect headers | Expand HTTP layer → look at `User-Agent`, `Host`, `Cookie` |
+| Reconstruct session | Follow → HTTP Stream |
+| Extract files | `File → Export Objects → HTTP` (lab artifacts only) |
+
+```bash
+# TShark HTTP statistics
+tshark -r capture.pcapng -q -z http,tree
+```
+
+For encrypted HTTPS, look at **TLS Client Hello** for SNI (`tls.handshake.extensions_server_name`) — payload remains encrypted without session keys.
+
+### DNS
+
+| Filter | Purpose |
+| --- | --- |
+| `dns` | All DNS traffic |
+| `dns.qry.name contains "suspicious"` | Hunt for known-bad domains |
+| `dns.flags.response == 0` | Queries only |
+| `dns.qry.type == 1` | A record lookups |
+
+Use **Statistics → DNS** for query/response breakdown. High query volume to a single domain from one host may indicate tunneling (see [Detection](#4-defensive-detection-patterns)).
+
+### TCP / UDP fundamentals
+
+| Observation | Filter / technique |
+| --- | --- |
+| Three-way handshake | `tcp.flags.syn == 1` then SYN-ACK, ACK sequence |
+| Connection teardown | `tcp.flags.fin == 1` or `tcp.flags.reset == 1` |
+| Retransmissions | Expert Info → warn; or `tcp.analysis.retransmission` |
+| UDP service probe | `udp` + ICMP type 3 code 3 (port unreachable) |
+
+### Expert Info severity
+
+| Colour | Meaning | Action |
+| --- | --- | --- |
+| Blue (Chat) | Normal workflow | Informational |
+| Cyan (Note) | Notable event | Review context |
+| Yellow (Warn) | Unusual condition | Investigate if clustered |
+| Red (Error) | Malformed / checksum fail | Possible corruption or attack |
+
+---
+
+## 4. Defensive detection patterns
+
+Use these hunt filters after baselining normal traffic on your network.
+
+### Nmap scan recognition
+
+Pair with [Nmap Scanning Guide](/notes/networking/nmap-scanning-guide) — know what your own scans look like before alerting on others.
+
+| Scan type | Pattern | Display filter |
+| --- | --- | --- |
+| TCP connect (`-sT`) | Full handshake, window often > 1024 | `tcp.flags.syn == 1 && tcp.flags.ack == 0 && tcp.window_size > 1024` |
+| SYN stealth (`-sS`) | SYN without completing handshake, window ≤ 1024 | `tcp.flags.syn == 1 && tcp.flags.ack == 0 && tcp.window_size <= 1024` |
+| UDP scan | UDP probe + ICMP port unreachable | `icmp.type == 3 && icmp.code == 3` |
+
+**Hunt tip:** Look for a single source IP sending SYN packets to many destination ports in a short window:
+
+```
+tcp.flags.syn == 1 && tcp.flags.ack == 0
+```
+
+Then pivot with **Statistics → Conversations → TCP** to identify the scanner.
+
+### ARP spoofing / MITM indicators
+
+ARP has no authentication — gratuitous ARP replies are a common spoofing signal.
+
+| Indicator | What to check |
+| --- | --- |
+| Duplicate IP → MAC mappings | `arp` filter; same `arp.src.proto_ipv4` with different `arp.src.hw_mac` |
+| Gratuitous ARP flood | Unsolicited ARP replies (`arp.opcode == 2`) at high rate |
+| Gateway MAC change | Compare current ARP table to baseline |
+
+Filter: `arp` — sort by IP and verify one MAC per IP.
+
+### DNS tunneling and C2 beacons
+
+| Signal | Filter / technique |
+| --- | --- |
+| Long subdomain labels | `dns.qry.name matches "[a-z0-9]{30,}"` |
+| High query rate to one domain | Statistics → DNS → filter domain |
+| TXT record exfil | `dns.qry.type == 16` |
+| Regular interval traffic | `Statistics → IO Graph` per IP |
+
+Correlate with endpoint data from [Essential Linux Commands](/notes/linux/essential-linux-commands-for-cybersecurity-specialists) (`ss -tnp`).
+
+### Suspicious HTTP user agents
+
+Scanner and tool fingerprints often appear in the `User-Agent` header:
+
+```
+http.user_agent contains "Nmap" ||
+http.user_agent contains "sqlmap" ||
+http.user_agent contains "Nikto" ||
+http.user_agent contains "curl/" ||
+http.user_agent matches "(?i)bot|crawler|scanner"
+```
+
+Validate against known internal scanners before escalating.
+
+### Credential and data exposure
+
+When analyzing **authorized lab captures** with cleartext protocols:
+
+* Follow HTTP streams for plaintext credentials (legacy apps)
+* Check `ftp`, `telnet`, `smtp` for unencrypted auth
+* Export Objects only in controlled IR — treat extracted files as potentially malicious
+
+---
+
+## TShark quick reference
+
+| Task | Command |
+| --- | --- |
+| Protocol hierarchy | `tshark -r file.pcapng -q -z io,phs` |
+| Top talkers (endpoints) | `tshark -r file.pcapng -q -z endpoints,ip` |
+| TCP conversations | `tshark -r file.pcapng -q -z conv,tcp` |
+| Expert summary | `tshark -r file.pcapng -q -z expert` |
+| JSON output | `tshark -r file.pcapng -T json > output.json` |
+| Field extract | `tshark -r file.pcapng -T fields -e ip.src -e ip.dst -e tcp.port` |
+
+### Profiles and workflow tips
+
+* Create **Wireshark profiles** per investigation type (malware, scan hunt, web app) with saved filters and colouring rules.
+* Document capture start/stop time, interface, and filter in your IR notes.
+* Chain captures: full PCAP → filtered subset → exported objects.
+
+## Best practices
+
+* Capture to write-once media or WORM storage for legal hold scenarios.
+* Sync clocks (NTP) across capture host and endpoints for timeline correlation.
+* Disable name resolution during live capture to avoid polluting evidence with external DNS.
+* Treat Expert Info warnings as leads, not confirmed incidents.
+* Pair packet evidence with [Windows Event Log Analysis](/notes/windows/windows-event-log-analysis-advanced-threat-detection-guide) for host-side confirmation.
+
+## Related guides
+
+- [Nmap Scanning & Host Discovery](/notes/networking/nmap-scanning-guide)
+- [Essential Linux Commands](/notes/linux/essential-linux-commands-for-cybersecurity-specialists)
+- [Networking & Security Interview Q&A](/notes/networking/networking-security-interview-qa-guide-osi-to-firewall)
+- [Blue Team Complete Guide](/notes/security/blue-team-complete-guide)
+- [Kali Linux Toolkit Guide](/notes/linux/kali-linux-toolkit-guide)
+
+## Continue learning
+
+→ Next: [Blue Team Complete Guide](/notes/security/blue-team-complete-guide)
 
 ## Educational Use Notice
 
 This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
 
 Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
-
----

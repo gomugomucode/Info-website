@@ -7,7 +7,7 @@ Priority order (highest SEO impact first):
 | 1 | `essential-linux-commands-for-cybersecurity-specialists` | 5057 | 33 | **Rewrite complete** |
 | 2 | `kali-linux-toolkit-guide` | 687 | 95 | Expand with absorbed Kali tool tables (pending) |
 | 3 | `nmap-scanning-guide` | 354 | 88 | MDX fix complete |
-| 4 | `wireshark` | 14388 | 70 | Pending PDF-sourced rewrite |
+| 4 | `wireshark` | 14388 | 70 | **Rewrite complete** (capture → filters → protocols → detection) |
 | 5 | `sqlmap-guide` | 1175 | 71 | **Rewrite complete** |
 | 6 | `bug-bounty-playbook` | 29098 | 24 | Pending PDF-sourced rewrite |
 | 7 | `metasploit-for-beginners` | 985 | 24 | **Rewrite complete** |

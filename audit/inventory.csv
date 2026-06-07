@@ -5,7 +5,7 @@ content/notes/linux/kali-linux-toolkit-guide.mdx,kali-linux-toolkit-guide,Linux,
 content/notes/linux/master-termux-handbook.mdx,master-termux-handbook,Linux,417,90,88,88,Termux,REWRITE,,Master Termux Handbook
 content/notes/networking/networking-security-interview-qa-guide-osi-to-firewall.mdx,networking-security-interview-qa-guide-osi-to-firewall,Networking,11172,15,30,24,Interview Q&A,REWRITE,,Networking & Security Interview Q&A Guide OSI to Firewall
 content/notes/networking/nmap-scanning-guide.mdx,nmap-scanning-guide,Networking,354,100,80,88,Nmap hub,REWRITE,,Nmap Scanning & Host Discovery
-content/notes/networking/wireshark.mdx,wireshark,Networking,14388,70,70,70,Wireshark hub,REWRITE,,Wireshark & TShark Complete Guide
+content/notes/networking/wireshark.mdx,wireshark,Networking,1276,100,88,92,Wireshark hub,REWRITE,,Wireshark & TShark — Network Forensics Guide
 content/notes/security/blue-team-complete-guide.mdx,blue-team-complete-guide,Security,30582,10,40,28,Blue Team hub,KEEP,,Blue Team Complete Guide
 content/notes/security/bug-bounty-playbook.mdx,bug-bounty-playbook,Security,29098,15,30,24,Bug bounty hub,REWRITE,,Bug Bounty Playbook
 content/notes/security/metasploit-for-beginners.mdx,metasploit-for-beginners,Security,462,100,88,92,Metasploit hub,REWRITE,,Metasploit for Beginners — Authorized Lab Workflow

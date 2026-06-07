@@ -10,7 +10,7 @@
 | `content/notes/linux/master-termux-handbook.mdx` | Linux | 417 | 90 | 88 | 88 | Termux | REWRITE |
 | `content/notes/networking/networking-security-interview-qa-guide-osi-to-firewall.mdx` | Networking | 11172 | 15 | 30 | 24 | Interview Q&A | REWRITE |
 | `content/notes/networking/nmap-scanning-guide.mdx` | Networking | 354 | 100 | 80 | 88 | Nmap hub | REWRITE |
-| `content/notes/networking/wireshark.mdx` | Networking | 14388 | 70 | 70 | 70 | Wireshark hub | REWRITE |
+| `content/notes/networking/wireshark.mdx` | Networking | 1276 | 100 | 88 | 92 | Wireshark hub | REWRITE |
 | `content/notes/security/blue-team-complete-guide.mdx` | Security | 30582 | 10 | 40 | 28 | Blue Team hub | KEEP |
 | `content/notes/security/bug-bounty-playbook.mdx` | Security | 29098 | 15 | 30 | 24 | Bug bounty hub | REWRITE |
 | `content/notes/security/metasploit-for-beginners.mdx` | Security | 462 | 100 | 88 | 92 | Metasploit hub | REWRITE |

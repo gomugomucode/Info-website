@@ -28,7 +28,7 @@
 
 ## Phase 7 progress (latest)
 
-**Rewritten:** essential-linux-commands, sqlmap-guide, metasploit-for-beginners, web-security-fundamentals, nessus-vulnerability-scanning, windows-defensive-cmd
+**Rewritten:** essential-linux-commands, sqlmap-guide, metasploit-for-beginners, web-security-fundamentals, nessus-vulnerability-scanning, windows-defensive-cmd, wireshark
 
 **Updated:** master-termux-handbook (hub footer), nmap-scanning-guide (prior session)
 
