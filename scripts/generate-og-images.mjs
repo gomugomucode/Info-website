@@ -1,6 +1,6 @@
 import { writeFileSync, mkdirSync } from "fs";
 import { join } from "path";
-import { ImageResponse } from "next/og";
+import { ImageResponse } from "next/og.js";
 
 const SITE_NAME = "Cybersecurity Learning Hub";
 
@@ -56,9 +56,10 @@ const hubs = [
 ];
 
 function hubImage(hub) {
-  return (
-    <div
-      style={{
+  return {
+    type: "div",
+    props: {
+      style: {
         width: "100%",
         height: "100%",
         display: "flex",
@@ -68,56 +69,80 @@ function hubImage(hub) {
         background: "linear-gradient(135deg, #0a0a0a 0%, #171717 55%, #0f172a 100%)",
         color: "#fafafa",
         fontFamily: "system-ui, sans-serif",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "12px",
-          fontSize: "22px",
-          fontWeight: 600,
-          color: hub.accent,
-          letterSpacing: "0.04em",
-          textTransform: "uppercase",
-        }}
-      >
-        <div
-          style={{
-            width: "12px",
-            height: "12px",
-            borderRadius: "999px",
-            background: hub.accent,
-          }}
-        />
-        {SITE_NAME}
-      </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-        <div
-          style={{
-            fontSize: "64px",
-            fontWeight: 800,
-            lineHeight: 1.05,
-            letterSpacing: "-0.03em",
-            maxWidth: "900px",
-          }}
-        >
-          {hub.title}
-        </div>
-        <div
-          style={{
-            fontSize: "28px",
-            lineHeight: 1.4,
-            color: "#a3a3a3",
-            maxWidth: "820px",
-          }}
-        >
-          {hub.subtitle}
-        </div>
-      </div>
-      <div style={{ fontSize: "20px", color: "#737373" }}>info.anupambaral.com.np</div>
-    </div>
-  );
+      },
+      children: [
+        {
+          type: "div",
+          props: {
+            style: {
+              display: "flex",
+              alignItems: "center",
+              gap: "12px",
+              fontSize: "22px",
+              fontWeight: 600,
+              color: hub.accent,
+              letterSpacing: "0.04em",
+              textTransform: "uppercase",
+            },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    width: "12px",
+                    height: "12px",
+                    borderRadius: "999px",
+                    background: hub.accent,
+                  },
+                },
+              },
+              SITE_NAME,
+            ],
+          },
+        },
+        {
+          type: "div",
+          props: {
+            style: { display: "flex", flexDirection: "column", gap: "20px" },
+            children: [
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: "64px",
+                    fontWeight: 800,
+                    lineHeight: 1.05,
+                    letterSpacing: "-0.03em",
+                    maxWidth: "900px",
+                  },
+                  children: hub.title,
+                },
+              },
+              {
+                type: "div",
+                props: {
+                  style: {
+                    fontSize: "28px",
+                    lineHeight: 1.4,
+                    color: "#a3a3a3",
+                    maxWidth: "820px",
+                  },
+                  children: hub.subtitle,
+                },
+              },
+            ],
+          },
+        },
+        {
+          type: "div",
+          props: {
+            style: { fontSize: "20px", color: "#737373" },
+            children: "info.anupambaral.com.np",
+          },
+        },
+      ],
+    },
+  };
 }
 
 async function main() {
