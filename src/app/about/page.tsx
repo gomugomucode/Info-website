@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight, BookOpen, Route } from "lucide-react";
-import { SITE_DESCRIPTION } from "@/lib/site";
-import { NOTE_SUBCATEGORIES } from "@/lib/site";
+import { NOTE_SUBCATEGORIES, SITE_DESCRIPTION } from "@/lib/site";
 import { HUB_PILLARS } from "@/lib/hub-config";
 
 export const metadata = {
