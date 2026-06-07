@@ -1,57 +1,84 @@
 ---
 title: "Defensive Windows CMD Reference"
-description: "A reference guide for auditing Windows environments using the built-in Command Prompt (CMD) shell to verify user accounts, open sockets, and system processes."
-date: "2026-05-28"
+description: "Audit Windows hosts with built-in CMD — verify open sockets, user accounts, running processes, and services without installing third-party tools."
+date: "2026-06-07"
 tags: ["windows", "cmd", "auditing", "blue-team"]
 category: "notes"
 subcategory: "windows"
 difficulty: "Beginner"
-readingTime: "6 min read"
+readingTime: "8 min read"
+featured: true
 ---
 
 # Defensive Windows CMD Reference
-This reference covers auditing Windows systems using the built-in CMD command shell. These commands allow you to verify system properties, accounts, active processes, and network ports without installing external binaries.
-&lt;Callout type="warning" title="Auditing Privilege Scope"&gt;
-Several diagnostics command strings (such as querying scheduled tasks or active services) must be executed within an **Elevated Command Prompt (Administrator Mode)** to display complete logs.
-&lt;/Callout&gt;
-## Cheat Sheet Checklist
-| Defensive Audit Target | Command Syntax | Functional Goal |
-| **Active Sockets** | `netstat -ano` | List all active ports mapped to PID numbers. |
-| **System Profile** | `systeminfo` | View OS build, installation date, and hotfixes. |
-| **Active Users** | `net user` | Audit all configured local user accounts. |
-| **Local Administrators** | `net localgroup administrators` | Inspect accounts assigned to the local Administrator group. |
-| **Process Inspection** | `tasklist /v` | List active processes with detailed window titles. |
-| **Active Shares** | `net share` | Identify folder structures shared on the network. |
-## 1. Network Sockets & PID Auditing
-Monitoring open network ports and identifying their parent processes is a critical step in verifying endpoint security.
-### Listing Mapped Sockets
-Use `netstat` to view listening and established TCP/UDP connections:
-&lt;TerminalCommand cmd="netstat -ano" /&gt;
-*   `-a`: Show all active connections and listening ports.
-*   `-n`: Output numbers for addresses and ports instead of resolving names.
-*   `-o`: Append the parent Process ID (PID) associated with each connection.
-### Linking PID to Executable
-Once you identify a suspicious PID in the `netstat` output (e.g., `4012`), verify the executable name using `tasklist`:
-&lt;TerminalCommand cmd='tasklist /fi "PID eq 4012"' /&gt;
-## 2. User Accounts & Group Membership Audits
-Unauthorized accounts or group modifications are primary indicators of persistence.
-### Auditing Group Membership
-Verify who has administrative control over the machine:
-&lt;TerminalCommand cmd="net localgroup administrators" /&gt;
-> **Defensive Checklist:** Regularly compare administrators group outputs against the corporate baseline. Investigate any unexpected accounts.
-## 3. Auditing Running Services & Tasks
-Auditing services helps identify running background processes and check for persistence vectors.
-### Listing Active Windows Services
-Query the Service Control Manager to list currently running background services:
-&lt;TerminalCommand cmd="sc query state= all" /&gt;
 
----
+<Callout type="warning" title="Auditing Privilege Scope">
+Several diagnostics (scheduled tasks, full service lists) require an **Elevated Command Prompt (Administrator)** to return complete results.
+</Callout>
+
+This reference covers auditing Windows systems using the built-in CMD shell — verifying system properties, accounts, active processes, and network ports without third-party binaries.
+
+## Learning path
+
+1. **This guide** — CMD auditing fundamentals
+2. [PowerShell Auditing & Threat Detection](/notes/windows/powershell-auditing)
+3. [Windows Event Log Analysis](/notes/windows/windows-event-log-analysis-advanced-threat-detection-guide)
+
+## Cheat sheet checklist
+
+| Defensive audit target | Command | Goal |
+| --- | --- | --- |
+| Active sockets | `netstat -ano` | Map ports to PIDs |
+| System profile | `systeminfo` | OS build, patches, uptime |
+| Active users | `net user` | Local account inventory |
+| Administrators | `net localgroup administrators` | Privileged group membership |
+| Process inspection | `tasklist /v` | Running processes with window titles |
+| Active shares | `net share` | Network-exposed folders |
+| Running services | `sc query state= all` | Background service state |
+
+## 1. Network sockets and PID auditing
+
+Monitoring open ports and linking them to parent processes is a core endpoint verification step.
+
+### Listing mapped sockets
+
+<TerminalCommand cmd="netstat -ano" />
+
+* `-a` — all connections and listening ports
+* `-n` — numeric addresses (skip DNS resolution)
+* `-o` — append owning Process ID (PID)
+
+### Link PID to executable
+
+<TerminalCommand cmd='tasklist /fi "PID eq 4012"' />
+
+## 2. User accounts and group membership
+
+Unauthorized accounts or group changes are common persistence indicators.
+
+<TerminalCommand cmd="net localgroup administrators" />
+
+> **Defensive checklist:** Compare administrators group output against your corporate baseline. Investigate unexpected accounts immediately.
+
+## 3. Services and scheduled tasks
+
+<TerminalCommand cmd="sc query state= all" />
+
+For deeper hunting, continue to [PowerShell Auditing](/notes/windows/powershell-auditing).
+
+## Related guides
+
+- [PowerShell Auditing & Threat Detection](/notes/windows/powershell-auditing)
+- [Windows Event Log Analysis](/notes/windows/windows-event-log-analysis-advanced-threat-detection-guide)
+- [Blue Team Complete Guide](/notes/security/blue-team-complete-guide)
+- [Essential Linux Commands](/notes/linux/essential-linux-commands-for-cybersecurity-specialists)
+
+## Continue learning
+
+→ Next: [PowerShell Auditing & Threat Detection](/notes/windows/powershell-auditing)
 
 ## Educational Use Notice
 
 This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
 
 Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
-
----
-

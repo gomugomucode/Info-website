@@ -1,61 +1,119 @@
 ---
 title: "Web Application Security & Hardening"
-description: "A developer guide to web application security fundamentals, mitigating OWASP Top 10 vulnerabilities, and configuring security headers."
-date: "2026-05-28"
-tags: ["owasp", "web-security", "hardening", "headers"]
+description: "OWASP-aligned web security fundamentals — HTTP security headers, XSS and SQLi mitigation, authentication controls, and vulnerability scanning workflow."
+date: "2026-06-07"
+tags: ["owasp", "web-security", "hardening", "headers", "xss", "sqli"]
 category: "notes"
 subcategory: "web"
-difficulty: "Advanced"
-readingTime: "7 min read"
+difficulty: "Intermediate"
+readingTime: "15 min read"
+featured: true
 ---
 
 # Web Application Security & Hardening
-Securing web applications requires proactive coding practices, secure configuration, and defensive header policies. This guide details key mitigation strategies for web vulnerabilities and explains how to configure security headers.
-## 1. Essential HTTP Security Headers
-Security headers are returned in server responses to instruct the browser to restrict certain behaviors.
-### Header Configuration Table
-| HTTP Header | Example Value | Security Purpose |
-| **HSTS** | `max-age=63072000; includeSubDomains` | Enforce HTTPS connections. |
-| **CSP** | `default-src 'self';` | Limit what script sources can execute (mitigates XSS). |
-| **X-Frame-Options** | `DENY` | Prevent site from being embedded in frames (mitigates clickjacking). |
-| **X-Content-Type** | `nosniff` | Prevent browsers from MIME-sniffing away from declared types. |
-## 2. Mitigating Cross-Site Scripting (XSS)
-XSS occurs when an application includes untrusted data in a web page without proper validation or escaping.
-### Mitigation Strategies
-*   **Context-Aware Output Encoding**: Encode all user data before rendering it in the DOM (e.g., using `htmlspecialchars()` in PHP or template bindings in React/Next.js).
-*   **Implement a Content Security Policy (CSP)**: Limit script execution to trusted domains only.
-## 3. Template Creation Guide (Nuclei)
-Nuclei is a vulnerability scanner that uses YAML templates to define and execute security checks.
-### Example Diagnostic Template
-This template checks if a server returns the `Server` header in HTTP responses (helps verify configuration privacy):
-```yaml
-id: server-header-check
 
-info:
-  name: Server Header Disclosure Check
-  author: security-practitioner
-  severity: info
-  description: Checks if the response contains software information in the Server header.
+<Callout type="info" title="Defensive Focus">
+This guide emphasizes secure development and authorized testing workflows. Validate findings in staging environments before applying changes to production.
+</Callout>
 
-http:
-  - method: GET
-    path:
-      - "{{BaseURL}}"
+Canonical web application security reference for **info.anupambaral.com.np**. Use it as the parent hub for OWASP-aligned hardening, scanning, and injection testing methodology.
 
-    matchers:
-      - type: word
-        part: header
-        words:
-          - "Server:"
+## Learning path
+
+1. **This guide** — OWASP fundamentals and headers
+2. [SQLmap Guide](/notes/web/sqlmap-guide) — SQL injection validation in authorized labs
+3. [Nessus Vulnerability Scanning](/notes/web/nessus-vulnerability-scanning) — structured scanning workflow
+4. [Bug Bounty Playbook](/notes/security/bug-bounty-playbook) — methodology and reporting
+
+## OWASP Top 10 at a glance
+
+| Risk | Defensive priority | Deep dive |
+| --- | --- | --- |
+| Broken access control | Enforce server-side authorization on every request | Section 4 |
+| Cryptographic failures | TLS everywhere, no secrets in URLs/logs | Headers table |
+| Injection (SQLi, XSS) | Parameterized queries, output encoding | Sections 2–3 |
+| Security misconfiguration | Harden defaults, disable debug in prod | Headers + scanning |
+| Vulnerable components | Dependency scanning, patch cadence | [Nessus](/notes/web/nessus-vulnerability-scanning) |
+
+## 1. Essential HTTP security headers
+
+Security headers instruct browsers to restrict risky behavior.
+
+| HTTP header | Example value | Purpose |
+| --- | --- | --- |
+| **Strict-Transport-Security** | `max-age=63072000; includeSubDomains` | Force HTTPS |
+| **Content-Security-Policy** | `default-src 'self'; script-src 'self'` | Limit script sources (XSS mitigation) |
+| **X-Frame-Options** | `DENY` | Block clickjacking via iframes |
+| **X-Content-Type-Options** | `nosniff` | Prevent MIME-type sniffing |
+| **Referrer-Policy** | `strict-origin-when-cross-origin` | Limit referrer leakage |
+| **Permissions-Policy** | `camera=(), microphone=()` | Restrict browser feature APIs |
+
+### Next.js example
+
+```javascript
+// next.config.js — security headers
+const securityHeaders = [
+  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+];
 ```
 
----
+## 2. Mitigating cross-site scripting (XSS)
+
+XSS occurs when untrusted input is rendered without encoding.
+
+* **Context-aware output encoding** — HTML-encode user data in templates (`htmlspecialchars`, React JSX auto-escaping).
+* **Content Security Policy** — restrict `script-src` to trusted origins; avoid `unsafe-inline` in production.
+* **HttpOnly cookies** — prevent JavaScript access to session tokens.
+* **Input validation** — allowlist expected formats; reject unexpected markup at the boundary.
+
+## 3. SQL injection prevention
+
+* Use **parameterized queries** / prepared statements — never concatenate user input into SQL.
+* Apply **least-privilege DB accounts** — application users should not have `DROP` or `FILE` privileges.
+* Log and alert on SQL syntax errors in application logs.
+
+For hands-on authorized validation, see the [SQLmap Guide](/notes/web/sqlmap-guide).
+
+## 4. Authentication and session management
+
+* Enforce MFA for administrative interfaces.
+* Rotate session IDs after login; set `Secure` and `HttpOnly` flags on cookies.
+* Implement account lockout and rate limiting on login endpoints.
+* Store passwords with modern hashing (bcrypt, Argon2) — never plaintext or MD5.
+
+## 5. Vulnerability scanning workflow
+
+| Phase | Tool / action | Notes |
+| --- | --- | --- |
+| Discovery | Manual crawl + [Nmap](/notes/networking/nmap-scanning-guide) | Map attack surface in scope |
+| Automated scan | [Nessus](/notes/web/nessus-vulnerability-scanning), nuclei | Tune severity filters; confirm manually |
+| Manual testing | Burp Suite, browser devtools | Business-logic flaws need human review |
+| Reporting | CVSS + reproduction steps | Link to [Bug Bounty Playbook](/notes/security/bug-bounty-playbook) |
+
+## Best practices
+
+* Shift security left — headers and input validation belong in CI, not post-deploy patches.
+* Separate staging from production credentials and data.
+* Treat scanner output as leads, not confirmed vulnerabilities.
+* Document scope and authorization before any intrusive test.
+
+## Related guides
+
+- [SQLmap Guide](/notes/web/sqlmap-guide)
+- [Nessus Vulnerability Scanning](/notes/web/nessus-vulnerability-scanning)
+- [API Gateway Security](/notes/web/api-gateway-security-implementation-and-best-practices)
+- [Nuclei Plugin & Burp Suite Template Creation](/notes/web/nuclei-plugin-burp-suite-template-creation-guide)
+- [Bug Bounty Playbook](/notes/security/bug-bounty-playbook)
+
+## Continue learning
+
+→ Next: [SQLmap Guide](/notes/web/sqlmap-guide)
 
 ## Educational Use Notice
 
 This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
 
 Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
-
----
-

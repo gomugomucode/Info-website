@@ -25,3 +25,11 @@
 - MERGE/DELETE MDX files removed from content/
 - Dev cheatsheets archived
 - `npm run build` passes (21 MDX → 56 static routes)
+
+## Phase 7 progress (latest)
+
+**Rewritten:** essential-linux-commands, sqlmap-guide, metasploit-for-beginners, web-security-fundamentals, nessus-vulnerability-scanning, windows-defensive-cmd
+
+**Updated:** master-termux-handbook (hub footer), nmap-scanning-guide (prior session)
+
+**Remaining:** wireshark, bug-bounty-playbook, windows-event-log, networking-interview-qa, mobile-tools, bettercap, nuclei-burp, hello-world, kali-toolkit expansion
