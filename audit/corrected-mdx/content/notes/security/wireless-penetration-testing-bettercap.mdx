@@ -1,0 +1,186 @@
+---
+title: "Wireless Penetration Testing Bettercap"
+description: "A defensive hardening, auditing, and threat detection reference guide for Wireless Penetration Testing Bettercap."
+date: "2026-05-28"
+tags: ["wireless", "hardening", "auditing", "compliance"]
+category: "notes"
+subcategory: "security"
+difficulty: "Intermediate"
+readingTime: "23 min read"
+---
+
+# Wireless Penetration Testing Bettercap
+
+<Callout type="warning" title="Defensive & Authorized Auditing Purposes Only">
+This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
+</Callout>
+
+Table of Content
+1 . Installation
+2 . Monitor mode and discovery
+3 . Sorting filters
+4 . Deauth security test using bettercap
+5 . PMKID security test using bettercap
+Afterinstallation , you can easily access the main menu by typing i n :
+1.  bettercap
+2 / 1 3 / 2 6 ,  1 1 : 0 7  P M
+2 / 1 3
+Now to navigate your way around this tool for all the W i - F i testing relatedoptions , the help
+page is available at
+1.  help wifi
+3 / 1 3
+N o w , This tool requires an older version of the pcap library s o , w e ’ l l first download that using
+wget .
+1.
+2.
+wget http: //old.kali.org/kali/pool/main/libp/libpcap/libpcap0.8_1.9.1-4_amd64.deb
+dpkg -i libpcap0. 8_1 . 9 . 1 -4_amd64. deb
+4 / 1 3
+Sorting filters
+Often times knowing the vendor of an access point aids us in checking access point against
+knownvulnerabilities . To do this we can use the followingcommand :
+Monitor Mode and W i - F i discovery
+Monitor  m o d e  i s  a  promiscuous  m o d e  f o r  y o u r  I E E E 8 0 2 . 1 1 x  receiver  ( a k a  W i - F i  adapter  o r
+W i - F i  N I C )  a n d  l e t s  y o u  capture  signals  f r o m  n o t  o n l y  y o u r  access  point  b u t  others  a s  w e l l .  T o
+put your W i - F i adapter in promiscuousmode :
+To start discovering Access Points around y o u :
+1.
+1.  wifi. recon  on
+ bettercap -iface wlan0mon
+5 / 1 3
+As you can see we are now able to see a majority of the manufacturers of access points
+around m e . N o w , what if I want to see the access points in descending order of the clients
+connected to i t . As we already know that deauth security test work on APs with clients to capture
+a handshake andhence , having more clients catalyses the captureprocess . S o , for that we
+h a v e :
+1.
+2.
+1.
+2.
+set wifi. show . manufacturer
+wifi. show
+set. wifi . show . sort  clients desc
+wifi. show
+true
+6 / 1 3
+Additionally , you can now see hidden SSIDs popping u p . The angular bracket is considered
+before A - Z because it is a specialsymbol .
+N o w , what if we want to limit the results toonly , l e t ’ s s a y , the top 3 ? To dothis :
+As you can see the APs have arranged themselves in descending order of a number of clients
+connected .
+L e t ’ s do the same with ESSID too and arrange it in ascendingorder .
+1.
+2.
+1.
+2.
+set wifi. show . limit  3
+wifi. show
+set. wifi . show . sort  essid asc
+wifi. show
+7 / 1 3
+N o w , w e ’ l l first put up the list of APsfound :
+In thiscase , we can observe that clients from 2 APs have beendeauthenticated .
+Deauth security test using Bettercap
+We have already seen how torecon , sort andfilter . L e t ’ s conduct a short deauth security test on an
+accesspoint .
+First , put your wifi adapter in monitor mode
+Therefore , w e ’ v e limited the results to only the top 3 . N e x t , l e t ’ s send deauthentication
+packets to opennetworks . Open networks are those whicharen ’ t protected byapassphrase .
+1.
+1.
+2.
+events. stream  off
+wifi. show
+ set wifi. deauth . open  true
+8 / 1 3
+Note thatevents . streamis a logging feature in Bettercap that showslogs , new hosts being
+found , e t c . Bydefault , it isenabled , but to provide a clearoutput , we can turn it o f f .
+N o w , w e ’ l l security test on AP “ r a a j . ”
+As you can s e e , the client has reauthenticated after being deauthenticated by bettercap and
+a handshake has been captured
+N o w , w e ’ l l useaircrack - n g to crack hashes captured in this handshakefile . W e ’ v e already
+written an article onaircrack - n g for your referencehere .
+It is operating on channel 5 and w e ’ d first put our adapter to listen on channel 5 .
+By settingsniff . verbosetotrue , every captured and parsed packet will be sent to the
+events . streamfordisplaying .
+N e x t , the n e t . sniff . filterether proto 0 * 8 8 8 e sets the sniffer to capture EAPOLframes . 0 * 8 8 8 e
+i s  t h e  standard  c o d e  f o r  EAPOL  ( I E E E  8 0 2 . 1 1 X  frames ) .
+Output file is set towifi . p c a p
+n e t . sniffon turns the bettercap sniffer on
+w i f i . deauth  starts  sending  deauth  packets  t o  t h e  specified  M A C  I D  ( BSSID )  o f  t h e  access
+point
+events . streamon turns the logging on and now bettercap will run in verbosemode .
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+set wifi. recon . channel  5
+set net. sniff . verbose  true
+set net. sniff . filter  ether proto 0 *888e
+set net. sniff . output  wifi. pcap
+set net. sniff  on
+wifi. deauth  18 : 45 : 93 : 69 :a5: 19
+events. stream  on
+9 / 1 3
+And just likethat , we have cracked the W i - F i passphrase of “ r a a j . ”
+PMKID security test using Bettercap
+W e ’ v e discussed in detail PMKID and PMKID security test in this articlehere . N o w , l e t ’ s see a small
+tutorial where a bettercap can be used to conduct PMKIDattacks .
+H e r e , d i c t . t x t is a long password file containing the most commonly used passwords and
+passwords I generated given the knowledge I have about mytarget .
+1.
+1.
+2.
+3.
+bettercap
+set wifi. interface  wlan0mon
+wifi. recon  on
+ aircrack-ng bettercap-wifi-handshakes. pcap  -w /root/dict. txt
+1 0 / 1 3
+L e t ’ s see the target APs available
+For the PMKID security test to work we have to send an association request to the target Access
+Point . We do thiswith :
+1.
+1.
+ wifi. show
+ wifi. assoc  &lt; BSSID &gt;
+1 1 / 1 3
+H e r e ,  1 6 8 0 0  i s  t h e  c o d e  f o r  PMKID  W P A / W P A 2  h a s h  t y p e .  We  h a v e  u s e d  t h e  rockyou
+dictionaryhere .
+As we can s e e , we have successfully received the RSN frame containing PMKID and it has
+been saved in a pcapformat . What is I want to send an association request to all the Wi - F i s
+available . To do that the command i s :
+And y e s , all the vulnerable routers returned the RSN frame containing PMKID and it got saved
+in a pcapfile .
+Now we can use the hcxpcaptool to convert this pcap file in Hashcat crackable format and
+use Hashcat to crack the PMKhash .
+1.
+1.
+2.
+ wifi. assoc  all
+hcxpcaptool -z hashpmkid bettercap-wifi-handshakes. pcap
+hashcat -m 16800  --force hashpmkid /usr/share/wordlists/rockyou. txt  --show
+1 2 / 1 3
+And i t ’ s sosimple . Bettercap is a sniffer with many other such functionalities besides Wi - F i
+packetsniffing . We hope that this article helped you in developing opinions about tools
+available in the market today and forging your own W i - F i security audittoolkit . Thanks for
+reading . Have a nice d a y .
+1 3 / 1 3
+u s e .
+👉 Comment “ INTERESTED ” and I ’ l l send it to you
+CONTENT
+Daily tools • Tutorials • AI security risk analysis • Cyber
+Security
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---

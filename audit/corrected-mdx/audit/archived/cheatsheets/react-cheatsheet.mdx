@@ -1,0 +1,240 @@
+---
+title: "The Ultimate React Cheatsheet"
+description: "A comprehensive guide to React development. Master Hooks, Context API, lifecycles, and modern component patterns."
+date: "2026-05-22"
+tags: ["react", "javascript", "frontend", "cheatsheet", "hooks"]
+category: "Cheatsheets"
+featured: true
+readingTime: "11 min read"
+---
+
+# The Ultimate React Cheatsheet
+React remains the dominant library for building user interfaces. Whether you're a beginner learning the ropes or a senior developer needing a quick reference, this cheatsheet covers the core concepts, modern hooks, and component patterns you use every day.
+## React Hooks Cheat Sheet
+Hooks allow you to use state and other React features without writing a class.
+- **`use State`**: Manage local component state.
+- **`use Effect`**: Perform side effects (data fetching, subscriptions).
+- **`use Context`**: Access values from a React context.
+- **`use Ref`**: Persist values across renders without triggering a re-render, or access DOM elements directly.
+- **`use Memo`**: Memoize expensive calculations so they don't re-run on every render.
+- **`use Callback`**: Memoize a function definition to prevent unnecessary child re-renders.
+- **`use Reducer`**: Manage complex state logic (similar to Redux).
+## use State Examples
+The most fundamental hook for adding reactivity to your UI.
+
+```tsx
+import { use State } from 'react';
+
+export default function Counter() {
+  // 1. Basic state
+  const [count, set Count] = use State(0);
+
+  // 2. Object state
+  const [user, set User] = use State({ name: 'Alice', age: 25 });
+
+  // 3. Array state
+  const [items, set Items] = use State(['Apple', 'Banana']);
+
+  return (
+    <div>
+      {/* Updating basic state (using updater function for safety) */}
+      <button on Click={() => set Count(prev => prev + 1)}>
+        Count: {count}
+      </button>
+
+      {/* Updating object state (spread previous state) */}
+      <button on Click={() => set User({ ...user, age: 26 })}>
+        Happy Birthday {user.name}!
+      </button>
+
+      {/* Updating array state (create a new array) */}
+      <button on Click={() => set Items([...items, 'Cherry'])}>
+        Add Cherry
+      </button>
+    </div>
+  );
+}
+
+```
+
+## use Effect Guide
+`use Effect` handles side effects. Its behavior changes based on the dependency array.
+
+```tsx
+import { use Effect, use State } from 'react';
+
+export default function Data Fetcher({ user Id }) {
+  const [data, set Data] = use State(null);
+
+  // 1. No dependency array: Runs after EVERY render
+  use Effect(() => {
+    console.log('I run after every render!');
+  });
+
+  // 2. Empty array []: Runs ONCE on mount
+  use Effect(() => {
+    console.log('Component mounted');
+
+    // Cleanup function: Runs on unmount
+    return () => console.log('Component unmounted');
+  }, []);
+
+  // 3. With dependencies: Runs on mount AND when `user Id` changes
+  use Effect(() => {
+    let ignore = false; // Prevent race conditions
+
+    async function fetch User() {
+      const response = await fetch(`/api/users/${user Id}`);
+      const json = await response.json();
+      if (!ignore) set Data(json);
+    }
+
+    fetch User();
+
+    return () => {
+      ignore = true; // Cleanup running fetch if user Id changes quickly
+    };
+  }, [user Id]); // Re-run if user Id changes
+
+  return <div>{data ? data.name : 'Loading...'}</div>;
+}
+
+```
+
+## Context API
+Avoid "prop drilling" by sharing state globally across your component tree.
+
+```tsx
+import { create Context, use Context, use State } from 'react';
+
+// 1. Create the Context
+const Theme Context = create Context('light');
+
+// 2. Create a Provider Component
+export function Theme Provider({ children }) {
+  const [theme, set Theme] = use State('light');
+
+  return (
+    <Theme Context. Provider value={{ theme, set Theme }}>
+      {children}
+    </Theme Context. Provider>
+  );
+}
+
+// 3. Consume the Context anywhere in the tree
+export function Themed Button() {
+  const { theme, set Theme } = use Context(Theme Context);
+
+  return (
+    <button
+      on Click={() => set Theme(theme === 'light' ? 'dark' : 'light')}
+      style={{ background: theme === 'light' ? '#fff' : '#000' }}
+    >
+      Toggle Theme
+    </button>
+  );
+}
+
+```
+
+## React Lifecycle
+While class components have explicit lifecycle methods (`component Did Mount`, `component Did Update`, `component Will Unmount`), functional components map these concepts to hooks.
+- **Mounting:** When the component is first added to the DOM.
+  - *Class:* `constructor` → `render` → `component Did Mount`
+  - *Functional:* Component function runs → DOM updates → `use Effect(..., [])` runs.
+- **Updating:** When props or state change.
+  - *Class:* `render` → `component Did Update`
+  - *Functional:* Component function runs → DOM updates → `use Effect(..., [deps])` runs.
+- **Unmounting:** When the component is removed from the DOM.
+  - *Class:* `component Will Unmount`
+  - *Functional:* The cleanup function returned from `use Effect` runs.
+## React Event Handling
+React uses a synthetic event system, which normalizes events across different browsers.
+
+```tsx
+export default function Form Example() {
+  // Prevent default form submission behavior
+  const handle Submit = (e: React. Form Event<HTMLForm Element>) => {
+    e.prevent Default();
+    console.log('Form submitted!');
+  };
+
+  // Handle input changes
+  const handle Change = (e: React. Change Event<HTMLInput Element>) => {
+    console.log('New value:', e.target.value);
+  };
+
+  return (
+    <form on Submit={handle Submit}>
+      <input type="text" on Change={handle Change} />
+      <button type="submit">Submit</button>
+
+      {/* Stop event propagation (bubbling) */}
+      <button type="button" on Click={(e) => e.stop Propagation()}>
+        Click me (Won't bubble)
+      </button>
+    </form>
+  );
+}
+
+```
+
+## Component Patterns
+Modern patterns for building robust and reusable React components.
+### 1. Composition (Container & Presentational)
+Separate data fetching (Container) from UI rendering (Presentational).
+
+```tsx
+// Presentational (Dumb)
+const User Profile = ({ user }) => <h1>{user.name}</h1>;
+
+// Container (Smart)
+const User Profile Container = ({ id }) => {
+  const user = use Fetch User(id);
+  return <User Profile user={user} />;
+};
+
+```
+
+### 2. Custom Hooks
+Extract stateful logic into reusable functions.
+
+```tsx
+function use Window Width() {
+  const [width, set Width] = use State(window.inner Width);
+
+  use Effect(() => {
+    const handle Resize = () => set Width(window.inner Width);
+    window.add Event Listener('resize', handle Resize);
+    return () => window.remove Event Listener('resize', handle Resize);
+  }, []);
+
+  return width;
+}
+
+```
+
+### 3. Higher-Order Components (HOCs) / Render Props
+While largely replaced by Custom Hooks, you may still see them. They wrap components to inject props or share logic.
+
+```tsx
+// A pattern for passing components as children (Slot pattern)
+const Card = ({ header, children, footer }) => (
+  <div class Name="card">
+    <div class Name="card-header">{header}</div>
+    <div class Name="card-body">{children}</div>
+    <div class Name="card-footer">{footer}</div>
+  </div>
+);
+
+```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---

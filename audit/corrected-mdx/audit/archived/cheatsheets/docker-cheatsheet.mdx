@@ -1,0 +1,167 @@
+---
+title: "The Ultimate Docker Cheatsheet"
+description: "A comprehensive guide to Docker for developers. Master containers, images, networking, and Docker Compose."
+date: "2026-05-22"
+tags: ["docker", "devops", "containers", "cheatsheet"]
+category: "Cheatsheets"
+featured: true
+readingTime: "9 min read"
+---
+
+# The Ultimate Docker Cheatsheet
+Docker has completely transformed how software is built, shipped, and run. Whether you're containerizing a local development environment or deploying microservices to production, this cheatsheet provides the essential commands and concepts you need.
+## Docker Commands (The Basics)
+The core commands for interacting with the Docker engine.
+
+```bash
+# Check Docker version and info
+docker version
+docker info
+
+# Log in to a Docker registry (like Docker Hub)
+docker login
+
+# Search for an image on Docker Hub
+docker search nginx
+
+```
+
+## Build Docker Images are the read-only templates used to create containers.
+
+```bash
+# Pull an image from Docker Hub
+docker pull ubuntu:22.04
+
+# Build an image from a Dockerfile in the current directory
+# -t tags the image with a name and optional tag
+docker build -t my-app:latest .
+
+# Build an image using a specific Dockerfile
+docker build -f Dockerfile.dev -t my-app-dev .
+
+# List all local images
+docker images
+
+# Remove an image
+docker rmi my-app:latest
+
+# Remove all unused, dangling images
+docker image prune
+
+```
+
+## Container Management
+Containers are the running instances of Docker images.
+
+```bash
+# Run a container from an image
+# -d runs it in the background (detached mode)
+# -p maps the host port to the container port
+docker run -d -p 8080:80 my-app:latest
+
+# Run an interactive shell inside a new container
+docker run -it ubuntu:22.04 /bin/bash
+
+# List running containers
+docker ps
+
+# List ALL containers (including stopped ones)
+docker ps -a
+
+# Start or Stop an existing container
+docker start <container_id_or_name>
+docker stop <container_id_or_name>
+
+# Execute a command in a RUNNING container
+docker exec -it <container_id_or_name> /bin/bash
+
+# View logs for a specific container
+docker logs <container_id_or_name>
+
+# Follow (tail) logs in real-time
+docker logs -f <container_id_or_name>
+
+# Remove a stopped container
+docker rm <container_id_or_name>
+
+# Force remove a running container
+docker rm -f <container_id_or_name>
+
+# Remove all stopped containers
+docker container prune
+
+```
+
+## Docker Compose Basics
+Docker Compose is a tool for defining and running multi-container Docker applications using a `docker-compose.yml` file.
+
+```yaml
+# Example docker-compose.yml
+version: '3.8'
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  db:
+    image: postgres:14
+    environment:
+      POSTGRES_PASSWORD: secretpassword
+
+```
+
+```bash
+# Start all services defined in docker-compose.yml (in the background)
+docker compose up -d
+
+# Stop and remove containers, networks, and volumes
+docker compose down
+
+# View logs for all services
+docker compose logs -f
+
+# View logs for a specific service
+docker compose logs -f web
+
+# Rebuild images before starting services
+docker compose up -d --build
+
+# Run a one-off command against a service
+docker compose run web npm run test
+
+```
+## Docker Networking
+Docker handles communication between containers and the outside world via networks.
+
+```bash
+# List all networks
+docker network ls
+
+# Create a new custom network
+docker network create my-network
+
+# Connect a running container to a network
+docker network connect my-network <container_id_or_name>
+
+# Disconnect a container from a network
+docker network disconnect my-network <container_id_or_name>
+
+# Inspect a network (shows connected containers and IP addresses)
+docker network inspect my-network
+
+```
+
+> [!TIP]
+> By default, containers on the same custom network can talk to each other using their container names as hostnames!
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---

@@ -1,0 +1,145 @@
+---
+title: "Nuclei Plugin & Burp Suite Template Creation Guide"
+description: "A defensive hardening, auditing, and threat detection reference guide for Nuclei Plugin & Burp Suite Template Creation Guide."
+date: "2026-05-28"
+tags: ["nuclei", "hardening", "auditing", "compliance"]
+category: "notes"
+subcategory: "web"
+difficulty: "Intermediate"
+readingTime: "36 min read"
+---
+
+# Nuclei Plugin & Burp Suite Template Creation Guide
+
+<Callout type="warning" title="Defensive & Authorized Auditing Purposes Only">
+This note is prepared for educational and authorized defensive diagnostics, infrastructure auditing, and host hardening purposes only. Unauthorised access, penetration tests without written consent, or execution of security commands on external networks is illegal.
+</Callout>
+
+WHAT ISNUCLEI ?
+Nuclei is a powerfulopen - sourcevulnerability scanner written in Golang . Aside from its
+excellentperformance , it is a highly customizable tool due to its integration with YAML
+templatefiles . Its templating system allows for anyone to create vulnerability templates
+and contribute their findings to thecommunity !
+NUCLEI & BURP SUITE
+We have lots of blogs regarding Burp Suite you can always check outhere .
+NUCLEI PLUGIN & BURP SUITE – TEMPLATE
+CREATION GUIDE
+For web applicationtesting , there is a Burp Suite community plugin in the BApp store
+called the Nuclei “ Template Generator Plugin ” that is even available for users who use
+the free communityedition . The purpose of this plugin is to assist with repetitive data
+associated with nuclei templatecreation . When the plugin isinstalled , a tab is added to
+the app layout like the Repeater , Intruder , e t c . It also features integration with Repeater
+and Intruder for simplified templategeneration .
+1 / 1 4
+METASPLOITABLE 2
+To demonstrate how the pluginworks , I set up a virtual environment with
+Metasploitable 2 as my vulnerabletarget . For those not familiar with Metasploitable , it is
+an intentionally vulnerable machine for educational and testingpurposes . Below shows
+the home page of the VM with options to various locally hosted vulnerableapplications .
+NUCLEI DEMONSTRATION
+I will also be using the php My Admin page to demonstrate how multiple requests can be
+added to the resultingtemplate . I choose both of these pages because they both
+mentionphp My Admin , but one would actually be a false positive ifindicated .
+2 / 1 4
+I started out running the default Nuclei scan including all the templatesavailable . In
+addition , I added rate limiting parameters which limit to three requests persecond ,
+allowing parallel execution of two templatessimultaneously . Bydefault , Nuclei has
+almost 6 , 3 0 0 templates available and actively continues togrow !
+Default Nuclei scancommand :
+Due to how vulnerable Metasploitable i s , the tool indicated many alerts of indicators of
+vulnerabilities . However , for the objective of explaining how the pluginworks , lets focus
+o n  t h e  l a s t  indicator  i n  t h e  screenshot  named  “ [ phpmyadmin - panel ] ” .
+After running the initial Nucleiscan , I switched to my Burp Suite web proxy for template
+generation . Before generating templates on the targetrequest , it is always a good
+practice to add the target URL to thescope , which allows to filter requests by the i n -
+scope U R L . To dothis , go to the “ Target ” t a b , right click on thetarget , and add the target
+toscope .
+nuclei – u &lt; target _ u r l &gt; - r l 3 - c 2
+3 / 1 4
+To add the home page request by simply right clicking on the request and following the
+extensions tabs to generateatemplate .
+Once the target is added toscope , all entities out of scope can be easily filtered out by
+clicking on the grey filter bar toward the top of the application and selecting “ Showonly
+i n - scopeitems ” .
+4 / 1 4
+N e x t , I moved down to the php My Admin request and did the same process with the
+exception of adding the request to “ T a b 1 ” in the Nuclei tab in theproxy .
+Now that multiple requests have been added to thetemplate , i t ’ s time to add template
+matchers that look for specific content in therequest ’ sresponse . In the homepage ’ s
+responsedata , I selected the anchor tag text and closing bracket of the link to the
+php My Adminpage . After the text isselected , simply right click and follow the tabs to
+add the matcher to “ T a b 1 ” just like in the previousstep .
+5 / 1 4
+For the second php My Adminrequest , it contains a unique signature “ S e t - Cookie :
+php My Admin = ”  value  i n  t h e  cookie  s e t  i n  t h e  response  headers  o f  t h e  request .  Using
+this response header will ensure the signature is matched even if there is a 3 0 4 -
+responsecode , indicating the page is cached resulting in an empty body of data in the
+request .
+This is the template that the plugin has created thus f a r . It features authorinformation ,
+vulnerabilityseverity , and both specifiedrequests .
+6 / 1 4
+At the bottom of the template are theword - basedmatchers that were sent to match
+php My Admin in the associated requests responsedata . Matchers also feature Boolean
+conditionals , so if the “ matchers - condition ” key is set to “ a n d ” , then both matchers
+would have to be present in a request for indicator alert to be raised instead of just one
+with the current “ o r ” setting . According to the features specified in theplugin ’ s
+repository , the template matchers of capable of matching raw binary data orascii - based
+text like in the examplebelow .
+N o w  t h a t  a  template  h a s  b e e n  created  i n  t h e  default  location  o f  t h e  “ / t m p ”  folder  ( i f
+running  o n  K a l i  Linux ) ,  w e  c a n  r u n  i t  w i t h  t h e  - t  option  a n d  increased  verbosity  w i t h  t h e  - v
+option .
+Nuclei single template scancommand :
+7 / 1 4
+nuclei - v - t &lt; template _ n a m e &gt; - u &lt; target _ u r l &gt;
+The resulting output shows that the generated template with default name of
+“ [ template - i d ] ”  matched  o n  b o t h  targeted  endpoints .  Based  o n  t h e  output  o f  t h e  default
+nuclei scan that was initially r u n , there should only be one endpoint that had raised an
+indicator , meaning the current template is generating a falsepositive .
+To remove the falsepositive , I removed the first matcher of the link anchor tag that is on
+Metasploitable ’ shomepage . I also changed the value of the id in template file to
+php My Admin - panelto help visualize the exampletemplate .
+8 / 1 4
+This example does not have an associated CVE so the lookup process of the bogus
+number I gave itfailed , but still was able to generate an empty classification section in
+thetemplate .
+After running the scanagain , it shows that multiple requests were sent but the correct
+/ php My Admin /  endpoint  w a s  t h e  o n l y  o n e  t h a t  indicated  a n  alert .  While  t h i s  generated
+template is different from the one that is included bydefault , it was still effectively able
+to identify the same targetalert .
+The Nuclei template generator plugin also features support for C V E ’ s , actually
+attempting to look up the CVE information and automates populating it into the
+generatedtemplate . Back in Burp Suite , simply right click then - &gt; Add - &gt; Classification - &gt;
+CVE which prompts for the CVE number to look u p .
+9 / 1 4
+Hopefully the information and steps provided in this guide will help your understanding
+of how the Nuclei template generator plugin works and why its integration with Burp
+Suite makes the process of template generation substantially more efficient during web
+Another great feature of the plugin is the direct template integration with Burp Suite ’ s
+Intruder . After a request is sent to the Intruder and a parameter isspecified , simply right
+click and follow the extensions tabs like in previous steps to generateatemplate .
+The result is a generated template featuring a battering ram security test and associated
+payloads . The plugin supports battering r a m , clusterbomb , and pitch fork security testmodes ,
+so it will default to battering ram if sniper is set when the template isgenerated .
+NUCLEI TEMPLATE CONCLUSION
+1 0 / 1 4
+appengagements . Request and response data is easily parsed from the application
+straight to the resultingtemplate . The plugin also supports CVE template data and is
+integrated with the major Burp functionality like the Repeater , Intruder , e t c . By generating
+additional templates and integrating them into the tools templaterepository , it extends
+the tools capabilities and allows the community to contribute to itspower !
+and cybersecurity educationalcontent , with premium
+carousel guides and practical toolbreakdowns .
+Comment “ INTERESTED ” and I ’ l l send it to y o u .
+responsible u s e .
+I never said I wasahacker …
+The system just agreed with m e . 😎
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---

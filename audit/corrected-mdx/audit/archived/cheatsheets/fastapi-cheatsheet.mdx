@@ -1,0 +1,205 @@
+---
+title: "The Ultimate FastAPI Cheatsheet"
+description: "A comprehensive guide to building modern Python APIs with FastAPI. Master routing, Pydantic, dependency injection, and JWT auth."
+date: "2026-05-22"
+tags: ["fastapi", "python", "backend", "api", "cheatsheet"]
+category: "Cheatsheets"
+featured: true
+readingTime: "10 min read"
+---
+
+# The Ultimate Fast API Cheatsheet
+Fast API is one of the fastest and most popular Python web frameworks for building APIs. Thanks to its native support for async execution and automatic data validation via Pydantic, it makes backend development a breeze. Here is your reference guide to its core features.
+## Async API Basics
+Fast API is built to be asynchronous from the ground up, allowing your server to handle concurrent requests efficiently.
+
+```python
+from fastapi import Fast API
+import asyncio
+
+app = Fast API()
+
+# A standard synchronous endpoint
+@app.get("/sync")
+def sync_endpoint():
+    return {"message": "I block the event loop if I do heavy work."}
+
+# An asynchronous endpoint
+@app.get("/async")
+async def async_endpoint():
+    await asyncio.sleep(1) # Simulating a non-blocking I/O operation
+    return {"message": "I am fast and concurrent!"}
+
+```
+
+## Fast API Routes
+Defining routes and handling path and query parameters.
+
+```python
+# Path Parameters
+@app.get("/users/{user_id}")
+async def read_user(user_id: int):
+    # user_id is automatically validated as an integer
+    return {"user_id": user_id}
+
+# Query Parameters
+# If a parameter is not in the path, it is interpreted as a query parameter
+@app.get("/items/")
+async def read_items(skip: int = 0, limit: int = 10):
+    return {"skip": skip, "limit": limit}
+
+# Multiple HTTP Methods
+@app.post("/create")
+async def create_data():
+    return {"message": "Data created"}
+
+@app.put("/update/{item_id}")
+async def update_data(item_id: int):
+    return {"message": f"Updated {item_id}"}
+
+```
+
+## Pydantic Models
+Fast API uses Pydantic for data validation, serialization, and schema generation.
+
+```python
+from pydantic import Base Model, Email Str, Field
+
+class User Create(Base Model):
+    username: str = Field(..., min_length=3, max_length=50)
+    email: Email Str
+    age: int | None = None  # Optional field
+    is_active: bool = True
+
+@app.post("/users/")
+async def create_user(user: User Create):
+    # The 'user' parameter is automatically parsed from JSON and validated!
+    return {"username": user.username, "email": user.email}
+
+```
+
+## Dependency Injection
+A powerful feature to share logic (like database connections or authentication) across routes.
+
+```python
+from fastapi import Depends, Header, HTTPException
+
+# 1. Define a dependency function
+async def verify_token(x_token: str = Header(...)):
+    if x_token != "supersecrettoken":
+        raise HTTPException(status_code=400, detail="X-Token header invalid")
+    return x_token
+
+# 2. Inject it into a route
+@app.get("/secure-data/")
+async def get_secure_data(token: str = Depends(verify_token)):
+    return {"message": "You have access!", "token": token}
+
+```
+
+## Fast API CRUD API
+A quick blueprint for a standard Create, Read, Update, Delete setup using an in-memory database.
+
+```python
+from fastapi import Fast API, HTTPException
+from pydantic import Base Model
+
+app = Fast API()
+
+class Item(Base Model):
+    name: str
+    price: float
+
+# In-memory "database"
+db = {}
+
+# CREATE
+@app.post("/items/{item_id}")
+async def create_item(item_id: int, item: Item):
+    if item_id in db:
+        raise HTTPException(status_code=400, detail="Item already exists")
+    db[item_id] = item
+    return item
+
+# READ
+@app.get("/items/{item_id}")
+async def read_item(item_id: int):
+    if item_id not in db:
+        raise HTTPException(status_code=404, detail="Item not found")
+    return db[item_id]
+
+# UPDATE
+@app.put("/items/{item_id}")
+async def update_item(item_id: int, item: Item):
+    if item_id not in db:
+        raise HTTPException(status_code=404, detail="Item not found")
+    db[item_id] = item
+    return {"message": "Updated successfully", "item": item}
+
+# DELETE
+@app.delete("/items/{item_id}")
+async def delete_item(item_id: int):
+    if item_id not in db:
+        raise HTTPException(status_code=404, detail="Item not found")
+    del db[item_id]
+    return {"message": "Deleted successfully"}
+
+```
+
+## JWT Authentication
+Securing your API using JSON Web Tokens (requires `Py JWT` and `passlib`).
+
+```python
+from fastapi import Depends, Fast API, HTTPException, status
+from fastapi.security import OAuth2Password Bearer, OAuth2Password Request Form
+import jwt
+from datetime import datetime, timedelta
+
+app = Fast API()
+
+SECRET_KEY = "your-secret-key"
+ALGORITHM = "HS256"
+
+# This tells Fast API where the client should send credentials to get a token
+oauth2_scheme = OAuth2Password Bearer(token Url="token")
+
+def create_jwt_token(data: dict):
+    to_encode = data.copy()
+    expire = datetime.utcnow() + timedelta(minutes=30)
+    to_encode.update({"exp": expire})
+    return jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
+
+# 1. Login route to generate token
+@app.post("/token")
+async def login(form_data: OAuth2Password Request Form = Depends()):
+    # In a real app, verify username and password against a database here
+    if form_data.username != "admin" or form_data.password != "password":
+        raise HTTPException(status_code=400, detail="Incorrect username or password")
+
+    token = create_jwt_token({"sub": form_data.username})
+    return {"access_token": token, "token_type": "bearer"}
+
+# 2. Secure route protecting data
+@app.get("/users/me")
+async def read_users_me(token: str = Depends(oauth2_scheme)):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+        username = payload.get("sub")
+        if username is None:
+            raise HTTPException(status_code=401, detail="Invalid token")
+    except jwt. Py JWTError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+    return {"username": username, "status": "Authenticated"}
+
+```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---

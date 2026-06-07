@@ -1,0 +1,619 @@
+---
+title: "The Ultimate Deployment Cheatsheet"
+description: "A comprehensive guide to deploying web apps. Master Vercel, VPS setup, Nginx, environment variables, domain configuration, and SSL certificates."
+date: "2026-05-22"
+tags: ["deployment", "vercel", "vps", "nginx", "ssl", "devops", "cheatsheet"]
+category: "Cheatsheets"
+---
+
+# The Ultimate Deployment Cheatsheet
+Deploying your app is where it all becomes real. This cheatsheet walks you through everything — from one-click Vercel deploys to full VPS server configuration with Nginx and SSL.
+## Deploy Next.js to Vercel
+**Vercel** is the easiest and most powerful way to deploy Next.js applications. It's built by the same team.
+### Method 1: Vercel CLI (Recommended)
+
+```bash
+# Install Vercel CLI globally
+npm install -g vercel
+
+# Login to your account
+vercel login
+
+# Deploy from your project directory
+vercel
+
+# Deploy to production
+vercel --prod
+
+```
+
+### Method 2: Git Integration (Push to Deploy)
+1. Push your project to **Git Hub / Git Lab / Bitbucket**
+2. Go to [vercel.com](https://vercel.com) → **New Project**
+3. Import your repository
+4. Vercel auto-detects Next.js and sets build settings
+5. Click **Deploy** — done!
+Every `git push` to `main` triggers a new production deployment automatically.
+### Vercel Project Configuration (`vercel.json`)
+
+```json
+{
+  "build Command": "npm run build",
+  "output Directory": ".next",
+  "dev Command": "npm run dev",
+  "install Command": "npm install",
+  "framework": "nextjs",
+  "regions": ["sin1"],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/old-page",
+      "destination": "/new-page",
+      "permanent": true
+    }
+  ]
+}
+
+```
+
+### Setting Environment Variables on Vercel
+
+```bash
+# Via CLI
+vercel env add NEXT_PUBLIC_API_URL
+
+# List all env vars
+vercel env ls
+
+# Pull env vars to local .env.local
+vercel env pull .env.local
+
+```
+
+Or via the Vercel Dashboard:
+**Project → Settings → Environment Variables**
+### Vercel Deployment Checklist
+
+```
+✅ Set all environment variables in Vercel dashboard
+✅ Check build logs for errors
+✅ Verify API routes work after deployment
+✅ Test on the preview URL before going live
+✅ Connect your custom domain
+✅ Enable Vercel Analytics (optional)
+
+```
+
+## VPS Deployment
+A **VPS (Virtual Private Server)** gives you full control over your server. Use this for Node.js, Python, Docker, or any custom stack.
+### Popular VPS Providers
+
+```
+Digital Ocean  → droplets.digitalocean.com  (beginner-friendly)
+Linode/Akamai → linode.com
+
+| TCP | UDP |
+| --- | --- |
+| Vultr | vultr.com |
+| Hetzner | hetzner.com  (cheapest in Europe) |
+| AWS EC2 | aws.amazon.com |
+
+
+```
+
+### Initial Server Setup (Ubuntu 22.04)
+
+```bash
+# 1. Connect to your server
+ssh root@YOUR_SERVER_IP
+
+# 2. Update system packages
+apt update && apt upgrade -y
+
+# 3. Create a non-root user
+adduser deploy
+usermod -a G sudo deploy
+
+# 4. Copy SSH key to new user
+rsync --archive --chown=deploy:deploy ~/.ssh /home/deploy
+
+# 5. Switch to new user
+su - deploy
+
+# 6. Disable root SSH login (security)
+sudo nano /etc/ssh/sshd_config
+# Set: Permit Root Login no
+sudo systemctl restart ssh
+
+```
+
+### Install Node.js via NVM
+
+```bash
+# Install NVM
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+source ~/.bashrc
+
+# Install latest LTS
+nvm install --lts
+nvm use --lts
+
+# Verify
+node -v
+npm -v
+
+```
+
+### Deploy a Next.js App on VPS
+
+```bash
+# 1. Install Git and clone your repo
+sudo apt install git -y
+git clone https://github.com/yourusername/your-app.git
+cd your-app
+
+# 2. Install dependencies and build
+npm install
+npm run build
+
+# 3. Install PM2 (process manager)
+npm install -g pm2
+
+# 4. Start the app with PM2
+pm2 start npm --name "my-app" -- start
+
+# 5. Save PM2 process list and enable on reboot
+pm2 save
+pm2 startup
+# Run the command it outputs (sudo env PATH=...)
+
+```
+
+### PM2 Quick Reference
+
+```bash
+pm2 list                  # List all processes
+pm2 logs my-app           # View app logs
+pm2 restart my-app        # Restart app
+pm2 stop my-app           # Stop app
+pm2 delete my-app         # Remove from PM2
+pm2 monit                 # Real-time monitoring dashboard
+
+# Restart on file changes (dev)
+pm2 start npm --name "app" --watch -- start
+
+```
+
+## Nginx Basics
+**Nginx** is a high-performance web server used as a reverse proxy to route traffic to your Node.js app.
+### Install Nginx
+
+```bash
+sudo apt install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx  # auto-start on boot
+
+# Check status
+sudo systemctl status nginx
+
+```
+
+### Basic Nginx Config (Reverse Proxy)
+
+```nginx
+# /etc/nginx/sites-available/myapp
+
+server {
+    listen 80;
+    server_name yourdomain.com www.yourdomain.com;
+
+    location / {
+        proxy_pass http://localhost:3000;   # Your app's port
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+```
+
+### Enable the Site
+
+```bash
+# Create symlink to enable site
+sudo ln -s /etc/nginx/sites-available/myapp /etc/nginx/sites-enabled/
+
+# Test configuration for syntax errors
+sudo nginx -t
+
+# Reload Nginx (no downtime)
+sudo systemctl reload nginx
+
+# Full restart (if needed)
+sudo systemctl restart nginx
+
+```
+
+### Nginx Useful Commands
+
+```bash
+sudo nginx -t              # Test config syntax
+sudo nginx -s reload       # Reload config
+sudo systemctl reload nginx # Same as above
+sudo systemctl restart nginx# Full restart
+sudo nginx -v              # Check Nginx version
+
+# View logs
+sudo tail -f /var/log/nginx/access.log
+sudo tail -f /var/log/nginx/error.log
+
+```
+
+### Nginx Config File Locations
+
+```
+
+| TCP | UDP |
+| --- | --- |
+| /etc/nginx/nginx.conf | Main config |
+| /etc/nginx/sites-available/ | Available site configs |
+| /etc/nginx/sites-enabled/ | Active sites (symlinks) |
+| /var/log/nginx/access.log | Access log |
+| /var/log/nginx/error.log | Error log |
+| /var/www/html/ | Default web root |
+
+
+```
+
+## Environment Variables
+Environment variables keep sensitive data (API keys, passwords) out of your source code.
+### Local Development (`.env` files)
+
+```bash
+# .env.local (Next.js — never committed to Git)
+DATABASE_URL=postgresql://user:password@localhost:5432/mydb
+OPENAI_API_KEY=sk-...
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
+JWT_SECRET=your-super-secret-key
+
+# .env.example (committed to Git — template only)
+DATABASE_URL=
+OPENAI_API_KEY=
+NEXT_PUBLIC_API_URL=
+JWT_SECRET=
+
+```
+
+> ⚠️ Always add `.env`, `.env.local`, `.env.production` to `.gitignore`!
+### Next.js Environment Variable Rules
+
+```
+NEXT_PUBLIC_*   → Exposed to the browser (public)
+Everything else → Server-side only (private)
+
+Examples:
+NEXT_PUBLIC_SITE_URL=https://mysite.com   ✅ Safe to expose
+DATABASE_URL=postgresql://...             🔒 Server only
+
+```
+
+### Loading in Node.js
+
+```bash
+npm install dotenv
+
+```
+
+```javascript
+// At the top of your entry file
+import 'dotenv/config';
+
+// Or
+require('dotenv').config();
+
+// Now access via process.env
+console.log(process.env. DATABASE_URL);
+console.log(process.env. API_KEY);
+
+```
+### Setting Env Vars in Production (Linux/VPS)
+
+```bash
+# Method 1: Export in shell session (temporary)
+export NODE_ENV=production
+export DATABASE_URL="postgresql://..."
+
+# Method 2: Set in /etc/environment (system-wide, permanent)
+sudo nano /etc/environment
+# Add:  DATABASE_URL="postgresql://..."
+
+# Method 3: Set in PM2 ecosystem file (recommended)
+# ecosystem.config.js
+module.exports = {
+  apps: [{
+    name: 'my-app',
+    script: 'npm',
+    args: 'start',
+    env: {
+      NODE_ENV: 'production',
+      PORT: 3000,
+    },
+    env_production: {
+      NODE_ENV: 'production',
+    }
+  }]
+};
+
+pm2 start ecosystem.config.js --env production
+
+```
+
+### Security Best Practices
+
+```
+✅ Never commit .env files to Git
+✅ Use .env.example as a template for your team
+✅ Rotate secrets regularly
+✅ Use a secrets manager in production (AWS Secrets Manager, Hashi Corp Vault)
+✅ Limit access — only expose what's needed
+❌ Never hardcode API keys in source code
+❌ Never log environment variables
+
+```
+
+## Domain Setup
+Connecting a custom domain to your deployed application.
+### DNS Record Types You Need
+
+| Record | When to Use                              | Example                          |
+
+| TCP | UDP |
+| --- | --- |
+| | A      | Point domain | server IP                 | `@ → 203.0.113.10`               | |
+| | AAAA   | Point domain | IPv6 address              | `@ → 2001:db8::1`                | |
+| | CNAME  | Point subdomain | another domain         | `www → your-app.vercel.app`      | |
+| | MX     | Email routing                            | `@ | mail.google.com` (pri 10)   | |
+| | TXT    | Verify domain ownership, SPF/DKIM        | `@ | "v=spf1 include:..."`       | |
+
+
+### Connecting Domain to Vercel
+
+```
+1. Go to Vercel → Project → Settings → Domains
+2. Add your domain: "yourdomain.com"
+3. Vercel shows you DNS records to add
+4. Go to your domain registrar (Namecheap, Go Daddy, Cloudflare)
+5. Add the records Vercel shows:
+
+   Type: A     Name: @    Value: 76.76.21.21
+   Type: CNAME Name: www  Value: cname.vercel-dns.com
+
+```
+
+### Connecting Domain to VPS (Nginx)
+
+```
+1. Buy domain from registrar (Namecheap, Cloudflare, etc.)
+2. Add A record pointing to your VPS IP:
+
+   Type: A    Name: @    Value: YOUR_VPS_IP    TTL: 3600
+   Type: A    Name: www  Value: YOUR_VPS_IP    TTL: 3600
+
+3. Wait for DNS propagation (usually 5–30 mins, up to 48h)
+4. Update your Nginx config: server_name yourdomain.com www.yourdomain.com;
+5. Reload Nginx: sudo systemctl reload nginx
+
+```
+
+### Check DNS Propagation
+
+```bash
+# Check if DNS has propagated
+dig yourdomain.com A
+nslookup yourdomain.com
+
+# Online tools:
+# whatsmydns.net
+# dnschecker.org
+
+```
+
+### Using Cloudflare (Recommended)
+Cloudflare is a free DNS manager that adds CDN, DDo S protection, and SSL.
+
+```
+1. Sign up at cloudflare.com
+2. Add your site → Cloudflare scans existing DNS records
+3. Change your domain's nameservers to Cloudflare's:
+   e.g., jake.ns.cloudflare.com / vera.ns.cloudflare.com
+4. Enable "Proxied" (orange cloud) for CDN + DDo S protection
+5. SSL/TLS → Set to "Full (strict)"
+
+```
+
+## SSL Certificates
+**SSL/TLS** encrypts traffic between the browser and your server (HTTPS). It's free with Let's Encrypt.
+### Install Certbot (Let's Encrypt)
+
+```bash
+# Install Certbot and Nginx plugin
+sudo apt install certbot python3-certbot-nginx -y
+
+# Obtain and install SSL certificate automatically
+sudo certbot --nginx -d yourdomain.com -d www.yourdomain.com
+
+# Follow the prompts:
+# - Enter your email
+# - Agree to terms
+# - Choose whether to redirect HTTP → HTTPS (choose option 2!)
+
+```
+
+### Auto-Renewal
+Let's Encrypt certs expire every 90 days. Certbot auto-renews them.
+
+```bash
+# Test auto-renewal (dry run)
+sudo certbot renew --dry-run
+
+# Check renewal cron/systemd timer
+sudo systemctl status certbot.timer
+
+# Manually renew all certs
+sudo certbot renew
+
+# Renew a specific domain
+sudo certbot renew --cert-name yourdomain.com
+
+```
+
+### After SSL: Full Nginx Config (HTTPS)
+
+```nginx
+# /etc/nginx/sites-available/myapp
+
+server {
+    listen 80;
+    server_name yourdomain.com www.yourdomain.com;
+    return 301 https://$host$request_uri;  # Force HTTPS redirect
+}
+
+server {
+    listen 443 ssl;
+    server_name yourdomain.com www.yourdomain.com;
+
+    # SSL certificates (added by Certbot)
+    ssl_certificate /etc/letsencrypt/live/yourdomain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/yourdomain.com/privkey.pem;
+
+    # SSL settings
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers off;
+    add_header Strict-Transport-Security "max-age=63072000" always;
+
+    location / {
+        proxy_pass http://localhost:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+```
+
+### SSL with Cloudflare (Alternative)
+If using Cloudflare as DNS proxy, you can use Cloudflare's free SSL:
+
+```
+Cloudflare Dashboard → SSL/TLS → Overview
+
+Modes:
+
+| TCP | UDP |
+| --- | --- |
+| Off | HTTP only (never use this) |
+| Flexible | Cloudflare↔Browser encrypted, Cloudflare↔Server NOT |
+| Full | End-to-end encrypted (self-signed cert OK on server) |
+
+
+Full (Strict) → End-to-end encrypted (valid cert required on server) ← Best
+
+```
+
+### SSL Checklist
+
+```
+✅ HTTPS working on both yourdomain.com and www.yourdomain.com
+✅ HTTP redirects to HTTPS (301)
+✅ Certificate not expired (check: ssl-checker.online)
+✅ Auto-renewal configured (certbot timer active)
+✅ HSTS header set (Strict-Transport-Security)
+✅ No mixed content warnings in browser console
+
+```
+
+## Full Deployment Checklist
+Use this before every production launch:
+### Code & Build
+
+```
+✅ All tests passing
+✅ No console.log or debug code left in production
+✅ Environment variables set (not hardcoded)
+✅ .env files NOT committed to Git
+✅ npm run build completes without errors
+
+```
+
+### Server & Infrastructure
+
+```
+✅ Server updated (apt upgrade)
+✅ Firewall configured (UFW: allow 80, 443, 22)
+✅ App running with PM2 (auto-restart on crash/reboot)
+✅ Nginx configured and tested (nginx -t)
+✅ Logs accessible (PM2 logs, Nginx logs)
+
+```
+
+### Domain & SSL
+
+```
+✅ A records pointing to correct IP
+✅ www redirects to non-www (or vice versa)
+✅ SSL certificate installed and valid
+✅ HTTP → HTTPS redirect working
+✅ Auto-renewal tested (certbot renew --dry-run)
+
+```
+
+### Security
+
+```
+✅ Root SSH login disabled
+✅ UFW firewall enabled
+✅ Fail2ban installed (brute-force protection)
+✅ No sensitive data in public repos
+✅ Rate limiting on API routes
+
+```
+
+### Firewall Setup (UFW)
+
+```bash
+sudo ufw allow Open SSH     # Allow SSH (important — do this first!)
+sudo ufw allow 80          # HTTP
+sudo ufw allow 443         # HTTPS
+sudo ufw enable            # Enable firewall
+
+sudo ufw status            # Check rules
+sudo ufw deny 3000         # Block direct app port access (use Nginx)
+
+```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---

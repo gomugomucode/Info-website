@@ -1,0 +1,471 @@
+---
+title: "The Ultimate Web Development Cheatsheet"
+description: "A comprehensive guide to web fundamentals. Master HTTP status codes, REST API design, JSON, authentication methods, JWT, and cookies vs sessions."
+date: "2026-05-22"
+tags: ["web-development", "http", "rest", "jwt", "authentication", "cheatsheet"]
+category: "Cheatsheets"
+---
+
+# The Ultimate Web Development Cheatsheet
+A must-have reference for every web developer. This guide covers the foundational concepts that power every web application — from how HTTP works to securing your APIs.
+## HTTP Status Codes
+HTTP status codes tell the client what happened with their request. Memorize these — they appear in every project.
+### 2xx — Success ✅
+
+```
+
+| TCP | UDP |
+| --- | --- |
+| 200 OK | Standard successful response |
+| 201 Created | Resource was successfully created (POST) |
+| 202 Accepted | Request accepted but processing is async |
+| 204 No Content | Success, nothing to return (DELETE, PUT) |
+
+
+206 Partial Content     → Range request fulfilled (video streaming)
+
+```
+
+### 3xx — Redirection 🔀
+
+```
+301 Moved Permanently   → Page has a new permanent URL
+
+| TCP | UDP |
+| --- | --- |
+| 302 Found | Temporary redirect |
+| 304 Not Modified | Client cache is valid, no data sent |
+
+
+307 Temporary Redirect  → Redirect, keep original HTTP method
+308 Permanent Redirect  → Redirect, keep method (permanent)
+
+```
+
+### 4xx — Client Errors ❌
+
+```
+
+| TCP | UDP |
+| --- | --- |
+| 400 Bad Request | Malformed request syntax |
+| 401 Unauthorized | Login required |
+| 403 Forbidden | Logged in but access denied |
+| 404 Not Found | Resource does not exist |
+
+
+405 Method Not Allowed  → Wrong HTTP method used
+408 Request Timeout     → Client took too long
+
+| TCP | UDP |
+| --- | --- |
+| 409 Conflict | Duplicate or state conflict |
+| 410 Gone | Resource permanently deleted |
+
+
+422 Unprocessable Entity→ Validation failed (API body errors)
+429 Too Many Requests   → Rate limited
+
+```
+
+### 5xx — Server Errors 🔥
+
+```
+500 Internal Server Error → Something crashed on the server
+
+| TCP | UDP |
+| --- | --- |
+| 501 Not Implemented | Server doesn't support the feature |
+| 502 Bad Gateway | Upstream server returned invalid response |
+
+
+503 Service Unavailable   → Server is down or overloaded
+504 Gateway Timeout       → Upstream server didn't respond in time
+
+```
+
+## REST API Design
+**REST (Representational State Transfer)** is the standard architectural style for building web APIs.
+### Core Principles
+- **Stateless** — Each request contains all the info the server needs.
+- **Client-Server** — Frontend and backend are decoupled.
+- **Uniform Interface** — Consistent URL structure.
+- **Cacheable** — Responses can be cached when appropriate.
+### HTTP Methods (CRUD Mapping)
+
+| Method   | CRUD   | Action                     | Idempotent |
+| `GET`    | Read   | Fetch resource(s)          | ✅ Yes     |
+| `POST`   | Create | Create a new resource      | ❌ No      |
+| `PUT`    | Update | Replace entire resource    | ✅ Yes     |
+| `PATCH`  | Update | Partially update resource  | ✅ Yes     |
+| `DELETE` | Delete | Remove a resource          | ✅ Yes     |
+### RESTful URL Conventions
+
+```
+
+| TCP | UDP |
+| --- | --- |
+| GET    /users | List all users |
+| POST   /users | Create a new user |
+| GET    /users/:id | Get a specific user |
+| PUT    /users/:id | Replace a user |
+| PATCH  /users/:id | Update specific fields |
+| DELETE /users/:id | Delete a user |
+
+
+GET    /users/:id/posts    → Get all posts by a user
+POST   /users/:id/posts    → Create a post for a user
+
+```
+
+### REST API Best Practices
+
+```
+✅ Use nouns, not verbs in URLs  → /users not /get Users
+✅ Use plural resource names     → /products not /product
+✅ Use HTTP status codes correctly
+
+| TCP | UDP |
+| --- | --- |
+| ✅ Version your API | /api/v1/users |
+| ✅ Filter with query params | GET /users?role=admin&page=2 |
+
+
+✅ Return consistent JSON structure
+❌ Avoid /get User By Id?id=1
+❌ Avoid exposing internal IDs where possible
+
+```
+
+### Example API Response Structure
+
+```json
+// Success
+{
+  "status": "success",
+  "data": {
+    "id": 1,
+    "name": "Alice",
+    "email": "alice@example.com"
+  }
+}
+
+// Error
+{
+  "status": "error",
+  "message": "User not found",
+  "code": 404
+}
+
+// Paginated List
+{
+  "status": "success",
+  "data": [...],
+  "meta": {
+    "total": 100,
+    "page": 1,
+    "per_page": 10,
+    "total_pages": 10
+  }
+}
+
+```
+
+## JSON Structure
+**JSON (Java Script Object Notation)** is the universal data format for web APIs.
+### Data Types
+
+```json
+{
+  "string":  "Hello, World!",
+  "number":  42,
+  "float":   3.14,
+  "boolean": true,
+  "null":    null,
+  "array":   [1, "two", true],
+  "object":  { "key": "value" }
+}
+
+```
+
+### Realistic API test vectors Example
+
+```json
+{
+  "user": {
+    "id": 101,
+    "name": "Alice Johnson",
+    "email": "alice@example.com",
+    "role": "admin",
+    "is_active": true,
+    "created_at": "2024-01-15T08:30:00Z",
+    "tags": ["developer", "moderator"],
+    "address": {
+      "city": "Kathmandu",
+      "country": "Nepal"
+    }
+  }
+}
+
+```
+
+### JSON Rules
+
+```
+✅ Keys must be strings in double quotes
+✅ Strings must use double quotes
+✅ No trailing commas
+✅ No comments allowed in strict JSON
+✅ Use ISO 8601 for dates: "2024-01-15T08:30:00Z"
+
+```
+
+### Working with JSON in Java Script
+
+```javascript
+// Parse JSON string → Object
+const obj = JSON.parse('{"name": "Alice"}');
+
+// Stringify Object → JSON string
+const json = JSON.stringify({ name: "Alice" }, null, 2);
+
+// Fetch JSON from API
+const res = await fetch('/api/users');
+const data = await res.json();
+
+// POST JSON data
+await fetch('/api/users', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ name: 'Bob', email: 'bob@example.com' }),
+});
+
+```
+
+## Authentication Methods
+Authentication verifies *who* a user is. Authorization determines *what* they can do.
+### Overview
+
+| Method              | How It Works                             | Stateful? | Best For              |
+| Basic Auth          | Base64(username:password) in header      | ❌        | Simple/internal APIs  |
+| Session + Cookie    | Server stores session, sends cookie ID   | ✅        | Traditional web apps  |
+| Token (JWT)         | Signed token stored client-side          | ❌        | SPAs, Mobile, APIs    |
+| OAuth 2.0           | Delegated access via third-party         | Depends   | "Login with Google"   |
+| API Key             | Secret key in header/query param         | ❌        | Server-to-server      |
+### Basic Auth
+
+```http
+GET /api/data HTTP/1.1
+Authorization: Basic d XNlcjpw YXNzd29y ZA==
+
+```
+
+```javascript
+// In fetch:
+const creds = btoa('username:password');
+fetch('/api', { headers: { Authorization: `Basic ${creds}` } });
+
+```
+> ⚠️ Always use HTTPS with Basic Auth — credentials are only Base64 encoded, not encrypted.
+### API Key Auth
+
+```http
+# In header (preferred)
+X-API-Key: your-secret-api-key
+
+# In query string (less secure)
+GET /api/data?api_key=your-secret-api-key
+
+```
+
+### OAuth 2.0 Flow (Authorization Code)
+
+```
+User → App → Authorization Server → User approves → Auth code → App exchanges for token
+
+```
+
+## JWT Explained
+**JWT (JSON Web Token)** is a compact, self-contained token used for stateless authentication.
+### JWT Structure
+
+```
+header.payload.signature
+
+ey Jhb Gci Oi JIUz I1Ni Is In R5c CI6Ikp XVCJ9   ← Header (Base64)
+.ey J1c2Vy SWQi Oj Es In Jvb GUi Oi Jh ZG1pbi J9  ← Payload (Base64)
+. Sfl Kxw RJSMe KKF2QT4fwp Me Jf36POk6y JV    ← Signature (HMAC)
+
+```
+
+### Decoded Header
+
+```json
+{
+  "alg": "HS256",
+  "typ": "JWT"
+}
+
+```
+
+### Decoded test vectors (Claims)
+
+```json
+{
+  "sub": "1234567890",     // Subject (user ID)
+  "name": "Alice",
+  "role": "admin",
+  "iat": 1716000000,       // Issued At (Unix timestamp)
+  "exp": 1716086400        // Expiration (Unix timestamp)
+}
+
+```
+
+### How JWT Auth Works
+
+```
+1. User logs in with credentials
+2. Server validates → creates JWT → sends to client
+3. Client stores JWT (local Storage or http Only cookie)
+4. Client sends JWT on every request:
+   Authorization: Bearer <token>
+5. Server verifies signature → extracts claims → grants access
+
+```
+
+### JWT in Java Script
+
+```javascript
+// Decode a JWT (without verifying — for display only)
+function decode Jwt(token) {
+  const base64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+  return JSON.parse(atob(base64));
+}
+
+// Send JWT with fetch
+const token = local Storage.get Item('token');
+fetch('/api/protected', {
+  headers: { Authorization: `Bearer ${token}` }
+});
+
+```
+
+### JWT Best Practices
+
+```
+✅ Use short expiration times (15m–1h for access tokens)
+✅ Use refresh tokens for long sessions
+✅ Store in http Only cookies (not local Storage) to prevent XSS
+✅ Use HTTPS always
+✅ Validate signature on every request server-side
+❌ Never store sensitive data in JWT payload (it's just Base64)
+❌ Don't use "none" algorithm
+
+```
+
+## Cookies vs Sessions
+Two classic approaches to maintaining state between client and server.
+### How Sessions Work (Server-Side)
+
+```
+1. User logs in
+2. Server creates a session → stores in memory/DB
+3. Server sends session ID in a cookie: Set-Cookie: session Id=abc123
+4. Browser auto-sends cookie on every request
+5. Server looks up session by ID → retrieves user data
+6. On logout → session is destroyed server-side
+
+```
+
+### How Cookies Work
+
+```http
+# Server sets a cookie
+Set-Cookie: user_pref=dark_mode; Path=/; Http Only; Secure; Same Site=Strict
+
+# Browser sends cookie automatically
+Cookie: session Id=abc123; user_pref=dark_mode
+
+```
+
+### Cookie Attributes
+
+| Attribute   | Purpose                                           |
+| `Http Only`  | JS cannot access — prevents XSS token theft       |
+| `Secure`    | Cookie only sent over HTTPS                       |
+| `Same Site`  | Controls cross-site sending (Strict/Lax/None)     |
+| `Expires`   | When the cookie expires                           |
+| `Max-Age`   | Seconds until expiry (alternative to Expires)     |
+| `Path`      | URL path scope for the cookie                     |
+| `Domain`    | Domain scope for the cookie                       |
+### Full Comparison: Cookies vs Sessions vs JWT
+
+| Feature            | Sessions (Server)       | JWT (Client)             |
+| Storage Location   | Server (DB/memory)      | Client (cookie/local Storage) |
+| Stateful?          | ✅ Yes                  | ❌ No (stateless)        |
+| Scalability        | ❌ Harder (sticky sessions) | ✅ Easier (no server state) |
+| Invalidation       | ✅ Easy (delete session) | ❌ Hard (wait for expiry) |
+| Data in Token      | Only session ID         | Full user data in test vectors |
+| Security Surface   | Session hijacking       | XSS (if in local Storage) |
+| Best For           | Traditional web apps    | APIs, SPAs, Microservices |
+### Security Best Practices
+
+```
+✅ Always use HTTPS
+✅ Set Http Only + Secure flags on auth cookies
+✅ Use Same Site=Strict or Lax to prevent CSRF
+✅ Implement CSRF tokens for session-based auth
+✅ Rotate session IDs after login (session fixation prevention)
+✅ Use short-lived JWTs + refresh token rotation
+✅ Validate and sanitize all inputs
+❌ Never store passwords in plain text → use bcrypt/argon2
+❌ Never trust client-side data without server-side validation
+
+```
+
+## Bonus: Common HTTP Headers
+### Request Headers
+
+```http
+Authorization: Bearer <token>
+Content-Type: application/json
+Accept: application/json
+User-Agent: Mozilla/5.0 ...
+Origin: https://yourapp.com
+Cookie: session Id=abc123
+
+```
+
+### Response Headers
+
+```http
+Content-Type: application/json; charset=utf-8
+Set-Cookie: session Id=abc; Http Only; Secure
+Access-Control-Allow-Origin: https://yourapp.com
+Cache-Control: no-cache, no-store, must-revalidate
+X-Content-Type-Options: nosniff
+X-Frame-Options: DENY
+Strict-Transport-Security: max-age=31536000; include Sub Domains
+
+```
+
+### CORS Headers
+
+```http
+# Server must include these for cross-origin requests
+Access-Control-Allow-Origin: https://yourfrontend.com
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE
+Access-Control-Allow-Headers: Content-Type, Authorization
+Access-Control-Allow-Credentials: true
+
+```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---

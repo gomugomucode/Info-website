@@ -1,0 +1,575 @@
+---
+title: "The Ultimate AI & LangChain Cheatsheet"
+description: "A comprehensive guide to AI development with LangChain and OpenAI. Master prompt engineering, RAG, agents, embeddings, and vector databases."
+date: "2026-05-22"
+tags: ["ai", "langchain", "openai", "rag", "prompt-engineering", "llm", "cheatsheet"]
+category: "Cheatsheets"
+---
+
+# The Ultimate AI & Lang Chain Cheatsheet
+Artificial Intelligence is the fastest-growing niche in software development. This cheatsheet covers everything from calling the Open AI API to building production-ready AI agent workflows with Lang Chain.
+## Lang Chain Basics
+**Lang Chain** is a framework for building applications powered by Large Language Models (LLMs). It provides composable abstractions for chains, agents, memory, and tools.
+### Installation
+
+```bash
+pip install langchain-openai langchain-community
+pip install python-dotenv  # for environment variables
+
+```
+
+### Core Concepts
+
+| Concept     | Description                                         |
+| LLM         | The underlying language model (GPT-4, Claude, etc.) |
+| Prompt      | The structured input sent to the LLM                |
+| Chain       | A sequence of calls (prompt → LLM → output)         |
+| Agent       | An LLM that decides which tools to call             |
+| Tool        | A function an agent can invoke (search, calculator) |
+| Memory      | Persisting conversation history across turns        |
+| Retriever   | Fetches relevant documents for RAG                  |
+| Vector Store| Database for storing and searching embeddings       |
+### Hello World with Lang Chain
+
+```python
+from langchain_openai import Chat Open AI
+from langchain_core.messages import Human Message
+
+llm = Chat Open AI(model="gpt-4o", temperature=0)
+
+response = llm.invoke([Human Message(content="What is Lang Chain?")])
+print(response.content)
+
+```
+
+### Using Prompt Templates
+
+```python
+from langchain_core.prompts import Chat Prompt Template
+
+prompt = Chat Prompt Template.from_messages([
+    ("system", "You are a helpful assistant that summarizes articles."),
+    ("human", "Summarize the following text:\n\n{text}"),
+])
+
+chain = prompt | llm
+result = chain.invoke({"text": "Lang Chain is an open-source framework..."})
+print(result.content)
+
+```
+
+## Open AI API Guide
+The **Open AI API** gives you direct access to GPT-4o, DALL-E, Whisper, and more.
+### Setup
+
+```bash
+pip install openai
+
+```
+
+```python
+import os
+from openai import Open AI
+
+client = Open AI(api_key=os.environ["OPENAI_API_KEY"])
+
+```
+### Chat Completion (GPT-4o)
+
+```python
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[
+        {"role": "system", "content": "You are a helpful coding assistant."},
+        {"role": "user", "content": "Explain async/await in Python."},
+    ],
+    temperature=0.7,
+    max_tokens=500,
+)
+
+print(response.choices[0].message.content)
+
+```
+
+### Streaming Response
+
+```python
+stream = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "Write a poem about code."}],
+    stream=True,
+)
+
+for chunk in stream:
+    if chunk.choices[0].delta.content is not None:
+        print(chunk.choices[0].delta.content, end="", flush=True)
+
+```
+
+### Key Parameters
+
+| Parameter     | Description                                      | Range       |
+| `temperature` | Creativity/randomness of output                  | 0.0 – 2.0   |
+| `max_tokens`  | Maximum tokens to generate                       | 1 – 128,000 |
+| `top_p`       | Nucleus sampling (alternative to temperature)    | 0.0 – 1.0   |
+| `n`           | Number of completions to generate                | 1+          |
+| `stop`        | Stop sequence(s) to end generation               | string/list |
+### Available Models
+
+```
+
+| TCP | UDP |
+| --- | --- |
+| gpt-4o | Most capable, multimodal (text + images) |
+| gpt-4o-mini | Fast, cheap, great for simple tasks |
+| gpt-4-turbo | Powerful, large context window |
+
+
+gpt-3.5-turbo    → Budget option for simple tasks
+text-embedding-3-small → Embeddings (cheap, fast)
+text-embedding-3-large → Embeddings (high quality)
+
+| TCP | UDP |
+| --- | --- |
+| whisper-1 | Audio transcription |
+| dall-e-3 | Image generation |
+
+
+```
+
+### Image Generation (DALL-E 3)
+
+```python
+response = client.images.generate(
+    model="dall-e-3",
+    prompt="A futuristic city skyline at sunset, digital art",
+    size="1024x1024",
+    quality="standard",
+    n=1,
+)
+
+print(response.data[0].url)
+
+```
+
+## Prompt Engineering
+**Prompt engineering** is the art of crafting inputs to get the best possible outputs from an LLM.
+### Core Techniques
+#### 1. Zero-Shot Prompting
+Ask directly without examples:
+
+```
+Classify the sentiment of this review: "The product is amazing!"
+Answer: Positive / Negative / Neutral
+
+```
+
+#### 2. Few-Shot Prompting
+Provide examples to guide the model:
+
+```
+Classify the sentiment:
+
+Review: "This is terrible." → Negative
+Review: "Absolutely love it!" → Positive
+Review: "It's okay, nothing special." → Neutral
+
+Review: "Best purchase I've ever made!" →
+
+```
+
+#### 3. Chain-of-Thought (Co T)
+Ask the model to reason step by step:
+
+```
+Q: If a store has 120 apples and sells 45, then gets a delivery of 60 more, how many are left?
+
+Let's think step by step:
+1. Start with 120 apples
+2. Sell 45: 120 - 45 = 75
+3. Add delivery: 75 + 60 = 135
+
+Answer: 135
+
+```
+
+#### 4. Role Prompting
+Assign a persona for better context:
+
+```
+You are a senior Python engineer with 15 years of experience.
+Review the following code and suggest improvements focusing on
+performance and readability...
+
+```
+
+#### 5. Structured Output Prompting
+Force JSON or structured responses:
+
+```
+Extract the following fields from the text and return as JSON:
+- name
+- email
+- company
+
+Text: "Hi, I'm Alice from Tech Corp. Reach me at alice@tech.com"
+
+Return only valid JSON, no other text.
+
+```
+
+### Prompt Best Practices
+
+```
+✅ Be specific and detailed
+✅ Provide context and role ("You are a...")
+✅ Use delimiters (```, ###, <tags>) to separate input from instructions
+✅ Specify the output format explicitly
+✅ Break complex tasks into steps
+✅ Use examples (few-shot) for consistent formatting
+❌ Don't be vague or ambiguous
+❌ Don't rely on the model knowing the "right" format
+❌ Don't ask multiple unrelated questions in one prompt
+
+```
+
+## RAG Architecture
+**RAG (Retrieval-Augmented Generation)** combines a retrieval system with an LLM to answer questions based on your own data.
+### Why RAG?
+
+```
+❌ LLMs have a knowledge cutoff date
+❌ LLMs hallucinate facts
+❌ LLMs don't know your private documents
+
+✅ RAG solves all three by fetching real, relevant context at query time
+
+```
+
+### RAG Pipeline
+
+```
+         ┌─────────────┐
+         │ Your Docs   │
+         └──────┬──────┘
+                │ 1. Chunk & Embed
+                ▼
+         ┌─────────────┐
+         │ Vector DB   │  ← Stored embeddings
+         └──────┬──────┘
+                │ 2. Semantic Search (query)
+                ▼
+         ┌─────────────┐
+         │  Retrieved  │  ← Top-K relevant chunks
+         │   Context   │
+         └──────┬──────┘
+                │ 3. Inject into prompt
+                ▼
+         ┌─────────────┐       ┌───────────┐
+         │   Prompt    │──────▶│    LLM    │──▶ Answer
+         │ + Context   │       │  (GPT-4o) │
+         └─────────────┘       └───────────┘
+
+```
+
+### Implementing RAG with Lang Chain
+
+```python
+from langchain_openai import Chat Open AI, Open AIEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_core.documents import Document
+from langchain.chains import create_retrieval_chain
+from langchain.chains.combine_documents import create_stuff_documents_chain
+from langchain_core.prompts import Chat Prompt Template
+
+# 1. Create documents
+docs = [
+    Document(page_content="Lang Chain is a framework for building LLM apps."),
+    Document(page_content="RAG combines retrieval with generation for accuracy."),
+    Document(page_content="Vector databases store numerical embeddings of text."),
+]
+
+# 2. Create vector store
+embeddings = Open AIEmbeddings(model="text-embedding-3-small")
+vector_store = FAISS.from_documents(docs, embeddings)
+retriever = vector_store.as_retriever(search_kwargs={"k": 2})
+
+# 3. Create RAG chain
+llm = Chat Open AI(model="gpt-4o")
+system_prompt = """Use the provided context to answer the question.
+If you don't know, say so. Be concise.
+
+Context: {context}"""
+
+prompt = Chat Prompt Template.from_messages([
+    ("system", system_prompt),
+    ("human", "{input}"),
+])
+
+question_answer_chain = create_stuff_documents_chain(llm, prompt)
+rag_chain = create_retrieval_chain(retriever, question_answer_chain)
+
+# 4. Query
+result = rag_chain.invoke({"input": "What is RAG?"})
+print(result["answer"])
+
+```
+
+## AI Agent Workflow
+**Agents** use LLMs as a reasoning engine to decide *which tools to call* and *in what order* to solve a task.
+### Re Act Agent Pattern
+
+```
+Loop:
+  Thought  → LLM reasons about what to do next
+  Action   → LLM picks a tool and input
+  Observation → Tool returns result
+  ... repeat until ...
+  Final Answer → LLM gives the user a response
+
+```
+
+### Building an Agent with Lang Chain
+
+```python
+from langchain_openai import Chat Open AI
+from langchain.agents import Agent Executor, create_tool_calling_agent
+from langchain_core.prompts import Chat Prompt Template
+from langchain_core.tools import tool
+
+# 1. Define tools
+@tool
+def get_weather(city: str) -> str:
+    """Get the current weather for a city."""
+    # In production, call a real weather API
+    return f"The weather in {city} is 22°C and sunny."
+
+@tool
+def calculate(expression: str) -> str:
+    """Evaluate a mathematical expression."""
+    try:
+        return str(eval(expression))
+    except Exception as e:
+        return f"Error: {e}"
+
+tools = [get_weather, calculate]
+
+# 2. Create the agent
+llm = Chat Open AI(model="gpt-4o")
+prompt = Chat Prompt Template.from_messages([
+    ("system", "You are a helpful assistant with access to tools."),
+    ("human", "{input}"),
+    ("placeholder", "{agent_scratchpad}"),
+])
+
+agent = create_tool_calling_agent(llm, tools, prompt)
+agent_executor = Agent Executor(agent=agent, tools=tools, verbose=True)
+
+# 3. Run the agent
+result = agent_executor.invoke({"input": "What's the weather in Kathmandu?"})
+print(result["output"])
+
+```
+
+## Embeddings Explained
+**Embeddings** convert text into dense numerical vectors that capture semantic meaning.
+### Why Embeddings?
+
+```
+"cat"    → [0.21, -0.54, 0.87, ...]  (1536 dimensions)
+"kitten" → [0.19, -0.51, 0.84, ...]  (very similar!)
+"car"    → [-0.63, 0.11, -0.22, ...] (very different)
+
+```
+
+Similar meaning → Similar vectors → Close in vector space
+### Creating Embeddings with Open AI
+
+```python
+from openai import Open AI
+
+client = Open AI()
+
+def embed(text: str) -> list[float]:
+    response = client.embeddings.create(
+        input=text,
+        model="text-embedding-3-small"
+    )
+    return response.data[0].embedding
+
+# Embed a single text
+vector = embed("What is machine learning?")
+print(f"Dimensions: {len(vector)}")  # 1536
+
+# Batch embed multiple texts = ["Hello world", "Machine learning is fun", "Python is great"]
+response = client.embeddings.create(input=texts, model="text-embedding-3-small")
+vectors = [item.embedding for item in response.data]
+
+```
+
+### Similarity Search (Cosine Similarity)
+
+```python
+import numpy as np
+
+def cosine_similarity(a: list, b: list) -> float:
+    a, b = np.array(a), np.array(b)
+    return np.dot(a, b) / (np.linalg.norm(a) * np.linalg.norm(b))
+
+query = embed("What is AI?")
+doc1  = embed("Artificial intelligence is the simulation of human intelligence.")
+doc2  = embed("The stock market closed higher today.")
+
+print(cosine_similarity(query, doc1))  # ~0.85 (high similarity)
+print(cosine_similarity(query, doc2))  # ~0.12 (low similarity)
+
+```
+
+## Vector Databases
+**Vector databases** are specialized databases for storing, indexing, and searching high-dimensional embedding vectors at scale.
+### Popular Options
+
+| Database    | Type         | Best For                       | Hosted? |
+| **FAISS**   | In-memory    | Local dev, prototyping         | ❌ Self  |
+| **Chroma**  | Local/Server | Small-medium RAG apps          | ❌ Self  |
+| **Pinecone**| Managed      | Production, large scale        | ✅ Cloud |
+| **Weaviate**| Hybrid       | Full-text + vector search      | Both    |
+| **Qdrant**  | Managed/Self | High performance, filtering    | Both    |
+| **pgvector**| Postgre SQL   | Already using Postgres         | Both    |
+### FAISS (Local — great for prototyping)
+
+```python
+from langchain_community.vectorstores import FAISS
+from langchain_openai import Open AIEmbeddings
+
+embeddings = Open AIEmbeddings(model="text-embedding-3-small")
+
+# Create index
+db = FAISS.from_texts(
+    ["Lang Chain is a framework", "FAISS is fast", "RAG improves accuracy"],
+    embeddings
+)
+
+# Similarity search
+results = db.similarity_search("What is FAISS?", k=2)
+for doc in results:
+    print(doc.page_content)
+
+# Save & load
+db.save_local("faiss_index")
+db = FAISS.load_local("faiss_index", embeddings, allow_dangerous_deserialization=True)
+
+```
+
+### Chroma (Local — persistent)
+
+```python
+from langchain_community.vectorstores import Chroma
+from langchain_openai import Open AIEmbeddings
+
+embeddings = Open AIEmbeddings()
+
+# Create persistent collection
+db = Chroma(
+    collection_name="my_docs",
+    embedding_function=embeddings,
+    persist_directory="./chroma_db"
+)
+
+db.add_texts(["Document 1 content", "Document 2 content"])
+
+# Query
+results = db.similarity_search("search query", k=3)
+
+```
+
+### Pinecone (Production)
+
+```python
+from pinecone import Pinecone
+from langchain_pinecone import Pinecone Vector Store
+from langchain_openai import Open AIEmbeddings
+
+pc = Pinecone(api_key="YOUR_PINECONE_API_KEY")
+index = pc. Index("my-index")
+
+embeddings = Open AIEmbeddings(model="text-embedding-3-small")
+vector_store = Pinecone Vector Store(index=index, embedding=embeddings)
+
+# Add documents
+vector_store.add_texts(["Your document text here"])
+
+# Search
+results = vector_store.similarity_search("query", k=5)
+
+```
+
+## Quick Reference
+### Lang Chain LCEL (Lang Chain Expression Language)
+
+```python
+# Pipe operator chains components together
+chain = prompt | llm | output_parser
+
+# With retry and fallbacks
+chain = (prompt | llm.with_retry(stop_after_attempt=3)).with_fallbacks([backup_llm])
+
+# Parallel execution
+from langchain_core.runnables import Runnable Parallel
+chain = Runnable Parallel(
+    summary=summary_chain,
+    keywords=keyword_chain,
+)
+
+```
+
+### Environment Setup
+
+```bash
+# .env file
+OPENAI_API_KEY=sk-...
+LANGCHAIN_API_KEY=ls__...    # for Lang Smith tracing
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_PROJECT=my-project
+
+```
+
+```python
+from dotenv import load_dotenv
+load_dotenv()  # loads .env automatically
+
+```
+### Useful AI Terminology
+
+```
+
+| TCP | UDP |
+| --- | --- |
+| LLM | Large Language Model (GPT-4, Claude, Gemini) |
+| Token | ~4 characters of text; billing unit for APIs |
+
+
+Context Window → Max tokens an LLM can process at once
+Temperature  → Controls output randomness (0=deterministic, 2=creative)
+Hallucination→ LLM confidently stating false information
+Embedding    → Dense vector representation of text
+RAG          → Retrieval-Augmented Generation
+Fine-tuning  → Training an LLM further on your specific data
+Prompt       → The input given to an LLM
+System Prompt→ Instructions that define the LLM's behavior/persona
+Few-shot     → Providing examples in the prompt
+Zero-shot    → No examples in the prompt
+Chain-of-Thought → Asking the LLM to reason step-by-step
+Agent        → LLM + tools that takes autonomous actions
+
+```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---

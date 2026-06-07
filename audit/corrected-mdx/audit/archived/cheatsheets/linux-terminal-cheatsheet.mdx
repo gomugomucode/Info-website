@@ -1,0 +1,192 @@
+---
+title: "The Ultimate Linux & Terminal Cheatsheet"
+description: "A comprehensive guide to essential Linux commands, file permissions, SSH, Vim, and server management."
+date: "2026-05-22"
+tags: ["linux", "terminal", "bash", "cheatsheet", "devops"]
+category: "Cheatsheets"
+featured: true
+readingTime: "12 min read"
+---
+
+# The Ultimate Linux & Terminal Cheatsheet
+Whether you are navigating a local environment, configuring an Ubuntu server, or troubleshooting network issues, mastering the Linux terminal is a superpower. Here is your go-to reference for everyday terminal commands and administration workflows.
+## Linux Commands Cheat Sheet
+The essential commands for navigating and manipulating the filesystem.
+
+```bash
+# List directory contents (detailed, including hidden files)
+ls -la
+
+# Change directory
+cd /path/to/directory
+cd ..  # Move up one directory
+cd ~   # Move to home directory
+
+# Create a new directory
+mkdir new_folder
+mkdir -p path/to/nested/folder  # Create parent directories if needed
+
+# Remove files and directories
+rm filename.txt
+rm -r foldername      # Remove directory recursively
+rm -rf foldername     # Force remove recursively (use with caution!)
+
+# Copy and move
+cp source.txt dest.txt
+cp -r source_folder dest_folder
+mv oldname.txt newname.txt
+
+# Read files
+cat filename.txt      # Print entire file
+less filename.txt     # Scroll through file
+tail -n 50 file.log   # Read last 50 lines
+
+# Search for text within files
+grep "search term" filename.txt
+grep -r "search term" /path/to/search  # Recursive search
+
+```
+
+## Ubuntu Server Setup
+Basic commands to get a fresh Ubuntu server secured and updated.
+
+```bash
+# Update package lists and upgrade existing packages
+sudo apt update && sudo apt upgrade -y
+
+# Install a new package
+sudo apt install nginx
+
+# Add a new user
+sudo adduser newusername
+
+# Grant user sudo privileges
+sudo usermod -a G sudo newusername
+
+# Check firewall status (UFW)
+sudo ufw status
+
+# Allow SSH through the firewall and enable it
+sudo ufw allow Open SSH
+sudo ufw enable
+
+```
+
+## File Permissions Explained
+In Linux, `r` (read = 4), `w` (write = 2), and `x` (execute = 1) determine who can access files.
+
+```bash
+# Check permissions
+ls -l
+
+# Change permissions (chmod)
+chmod 755 script.sh   # Owner: rwx, Group: r-x, Others: r-x
+chmod 644 file.txt    # Owner: rw-, Group: r--, Others: r--
+chmod +x script.sh    # Make a file executable for everyone
+
+# Change ownership (chown)
+sudo chown user:group filename.txt
+sudo chown -R user:group directory/  # Change recursively
+
+```
+
+## SSH Commands
+Secure Shell is the standard way to connect to remote servers.
+
+```bash
+# Connect to a remote server
+ssh user@hostname_or_ip
+
+# Connect using a specific port
+ssh -p 2222 user@hostname_or_ip
+
+# Connect using a specific private key
+ssh -i ~/.ssh/custom_key.pem user@hostname_or_ip
+
+# Generate a new SSH key pair
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+# Copy your public key to a remote server for passwordless login
+ssh-copy-id user@hostname_or_ip
+
+# Securely copy files from local to remote (SCP)
+scp local_file.txt user@hostname_or_ip:/path/to/remote/
+
+```
+
+## Nano vs Vim Commands
+The two most common terminal text editors.
+### Nano (Beginner Friendly)
+Nano is straightforward. You navigate with arrow keys.
+- **Open a file:** `nano filename.txt`
+- **Save file:** `Ctrl + O`, then `Enter`
+- **Exit:** `Ctrl + X`
+- **Search:** `Ctrl + W`
+### Vim (Advanced & Fast)
+Vim has modes. You start in **Normal mode**. Press `i` to enter **Insert mode** (to type). Press `Esc` to return to Normal mode.
+- **Open a file:** `vim filename.txt`
+- **Save and quit:** `:wq` or `:x`
+- **Quit without saving:** `:q!`
+- **Search forward:** `/search-term`
+- **Undo:** `u`
+- **Copy line (yank):** `yy`
+- **Paste:** `p`
+## Process Management
+Commands to monitor and control running programs.
+
+```bash
+# View running processes (interactive)
+top
+htop  # (Requires installation, much better UI than top)
+
+# List running processes
+ps aux
+
+# Find the Process ID (PID) of a specific program
+pgrep nginx
+
+# Kill a process by its PID
+kill 1234
+
+# Force kill a stubborn process
+kill -9 1234
+
+# Kill all processes with a specific name
+killall nginx
+
+```
+
+## Networking Commands
+Tools for troubleshooting connectivity and finding information.
+
+```bash
+# Test connectivity to a host
+ping google.com
+
+# Show network interfaces and IP addresses
+ip a
+ifconfig  # (Older command, still widely used)
+
+# Check active listening ports
+netstat -tulpn
+ss -tulpn
+
+# Make an HTTP request / Download a file
+curl -I https://example.com   # Fetch headers only
+curl -O https://example.com/file.zip  # Download file
+
+# Query DNS records
+dig example.com
+nslookup example.com
+
+```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---

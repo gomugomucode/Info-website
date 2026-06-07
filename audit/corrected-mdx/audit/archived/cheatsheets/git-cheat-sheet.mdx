@@ -1,0 +1,169 @@
+---
+title: "The Ultimate Git & GitHub Cheatsheet"
+description: "A comprehensive guide to Git and GitHub for beginners and advanced developers. Master commands, workflows, branching, rebasing, and undoing mistakes."
+date: "2026-05-22"
+tags: ["git", "github", "version-control", "cheatsheet", "guide"]
+category: "Cheatsheets"
+featured: true
+readingTime: "10 min read"
+---
+
+# The Ultimate Git & Git Hub Cheatsheet
+Whether you are just starting out or managing complex monorepos, mastering Git and Git Hub is essential for modern software development. This cheat sheet is designed to cover everything from beginner commands to advanced history manipulation.
+## Beginner
+### Git Commands Cheat Sheet
+The foundational commands you will use every single day.
+
+```bash
+# Initialize a new local repository
+git init
+
+# Check the status of your working tree
+git status
+
+# Add specific files, or all changes, to the staging area
+git add filename.txt
+git add .
+
+# Commit your staged changes
+git commit -m "Your commit message"
+
+# View the commit history
+git log --oneline
+
+```
+
+### Git Hub Workflow Guide
+A standard workflow for collaborating on Git Hub.
+1. **Clone the repository:** `git clone https://github.com/user/repo.git`
+2. **Create a feature branch:** `git checkout -b feature/new-button`
+3. **Make changes and commit:** `git commit -am "Add new button"`
+4. **Push the branch to Git Hub:** `git push origin feature/new-button`
+5. **Open a Pull Request (PR)** on Git Hub's interface.
+6. **Merge the PR** and pull the latest changes locally: `git checkout main && git pull origin main`
+### Git Branching Basics
+Branches allow you to work in isolated environments.
+
+```bash
+# List all local branches
+git branch
+
+# Create a new branch
+git branch new-feature
+
+# Switch to a specific branch
+git checkout new-feature
+
+# Delete a local branch safely
+git branch -d new-feature
+
+```
+
+### Git Merge vs Rebase
+Understanding how to integrate changes from one branch into another is critical.
+- **Merge:** Takes all the changes from one branch and merges them into the current branch in a single "merge commit". It preserves the exact history of both branches.
+  ```bash
+  git checkout main
+  git merge feature-branch
+  ```
+- **Rebase:** Moves the entire feature branch to begin on the tip of the main branch. It creates a perfectly linear history but rewrites the commit hashes.
+  ```bash
+  git checkout feature-branch
+  git rebase main
+  ```
+> [!WARNING]
+> Never rebase commits that exist outside your local repository (e.g., branches others are working on).
+### Fix Common Git Errors
+Quick fixes for everyday mistakes.
+- **Forgot to add a file to the last commit?**
+  ```bash
+  git add missing-file.txt
+  git commit --amend --no-edit
+  ```
+- **Wrote the wrong commit message?**
+  ```bash
+  git commit --amend -m "Corrected message"
+  ```
+- **Accidentally deleted a file locally?**
+  ```bash
+  git checkout -- filename.txt
+  ```
+## Advanced
+### Interactive Rebase
+Interactive rebasing lets you edit, squash, reorder, or drop commits before merging them into the main branch.
+
+```bash
+# Start an interactive rebase for the last 3 commits
+git rebase -i HEAD~3
+
+```
+
+This opens an editor where you can change the commands next to your commits:
+- `pick`: Use the commit as is.
+- `reword`: Use the commit, but edit the commit message.
+- `edit`: Stop and allow amending of the commit.
+- `squash` (`s`): Use the commit, but meld it into the previous commit.
+- `drop` (`d`): Remove the commit entirely.
+### Cherry Pick Guide
+Apply the changes introduced by some existing commits onto the current branch. This is incredibly useful for porting bug fixes across release branches.
+
+```bash
+# Cherry-pick a specific commit by its hash
+git cherry-pick <commit-hash>
+
+# Cherry-pick multiple commits
+git cherry-pick <hash1> <hash2>
+
+```
+
+### Git Stash Commands
+Stashing takes the messy state of your working directory and saves it on a stack of unfinished changes so you can safely switch branches.
+
+```bash
+# Save your local modifications to a new stash
+git stash
+
+# Save with a descriptive message
+git stash push -m "work in progress on header"
+
+# List all current stashes
+git stash list
+
+# Apply the most recent stash and remove it from the list
+git stash pop
+
+# Apply the most recent stash without removing it
+git stash apply
+
+# Drop the most recent stash entirely
+git stash drop
+
+```
+
+### Undo Git Commits
+When you need to completely reverse or erase history.
+- **Revert (Safe):** Creates a new commit that explicitly undoes the changes of a previous commit. Perfect for public branches.
+  ```bash
+  git revert <commit-hash>
+  ```
+- **Reset (Destructive):** Moves the branch pointer backward.
+  ```bash
+  # Soft reset: Moves HEAD back, but keeps your files staged
+  git reset --soft HEAD~1
+
+  # Mixed reset (Default): Moves HEAD back, un-stages files, but keeps them in your directory
+  git reset HEAD~1
+
+  # Hard reset: Completely wipes all uncommitted changes and moves HEAD back
+  git reset --hard HEAD~1
+  ```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---

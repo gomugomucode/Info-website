@@ -1,0 +1,174 @@
+---
+title: "The Ultimate AI & LangChain Cheatsheet"
+description: "A comprehensive guide to building AI applications. Master LangChain, RAG architecture, vector databases, and prompt engineering."
+date: "2026-05-22"
+tags: ["ai", "langchain", "llm", "rag", "cheatsheet"]
+category: "Cheatsheets"
+featured: true
+readingTime: "12 min read"
+---
+
+# The Ultimate AI & Lang Chain Cheatsheet
+Building AI-powered applications is one of the fastest-growing niches in software development. This cheatsheet covers the foundational concepts and code snippets you need to build Large Language Model (LLM) applications, particularly focusing on the Lang Chain ecosystem.
+## Lang Chain Basics
+Lang Chain is a framework designed to simplify the creation of applications using LLMs.
+
+```python
+from langchain.llms import Open AI
+from langchain.prompts import Prompt Template
+from langchain.chains import LLMChain
+
+# 1. Initialize the LLM (Requires OPENAI_API_KEY environment variable)
+llm = Open AI(temperature=0.7)
+
+# 2. Create a Prompt Template
+prompt = Prompt Template(
+    input_variables=["topic"],
+    template="Write a short, engaging tweet about {topic}."
+)
+
+# 3. Create a Chain connecting the LLM and the Prompt
+chain = LLMChain(llm=llm, prompt=prompt)
+
+# 4. Run the Chain
+result = chain.run("Artificial Intelligence")
+print(result)
+
+```
+
+## Open AI API Guide
+How to directly interact with Open AI's API using the official Python client.
+
+```python
+import openai
+import os
+
+openai.api_key = os.getenv("OPENAI_API_KEY")
+
+# Chat Completion (Standard GPT-4/GPT-3.5 interaction)
+response = openai. Chat Completion.create(
+  model="gpt-4",
+  messages=[
+        {"role": "system", "content": "You are a helpful coding assistant."},
+        {"role": "user", "content": "Explain binary search in one sentence."}
+    ]
+)
+
+print(response.choices[0].message['content'])
+
+```
+
+## Prompt Engineering
+The art of communicating effectively with LLMs.
+- **Be Specific:** Instead of "Write a blog post", use "Write a 500-word blog post about React Hooks aimed at beginners."
+- **Provide Context:** "You are an expert Python developer. Given the following code snippet..."
+- **Few-Shot Prompting:** Provide examples within the prompt.
+  ```text
+  Translate English to French:
+  sea otter => loutre de mer
+  peppermint => menthe poivrée
+  cheese =>
+  ```
+- **Chain of Thought:** Encourage the model to reason. "Let's think step by step."
+## Embeddings Explained
+Embeddings are numerical representations (vectors) of text. They capture semantic meaning, allowing computers to understand that "King" and "Queen" are related concepts.
+
+```python
+from langchain.embeddings import Open AIEmbeddings
+
+embeddings = Open AIEmbeddings()
+
+# Convert text into a vector (a list of floats)
+vector = embeddings.embed_query("What are embeddings in AI?")
+
+# The resulting vector can be stored and compared against other vectors
+print(len(vector)) # e.g., 1536 dimensions for Open AI's standard model
+
+```
+
+## Vector Databases
+Vector databases store and query embeddings efficiently, usually via similarity search (e.g., Cosine Similarity).
+**Popular Vector Databases:**
+- Pinecone (Managed Saa S)
+- Chroma DB (Open-source, local)
+- Qdrant (High-performance, Rust-based)
+- pgvector (Postgre SQL extension)
+**Basic Chroma DB Example with Lang Chain:**
+
+```python
+from langchain.vectorstores import Chroma
+from langchain.embeddings import Open AIEmbeddings
+from langchain.schema import Document
+
+embeddings = Open AIEmbeddings()
+docs = [
+    Document(page_content="The sky is blue."),
+    Document(page_content="Grass is green.")
+]
+
+# Create a local vector store
+db = Chroma.from_documents(docs, embeddings)
+
+# Perform a similarity search
+query = "What color is the sky?"
+results = db.similarity_search(query, k=1)
+print(results[0].page_content) # Output: "The sky is blue."
+
+```
+
+## RAG Architecture
+**Retrieval-Augmented Generation (RAG)** is a pattern that grounds an LLM's response in external data, preventing hallucinations.
+**The Workflow:**
+1. **Load Data:** Extract text from PDFs, websites, or databases.
+2. **Chunking:** Split the text into smaller, manageable chunks.
+3. **Embed:** Convert chunks into vector embeddings.
+4. **Store:** Save embeddings in a Vector Database.
+5. **Retrieve:** When a user asks a question, embed the query and search the Vector DB for the most similar chunks.
+6. **Generate:** Send the retrieved chunks + the user's question to the LLM to formulate a final answer.
+
+```python
+# Simplified Lang Chain RAG Example
+from langchain.chains import Retrieval QA
+from langchain.llms import Open AI
+
+# Assuming 'db' is your populated Chroma instance from the previous section
+retriever = db.as_retriever()
+qa_chain = Retrieval QA.from_chain_type(llm=Open AI(), retriever=retriever)
+
+answer = qa_chain.run("What color is the sky based on the document?")
+
+```
+
+## AI Agent Workflow
+Agents use LLMs as reasoning engines to determine which actions to take and in what order, using provided tools.
+
+```python
+from langchain.agents import load_tools, initialize_agent, Agent Type
+from langchain.llms import Open AI
+
+llm = Open AI(temperature=0)
+
+# Load tools the agent can use (e.g., a calculator and a Wikipedia searcher)
+tools = load_tools(["wikipedia", "llm-math"], llm=llm)
+
+# Initialize the agent = initialize_agent(
+    tools,
+    llm,
+    agent=Agent Type. ZERO_SHOT_REACT_DESCRIPTION,
+    verbose=True
+)
+
+# The agent decides which tool to use based on the prompt
+agent.run("What is the square root of the birth year of Albert Einstein?")
+
+```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---

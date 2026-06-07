@@ -1,0 +1,144 @@
+---
+title: "The Ultimate Tailwind CSS Cheatsheet"
+description: "A rapid reference guide for Tailwind CSS. Master Flexbox, Grid, spacing utilities, responsive design, and typography."
+date: "2026-05-22"
+tags: ["tailwindcss", "css", "frontend", "cheatsheet", "design"]
+category: "Cheatsheets"
+featured: true
+readingTime: "9 min read"
+---
+
+# The Ultimate Tailwind CSS Cheatsheet
+Tailwind CSS has become the industry standard for utility-first styling. This cheatsheet is designed to help you quickly recall the most common utility classes for building responsive, modern layouts without leaving your HTML.
+## Tailwind Flexbox Cheatsheet
+Flexbox is essential for one-dimensional layouts. Tailwind makes it incredibly fast.
+
+```html
+<!-- A simple centered layout -->
+<div class="flex items-center justify-center min-h-screen">
+  <p>Perfectly centered!</p>
+</div>
+
+```
+
+**Display & Direction:**
+- `flex`: `display: flex;`
+- `inline-flex`: `display: inline-flex;`
+- `flex-row`: `flex-direction: row;` (default)
+- `flex-col`: `flex-direction: column;`
+**Justify Content (Horizontal alignment in row):**
+- `justify-start`: Align to the beginning.
+- `justify-center`: Align to the center.
+- `justify-end`: Align to the end.
+- `justify-between`: Maximize space between items.
+- `justify-around`: Equal space around items.
+**Align Items (Vertical alignment in row):**
+- `items-start`: Align to the top.
+- `items-center`: Align to the middle.
+- `items-end`: Align to the bottom.
+- `items-stretch`: Stretch to fill the container (default).
+**Flex Wrap:**
+- `flex-nowrap`: Prevent wrapping.
+- `flex-wrap`: Wrap items onto multiple lines.
+## Tailwind Grid Cheatsheet
+Grid is your best friend for two-dimensional layouts.
+
+```html
+<!-- A simple responsive 3-column grid -->
+<div class="grid-cols-1 md:grid-cols-3 gap-4">
+  <div class="bg-neutral-100 p-4">Col 1</div>
+  <div class="bg-neutral-100 p-4">Col 2</div>
+  <div class="bg-neutral-100 p-4">Col 3</div>
+</div>
+
+```
+
+**Grid Columns:**
+- `grid-cols-1` to `grid-cols-12`: Create a grid with X equally sized columns.
+- `col-span-1` to `col-span-12`: Make an element span X columns.
+- `col-start-2`: Start at grid line 2.
+**Grid Rows:**
+- `grid-rows-1` to `grid-rows-6`: Create a grid with X rows.
+- `row-span-2`: Make an element span 2 rows.
+**Gap:**
+- `gap-4`: Set both row and column gap (`1rem` or `16px`).
+- `gap-x-4`: Set horizontal gap only.
+- `gap-y-4`: Set vertical gap only.
+## Responsive Design
+Tailwind uses a mobile-first approach. Unprefixed utilities apply to all screen sizes, while prefixed utilities apply to specific breakpoints and larger.
+
+| Prefix | Minimum Width | Typical Device |
+| *(none)* | `0px` | Mobile (Default) |
+| `sm:` | `640px` | Large Mobile / Tablet |
+| `md:` | `768px` | Tablet / Small Laptop |
+| `lg:` | `1024px` | Laptop |
+| `xl:` | `1280px` | Desktop |
+| `2xl:` | `1536px` | Large Screens |
+**Example:**
+
+```html
+<!-- Stacks on mobile, side-by-side on desktop -->
+<div class="flex-col md:flex-row">
+  <div>Item 1</div>
+  <div>Item 2</div>
+</div>
+
+```
+
+## Spacing Utilities
+Tailwind's default spacing scale is proportional. 1 unit equals `0.25rem` (which translates to `4px` in default browsers).
+**Padding (Inner space):**
+- `p-4`: Padding on all sides (`1rem` or `16px`).
+- `px-4`: Padding on x-axis (left and right).
+- `py-4`: Padding on y-axis (top and bottom).
+- `pt-4`, `pr-4`, `pb-4`, `pl-4`: Padding top, right, bottom, left.
+**Margin (Outer space):**
+- `m-4`: Margin on all sides.
+- `mx-4`: Margin on x-axis.
+- `mx-auto`: Automatically center a block element horizontally.
+- `my-4`: Margin on y-axis.
+- `mt-4`, `mr-4`, `mb-4`, `ml-4`: Margin top, right, bottom, left.
+*Tip: You can use negative margins by prefixing with a hyphen, e.g., `-mt-4`.*
+## Typography Classes
+Control how text looks and behaves.
+**Font Size & Line Height:**
+- `text-xs`: Extra small.
+- `text-sm`: Small.
+- `text-base`: Default size (`16px`).
+- `text-lg`, `text-xl`, `text-2xl`, up to `text-9xl`.
+**Font Weight:**
+- `font-light`: `300`
+- `font-normal`: `400`
+- `font-medium`: `500`
+- `font-semibold`: `600`
+- `font-bold`: `700`
+- `font-extrabold`: `800`
+**Text Alignment:**
+- `text-left`, `text-center`, `text-right`, `text-justify`.
+## Tailwind Color System
+Tailwind includes an expertly crafted color palette. You reference colors using the format `{property}-{color}-{shade}`.
+- **Properties:** `bg` (Background), `text` (Text), `border` (Border), `ring` (Focus Ring).
+- **Colors:** `slate`, `gray`, `zinc`, `neutral`, `stone`, `red`, `orange`, `amber`, `yellow`, `lime`, `green`, `emerald`, `teal`, `cyan`, `sky`, `blue`, `indigo`, `violet`, `purple`, `fuchsia`, `pink`, `rose`.
+- **Shades:** Ranging from `50` (lightest) to `950` (darkest).
+**Examples:**
+
+```html
+<button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+  Click Me
+</button>
+
+<p class="text-neutral-500 dark:text-neutral-400">
+  This text supports dark mode!
+</p>
+
+```
+
+---
+
+## Educational Use Notice
+
+This content is provided strictly for educational purposes, defensive security awareness, system administration, diagnostics, and ethical learning environments.
+
+Always obtain proper authorization before testing systems or networks. The information published on this website is intended to promote responsible security practices, auditing, monitoring, and infrastructure hardening.
+
+---
