@@ -159,20 +159,55 @@ export function CommandPalette({ isOpen, onClose }: CommandPaletteProps) {
       result = result.filter((item) => item.type === "notes");
     }
 
-    // Filter by query
-    if (query.trim() !== "") {
-      const q = query.toLowerCase();
-      result = result.filter(
-        (item) =>
-          item.title.toLowerCase().includes(q) ||
-          item.description.toLowerCase().includes(q) ||
-          item.category.toLowerCase().includes(q) ||
-          item.tags.some((t) => t.toLowerCase().includes(q))
-      );
-    }
-
     return result;
-  }, [items, activeTab, query]);
+  }, [items, activeTab]);
+
+  // Handle weighted search from API when query is present
+  React.useEffect(() => {
+    if (query.trim() === "") return;
+
+    const searchDebounced = async () => {
+      setLoading(true);
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(query)}`);
+        if (!res.ok) throw new Error("Search request failed");
+        const data = await res.json();
+
+        const mappedPosts: SearchItem[] = (data.posts || []).map((post: any) => ({
+          id: `post-${post.slug}`,
+          title: post.title,
+          description: post.description,
+          category: post.category,
+          tags: post.tags,
+          url: post.type === "notes"
+            ? `/notes/${(post.subcategory || "linux").toLowerCase()}/${post.slug}`
+            : `/blog/${post.slug}`,
+          type: post.type,
+        }));
+
+        const mappedTools: SearchItem[] = (data.tools || []).map((tool: any) => ({
+          id: `tool-${tool.name.toLowerCase()}`,
+          title: tool.title,
+          description: tool.description,
+          category: tool.category,
+          tags: tool.tags,
+          url: tool.url,
+          type: "tool",
+          isExternal: true,
+        }));
+
+        setItems([...mappedPosts, ...mappedTools]);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const timeoutId = setTimeout(searchDebounced, 150);
+    return () => clearTimeout(timeoutId);
+  }, [query]);
+
 
   // Reset selected index when filters change
   React.useEffect(() => {

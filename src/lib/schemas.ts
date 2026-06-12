@@ -143,11 +143,21 @@ export function buildArticleSchema(input: ArticleSchemaInput) {
     description: input.description,
     url: input.url,
     datePublished: input.datePublished,
-    author: { "@id": personId },
-    publisher: { "@id": `${SITE_URL}/#website` },
+    author: { 
+      "@type": "Person",
+      "@id": personId,
+      name: "Anupam Baral"
+    },
+    publisher: { 
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#website`,
+      name: SITE_NAME 
+    },
     mainEntityOfPage: { "@type": "WebPage", "@id": input.url },
     articleSection: input.subcategory,
     inLanguage: "en-US",
+    // Enhancement: adding keyword signals
+    keywords: input.subcategory,
   };
 }
 
