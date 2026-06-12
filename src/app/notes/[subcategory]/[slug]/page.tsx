@@ -35,6 +35,15 @@ export async function generateMetadata({ params }: { params: Promise<{ subcatego
     return {
       title: `${post.frontmatter.title} | Security Knowledge Base`,
       description: post.frontmatter.description,
+      openGraph: {
+        title: post.frontmatter.title,
+        description: post.frontmatter.description,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.frontmatter.title,
+        description: post.frontmatter.description,
+      },
       alternates: {
         canonical: absoluteUrl(
           `/notes/${resolvedParams.subcategory}/${resolvedParams.slug}`,

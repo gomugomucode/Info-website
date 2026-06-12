@@ -32,8 +32,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   try {
     const post = getPostBySlug(resolvedParams.slug);
     return {
-      title: post.frontmatter.title,
+      title: `${post.frontmatter.title} | Security Knowledge Base`,
       description: post.frontmatter.description,
+      openGraph: {
+        title: post.frontmatter.title,
+        description: post.frontmatter.description,
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: post.frontmatter.title,
+        description: post.frontmatter.description,
+      },
     };
   } catch (e) {
     return {
