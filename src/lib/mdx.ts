@@ -188,14 +188,57 @@ export function getHubPillarNotes(subcategory: string): Post[] {
 export function getRelatedPosts(currentPost: Post, limit: number = 2): Post[] {
   const allPosts = getAllPosts().filter((p) => p.slug !== currentPost.slug);
 
-  // Basic related posts logic: matches tags or category
-  const related = allPosts.filter((post) => {
-    const hasSharedCategory = post.frontmatter.category.toLowerCase() === currentPost.frontmatter.category.toLowerCase();
-    const hasSharedTags = post.frontmatter.tags?.some((tag) => currentPost.frontmatter.tags?.includes(tag));
-    return hasSharedCategory || hasSharedTags;
+  // SCORING WEIGHTS
+  // -------------------------------------------------------------------------
+  const WEIGHTS = {
+    SUBCATEGORY: 10, // Strongest signal: within the same specific topic hub
+    TAG: 3,          // Medium signal: shared conceptual markers
+    CATEGORY: 2,    // Weak signal: general top-level category match
+    PILLAR: 5,       // Boost: prioritize canonical guides in the result set
+  };
+
+  const scoredPosts = allPosts.map((post) => {
+    let score = 0;
+
+    // 1. Subcategory Match (Strongest)
+    if (
+      post.frontmatter.subcategory && 
+      currentPost.frontmatter.subcategory && 
+      post.frontmatter.subcategory.toLowerCase() === currentPost.frontmatter.subcategory?.toLowerCase()
+    ) {
+      score += WEIGHTS.SUBCATEGORY;
+    }
+
+    // 2. Shared Tags (Additive)
+    const sharedTags = post.frontmatter.tags?.filter((tag) => 
+      currentPost.frontmatter.tags?.includes(tag)
+    ) || [];
+    score += sharedTags.length * WEIGHTS.TAG;
+
+    // 3. Category Match (Fallback)
+    if (
+      post.frontmatter.category.toLowerCase() === currentPost.frontmatter.category.toLowerCase()
+    ) {
+      score += WEIGHTS.CATEGORY;
+    }
+
+    // 4. Pillar Guide Boost
+    // If the post is a defined pillar in its subcategory, it gets a visibility boost
+    const sub = post.frontmatter.subcategory?.toLowerCase();
+    if (sub && isNoteSubcategory(sub)) {
+      const isPillar = HUB_PILLARS[sub]?.includes(post.slug);
+      if (isPillar) score += WEIGHTS.PILLAR;
+    }
+
+    return { post, score };
   });
 
-  return related.slice(0, limit);
+  // Filter out zero-score matches, sort by score descending, then take limit
+  return scoredPosts
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((item) => item.post);
 }
 
 export async function parseTOC(content: string) {
