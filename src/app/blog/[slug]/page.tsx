@@ -223,7 +223,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
               {/* MDX Body Remote Component */}
               <div className="prose prose-neutral dark:prose-invert max-w-none w-full">
                 {/* @ts-expect-error - RSC Async component */}
-                <MDXRemote source={post.content} components={components} options={mdxOptions} />
+                <MDXRemote source={post.content} components={MDXComponents} options={mdxOptions} />
               </div>
 
               {/* PREV / NEXT Link panel */}
@@ -303,7 +303,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
 
             <div className="prose prose-neutral dark:prose-invert max-w-none">
               {/* @ts-expect-error - RSC Async component */}
-              <MDXRemote source={post.content} components={components} options={mdxOptions} />
+              <MDXRemote source={post.content} components={MDXComponents} options={mdxOptions} />
             </div>
           </article>
         )}

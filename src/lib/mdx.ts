@@ -292,68 +292,74 @@ import { HUB_PILLARS, isNoteSubcategory } from "./hub-config";
 export function linkifyContent(content: string, currentPostSlug: string): string {
   if (!content) return content;
 
-  // 1. Map of keyword -> target URL
-  // We derive this from HUB_PILLARS to ensure we link to authority content.
   const linkMap: Record<string, string> = {};
-  
   Object.entries(HUB_PILLARS).forEach(([sub, slugs]) => {
     slugs.forEach(slug => {
-      const post = getPostBySlug(slug, "notes");
-      // Use the title as the keyword. In a real-world scenario, this would be a curated list.
-      const keyword = post.frontmatter.title;
-      const url = `/notes/${sub}/${slug}`;
-      
-      // Only map if it's a meaningful phrase (not too short, not too long)
-      if (keyword && keyword.length > 3) {
-        linkMap[keyword] = url;
+      try {
+        const post = getPostBySlug(slug, "notes");
+        const keyword = post.frontmatter.title;
+        const url = `/notes/${sub}/${slug}`;
+        if (keyword && keyword.length > 3) {
+          linkMap[keyword] = url;
+        }
+      } catch (e) {
+        // Post might not exist, skip it
       }
     });
   });
 
-  // 2. Process content
-  let linkedContent = content;
-  
-  // Sort keywords by length (longest first) to avoid partial matches (e.g. "Linux" vs "Linux CLI")
   const sortedKeywords = Object.keys(linkMap).sort((a, b) => b.length - a.length);
+  
+  // This regex matches:
+  // 1. Code blocks: ```[...]*?```
+  // 2. Inline code: `[...]`
+  // 3. Existing markdown links: [...] (...)
+  // 4. Keywords from our linkMap
+  const protectedPatterns = [
+    /(\`\`\`[s|c]*?[\s\S]*?\`\`\`) /g, // Code blocks
+    /(`[^`\n]+`)/g,                   // Inline code
+    (/(\[[^\]]*?\]\([^\)]*?\))/g)     // Existing links
+  ];
 
-  sortedKeywords.forEach(keyword => {
-    const url = linkMap[keyword];
-    
-    // Avoid linking the same slug as the current post
-    if (url.endsWith(currentPostSlug)) return;
-
-    /**
-     * REGEX EXPLANATION:
-     * - Lookbehind (?<!...): Ensure the word isn't already inside a Markdown link [keyword](...)
-     * - Boundary \b: Match whole words only
-     * - Case-insensitive: 'i' flag
-     * - Avoid code blocks: We avoid matching if the line starts with ``` or is inside `...`
-     * 
-     * Note: Simple JS regex doesn't support complex lookbehinds across all environments perfectly,
-     * so we use a refined replacement strategy.
-     */
-    const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    const regex = new RegExp(`\\b(${escapedKeyword})\\b`, 'gi');
-
-    linkedContent = linkedContent.replace(regex, (match) => {
-      // Check if the match is within a Markdown link [text](url)
-      // We search backwards from the match position to see if there's an opening '['
-      const position = linkedContent.indexOf(match);
-      const beforeMatch = linkedContent.substring(0, position);
-      
-      // If there's an unmatched '[' before the match, it's likely inside a link
-      const openBrackets = (beforeMatch.match(/\[/g) || []).length;
-      const closeBrackets = (beforeMatch.match(/\]/g) || []).length;
-      
-      if (openBrackets > closeBrackets) return match;
-
-      // Avoid linking the same word twice in a very short span (simple heuristic)
-      // In a production environment, this would be a stateful parser.
-      
-      return `[${match}](${url})`;
-    });
+  // Combine all patterns into one large regex
+  // We use capturing groups to identify what was matched
+  const keywordRegexParts = sortedKeywords.map(k => {
+    const escaped = k.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&');
+    return `(\\b${escaped}\\b)`;
   });
 
-  return linkedContent;
+  const combinedRegex = new RegExp(
+    [
+      '```[s|c]*?([\\s\\S]*?)```', // Group 1: Code blocks
+      '(`[^`\\n]+`)',            // Group 2: Inline code
+      '(\\[[^\\]]*?\\]\\([^\\)]*?\\))', // Group 3: Existing links
+      ...keywordRegexParts        // Following groups: Keywords
+    ].join('|'),
+    'gi'
+  );
+
+  return content.replace(combinedRegex, (match, ...args) => {
+    // The arguments contain the capturing groups. 
+    // The last argument is the offset, the second to last is the original string.
+    // We need to find which group matched.
+    
+    // Instead of complex group indexing, we can just check the match value.
+    if (match.startsWith('```')) return match;
+    if (match.startsWith('`')) return match;
+    if (match.startsWith('[')) return match;
+
+    // If it's not protected, it's a keyword.
+    // We need to find the original keyword from the map.
+    const lowerMatch = match.toLowerCase();
+    const originalKeyword = Object.keys(linkMap).find(k => k.toLowerCase() === lowerMatch);
+    
+    if (originalKeyword) {
+      const url = linkMap[originalKeyword];
+      if (url.endsWith(currentPostSlug)) return match;
+      return `[${match}](${url})`;
+    }
+
+    return match;
+  });
 }
 
