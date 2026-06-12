@@ -81,12 +81,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const dynamicRoutes: MetadataRoute.Sitemap = posts.map((post) => {
     const isNotes = post.type === "notes";
     const isCheatsheet = post.type === "cheatsheets";
+    
+    // DYNAMIC PRIORITY BOOST
+    // -------------------------------------------------------------------------
+    let priority = isNotes ? 0.7 : isCheatsheet ? 0.65 : 0.8;
+    
+    // Boost Pillar guides to 0.9 (same as section indexes) to ensure fast discovery
+    const sub = post.frontmatter.subcategory?.toLowerCase();
+    if (sub && isNoteSubcategory(sub)) {
+      const isPillar = HUB_PILLARS[sub]?.includes(post.slug);
+      if (isPillar) priority = 0.9;
+    }
 
     return {
       url: postUrl(post.type, post.slug, post.frontmatter.subcategory),
       lastModified: new Date(post.frontmatter.date),
       changeFrequency: "monthly" as const,
-      priority: isNotes ? 0.7 : isCheatsheet ? 0.65 : 0.8,
+      priority: priority,
     };
   });
 

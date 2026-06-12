@@ -149,8 +149,13 @@ export default async function NoteDetailPage({ params }: { params: Promise<{ sub
     notFound();
   }
 
+  // AUTO-LINKING INTEGRATION
+  // -------------------------------------------------------------------------
+  const linkedContent = linkifyContent(post.content, slug);
+
   const toc = await parseTOC(post.content);
   const relatedPosts = getRelatedPosts(post, 2);
+
 
   // Load all notes to construct the sidebar
   const allNotesPosts = getAllPosts(["notes"]);
@@ -249,7 +254,7 @@ export default async function NoteDetailPage({ params }: { params: Promise<{ sub
             {/* MDX Content */}
             <div className="prose prose-neutral dark:prose-invert max-w-none w-full">
               {/* @ts-expect-error - RSC Async component */}
-              <MDXRemote source={post.content} components={components} options={mdxOptions} />
+              <MDXRemote source={linkedContent} components={components} options={mdxOptions} />
             </div>
 
             {/* Next / Prev Buttons */}

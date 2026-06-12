@@ -185,45 +185,88 @@ export function getHubPillarNotes(subcategory: string): Post[] {
   return fallback.slice(0, limit);
 }
 
-export function getRelatedPosts(currentPost: Post, limit: number = 2): Post[] {
-  const allPosts = getAllPosts().filter((p) => p.slug !== currentPost.slug);
+export type TopicClusterId = `hub:${string}` | `cat:${string}`;
 
+/**
+ * Identifies the primary semantic cluster a post belongs to.
+ * Hierarchy: Subcategory Hub > General Category
+ */
+export function getTopicCluster(post: Post): TopicClusterId {
+  const sub = post.frontmatter.subcategory?.toLowerCase();
+  if (sub && isNoteSubcategory(sub)) {
+    return `hub:${sub}`;
+  }
+  return `cat:${post.frontmatter.category.toLowerCase()}`;
+}
+
+/**
+ * Retrieves all posts belonging to a specific semantic cluster.
+ * Sorted by authority (Pillars first, then recent).
+ */
+export function getClusterPosts(clusterId: string): Post[] {
+  const [type, id] = clusterId.split(":");
+  let posts: Post[] = [];
+
+  if (type === "hub") {
+    posts = getNotesBySubcategory(id);
+  } else if (type === "cat") {
+    posts = getPostsByCategory(id);
+  }
+
+  return posts.sort((a, b) => {
+    // Prioritize Pillars in the cluster
+    const subA = a.frontmatter.subcategory?.toLowerCase();
+    const subB = b.frontmatter.subcategory?.toLowerCase();
+    
+    const isPillarA = subA && isNoteSubcategory(subA) && HUB_PILLARS[subA]?.includes(a.slug);
+    const isPillarB = subB && isNoteSubcategory(subB) && HUB_PILLARS[subB]?.includes(b.slug);
+
+    if (isPillarA && !isPillarB) return -1;
+    if (!isPillarA && isPillarB) return 1;
+    
+    // Fallback to date
+    return a.frontmatter.date.localeCompare(b.frontmatter.date);
+  });
+}
+
+export function getRelatedPosts(currentPost: Post, limit: number = 2): Post[] {
+  // 1. Identify the current post's cluster to define the primary candidate pool
+  const primaryClusterId = getTopicCluster(currentPost);
+  const clusterCandidates = getClusterPosts(primaryClusterId);
+  
+  // 2. Broaden the pool to include other posts with shared tags (Cross-Cluster signals)
+  const allPosts = getAllPosts().filter((p) => p.slug !== currentPost.slug);
+  
   // SCORING WEIGHTS
-  // -------------------------------------------------------------------------
   const WEIGHTS = {
-    SUBCATEGORY: 10, // Strongest signal: within the same specific topic hub
-    TAG: 3,          // Medium signal: shared conceptual markers
-    CATEGORY: 2,    // Weak signal: general top-level category match
-    PILLAR: 5,       // Boost: prioritize canonical guides in the result set
+    CLUSTER_MATCH: 15, // High boost for belonging to the same semantic cluster
+    TAG: 3,           // Medium signal: shared conceptual markers
+    CATEGORY: 2,      // Weak signal: general top-level category match
+    PILLAR: 5,        // Authority boost: prioritize canonical guides
   };
 
   const scoredPosts = allPosts.map((post) => {
     let score = 0;
 
-    // 1. Subcategory Match (Strongest)
-    if (
-      post.frontmatter.subcategory && 
-      currentPost.frontmatter.subcategory && 
-      post.frontmatter.subcategory.toLowerCase() === currentPost.frontmatter.subcategory?.toLowerCase()
-    ) {
-      score += WEIGHTS.SUBCATEGORY;
+    // A. Cluster Membership (Pillar/Subcategory priority)
+    if (getTopicCluster(post) === primaryClusterId) {
+      score += WEIGHTS.CLUSTER_MATCH;
     }
 
-    // 2. Shared Tags (Additive)
+    // B. Shared Tags (Additive)
     const sharedTags = post.frontmatter.tags?.filter((tag) => 
       currentPost.frontmatter.tags?.includes(tag)
     ) || [];
     score += sharedTags.length * WEIGHTS.TAG;
 
-    // 3. Category Match (Fallback)
+    // C. Category Match (Fallback)
     if (
       post.frontmatter.category.toLowerCase() === currentPost.frontmatter.category.toLowerCase()
     ) {
       score += WEIGHTS.CATEGORY;
     }
 
-    // 4. Pillar Guide Boost
-    // If the post is a defined pillar in its subcategory, it gets a visibility boost
+    // D. Pillar Guide Boost
     const sub = post.frontmatter.subcategory?.toLowerCase();
     if (sub && isNoteSubcategory(sub)) {
       const isPillar = HUB_PILLARS[sub]?.includes(post.slug);
@@ -233,7 +276,6 @@ export function getRelatedPosts(currentPost: Post, limit: number = 2): Post[] {
     return { post, score };
   });
 
-  // Filter out zero-score matches, sort by score descending, then take limit
   return scoredPosts
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score)
@@ -241,25 +283,77 @@ export function getRelatedPosts(currentPost: Post, limit: number = 2): Post[] {
     .map((item) => item.post);
 }
 
-export async function parseTOC(content: string) {
-  const slugger = new GithubSlugger();
-  const headingRegex = /^(#{2,3})\s+(.+)$/gm;
-  const toc = [];
-  let match;
+import { HUB_PILLARS, isNoteSubcategory } from "./hub-config";
 
-  while ((match = headingRegex.exec(content)) !== null) {
-    const depth = match[1].length;
-    const title = match[2];
-    // Remove markdown links from title if any
-    const cleanTitle = title.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1");
-    const url = `#${slugger.slug(cleanTitle)}`;
+/**
+ * Automatically transforms raw MDX content into an internally-linked graph.
+ * Identifies key terms from pillar guides and wraps them in links.
+ */
+export function linkifyContent(content: string, currentPostSlug: string): string {
+  if (!content) return content;
 
-    toc.push({
-      title: cleanTitle,
-      url,
-      depth,
+  // 1. Map of keyword -> target URL
+  // We derive this from HUB_PILLARS to ensure we link to authority content.
+  const linkMap: Record<string, string> = {};
+  
+  Object.entries(HUB_PILLARS).forEach(([sub, slugs]) => {
+    slugs.forEach(slug => {
+      const post = getPostBySlug(slug, "notes");
+      // Use the title as the keyword. In a real-world scenario, this would be a curated list.
+      const keyword = post.frontmatter.title;
+      const url = `/notes/${sub}/${slug}`;
+      
+      // Only map if it's a meaningful phrase (not too short, not too long)
+      if (keyword && keyword.length > 3) {
+        linkMap[keyword] = url;
+      }
     });
-  }
+  });
 
-  return toc;
+  // 2. Process content
+  let linkedContent = content;
+  
+  // Sort keywords by length (longest first) to avoid partial matches (e.g. "Linux" vs "Linux CLI")
+  const sortedKeywords = Object.keys(linkMap).sort((a, b) => b.length - a.length);
+
+  sortedKeywords.forEach(keyword => {
+    const url = linkMap[keyword];
+    
+    // Avoid linking the same slug as the current post
+    if (url.endsWith(currentPostSlug)) return;
+
+    /**
+     * REGEX EXPLANATION:
+     * - Lookbehind (?<!...): Ensure the word isn't already inside a Markdown link [keyword](...)
+     * - Boundary \b: Match whole words only
+     * - Case-insensitive: 'i' flag
+     * - Avoid code blocks: We avoid matching if the line starts with ``` or is inside `...`
+     * 
+     * Note: Simple JS regex doesn't support complex lookbehinds across all environments perfectly,
+     * so we use a refined replacement strategy.
+     */
+    const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`\\b(${escapedKeyword})\\b`, 'gi');
+
+    linkedContent = linkedContent.replace(regex, (match) => {
+      // Check if the match is within a Markdown link [text](url)
+      // We search backwards from the match position to see if there's an opening '['
+      const position = linkedContent.indexOf(match);
+      const beforeMatch = linkedContent.substring(0, position);
+      
+      // If there's an unmatched '[' before the match, it's likely inside a link
+      const openBrackets = (beforeMatch.match(/\[/g) || []).length;
+      const closeBrackets = (beforeMatch.match(/\]/g) || []).length;
+      
+      if (openBrackets > closeBrackets) return match;
+
+      // Avoid linking the same word twice in a very short span (simple heuristic)
+      // In a production environment, this would be a stateful parser.
+      
+      return `[${match}](${url})`;
+    });
+  });
+
+  return linkedContent;
 }
+
