@@ -32,6 +32,9 @@ export default async function BlogPage({
   let posts = getAllPosts(["blog", "cheatsheets"]);
 
   if (query) {
+    // Note: The API now handles weighted sorting if we call it with ?q=...
+    // But to avoid a network roundtrip for every keystroke, we can still do basic filtering here,
+    // or better yet, update the SearchBar component to fetch from /api/search?q=...
     posts = posts.filter(
       (post) =>
         post.frontmatter.title.toLowerCase().includes(query) ||
